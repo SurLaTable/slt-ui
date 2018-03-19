@@ -17,11 +17,17 @@ describe("material-ui-codemod", () => {
 		describe("change-direct-references", () => {
 			it("Changes direct references to reference the asynchronous index", () => {
 				const actual = transformer(
-					{ source: read("./change-direct-references.spec/actual.js") },
+					{
+						source: read(
+							"./change-direct-references.spec/actual.js"
+						)
+					},
 					{ jscodeshift: jscodeshift }
 				);
 
-				const expected = read("./change-direct-references.spec/expected.js");
+				const expected = read(
+					"./change-direct-references.spec/expected.js"
+				);
 
 				assert.strictEqual(
 					trim(actual),

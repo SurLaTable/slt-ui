@@ -1,0 +1,22 @@
+{
+	"name": "convert-material-ui-to-async",
+	"version": "1.0.0",
+	"description": "",
+	"main": "run.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url":
+			"git+ssh://git@bitbucket.org/slt_development/convert-material-ui-to-async.git"
+	},
+	"keywords": ["jscodeshift"],
+	"author": "SLT",
+	"license": "GPL-2.0+",
+	"homepage":
+		"https://bitbucket.org/slt_development/convert-material-ui-to-async#readme",
+	"dependencies": {
+		"jscodeshift": "^0.5.0"
+	}
+}

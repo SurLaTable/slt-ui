@@ -1,7 +1,11 @@
 const transformer = (file, api, options) => {
 	const j = api.jscodeshift;
 	const root = j(file.source);
-	root.get().node.program.body.unshift('import { asyncComponent } from "react-async-component";');
+	root
+		.get()
+		.node.program.body.unshift(
+			'import { asyncComponent } from "react-async-component";'
+		);
 
 	return root
 		.find(j.ExportNamedDeclaration)
@@ -14,12 +18,18 @@ const transformer = (file, api, options) => {
 				// maintainers.
 				// https://github.com/mui-org/material-ui/issues/10647#issuecomment-373093870
 				if (/[A-Z]/.test(importName.slice(0, 1))) {
+					// HACK:
+					// We need to verify if we need to accomodate more
+					// than one specifier in the case of index.js files.
+					// path.node.specifiers.length = 1;
 					path.node.specifiers[0] = importName;
 
 					j(path).insertBefore(
 						[
 							`const ${importName} = asyncComponent({`,
-							`	resolve: () => import("${path.node.source.value}")`,
+							`	resolve: () => import("${
+								path.node.source.value
+							}")`,
 							`});`
 						].join("\n")
 					);

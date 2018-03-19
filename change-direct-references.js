@@ -9,7 +9,10 @@ const transformer = (file, api, options) => {
 				// Test for / in the source path:
 				if (/\//.test(path.node.source.value)) {
 					const sourceValue = path.node.source.value;
-					const sourceWithLettersOnly = sourceValue.replace(/[^\w]/g, "");
+					const sourceWithLettersOnly = sourceValue.replace(
+						/[^\w]/g,
+						""
+					);
 					// If the first letter is uppercase we are importing a component:
 					if (
 						/[A-Z]/.test(sourceWithLettersOnly.slice(0, 1)) &&
@@ -24,6 +27,21 @@ const transformer = (file, api, options) => {
 							.split("/")
 							.slice(0, -1)
 							.join("/");
+						// Since the imports now reference the index.js, they
+						// need to use the tree destructuring syntax (be
+						// wrapped in curly brackets).
+						const firstSpecifier =
+							path.node.specifiers[0].local.name;
+						path.node.specifiers[0].local.name =
+							"{ " + firstSpecifier;
+						const lastSpecifier =
+							path.node.specifiers[
+								path.node.specifiers.length - 1
+							].local.name;
+						path.node.specifiers[
+							path.node.specifiers.length - 1
+						].local.name =
+							lastSpecifier + " }";
 					}
 				}
 			}
