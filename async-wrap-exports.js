@@ -17,11 +17,13 @@ const transformer = (file, api, options) => {
 				// This is a good test according to the Material UI
 				// maintainers.
 				// https://github.com/mui-org/material-ui/issues/10647#issuecomment-373093870
-				if (/[A-Z]/.test(importName.slice(0, 1))) {
-					// HACK:
+				if (
+					/[A-Z]/.test(importName.slice(0, 1)) &&
+					path.node.specifiers.length === 1
+				) {
+					// TODO:
 					// We need to verify if we need to accomodate more
 					// than one specifier in the case of index.js files.
-					// path.node.specifiers.length = 1;
 					path.node.specifiers[0] = importName;
 
 					j(path).insertBefore(

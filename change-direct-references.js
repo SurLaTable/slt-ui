@@ -16,7 +16,14 @@ const transformer = (file, api, options) => {
 					// If the first letter is uppercase we are importing a component:
 					if (
 						/[A-Z]/.test(sourceWithLettersOnly.slice(0, 1)) &&
-						sourceValue.split("/").length > 2
+						sourceValue.split("/").length > 2 &&
+						path.node.specifiers[0] &&
+						path.node.specifiers[0].local &&
+						path.node.specifiers[0].local.name &&
+						path.node.specifiers[0].local.name.slice(0, 1) ===
+							path.node.specifiers[0].local.name
+								.slice(0, 1)
+								.toUpperCase()
 					) {
 						// We return those imports without the last word.
 						// So "../Form/FormGroup" becomes "../Form",
@@ -32,6 +39,7 @@ const transformer = (file, api, options) => {
 						// wrapped in curly brackets).
 						const firstSpecifier =
 							path.node.specifiers[0].local.name;
+
 						path.node.specifiers[0].local.name =
 							"{ " + firstSpecifier;
 						const lastSpecifier =

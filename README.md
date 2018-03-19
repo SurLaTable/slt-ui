@@ -1,6 +1,8 @@
 Convert Material UI into an asynchronous component library:
 
+---
+
 ```sh
-jscodeshift ~/material-ui/src/**/index.js -p -d -v 2 -t src/async/async-wrap-exports.js \
-	&& jscodeshift ~/material-ui/src/**/*.js -p -d -v 2 -t src/async/change-direct-references.js
+jscodeshift --transform async-wrap-exports.js --parser flow ~/material-ui/src/**/index.js \
+	&& jscodeshift --transform change-direct-references.js --parser flow ~/material-ui/src/**/*.js
 ```

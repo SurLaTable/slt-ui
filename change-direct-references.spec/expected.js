@@ -7,6 +7,7 @@ import FormGroup from "../Form";
 // And this should be ignored:
 import Input, { InputLabel } from "../Input";
 import Paper from "../Paper";
+import { isDirty, isAdornedStart } from "../Input/Input";
 
 import { find } from "../utils/helpers";
 
