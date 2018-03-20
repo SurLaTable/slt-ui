@@ -3,7 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 // This should change:
-import FormGroup from "../Form";
+import { FormGroup } from "../Form";
 // And this should be ignored:
 import Input, { InputLabel } from "../Input";
 import Paper from "../Paper";
