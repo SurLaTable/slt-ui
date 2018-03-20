@@ -40,6 +40,7 @@ const transformer = (file, api, options) => {
 			}
 			return path;
 		})
+
 		.toSource();
 };
 
