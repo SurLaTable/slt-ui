@@ -1,16 +1,16 @@
 import fs from "fs";
 import path from "path";
-import { assert } from "chai";
+import assert from "assert";
 import jscodeshift from "jscodeshift";
 import transformer from "./async-wrap-exports";
 
-function trim(str) {
-	return str.replace(/^\s+|\s+$/, "");
-}
+// Whitespace and line endings should not be a factor
+// for our tests. They just cause more headaches because
+// of discrepancies across platforms (LF VS CRLF).
+const cleanWhitespace = (str) => str.replace(/\s/g, "");
 
-function read(fileName) {
-	return fs.readFileSync(path.join(__dirname, fileName), "utf8").toString();
-}
+const read = (fileName) =>
+	fs.readFileSync(path.join(__dirname, fileName), "utf8").toString();
 
 describe("material-ui-codemod", () => {
 	describe("v1.0.0", () => {
@@ -23,9 +23,9 @@ describe("material-ui-codemod", () => {
 
 				const expected = read("./async-wrap-exports.spec/expected.js");
 
-				assert.equal(
-					trim(actual),
-					trim(expected),
+				assert.strictEqual(
+					cleanWhitespace(actual),
+					cleanWhitespace(expected),
 					"The transformed version should be correct."
 				);
 			});
