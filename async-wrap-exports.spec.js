@@ -23,7 +23,7 @@ describe("material-ui-codemod", () => {
 
 				const expected = read("./async-wrap-exports.spec/expected.js");
 
-				assert.strictEqual(
+				assert.equal(
 					trim(actual),
 					trim(expected),
 					"The transformed version should be correct."

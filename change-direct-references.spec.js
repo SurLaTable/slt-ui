@@ -29,7 +29,7 @@ describe("material-ui-codemod", () => {
 					"./change-direct-references.spec/expected.js"
 				);
 
-				assert.strictEqual(
+				assert.equal(
 					trim(actual),
 					trim(expected),
 					"The transformed version should be correct."
