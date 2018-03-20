@@ -1,0 +1,3 @@
+material-ui/
+!material-ui/src/
+!material-ui/packages/material-ui-icons

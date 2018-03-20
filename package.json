@@ -3,20 +3,27 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "run.js",
+	"config": {
+		"commit": "v1.0.0-beta.38"
+	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"checkout": "cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
+		"reset" : "cd material-ui && cross-var git reset --hard $npm_package_config_commit && cd .."
 	},
 	"repository": {
 		"type": "git",
-		"url":
-			"git+ssh://git@bitbucket.org/slt_development/convert-material-ui-to-async.git"
+		"url": "git+ssh://git@bitbucket.org/slt_development/convert-material-ui-to-async.git"
 	},
-	"keywords": ["jscodeshift"],
+	"keywords": [
+		"jscodeshift"
+	],
 	"author": "SLT",
 	"license": "GPL-2.0+",
-	"homepage":
-		"https://bitbucket.org/slt_development/convert-material-ui-to-async#readme",
+	"homepage": "https://bitbucket.org/slt_development/convert-material-ui-to-async#readme",
 	"dependencies": {
 		"jscodeshift": "^0.5.0"
+	},
+	"devDependencies": {
+		"cross-var": "^1.1.0"
 	}
 }
