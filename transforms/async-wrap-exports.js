@@ -4,7 +4,7 @@ const transformer = (file, api, options) => {
 	root
 		.get()
 		.node.program.body.unshift(
-			'import { asyncComponent } from "react-async-component";'
+			`import { asyncComponent } from 'react-async-component';`
 		);
 
 	return root
@@ -29,9 +29,9 @@ const transformer = (file, api, options) => {
 					j(path).insertBefore(
 						[
 							`const ${importName} = asyncComponent({`,
-							`	resolve: () => import("${
+							`	resolve: () => import('${
 								path.node.source.value
-							}")`,
+							}'),`,
 							`});`
 						].join("\n")
 					);
