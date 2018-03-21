@@ -1,3 +1,10 @@
 material-ui/
 !material-ui/src/
-!material-ui/packages/material-ui-icons
+!material-ui/packages/material-ui-icons/src/
+transforms/
+.babelrc
+.gitignore
+.gitmodules
+.prettierrc.json
+bitbucket-pipelines.yml
+README.md
