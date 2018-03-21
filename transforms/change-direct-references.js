@@ -11,12 +11,12 @@ const transformer = (file, api, options) => {
 					const sourceValue = path.node.source.value;
 					const sourceWithLettersOnly = sourceValue.replace(
 						/[^\w]/g,
-						""
+						''
 					);
 					// If the first letter is uppercase we are importing a component:
 					if (
 						/[A-Z]/.test(sourceWithLettersOnly.slice(0, 1)) &&
-						sourceValue.split("/").length > 2 &&
+						sourceValue.split('/').length > 2 &&
 						path.node.specifiers[0] &&
 						path.node.specifiers[0].local &&
 						path.node.specifiers[0].local.name &&
@@ -31,25 +31,23 @@ const transformer = (file, api, options) => {
 						// the asynchronous import (thanks to our other
 						// jscodeshift recipe).
 						path.node.source.value = sourceValue
-							.split("/")
+							.split('/')
 							.slice(0, -1)
-							.join("/");
+							.join('/');
 						// Since the imports now reference the index.js, they
 						// need to use the tree destructuring syntax (be
 						// wrapped in curly brackets).
 						const firstSpecifier =
 							path.node.specifiers[0].local.name;
 
-						path.node.specifiers[0].local.name =
-							"{ " + firstSpecifier;
+						path.node.specifiers[0].local.name = `{ ${firstSpecifier}`;
 						const lastSpecifier =
 							path.node.specifiers[
 								path.node.specifiers.length - 1
 							].local.name;
 						path.node.specifiers[
 							path.node.specifiers.length - 1
-						].local.name =
-							lastSpecifier + " }";
+						].local.name = `${lastSpecifier} }`;
 					}
 				}
 			}
