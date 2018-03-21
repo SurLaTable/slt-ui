@@ -4,7 +4,7 @@ const transformer = (file, api, options) => {
 	root
 		.get()
 		.node.program.body.unshift(
-			'import { asyncComponent } from "react-async-component";'
+			`import { asyncComponent } from 'react-async-component';`
 		);
 
 	return root
@@ -12,7 +12,7 @@ const transformer = (file, api, options) => {
 		.map((path) => {
 			if (path.node && path.node.source) {
 				// Remove any non-word characters from the source value:
-				const importName = path.node.source.value.replace(/[^\w]/g, "");
+				const importName = path.node.source.value.replace(/[^\w]/g, '');
 				// Test to see if the first character is UPPERCASE.
 				// This is a good test according to the Material UI
 				// maintainers.
@@ -29,11 +29,11 @@ const transformer = (file, api, options) => {
 					j(path).insertBefore(
 						[
 							`const ${importName} = asyncComponent({`,
-							`	resolve: () => import("${
+							`	resolve: () => import('${
 								path.node.source.value
-							}")`,
+							}'),`,
 							`});`
-						].join("\n")
+						].join('\n')
 					);
 					delete path.node.source;
 				}
