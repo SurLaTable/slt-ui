@@ -43,7 +43,9 @@ glob("./material-ui/src/**/!(*.spec).js", function(err, files) {
 
 //Add plugin to babelrc
 (function(){
-	var babelrc = JSON.parse(read("./material-ui/.babelrc"));
-	babelrc.plugins.append("dynamic-import-node");
-	write("./material-ui/.babelrc",JSON.stringify(babelrc))
+	var babelrc = eval(`(${read("./material-ui/.babelrc")})`);
+	if(babelrc.plugins.indexOf("dynamic-import-node") === -1){
+		babelrc.plugins.push("dynamic-import-node");
+	}
+	write("./material-ui/.babelrc",JSON.stringify(babelrc,null,'\t'))
 }());

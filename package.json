@@ -7,11 +7,14 @@
 		"commit": "v1.0.0-beta.38"
 	},
 	"scripts": {
-		"checkout": "cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
+		"build":"yarn prep:material && yarn transform",
+		"build:clean":"yarn reset && yarn build",
 		"reset": "cd material-ui && cross-var git reset --hard $npm_package_config_commit && cd ..",
-		"test": "./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js",
 		"transform": "node ./transforms/index.js",
-		"prep":"cd material-ui && yarn install && yarn add --dev babel-plugin-syntax-dynamic-import -W && yarn add react-async-component -W && cd .."
+		"test":"yarn test:transforms && yarn test:material",
+		"test:transforms": "./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js",
+		"test:material": "cd material-ui && yarn test:karma && cd ..",
+		"prep:material":"cd material-ui && yarn install && yarn add --dev babel-plugin-dynamic-import-node -W && yarn add react-async-component -W && cd .."
 	},
 	"repository": {
 		"type": "git",
