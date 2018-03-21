@@ -9,7 +9,7 @@
 	"scripts": {
 		"checkout": "cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
 		"reset": "cd material-ui && cross-var git reset --hard $npm_package_config_commit && cd ..",
-		"test": "./node_modules/.bin/mocha --require babel-register *.spec.js",
+		"test": "./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js",
 		"transform": "node ./transforms/index.js",
 		"prep":"cd material-ui && yarn install && yarn add --dev babel-plugin-syntax-dynamic-import -W && yarn add react-async-component -W && cd .."
 	},
