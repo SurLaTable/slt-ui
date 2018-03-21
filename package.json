@@ -1,12 +1,13 @@
 {
-	"name": "convert-material-ui-to-async",
-	"version": "1.0.0",
-	"description": "",
-	"main": "run.js",
+	"name": "Sur La Table UI",
+	"version": "0.0.0",
+	"description": "Sur La Table UI Library",
+	"main": "index.js",
 	"config": {
 		"commit": "v1.0.0-beta.38"
 	},
 	"scripts": {
+		"prepublish":"yarn build:clean",
 		"build": "yarn prep:material && yarn transform",
 		"build:clean": "yarn reset && yarn build",
 		"reset": "cd material-ui && cross-var git reset --hard $npm_package_config_commit && cd ..",

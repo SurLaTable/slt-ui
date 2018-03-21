@@ -23,7 +23,7 @@ write(
 );
 
 //Make all components async
-glob("./material-ui/src/**/index.js", function(err, files) {
+glob("./material-ui/src/*/index.js", function(err, files) {
 	var out;
 	for (var i = 0; i < files.length; i++) {
 		out = wrapExport({source: read(files[i])}, {jscodeshift: jscodeshift});
@@ -32,7 +32,7 @@ glob("./material-ui/src/**/index.js", function(err, files) {
 });
 
 //Change direct references to use async references
-glob("./material-ui/src/**/!(*.spec).js", function(err, files) {
+glob("./material-ui/src/*/!(*.spec).js", function(err, files) {
 	var out;
 	for (var i = 0; i < files.length; i++) {
 		out = directReference({source: read(files[i])}, {jscodeshift: jscodeshift});
