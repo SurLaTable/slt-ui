@@ -13,7 +13,7 @@ function write(path, source) {
 	return fs.writeFileSync(path, source);
 }
 
-//Make icons async
+// Make icons async:
 write(
 	'./material-ui/packages/material-ui-icons/src/index.js',
 	wrapExport(
