@@ -1,15 +1,15 @@
 // @inheritedComponent FormGroup
 
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 // This should change:
-import { FormGroup } from "../Form";
+import { FormGroup } from '../Form';
 // And this should be ignored:
-import Input, { InputLabel } from "../Input";
-import Paper from "../Paper";
-import { isDirty, isAdornedStart } from "../Input/Input";
+import Input, { InputLabel } from '../Input';
+import Paper from '../Paper';
+import { isDirty, isAdornedStart } from '../Input/Input';
 
-import { find } from "../utils/helpers";
+import { find } from '../utils/helpers';
 
 class RadioGroup extends React.Component {
 	radios = [];

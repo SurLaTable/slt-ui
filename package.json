@@ -1,17 +1,24 @@
 {
 	"name": "@sur-la-table/slt-ui",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Sur La Table UI Library",
 	"main": "index.js",
 	"config": {
 		"commit": "v1.0.0-beta.38"
 	},
 	"scripts": {
-		"prepublish": "yarn build:clean",
 		"build": "yarn prep:material && yarn transform",
 		"build:clean": "yarn reset && yarn build",
+		"prepare": "yarn build:clean",
+
+		"prep:material":
+			"cd material-ui && yarn install && yarn add --dev babel-plugin-dynamic-import-node -W && yarn add react-async-component -W && cd ..",
+
 		"postinstall":
 			"git submodule update --init --recursive && cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
+		"prettier":
+			"npx prettier --config .prettierrc.json --write \"{,!(.git|*build|*dist|material-ui|node_modules|styleguide)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
+
 		"reset":
 			"cd material-ui && cross-var git reset --hard $npm_package_config_commit && cd ..",
 		"transform": "node ./transforms/index.js",
@@ -20,9 +27,7 @@
 			"./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js",
 		"test:material": "cd material-ui && yarn test:karma && cd ..",
 		"test:1":
-			"cd material-ui && cross-env NODE_ENV=test mocha src/{,**/}*.spec.js",
-		"prep:material":
-			"cd material-ui && yarn install && yarn add --dev babel-plugin-dynamic-import-node -W && yarn add react-async-component -W && cd .."
+			"cd material-ui && cross-env NODE_ENV=test mocha src/{,**/}*.spec.js"
 	},
 	"repository": {
 		"type": "git",

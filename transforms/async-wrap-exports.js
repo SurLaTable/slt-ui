@@ -12,10 +12,10 @@ const transformer = (file, api, options) => {
 
 	return root
 		.find(j.ExportNamedDeclaration)
-		.map(path => {
+		.map((path) => {
 			if (path.node && path.node.source) {
 				// Remove any non-word characters from the source value:
-				const importName = path.node.source.value.replace(/[^\w]/g, "");
+				const importName = path.node.source.value.replace(/[^\w]/g, '');
 				// Test to see if the first character is UPPERCASE.
 				// This is a good test according to the Material UI
 				// maintainers.
@@ -41,7 +41,7 @@ const transformer = (file, api, options) => {
 								`export default asyncComponent({`,
 								`	resolve: () => import('${sourceLocation}'),`,
 								`});`
-							].join("\n")
+							].join('\n')
 						);
 					} else {
 						// TODO:
@@ -52,7 +52,7 @@ const transformer = (file, api, options) => {
 								`export const ${importName} = asyncComponent({`,
 								`	resolve: () => import('${sourceLocation}'),`,
 								`});`
-							].join("\n")
+							].join('\n')
 						);
 					}
 				}
