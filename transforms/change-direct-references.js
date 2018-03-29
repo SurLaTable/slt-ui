@@ -1,6 +1,10 @@
+const highlight = require('cli-highlight').highlight;
+
 const transformer = (file, api, options) => {
 	const j = api.jscodeshift;
 	const root = j(file.source);
+
+	console.log('Inspecting', file.path);
 
 	return root
 		.find(j.ImportDeclaration)
@@ -30,6 +34,14 @@ const transformer = (file, api, options) => {
 						// which means it will use the index, and thusly
 						// the asynchronous import (thanks to our other
 						// jscodeshift recipe).
+						console.log(
+	            'Transforming at line',
+	            path.node.loc.start.line,
+	            '\n',
+	            highlight(j(path.node).toSource(), {
+	              language: 'javascript',
+	            }),
+	          );
 						path.node.source.value = sourceValue
 							.split('/')
 							.slice(0, -1)
