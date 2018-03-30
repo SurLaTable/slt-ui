@@ -8,10 +8,7 @@ const transformer = (file, api, options) => {
   console.log('Inspecting', file.path);
 
   var body = root.get().node.program.body;
-  var header = `
-  import React from 'react';
-  import MuiThemeProvider from '../styles/MuiThemeProvider';
-  import { asyncComponent } from 'react-async-component';`;
+  var header = `import { asyncComponent } from 'react-async-component';`;
 
   if (
     body.length &&
@@ -46,21 +43,21 @@ const transformer = (file, api, options) => {
             if (localExport && specifier.local.name === 'default') {
               exports.push(
                 [
-                  `export default React.createElement(MuiThemeProvider,null,asyncComponent({`,
+                  `export default asyncComponent({`,
                   `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${sourceLocation.split('/').slice(-1)}" */),`,
-                  `}));`,
+                  `});`,
                 ].join('\n'),
               );
             } else {
               exports.push(
                 [
-                  `export const ${specifier.exported.name} = React.createElement(MuiThemeProvider,null,asyncComponent({`,
+                  `export const ${specifier.exported.name} = asyncComponent({`,
                   `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${specifier.exported.name}" */)${
                     specifier.local.name !== 'default'
                       ? `.then(module => module['${specifier.local.name}'])`
                       : ''
                   },`,
-                  `}));`,
+                  `});`,
                 ].join('\n'),
               );
             }
