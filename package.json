@@ -1,23 +1,25 @@
 {
 	"name": "@sur-la-table/slt-ui",
-	"version": "0.0.3",
+	"version": "0.0.8",
 	"description": "Sur La Table UI Library",
 	"main": "index.js",
 	"config": {
 		"commit": "v1.0.0-beta.38"
 	},
+	"files":[
+		"material-ui/build"
+	],
 	"scripts": {
-		"release": "yarn publish ./material-ui/build",
-		"prepare": "yarn build:clean",
-		"build": "yarn prepare:material && yarn transform && cd ./material-ui && yarn build && cd ..",
+		"build": "yarn prepare:material && yarn transform && cd ./material-ui && yarn build && cd .. && node ./scripts/setup-release.js",
 		"build:clean": "yarn git-reset && yarn build",
 		"prepare:material": "cd material-ui && yarn install && yarn add --dev babel-plugin-dynamic-import-node babel-plugin-dynamic-import-webpack -W && yarn add react-async-component -W && cd ..",
-		"postinstall": "git submodule update --init --recursive && cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
 		"prettier": "prettier --config ./prettier.config.js --write \"{,!(.git|*build|*dist|material-ui|node_modules|styleguide)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
-		"git-reset": "cd material-ui && cross-var git reset --hard $npm_package_config_commit && cd ..",
 		"transform": "node ./transforms/index.js",
 		"test": "yarn test:transforms",
-		"test:transforms": "./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js"
+		"test:transforms": "./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js",
+		"git-setup": "git submodule update --init --recursive && cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
+		"git-reset": "cd material-ui && cross-var git reset --hard $npm_package_config_commit && cd ..",
+		"git-push-release" : "cross-var git tag -a $npm_package_version -m '$npm_package_version' && git push && git push --tags"
 	},
 	"repository": {
 		"type": "git",

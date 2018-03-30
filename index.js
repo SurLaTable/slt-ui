@@ -1,1 +1,1 @@
-export * from './material-ui/src';
+export * from "./material-ui/build";
