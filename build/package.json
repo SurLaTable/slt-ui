@@ -2,7 +2,7 @@
 	"name": "@sur-la-table/slt-ui",
 	"private": false,
 	"author": "SLT",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"description": "Sur La Table UI Library",
 	"main": "./index.js",
 	"keywords": [
