@@ -85,11 +85,11 @@ function changeBabel() {
   return new Promise(resolve => {
 		console.log("Start changing ./material-ui/.babelrc");
     var babelrc = eval(`(${read('./material-ui/.babelrc')})`);
-    if (babelrc.plugins.indexOf('dynamic-import-node') === -1) {
+    /*if (babelrc.plugins.indexOf('dynamic-import-node') === -1) {
       babelrc.plugins.push('dynamic-import-node');
-    }
-		if (babelrc.plugins.indexOf('dynamic-import-webpack') === -1) {
-      babelrc.plugins.push('dynamic-import-webpack');
+    }*/
+		if (babelrc.plugins.indexOf('syntax-dynamic-import') === -1) {
+      babelrc.plugins.push('syntax-dynamic-import');
     }
     write('./material-ui/.babelrc', JSON.stringify(babelrc, null, '\t'));
     console.log('Changes to ./material-ui/.babelrc have been made');

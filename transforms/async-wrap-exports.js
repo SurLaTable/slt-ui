@@ -8,12 +8,16 @@ const transformer = (file, api, options) => {
   console.log('Inspecting', file.path);
 
   var body = root.get().node.program.body;
+  var header = `
+  import React from 'react';
+  import MuiThemeProvider from '../styles/MuiThemeProvider';
+  import { asyncComponent } from 'react-async-component';`;
 
   if (
     body.length &&
-    j(body[0]).toSource() != `import { asyncComponent } from 'react-async-component';`
+    j(body[0]).toSource() != header
   ) {
-    body.unshift(`import { asyncComponent } from 'react-async-component';`);
+    body.unshift(header);
   }
 
   return root
@@ -42,21 +46,21 @@ const transformer = (file, api, options) => {
             if (localExport && specifier.local.name === 'default') {
               exports.push(
                 [
-                  `export default asyncComponent({`,
+                  `export default React.createElement(MuiThemeProvider,null,asyncComponent({`,
                   `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${sourceLocation.split('/').slice(-1)}" */),`,
-                  `});`,
+                  `}));`,
                 ].join('\n'),
               );
             } else {
               exports.push(
                 [
-                  `export const ${specifier.exported.name} = asyncComponent({`,
+                  `export const ${specifier.exported.name} = React.createElement(MuiThemeProvider,null,asyncComponent({`,
                   `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${specifier.exported.name}" */)${
                     specifier.local.name !== 'default'
                       ? `.then(module => module['${specifier.local.name}'])`
                       : ''
                   },`,
-                  `});`,
+                  `}));`,
                 ].join('\n'),
               );
             }
