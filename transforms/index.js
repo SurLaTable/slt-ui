@@ -42,9 +42,18 @@ function asyncIcons() {
 
 function asyncComponents() {
   // Make all components async:
+  var exclusions = [
+    "[a-z]",
+    "Hidden",
+    "CssBaseline",
+    "Portal",
+    "Paper",
+    //"Typography",
+    "ButtonBase"
+  ].join('|');
   return new Promise((resolve, reject) => {
 		console.log('Start converting components to async');
-    glob('./material-ui/src/!(styles)/index.js', function(err, files) {
+    glob(`./material-ui/src/!(${exclusions})/index.js`, function(err, files) {
       if (err) {
         reject(err);
       }
@@ -105,8 +114,8 @@ fse
     console.log('slt-ui src files copied into material-ui src');
   })
 	.then(changeBabel)
-  .then(asyncIcons)
+//  .then(asyncIcons)
   .then(asyncComponents)
-  .then(directReferences)
+  //.then(directReferences)
   .then(injectExports)
   .catch(err => console.error(err));

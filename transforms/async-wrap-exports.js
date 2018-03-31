@@ -44,7 +44,7 @@ const transformer = (file, api, options) => {
               exports.push(
                 [
                   `export default asyncComponent({`,
-                  `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${sourceLocation.split('/').slice(-1)}" */),`,
+                  `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${sourceLocation.split('/').slice(-1)[0].split(".")[0]}" */),`,
                   `});`,
                 ].join('\n'),
               );
@@ -54,7 +54,7 @@ const transformer = (file, api, options) => {
                   `export const ${specifier.exported.name} = asyncComponent({`,
                   `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${specifier.exported.name}" */)${
                     specifier.local.name !== 'default'
-                      ? `.then(module => module['${specifier.local.name}'])`
+                      ? `.then(module => module['${specifier.local.name}'] )`
                       : ''
                   },`,
                   `});`,
