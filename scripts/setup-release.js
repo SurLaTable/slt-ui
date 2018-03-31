@@ -4,7 +4,7 @@ const fse = require('fs-extra');
 const path = require('path');
 
 async function copyFile(file) {
-  const buildPath = path.resolve(__dirname, '../build/', file.replace('./material-ui/src/', ''));
+  const buildPath = path.resolve(__dirname, '../build/', file.replace('./material-ui/build/', ''));
   await fse.copy(file, buildPath);
   console.log(`Copied ${file} to ${buildPath}`);
 }
@@ -30,7 +30,7 @@ async function changePackage(){
 
 (function() {
   console.log('Copying Material build files');
-  glob('./material-ui/src/**/@(*.js|*.json|LICENSE)', function(err, files) {
+  glob('./material-ui/build/**/@(*.js|*.json|LICENSE)', function(err, files) {
     if (err) {
       reject(err);
     }
