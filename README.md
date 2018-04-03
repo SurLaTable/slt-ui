@@ -21,10 +21,16 @@ yarn build
 5.  `cd build`
 6.  `yarn publish`
 
-**Hacking (WIP, currently broken):**
+**Hacking (I just want to ~~break~~ build stuff!):**
 
-1. Clone `slt-ui`.
-2. If you _do not_ have the `codesandbox` CLI installed: `npm install -g codesandbox`
-3. `cd slt-ui/build`
-4. `codesandbox .`
-5. Profit.
+1.  Clone `slt-ui`.
+2.  `cd slt-ui/sandbox`
+3.  `yarn install`
+4.  `yarn start`
+5.  Profit ... or more specifically, edit `src/index.js` as your 'app' entry point. You can access any of the `slt-ui` components like so:
+
+```js
+import { Button } from '@sur-la-table/slt-ui';
+```
+
+This will use the version of `slt-ui` you have built locally, not the `npm` version.
