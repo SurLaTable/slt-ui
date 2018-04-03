@@ -1,31 +1,26 @@
 import { asyncComponent } from 'react-async-component';
 
-const FormGroup = asyncComponent({
-	resolve: () => import('./FormGroup')
+export default asyncComponent({
+  /* webpackChunkName: "FormGroup" */
+  resolve: () => import('./FormGroup'),
 });
 
-export { FormGroup };
-
-const FormLabel = asyncComponent({
-	resolve: () => import('./FormLabel')
+export const FormLabel = asyncComponent({
+  /* webpackChunkName: "FormLabel" */
+  resolve: () => import('./FormLabel'),
 });
 
-export { FormLabel };
-
-const FormControl = asyncComponent({
-	resolve: () => import('./FormControl')
+export const FormControl = asyncComponent({
+  /* webpackChunkName: "FormControl" */
+  resolve: () => import('./FormControl'),
 });
 
-export { FormControl };
-
-const FormHelperText = asyncComponent({
-	resolve: () => import('./FormHelperText')
+export const FormHelperText = asyncComponent({
+  /* webpackChunkName: "FormHelperText" */
+  resolve: () => import('./FormHelperText'),
 });
 
-export { FormHelperText };
-
-const FormControlLabel = asyncComponent({
-	resolve: () => import('./FormControlLabel')
+export const FormControlLabel = asyncComponent({
+  /* webpackChunkName: "FormControlLabel" */
+  resolve: () => import('./FormControlLabel'),
 });
-
-export { FormControlLabel };

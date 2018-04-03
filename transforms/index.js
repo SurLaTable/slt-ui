@@ -21,7 +21,7 @@ function write(path, source) {
 function asyncIcons() {
   // Make icons async:
   return new Promise(resolve => {
-		console.log("Start converting Icons to async");
+    console.log('Start converting Icons to async');
     write(
       './material-ui/packages/material-ui-icons/src/index.js',
       prettier.format(
@@ -43,16 +43,16 @@ function asyncIcons() {
 function asyncComponents() {
   // Make all components async:
   var exclusions = [
-    "[a-z]",
-    "Hidden",
-    "CssBaseline",
-    "Portal",
-    "Paper",
+    '[a-z]',
+    'Hidden',
+    'CssBaseline',
+    'Portal',
+    'Paper',
     //"Typography",
-    "ButtonBase"
+    'ButtonBase',
   ].join('|');
   return new Promise((resolve, reject) => {
-		console.log('Start converting components to async');
+    console.log('Start converting components to async');
     glob(`./material-ui/src/!(${exclusions})/index.js`, function(err, files) {
       if (err) {
         reject(err);
@@ -63,7 +63,7 @@ function asyncComponents() {
         write(files[i], prettier.format(out, prettierConfig));
       }
       console.log('Components have been converted to async');
-			resolve();
+      resolve();
     });
   });
 }
@@ -71,7 +71,7 @@ function asyncComponents() {
 function directReferences() {
   // Change direct references to use async references:
   return new Promise((resolve, reject) => {
-		console.log('Start changing direct references');
+    console.log('Start changing direct references');
     glob('./material-ui/src/*/!(*.spec).js', function(err, files) {
       if (err) {
         reject(err);
@@ -92,12 +92,12 @@ function directReferences() {
 
 function changeBabel() {
   return new Promise(resolve => {
-		console.log("Start changing ./material-ui/.babelrc");
+    console.log('Start changing ./material-ui/.babelrc');
     var babelrc = eval(`(${read('./material-ui/.babelrc')})`);
     /*if (babelrc.plugins.indexOf('dynamic-import-node') === -1) {
       babelrc.plugins.push('dynamic-import-node');
     }*/
-		if (babelrc.plugins.indexOf('syntax-dynamic-import') === -1) {
+    if (babelrc.plugins.indexOf('syntax-dynamic-import') === -1) {
       babelrc.plugins.push('syntax-dynamic-import');
     }
     write('./material-ui/.babelrc', JSON.stringify(babelrc, null, '\t'));
@@ -113,8 +113,8 @@ fse
   .then(() => {
     console.log('slt-ui src files copied into material-ui src');
   })
-	.then(changeBabel)
-//  .then(asyncIcons)
+  .then(changeBabel)
+  //  .then(asyncIcons)
   .then(asyncComponents)
   //.then(directReferences)
   .then(injectExports)

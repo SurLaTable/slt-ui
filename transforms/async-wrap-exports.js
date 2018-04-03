@@ -7,13 +7,10 @@ const transformer = (file, api, options) => {
 
   console.log('Inspecting', file.path);
 
-  var body = root.get().node.program.body;
-  var header = `import { asyncComponent } from 'react-async-component';`;
+  const body = root.get().node.program.body;
+  const header = `import { asyncComponent } from 'react-async-component';`;
 
-  if (
-    body.length &&
-    j(body[0]).toSource() != header
-  ) {
+  if (body.length && j(body[0]).toSource() != header) {
     body.unshift(header);
   }
 
@@ -25,8 +22,8 @@ const transformer = (file, api, options) => {
         // This is a good test according to the Material UI
         // maintainers.
         // https://github.com/mui-org/material-ui/issues/10647#issuecomment-373093870
-        // This is "./FormGroup" if we see `export {default} from "./FromGroup"`
-        var sourceLocation = path.node.source.value;
+        // This is "./FormGroup" if we see `export { default } from "./FromGroup"`
+        const sourceLocation = path.node.source.value;
         if (sourceLocation.match(componentNameStyle)) {
           console.log(
             'Transforming at line',
@@ -36,33 +33,33 @@ const transformer = (file, api, options) => {
               language: 'javascript',
             }),
           );
-          var exports = [];
-          for (let i = 0, specifier; i < path.node.specifiers.length; i++) {
-            specifier = path.node.specifiers[i];
-            let localExport = specifier.local.name === specifier.exported.name;
-            if (localExport && specifier.local.name === 'default') {
-              exports.push(
-                [
+          const exports = path.node.specifiers.map(specifier => {
+            const localExport = specifier.local.name === specifier.exported.name;
+
+            return localExport && specifier.local.name === 'default'
+              ? [
                   `export default asyncComponent({`,
-                  `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${sourceLocation.split('/').slice(-1)[0].split(".")[0]}" */),`,
+                  `/* webpackChunkName: "${
+                    sourceLocation
+                      .split('/')
+                      .slice(-1)[0]
+                      .split('.')[0]
+                  }" */`,
+                  `	resolve: () => import('${sourceLocation}'),`,
                   `});`,
-                ].join('\n'),
-              );
-            } else {
-              exports.push(
-                [
+                ].join('\n')
+              : [
                   `export const ${specifier.exported.name} = asyncComponent({`,
-                  `	resolve: () => import('${sourceLocation}' /* webpackChunkName: "${specifier.exported.name}" */)${
+                  `/* webpackChunkName: "${specifier.exported.name}" */`,
+                  `	resolve: () => import('${sourceLocation}')${
                     specifier.local.name !== 'default'
                       ? `.then(module => module['${specifier.local.name}'] )`
                       : ''
                   },`,
                   `});`,
-                ].join('\n'),
-              );
-            }
-          }
-          var comments = path.node.comments;
+                ].join('\n');
+          });
+          const comments = path.node.comments;
           j(path).replaceWith(exports.join('\n'));
           path.node.comments = comments;
         }
