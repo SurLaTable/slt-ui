@@ -19,7 +19,7 @@ yarn build
 3.  `yarn build`
 4.  `yarn git-mark-release && git push --tags`
 5.  `cd build`
-6.  `yarn publish`
+6.  `npm publish`
 
 **Hacking (I just want to ~~break~~ build stuff!):**
 
