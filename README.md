@@ -1,6 +1,6 @@
 # SLT's component library
 
-![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/atlassian/adf-builder-javascript/task/SECO-2168.svg)
+![Travis build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)
 
 Welcome friends! We are still tidying up, excuse the mess.
 
