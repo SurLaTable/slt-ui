@@ -7,7 +7,7 @@ Welcome friends! We are still tidying up, excuse the mess.
 **What needs to be done before version `0.1.0` (first _stable_ release):**
 
 - [ ] Fix the `sandbox` functionality.
-- [ ] Incorporate React Habitat manifest.
+- [ ] Incorporate the React Habitat manifest.
 
 ---
 
