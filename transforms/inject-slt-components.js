@@ -6,6 +6,9 @@ const prettier = require('prettier');
 const componentNameStyle = /^\W+[A-Z]/;
 const prettierConfig = require('../prettier.config.js');
 
+// TODO:
+// Set a base directory for material-ui (config for paths).
+
 function read(path) {
   var source = fs.readFileSync(path, 'utf8').toString();
   return source;
@@ -16,7 +19,7 @@ function write(path, source) {
 
 function buildExportSpecifiers() {
   return new Promise((resolve, reject) => {
-    glob('./src/*/index.js', function(err, files) {
+    glob('./packages/material-ui/src/*/index.js', function(err, files) {
       if (err) {
         return reject(err);
       }
@@ -60,7 +63,7 @@ function buildExportSpecifiers() {
 function injectExports() {
   console.log('Start Injecting SLT components into matierl-ui');
   return new Promise((resolve, reject) => {
-    var source = read('./material-ui/src/index.js');
+    var source = read('./material-ui/packages/material-ui/src/index.js');
     var root = j(source);
     buildExportSpecifiers().then(function(exports) {
       var files = Object.keys(exports);
@@ -76,7 +79,10 @@ function injectExports() {
 
       root.get().node.program.body.push(Object.values(exports).join('\n'));
 
-      write('./material-ui/src/index.js', prettier.format(root.toSource(), prettierConfig));
+      write(
+        './material-ui/packages/material-ui/src/index.js',
+        prettier.format(root.toSource(), prettierConfig),
+      );
       console.log('Finished injecting SLT components into material-ui');
       resolve();
     });
