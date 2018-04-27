@@ -19,10 +19,10 @@
     "test": "yarn test:transforms",
     "test:transforms": "./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js",
     "git-setup":
-      "git submodule update --init --recursive && cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
+      "git submodule update --init --recursive && cd material-ui && npx cross-var git checkout $npm_package_config_commit && cd ..",
     "git-reset":
-      "cd material-ui && git reset --hard origin/master && git pull origin master && cross-var git reset --hard $npm_package_config_commit && cd ..",
-    "git-mark-release": "cross-var git tag -a $npm_package_version -m '$npm_package_version'"
+      "cd material-ui && git reset --hard origin/master && git pull origin master && npx cross-var git reset --hard $npm_package_config_commit && cd ..",
+    "git-mark-release": "npx cross-var git tag -a $npm_package_version -m '$npm_package_version'"
   },
   "repository": {
     "type": "git",
