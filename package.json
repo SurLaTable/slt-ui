@@ -4,13 +4,13 @@
   "description": "Sur La Table UI Library",
   "main": "./index.js",
   "config": {
-    "commit": "v1.0.0-beta.40"
+    "commit": "v1.0.0-beta.43"
   },
   "files": ["material-ui/build"],
   "scripts": {
     "build":
       "yarn prebuild && yarn prepare:material && yarn transform && cd ./material-ui && yarn build && cd .. && node ./scripts/setup-release.js",
-    "prebuild": "yarn git-reset && rimraf build",
+    "prebuild": "yarn git-reset && npx rimraf build",
     "prepare:material":
       "cd material-ui && yarn install && yarn add --dev babel-plugin-dynamic-import-node babel-plugin-syntax-dynamic-import -W && yarn add react-async-component -W && cd ..",
     "prettier":
@@ -21,7 +21,7 @@
     "git-setup":
       "git submodule update --init --recursive && cd material-ui && npx cross-var git checkout $npm_package_config_commit && cd ..",
     "git-reset":
-      "cd material-ui && git reset --hard origin/master && git pull origin master && npx cross-var git reset --hard $npm_package_config_commit && cd ..",
+      "cd material-ui && git fetch --all && npx cross-var git checkout -f $npm_package_config_commit && cd ..",
     "git-mark-release": "npx cross-var git tag -a $npm_package_version -m '$npm_package_version'"
   },
   "repository": {
