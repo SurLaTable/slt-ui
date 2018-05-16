@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Checkbox, FormControlLabel } from '@sur-la-table/slt-ui';
+import Checkbox from '../../Checkbox';
+import {FormControlLabel} from '../../Form';
 import { actionToggleCheckbox } from '../actions/productComparisonActions';
 
 // TEMP:
@@ -9,34 +10,28 @@ import { actionToggleCheckbox } from '../actions/productComparisonActions';
 // since it exists on the reducer.
 import data from '../data';
 
-let CompareCheckbox = (props) => (
-	<div>
-		{
-			// TEMP: Remove the image for prod.
-		}
-		<img
-			alt={props.sku}
-			src={props.productData.image}
-			style={{ width: '36px' }}
-		/>
-		<br />
-		<FormControlLabel
-			control={
-				<Checkbox
-					onChange={(event, checked) => {
-						props.dispatch(
-							actionToggleCheckbox(props.sku, checked)
-						);
-					}}
-					checked={
-						(props.skus && props.skus.includes(props.sku)) || false
-					}
-				/>
-			}
-			label="Compare"
-		/>
-	</div>
-);
+let CompareCheckbox = (props) => {
+	let checked = (props.skus && props.skus.includes(props.sku)) || false;
+	let disabled = checked == false && props.skus && props.skus.length > 2;
+	return (
+		<div>
+			<FormControlLabel
+				control={
+					<Checkbox
+						onChange={(event, checked) => {
+							props.dispatch(
+								actionToggleCheckbox(props.sku, checked)
+							);
+						}}
+						disabled={disabled}
+						checked={checked}
+					/>
+				}
+				label={checked ? "Added" : "Compare"}
+			/>
+		</div>
+	);
+};
 
 CompareCheckbox = connect((state, ownProps) => ({
 	// TEMP:

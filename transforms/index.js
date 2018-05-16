@@ -109,7 +109,7 @@ function changeBabel() {
 // START
 // Copy over slt-ui ./src directory into material-ui
 fse
-  .copy('./src', './material-ui/src')
+  .copy('./src', './material-ui/packages/material-ui/src')
   .then(() => {
     console.log('slt-ui src files copied into material-ui src');
   })

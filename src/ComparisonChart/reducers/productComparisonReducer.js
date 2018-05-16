@@ -32,6 +32,18 @@ const productComparisonReducer = (state = {}, action) => {
                 productData: productData,
                 ...state
             };
+				case 'SET_PRODUCTS':
+					productData = {};
+					for(let i = 0; i < action.skus.length; i++){
+              productData[action.skus[i]] = data[action.skus[i]];
+              productData[action.skus[i]].checked = true;
+              productData[action.skus[i]].timeAdded = Date.now();
+					}
+
+					return {
+						productData: productData,
+						...state
+					}
 
         default:
             return state;

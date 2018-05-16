@@ -19,7 +19,7 @@ function write(path, source) {
 
 function buildExportSpecifiers() {
   return new Promise((resolve, reject) => {
-    glob('./packages/material-ui/src/*/index.js', function(err, files) {
+    glob('./src/*/index.js', function(err, files) {
       if (err) {
         return reject(err);
       }
@@ -53,7 +53,6 @@ function buildExportSpecifiers() {
         });
         exports[`./${defaultName}`] = `export { ${exp.join(', ')} } from './${defaultName}';`;
       }
-
       // We've compiled all the specifiers for the exports
       resolve(exports);
     });
@@ -76,7 +75,7 @@ function injectExports() {
           }
         }
       });
-
+			console.log(exports)
       root.get().node.program.body.push(Object.values(exports).join('\n'));
 
       write(

@@ -1,21 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import sortSkus from '../utils/sortSkus';
-import { actionRemoveAll } from '../actions/productComparisonActions';
+import { actionRemoveAll, actionSetProducts } from '../actions/productComparisonActions';
 
-import {
-	Button,
-	Dialog,
-	Slide,
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableRow,
-	Typography
-} from '@sur-la-table/slt-ui';
+import Button from '../../Button';
+import Dialog from '../../Dialog';
+import Slide from '../../transitions/Slide';
+import {default as Table, TableBody, TableCell, TableHead, TableRow} from '../../Table';
+import Typography from '../../Typography';
 
-import { PlayForWork as PlayForWorkIcon } from '@material-ui/icons';
+import { PlayForWork as PlayForWorkIcon } from '../icons';
 
 const imageStyles = {
 	width: '90px',
@@ -39,12 +33,36 @@ class ComparisonTable extends React.Component {
 		open: false
 	};
 
+	constructor(){
+		super();
+		window.addEventListener("popstate",(event) => {
+			let state = event.state;
+			if(state == null){
+				//CLOSE COMPARISON TABLE
+				this.setState({ open: false });
+			}else if(state.type == "OPEN_COMPARISON_TABLE"){
+				this.props.dispatch(actionSetProducts(state.skus));
+				this.setState({ open: true });
+			}
+		});
+	}
+
 	handleClickOpen = () => {
+		if(window && window.history){
+			let history = window.history;
+			history.pushState({
+				type:"OPEN_COMPARISON_TABLE",
+				skus: this.props.skus
+			});
+		}
 		this.setState({ open: true });
 	};
 
 	handleClose = () => {
 		this.setState({ open: false });
+		if(window && window.history){
+			window.history.back();
+		}
 	};
 	render() {
 		const props = this.props;
@@ -59,6 +77,7 @@ class ComparisonTable extends React.Component {
 					onClick={this.handleClickOpen}
 					variant="raised"
 					color="primary"
+					disabled={props.skus && props.skus.length < 2}
 					style={{ height: '20%', marginTop: '1.5rem' }}
 				>
 					COMPARE
