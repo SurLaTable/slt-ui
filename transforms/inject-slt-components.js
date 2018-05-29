@@ -75,7 +75,7 @@ function injectExports() {
           }
         }
       });
-			console.log(exports)
+      console.log(exports);
       root.get().node.program.body.push(Object.values(exports).join('\n'));
 
       write(

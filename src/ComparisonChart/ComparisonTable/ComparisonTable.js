@@ -158,40 +158,43 @@ class ComparisonTable extends React.Component {
                   </Button>
                 </TableCell>
                 {props.selection.map((product, index) => {
-                    const first = product[Object.keys(product)[0]];
-                    if (first) {
-                      return (
-                        <TableCell key={index}>
-                          <img
-                            alt={first.name}
-                            style={imageStyles}
-                            src={`https://www.surlatable.com/images/customers/c1079/${product.id}/generated/${product.id}_Default_2_200x200.jpg`}
-                          />
-                          {first.name}
-                        </TableCell>
-                      );
-                    }
-                  })}
+                  const first = product[Object.keys(product)[0]];
+                  if (first) {
+                    return (
+                      <TableCell key={index}>
+                        <img
+                          alt={first.name}
+                          style={imageStyles}
+                          src={`https://www.surlatable.com/images/customers/c1079/${
+                            product.id
+                          }/generated/${product.id}_Default_2_200x200.jpg`}
+                        />
+                        {first.name}
+                      </TableCell>
+                    );
+                  }
+                })}
               </TableRow>
               <TableRow
                 style={{
                   backgroundColor: '#111111',
                 }}
               >
-                {props.selection.map((ignore, index) =>
-                        index ? (
-                          <TableCell key={index} />
-                        ) : (
-                          <TableCell
-                            key={index}
-                            style={{
-                              color: '#ffffff',
-                            }}
-                          >
-                            {sections[index]}
-                          </TableCell>
-                        ),
-                    )}
+                {props.selection.map(
+                  (ignore, index) =>
+                    index ? (
+                      <TableCell key={index} />
+                    ) : (
+                      <TableCell
+                        key={index}
+                        style={{
+                          color: '#ffffff',
+                        }}
+                      >
+                        {sections[index]}
+                      </TableCell>
+                    ),
+                )}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -210,20 +213,20 @@ class ComparisonTable extends React.Component {
                   >
                     <TableCell>{attribute}</TableCell>
                     {props.selection.map((product, index) => {
-                        let cellData = [];
+                      let cellData = [];
 
-                        for (let i in product) {
-                          if (format == 'html') {
-                            cellData.push(this.handleFormat(product[i][attribute], format));
-                          } else if (cellData.indexOf(product[i][attribute]) == -1) {
-                            cellData.push(this.handleFormat(product[i][attribute], format));
-                          }
+                      for (let i in product) {
+                        if (format == 'html') {
+                          cellData.push(this.handleFormat(product[i][attribute], format));
+                        } else if (cellData.indexOf(product[i][attribute]) == -1) {
+                          cellData.push(this.handleFormat(product[i][attribute], format));
                         }
-                        if (format == 'default') {
-                          cellData = cellData.join(', ');
-                        }
-                        return <TableCell key={index}>{cellData}</TableCell>;
-                      })}
+                      }
+                      if (format == 'default') {
+                        cellData = cellData.join(', ');
+                      }
+                      return <TableCell key={index}>{cellData}</TableCell>;
+                    })}
                   </TableRow>
                 );
               })}
@@ -243,9 +246,9 @@ ComparisonTable = connect((state, props) => {
     };
   } else {
     return {
-			selection:[],
-			...props
-		};
+      selection: [],
+      ...props,
+    };
   }
 })(ComparisonTable);
 

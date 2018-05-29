@@ -18,11 +18,11 @@ let CompareBar = props => {
 
   // prop - numberOfItems
   let items = [];
-	console.log(props);
+  console.log(props);
   for (let i = 0, product, first; i < props.numberOfItems; i++) {
     product = props.selection[i];
     first = product ? product[Object.keys(product)[0]] : null;
-		console.log(first);
+    console.log(first);
     if (first) {
       items.push(
         <BottomNavigationAction
@@ -39,7 +39,9 @@ let CompareBar = props => {
               >
                 <img
                   alt={product.id}
-                  src={`https://www.surlatable.com/images/customers/c1079/${product.id}/generated/${product.id}_Default_2_200x200.jpg`}
+                  src={`https://www.surlatable.com/images/customers/c1079/${product.id}/generated/${
+                    product.id
+                  }_Default_2_200x200.jpg`}
                   style={{
                     height: '50px',
                     width: '50px',
@@ -51,17 +53,19 @@ let CompareBar = props => {
         />,
       );
     } else {
-      items.push(<BottomNavigationAction
-        key={i}
-        label={`Item #${i + 1}`}
-        // Disable the ripple animation if the item box is empty:
-        disableRipple={true}
-        icon={
-          <React.Fragment>
-            <AddBoxIcon style={{ fontSize: 50 }} />
-          </React.Fragment>
-        }
-      />);
+      items.push(
+        <BottomNavigationAction
+          key={i}
+          label={`Item #${i + 1}`}
+          // Disable the ripple animation if the item box is empty:
+          disableRipple={true}
+          icon={
+            <React.Fragment>
+              <AddBoxIcon style={{ fontSize: 50 }} />
+            </React.Fragment>
+          }
+        />,
+      );
     }
   }
 
@@ -86,9 +90,8 @@ CompareBar.defaultProps = {
   numberOfItems: 3,
 };
 CompareBar = connect((state, props) => {
-
   if (state.productComparisonReducer) {
-		console.log({
+    console.log({
       ...props,
       selection: state.productComparisonReducer.selection,
     });
@@ -98,9 +101,9 @@ CompareBar = connect((state, props) => {
     };
   } else {
     return {
-			selection:[],
-			...props,
-		}
+      selection: [],
+      ...props,
+    };
   }
 })(CompareBar);
 

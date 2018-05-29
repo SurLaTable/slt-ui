@@ -3,7 +3,7 @@ import productComparisonReducer from './productComparisonReducer';
 
 // This combines all reducers, so they can be modular:
 const sltReducers = combineReducers({
-    productComparisonReducer
+  productComparisonReducer,
 });
 
 export default sltReducers;

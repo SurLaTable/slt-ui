@@ -1,21 +1,21 @@
 const actionRemoveAll = () => ({
-    type: 'REMOVE_ALL'
+  type: 'REMOVE_ALL',
 });
 
 const actionRemoveProduct = productID => ({
-    type: 'REMOVE_PRODUCT',
-    productID: productID
+  type: 'REMOVE_PRODUCT',
+  productID: productID,
 });
 
 const actionToggleProductSelection = (productID, checked) => ({
-    type: 'TOGGLE_PRODUCT',
-		checked:checked,
-    productID: productID
+  type: 'TOGGLE_PRODUCT',
+  checked: checked,
+  productID: productID,
 });
 
-const actionSetProducts = (selection) => ({
-	type: 'SET_PRODUCTS',
-	selection : selection
+const actionSetProducts = selection => ({
+  type: 'SET_PRODUCTS',
+  selection: selection,
 });
 
 export { actionRemoveAll, actionRemoveProduct, actionToggleProductSelection, actionSetProducts };
