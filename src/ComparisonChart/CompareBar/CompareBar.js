@@ -1,6 +1,6 @@
 import React from 'react';
 import { actionRemoveProduct } from '../actions/productComparisonActions';
-import sortSkus from '../utils/sortSkus';
+import sortProducts from '../utils/sortProducts';
 import { connect } from 'react-redux';
 
 import Badge from '../../Badge';
@@ -11,51 +11,59 @@ import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
 let CompareBar = props => {
   // Fill the array given the number of items
-  // specified by our props. If skus exist,
+  // specified by our props. If product exist,
   // we populate an array with those,
   // otherwise we fill the array with
   // the indices.
 
-	// prop - numberOfItems
+  // prop - numberOfItems
   let items = [];
-	
-	for(let i = 0,sku,product; i < props.numberOfItems; i++){
-		sku = props.skus[i];
-		product = (props.productData && props.productData[sku]) || i;
-
-		items.push(
-			<BottomNavigationAction
-				key={i}
-				label={product.name || `Item #${i + 1}`}
-				// Disable the ripple animation if the item box is empty:
-				disableRipple={!sku}
-				icon={
-					<React.Fragment>
-						{sku ? (
-							<Badge
-								data-sku={sku}
-								badgeContent={<CancelIcon />}
-								onClick={(event, checked) => {
-									props.dispatch(actionRemoveProduct(sku));
-								}}
-							>
-								<img
-									alt={sku}
-									src={product.image}
-									style={{
-										height: '50px',
-										width: '50px',
-									}}
-								/>
-							</Badge>
-						) : (
-							<AddBoxIcon style={{ fontSize: 50 }} />
-						)}
-					</React.Fragment>
-				}
-			/>
-		);
-	}
+	console.log(props);
+  for (let i = 0, product, first; i < props.numberOfItems; i++) {
+    product = props.selection[i];
+    first = product ? product[Object.keys(product)[0]] : null;
+		console.log(first);
+    if (first) {
+      items.push(
+        <BottomNavigationAction
+          key={i}
+          label={first.name || `Item #${i + 1}`}
+          icon={
+            <React.Fragment>
+              <Badge
+                data-productID={product.id}
+                badgeContent={<CancelIcon />}
+                onClick={(event, checked) => {
+                  props.dispatch(actionRemoveProduct(product.id));
+                }}
+              >
+                <img
+                  alt={product.id}
+                  src={`https://www.surlatable.com/images/customers/c1079/${product.id}/generated/${product.id}_Default_2_200x200.jpg`}
+                  style={{
+                    height: '50px',
+                    width: '50px',
+                  }}
+                />
+              </Badge>
+            </React.Fragment>
+          }
+        />,
+      );
+    } else {
+      items.push(<BottomNavigationAction
+        key={i}
+        label={`Item #${i + 1}`}
+        // Disable the ripple animation if the item box is empty:
+        disableRipple={true}
+        icon={
+          <React.Fragment>
+            <AddBoxIcon style={{ fontSize: 50 }} />
+          </React.Fragment>
+        }
+      />);
+    }
+  }
 
   return (
     <Paper
@@ -64,28 +72,36 @@ let CompareBar = props => {
         position: 'fixed',
         bottom: 0,
         width: '100%',
-				'z-index':'1300'
+        'z-index': '1300',
       }}
     >
       <BottomNavigation showLabels style={{ marginTop: '10px' }}>
         <ComparisonTable type="cutlery" />
-				{items}
+        {items}
       </BottomNavigation>
     </Paper>
   );
 };
-CompareBar = connect((state, ownProps) => ({
-  productData: state.productComparisonReducer.productData,
-  // HACK:
-  // You're probably thinking that `productData`
-  // could be used to form the `skus` array inside
-  // of the component itself. The problem is that
-  // without the `skus` array attached here,
-  // the component does not seem to be connected
-  // to dispatched actions of the Redux
-  // store.
-  skus: sortSkus(state.productComparisonReducer.productData),
-  ...ownProps,
-}))(CompareBar);
+CompareBar.defaultProps = {
+  numberOfItems: 3,
+};
+CompareBar = connect((state, props) => {
+
+  if (state.productComparisonReducer) {
+		console.log({
+      ...props,
+      selection: state.productComparisonReducer.selection,
+    });
+    return {
+      ...props,
+      selection: state.productComparisonReducer.selection,
+    };
+  } else {
+    return {
+			selection:[],
+			...props,
+		}
+  }
+})(CompareBar);
 
 export default CompareBar;

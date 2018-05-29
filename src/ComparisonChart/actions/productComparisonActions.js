@@ -1,21 +1,21 @@
-const actionRemoveAll = sku => ({
+const actionRemoveAll = () => ({
     type: 'REMOVE_ALL'
 });
 
-const actionRemoveProduct = sku => ({
+const actionRemoveProduct = productID => ({
     type: 'REMOVE_PRODUCT',
-    sku: sku
+    productID: productID
 });
 
-const actionToggleCheckbox = (sku, checked) => ({
-    type: 'TOGGLE_CHECKBOX',
-    sku: sku,
-    checked: checked
+const actionToggleProductSelection = (productID, checked) => ({
+    type: 'TOGGLE_PRODUCT',
+		checked:checked,
+    productID: productID
 });
 
-const actionSetProducts = (skus) => ({
+const actionSetProducts = (selection) => ({
 	type: 'SET_PRODUCTS',
-	skus : skus
+	selection : selection
 });
 
-export { actionRemoveAll, actionRemoveProduct, actionToggleCheckbox, actionSetProducts };
+export { actionRemoveAll, actionRemoveProduct, actionToggleProductSelection, actionSetProducts };

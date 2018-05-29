@@ -3,49 +3,51 @@ import { connect } from 'react-redux';
 
 import Checkbox from '../../Checkbox';
 import {FormControlLabel} from '../../Form';
-import { actionToggleCheckbox } from '../actions/productComparisonActions';
+import { actionToggleProductSelection } from '../actions/productComparisonActions';
 
 // TEMP:
 // Once the image is removed, this import can be removed,
 // since it exists on the reducer.
-import data from '../data';
 
 let CompareCheckbox = (props) => {
-	let checked = (props.skus && props.skus.includes(props.sku)) || false;
-	let disabled = checked == false && props.skus && props.skus.length > 2;
+
 	return (
-		<div>
+		<div >
 			<FormControlLabel
 				control={
 					<Checkbox
 						onChange={(event, checked) => {
 							props.dispatch(
-								actionToggleCheckbox(props.sku, checked)
+								actionToggleProductSelection(props.product, checked)
 							);
 						}}
-						disabled={disabled}
-						checked={checked}
+						disabled={props.disabled}
+						checked={props.checked}
+						data-product={props.product}
 					/>
 				}
-				label={checked ? "Added" : "Compare"}
+				label={props.checked ? "Added" : "Compare"}
 			/>
 		</div>
 	);
 };
 
-CompareCheckbox = connect((state, ownProps) => ({
-	// TEMP:
-	// This can be removed once the image is removed.
-	productData: data[ownProps.sku],
+CompareCheckbox = connect((state, props) => {
+		let selection = state.productComparisonReducer ? state.productComparisonReducer.selection : [];
+		let checked = false;
+		for(let i = 0; i < selection.length; i++){
+			if(selection[i].id == props.product){
+				checked = true;
+				break;
+			}
+		}
 
-	// HACK:
-	// Using the direct object keeps the component from updating when
-	// other components update the Redux store, so for now, we
-	// convert it to an array.
-	skus:
-		state.productComparisonReducer.productData &&
-		Object.keys(state.productComparisonReducer.productData),
-	...ownProps
-}))(CompareCheckbox);
+		let disabled = checked == false && selection.length > 2;
+		return {
+			...props,
+			checked,
+			disabled,
+		};
+})(CompareCheckbox);
 
 export default CompareCheckbox;
