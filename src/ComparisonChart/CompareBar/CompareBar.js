@@ -86,11 +86,13 @@ CompareBar = connect((state, props) => {
   if (state.productComparisonReducer) {
     return {
       ...props,
+      updated: Date.now(),
       selection: state.productComparisonReducer.selection,
     };
   } else {
     return {
       selection: [],
+      updated: Date.now(),
       ...props,
     };
   }

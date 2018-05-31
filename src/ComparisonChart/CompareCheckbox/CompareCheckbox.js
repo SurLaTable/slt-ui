@@ -5,10 +5,6 @@ import Checkbox from '../../Checkbox';
 import { FormControlLabel } from '../../Form';
 import { actionToggleProductSelection } from '../actions/productComparisonActions';
 
-// TEMP:
-// Once the image is removed, this import can be removed,
-// since it exists on the reducer.
-
 let CompareCheckbox = props => {
   return (
     <div>
@@ -39,7 +35,7 @@ CompareCheckbox = connect((state, props) => {
     }
   }
 
-  let disabled = checked == false && selection.length > 2;
+  let disabled = !checked && selection.length > 2;
   return {
     ...props,
     checked,
