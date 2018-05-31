@@ -2,15 +2,15 @@ const actionRemoveAll = () => ({
   type: 'REMOVE_ALL',
 });
 
-const actionRemoveProduct = productID => ({
+const actionRemoveProduct = productId => ({
   type: 'REMOVE_PRODUCT',
-  productID: productID,
+  productId: productId,
 });
 
-const actionToggleProductSelection = (productID, checked) => ({
+const actionToggleProductSelection = (productId, checked) => ({
   type: 'TOGGLE_PRODUCT',
   checked: checked,
-  productID: productID,
+  productId: productId,
 });
 
 const actionSetProducts = selection => ({

@@ -60,7 +60,7 @@ function buildExportSpecifiers() {
 }
 
 function injectExports() {
-  console.log('Start Injecting SLT components into matierl-ui');
+  console.log('Start Injecting SLT components into matierl-ui.');
   return new Promise((resolve, reject) => {
     var source = read('./material-ui/packages/material-ui/src/index.js');
     var root = j(source);
@@ -82,7 +82,7 @@ function injectExports() {
         './material-ui/packages/material-ui/src/index.js',
         prettier.format(root.toSource(), prettierConfig),
       );
-      console.log('Finished injecting SLT components into material-ui');
+      console.log('Finished injecting SLT components into material-ui.');
       resolve();
     });
   });

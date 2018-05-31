@@ -51,22 +51,21 @@ class ComparisonTable extends React.Component {
 
   constructor() {
     super();
-    console.log(window.history.state);
     if (
       window &&
       window.history &&
       window.history.state &&
       window.history.state.type == 'OPEN_COMPARISON_TABLE'
     ) {
-      //we refreshed with some old state
+      // We refresh with the old state.
 
       history.replaceState(null, 'ComparisonTable');
     }
     window.addEventListener('popstate', event => {
       let state = event.state;
-      console.log(state);
+
       if (state == null) {
-        //CLOSE COMPARISON TABLE
+        // CLOSE COMPARISON TABLE:
         this.setState({ open: false });
       } else if (state.type == 'OPEN_COMPARISON_TABLE' && this.state.open == false) {
         this.props.dispatch(actionSetProducts(state.selection));

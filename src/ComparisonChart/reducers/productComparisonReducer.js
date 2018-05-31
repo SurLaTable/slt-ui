@@ -1,7 +1,7 @@
 import data from '../data';
 
 const productComparisonReducer = (state = {}, action) => {
-  let selection = state.selection.slice() || [];
+  let selection = state.selection ? state.selection.slice() : [];
 
   switch (action.type) {
     case 'REMOVE_ALL':
@@ -11,7 +11,7 @@ const productComparisonReducer = (state = {}, action) => {
       };
     case 'REMOVE_PRODUCT':
       for (let i = selection.length - 1; i >= 0; i--) {
-        if (selection[i].id == action.productID) {
+        if (selection[i].id == action.productId) {
           selection.splice(i, 1);
           break;
         }
@@ -24,10 +24,10 @@ const productComparisonReducer = (state = {}, action) => {
 
     case 'TOGGLE_PRODUCT':
       if (action.checked) {
-        selection.push(data[action.productID]);
+        selection.push(data[action.productId]);
       } else {
         for (let i = selection.length - 1; i >= 0; i--) {
-          if (selection[i].id == action.productID) {
+          if (selection[i].id == action.productId) {
             selection.splice(i, 1);
             break;
           }

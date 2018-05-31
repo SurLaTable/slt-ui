@@ -21,7 +21,7 @@ function write(path, source) {
 function asyncIcons() {
   // Make icons async:
   return new Promise(resolve => {
-    console.log('Start converting Icons to async');
+    console.log('Make icons asynchronous:');
     write(
       './material-ui/packages/material-ui-icons/src/index.js',
       prettier.format(
@@ -35,7 +35,7 @@ function asyncIcons() {
         prettierConfig,
       ),
     );
-    console.log('Icons have been converted to async');
+    console.log('Icons are now asynchronous.');
     resolve();
   });
 }
@@ -52,7 +52,7 @@ function asyncComponents() {
     'ButtonBase',
   ].join('|');
   return new Promise((resolve, reject) => {
-    console.log('Start converting components to async');
+    console.log('Start making components asynchronous.');
     glob(`./material-ui/src/!(${exclusions})/index.js`, function(err, files) {
       if (err) {
         reject(err);
@@ -62,7 +62,7 @@ function asyncComponents() {
         out = wrapExport({ source: read(files[i]), path: files[i] }, { jscodeshift: jscodeshift });
         write(files[i], prettier.format(out, prettierConfig));
       }
-      console.log('Components have been converted to async');
+      console.log('Components are now asynchronous.');
       resolve();
     });
   });
@@ -84,7 +84,7 @@ function directReferences() {
         );
         write(files[i], prettier.format(out, prettierConfig));
       }
-      console.log('Direct references have been changed to reference the async components');
+      console.log('Direct references have been changed to reference the asynchronous components.');
       resolve();
     });
   });
@@ -92,7 +92,7 @@ function directReferences() {
 
 function changeBabel() {
   return new Promise(resolve => {
-    console.log('Start changing ./material-ui/.babelrc');
+    console.log('Changing: ./material-ui/.babelrc');
     var babelrc = eval(`(${read('./material-ui/.babelrc')})`);
     /*if (babelrc.plugins.indexOf('dynamic-import-node') === -1) {
       babelrc.plugins.push('dynamic-import-node');
@@ -101,7 +101,7 @@ function changeBabel() {
       babelrc.plugins.push('syntax-dynamic-import');
     }
     write('./material-ui/.babelrc', JSON.stringify(babelrc, null, '\t'));
-    console.log('Changes to ./material-ui/.babelrc have been made');
+    console.log('Changes to ./material-ui/.babelrc have been made.');
     resolve();
   });
 }
@@ -111,7 +111,7 @@ function changeBabel() {
 fse
   .copy('./src', './material-ui/packages/material-ui/src')
   .then(() => {
-    console.log('slt-ui src files copied into material-ui src');
+    console.log('The slt-ui src files were copied into the material-ui src directory.');
   })
   .then(changeBabel)
   //  .then(asyncIcons)

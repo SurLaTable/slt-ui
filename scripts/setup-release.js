@@ -10,7 +10,7 @@ async function copyFile(file) {
     file.replace('./material-ui/packages/material-ui/build/', ''),
   );
   await fse.copy(file, buildPath);
-  console.log(`Copied ${file} to ${buildPath}`);
+  console.log(`Copied ${file} to ${buildPath}.`);
 }
 
 async function changePackage() {
@@ -40,7 +40,7 @@ async function changePackage() {
 }
 
 (function() {
-  console.log('Copying Material build files');
+  console.log('Copying Material build files:');
   glob('./material-ui/packages/material-ui/build/**/@(*.js|*.json|LICENSE)', function(err, files) {
     if (err) {
       reject(err);
@@ -52,7 +52,7 @@ async function changePackage() {
     )
       .then(changePackage)
       .then(function() {
-        console.log('Finished Copying Files');
+        console.log('Finished copying files.');
       });
   });
 })();
