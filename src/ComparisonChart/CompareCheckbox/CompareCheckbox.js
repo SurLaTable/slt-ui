@@ -39,6 +39,7 @@ CompareCheckbox = connect((state, props) => {
   return {
     ...props,
     checked,
+    updated: Date.now(),
     disabled,
   };
 })(CompareCheckbox);

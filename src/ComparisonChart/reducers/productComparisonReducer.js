@@ -38,12 +38,11 @@ const productComparisonReducer = (state = {}, action) => {
         ...state,
         selection,
       };
-
-    //   selection: action.checked ? [
-    //     data[action.productId],
-    //     ...selection
-    //   ] : selection.filter()
+    //   selection: action.checked
+    //     ? [data[action.productId], ...selection]
+    //     : selection.filter(product => (product.id === action.productId ? product : false)),
     // };
+
     case 'SET_PRODUCTS':
       return {
         ...state,

@@ -19,9 +19,6 @@ var _Form = require("../../Form");
 
 var _productComparisonActions = require("../actions/productComparisonActions");
 
-// TEMP:
-// Once the image is removed, this import can be removed,
-// since it exists on the reducer.
 var CompareCheckbox = function CompareCheckbox(props) {
   return _react.default.createElement("div", null, _react.default.createElement(_Form.FormControlLabel, {
     control: _react.default.createElement(_Checkbox.default, {
@@ -47,9 +44,10 @@ CompareCheckbox = (0, _reactRedux.connect)(function (state, props) {
     }
   }
 
-  var disabled = checked == false && selection.length > 2;
+  var disabled = !checked && selection.length > 2;
   return (0, _objectSpread2.default)({}, props, {
     checked: checked,
+    updated: Date.now(),
     disabled: disabled
   });
 })(CompareCheckbox);

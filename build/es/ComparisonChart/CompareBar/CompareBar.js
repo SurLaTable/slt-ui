@@ -80,11 +80,13 @@ CompareBar.defaultProps = {
 CompareBar = connect((state, props) => {
   if (state.productComparisonReducer) {
     return _objectSpread({}, props, {
-      selection: state.productComparisonReducer.selection
+      updated: Date.now(),
+      selection: state.productComparisonReducer.selection.slice()
     });
   } else {
     return _objectSpread({
-      selection: []
+      selection: [],
+      updated: Date.now()
     }, props);
   }
 })(CompareBar);

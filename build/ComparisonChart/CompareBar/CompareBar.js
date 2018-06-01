@@ -108,11 +108,13 @@ CompareBar.defaultProps = {
 CompareBar = (0, _reactRedux.connect)(function (state, props) {
   if (state.productComparisonReducer) {
     return (0, _objectSpread2.default)({}, props, {
-      selection: state.productComparisonReducer.selection
+      updated: Date.now(),
+      selection: state.productComparisonReducer.selection.slice()
     });
   } else {
     return (0, _objectSpread2.default)({
-      selection: []
+      selection: [],
+      updated: Date.now()
     }, props);
   }
 })(CompareBar);

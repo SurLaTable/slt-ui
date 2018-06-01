@@ -87,7 +87,7 @@ CompareBar = connect((state, props) => {
     return {
       ...props,
       updated: Date.now(),
-      selection: state.productComparisonReducer.selection,
+      selection: state.productComparisonReducer.selection.slice(),
     };
   } else {
     return {
