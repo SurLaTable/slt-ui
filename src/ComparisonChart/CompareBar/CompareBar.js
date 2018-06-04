@@ -13,8 +13,9 @@ let CompareBar = props => {
   let items = [];
   for (let i = 0, product, first; i < props.numberOfItems; i++) {
     product = props.selection[i];
-    console.log(product);
+    console.log('Product:', product);
     first = product ? product[Object.keys(product)[0]] : null;
+    console.log('First:', first);
 
     if (first) {
       items.push(
@@ -62,6 +63,7 @@ let CompareBar = props => {
     }
   }
 
+  console.log('Items:', items);
   return (
     <Paper
       style={{
@@ -83,16 +85,18 @@ CompareBar.defaultProps = {
   numberOfItems: 3,
 };
 CompareBar = connect((state, props) => {
+  console.log('Selection:', state.productComparisonReducer.selection);
   if (state.productComparisonReducer) {
     return {
       ...props,
-      updated: Date.now(),
-      selection: state.productComparisonReducer.selection.slice(),
+      // updated: Date.now(),
+      // selection: selection
+      selection: state.productComparisonReducer.selection,
     };
   } else {
     return {
       selection: [],
-      updated: Date.now(),
+      // updated: Date.now(),
       ...props,
     };
   }

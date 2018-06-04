@@ -42,8 +42,9 @@ var CompareBar = function CompareBar(props) {
 
   var _loop = function _loop(i, _product, _first) {
     _product = props.selection[i];
-    console.log(_product);
+    console.log('Product:', _product);
     _first = _product ? _product[(0, _keys.default)(_product)[0]] : null;
+    console.log('First:', _first);
 
     if (_first) {
       items.push(_react.default.createElement(_BottomNavigation.BottomNavigationAction, {
@@ -86,6 +87,7 @@ var CompareBar = function CompareBar(props) {
     _loop(i, product, first);
   }
 
+  console.log('Items:', items);
   return _react.default.createElement(_Paper.default, {
     style: {
       paddingBottom: '48px',
@@ -106,15 +108,17 @@ CompareBar.defaultProps = {
   numberOfItems: 3
 };
 CompareBar = (0, _reactRedux.connect)(function (state, props) {
+  console.log('Selection:', state.productComparisonReducer.selection);
+
   if (state.productComparisonReducer) {
     return (0, _objectSpread2.default)({}, props, {
-      updated: Date.now(),
-      selection: state.productComparisonReducer.selection.slice()
+      // updated: Date.now(),
+      // selection: selection
+      selection: state.productComparisonReducer.selection
     });
   } else {
     return (0, _objectSpread2.default)({
-      selection: [],
-      updated: Date.now()
+      selection: []
     }, props);
   }
 })(CompareBar);

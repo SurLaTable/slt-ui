@@ -21,8 +21,9 @@ let CompareBar = props => {
 
   for (let i = 0, product, first; i < props.numberOfItems; i++) {
     product = props.selection[i];
-    console.log(product);
+    console.log('Product:', product);
     first = product ? product[_Object$keys(product)[0]] : null;
+    console.log('First:', first);
 
     if (first) {
       items.push(React.createElement(BottomNavigationAction, {
@@ -58,6 +59,7 @@ let CompareBar = props => {
     }
   }
 
+  console.log('Items:', items);
   return React.createElement(Paper, {
     style: {
       paddingBottom: '48px',
@@ -78,15 +80,17 @@ CompareBar.defaultProps = {
   numberOfItems: 3
 };
 CompareBar = connect((state, props) => {
+  console.log('Selection:', state.productComparisonReducer.selection);
+
   if (state.productComparisonReducer) {
     return _objectSpread({}, props, {
-      updated: Date.now(),
-      selection: state.productComparisonReducer.selection.slice()
+      // updated: Date.now(),
+      // selection: selection
+      selection: state.productComparisonReducer.selection
     });
   } else {
     return _objectSpread({
-      selection: [],
-      updated: Date.now()
+      selection: []
     }, props);
   }
 })(CompareBar);
