@@ -32,7 +32,6 @@ const styles = {
 const App = () => (
   <Provider store={sltStore}>
     <div style={styles}>
-    hello
       <CompareCheckbox />
       <ComparisonTable />
     </div>
