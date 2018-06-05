@@ -7,7 +7,7 @@
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
-    "@sur-la-table/slt-ui": "file:../build/",
+    "cross-env": "*",
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
@@ -16,9 +16,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js start",
+    "build": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js build",
+    "test": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js test --env=jsdom",
+    "eject": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js eject"
   }
 }
