@@ -7,7 +7,7 @@
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
-	  "@sur-la-table/slt-ui": "file:./mui",
+	  "@sur-la-table/slt-ui": "file:./mui/src",
     "cross-env": "*",
     "react": "*",
     "react-dom": "*",
