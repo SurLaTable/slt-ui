@@ -7,7 +7,8 @@
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
-	  "@sur-la-table/slt-ui": "file:./mui/src",
+    "@sur-la-table/slt-ui": "file:./mui/src",
+    "babel-preset-env": "^1.7.0",
     "cross-env": "*",
     "react": "*",
     "react-dom": "*",
@@ -15,11 +16,20 @@
     "react-scripts": "*",
     "redux": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.6",
+    "@storybook/addon-links": "^3.4.6",
+    "@storybook/addons": "^3.4.6",
+    "@storybook/react": "^3.4.6",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0"
+  },
   "scripts": {
     "start": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js start",
     "build": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js test --env=jsdom",
-    "eject": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js eject"
+    "eject": "node --harmony ./node_modules/react-scripts/bin/react-scripts.js eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   }
 }
