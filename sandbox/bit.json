@@ -1,9 +1,0 @@
-{
-    "env": {
-        "compiler": "none",
-        "tester": "none"
-    },
-    "dependencies": {},
-    "componentsDefaultDirectory": "components/{namespace}/{name}",
-    "packageManager": "npm"
-}
