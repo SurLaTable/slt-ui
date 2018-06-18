@@ -29,6 +29,12 @@ Object.defineProperty(exports, "ComparisonBar", {
     return _ComparisonBar.default;
   }
 });
+Object.defineProperty(exports, "sltReducers", {
+  enumerable: true,
+  get: function get() {
+    return _sltReducers.default;
+  }
+});
 
 var _StoreProvider = _interopRequireDefault(require("./StoreProvider.js"));
 
@@ -37,3 +43,5 @@ var _ComparisonCheckbox = _interopRequireDefault(require("./ComparisonCheckbox/C
 var _ComparisonTable = _interopRequireDefault(require("./ComparisonTable/ComparisonTable.js"));
 
 var _ComparisonBar = _interopRequireDefault(require("./ComparisonBar/ComparisonBar.js"));
+
+var _sltReducers = _interopRequireDefault(require("./reducers/sltReducers"));
