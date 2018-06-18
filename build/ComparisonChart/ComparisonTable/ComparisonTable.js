@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -33,31 +31,57 @@ var _reactRedux = require("react-redux");
 
 var _productComparisonActions = require("../actions/productComparisonActions");
 
+var _Badge = _interopRequireDefault(require("../../Badge"));
+
 var _Button = _interopRequireDefault(require("../../Button"));
 
 var _Dialog = _interopRequireDefault(require("../../Dialog"));
 
-var _Slide = _interopRequireDefault(require("../../transitions/Slide"));
+var _Slide = _interopRequireDefault(require("../../Slide"));
 
-var _Table = _interopRequireWildcard(require("../../Table"));
+var _Table = _interopRequireDefault(require("../../Table"));
 
 var _Typography = _interopRequireDefault(require("../../Typography"));
 
 var _icons = require("../icons");
 
+// import {
+//   Badge,
+//   Button,
+//   Dialog,
+//   Slide,
+//   Table,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableRow,
+//   Typography
+// } from '@material-ui/core';
 var imageStyles = {
-  width: '90px',
-  display: 'block'
+  border: '1px solid black',
+  display: 'block',
+  width: '90px'
+};
+var badgeStyles = {
+  display: 'block',
+  marginTop: '10px',
+  width: '90px'
+};
+var tableCellStyles = {
+  border: '1px solid #cccccc'
 };
 var tableModels = {
   cutlery: {
-    Dimensions: ['Bevel Angle', 'Blade Edge', 'Blade Length', 'Blade Material', 'Total Length', 'Core Material', 'Handle Material', 'Layers in the Blade', 'Rockwell', 'Stamped or Forged', 'Tang Type', 'Collection', 'Country of Origin', 'Warranty', {
+    DIMENSIONS: ['Blade Length', 'Total Length', 'Tang Type'],
+    MATERIAL: ['Blade Material', 'Core Material', 'Handle Material'],
+    DETAILS: ['Bevel Angle', 'Blade Edge', 'Layers in the Blade', 'Rockwell', 'Stamped or Forged', 'Collection', 'Country of Origin', 'Warranty', {
       name: 'Care & Usage',
       format: 'html'
     }, {
       name: "What's in the Box",
       format: 'html'
-    }]
+    }],
+    SHIPPING: ['Drop Ship Ind']
   },
   // This is just an example of another possible type:
   appliance: {
@@ -74,6 +98,8 @@ var Transition = function Transition(props) {
 var _ref = _react.default.createElement("br", null);
 
 var _ref2 = _react.default.createElement(_icons.Cancel, null);
+
+var _ref3 = _react.default.createElement(_icons.Cancel, null);
 
 var ComparisonTable =
 /*#__PURE__*/
@@ -94,9 +120,9 @@ function (_React$Component) {
       }
     });
 
-    if (window && window.history && window.history.state && window.history.state.type == 'OPEN_COMPARISON_TABLE') {
+    if (window && window.history && window.history.state && window.history.state.type === 'OPEN_COMPARISON_TABLE') {
       // We refresh with the old state.
-      history.replaceState(null, 'ComparisonTable');
+      window.history.replaceState(null, 'ComparisonTable');
     }
 
     window.addEventListener('popstate', function (event) {
@@ -107,14 +133,14 @@ function (_React$Component) {
         _this.setState({
           open: false
         });
-      } else if (state.type == 'OPEN_COMPARISON_TABLE' && _this.state.open == false) {
+      } else if (state.type === 'OPEN_COMPARISON_TABLE' && !_this.state.open) {
         _this.props.dispatch((0, _productComparisonActions.actionSetProducts)(state.selection));
 
         _this.setState({
           open: true
         });
 
-        history.replaceState(state, 'ComparisonTable');
+        window.history.replaceState(state, 'ComparisonTable');
       }
     });
     return _this;
@@ -124,9 +150,7 @@ function (_React$Component) {
     key: "handleClickOpen",
     value: function handleClickOpen() {
       if (window && window.history) {
-        var _history = window.history;
-
-        _history.pushState({
+        window.history.pushState({
           type: 'OPEN_COMPARISON_TABLE',
           selection: this.props.selection
         }, 'ComparisonTable');
@@ -140,9 +164,7 @@ function (_React$Component) {
     key: "handleClose",
     value: function handleClose() {
       if (window && window.history) {
-        var _history2 = window.history;
-
-        _history2.replaceState(null, 'ComparisonTable');
+        window.history.replaceState(null, 'ComparisonTable');
       }
 
       this.setState({
@@ -154,11 +176,12 @@ function (_React$Component) {
     value: function handleFormat(data, format) {
       switch (format) {
         case 'html':
-          return _react.default.createElement("div", {
-            dangerouslySetInnerHTML: {
-              __html: data
-            }
-          });
+          // Convert the HTML to text, because we don't
+          // want bullet points.
+          var temp = document.createElement('span');
+          temp.innerHTML = data;
+          var returnText = temp.textContent;
+          return returnText !== 'undefined' ? returnText : null;
 
         default:
           return data;
@@ -171,13 +194,15 @@ function (_React$Component) {
 
       var props = this.props;
       var sections = (0, _keys.default)(tableModels[props.type]);
-      var attributes = tableModels[props.type][(0, _keys.default)(tableModels[props.type])[0]];
+      var attributes = tableModels[props.type];
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.default, {
         onClick: this.handleClickOpen.bind(this),
         variant: "raised",
         color: "primary",
         disabled: props.selection.length < 2,
         style: {
+          backgroundColor: '#6d8b19',
+          color: '#ffffff',
           height: '20%',
           marginTop: '1.5rem'
         }
@@ -190,73 +215,121 @@ function (_React$Component) {
       }, "Select up to 3 products to compare and find the best one for you.", _ref, _react.default.createElement(_Button.default, {
         onClick: function onClick(event, checked) {
           props.dispatch((0, _productComparisonActions.actionRemoveAll)());
+        },
+        style: {
+          textDecoration: 'underline'
         }
       }, "REMOVE ALL")), _react.default.createElement(_Dialog.default, {
         fullScreen: true,
         open: this.state.open,
         onClose: this.handleClose.bind(this),
-        transition: Transition,
-        transitionDuration: 500
-      }, _react.default.createElement(_Table.default, null, _react.default.createElement(_Table.TableHead, null, _react.default.createElement(_Table.TableRow, null, _react.default.createElement(_Table.TableCell, null, _react.default.createElement(_Button.default, {
+        TransitionComponent: Transition,
+        transitionDuration: 600
+      }, _react.default.createElement(_Table.default, null, _react.default.createElement(_Table.default, null, _react.default.createElement(_Table.default, {
+        style: {
+          backgroundColor: '#E4E4E4'
+        }
+      }, _react.default.createElement(_Table.default, {
+        style: tableCellStyles
+      }, _react.default.createElement(_Button.default, {
         onClick: this.handleClose.bind(this)
       }, _ref2, "Hide chart")), props.selection.map(function (product, index) {
         var first = product[(0, _keys.default)(product)[0]];
-
-        if (first) {
-          return _react.default.createElement(_Table.TableCell, {
-            key: index
-          }, _react.default.createElement("img", {
-            alt: first.name,
-            style: imageStyles,
-            src: "https://www.surlatable.com/images/customers/c1079/".concat(product.id, "/generated/").concat(product.id, "_Default_2_200x200.jpg")
-          }), first.name);
-        }
-      })), _react.default.createElement(_Table.TableRow, {
-        style: {
-          backgroundColor: '#111111'
-        }
-      }, props.selection.map(function (ignore, index) {
-        return index ? _react.default.createElement(_Table.TableCell, {
+        return first ? _react.default.createElement(_Table.default, {
+          key: index,
+          style: tableCellStyles
+        }, _react.default.createElement(_Badge.default, {
+          "data-product-id": product.id,
+          badgeContent: _ref3,
+          style: badgeStyles,
+          onClick: function onClick(event, checked) {
+            props.dispatch((0, _productComparisonActions.actionRemoveProduct)(product.id));
+          }
+        }, _react.default.createElement("img", {
+          alt: "".concat(first['Web Brand'], " ").concat(first.Collection),
+          style: imageStyles,
+          src: "https://www.surlatable.com/images/customers/c1079/".concat(product.id, "/generated/").concat(product.id, "_Default_1_200x200.jpg")
+        })), "".concat(first['Web Brand'], " ").concat(first.Collection)) : null;
+      }))), sections.map(function (section, index) {
+        return _react.default.createElement(_react.default.Fragment, {
           key: index
-        }) : _react.default.createElement(_Table.TableCell, {
-          key: index,
+        }, _react.default.createElement(_Table.default, null, _react.default.createElement(_Table.default, {
           style: {
-            color: '#ffffff'
+            backgroundColor: '#111111',
+            height: '36px'
           }
-        }, sections[index]);
-      }))), _react.default.createElement(_Table.TableBody, null, attributes.map(function (attribute, index) {
-        var format = 'default';
+        }, props.selection && Array(props.selection.length + 1).fill().map(function (ignore, index) {
+          return index ? _react.default.createElement(_Table.default, {
+            key: index,
+            style: tableCellStyles
+          }) : _react.default.createElement(_Table.default, {
+            key: index,
+            style: // Extend an empty object with our default styles:
+            (0, _extends2.default)({}, tableCellStyles, {
+              color: '#ffffff',
+              fontWeight: 900
+            })
+          }, section);
+        }))), _react.default.createElement(_Table.default, null, attributes[section].map(function (attribute, index) {
+          var format = 'default'; // Determine if the property is an object or a string.
+          // We don't need to use strings for our later processing.
 
-        if (typeof attribute != 'string') {
-          format = attribute.format;
-          attribute = attribute.name;
-        }
-
-        return _react.default.createElement(_Table.TableRow, {
-          key: index,
-          style: {
-            backgroundColor: (index === 1 || index % 2 !== 0) && '#eeeeee'
+          if (typeof attribute !== 'string') {
+            format = attribute.format;
+            attribute = attribute.name;
           }
-        }, _react.default.createElement(_Table.TableCell, null, attribute), props.selection.map(function (product, index) {
-          var cellData = [];
 
-          for (var i in product) {
-            if (format == 'html') {
-              cellData.push(_this2.handleFormat(product[i][attribute], format));
-            } else if (cellData.indexOf(product[i][attribute]) == -1) {
-              cellData.push(_this2.handleFormat(product[i][attribute], format));
+          return _react.default.createElement(_Table.default, {
+            key: index,
+            style: {
+              // This alternates the color of every other row:
+              backgroundColor: (index === 1 || index % 2 !== 0) && '#eeeeee'
             }
-          }
+          }, _react.default.createElement(_Table.default, {
+            key: index,
+            style: (0, _extends2.default)({}, tableCellStyles, {
+              fontWeight: 900
+            })
+          }, attribute), props.selection.map(function (product, index) {
+            var cellData = []; // At the end of processing the loop,
+            // we store the last value, that
+            // way we can check for duplicates.
 
-          if (format == 'default') {
-            cellData = cellData.join(', ');
-          }
+            var lastValue;
 
-          return _react.default.createElement(_Table.TableCell, {
-            key: index
-          }, cellData);
-        }));
-      })))));
+            for (var sku in product) {
+              if (product[sku][attribute] !== lastValue) {
+                if (format === 'html') {
+                  cellData.push(_this2.handleFormat(product[sku][attribute], format));
+                } else if (cellData.indexOf(product[sku][attribute]) === -1) {
+                  cellData.push(_this2.handleFormat(product[sku][attribute], format));
+                }
+              }
+
+              lastValue = product[sku][attribute];
+            }
+
+            if (format === 'default') {
+              var delimiter = ', ';
+              cellData = cellData.join(delimiter); // Since there will always be
+              // an extraneous comma and
+              // space at the end after this
+              // processing, we cut it off here.
+
+              if (cellData.slice(-2) === delimiter) {
+                cellData = cellData.slice(0, -2);
+              }
+            }
+
+            return _react.default.createElement(_Table.default, {
+              key: index,
+              style: (0, _extends2.default)({}, tableCellStyles, {
+                textAlign: 'center'
+              })
+            }, cellData);
+          }));
+        })));
+      }))));
     }
   }]);
   return ComparisonTable;
@@ -268,9 +341,9 @@ ComparisonTable = (0, _reactRedux.connect)(function (state, props) {
       selection: state.productComparisonReducer.selection
     });
   } else {
-    return (0, _objectSpread2.default)({
+    return (0, _objectSpread2.default)({}, props, {
       selection: []
-    }, props);
+    });
   }
 })(ComparisonTable);
 var _default = ComparisonTable;

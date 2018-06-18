@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _data = _interopRequireDefault(require("../data"));
@@ -35,24 +37,11 @@ var productComparisonReducer = function productComparisonReducer() {
       });
 
     case 'TOGGLE_PRODUCT':
-      if (action.checked) {
-        selection.push(_data.default[action.productId]);
-      } else {
-        for (var _i = selection.length - 1; _i >= 0; _i--) {
-          if (selection[_i].id == action.productId) {
-            selection.splice(_i, 1);
-            break;
-          }
-        }
-      }
-
       return (0, _objectSpread2.default)({}, state, {
-        selection: selection
+        selection: action.checked ? (0, _toConsumableArray2.default)(selection).concat([_data.default[action.productId]]) : selection.filter(function (product) {
+          return product.id !== action.productId;
+        })
       });
-    // selection: action.checked
-    // ? [data[action.productId], ...selection]
-    // : [selection.find(product => product.id === action.productId)],
-    // };
 
     case 'SET_PRODUCTS':
       return (0, _objectSpread2.default)({}, state, {

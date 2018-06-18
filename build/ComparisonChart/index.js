@@ -11,10 +11,10 @@ Object.defineProperty(exports, "StoreProvider", {
     return _StoreProvider.default;
   }
 });
-Object.defineProperty(exports, "CompareCheckbox", {
+Object.defineProperty(exports, "ComparisonCheckbox", {
   enumerable: true,
   get: function get() {
-    return _CompareCheckbox.default;
+    return _ComparisonCheckbox.default;
   }
 });
 Object.defineProperty(exports, "ComparisonTable", {
@@ -23,17 +23,17 @@ Object.defineProperty(exports, "ComparisonTable", {
     return _ComparisonTable.default;
   }
 });
-Object.defineProperty(exports, "CompareBar", {
+Object.defineProperty(exports, "ComparisonBar", {
   enumerable: true,
   get: function get() {
-    return _CompareBar.default;
+    return _ComparisonBar.default;
   }
 });
 
 var _StoreProvider = _interopRequireDefault(require("./StoreProvider.js"));
 
-var _CompareCheckbox = _interopRequireDefault(require("./CompareCheckbox/CompareCheckbox.js"));
+var _ComparisonCheckbox = _interopRequireDefault(require("./ComparisonCheckbox/ComparisonCheckbox.js"));
 
 var _ComparisonTable = _interopRequireDefault(require("./ComparisonTable/ComparisonTable.js"));
 
-var _CompareBar = _interopRequireDefault(require("./CompareBar/CompareBar.js"));
+var _ComparisonBar = _interopRequireDefault(require("./ComparisonBar/ComparisonBar.js"));

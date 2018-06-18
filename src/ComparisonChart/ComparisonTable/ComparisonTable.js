@@ -1,40 +1,69 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actionRemoveAll, actionSetProducts } from '../actions/productComparisonActions';
+import {
+  actionRemoveAll,
+  actionRemoveProduct,
+  actionSetProducts,
+} from '../actions/productComparisonActions';
 
+import Badge from '../../Badge';
 import Button from '../../Button';
 import Dialog from '../../Dialog';
-import Slide from '../../transitions/Slide';
-import { default as Table, TableBody, TableCell, TableHead, TableRow } from '../../Table';
+import Slide from '../../Slide';
+import Table from '../../Table';
+import TableBody from '../../Table';
+import TableCell from '../../Table';
+import TableHead from '../../Table';
+import TableRow from '../../Table';
 import Typography from '../../Typography';
+// import {
+//   Badge,
+//   Button,
+//   Dialog,
+//   Slide,
+//   Table,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableRow,
+//   Typography
+// } from '@material-ui/core';
 
 import { Cancel as CancelIcon } from '../icons';
 
 const imageStyles = {
-  width: '90px',
+  border: '1px solid black',
   display: 'block',
+  width: '90px',
+};
+
+const badgeStyles = {
+  display: 'block',
+  marginTop: '10px',
+  width: '90px',
+};
+
+const tableCellStyles = {
+  border: '1px solid #cccccc',
 };
 
 const tableModels = {
   cutlery: {
-    Dimensions: [
+    DIMENSIONS: ['Blade Length', 'Total Length', 'Tang Type'],
+    MATERIAL: ['Blade Material', 'Core Material', 'Handle Material'],
+    DETAILS: [
       'Bevel Angle',
       'Blade Edge',
-      'Blade Length',
-      'Blade Material',
-      'Total Length',
-      'Core Material',
-      'Handle Material',
       'Layers in the Blade',
       'Rockwell',
       'Stamped or Forged',
-      'Tang Type',
       'Collection',
       'Country of Origin',
       'Warranty',
       { name: 'Care & Usage', format: 'html' },
       { name: "What's in the Box", format: 'html' },
     ],
+    SHIPPING: ['Drop Ship Ind'],
   },
   // This is just an example of another possible type:
   appliance: {
@@ -55,11 +84,10 @@ class ComparisonTable extends React.Component {
       window &&
       window.history &&
       window.history.state &&
-      window.history.state.type == 'OPEN_COMPARISON_TABLE'
+      window.history.state.type === 'OPEN_COMPARISON_TABLE'
     ) {
       // We refresh with the old state.
-
-      history.replaceState(null, 'ComparisonTable');
+      window.history.replaceState(null, 'ComparisonTable');
     }
     window.addEventListener('popstate', event => {
       let state = event.state;
@@ -67,18 +95,17 @@ class ComparisonTable extends React.Component {
       if (state == null) {
         // CLOSE COMPARISON TABLE:
         this.setState({ open: false });
-      } else if (state.type == 'OPEN_COMPARISON_TABLE' && this.state.open == false) {
+      } else if (state.type === 'OPEN_COMPARISON_TABLE' && !this.state.open) {
         this.props.dispatch(actionSetProducts(state.selection));
         this.setState({ open: true });
-        history.replaceState(state, 'ComparisonTable');
+        window.history.replaceState(state, 'ComparisonTable');
       }
     });
   }
 
   handleClickOpen() {
     if (window && window.history) {
-      let history = window.history;
-      history.pushState(
+      window.history.pushState(
         {
           type: 'OPEN_COMPARISON_TABLE',
           selection: this.props.selection,
@@ -91,8 +118,7 @@ class ComparisonTable extends React.Component {
 
   handleClose() {
     if (window && window.history) {
-      let history = window.history;
-      history.replaceState(null, 'ComparisonTable');
+      window.history.replaceState(null, 'ComparisonTable');
     }
     this.setState({ open: false });
   }
@@ -100,7 +126,12 @@ class ComparisonTable extends React.Component {
   handleFormat(data, format) {
     switch (format) {
       case 'html':
-        return <div dangerouslySetInnerHTML={{ __html: data }} />;
+        // Convert the HTML to text, because we don't
+        // want bullet points.
+        let temp = document.createElement('span');
+        temp.innerHTML = data;
+        let returnText = temp.textContent;
+        return returnText !== 'undefined' ? returnText : null;
       default:
         return data;
     }
@@ -110,7 +141,7 @@ class ComparisonTable extends React.Component {
     const props = this.props;
 
     const sections = Object.keys(tableModels[props.type]);
-    const attributes = tableModels[props.type][Object.keys(tableModels[props.type])[0]];
+    const attributes = tableModels[props.type];
 
     return (
       <React.Fragment>
@@ -119,7 +150,12 @@ class ComparisonTable extends React.Component {
           variant="raised"
           color="primary"
           disabled={props.selection.length < 2}
-          style={{ height: '20%', marginTop: '1.5rem' }}
+          style={{
+            backgroundColor: '#6d8b19',
+            color: '#ffffff',
+            height: '20%',
+            marginTop: '1.5rem',
+          }}
         >
           COMPARE
         </Button>
@@ -136,6 +172,7 @@ class ComparisonTable extends React.Component {
             onClick={(event, checked) => {
               props.dispatch(actionRemoveAll());
             }}
+            style={{ textDecoration: 'underline' }}
           >
             REMOVE ALL
           </Button>
@@ -145,91 +182,157 @@ class ComparisonTable extends React.Component {
           fullScreen
           open={this.state.open}
           onClose={this.handleClose.bind(this)}
-          transition={Transition}
-          transitionDuration={500}
+          TransitionComponent={Transition}
+          transitionDuration={600}
         >
           <Table>
             <TableHead>
-              <TableRow>
-                <TableCell>
+              <TableRow
+                style={{
+                  backgroundColor: '#E4E4E4',
+                }}
+              >
+                <TableCell style={tableCellStyles}>
                   <Button onClick={this.handleClose.bind(this)}>
                     <CancelIcon />Hide chart
                   </Button>
                 </TableCell>
                 {props.selection.map((product, index) => {
                   const first = product[Object.keys(product)[0]];
-                  if (first) {
-                    return (
-                      <TableCell key={index}>
+                  return first ? (
+                    <TableCell key={index} style={tableCellStyles}>
+                      <Badge
+                        data-product-id={product.id}
+                        badgeContent={<CancelIcon />}
+                        style={badgeStyles}
+                        onClick={(event, checked) => {
+                          props.dispatch(actionRemoveProduct(product.id));
+                        }}
+                      >
                         <img
-                          alt={first.name}
+                          alt={`${first['Web Brand']} ${first.Collection}`}
                           style={imageStyles}
                           src={`https://www.surlatable.com/images/customers/c1079/${
                             product.id
-                          }/generated/${product.id}_Default_2_200x200.jpg`}
+                          }/generated/${product.id}_Default_1_200x200.jpg`}
                         />
-                        {first.name}
-                      </TableCell>
-                    );
-                  }
+                      </Badge>
+                      {`${first['Web Brand']} ${first.Collection}`}
+                    </TableCell>
+                  ) : null;
                 })}
               </TableRow>
-              <TableRow
-                style={{
-                  backgroundColor: '#111111',
-                }}
-              >
-                {props.selection.map(
-                  (ignore, index) =>
-                    index ? (
-                      <TableCell key={index} />
-                    ) : (
-                      <TableCell
-                        key={index}
-                        style={{
-                          color: '#ffffff',
-                        }}
-                      >
-                        {sections[index]}
-                      </TableCell>
-                    ),
-                )}
-              </TableRow>
             </TableHead>
-            <TableBody>
-              {attributes.map((attribute, index) => {
-                let format = 'default';
-                if (typeof attribute != 'string') {
-                  format = attribute.format;
-                  attribute = attribute.name;
-                }
-                return (
-                  <TableRow
-                    key={index}
-                    style={{
-                      backgroundColor: (index === 1 || index % 2 !== 0) && '#eeeeee',
-                    }}
-                  >
-                    <TableCell>{attribute}</TableCell>
-                    {props.selection.map((product, index) => {
-                      let cellData = [];
 
-                      for (let i in product) {
-                        if (format == 'html') {
-                          cellData.push(this.handleFormat(product[i][attribute], format));
-                        } else if (cellData.indexOf(product[i][attribute]) == -1) {
-                          cellData.push(this.handleFormat(product[i][attribute], format));
-                        }
+            {sections.map((section, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <TableHead>
+                    <TableRow
+                      style={{
+                        backgroundColor: '#111111',
+                        height: '36px',
+                      }}
+                    >
+                      {/*
+                        This Array().fill() has to exist to allow the column to
+                        extend one beyond the selection length (for the sake of
+                        the first column).
+                      */}
+                      {props.selection &&
+                        Array(props.selection.length + 1)
+                          .fill()
+                          .map(
+                            (ignore, index) =>
+                              index ? (
+                                <TableCell key={index} style={tableCellStyles} />
+                              ) : (
+                                <TableCell
+                                  key={index}
+                                  style={
+                                    // Extend an empty object with our default styles:
+                                    Object.assign({}, tableCellStyles, {
+                                      color: '#ffffff',
+                                      fontWeight: 900,
+                                    })
+                                  }
+                                >
+                                  {section}
+                                </TableCell>
+                              ),
+                          )}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {attributes[section].map((attribute, index) => {
+                      let format = 'default';
+                      // Determine if the property is an object or a string.
+                      // We don't need to use strings for our later processing.
+                      if (typeof attribute !== 'string') {
+                        format = attribute.format;
+                        attribute = attribute.name;
                       }
-                      if (format == 'default') {
-                        cellData = cellData.join(', ');
-                      }
-                      return <TableCell key={index}>{cellData}</TableCell>;
+                      return (
+                        <TableRow
+                          key={index}
+                          style={{
+                            // This alternates the color of every other row:
+                            backgroundColor: (index === 1 || index % 2 !== 0) && '#eeeeee',
+                          }}
+                        >
+                          <TableCell
+                            key={index}
+                            style={Object.assign({}, tableCellStyles, {
+                              fontWeight: 900,
+                            })}
+                          >
+                            {attribute}
+                          </TableCell>
+                          {props.selection.map((product, index) => {
+                            let cellData = [];
+
+                            // At the end of processing the loop,
+                            // we store the last value, that
+                            // way we can check for duplicates.
+                            let lastValue;
+                            for (let sku in product) {
+                              if (product[sku][attribute] !== lastValue) {
+                                if (format === 'html') {
+                                  cellData.push(this.handleFormat(product[sku][attribute], format));
+                                } else if (cellData.indexOf(product[sku][attribute]) === -1) {
+                                  cellData.push(this.handleFormat(product[sku][attribute], format));
+                                }
+                              }
+
+                              lastValue = product[sku][attribute];
+                            }
+                            if (format === 'default') {
+                              const delimiter = ', ';
+                              cellData = cellData.join(delimiter);
+                              // Since there will always be
+                              // an extraneous comma and
+                              // space at the end after this
+                              // processing, we cut it off here.
+                              if (cellData.slice(-2) === delimiter) {
+                                cellData = cellData.slice(0, -2);
+                              }
+                            }
+                            return (
+                              <TableCell
+                                key={index}
+                                style={Object.assign({}, tableCellStyles, { textAlign: 'center' })}
+                              >
+                                {cellData}
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
+                      );
                     })}
-                  </TableRow>
-                );
-              })}
-            </TableBody>
+                  </TableBody>
+                </React.Fragment>
+              );
+            })}
           </Table>
         </Dialog>
       </React.Fragment>
@@ -245,8 +348,8 @@ ComparisonTable = connect((state, props) => {
     };
   } else {
     return {
-      selection: [],
       ...props,
+      selection: [],
     };
   }
 })(ComparisonTable);

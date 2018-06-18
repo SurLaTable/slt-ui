@@ -1,24 +1,24 @@
 {
-  "name": "slt-ui-sandbox",
-  "version": "0.1.0",
-  "license": "GPL-2.0+",
-  "description": "",
-  "keywords": [],
-  "homepage": "https://codesandbox.io/s/new",
-  "main": "src/index.js",
-  "dependencies": {
-    "@sur-la-table/slt-ui": "file:../build/",
-    "react": "*",
-    "react-dom": "*",
-    "react-redux": "*",
-    "react-scripts": "*",
-    "redux": "*"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "name": "slt-ui-sandbox",
+    "version": "0.1.0",
+    "license": "GPL-2.0+",
+    "description": "",
+    "keywords": [],
+    "homepage": "https://codesandbox.io/s/new",
+    "main": "./index.js",
+    "dependencies": {
+        "@sur-la-table/slt-ui": "*",
+        "react": "*",
+        "react-dom": "*",
+        "react-redux": "*",
+        "react-scripts": "*",
+        "redux": "*"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    }
 }

@@ -1,4 +1,4 @@
 export { default as StoreProvider } from './StoreProvider.js';
-export { default as CompareCheckbox } from './CompareCheckbox/CompareCheckbox.js';
+export { default as ComparisonCheckbox } from './ComparisonCheckbox/ComparisonCheckbox.js';
 export { default as ComparisonTable } from './ComparisonTable/ComparisonTable.js';
-export { default as CompareBar } from './CompareBar/CompareBar.js';
+export { default as ComparisonBar } from './ComparisonBar/ComparisonBar.js';

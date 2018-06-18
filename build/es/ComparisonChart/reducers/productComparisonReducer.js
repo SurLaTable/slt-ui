@@ -23,24 +23,9 @@ const productComparisonReducer = (state = {}, action) => {
       });
 
     case 'TOGGLE_PRODUCT':
-      if (action.checked) {
-        selection.push(data[action.productId]);
-      } else {
-        for (let i = selection.length - 1; i >= 0; i--) {
-          if (selection[i].id == action.productId) {
-            selection.splice(i, 1);
-            break;
-          }
-        }
-      }
-
       return _objectSpread({}, state, {
-        selection
+        selection: action.checked ? [...selection, data[action.productId]] : selection.filter(product => product.id !== action.productId)
       });
-    // selection: action.checked
-    // ? [data[action.productId], ...selection]
-    // : [selection.find(product => product.id === action.productId)],
-    // };
 
     case 'SET_PRODUCTS':
       return _objectSpread({}, state, {
