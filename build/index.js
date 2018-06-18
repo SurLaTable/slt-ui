@@ -624,6 +624,36 @@ Object.defineProperty(exports, "withWidth", {
     return _withWidth.default;
   }
 });
+Object.defineProperty(exports, "StoreProvider", {
+  enumerable: true,
+  get: function get() {
+    return _ComparisonChart.StoreProvider;
+  }
+});
+Object.defineProperty(exports, "ComparisonCheckbox", {
+  enumerable: true,
+  get: function get() {
+    return _ComparisonChart.ComparisonCheckbox;
+  }
+});
+Object.defineProperty(exports, "ComparisonTable", {
+  enumerable: true,
+  get: function get() {
+    return _ComparisonChart.ComparisonTable;
+  }
+});
+Object.defineProperty(exports, "ComparisonBar", {
+  enumerable: true,
+  get: function get() {
+    return _ComparisonChart.ComparisonBar;
+  }
+});
+Object.defineProperty(exports, "SLTTest", {
+  enumerable: true,
+  get: function get() {
+    return _SLTTest.default;
+  }
+});
 exports.colors = void 0;
 
 var _AppBar = _interopRequireDefault(require("./AppBar"));
@@ -721,3 +751,7 @@ var _Tooltip = _interopRequireDefault(require("./Tooltip"));
 var _transitions = require("./transitions");
 
 var _withWidth = _interopRequireDefault(require("./utils/withWidth"));
+
+var _ComparisonChart = require("./ComparisonChart");
+
+var _SLTTest = _interopRequireDefault(require("./SLTTest"));

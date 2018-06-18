@@ -9,7 +9,7 @@ import {
 import Badge from '../../Badge';
 import Button from '../../Button';
 import Dialog from '../../Dialog';
-import Slide from '../../Slide';
+import Slide from '../../transitions';
 import Table from '../../Table';
 import TableBody from '../../Table';
 import TableCell from '../../Table';

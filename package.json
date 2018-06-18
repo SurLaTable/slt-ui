@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "yarn cleanup && yarn prepare:material && yarn transform && cd ./material-ui/packages/material-ui/ && yarn build && cd ../../../ && node ./scripts/setup-release.js",
-    "cleanup": "yarn git-reset && rimraf build",
+    "cleanup": "yarn git-reset && rimraf build && rm material-ui/yarn.lock",
     "prepare:material": "cd material-ui && yarn install && yarn add --dev babel-plugin-dynamic-import-node babel-plugin-syntax-dynamic-import -W && yarn add react-async-component -W && cd ..",
     "prettier": "prettier --config ./prettier.config.js --write \"{,!(.git|*build|*dist|material-ui|node_modules|styleguide)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
     "transform": "node ./transforms/index.js",

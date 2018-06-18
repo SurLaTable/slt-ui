@@ -37,7 +37,7 @@ var _Button = _interopRequireDefault(require("../../Button"));
 
 var _Dialog = _interopRequireDefault(require("../../Dialog"));
 
-var _Slide = _interopRequireDefault(require("../../Slide"));
+var _transitions = _interopRequireDefault(require("../../transitions"));
 
 var _Table = _interopRequireDefault(require("../../Table"));
 
@@ -90,7 +90,7 @@ var tableModels = {
 };
 
 var Transition = function Transition(props) {
-  return _react.default.createElement(_Slide.default, (0, _extends2.default)({
+  return _react.default.createElement(_transitions.default, (0, _extends2.default)({
     direction: "up"
   }, props));
 };

@@ -11,9 +11,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _pure = _interopRequireDefault(require("recompose/pure"));
 
-var _core = _interopRequireDefault(require("@material-ui/core"));
+var _SvgIcon = _interopRequireDefault(require("../../SvgIcon"));
 
-var SvgIconCustom = typeof global !== 'undefined' && global.__MUI_SvgIcon__ || _core.default;
+var SvgIconCustom = typeof global !== 'undefined' && global.__MUI_SvgIcon__ || _SvgIcon.default;
 
 function createSvgIcon(path, displayName) {
   var Icon = function Icon(props) {
