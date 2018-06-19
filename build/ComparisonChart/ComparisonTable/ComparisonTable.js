@@ -31,20 +31,20 @@ var _reactRedux = require("react-redux");
 
 var _productComparisonActions = require("../actions/productComparisonActions");
 
-var _Badge = _interopRequireDefault(require("../../Badge"));
-
-var _Button = _interopRequireDefault(require("../../Button"));
-
-var _Dialog = _interopRequireDefault(require("../../Dialog"));
-
-var _transitions = _interopRequireDefault(require("../../transitions"));
-
-var _Table = _interopRequireDefault(require("../../Table"));
-
-var _Typography = _interopRequireDefault(require("../../Typography"));
+var _index = require("../../index.js");
 
 var _icons = require("../icons");
 
+// import { Badge } from '../../Badge';
+// import { Button } from '../../Button';
+// import { Dialog } from '../../Dialog';
+// import { Slide } from '../../transitions';
+// import { Table } from '../../Table';
+// import { TableBody } from '../../Table';
+// import { TableCell } from '../../Table';
+// import { TableHead } from '../../Table';
+// import { TableRow } from '../../Table';
+// import { Typography } from '../../Typography';
 // import {
 //   Badge,
 //   Button,
@@ -90,7 +90,7 @@ var tableModels = {
 };
 
 var Transition = function Transition(props) {
-  return _react.default.createElement(_transitions.default, (0, _extends2.default)({
+  return _react.default.createElement(_index.Slide, (0, _extends2.default)({
     direction: "up"
   }, props));
 };
@@ -195,7 +195,7 @@ function (_React$Component) {
       var props = this.props;
       var sections = (0, _keys.default)(tableModels[props.type]);
       var attributes = tableModels[props.type];
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.default, {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_index.Button, {
         onClick: this.handleClickOpen.bind(this),
         variant: "raised",
         color: "primary",
@@ -206,39 +206,39 @@ function (_React$Component) {
           height: '20%',
           marginTop: '1.5rem'
         }
-      }, "COMPARE"), _react.default.createElement(_Typography.default, {
+      }, "COMPARE"), _react.default.createElement(_index.Typography, {
         style: {
           margin: '10px 30px',
           width: '250px',
           textAlign: 'left'
         }
-      }, "Select up to 3 products to compare and find the best one for you.", _ref, _react.default.createElement(_Button.default, {
+      }, "Select up to 3 products to compare and find the best one for you.", _ref, _react.default.createElement(_index.Button, {
         onClick: function onClick(event, checked) {
           props.dispatch((0, _productComparisonActions.actionRemoveAll)());
         },
         style: {
           textDecoration: 'underline'
         }
-      }, "REMOVE ALL")), _react.default.createElement(_Dialog.default, {
+      }, "REMOVE ALL")), _react.default.createElement(_index.Dialog, {
         fullScreen: true,
         open: this.state.open,
         onClose: this.handleClose.bind(this),
         TransitionComponent: Transition,
         transitionDuration: 600
-      }, _react.default.createElement(_Table.default, null, _react.default.createElement(_Table.default, null, _react.default.createElement(_Table.default, {
+      }, _react.default.createElement(_index.Table, null, _react.default.createElement(_index.TableHead, null, _react.default.createElement(_index.TableRow, {
         style: {
           backgroundColor: '#E4E4E4'
         }
-      }, _react.default.createElement(_Table.default, {
+      }, _react.default.createElement(_index.TableCell, {
         style: tableCellStyles
-      }, _react.default.createElement(_Button.default, {
+      }, _react.default.createElement(_index.Button, {
         onClick: this.handleClose.bind(this)
       }, _ref2, "Hide chart")), props.selection.map(function (product, index) {
         var first = product[(0, _keys.default)(product)[0]];
-        return first ? _react.default.createElement(_Table.default, {
+        return first ? _react.default.createElement(_index.TableCell, {
           key: index,
           style: tableCellStyles
-        }, _react.default.createElement(_Badge.default, {
+        }, _react.default.createElement(_index.Badge, {
           "data-product-id": product.id,
           badgeContent: _ref3,
           style: badgeStyles,
@@ -253,16 +253,16 @@ function (_React$Component) {
       }))), sections.map(function (section, index) {
         return _react.default.createElement(_react.default.Fragment, {
           key: index
-        }, _react.default.createElement(_Table.default, null, _react.default.createElement(_Table.default, {
+        }, _react.default.createElement(_index.TableHead, null, _react.default.createElement(_index.TableRow, {
           style: {
             backgroundColor: '#111111',
             height: '36px'
           }
         }, props.selection && Array(props.selection.length + 1).fill().map(function (ignore, index) {
-          return index ? _react.default.createElement(_Table.default, {
+          return index ? _react.default.createElement(_index.TableCell, {
             key: index,
             style: tableCellStyles
-          }) : _react.default.createElement(_Table.default, {
+          }) : _react.default.createElement(_index.TableCell, {
             key: index,
             style: // Extend an empty object with our default styles:
             (0, _extends2.default)({}, tableCellStyles, {
@@ -270,7 +270,7 @@ function (_React$Component) {
               fontWeight: 900
             })
           }, section);
-        }))), _react.default.createElement(_Table.default, null, attributes[section].map(function (attribute, index) {
+        }))), _react.default.createElement(_index.TableBody, null, attributes[section].map(function (attribute, index) {
           var format = 'default'; // Determine if the property is an object or a string.
           // We don't need to use strings for our later processing.
 
@@ -279,13 +279,13 @@ function (_React$Component) {
             attribute = attribute.name;
           }
 
-          return _react.default.createElement(_Table.default, {
+          return _react.default.createElement(_index.TableRow, {
             key: index,
             style: {
               // This alternates the color of every other row:
               backgroundColor: (index === 1 || index % 2 !== 0) && '#eeeeee'
             }
-          }, _react.default.createElement(_Table.default, {
+          }, _react.default.createElement(_index.TableCell, {
             key: index,
             style: (0, _extends2.default)({}, tableCellStyles, {
               fontWeight: 900
@@ -321,7 +321,7 @@ function (_React$Component) {
               }
             }
 
-            return _react.default.createElement(_Table.default, {
+            return _react.default.createElement(_index.TableCell, {
               key: index,
               style: (0, _extends2.default)({}, tableCellStyles, {
                 textAlign: 'center'

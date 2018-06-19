@@ -648,12 +648,6 @@ Object.defineProperty(exports, "ComparisonBar", {
     return _ComparisonChart.ComparisonBar;
   }
 });
-Object.defineProperty(exports, "SLTTest", {
-  enumerable: true,
-  get: function get() {
-    return _SLTTest.default;
-  }
-});
 exports.colors = void 0;
 
 var _AppBar = _interopRequireDefault(require("./AppBar"));
@@ -754,4 +748,4 @@ var _withWidth = _interopRequireDefault(require("./utils/withWidth"));
 
 var _ComparisonChart = require("./ComparisonChart");
 
-var _SLTTest = _interopRequireDefault(require("./SLTTest"));
+require("./SLTTest");

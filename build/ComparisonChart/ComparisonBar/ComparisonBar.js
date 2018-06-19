@@ -29,16 +29,16 @@ var _productComparisonActions = require("../actions/productComparisonActions");
 
 var _reactRedux = require("react-redux");
 
-var _Badge = _interopRequireDefault(require("../../Badge"));
-
-var _BottomNavigation = _interopRequireDefault(require("../../BottomNavigation"));
-
-var _Paper = _interopRequireDefault(require("../../Paper"));
+var _index = require("../../index.js");
 
 var _icons = require("../icons");
 
 var _ComparisonTable = _interopRequireDefault(require("../ComparisonTable/ComparisonTable"));
 
+// import { Badge } from '../../Badge';
+// import { BottomNavigation } from '../../BottomNavigation';
+// import { BottomNavigationAction } from '../../BottomNavigation';
+// import { Paper } from '../../Paper';
 // import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core';
 var _ref = _react.default.createElement(_ComparisonTable.default, {
   type: "cutlery"
@@ -70,7 +70,7 @@ function (_React$Component) {
       var selection = Array(props.numberOfItems).fill().map(function (ignore, index) {
         return props.selection && props.selection[index] || index;
       });
-      return (0, _typeof2.default)(selection[0]) === 'object' ? _react.default.createElement(_Paper.default, {
+      return (0, _typeof2.default)(selection[0]) === 'object' ? _react.default.createElement(_index.Paper, {
         ref: function ref(ComparisonBarContainer) {
           return _this.ComparisonBarContainer = ComparisonBarContainer;
         },
@@ -83,7 +83,7 @@ function (_React$Component) {
           width: '90%',
           zIndex: '1300'
         }
-      }, _react.default.createElement(_BottomNavigation.default, {
+      }, _react.default.createElement(_index.BottomNavigation, {
         showLabels: true,
         style: {
           backgroundColor: '#E4E4E4',
@@ -96,12 +96,12 @@ function (_React$Component) {
         // with some kind of user selection tool.
         var productData = product ? product[(0, _keys.default)(product)[0]] : index;
         var productId = product.id || '';
-        return _react.default.createElement(_BottomNavigation.default, {
+        return _react.default.createElement(_index.BottomNavigationAction, {
           key: index,
           label: productData ? "".concat(productData['Web Brand'], " ").concat(productData.Collection) : "Item #".concat(index + 1) // Disable the ripple animation if the item box is empty:
           ,
           disableRipple: !productId.length,
-          icon: _react.default.createElement(_react.default.Fragment, null, productId.length ? _react.default.createElement(_Badge.default, {
+          icon: _react.default.createElement(_react.default.Fragment, null, productId.length ? _react.default.createElement(_index.Badge, {
             "data-product-id": productId,
             badgeContent: _ref2,
             onClick: function onClick(event, checked) {

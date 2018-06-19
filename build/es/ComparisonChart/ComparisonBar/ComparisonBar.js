@@ -2,12 +2,13 @@ import _objectSpread from "@babel/runtime/helpers/objectSpread";
 import _Object$keys from "@babel/runtime/core-js/object/keys";
 import React from 'react';
 import { actionRemoveProduct } from '../actions/productComparisonActions';
-import { connect } from 'react-redux';
-import Badge from '../../Badge';
-import BottomNavigation from '../../BottomNavigation';
-import BottomNavigationAction from '../../BottomNavigation';
-import Paper from '../../Paper'; // import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core';
+import { connect } from 'react-redux'; // import { Badge } from '../../Badge';
+// import { BottomNavigation } from '../../BottomNavigation';
+// import { BottomNavigationAction } from '../../BottomNavigation';
+// import { Paper } from '../../Paper';
+// import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core';
 
+import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '../../index.js';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 

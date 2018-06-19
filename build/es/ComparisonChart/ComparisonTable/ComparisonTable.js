@@ -3,17 +3,17 @@ import _Object$keys from "@babel/runtime/core-js/object/keys";
 import _extends from "@babel/runtime/helpers/extends";
 import React from 'react';
 import { connect } from 'react-redux';
-import { actionRemoveAll, actionRemoveProduct, actionSetProducts } from '../actions/productComparisonActions';
-import Badge from '../../Badge';
-import Button from '../../Button';
-import Dialog from '../../Dialog';
-import Slide from '../../transitions';
-import Table from '../../Table';
-import TableBody from '../../Table';
-import TableCell from '../../Table';
-import TableHead from '../../Table';
-import TableRow from '../../Table';
-import Typography from '../../Typography'; // import {
+import { actionRemoveAll, actionRemoveProduct, actionSetProducts } from '../actions/productComparisonActions'; // import { Badge } from '../../Badge';
+// import { Button } from '../../Button';
+// import { Dialog } from '../../Dialog';
+// import { Slide } from '../../transitions';
+// import { Table } from '../../Table';
+// import { TableBody } from '../../Table';
+// import { TableCell } from '../../Table';
+// import { TableHead } from '../../Table';
+// import { TableRow } from '../../Table';
+// import { Typography } from '../../Typography';
+// import {
 //   Badge,
 //   Button,
 //   Dialog,
@@ -26,6 +26,7 @@ import Typography from '../../Typography'; // import {
 //   Typography
 // } from '@material-ui/core';
 
+import { Badge, Button, Dialog, Slide, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '../../index.js';
 import { Cancel as CancelIcon } from '../icons';
 const imageStyles = {
   border: '1px solid black',

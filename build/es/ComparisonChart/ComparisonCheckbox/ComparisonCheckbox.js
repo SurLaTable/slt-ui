@@ -1,8 +1,8 @@
 import _objectSpread from "@babel/runtime/helpers/objectSpread";
 import React from 'react';
 import { connect } from 'react-redux';
-import Checkbox from '../../Checkbox';
-import FormControlLabel from '../../Form'; // import { Checkbox, FormControlLabel } from '@material-ui/core';
+import { Checkbox, FormControlLabel } from '../../index.js'; // import { FormControlLabel } from '../../Form';
+// import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 import { actionToggleProductSelection } from '../actions/productComparisonActions';
 

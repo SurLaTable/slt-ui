@@ -13,16 +13,15 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _Checkbox = _interopRequireDefault(require("../../Checkbox"));
-
-var _Form = _interopRequireDefault(require("../../Form"));
+var _index = require("../../index.js");
 
 var _productComparisonActions = require("../actions/productComparisonActions");
 
+// import { FormControlLabel } from '../../Form';
 // import { Checkbox, FormControlLabel } from '@material-ui/core';
 var ComparisonCheckbox = function ComparisonCheckbox(props) {
-  return _react.default.createElement("div", null, _react.default.createElement(_Form.default, {
-    control: _react.default.createElement(_Checkbox.default, {
+  return _react.default.createElement("div", null, _react.default.createElement(_index.FormControlLabel, {
+    control: _react.default.createElement(_index.Checkbox, {
       onChange: function onChange(event, checked) {
         props.dispatch((0, _productComparisonActions.actionToggleProductSelection)(props.product, checked));
       },

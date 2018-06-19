@@ -48,4 +48,4 @@ export { default as Tooltip } from './Tooltip';
 export { Slide, Grow, Fade, Collapse, Zoom } from './transitions';
 export { default as withWidth } from './utils/withWidth';
 export { StoreProvider, ComparisonCheckbox, ComparisonTable, ComparisonBar } from './ComparisonChart';
-export { default as SLTTest } from './SLTTest';
+export {} from './SLTTest';
