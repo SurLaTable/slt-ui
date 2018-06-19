@@ -6,28 +6,18 @@ import {
   actionSetProducts,
 } from '../actions/productComparisonActions';
 
-import Badge from '../../Badge';
-import Button from '../../Button';
-import Dialog from '../../Dialog';
-import Slide from '../../transitions';
-import Table from '../../Table';
-import TableBody from '../../Table';
-import TableCell from '../../Table';
-import TableHead from '../../Table';
-import TableRow from '../../Table';
-import Typography from '../../Typography';
-// import {
-//   Badge,
-//   Button,
-//   Dialog,
-//   Slide,
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableHead,
-//   TableRow,
-//   Typography
-// } from '@material-ui/core';
+import {
+  Badge,
+  Button,
+  Dialog,
+  Slide,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography
+} from '@material-ui/core';
 
 import { Cancel as CancelIcon } from '../icons';
 
