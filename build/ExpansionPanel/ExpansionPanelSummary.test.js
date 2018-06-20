@@ -1,102 +1,149 @@
-// @flow
+"use strict";
 
-import React from 'react';
-import { assert } from 'chai';
-import { spy } from 'sinon';
-import { createShallow, createMount, getClasses, unwrap } from '../test-utils';
-import ButtonBase from '../ButtonBase';
-import ExpansionPanelSummary from './ExpansionPanelSummary';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-describe('<ExpansionPanelSummary />', () => {
-  let mount;
-  let shallow;
-  let classes;
-  const ExpansionPanelSummaryNaked = unwrap(ExpansionPanelSummary);
+var _react = _interopRequireDefault(require("react"));
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    mount = createMount();
-    classes = getClasses(<ExpansionPanelSummary />);
+var _chai = require("chai");
+
+var _sinon = require("sinon");
+
+var _testUtils = require("../test-utils");
+
+var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
+
+var _ExpansionPanelSummary = _interopRequireDefault(require("./ExpansionPanelSummary"));
+
+var _ref = _react.default.createElement(_ExpansionPanelSummary.default, null);
+
+var _ref2 = _react.default.createElement(_ExpansionPanelSummary.default, null);
+
+var _ref3 = _react.default.createElement(_ExpansionPanelSummary.default, {
+  className: "woofExpansionPanelSummary"
+});
+
+var _ref4 = _react.default.createElement(_ExpansionPanelSummary.default, null);
+
+var _ref5 = _react.default.createElement(_ExpansionPanelSummary.default, {
+  disabled: true
+});
+
+var _ref6 = _react.default.createElement(_ExpansionPanelSummary.default, {
+  expanded: true
+});
+
+var _ref7 = _react.default.createElement(_ExpansionPanelSummary.default, {
+  expandIcon: _react.default.createElement("div", null, "Icon")
+});
+
+describe('<ExpansionPanelSummary />', function () {
+  var mount;
+  var shallow;
+  var classes;
+  var ExpansionPanelSummaryNaked = (0, _testUtils.unwrap)(_ExpansionPanelSummary.default);
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    mount = (0, _testUtils.createMount)();
+    classes = (0, _testUtils.getClasses)(_ref);
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
+  it('should render a ButtonBase', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should render a ButtonBase', () => {
-    const wrapper = shallow(<ExpansionPanelSummary />);
-    assert.strictEqual(wrapper.type(), ButtonBase);
+    _chai.assert.strictEqual(wrapper.type(), _ButtonBase.default);
   });
+  it('should render with the user and root classes', function () {
+    var wrapper = shallow(_ref3);
 
-  it('should render with the user and root classes', () => {
-    const wrapper = shallow(<ExpansionPanelSummary className="woofExpansionPanelSummary" />);
-    assert.strictEqual(wrapper.hasClass(classes.root), true);
-    assert.strictEqual(wrapper.hasClass('woofExpansionPanelSummary'), true);
+    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
+
+    _chai.assert.strictEqual(wrapper.hasClass('woofExpansionPanelSummary'), true);
   });
+  it('should render with the content', function () {
+    var wrapper = shallow(_ref4);
+    var itemsWrap = wrapper.childAt(0);
 
-  it('should render with the content', () => {
-    const wrapper = shallow(<ExpansionPanelSummary />);
-    const itemsWrap = wrapper.childAt(0);
-    assert.strictEqual(itemsWrap.hasClass(classes.content), true);
+    _chai.assert.strictEqual(itemsWrap.hasClass(classes.content), true);
   });
+  it('when disabled should have disabled class', function () {
+    var wrapper = shallow(_ref5);
 
-  it('when disabled should have disabled class', () => {
-    const wrapper = shallow(<ExpansionPanelSummary disabled />);
-    assert.strictEqual(wrapper.hasClass(classes.disabled), true);
+    _chai.assert.strictEqual(wrapper.hasClass(classes.disabled), true);
   });
+  it('when expanded should have expanded class', function () {
+    var wrapper = shallow(_ref6);
 
-  it('when expanded should have expanded class', () => {
-    const wrapper = shallow(<ExpansionPanelSummary expanded />);
-    assert.strictEqual(wrapper.hasClass(classes.expanded), true);
+    _chai.assert.strictEqual(wrapper.hasClass(classes.expanded), true);
   });
+  it('should render with the expand icon and have the expandIcon class', function () {
+    var wrapper = shallow(_ref7);
+    var iconWrap = wrapper.childAt(1);
 
-  it('should render with the expand icon and have the expandIcon class', () => {
-    const wrapper = shallow(<ExpansionPanelSummary expandIcon={<div>Icon</div>} />);
-    const iconWrap = wrapper.childAt(1);
-    assert.strictEqual(iconWrap.hasClass(classes.expandIcon), true);
+    _chai.assert.strictEqual(iconWrap.hasClass(classes.expandIcon), true);
   });
-
-  it('handleFocus() should set focused state', () => {
-    const eventMock = 'woofExpansionPanelSummary';
-    const wrapper = mount(<ExpansionPanelSummaryNaked classes={{}} />);
+  it('handleFocus() should set focused state', function () {
+    var eventMock = 'woofExpansionPanelSummary';
+    var wrapper = mount(_react.default.createElement(ExpansionPanelSummaryNaked, {
+      classes: {}
+    }));
     wrapper.instance().handleFocus(eventMock);
-    assert.strictEqual(wrapper.state().focused, true);
-  });
 
-  it('handleBlur() should unset focused state', () => {
-    const eventMock = 'woofExpansionPanelSummary';
-    const wrapper = mount(<ExpansionPanelSummaryNaked classes={{}} />);
-    wrapper.setState({ focused: true });
+    _chai.assert.strictEqual(wrapper.state().focused, true);
+  });
+  it('handleBlur() should unset focused state', function () {
+    var eventMock = 'woofExpansionPanelSummary';
+    var wrapper = mount(_react.default.createElement(ExpansionPanelSummaryNaked, {
+      classes: {}
+    }));
+    wrapper.setState({
+      focused: true
+    });
     wrapper.instance().handleBlur(eventMock);
-    assert.strictEqual(wrapper.state().focused, false);
+
+    _chai.assert.strictEqual(wrapper.state().focused, false);
   });
-
-  describe('prop: onChange', () => {
-    it('should propagate call to onChange prop', () => {
-      const eventMock = 'woofExpansionPanelSummary';
-      const handleChange = spy();
-      const wrapper = mount(<ExpansionPanelSummaryNaked classes={{}} onChange={handleChange} />);
+  describe('prop: onChange', function () {
+    it('should propagate call to onChange prop', function () {
+      var eventMock = 'woofExpansionPanelSummary';
+      var handleChange = (0, _sinon.spy)();
+      var wrapper = mount(_react.default.createElement(ExpansionPanelSummaryNaked, {
+        classes: {},
+        onChange: handleChange
+      }));
       wrapper.instance().handleChange(eventMock);
-      assert.strictEqual(handleChange.callCount, 1);
-      assert.strictEqual(handleChange.calledWith(eventMock), true);
+
+      _chai.assert.strictEqual(handleChange.callCount, 1);
+
+      _chai.assert.strictEqual(handleChange.calledWith(eventMock), true);
     });
-
-    it('should not propagate call to onChange prop', () => {
-      const eventMock = 'woofExpansionPanelSummary';
-      const handleChange = spy();
-      const wrapper = mount(<ExpansionPanelSummaryNaked classes={{}} onChange={handleChange} />);
-      wrapper.setProps({ onChange: undefined });
+    it('should not propagate call to onChange prop', function () {
+      var eventMock = 'woofExpansionPanelSummary';
+      var handleChange = (0, _sinon.spy)();
+      var wrapper = mount(_react.default.createElement(ExpansionPanelSummaryNaked, {
+        classes: {},
+        onChange: handleChange
+      }));
+      wrapper.setProps({
+        onChange: undefined
+      });
       wrapper.instance().handleChange(eventMock);
-      assert.strictEqual(handleChange.callCount, 0);
+
+      _chai.assert.strictEqual(handleChange.callCount, 0);
     });
   });
-
-  describe('prop: click', () => {
-    it('should trigger onClick', () => {
-      const handleClick = spy();
-      const wrapper = shallow(<ExpansionPanelSummary onClick={handleClick} />);
+  describe('prop: click', function () {
+    it('should trigger onClick', function () {
+      var handleClick = (0, _sinon.spy)();
+      var wrapper = shallow(_react.default.createElement(_ExpansionPanelSummary.default, {
+        onClick: handleClick
+      }));
       wrapper.simulate('click');
-      assert.strictEqual(handleClick.callCount, 1);
+
+      _chai.assert.strictEqual(handleClick.callCount, 1);
     });
   });
 });

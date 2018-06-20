@@ -1,100 +1,104 @@
-// @flow
+"use strict";
 
-import { assert } from 'chai';
-import consoleErrorMock from 'test/utils/consoleErrorMock';
-import getStylesCreator from './getStylesCreator';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-describe('getStylesCreator', () => {
-  const name = 'name';
-  const stylesCreator = getStylesCreator({
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _chai = require("chai");
+
+var _consoleErrorMock = _interopRequireDefault(require("test/utils/consoleErrorMock"));
+
+var _getStylesCreator = _interopRequireDefault(require("./getStylesCreator"));
+
+describe('getStylesCreator', function () {
+  var name = 'name';
+  var stylesCreator = (0, _getStylesCreator.default)({
     root: {
       color: 'black',
       '&:hover': {
         color: 'red',
-        borderRadius: 0,
-      },
-    },
+        borderRadius: 0
+      }
+    }
   });
+  it('should be able to get the styles', function () {
+    var styles = stylesCreator.create({});
 
-  it('should be able to get the styles', () => {
-    const styles = stylesCreator.create({});
-    assert.deepEqual(styles, {
+    _chai.assert.deepEqual(styles, {
       root: {
         color: 'black',
         '&:hover': {
           color: 'red',
-          borderRadius: 0,
-        },
-      },
+          borderRadius: 0
+        }
+      }
     });
   });
-
-  describe('overrides', () => {
-    before(() => {
-      consoleErrorMock.spy();
+  describe('overrides', function () {
+    before(function () {
+      _consoleErrorMock.default.spy();
     });
-
-    after(() => {
-      consoleErrorMock.reset();
+    after(function () {
+      _consoleErrorMock.default.reset();
     });
-
-    it('should be able to overrides some rules, deep', () => {
-      const theme = {
-        overrides: {
-          [name]: {
-            root: { color: 'white', '&:hover': { borderRadius: 2, backgroundColor: 'black' } },
-          },
-        },
+    it('should be able to overrides some rules, deep', function () {
+      var theme = {
+        overrides: (0, _defineProperty2.default)({}, name, {
+          root: {
+            color: 'white',
+            '&:hover': {
+              borderRadius: 2,
+              backgroundColor: 'black'
+            }
+          }
+        })
       };
-      const styles = stylesCreator.create(theme, name);
-      assert.deepEqual(styles, {
+      var styles = stylesCreator.create(theme, name);
+
+      _chai.assert.deepEqual(styles, {
         root: {
           color: 'white',
           '&:hover': {
             color: 'red',
             borderRadius: 2,
-            backgroundColor: 'black',
-          },
-        },
+            backgroundColor: 'black'
+          }
+        }
       });
     });
-
-    it('should warn on wrong usage', () => {
-      const theme = {
-        overrides: {
-          [name]: {
-            bubu: {
-              color: 'white',
-            },
-          },
-        },
+    it('should warn on wrong usage', function () {
+      var theme = {
+        overrides: (0, _defineProperty2.default)({}, name, {
+          bubu: {
+            color: 'white'
+          }
+        })
       };
       stylesCreator.create(theme, name);
-      assert.strictEqual(consoleErrorMock.callCount(), 1);
-      assert.match(consoleErrorMock.args()[0][0], /Fix the `bubu` key of `theme\.overrides\.name`/);
+
+      _chai.assert.strictEqual(_consoleErrorMock.default.callCount(), 1);
+
+      _chai.assert.match(_consoleErrorMock.default.args()[0][0], /Fix the `bubu` key of `theme\.overrides\.name`/);
     });
-
-    it('should support jss-expand', () => {
-      const stylesCreator2 = getStylesCreator({
+    it('should support jss-expand', function () {
+      var stylesCreator2 = (0, _getStylesCreator.default)({
         root: {
-          padding: [8, 16],
-        },
+          padding: [8, 16]
+        }
       });
-
-      const theme = {
-        overrides: {
-          [name]: {
-            root: {
-              padding: [20, 10],
-            },
-          },
-        },
+      var theme = {
+        overrides: (0, _defineProperty2.default)({}, name, {
+          root: {
+            padding: [20, 10]
+          }
+        })
       };
-      const styles = stylesCreator2.create(theme, name);
-      assert.deepEqual(styles, {
+      var styles = stylesCreator2.create(theme, name);
+
+      _chai.assert.deepEqual(styles, {
         root: {
-          padding: [20, 10],
-        },
+          padding: [20, 10]
+        }
       });
     });
   });

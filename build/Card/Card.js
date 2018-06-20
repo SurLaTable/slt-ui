@@ -1,42 +1,67 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _Paper = _interopRequireDefault(require("../Paper"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
 // @inheritedComponent Paper
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Paper from '../Paper';
-import withStyles from '../styles/withStyles';
-
-export const styles = {
+var styles = {
   root: {
-    overflow: 'hidden',
-  },
+    overflow: 'hidden'
+  }
 };
+exports.styles = styles;
 
 function Card(props) {
-  const { classes, className, raised, ...other } = props;
-
-  return (
-    <Paper className={classNames(classes.root, className)} elevation={raised ? 8 : 2} {...other} />
-  );
+  var classes = props.classes,
+      className = props.className,
+      raised = props.raised,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "raised"]);
+  return _react.default.createElement(_Paper.default, (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, className),
+    elevation: raised ? 8 : 2
+  }, other));
 }
 
-Card.propTypes = {
+Card.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * If `true`, the card will use raised styling.
    */
-  raised: PropTypes.bool,
-};
-
+  raised: _propTypes.default.bool
+} : {};
 Card.defaultProps = {
-  raised: false,
+  raised: false
 };
 
-export default withStyles(styles, { name: 'MuiCard' })(Card);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiCard'
+})(Card);
+
+exports.default = _default;

@@ -1,54 +1,79 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import withStyles from '../styles/withStyles';
-import { capitalize } from '../utils/helpers';
+"use strict";
 
-export const styles = theme => ({
-  root: {
-    position: 'absolute',
-    height: 2,
-    bottom: 0,
-    width: '100%',
-    transition: theme.transitions.create(),
-    willChange: 'left, width',
-  },
-  colorPrimary: {
-    backgroundColor: theme.palette.primary.main,
-  },
-  colorSecondary: {
-    backgroundColor: theme.palette.secondary.main,
-  },
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+exports.default = exports.styles = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _helpers = require("../utils/helpers");
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      position: 'absolute',
+      height: 2,
+      bottom: 0,
+      width: '100%',
+      transition: theme.transitions.create(),
+      willChange: 'left, width'
+    },
+    colorPrimary: {
+      backgroundColor: theme.palette.primary.main
+    },
+    colorSecondary: {
+      backgroundColor: theme.palette.secondary.main
+    }
+  };
+};
 /**
  * @ignore - internal component.
  */
-function TabIndicator(props) {
-  const { classes, className, color, ...other } = props;
 
-  return (
-    <span
-      className={classNames(classes.root, classes[`color${capitalize(color)}`], className)}
-      {...other}
-    />
-  );
+
+exports.styles = styles;
+
+function TabIndicator(props) {
+  var classes = props.classes,
+      className = props.className,
+      color = props.color,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "color"]);
+  return _react.default.createElement("span", (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, classes["color".concat((0, _helpers.capitalize)(color))], className)
+  }, other));
 }
 
-TabIndicator.propTypes = {
+TabIndicator.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * @ignore
    * The color of the tab indicator.
    */
-  color: PropTypes.oneOf(['primary', 'secondary']),
-};
+  color: _propTypes.default.oneOf(['primary', 'secondary'])
+} : {};
 
-export default withStyles(styles)(TabIndicator);
+var _default = (0, _withStyles.default)(styles)(TabIndicator);
+
+exports.default = _default;

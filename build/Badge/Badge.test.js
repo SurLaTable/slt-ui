@@ -1,126 +1,128 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import Badge from './Badge';
+"use strict";
 
-describe('<Badge />', () => {
-  let shallow;
-  let classes;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(<Badge badgeContent={1}>Hello World</Badge>);
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _Badge = _interopRequireDefault(require("./Badge"));
+
+var _ref = _react.default.createElement(_Badge.default, {
+  badgeContent: 1
+}, "Hello World");
+
+var _ref2 = _react.default.createElement("div", {
+  className: "unique"
+}, "Hello World");
+
+var _ref8 = _react.default.createElement(_Badge.default, {
+  badgeContent: 10,
+  color: "error"
+}, _react.default.createElement("span", null));
+
+describe('<Badge />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
+  });
+  var testChildren = _ref2;
+
+  var _ref3 = _react.default.createElement(_Badge.default, {
+    badgeContent: 10
+  }, testChildren);
+
+  it('renders children and badgeContent', function () {
+    var wrapper = shallow(_ref3);
+
+    _chai.assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
+
+    _chai.assert.ok(wrapper.find('span').length, 'should contain the badgeContent');
+  });
+  it('renders children and overwrite badge class', function () {
+    var badgeClassName = 'testBadgeClassName';
+    var wrapper = shallow(_react.default.createElement(_Badge.default, {
+      badgeContent: 10,
+      classes: {
+        badge: badgeClassName
+      }
+    }, testChildren));
+
+    _chai.assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
+
+    _chai.assert.strictEqual(wrapper.find('span').at(1).hasClass('testBadgeClassName'), true);
   });
 
-  const testChildren = <div className="unique">Hello World</div>;
+  var _ref4 = _react.default.createElement(_Badge.default, {
+    badgeContent: 10
+  }, testChildren);
 
-  it('renders children and badgeContent', () => {
-    const wrapper = shallow(<Badge badgeContent={10}>{testChildren}</Badge>);
+  it('renders children by default', function () {
+    var wrapper = shallow(_ref4);
 
-    assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
-    assert.ok(wrapper.find('span').length, 'should contain the badgeContent');
+    _chai.assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
   });
 
-  it('renders children and overwrite badge class', () => {
-    const badgeClassName = 'testBadgeClassName';
+  var _ref5 = _react.default.createElement(_Badge.default, {
+    badgeContent: 10,
+    className: "testClassName"
+  }, testChildren);
 
-    const wrapper = shallow(
-      <Badge badgeContent={10} classes={{ badge: badgeClassName }}>
-        {testChildren}
-      </Badge>,
-    );
+  it('renders children and className', function () {
+    var wrapper = shallow(_ref5);
 
-    assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
-    assert.strictEqual(
-      wrapper
-        .find('span')
-        .at(1)
-        .hasClass('testBadgeClassName'),
-      true,
-    );
+    _chai.assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
+
+    _chai.assert.strictEqual(wrapper.is('.testClassName'), true, 'should contain the className');
   });
 
-  it('renders children by default', () => {
-    const wrapper = shallow(<Badge badgeContent={10}>{testChildren}</Badge>);
+  var _ref6 = _react.default.createElement(_Badge.default, {
+    badgeContent: 10,
+    color: "primary"
+  }, testChildren);
 
-    assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
+  it('renders children and have primary styles', function () {
+    var wrapper = shallow(_ref6);
+
+    _chai.assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
+
+    _chai.assert.strictEqual(wrapper.find('span').at(1).hasClass(classes.colorPrimary), true, 'should have primary class');
   });
 
-  it('renders children and className', () => {
-    const wrapper = shallow(
-      <Badge badgeContent={10} className="testClassName">
-        {testChildren}
-      </Badge>,
-    );
+  var _ref7 = _react.default.createElement(_Badge.default, {
+    badgeContent: 10,
+    color: "secondary"
+  }, testChildren);
 
-    assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
-    assert.strictEqual(wrapper.is('.testClassName'), true, 'should contain the className');
+  it('renders children and have secondary styles', function () {
+    var wrapper = shallow(_ref7);
+
+    _chai.assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
+
+    _chai.assert.strictEqual(wrapper.find('span').at(1).hasClass(classes.colorSecondary), true);
   });
+  it('have error class', function () {
+    var wrapper = shallow(_ref8);
 
-  it('renders children and have primary styles', () => {
-    const wrapper = shallow(
-      <Badge badgeContent={10} color="primary">
-        {testChildren}
-      </Badge>,
-    );
-
-    assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
-    assert.strictEqual(
-      wrapper
-        .find('span')
-        .at(1)
-        .hasClass(classes.colorPrimary),
-      true,
-      'should have primary class',
-    );
+    _chai.assert.strictEqual(wrapper.find('span').at(2).hasClass(classes.colorError), true);
   });
+  it('renders children and overwrite root styles', function () {
+    var style = {
+      backgroundColor: 'red'
+    };
+    var wrapper = shallow(_react.default.createElement(_Badge.default, {
+      badgeContent: 10,
+      style: style
+    }, testChildren));
 
-  it('renders children and have secondary styles', () => {
-    const wrapper = shallow(
-      <Badge badgeContent={10} color="secondary">
-        {testChildren}
-      </Badge>,
-    );
+    _chai.assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
 
-    assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
-    assert.strictEqual(
-      wrapper
-        .find('span')
-        .at(1)
-        .hasClass(classes.colorSecondary),
-      true,
-    );
-  });
-
-  it('have error class', () => {
-    const wrapper = shallow(
-      <Badge badgeContent={10} color="error">
-        <span />
-      </Badge>,
-    );
-
-    assert.strictEqual(
-      wrapper
-        .find('span')
-        .at(2)
-        .hasClass(classes.colorError),
-      true,
-    );
-  });
-
-  it('renders children and overwrite root styles', () => {
-    const style = { backgroundColor: 'red' };
-    const wrapper = shallow(
-      <Badge badgeContent={10} style={style}>
-        {testChildren}
-      </Badge>,
-    );
-
-    assert.strictEqual(wrapper.contains(testChildren), true, 'should contain the children');
-    assert.strictEqual(
-      wrapper.props().style.backgroundColor,
-      style.backgroundColor,
-      'should overwrite badge backgroundColor',
-    );
+    _chai.assert.strictEqual(wrapper.props().style.backgroundColor, style.backgroundColor, 'should overwrite badge backgroundColor');
   });
 });

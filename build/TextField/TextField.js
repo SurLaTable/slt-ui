@@ -1,12 +1,33 @@
-// @inheritedComponent FormControl
+"use strict";
 
-import React from 'react';
-import warning from 'warning';
-import PropTypes from 'prop-types';
-import Input, { InputLabel } from '../Input';
-import FormControl from '../Form/FormControl';
-import FormHelperText from '../Form/FormHelperText';
-import Select from '../Select/Select';
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _warning = _interopRequireDefault(require("warning"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Input = _interopRequireWildcard(require("../Input"));
+
+var _FormControl = _interopRequireDefault(require("../Form/FormControl"));
+
+var _FormHelperText = _interopRequireDefault(require("../Form/FormHelperText"));
+
+var _Select = _interopRequireDefault(require("../Select/Select"));
+
+// @inheritedComponent FormControl
 
 /**
  * The `TextField` is a convenience wrapper for the most common cases (80%).
@@ -37,237 +58,238 @@ import Select from '../Select/Select';
  * - using the underlying components directly as shown in the demos.
  */
 function TextField(props) {
-  const {
-    autoComplete,
-    autoFocus,
-    children,
-    className,
-    defaultValue,
-    disabled,
-    error,
-    FormHelperTextProps,
-    fullWidth,
-    helperText,
-    id,
-    InputLabelProps,
-    inputProps,
-    InputProps,
-    inputRef,
-    label,
-    multiline,
-    name,
-    onBlur,
-    onChange,
-    onFocus,
-    placeholder,
-    required,
-    rows,
-    rowsMax,
-    select,
-    SelectProps,
-    type,
-    value,
-    ...other
-  } = props;
+  var autoComplete = props.autoComplete,
+      autoFocus = props.autoFocus,
+      children = props.children,
+      className = props.className,
+      defaultValue = props.defaultValue,
+      disabled = props.disabled,
+      error = props.error,
+      FormHelperTextProps = props.FormHelperTextProps,
+      fullWidth = props.fullWidth,
+      helperText = props.helperText,
+      id = props.id,
+      InputLabelProps = props.InputLabelProps,
+      inputProps = props.inputProps,
+      InputProps = props.InputProps,
+      inputRef = props.inputRef,
+      label = props.label,
+      multiline = props.multiline,
+      name = props.name,
+      onBlur = props.onBlur,
+      onChange = props.onChange,
+      onFocus = props.onFocus,
+      placeholder = props.placeholder,
+      required = props.required,
+      rows = props.rows,
+      rowsMax = props.rowsMax,
+      select = props.select,
+      SelectProps = props.SelectProps,
+      type = props.type,
+      value = props.value,
+      other = (0, _objectWithoutProperties2.default)(props, ["autoComplete", "autoFocus", "children", "className", "defaultValue", "disabled", "error", "FormHelperTextProps", "fullWidth", "helperText", "id", "InputLabelProps", "inputProps", "InputProps", "inputRef", "label", "multiline", "name", "onBlur", "onChange", "onFocus", "placeholder", "required", "rows", "rowsMax", "select", "SelectProps", "type", "value"]);
+  process.env.NODE_ENV !== "production" ? (0, _warning.default)(!select || Boolean(children), 'Material-UI: `children` must be passed when using the `TextField` component with `select`.') : void 0;
+  var helperTextId = helperText && id ? "".concat(id, "-helper-text") : undefined;
 
-  warning(
-    !select || Boolean(children),
-    'Material-UI: `children` must be passed when using the `TextField` component with `select`.',
-  );
+  var InputElement = _react.default.createElement(_Input.default, (0, _extends2.default)({
+    autoComplete: autoComplete,
+    autoFocus: autoFocus,
+    defaultValue: defaultValue,
+    disabled: disabled,
+    fullWidth: fullWidth,
+    multiline: multiline,
+    name: name,
+    rows: rows,
+    rowsMax: rowsMax,
+    type: type,
+    value: value,
+    id: id,
+    inputRef: inputRef,
+    onBlur: onBlur,
+    onChange: onChange,
+    onFocus: onFocus,
+    placeholder: placeholder,
+    inputProps: inputProps
+  }, InputProps));
 
-  const helperTextId = helperText && id ? `${id}-helper-text` : undefined;
-  const InputElement = (
-    <Input
-      autoComplete={autoComplete}
-      autoFocus={autoFocus}
-      defaultValue={defaultValue}
-      disabled={disabled}
-      fullWidth={fullWidth}
-      multiline={multiline}
-      name={name}
-      rows={rows}
-      rowsMax={rowsMax}
-      type={type}
-      value={value}
-      id={id}
-      inputRef={inputRef}
-      onBlur={onBlur}
-      onChange={onChange}
-      onFocus={onFocus}
-      placeholder={placeholder}
-      inputProps={inputProps}
-      {...InputProps}
-    />
-  );
-
-  return (
-    <FormControl
-      aria-describedby={helperTextId}
-      className={className}
-      error={error}
-      fullWidth={fullWidth}
-      required={required}
-      {...other}
-    >
-      {label && (
-        <InputLabel htmlFor={id} {...InputLabelProps}>
-          {label}
-        </InputLabel>
-      )}
-      {select ? (
-        <Select value={value} input={InputElement} {...SelectProps}>
-          {children}
-        </Select>
-      ) : (
-        InputElement
-      )}
-      {helperText && (
-        <FormHelperText id={helperTextId} {...FormHelperTextProps}>
-          {helperText}
-        </FormHelperText>
-      )}
-    </FormControl>
-  );
+  return _react.default.createElement(_FormControl.default, (0, _extends2.default)({
+    "aria-describedby": helperTextId,
+    className: className,
+    error: error,
+    fullWidth: fullWidth,
+    required: required
+  }, other), label && _react.default.createElement(_Input.InputLabel, (0, _extends2.default)({
+    htmlFor: id
+  }, InputLabelProps), label), select ? _react.default.createElement(_Select.default, (0, _extends2.default)({
+    value: value,
+    input: InputElement
+  }, SelectProps), children) : InputElement, helperText && _react.default.createElement(_FormHelperText.default, (0, _extends2.default)({
+    id: helperTextId
+  }, FormHelperTextProps), helperText));
 }
 
-TextField.propTypes = {
+TextField.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * This property helps users to fill forms faster, especially on mobile devices.
    * The name can be confusing, as it's more like an autofill.
    * You can learn more about it here:
    * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
-  autoComplete: PropTypes.string,
+  autoComplete: _propTypes.default.string,
+
   /**
    * If `true`, the input will be focused during the first mount.
    */
-  autoFocus: PropTypes.bool,
+  autoFocus: _propTypes.default.bool,
+
   /**
    * @ignore
    */
-  children: PropTypes.node,
+  children: _propTypes.default.node,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * The default value of the `Input` element.
    */
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultValue: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
   /**
    * If `true`, the input will be disabled.
    */
-  disabled: PropTypes.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, the label will be displayed in an error state.
    */
-  error: PropTypes.bool,
+  error: _propTypes.default.bool,
+
   /**
    * Properties applied to the `FormHelperText` element.
    */
-  FormHelperTextProps: PropTypes.object,
+  FormHelperTextProps: _propTypes.default.object,
+
   /**
    * If `true`, the input will take up the full width of its container.
    */
-  fullWidth: PropTypes.bool,
+  fullWidth: _propTypes.default.bool,
+
   /**
    * The helper text content.
    */
-  helperText: PropTypes.node,
+  helperText: _propTypes.default.node,
+
   /**
    * The id of the `input` element.
    * Use that property to make `label` and `helperText` accessible for screen readers.
    */
-  id: PropTypes.string,
+  id: _propTypes.default.string,
+
   /**
    * Properties applied to the `InputLabel` element.
    */
-  InputLabelProps: PropTypes.object,
+  InputLabelProps: _propTypes.default.object,
+
   /**
    * Properties applied to the `Input` element.
    */
-  InputProps: PropTypes.object,
+  InputProps: _propTypes.default.object,
+
   /**
    * Properties applied to the native `input` element.
    */
-  inputProps: PropTypes.object,
+  inputProps: _propTypes.default.object,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
-  inputRef: PropTypes.func,
+  inputRef: _propTypes.default.func,
+
   /**
    * The label content.
    */
-  label: PropTypes.node,
+  label: _propTypes.default.node,
+
   /**
    * If `dense` or `normal`, will adjust vertical spacing of this and contained components.
    */
-  margin: PropTypes.oneOf(['none', 'dense', 'normal']),
+  margin: _propTypes.default.oneOf(['none', 'dense', 'normal']),
+
   /**
    * If `true`, a textarea element will be rendered instead of an input.
    */
-  multiline: PropTypes.bool,
+  multiline: _propTypes.default.bool,
+
   /**
    * Name attribute of the `input` element.
    */
-  name: PropTypes.string,
+  name: _propTypes.default.string,
+
   /**
    * @ignore
    */
-  onBlur: PropTypes.func,
+  onBlur: _propTypes.default.func,
+
   /**
    * Callback fired when the value is changed.
    *
    * @param {object} event The event source of the callback.
    * You can pull out the new value by accessing `event.target.value`.
    */
-  onChange: PropTypes.func,
+  onChange: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onFocus: PropTypes.func,
+  onFocus: _propTypes.default.func,
+
   /**
    * The short hint displayed in the input before the user enters a value.
    */
-  placeholder: PropTypes.string,
+  placeholder: _propTypes.default.string,
+
   /**
    * If `true`, the label is displayed as required.
    */
-  required: PropTypes.bool,
+  required: _propTypes.default.bool,
+
   /**
    * Number of rows to display when multiline option is set to true.
    */
-  rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  rows: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
   /**
    * Maximum number of rows to display when multiline option is set to true.
    */
-  rowsMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  rowsMax: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
   /**
    * Render a `Select` element while passing the `Input` element to `Select` as `input` parameter.
    * If this option is set you must pass the options of the select as children.
    */
-  select: PropTypes.bool,
+  select: _propTypes.default.bool,
+
   /**
    * Properties applied to the `Select` element.
    */
-  SelectProps: PropTypes.object,
+  SelectProps: _propTypes.default.object,
+
   /**
    * Type attribute of the `Input` element. It should be a valid HTML5 input type.
    */
-  type: PropTypes.string,
+  type: _propTypes.default.string,
+
   /**
    * The value of the `Input` element, required for a controlled component.
    */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  ]),
-};
-
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number, _propTypes.default.arrayOf(_propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]))])
+} : {};
 TextField.defaultProps = {
   required: false,
-  select: false,
+  select: false
 };
-
-export default TextField;
+var _default = TextField;
+exports.default = _default;

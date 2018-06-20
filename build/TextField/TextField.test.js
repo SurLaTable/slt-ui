@@ -1,146 +1,183 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, createMount } from '../test-utils';
-import Input, { InputLabel } from '../Input';
-import FormHelperText from '../Form/FormHelperText';
-import FormControl from '../Form/FormControl';
-import TextField from './TextField';
-import Select from '../Select/Select';
+"use strict";
 
-describe('<TextField />', () => {
-  let shallow;
-  let mount;
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-  before(() => {
-    shallow = createShallow();
-    mount = createMount();
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _Input = _interopRequireWildcard(require("../Input"));
+
+var _FormHelperText = _interopRequireDefault(require("../Form/FormHelperText"));
+
+var _FormControl = _interopRequireDefault(require("../Form/FormControl"));
+
+var _TextField = _interopRequireDefault(require("./TextField"));
+
+var _Select = _interopRequireDefault(require("../Select/Select"));
+
+var _ref = _react.default.createElement(_TextField.default, null);
+
+var _ref2 = _react.default.createElement(_TextField.default, {
+  multiline: true
+});
+
+var _ref3 = _react.default.createElement(_TextField.default, {
+  fullWidth: true
+});
+
+describe('<TextField />', function () {
+  var shallow;
+  var mount;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)();
+    mount = (0, _testUtils.createMount)();
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
-
-  describe('shallow', () => {
-    let wrapper;
-
-    beforeEach(() => {
-      wrapper = shallow(<TextField />);
+  describe('shallow', function () {
+    var wrapper;
+    beforeEach(function () {
+      wrapper = shallow(_ref);
     });
-
-    describe('structure', () => {
-      it('should be a FormControl', () => {
-        assert.strictEqual(wrapper.type(), FormControl);
+    describe('structure', function () {
+      it('should be a FormControl', function () {
+        _chai.assert.strictEqual(wrapper.type(), _FormControl.default);
       });
+      it('should pass className to the FormControl', function () {
+        wrapper.setProps({
+          className: 'foo'
+        });
 
-      it('should pass className to the FormControl', () => {
-        wrapper.setProps({ className: 'foo' });
-        assert.strictEqual(wrapper.dive().hasClass('foo'), true);
+        _chai.assert.strictEqual(wrapper.dive().hasClass('foo'), true);
       });
+      it('should pass margin to the FormControl', function () {
+        wrapper.setProps({
+          margin: 'normal'
+        });
 
-      it('should pass margin to the FormControl', () => {
-        wrapper.setProps({ margin: 'normal' });
-        assert.strictEqual(wrapper.dive().props().margin, 'normal');
+        _chai.assert.strictEqual(wrapper.dive().props().margin, 'normal');
       });
+      it('should have an Input as the only child', function () {
+        _chai.assert.strictEqual(wrapper.children().length, 1);
 
-      it('should have an Input as the only child', () => {
-        assert.strictEqual(wrapper.children().length, 1);
-        assert.strictEqual(wrapper.childAt(0).type(), Input);
+        _chai.assert.strictEqual(wrapper.childAt(0).type(), _Input.default);
       });
+      it('should forward the multiline prop to Input', function () {
+        wrapper = shallow(_ref2);
 
-      it('should forward the multiline prop to Input', () => {
-        wrapper = shallow(<TextField multiline />);
-        assert.strictEqual(wrapper.childAt(0).props().multiline, true);
+        _chai.assert.strictEqual(wrapper.childAt(0).props().multiline, true);
       });
+      it('should forward the fullWidth prop to Input', function () {
+        wrapper = shallow(_ref3);
 
-      it('should forward the fullWidth prop to Input', () => {
-        wrapper = shallow(<TextField fullWidth />);
-        assert.strictEqual(wrapper.childAt(0).props().fullWidth, true);
-      });
-    });
-
-    describe('with a label', () => {
-      beforeEach(() => {
-        wrapper.setProps({ label: 'Foo bar' });
-      });
-
-      it('should have 2 children', () => {
-        assert.strictEqual(wrapper.children().length, 2);
-      });
-
-      it('should have an InputLabel as the first child', () => {
-        assert.strictEqual(wrapper.childAt(0).type(), InputLabel);
-      });
-
-      it('should apply the className to the InputLabel', () => {
-        wrapper.setProps({ InputLabelProps: { className: 'foo' } });
-        assert.strictEqual(wrapper.find(InputLabel).hasClass('foo'), true);
-      });
-
-      it('should have an Input as the second child', () => {
-        assert.strictEqual(wrapper.childAt(1).type(), Input);
+        _chai.assert.strictEqual(wrapper.childAt(0).props().fullWidth, true);
       });
     });
-
-    describe('with a helper text', () => {
-      beforeEach(() => {
-        wrapper.setProps({ helperText: 'Foo bar' });
+    describe('with a label', function () {
+      beforeEach(function () {
+        wrapper.setProps({
+          label: 'Foo bar'
+        });
       });
-
-      it('should have 2 children', () => {
-        assert.strictEqual(wrapper.children().length, 2);
+      it('should have 2 children', function () {
+        _chai.assert.strictEqual(wrapper.children().length, 2);
       });
-
-      it('should have an FormHelperText as the second child', () => {
-        assert.strictEqual(wrapper.childAt(1).type(), FormHelperText);
+      it('should have an InputLabel as the first child', function () {
+        _chai.assert.strictEqual(wrapper.childAt(0).type(), _Input.InputLabel);
       });
+      it('should apply the className to the InputLabel', function () {
+        wrapper.setProps({
+          InputLabelProps: {
+            className: 'foo'
+          }
+        });
 
-      it('should apply the className to the FormHelperText', () => {
-        wrapper.setProps({ FormHelperTextProps: { className: 'foo' } });
-        assert.strictEqual(wrapper.find(FormHelperText).hasClass('foo'), true);
+        _chai.assert.strictEqual(wrapper.find(_Input.InputLabel).hasClass('foo'), true);
       });
-
-      it('should have an Input as the first child', () => {
-        assert.strictEqual(wrapper.childAt(0).type(), Input);
+      it('should have an Input as the second child', function () {
+        _chai.assert.strictEqual(wrapper.childAt(1).type(), _Input.default);
       });
     });
+    describe('with a helper text', function () {
+      beforeEach(function () {
+        wrapper.setProps({
+          helperText: 'Foo bar'
+        });
+      });
+      it('should have 2 children', function () {
+        _chai.assert.strictEqual(wrapper.children().length, 2);
+      });
+      it('should have an FormHelperText as the second child', function () {
+        _chai.assert.strictEqual(wrapper.childAt(1).type(), _FormHelperText.default);
+      });
+      it('should apply the className to the FormHelperText', function () {
+        wrapper.setProps({
+          FormHelperTextProps: {
+            className: 'foo'
+          }
+        });
 
-    describe('prop: InputProps', () => {
-      it('should apply additional properties to the Input component', () => {
-        wrapper.setProps({ InputProps: { inputClassName: 'fullWidth' } });
-        assert.strictEqual(wrapper.find(Input).props().inputClassName, 'fullWidth');
+        _chai.assert.strictEqual(wrapper.find(_FormHelperText.default).hasClass('foo'), true);
+      });
+      it('should have an Input as the first child', function () {
+        _chai.assert.strictEqual(wrapper.childAt(0).type(), _Input.default);
+      });
+    });
+    describe('prop: InputProps', function () {
+      it('should apply additional properties to the Input component', function () {
+        wrapper.setProps({
+          InputProps: {
+            inputClassName: 'fullWidth'
+          }
+        });
+
+        _chai.assert.strictEqual(wrapper.find(_Input.default).props().inputClassName, 'fullWidth');
       });
     });
   });
+  describe('prop: InputProps', function () {
+    it('should apply additional properties to the Input component', function () {
+      var wrapper = mount(_react.default.createElement(_TextField.default, {
+        InputProps: {
+          readOnly: true
+        }
+      }));
 
-  describe('prop: InputProps', () => {
-    it('should apply additional properties to the Input component', () => {
-      const wrapper = mount(<TextField InputProps={{ readOnly: true }} />);
-      assert.strictEqual(wrapper.find('input').props().readOnly, true);
+      _chai.assert.strictEqual(wrapper.find('input').props().readOnly, true);
     });
   });
+  describe('prop: select', function () {
+    it('should be able to render a select as expected', function () {
+      var currencies = [{
+        value: 'USD',
+        label: '$'
+      }, {
+        value: 'BTC',
+        label: '฿'
+      }];
+      var wrapper = shallow(_react.default.createElement(_TextField.default, {
+        select: true,
+        SelectProps: {
+          native: true
+        }
+      }, currencies.map(function (option) {
+        return _react.default.createElement("option", {
+          key: option.value,
+          value: option.value
+        }, option.label);
+      })));
 
-  describe('prop: select', () => {
-    it('should be able to render a select as expected', () => {
-      const currencies = [{ value: 'USD', label: '$' }, { value: 'BTC', label: '฿' }];
+      _chai.assert.strictEqual(wrapper.childAt(0).type(), _Select.default);
 
-      const wrapper = shallow(
-        <TextField select SelectProps={{ native: true }}>
-          {currencies.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>,
-      );
-      assert.strictEqual(wrapper.childAt(0).type(), Select);
-      assert.strictEqual(wrapper.childAt(0).props().input.type, Input);
-      assert.strictEqual(
-        wrapper
-          .childAt(0)
-          .children()
-          .every('option'),
-        true,
-      );
+      _chai.assert.strictEqual(wrapper.childAt(0).props().input.type, _Input.default);
+
+      _chai.assert.strictEqual(wrapper.childAt(0).children().every('option'), true);
     });
   });
 });

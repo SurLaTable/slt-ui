@@ -1,49 +1,59 @@
-import data from '../data';
+"use strict";
 
-const productComparisonReducer = (state = {}, action) => {
-    let selection = state.selection ? state.selection.slice() : [];
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-    switch (action.type) {
-        case 'REMOVE_ALL':
-            return {
-                ...state,
-                selection: []
-            };
-        case 'REMOVE_PRODUCT':
-            for (let i = selection.length - 1; i >= 0; i--) {
-                if (selection[i].id == action.productId) {
-                    selection.splice(i, 1);
-                    break;
-                }
-            }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-            return {
-                ...state,
-                selection
-            };
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 
-        case 'TOGGLE_PRODUCT':
-            return {
-                ...state,
-                selection: action.checked
-                    ? [...selection, data[action.productId]]
-                    : selection.filter(
-                          product => product.id !== action.productId
-                      )
-            };
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-        case 'SET_PRODUCTS':
-            return {
-                ...state,
-                selection: action.selection.slice()
-            };
+var _data = _interopRequireDefault(require("../data"));
 
-        default:
-            return {
-                selection,
-                ...state
-            };
-    }
+var productComparisonReducer = function productComparisonReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var selection = state.selection ? state.selection.slice() : [];
+
+  switch (action.type) {
+    case 'REMOVE_ALL':
+      return (0, _objectSpread2.default)({}, state, {
+        selection: []
+      });
+
+    case 'REMOVE_PRODUCT':
+      for (var i = selection.length - 1; i >= 0; i--) {
+        if (selection[i].id == action.productId) {
+          selection.splice(i, 1);
+          break;
+        }
+      }
+
+      return (0, _objectSpread2.default)({}, state, {
+        selection: selection
+      });
+
+    case 'TOGGLE_PRODUCT':
+      return (0, _objectSpread2.default)({}, state, {
+        selection: action.checked ? (0, _toConsumableArray2.default)(selection).concat([_data.default[action.productId]]) : selection.filter(function (product) {
+          return product.id !== action.productId;
+        })
+      });
+
+    case 'SET_PRODUCTS':
+      return (0, _objectSpread2.default)({}, state, {
+        selection: action.selection.slice()
+      });
+
+    default:
+      return (0, _objectSpread2.default)({
+        selection: selection
+      }, state);
+  }
 };
 
-export default productComparisonReducer;
+var _default = productComparisonReducer;
+exports.default = _default;

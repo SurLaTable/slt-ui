@@ -1,177 +1,189 @@
-// @flow
+"use strict";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { assert } from 'chai';
-import { spy } from 'sinon';
-import { createMount } from '../test-utils';
-import ClickAwayListener from './ClickAwayListener';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-describe('<ClickAwayListener />', () => {
-  let mount;
-  let wrapper;
+var _react = _interopRequireDefault(require("react"));
 
-  before(() => {
-    mount = createMount();
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _chai = require("chai");
+
+var _sinon = require("sinon");
+
+var _testUtils = require("../test-utils");
+
+var _ClickAwayListener = _interopRequireDefault(require("./ClickAwayListener"));
+
+var _ref = _react.default.createElement("span", null, "Hello");
+
+var _ref2 = _react.default.createElement("span", null, "Hello");
+
+var _ref3 = _react.default.createElement("span", null, "Hello");
+
+var _ref4 = _react.default.createElement("span", null, "Hello");
+
+var _ref5 = _react.default.createElement("span", null, "Hello");
+
+var _ref6 = _react.default.createElement("span", null, "Hello");
+
+var _ref7 = _react.default.createElement("span", null, "Hello");
+
+var _ref8 = _react.default.createElement("span", null, "Hello");
+
+var _ref9 = _react.default.createElement("span", null, "Hello");
+
+describe('<ClickAwayListener />', function () {
+  var mount;
+  var wrapper;
+  before(function () {
+    mount = (0, _testUtils.createMount)();
   });
-
-  afterEach(() => {
+  afterEach(function () {
     wrapper.unmount();
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
+  it('should render the children', function () {
+    var children = _ref;
+    wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+      onClickAway: function onClickAway() {}
+    }, children));
 
-  it('should render the children', () => {
-    const children = <span>Hello</span>;
-    wrapper = mount(<ClickAwayListener onClickAway={() => {}}>{children}</ClickAwayListener>);
-    assert.strictEqual(wrapper.contains(children), true);
+    _chai.assert.strictEqual(wrapper.contains(children), true);
   });
-
-  describe('prop: onClickAway', () => {
-    it('should be call when clicking away', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway}>
-          <span>Hello</span>
-        </ClickAwayListener>,
-      );
-
-      const event = document.createEvent('MouseEvents');
+  describe('prop: onClickAway', function () {
+    it('should be call when clicking away', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway
+      }, _ref2));
+      var event = document.createEvent('MouseEvents');
       event.initEvent('mouseup', true, true);
       window.document.body.dispatchEvent(event);
 
-      assert.strictEqual(handleClickAway.callCount, 1);
-      assert.deepEqual(handleClickAway.args[0], [event]);
+      _chai.assert.strictEqual(handleClickAway.callCount, 1);
+
+      _chai.assert.deepEqual(handleClickAway.args[0], [event]);
     });
+    it('should not be call when clicking inside', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway
+      }, _ref3));
+      var event = new window.Event('mouseup', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      });
 
-    it('should not be call when clicking inside', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway}>
-          <span>Hello</span>
-        </ClickAwayListener>,
-      );
+      var el = _reactDom.default.findDOMNode(wrapper.instance());
 
-      const event = new window.Event('mouseup', { view: window, bubbles: true, cancelable: true });
-      const el = ReactDOM.findDOMNode(wrapper.instance());
       if (el) {
         el.dispatchEvent(event);
       }
 
-      assert.strictEqual(handleClickAway.callCount, 0);
+      _chai.assert.strictEqual(handleClickAway.callCount, 0);
     });
-
-    it('should not be call when defaultPrevented', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway}>
-          <ClickAwayListener onClickAway={event => event.preventDefault()}>
-            <span>Hello</span>
-          </ClickAwayListener>
-        </ClickAwayListener>,
-      );
-
-      const event = new window.Event('mouseup', { view: window, bubbles: true, cancelable: true });
+    it('should not be call when defaultPrevented', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway
+      }, _react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: function onClickAway(event) {
+          return event.preventDefault();
+        }
+      }, _ref4)));
+      var event = new window.Event('mouseup', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      });
       window.document.body.dispatchEvent(event);
-      assert.strictEqual(handleClickAway.callCount, 0);
+
+      _chai.assert.strictEqual(handleClickAway.callCount, 0);
     });
   });
-
-  describe('prop: mouseEvent', () => {
-    it('should not call `props.onClickAway` when `props.mouseEvent` is `false`', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway} mouseEvent={false}>
-          <span>Hello</span>
-        </ClickAwayListener>,
-      );
-
-      const event = document.createEvent('MouseEvents');
+  describe('prop: mouseEvent', function () {
+    it('should not call `props.onClickAway` when `props.mouseEvent` is `false`', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway,
+        mouseEvent: false
+      }, _ref5));
+      var event = document.createEvent('MouseEvents');
       event.initEvent('mouseup', true, true);
       window.document.body.dispatchEvent(event);
 
-      assert.strictEqual(handleClickAway.callCount, 0);
+      _chai.assert.strictEqual(handleClickAway.callCount, 0);
     });
-
-    it('should call `props.onClickAway` when the appropriate mouse event is triggered', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway} mouseEvent="onMouseDown">
-          <span>Hello</span>
-        </ClickAwayListener>,
-      );
-
-      const mouseUpEvent = document.createEvent('MouseEvents');
+    it('should call `props.onClickAway` when the appropriate mouse event is triggered', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway,
+        mouseEvent: "onMouseDown"
+      }, _ref6));
+      var mouseUpEvent = document.createEvent('MouseEvents');
       mouseUpEvent.initEvent('mouseup', true, true);
       window.document.body.dispatchEvent(mouseUpEvent);
 
-      assert.strictEqual(handleClickAway.callCount, 0);
+      _chai.assert.strictEqual(handleClickAway.callCount, 0);
 
-      const mouseDownEvent = document.createEvent('MouseEvents');
+      var mouseDownEvent = document.createEvent('MouseEvents');
       mouseDownEvent.initEvent('mousedown', true, true);
       window.document.body.dispatchEvent(mouseDownEvent);
 
-      assert.strictEqual(handleClickAway.callCount, 1);
-      assert.deepEqual(handleClickAway.args[0], [mouseDownEvent]);
+      _chai.assert.strictEqual(handleClickAway.callCount, 1);
+
+      _chai.assert.deepEqual(handleClickAway.args[0], [mouseDownEvent]);
     });
   });
-
-  describe('prop: touchEvent', () => {
-    it('should not call `props.onClickAway` when `props.touchEvent` is `false`', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway} touchEvent={false}>
-          <span>Hello</span>
-        </ClickAwayListener>,
-      );
-
-      const event = document.createEvent('Events');
+  describe('prop: touchEvent', function () {
+    it('should not call `props.onClickAway` when `props.touchEvent` is `false`', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway,
+        touchEvent: false
+      }, _ref7));
+      var event = document.createEvent('Events');
       event.initEvent('touchend', true, true);
       window.document.body.dispatchEvent(event);
 
-      assert.strictEqual(handleClickAway.callCount, 0);
+      _chai.assert.strictEqual(handleClickAway.callCount, 0);
     });
-
-    it('should call `props.onClickAway` when the appropriate touch event is triggered', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway} touchEvent="onTouchStart">
-          <span>Hello</span>
-        </ClickAwayListener>,
-      );
-
-      const touchEndEvent = document.createEvent('Events');
+    it('should call `props.onClickAway` when the appropriate touch event is triggered', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway,
+        touchEvent: "onTouchStart"
+      }, _ref8));
+      var touchEndEvent = document.createEvent('Events');
       touchEndEvent.initEvent('touchend', true, true);
       window.document.body.dispatchEvent(touchEndEvent);
 
-      assert.strictEqual(handleClickAway.callCount, 0);
+      _chai.assert.strictEqual(handleClickAway.callCount, 0);
 
-      const touchStartEvent = document.createEvent('Events');
+      var touchStartEvent = document.createEvent('Events');
       touchStartEvent.initEvent('touchstart', true, true);
       window.document.body.dispatchEvent(touchStartEvent);
 
-      assert.strictEqual(handleClickAway.callCount, 1);
-      assert.deepEqual(handleClickAway.args[0], [touchStartEvent]);
+      _chai.assert.strictEqual(handleClickAway.callCount, 1);
+
+      _chai.assert.deepEqual(handleClickAway.args[0], [touchStartEvent]);
     });
   });
-
-  describe('IE11 issue', () => {
-    it('should not call the hook if the event is triggered after being unmounted', () => {
-      const handleClickAway = spy();
-      wrapper = mount(
-        <ClickAwayListener onClickAway={handleClickAway}>
-          <span>Hello</span>
-        </ClickAwayListener>,
-      );
+  describe('IE11 issue', function () {
+    it('should not call the hook if the event is triggered after being unmounted', function () {
+      var handleClickAway = (0, _sinon.spy)();
+      wrapper = mount(_react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: handleClickAway
+      }, _ref9));
       wrapper.instance().mounted = false;
-
-      const event = document.createEvent('MouseEvents');
+      var event = document.createEvent('MouseEvents');
       event.initEvent('mouseup', true, true);
       window.document.body.dispatchEvent(event);
 
-      assert.strictEqual(handleClickAway.callCount, 0);
+      _chai.assert.strictEqual(handleClickAway.callCount, 0);
     });
   });
 });

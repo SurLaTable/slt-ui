@@ -1,36 +1,35 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createMount } from '../test-utils';
-import CssBaseline from './CssBaseline';
+"use strict";
 
-describe('<CssBaseline />', () => {
-  let mount;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    mount = createMount();
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _CssBaseline = _interopRequireDefault(require("./CssBaseline"));
+
+var _ref = _react.default.createElement(_CssBaseline.default, null);
+
+var _ref2 = _react.default.createElement(_CssBaseline.default, null, _react.default.createElement("div", null));
+
+describe('<CssBaseline />', function () {
+  var mount;
+  before(function () {
+    mount = (0, _testUtils.createMount)();
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
+  it('should render nothing', function () {
+    var wrapper = mount(_ref);
 
-  it('should render nothing', () => {
-    const wrapper = mount(<CssBaseline />);
-    assert.strictEqual(wrapper.childAt(0).children().length, 0, 'should have no children');
+    _chai.assert.strictEqual(wrapper.childAt(0).children().length, 0, 'should have no children');
   });
+  it('should render a div with the root class', function () {
+    var wrapper = mount(_ref2);
 
-  it('should render a div with the root class', () => {
-    const wrapper = mount(
-      <CssBaseline>
-        <div />
-      </CssBaseline>,
-    );
-    assert.strictEqual(
-      wrapper
-        .childAt(0)
-        .children()
-        .name(),
-      'div',
-    );
+    _chai.assert.strictEqual(wrapper.childAt(0).children().name(), 'div');
   });
 });

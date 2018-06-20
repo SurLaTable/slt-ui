@@ -1,39 +1,48 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow } from '../test-utils';
-import MenuList from './MenuList';
+"use strict";
 
-describe('<MenuList />', () => {
-  let shallow;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    shallow = createShallow({ dive: true, disableLifecycleMethods: true });
-  });
+var _react = _interopRequireDefault(require("react"));
 
-  describe('list node', () => {
-    let wrapper;
+var _chai = require("chai");
 
-    before(() => {
-      wrapper = shallow(<MenuList className="test-class" data-test="hi" />);
+var _testUtils = require("../test-utils");
+
+var _MenuList = _interopRequireDefault(require("./MenuList"));
+
+var _ref = _react.default.createElement(_MenuList.default, {
+  className: "test-class",
+  "data-test": "hi"
+});
+
+var _ref2 = _react.default.createElement(_MenuList.default, null, _react.default.createElement("div", null), _react.default.createElement("div", null), null);
+
+describe('<MenuList />', function () {
+  var shallow;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true,
+      disableLifecycleMethods: true
     });
+  });
+  describe('list node', function () {
+    var wrapper;
+    before(function () {
+      wrapper = shallow(_ref);
+    });
+    it('should render a List', function () {
+      _chai.assert.strictEqual(wrapper.name(), 'List');
 
-    it('should render a List', () => {
-      assert.strictEqual(wrapper.name(), 'List');
-      assert.strictEqual(wrapper.props()['data-test'], 'hi');
-      assert.strictEqual(wrapper.hasClass('test-class'), true);
+      _chai.assert.strictEqual(wrapper.props()['data-test'], 'hi');
+
+      _chai.assert.strictEqual(wrapper.hasClass('test-class'), true);
     });
   });
+  describe('prop: children', function () {
+    it('should support invalid children', function () {
+      var wrapper = shallow(_ref2);
 
-  describe('prop: children', () => {
-    it('should support invalid children', () => {
-      const wrapper = shallow(
-        <MenuList>
-          <div />
-          <div />
-          {null}
-        </MenuList>,
-      );
-      assert.strictEqual(wrapper.find('div').length, 2);
+      _chai.assert.strictEqual(wrapper.find('div').length, 2);
     });
   });
 });

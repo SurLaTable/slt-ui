@@ -1,161 +1,197 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import withStyles from '../styles/withStyles';
-import { capitalize } from '../utils/helpers';
-import SwitchBase from '../internal/SwitchBase';
+"use strict";
 
-export const styles = theme => ({
-  root: {
-    display: 'inline-flex',
-    width: 62,
-    position: 'relative',
-    flexShrink: 0,
-    // For correct alignment with the text.
-    verticalAlign: 'middle',
-  },
-  icon: {
-    boxShadow: theme.shadows[1],
-    backgroundColor: 'currentColor',
-    width: 20,
-    height: 20,
-    borderRadius: '50%',
-  },
-  iconChecked: {
-    boxShadow: theme.shadows[2],
-  },
-  switchBase: {
-    zIndex: 1,
-    color: theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[400],
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  checked: {
-    transform: 'translateX(14px)',
-    '& + $bar': {
-      opacity: 0.5,
-    },
-  },
-  colorPrimary: {
-    '&$checked': {
-      color: theme.palette.primary.main,
-      '& + $bar': {
-        backgroundColor: theme.palette.primary.main,
-      },
-    },
-  },
-  colorSecondary: {
-    '&$checked': {
-      color: theme.palette.secondary.main,
-      '& + $bar': {
-        backgroundColor: theme.palette.secondary.main,
-      },
-    },
-  },
-  disabled: {
-    '& + $bar': {
-      opacity: theme.palette.type === 'light' ? 0.12 : 0.1,
-    },
-    '& $icon': {
-      boxShadow: theme.shadows[1],
-    },
-    '&$switchBase': {
-      color: theme.palette.type === 'light' ? theme.palette.grey[400] : theme.palette.grey[800],
-      '& + $bar': {
-        backgroundColor:
-          theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
-      },
-    },
-  },
-  bar: {
-    borderRadius: 7,
-    display: 'block',
-    position: 'absolute',
-    width: 34,
-    height: 14,
-    top: '50%',
-    left: '50%',
-    marginTop: -7,
-    marginLeft: -17,
-    transition: theme.transitions.create(['opacity', 'background-color'], {
-      duration: theme.transitions.duration.shortest,
-    }),
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
-    opacity: theme.palette.type === 'light' ? 0.38 : 0.3,
-  },
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _helpers = require("../utils/helpers");
+
+var _SwitchBase = _interopRequireDefault(require("../internal/SwitchBase"));
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      display: 'inline-flex',
+      width: 62,
+      position: 'relative',
+      flexShrink: 0,
+      // For correct alignment with the text.
+      verticalAlign: 'middle'
+    },
+    icon: {
+      boxShadow: theme.shadows[1],
+      backgroundColor: 'currentColor',
+      width: 20,
+      height: 20,
+      borderRadius: '50%'
+    },
+    iconChecked: {
+      boxShadow: theme.shadows[2]
+    },
+    switchBase: {
+      zIndex: 1,
+      color: theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[400],
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest
+      })
+    },
+    checked: {
+      transform: 'translateX(14px)',
+      '& + $bar': {
+        opacity: 0.5
+      }
+    },
+    colorPrimary: {
+      '&$checked': {
+        color: theme.palette.primary.main,
+        '& + $bar': {
+          backgroundColor: theme.palette.primary.main
+        }
+      }
+    },
+    colorSecondary: {
+      '&$checked': {
+        color: theme.palette.secondary.main,
+        '& + $bar': {
+          backgroundColor: theme.palette.secondary.main
+        }
+      }
+    },
+    disabled: {
+      '& + $bar': {
+        opacity: theme.palette.type === 'light' ? 0.12 : 0.1
+      },
+      '& $icon': {
+        boxShadow: theme.shadows[1]
+      },
+      '&$switchBase': {
+        color: theme.palette.type === 'light' ? theme.palette.grey[400] : theme.palette.grey[800],
+        '& + $bar': {
+          backgroundColor: theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white
+        }
+      }
+    },
+    bar: {
+      borderRadius: 7,
+      display: 'block',
+      position: 'absolute',
+      width: 34,
+      height: 14,
+      top: '50%',
+      left: '50%',
+      marginTop: -7,
+      marginLeft: -17,
+      transition: theme.transitions.create(['opacity', 'background-color'], {
+        duration: theme.transitions.duration.shortest
+      }),
+      backgroundColor: theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
+      opacity: theme.palette.type === 'light' ? 0.38 : 0.3
+    }
+  };
+};
+
+exports.styles = styles;
 
 function Switch(props) {
-  const { classes, className, color, ...other } = props;
-
-  return (
-    <span className={classNames(classes.root, className)}>
-      <SwitchBase
-        icon={<span className={classes.icon} />}
-        classes={{
-          root: classNames(classes.switchBase, classes[`color${capitalize(color)}`]),
-          checked: classes.checked,
-          disabled: classes.disabled,
-        }}
-        checkedIcon={<span className={classNames(classes.icon, classes.iconChecked)} />}
-        {...other}
-      />
-      <span className={classes.bar} />
-    </span>
-  );
+  var classes = props.classes,
+      className = props.className,
+      color = props.color,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "color"]);
+  return _react.default.createElement("span", {
+    className: (0, _classnames.default)(classes.root, className)
+  }, _react.default.createElement(_SwitchBase.default, (0, _extends2.default)({
+    icon: _react.default.createElement("span", {
+      className: classes.icon
+    }),
+    classes: {
+      root: (0, _classnames.default)(classes.switchBase, classes["color".concat((0, _helpers.capitalize)(color))]),
+      checked: classes.checked,
+      disabled: classes.disabled
+    },
+    checkedIcon: _react.default.createElement("span", {
+      className: (0, _classnames.default)(classes.icon, classes.iconChecked)
+    })
+  }, other)), _react.default.createElement("span", {
+    className: classes.bar
+  }));
 }
 
-Switch.propTypes = {
+Switch.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * If `true`, the component is checked.
    */
-  checked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  checked: _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.string]),
+
   /**
    * The icon to display when the component is checked.
    */
-  checkedIcon: PropTypes.node,
+  checkedIcon: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
-  color: PropTypes.oneOf(['primary', 'secondary', 'default']),
+  color: _propTypes.default.oneOf(['primary', 'secondary', 'default']),
+
   /**
    * @ignore
    */
-  defaultChecked: PropTypes.bool,
+  defaultChecked: _propTypes.default.bool,
+
   /**
    * If `true`, the switch will be disabled.
    */
-  disabled: PropTypes.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, the ripple effect will be disabled.
    */
-  disableRipple: PropTypes.bool,
+  disableRipple: _propTypes.default.bool,
+
   /**
    * The icon to display when the component is unchecked.
    */
-  icon: PropTypes.node,
+  icon: _propTypes.default.node,
+
   /**
    * The id of the `input` element.
    */
-  id: PropTypes.string,
+  id: _propTypes.default.string,
+
   /**
    * Properties applied to the `input` element.
    */
-  inputProps: PropTypes.object,
+  inputProps: _propTypes.default.object,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
-  inputRef: PropTypes.func,
+  inputRef: _propTypes.default.func,
+
   /**
    * Callback fired when the state is changed.
    *
@@ -163,19 +199,24 @@ Switch.propTypes = {
    * You can pull out the new value by accessing `event.target.checked`.
    * @param {boolean} checked The `checked` value of the switch
    */
-  onChange: PropTypes.func,
+  onChange: _propTypes.default.func,
+
   /**
    * The input component property `type`.
    */
-  type: PropTypes.string,
+  type: _propTypes.default.string,
+
   /**
    * The value of the component.
    */
-  value: PropTypes.string,
-};
-
+  value: _propTypes.default.string
+} : {};
 Switch.defaultProps = {
-  color: 'secondary',
+  color: 'secondary'
 };
 
-export default withStyles(styles, { name: 'MuiSwitch' })(Switch);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiSwitch'
+})(Switch);
+
+exports.default = _default;

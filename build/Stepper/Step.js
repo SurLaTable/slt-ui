@@ -1,129 +1,151 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import withStyles from '../styles/withStyles';
+"use strict";
 
-export const styles = theme => ({
-  root: {},
-  horizontal: {
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    '&:first-child': {
-      paddingLeft: 0,
-    },
-    '&:last-child': {
-      paddingRight: 0,
-    },
-  },
-  vertical: {},
-  alternativeLabel: {
-    flex: 1,
-    position: 'relative',
-  },
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var styles = function styles(theme) {
+  return {
+    root: {},
+    horizontal: {
+      paddingLeft: theme.spacing.unit,
+      paddingRight: theme.spacing.unit,
+      '&:first-child': {
+        paddingLeft: 0
+      },
+      '&:last-child': {
+        paddingRight: 0
+      }
+    },
+    vertical: {},
+    alternativeLabel: {
+      flex: 1,
+      position: 'relative'
+    }
+  };
+};
+
+exports.styles = styles;
 
 function Step(props) {
-  const {
-    active,
-    alternativeLabel,
-    children,
-    classes,
-    className: classNameProp,
-    completed,
-    connector,
-    disabled,
-    index,
-    last,
-    orientation,
-    ...other
-  } = props;
-
-  const className = classNames(
-    classes.root,
-    classes[orientation],
-    {
-      [classes.alternativeLabel]: alternativeLabel,
-    },
-    classNameProp,
-  );
-
-  return (
-    <div className={className} {...other}>
-      {React.Children.map(children, child =>
-        React.cloneElement(child, {
-          active,
-          alternativeLabel,
-          completed,
-          disabled,
-          icon: index + 1,
-          last,
-          orientation,
-          ...child.props,
-        }),
-      )}
-      {connector &&
-        alternativeLabel &&
-        !last &&
-        React.cloneElement(connector, { orientation, alternativeLabel })}
-    </div>
-  );
+  var active = props.active,
+      alternativeLabel = props.alternativeLabel,
+      children = props.children,
+      classes = props.classes,
+      classNameProp = props.className,
+      completed = props.completed,
+      connector = props.connector,
+      disabled = props.disabled,
+      index = props.index,
+      last = props.last,
+      orientation = props.orientation,
+      other = (0, _objectWithoutProperties2.default)(props, ["active", "alternativeLabel", "children", "classes", "className", "completed", "connector", "disabled", "index", "last", "orientation"]);
+  var className = (0, _classnames.default)(classes.root, classes[orientation], (0, _defineProperty2.default)({}, classes.alternativeLabel, alternativeLabel), classNameProp);
+  return _react.default.createElement("div", (0, _extends2.default)({
+    className: className
+  }, other), _react.default.Children.map(children, function (child) {
+    return _react.default.cloneElement(child, (0, _objectSpread2.default)({
+      active: active,
+      alternativeLabel: alternativeLabel,
+      completed: completed,
+      disabled: disabled,
+      icon: index + 1,
+      last: last,
+      orientation: orientation
+    }, child.props));
+  }), connector && alternativeLabel && !last && _react.default.cloneElement(connector, {
+    orientation: orientation,
+    alternativeLabel: alternativeLabel
+  }));
 }
 
-Step.propTypes = {
+Step.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Sets the step as active. Is passed to child components.
    */
-  active: PropTypes.bool,
+  active: _propTypes.default.bool,
+
   /**
    * @ignore
    * Set internally by Stepper when it's supplied with the alternativeLabel property.
    */
-  alternativeLabel: PropTypes.bool,
+  alternativeLabel: _propTypes.default.bool,
+
   /**
    * Should be `Step` sub-components such as `StepLabel`, `StepContent`.
    */
-  children: PropTypes.node,
+  children: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * Mark the step as completed. Is passed to child components.
    */
-  completed: PropTypes.bool,
+  completed: _propTypes.default.bool,
+
   /**
    * @ignore
    * Passed down from Stepper if alternativeLabel is also set.
    */
-  connector: PropTypes.element,
+  connector: _propTypes.default.element,
+
   /**
    * Mark the step as disabled, will also disable the button if
    * `StepButton` is a child of `Step`. Is passed to child components.
    */
-  disabled: PropTypes.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * @ignore
    * Used internally for numbering.
    */
-  index: PropTypes.number,
-  /**
-   * @ignore
-   */
-  last: PropTypes.bool,
-  /**
-   * @ignore
-   */
-  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
-};
+  index: _propTypes.default.number,
 
+  /**
+   * @ignore
+   */
+  last: _propTypes.default.bool,
+
+  /**
+   * @ignore
+   */
+  orientation: _propTypes.default.oneOf(['horizontal', 'vertical'])
+} : {};
 Step.defaultProps = {
   active: false,
   completed: false,
-  disabled: false,
+  disabled: false
 };
 
-export default withStyles(styles, { name: 'MuiStep' })(Step);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiStep'
+})(Step);
+
+exports.default = _default;

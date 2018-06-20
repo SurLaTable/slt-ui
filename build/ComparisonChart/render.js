@@ -1,34 +1,45 @@
-import React from 'react';
-import { render } from 'react-dom';
-import ComparisonCheckbox from './ComparisonCheckbox/ComparisonCheckbox';
-import ComparisonBar from './ComparisonBar/ComparisonBar';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+"use strict";
 
-import sltReducers from './reducers/sltReducers';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-const sltStore = createStore(
-    sltReducers,
-    // Enable DevTools, switch to localStorage on Prod:
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+var _react = _interopRequireDefault(require("react"));
 
-const styles = {
-    fontFamily: 'sans-serif',
-    textAlign: 'center'
+var _reactDom = require("react-dom");
+
+var _ComparisonCheckbox = _interopRequireDefault(require("./ComparisonCheckbox/ComparisonCheckbox"));
+
+var _ComparisonBar = _interopRequireDefault(require("./ComparisonBar/ComparisonBar"));
+
+var _reactRedux = require("react-redux");
+
+var _redux = require("redux");
+
+var _sltReducers = _interopRequireDefault(require("./reducers/sltReducers"));
+
+var sltStore = (0, _redux.createStore)(_sltReducers.default, // Enable DevTools, switch to localStorage on Prod:
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+var styles = {
+  fontFamily: 'sans-serif',
+  textAlign: 'center'
 };
 
-const App = () => (
-    <Provider store={sltStore}>
-        <div style={styles}>
-            <ComparisonCheckbox product="PRO-2403251" />
-            <ComparisonCheckbox product="PRO-1251180" />
-            <ComparisonCheckbox product="PRO-227496" />
-            <ComparisonBar numberOfItems={3} />
-        </div>
-    </Provider>
-);
+var _ref = _react.default.createElement(_reactRedux.Provider, {
+  store: sltStore
+}, _react.default.createElement("div", {
+  style: styles
+}, _react.default.createElement(_ComparisonCheckbox.default, {
+  product: "PRO-2403251"
+}), _react.default.createElement(_ComparisonCheckbox.default, {
+  product: "PRO-1251180"
+}), _react.default.createElement(_ComparisonCheckbox.default, {
+  product: "PRO-227496"
+}), _react.default.createElement(_ComparisonBar.default, {
+  numberOfItems: 3
+})));
 
-// export default App;
+var App = function App() {
+  return _ref;
+}; // export default App;
 
-render(<App />, document.querySelector('.app'));
+
+(0, _reactDom.render)(_react.default.createElement(App, null), document.querySelector('.app'));

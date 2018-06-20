@@ -1,5 +1,11 @@
-// @flow weak
+"use strict";
 
-export default function unwrap(component: Object) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = unwrap;
+
+//  weak
+function unwrap(component) {
   return component.Naked ? unwrap(component.Naked) : component;
 }

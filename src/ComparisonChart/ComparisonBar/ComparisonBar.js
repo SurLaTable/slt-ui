@@ -40,7 +40,7 @@ class ComparisonBar extends React.Component {
       >
         <BottomNavigation showLabels style={{ backgroundColor: '#E4E4E4', marginTop: '10px' }}>
           <ComparisonTable type="cutlery" />
-          Selectionfoo:{selection}
+          <React.Fragment>Selectionfoo:{JSON.stringify(selection)}</React.Fragment>
           {selection &&
             selection.map((product, index) => {
               // Since the product data contains multiple skus,

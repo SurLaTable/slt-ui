@@ -1,48 +1,69 @@
-// @flow
+"use strict";
 
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import DialogTitle from './DialogTitle';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-describe('<DialogTitle />', () => {
-  let shallow;
-  let classes;
+var _react = _interopRequireDefault(require("react"));
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(<DialogTitle>foo</DialogTitle>);
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _DialogTitle = _interopRequireDefault(require("./DialogTitle"));
+
+var _ref = _react.default.createElement(_DialogTitle.default, null, "foo");
+
+var _ref2 = _react.default.createElement(_DialogTitle.default, null, "foo");
+
+var _ref3 = _react.default.createElement(_DialogTitle.default, {
+  "data-my-prop": "woofDialogTitle"
+}, "foo");
+
+var _ref4 = _react.default.createElement(_DialogTitle.default, {
+  className: "woofDialogTitle"
+}, "foo");
+
+var _ref5 = _react.default.createElement("p", {
+  className: "test"
+}, "Hello");
+
+describe('<DialogTitle />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
   });
+  it('should render a div', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should render a div', () => {
-    const wrapper = shallow(<DialogTitle>foo</DialogTitle>);
-    assert.strictEqual(wrapper.name(), 'div');
+    _chai.assert.strictEqual(wrapper.name(), 'div');
   });
+  it('should spread custom props on the root node', function () {
+    var wrapper = shallow(_ref3);
 
-  it('should spread custom props on the root node', () => {
-    const wrapper = shallow(<DialogTitle data-my-prop="woofDialogTitle">foo</DialogTitle>);
-    assert.strictEqual(
-      wrapper.prop('data-my-prop'),
-      'woofDialogTitle',
-      'custom prop should be woofDialogTitle',
-    );
+    _chai.assert.strictEqual(wrapper.prop('data-my-prop'), 'woofDialogTitle', 'custom prop should be woofDialogTitle');
   });
+  it('should render with the user and root classes', function () {
+    var wrapper = shallow(_ref4);
 
-  it('should render with the user and root classes', () => {
-    const wrapper = shallow(<DialogTitle className="woofDialogTitle">foo</DialogTitle>);
-    assert.strictEqual(wrapper.hasClass('woofDialogTitle'), true);
-    assert.strictEqual(wrapper.hasClass(classes.root), true);
+    _chai.assert.strictEqual(wrapper.hasClass('woofDialogTitle'), true);
+
+    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
   });
+  it('should render JSX children', function () {
+    var children = _ref5;
+    var wrapper = shallow(_react.default.createElement(_DialogTitle.default, {
+      disableTypography: true
+    }, children));
 
-  it('should render JSX children', () => {
-    const children = <p className="test">Hello</p>;
-    const wrapper = shallow(<DialogTitle disableTypography>{children}</DialogTitle>);
-    assert.strictEqual(wrapper.childAt(0).equals(children), true);
+    _chai.assert.strictEqual(wrapper.childAt(0).equals(children), true);
   });
+  it('should render string children as given string', function () {
+    var children = 'Hello';
+    var wrapper = shallow(_react.default.createElement(_DialogTitle.default, null, children));
 
-  it('should render string children as given string', () => {
-    const children = 'Hello';
-    const wrapper = shallow(<DialogTitle>{children}</DialogTitle>);
-    assert.strictEqual(wrapper.childAt(0).props().children, children);
+    _chai.assert.strictEqual(wrapper.childAt(0).props().children, children);
   });
 });

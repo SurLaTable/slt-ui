@@ -1,98 +1,104 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import withStyles from '../styles/withStyles';
+"use strict";
 
-export const styles = theme => ({
-  root: {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0,
-    width: theme.spacing.unit * 5,
-    height: theme.spacing.unit * 5,
-    fontFamily: theme.typography.fontFamily,
-    fontSize: theme.typography.pxToRem(20),
-    borderRadius: '50%',
-    overflow: 'hidden',
-    userSelect: 'none',
-  },
-  colorDefault: {
-    color: theme.palette.background.default,
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[400] : theme.palette.grey[600],
-  },
-  img: {
-    width: '100%',
-    height: '100%',
-    textAlign: 'center',
-    // Handle non-square image. The property isn't supported by IE11.
-    objectFit: 'cover',
-  },
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+      width: theme.spacing.unit * 5,
+      height: theme.spacing.unit * 5,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: theme.typography.pxToRem(20),
+      borderRadius: '50%',
+      overflow: 'hidden',
+      userSelect: 'none'
+    },
+    colorDefault: {
+      color: theme.palette.background.default,
+      backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[400] : theme.palette.grey[600]
+    },
+    img: {
+      width: '100%',
+      height: '100%',
+      textAlign: 'center',
+      // Handle non-square image. The property isn't supported by IE11.
+      objectFit: 'cover'
+    }
+  };
+};
+
+exports.styles = styles;
 
 function Avatar(props) {
-  const {
-    alt,
-    children: childrenProp,
-    childrenClassName: childrenClassNameProp,
-    classes,
-    className: classNameProp,
-    component: Component,
-    imgProps,
-    sizes,
-    src,
-    srcSet,
-    ...other
-  } = props;
-
-  const className = classNames(
-    classes.root,
-    {
-      [classes.colorDefault]: childrenProp && !src && !srcSet,
-    },
-    classNameProp,
-  );
-  let children = null;
+  var alt = props.alt,
+      childrenProp = props.children,
+      childrenClassNameProp = props.childrenClassName,
+      classes = props.classes,
+      classNameProp = props.className,
+      Component = props.component,
+      imgProps = props.imgProps,
+      sizes = props.sizes,
+      src = props.src,
+      srcSet = props.srcSet,
+      other = (0, _objectWithoutProperties2.default)(props, ["alt", "children", "childrenClassName", "classes", "className", "component", "imgProps", "sizes", "src", "srcSet"]);
+  var className = (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.colorDefault, childrenProp && !src && !srcSet), classNameProp);
+  var children = null;
 
   if (childrenProp) {
-    if (
-      childrenClassNameProp &&
-      typeof childrenProp !== 'string' &&
-      React.isValidElement(childrenProp)
-    ) {
-      const childrenClassName = classNames(childrenClassNameProp, childrenProp.props.className);
-      children = React.cloneElement(childrenProp, { className: childrenClassName });
+    if (childrenClassNameProp && typeof childrenProp !== 'string' && _react.default.isValidElement(childrenProp)) {
+      var childrenClassName = (0, _classnames.default)(childrenClassNameProp, childrenProp.props.className);
+      children = _react.default.cloneElement(childrenProp, {
+        className: childrenClassName
+      });
     } else {
       children = childrenProp;
     }
   } else if (src || srcSet) {
-    children = (
-      <img
-        alt={alt}
-        src={src}
-        srcSet={srcSet}
-        sizes={sizes}
-        className={classes.img}
-        {...imgProps}
-      />
-    );
+    children = _react.default.createElement("img", (0, _extends2.default)({
+      alt: alt,
+      src: src,
+      srcSet: srcSet,
+      sizes: sizes,
+      className: classes.img
+    }, imgProps));
   }
 
-  return (
-    <Component className={className} {...other}>
-      {children}
-    </Component>
-  );
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: className
+  }, other), children);
 }
 
-Avatar.propTypes = {
+Avatar.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Used in combination with `src` or `srcSet` to
    * provide an alt attribute for the rendered `img` element.
    */
-  alt: PropTypes.string,
+  alt: _propTypes.default.string,
+
   /**
    * Used to render icon or text elements inside the Avatar.
    * `src` and `alt` props will not be used and no `img` will
@@ -100,47 +106,58 @@ Avatar.propTypes = {
    *
    * This can be an element, or just a string.
    */
-  children: PropTypes.node,
+  children: _propTypes.default.node,
+
   /**
    * @ignore
    * The className of the child element.
    * Used by Chip and ListItemIcon to style the Avatar icon.
    */
-  childrenClassName: PropTypes.string,
+  childrenClassName: _propTypes.default.string,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * Properties applied to the `img` element when the component
    * is used to display an image.
    */
-  imgProps: PropTypes.object,
+  imgProps: _propTypes.default.object,
+
   /**
    * The `sizes` attribute for the `img` element.
    */
-  sizes: PropTypes.string,
+  sizes: _propTypes.default.string,
+
   /**
    * The `src` attribute for the `img` element.
    */
-  src: PropTypes.string,
+  src: _propTypes.default.string,
+
   /**
    * The `srcSet` attribute for the `img` element.
    */
-  srcSet: PropTypes.string,
-};
-
+  srcSet: _propTypes.default.string
+} : {};
 Avatar.defaultProps = {
-  component: 'div',
+  component: 'div'
 };
 
-export default withStyles(styles, { name: 'MuiAvatar' })(Avatar);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiAvatar'
+})(Avatar);
+
+exports.default = _default;

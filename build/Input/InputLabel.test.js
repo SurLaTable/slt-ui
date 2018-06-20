@@ -1,81 +1,118 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import { FormLabel } from '../Form';
-import InputLabel from './InputLabel';
+"use strict";
 
-describe('<InputLabel />', () => {
-  let shallow;
-  let classes;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(<InputLabel />);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _Form = require("../Form");
+
+var _InputLabel = _interopRequireDefault(require("./InputLabel"));
+
+var _ref = _react.default.createElement(_InputLabel.default, null);
+
+var _ref2 = _react.default.createElement(_InputLabel.default, null, "Foo");
+
+var _ref3 = _react.default.createElement(_InputLabel.default, null, "Foo");
+
+var _ref4 = _react.default.createElement(_InputLabel.default, {
+  disableAnimation: true
+}, "Foo");
+
+var _ref5 = _react.default.createElement(_InputLabel.default, null);
+
+describe('<InputLabel />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
   });
+  it('should render a FormLabel', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should render a FormLabel', () => {
-    const wrapper = shallow(<InputLabel>Foo</InputLabel>);
-    assert.strictEqual(wrapper.type(), FormLabel);
-    assert.strictEqual(wrapper.childAt(0).text(), 'Foo');
+    _chai.assert.strictEqual(wrapper.type(), _Form.FormLabel);
+
+    _chai.assert.strictEqual(wrapper.childAt(0).text(), 'Foo');
   });
+  it('should have the root and animated classes by default', function () {
+    var wrapper = shallow(_ref3);
 
-  it('should have the root and animated classes by default', () => {
-    const wrapper = shallow(<InputLabel>Foo</InputLabel>);
-    assert.strictEqual(wrapper.hasClass(classes.root), true);
-    assert.strictEqual(wrapper.hasClass(classes.animated), true);
+    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
+
+    _chai.assert.strictEqual(wrapper.hasClass(classes.animated), true);
   });
+  it('should not have the animated class when disabled', function () {
+    var wrapper = shallow(_ref4);
 
-  it('should not have the animated class when disabled', () => {
-    const wrapper = shallow(<InputLabel disableAnimation>Foo</InputLabel>);
-    assert.strictEqual(wrapper.hasClass(classes.animated), false);
+    _chai.assert.strictEqual(wrapper.hasClass(classes.animated), false);
   });
+  describe('prop: FormLabelClasses', function () {
+    it('should be able to change the FormLabel style', function () {
+      var wrapper = shallow(_react.default.createElement(_InputLabel.default, {
+        FormLabelClasses: {
+          foo: 'bar'
+        }
+      }, "Foo"));
 
-  describe('prop: FormLabelClasses', () => {
-    it('should be able to change the FormLabel style', () => {
-      const wrapper = shallow(<InputLabel FormLabelClasses={{ foo: 'bar' }}>Foo</InputLabel>);
-      assert.strictEqual(wrapper.props().classes.foo, 'bar');
+      _chai.assert.strictEqual(wrapper.props().classes.foo, 'bar');
     });
   });
-
-  describe('with muiFormControl context', () => {
-    let wrapper;
-    let muiFormControl;
+  describe('with muiFormControl context', function () {
+    var wrapper;
+    var muiFormControl;
 
     function setFormControlContext(muiFormControlContext) {
       muiFormControl = muiFormControlContext;
-      wrapper.setContext({ muiFormControl });
+      wrapper.setContext({
+        muiFormControl: muiFormControl
+      });
     }
 
-    beforeEach(() => {
-      wrapper = shallow(<InputLabel />);
+    beforeEach(function () {
+      wrapper = shallow(_ref5);
     });
-
-    it('should have the formControl class', () => {
+    it('should have the formControl class', function () {
       setFormControlContext({});
-      assert.strictEqual(wrapper.hasClass(classes.formControl), true);
+
+      _chai.assert.strictEqual(wrapper.hasClass(classes.formControl), true);
     });
+    it('should have the labelDense class when margin is dense', function () {
+      setFormControlContext({
+        margin: 'dense'
+      });
 
-    it('should have the labelDense class when margin is dense', () => {
-      setFormControlContext({ margin: 'dense' });
-      assert.strictEqual(wrapper.hasClass(classes.marginDense), true);
+      _chai.assert.strictEqual(wrapper.hasClass(classes.marginDense), true);
     });
-
-    ['filled', 'focused'].forEach(state => {
-      describe(state, () => {
-        beforeEach(() => {
-          setFormControlContext({ [state]: true });
+    ['filled', 'focused'].forEach(function (state) {
+      describe(state, function () {
+        beforeEach(function () {
+          setFormControlContext((0, _defineProperty2.default)({}, state, true));
         });
-
-        it('should have the shrink class', () => {
-          assert.strictEqual(wrapper.hasClass(classes.shrink), true);
+        it('should have the shrink class', function () {
+          _chai.assert.strictEqual(wrapper.hasClass(classes.shrink), true);
         });
+        it('should be overridden by the shrink prop', function () {
+          _chai.assert.strictEqual(wrapper.hasClass(classes.shrink), true);
 
-        it('should be overridden by the shrink prop', () => {
-          assert.strictEqual(wrapper.hasClass(classes.shrink), true);
-          wrapper.setProps({ shrink: false });
-          assert.strictEqual(wrapper.hasClass(classes.shrink), false);
-          wrapper.setProps({ shrink: true });
-          assert.strictEqual(wrapper.hasClass(classes.shrink), true);
+          wrapper.setProps({
+            shrink: false
+          });
+
+          _chai.assert.strictEqual(wrapper.hasClass(classes.shrink), false);
+
+          wrapper.setProps({
+            shrink: true
+          });
+
+          _chai.assert.strictEqual(wrapper.hasClass(classes.shrink), true);
         });
       });
     });

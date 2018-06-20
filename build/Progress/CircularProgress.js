@@ -1,19 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import withStyles from '../styles/withStyles';
-import { capitalize } from '../utils/helpers';
+"use strict";
 
-const SIZE = 50;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _helpers = require("../utils/helpers");
+
+var SIZE = 50;
 
 function getRelativeValue(value, min, max) {
-  const clampedValue = Math.min(Math.max(min, value), max);
+  var clampedValue = Math.min(Math.max(min, value), max);
   return (clampedValue - min) / (max - min);
 }
 
 function easeOut(t) {
-  t = getRelativeValue(t, 0, 1);
-  // https://gist.github.com/gre/1650294
+  t = getRelativeValue(t, 0, 1); // https://gist.github.com/gre/1650294
+
   t = (t -= 1) * t * t + 1;
   return t;
 }
@@ -22,51 +43,53 @@ function easeIn(t) {
   return t * t;
 }
 
-export const styles = theme => ({
-  root: {
-    display: 'inline-block',
-  },
-  colorPrimary: {
-    color: theme.palette.primary.main,
-  },
-  colorSecondary: {
-    color: theme.palette.secondary.main,
-  },
-  svg: {},
-  svgIndeterminate: {
-    animation: 'mui-progress-circular-rotate 1.4s linear infinite',
-  },
-  circle: {
-    stroke: 'currentColor',
-    strokeLinecap: 'round',
-  },
-  circleIndeterminate: {
-    animation: 'mui-progress-circular-dash 1.4s ease-in-out infinite',
-    // Some default value that looks fine waiting for the animation to kicks in.
-    strokeDasharray: '80px, 200px',
-    strokeDashoffset: '0px', // Add the unit to fix a Edge 16 and below bug.
-  },
-  '@keyframes mui-progress-circular-rotate': {
-    '100%': {
-      transform: 'rotate(360deg)',
+var styles = function styles(theme) {
+  return {
+    root: {
+      display: 'inline-block'
     },
-  },
-  '@keyframes mui-progress-circular-dash': {
-    '0%': {
-      strokeDasharray: '1px, 200px',
-      strokeDashoffset: '0px',
+    colorPrimary: {
+      color: theme.palette.primary.main
     },
-    '50%': {
-      strokeDasharray: '100px, 200px',
-      strokeDashoffset: '-15px',
+    colorSecondary: {
+      color: theme.palette.secondary.main
     },
-    '100%': {
-      strokeDasharray: '100px, 200px',
-      strokeDashoffset: '-120px',
+    svg: {},
+    svgIndeterminate: {
+      animation: 'mui-progress-circular-rotate 1.4s linear infinite'
     },
-  },
-});
+    circle: {
+      stroke: 'currentColor',
+      strokeLinecap: 'round'
+    },
+    circleIndeterminate: {
+      animation: 'mui-progress-circular-dash 1.4s ease-in-out infinite',
+      // Some default value that looks fine waiting for the animation to kicks in.
+      strokeDasharray: '80px, 200px',
+      strokeDashoffset: '0px' // Add the unit to fix a Edge 16 and below bug.
 
+    },
+    '@keyframes mui-progress-circular-rotate': {
+      '100%': {
+        transform: 'rotate(360deg)'
+      }
+    },
+    '@keyframes mui-progress-circular-dash': {
+      '0%': {
+        strokeDasharray: '1px, 200px',
+        strokeDashoffset: '0px'
+      },
+      '50%': {
+        strokeDasharray: '100px, 200px',
+        strokeDashoffset: '-15px'
+      },
+      '100%': {
+        strokeDasharray: '100px, 200px',
+        strokeDashoffset: '-120px'
+      }
+    }
+  };
+};
 /**
  * ## ARIA
  *
@@ -74,108 +97,113 @@ export const styles = theme => ({
  * you should use `aria-describedby` to point to the progress bar, and set the `aria-busy`
  * attribute to `true` on that region until it has finished loading.
  */
-function CircularProgress(props) {
-  const { classes, className, color, size, style, thickness, value, variant, ...other } = props;
 
-  const circleStyle = {};
-  const rootStyle = {};
-  const rootProps = {};
+
+exports.styles = styles;
+
+function CircularProgress(props) {
+  var classes = props.classes,
+      className = props.className,
+      color = props.color,
+      size = props.size,
+      style = props.style,
+      thickness = props.thickness,
+      value = props.value,
+      variant = props.variant,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "color", "size", "style", "thickness", "value", "variant"]);
+  var circleStyle = {};
+  var rootStyle = {};
+  var rootProps = {};
 
   if (variant === 'determinate' || variant === 'static') {
-    const circumference = 2 * Math.PI * (SIZE / 2 - 5);
+    var circumference = 2 * Math.PI * (SIZE / 2 - 5);
     circleStyle.strokeDasharray = circumference.toFixed(3);
     rootProps['aria-valuenow'] = Math.round(value);
 
     if (variant === 'static') {
-      circleStyle.strokeDashoffset = `${((100 - value) / 100 * circumference).toFixed(3)}px`;
+      circleStyle.strokeDashoffset = "".concat(((100 - value) / 100 * circumference).toFixed(3), "px");
       rootStyle.transform = 'rotate(-90deg)';
     } else {
-      circleStyle.strokeDashoffset = `${(easeIn((100 - value) / 100) * circumference).toFixed(
-        3,
-      )}px`;
-      rootStyle.transform = `rotate(${(easeOut(value / 70) * 270).toFixed(3)}deg)`;
+      circleStyle.strokeDashoffset = "".concat((easeIn((100 - value) / 100) * circumference).toFixed(3), "px");
+      rootStyle.transform = "rotate(".concat((easeOut(value / 70) * 270).toFixed(3), "deg)");
     }
   }
 
-  return (
-    <div
-      className={classNames(
-        classes.root,
-        {
-          [classes[`color${capitalize(color)}`]]: color !== 'inherit',
-        },
-        className,
-      )}
-      style={{ width: size, height: size, ...rootStyle, ...style }}
-      role="progressbar"
-      {...rootProps}
-      {...other}
-    >
-      <svg
-        className={classNames(classes.svg, {
-          [classes.svgIndeterminate]: variant === 'indeterminate',
-        })}
-        viewBox={`0 0 ${SIZE} ${SIZE}`}
-      >
-        <circle
-          className={classNames(classes.circle, {
-            [classes.circleIndeterminate]: variant === 'indeterminate',
-          })}
-          style={circleStyle}
-          cx={SIZE / 2}
-          cy={SIZE / 2}
-          r={SIZE / 2 - 5}
-          fill="none"
-          strokeWidth={thickness}
-        />
-      </svg>
-    </div>
-  );
+  return _react.default.createElement("div", (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes["color".concat((0, _helpers.capitalize)(color))], color !== 'inherit'), className),
+    style: (0, _objectSpread2.default)({
+      width: size,
+      height: size
+    }, rootStyle, style),
+    role: "progressbar"
+  }, rootProps, other), _react.default.createElement("svg", {
+    className: (0, _classnames.default)(classes.svg, (0, _defineProperty2.default)({}, classes.svgIndeterminate, variant === 'indeterminate')),
+    viewBox: "0 0 ".concat(SIZE, " ").concat(SIZE)
+  }, _react.default.createElement("circle", {
+    className: (0, _classnames.default)(classes.circle, (0, _defineProperty2.default)({}, classes.circleIndeterminate, variant === 'indeterminate')),
+    style: circleStyle,
+    cx: SIZE / 2,
+    cy: SIZE / 2,
+    r: SIZE / 2 - 5,
+    fill: "none",
+    strokeWidth: thickness
+  })));
 }
 
-CircularProgress.propTypes = {
+CircularProgress.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
-  color: PropTypes.oneOf(['primary', 'secondary', 'inherit']),
+  color: _propTypes.default.oneOf(['primary', 'secondary', 'inherit']),
+
   /**
    * The size of the circle.
    */
-  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  size: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+
   /**
    * @ignore
    */
-  style: PropTypes.object,
+  style: _propTypes.default.object,
+
   /**
    * The thickness of the circle.
    */
-  thickness: PropTypes.number,
+  thickness: _propTypes.default.number,
+
   /**
    * The value of the progress indicator for the determinate and static variants.
    * Value between 0 and 100.
    */
-  value: PropTypes.number,
+  value: _propTypes.default.number,
+
   /**
    * The variant of progress indicator. Use indeterminate
    * when there is no progress value.
    */
-  variant: PropTypes.oneOf(['determinate', 'indeterminate', 'static']),
-};
-
+  variant: _propTypes.default.oneOf(['determinate', 'indeterminate', 'static'])
+} : {};
 CircularProgress.defaultProps = {
   color: 'primary',
   size: 40,
   thickness: 3.6,
   value: 0,
-  variant: 'indeterminate',
+  variant: 'indeterminate'
 };
 
-export default withStyles(styles, { name: 'MuiCircularProgress', flip: false })(CircularProgress);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiCircularProgress',
+  flip: false
+})(CircularProgress);
+
+exports.default = _default;

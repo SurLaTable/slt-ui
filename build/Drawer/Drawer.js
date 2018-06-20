@@ -1,249 +1,319 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Modal from '../Modal';
-import withStyles from '../styles/withStyles';
-import Slide from '../transitions/Slide';
-import Paper from '../Paper';
-import { capitalize } from '../utils/helpers';
-import { duration } from '../styles/transitions';
+"use strict";
 
-const oppositeDirection = {
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isHorizontal = isHorizontal;
+exports.getAnchor = getAnchor;
+exports.default = exports.styles = void 0;
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _Modal = _interopRequireDefault(require("../Modal"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _Slide = _interopRequireDefault(require("../transitions/Slide"));
+
+var _Paper = _interopRequireDefault(require("../Paper"));
+
+var _helpers = require("../utils/helpers");
+
+var _transitions = require("../styles/transitions");
+
+var oppositeDirection = {
   left: 'right',
   right: 'left',
   top: 'down',
-  bottom: 'up',
+  bottom: 'up'
 };
 
-export function isHorizontal(props) {
+function isHorizontal(props) {
   return ['left', 'right'].indexOf(props.anchor) !== -1;
 }
 
-export function getAnchor(props) {
-  return props.theme.direction === 'rtl' && isHorizontal(props)
-    ? oppositeDirection[props.anchor]
-    : props.anchor;
+function getAnchor(props) {
+  return props.theme.direction === 'rtl' && isHorizontal(props) ? oppositeDirection[props.anchor] : props.anchor;
 }
 
-export const styles = theme => ({
-  docked: {
-    flex: '0 0 auto',
-  },
-  paper: {
-    overflowY: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100vh',
-    flex: '1 0 auto',
-    zIndex: theme.zIndex.drawer,
-    WebkitOverflowScrolling: 'touch', // Add iOS momentum scrolling.
-    // temporary style
-    position: 'fixed',
-    top: 0,
-    // We disable the focus ring for mouse, touch and keyboard users.
-    // At some point, it would be better to keep it for keyboard users.
-    // :focus-ring CSS pseudo-class will help.
-    outline: 'none',
-  },
-  paperAnchorLeft: {
-    left: 0,
-    right: 'auto',
-  },
-  paperAnchorRight: {
-    left: 'auto',
-    right: 0,
-  },
-  paperAnchorTop: {
-    top: 0,
-    left: 0,
-    bottom: 'auto',
-    right: 0,
-    height: 'auto',
-    maxHeight: '100vh',
-  },
-  paperAnchorBottom: {
-    top: 'auto',
-    left: 0,
-    bottom: 0,
-    right: 0,
-    height: 'auto',
-    maxHeight: '100vh',
-  },
-  paperAnchorDockedLeft: {
-    borderRight: `1px solid ${theme.palette.divider}`,
-  },
-  paperAnchorDockedTop: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  paperAnchorDockedRight: {
-    borderLeft: `1px solid ${theme.palette.divider}`,
-  },
-  paperAnchorDockedBottom: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-  },
-  modal: {}, // Just here so people can override the style.
-});
+var styles = function styles(theme) {
+  return {
+    docked: {
+      flex: '0 0 auto'
+    },
+    paper: {
+      overflowY: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      flex: '1 0 auto',
+      zIndex: theme.zIndex.drawer,
+      WebkitOverflowScrolling: 'touch',
+      // Add iOS momentum scrolling.
+      // temporary style
+      position: 'fixed',
+      top: 0,
+      // We disable the focus ring for mouse, touch and keyboard users.
+      // At some point, it would be better to keep it for keyboard users.
+      // :focus-ring CSS pseudo-class will help.
+      outline: 'none'
+    },
+    paperAnchorLeft: {
+      left: 0,
+      right: 'auto'
+    },
+    paperAnchorRight: {
+      left: 'auto',
+      right: 0
+    },
+    paperAnchorTop: {
+      top: 0,
+      left: 0,
+      bottom: 'auto',
+      right: 0,
+      height: 'auto',
+      maxHeight: '100vh'
+    },
+    paperAnchorBottom: {
+      top: 'auto',
+      left: 0,
+      bottom: 0,
+      right: 0,
+      height: 'auto',
+      maxHeight: '100vh'
+    },
+    paperAnchorDockedLeft: {
+      borderRight: "1px solid ".concat(theme.palette.divider)
+    },
+    paperAnchorDockedTop: {
+      borderBottom: "1px solid ".concat(theme.palette.divider)
+    },
+    paperAnchorDockedRight: {
+      borderLeft: "1px solid ".concat(theme.palette.divider)
+    },
+    paperAnchorDockedBottom: {
+      borderTop: "1px solid ".concat(theme.palette.divider)
+    },
+    modal: {} // Just here so people can override the style.
 
+  };
+};
 /**
  * The properties of the [Modal](/api/modal) component are available
  * when `variant="temporary"` is set.
  */
-class Drawer extends React.Component {
-  componentDidMount() {
-    this.mounted = true;
-  }
 
-  // Let's assume that the Drawer will always be rendered on user space.
-  // We use that state is order to skip the appear transition during the
-  // initial mount of the component.
-  mounted = false;
 
-  render() {
-    const {
-      anchor: anchorProp,
-      children,
-      classes,
-      className,
-      elevation,
-      ModalProps: { BackdropProps: BackdropPropsProp, ...ModalProps } = {},
-      onClose,
-      open,
-      PaperProps,
-      SlideProps,
-      theme,
-      transitionDuration,
-      variant,
-      ...other
-    } = this.props;
+exports.styles = styles;
 
-    const anchor = getAnchor(this.props);
-    const drawer = (
-      <Paper
-        elevation={variant === 'temporary' ? elevation : 0}
-        square
-        className={classNames(classes.paper, classes[`paperAnchor${capitalize(anchor)}`], {
-          [classes[`paperAnchorDocked${capitalize(anchor)}`]]: variant !== 'temporary',
-        })}
-        {...PaperProps}
-      >
-        {children}
-      </Paper>
-    );
+var Drawer =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Drawer, _React$Component);
 
-    if (variant === 'permanent') {
-      return (
-        <div className={classNames(classes.docked, className)} {...other}>
-          {drawer}
-        </div>
-      );
+  function Drawer() {
+    var _ref;
+
+    var _temp, _this;
+
+    (0, _classCallCheck2.default)(this, Drawer);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    const slidingDrawer = (
-      <Slide
-        in={open}
-        direction={oppositeDirection[anchor]}
-        timeout={transitionDuration}
-        appear={this.mounted}
-        {...SlideProps}
-      >
-        {drawer}
-      </Slide>
-    );
-
-    if (variant === 'persistent') {
-      return (
-        <div className={classNames(classes.docked, className)} {...other}>
-          {slidingDrawer}
-        </div>
-      );
-    }
-
-    // variant === temporary
-    return (
-      <Modal
-        BackdropProps={{
-          ...BackdropPropsProp,
-          transitionDuration,
-        }}
-        className={classNames(classes.modal, className)}
-        open={open}
-        onClose={onClose}
-        {...other}
-        {...ModalProps}
-      >
-        {slidingDrawer}
-      </Modal>
-    );
+    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = Drawer.__proto__ || (0, _getPrototypeOf.default)(Drawer)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "mounted", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: false
+    }), _temp));
   }
-}
 
-Drawer.propTypes = {
+  (0, _createClass2.default)(Drawer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.mounted = true;
+    } // Let's assume that the Drawer will always be rendered on user space.
+    // We use that state is order to skip the appear transition during the
+    // initial mount of the component.
+
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          anchorProp = _props.anchor,
+          children = _props.children,
+          classes = _props.classes,
+          className = _props.className,
+          elevation = _props.elevation,
+          _props$ModalProps = _props.ModalProps;
+      _props$ModalProps = _props$ModalProps === void 0 ? {} : _props$ModalProps;
+      var BackdropPropsProp = _props$ModalProps.BackdropProps,
+          ModalProps = (0, _objectWithoutProperties2.default)(_props$ModalProps, ["BackdropProps"]),
+          onClose = _props.onClose,
+          open = _props.open,
+          PaperProps = _props.PaperProps,
+          SlideProps = _props.SlideProps,
+          theme = _props.theme,
+          transitionDuration = _props.transitionDuration,
+          variant = _props.variant,
+          other = (0, _objectWithoutProperties2.default)(_props, ["anchor", "children", "classes", "className", "elevation", "ModalProps", "onClose", "open", "PaperProps", "SlideProps", "theme", "transitionDuration", "variant"]);
+      var anchor = getAnchor(this.props);
+
+      var drawer = _react.default.createElement(_Paper.default, (0, _extends2.default)({
+        elevation: variant === 'temporary' ? elevation : 0,
+        square: true,
+        className: (0, _classnames.default)(classes.paper, classes["paperAnchor".concat((0, _helpers.capitalize)(anchor))], (0, _defineProperty2.default)({}, classes["paperAnchorDocked".concat((0, _helpers.capitalize)(anchor))], variant !== 'temporary'))
+      }, PaperProps), children);
+
+      if (variant === 'permanent') {
+        return _react.default.createElement("div", (0, _extends2.default)({
+          className: (0, _classnames.default)(classes.docked, className)
+        }, other), drawer);
+      }
+
+      var slidingDrawer = _react.default.createElement(_Slide.default, (0, _extends2.default)({
+        "in": open,
+        direction: oppositeDirection[anchor],
+        timeout: transitionDuration,
+        appear: this.mounted
+      }, SlideProps), drawer);
+
+      if (variant === 'persistent') {
+        return _react.default.createElement("div", (0, _extends2.default)({
+          className: (0, _classnames.default)(classes.docked, className)
+        }, other), slidingDrawer);
+      } // variant === temporary
+
+
+      return _react.default.createElement(_Modal.default, (0, _extends2.default)({
+        BackdropProps: (0, _objectSpread2.default)({}, BackdropPropsProp, {
+          transitionDuration: transitionDuration
+        }),
+        className: (0, _classnames.default)(classes.modal, className),
+        open: open,
+        onClose: onClose
+      }, other, ModalProps), slidingDrawer);
+    }
+  }]);
+  return Drawer;
+}(_react.default.Component);
+
+Drawer.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Side from which the drawer will appear.
    */
-  anchor: PropTypes.oneOf(['left', 'top', 'right', 'bottom']),
+  anchor: _propTypes.default.oneOf(['left', 'top', 'right', 'bottom']),
+
   /**
    * The contents of the drawer.
    */
-  children: PropTypes.node,
+  children: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * The elevation of the drawer.
    */
-  elevation: PropTypes.number,
+  elevation: _propTypes.default.number,
+
   /**
    * Properties applied to the `Modal` element.
    */
-  ModalProps: PropTypes.object,
+  ModalProps: _propTypes.default.object,
+
   /**
    * Callback fired when the component requests to be closed.
    *
    * @param {object} event The event source of the callback
    */
-  onClose: PropTypes.func,
+  onClose: _propTypes.default.func,
+
   /**
    * If `true`, the drawer is open.
    */
-  open: PropTypes.bool,
+  open: _propTypes.default.bool,
+
   /**
    * Properties applied to the `Paper` element.
    */
-  PaperProps: PropTypes.object,
+  PaperProps: _propTypes.default.object,
+
   /**
    * Properties applied to the `Slide` element.
    */
-  SlideProps: PropTypes.object,
+  SlideProps: _propTypes.default.object,
+
   /**
    * @ignore
    */
-  theme: PropTypes.object.isRequired,
+  theme: _propTypes.default.object.isRequired,
+
   /**
    * The duration for the transition, in milliseconds.
    * You may specify a single timeout for all transitions, or individually with an object.
    */
-  transitionDuration: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
-  ]),
+  transitionDuration: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+    enter: _propTypes.default.number,
+    exit: _propTypes.default.number
+  })]),
+
   /**
    * The variant of drawer.
    */
-  variant: PropTypes.oneOf(['permanent', 'persistent', 'temporary']),
-};
-
+  variant: _propTypes.default.oneOf(['permanent', 'persistent', 'temporary'])
+} : {};
 Drawer.defaultProps = {
   anchor: 'left',
   elevation: 16,
   open: false,
-  transitionDuration: { enter: duration.enteringScreen, exit: duration.leavingScreen },
-  variant: 'temporary', // Mobile first.
+  transitionDuration: {
+    enter: _transitions.duration.enteringScreen,
+    exit: _transitions.duration.leavingScreen
+  },
+  variant: 'temporary' // Mobile first.
+
 };
 
-export default withStyles(styles, { name: 'MuiDrawer', flip: false, withTheme: true })(Drawer);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiDrawer',
+  flip: false,
+  withTheme: true
+})(Drawer);
+
+exports.default = _default;

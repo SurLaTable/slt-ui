@@ -1,4 +1,10 @@
-const red = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var red = {
   50: '#ffebee',
   100: '#ffcdd2',
   200: '#ef9a9a',
@@ -12,7 +18,7 @@ const red = {
   A100: '#ff8a80',
   A200: '#ff5252',
   A400: '#ff1744',
-  A700: '#d50000',
+  A700: '#d50000'
 };
-
-export default red;
+var _default = red;
+exports.default = _default;

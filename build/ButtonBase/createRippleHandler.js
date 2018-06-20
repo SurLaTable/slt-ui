@@ -1,3 +1,10 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
 function createRippleHandler(instance, eventName, action, cb) {
   return function handleEvent(event) {
     if (cb) {
@@ -12,12 +19,13 @@ function createRippleHandler(instance, eventName, action, cb) {
       instance.ripple[action](event);
     }
 
-    if (instance.props && typeof instance.props[`on${eventName}`] === 'function') {
-      instance.props[`on${eventName}`](event);
+    if (instance.props && typeof instance.props["on".concat(eventName)] === 'function') {
+      instance.props["on".concat(eventName)](event);
     }
 
     return true;
   };
 }
 
-export default createRippleHandler;
+var _default = createRippleHandler;
+exports.default = _default;

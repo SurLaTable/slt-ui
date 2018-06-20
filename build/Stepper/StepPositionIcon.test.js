@@ -1,29 +1,45 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, createMount } from '../test-utils';
-import StepPositionIcon from './StepPositionIcon';
-import SvgIcon from '../SvgIcon';
+"use strict";
 
-describe('<StepPositionIcon />', () => {
-  let shallow;
-  let mount;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    mount = createMount();
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _StepPositionIcon = _interopRequireDefault(require("./StepPositionIcon"));
+
+var _SvgIcon = _interopRequireDefault(require("../SvgIcon"));
+
+var _ref = _react.default.createElement(_StepPositionIcon.default, {
+  position: 1
+});
+
+var _ref2 = _react.default.createElement(_StepPositionIcon.default, {
+  position: 3
+});
+
+describe('<StepPositionIcon />', function () {
+  var shallow;
+  var mount;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    mount = (0, _testUtils.createMount)();
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
+  it('renders a <SvgIcon>', function () {
+    var wrapper = shallow(_ref);
 
-  it('renders a <SvgIcon>', () => {
-    const wrapper = shallow(<StepPositionIcon position={1} />);
-    assert.strictEqual(wrapper.find(SvgIcon).length, 1);
+    _chai.assert.strictEqual(wrapper.find(_SvgIcon.default).length, 1);
   });
+  it('contains text "3" when position is "3"', function () {
+    var wrapper = shallow(_ref2);
 
-  it('contains text "3" when position is "3"', () => {
-    const wrapper = shallow(<StepPositionIcon position={3} />);
-    assert.strictEqual(wrapper.find('text').text(), '3');
+    _chai.assert.strictEqual(wrapper.find('text').text(), '3');
   });
 });

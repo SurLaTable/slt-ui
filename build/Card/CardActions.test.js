@@ -1,47 +1,72 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import CardActions from './CardActions';
+"use strict";
 
-describe('<CardActions />', () => {
-  let shallow;
-  let classes;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(<CardActions />);
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _CardActions = _interopRequireDefault(require("./CardActions"));
+
+var _ref = _react.default.createElement(_CardActions.default, null);
+
+var _ref2 = _react.default.createElement(_CardActions.default, {
+  className: "cardActions"
+});
+
+var _ref3 = _react.default.createElement("div", {
+  id: "child1"
+});
+
+var _ref4 = _react.default.createElement("div", {
+  id: "child2"
+});
+
+var _ref5 = _react.default.createElement("div", {
+  id: "child3"
+});
+
+var _ref6 = _react.default.createElement(_CardActions.default, {
+  disableActionSpacing: true
+}, _react.default.createElement("div", {
+  id: "child1"
+}), _react.default.createElement("div", {
+  id: "child2"
+}));
+
+describe('<CardActions />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
   });
+  it('should render a div with the root and custom class', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should render a div with the root and custom class', () => {
-    const wrapper = shallow(<CardActions className="cardActions" />);
-    assert.strictEqual(wrapper.name(), 'div');
-    assert.strictEqual(wrapper.hasClass(classes.root), true);
-    assert.strictEqual(wrapper.hasClass('cardActions'), true);
+    _chai.assert.strictEqual(wrapper.name(), 'div');
+
+    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
+
+    _chai.assert.strictEqual(wrapper.hasClass('cardActions'), true);
   });
+  it('should pass the action class to children', function () {
+    var child3 = false;
+    var wrapper = shallow(_react.default.createElement(_CardActions.default, null, _ref3, _ref4, child3 && _ref5));
 
-  it('should pass the action class to children', () => {
-    const child3 = false;
-    const wrapper = shallow(
-      <CardActions>
-        <div id="child1" />
-        <div id="child2" />
-        {child3 && <div id="child3" />}
-      </CardActions>,
-    );
+    _chai.assert.strictEqual(wrapper.find('#child1').hasClass(classes.action), true);
 
-    assert.strictEqual(wrapper.find('#child1').hasClass(classes.action), true);
-    assert.strictEqual(wrapper.find('#child2').hasClass(classes.action), true);
+    _chai.assert.strictEqual(wrapper.find('#child2').hasClass(classes.action), true);
   });
+  it('should not pass the action class to children', function () {
+    var wrapper = shallow(_ref6);
 
-  it('should not pass the action class to children', () => {
-    const wrapper = shallow(
-      <CardActions disableActionSpacing>
-        <div id="child1" />
-        <div id="child2" />
-      </CardActions>,
-    );
+    _chai.assert.strictEqual(wrapper.find('#child1').hasClass(classes.action), false);
 
-    assert.strictEqual(wrapper.find('#child1').hasClass(classes.action), false);
-    assert.strictEqual(wrapper.find('#child2').hasClass(classes.action), false);
+    _chai.assert.strictEqual(wrapper.find('#child2').hasClass(classes.action), false);
   });
 });

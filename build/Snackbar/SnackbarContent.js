@@ -1,86 +1,115 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _Paper = _interopRequireDefault(require("../Paper"));
+
+var _Typography = _interopRequireDefault(require("../Typography"));
+
+var _colorManipulator = require("../styles/colorManipulator");
+
 // @inheritedComponent Paper
+var styles = function styles(theme) {
+  var _root;
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import withStyles from '../styles/withStyles';
-import Paper from '../Paper';
-import Typography from '../Typography';
-import { emphasize } from '../styles/colorManipulator';
-
-export const styles = theme => {
-  const emphasis = theme.palette.type === 'light' ? 0.8 : 0.98;
-  const backgroundColor = emphasize(theme.palette.background.default, emphasis);
-
+  var emphasis = theme.palette.type === 'light' ? 0.8 : 0.98;
+  var backgroundColor = (0, _colorManipulator.emphasize)(theme.palette.background.default, emphasis);
   return {
-    root: {
+    root: (_root = {
       pointerEvents: 'initial',
       color: theme.palette.getContrastText(backgroundColor),
-      backgroundColor,
+      backgroundColor: backgroundColor,
       display: 'flex',
       alignItems: 'center',
       flexWrap: 'wrap',
-      padding: `6px ${theme.spacing.unit * 3}px`,
-      [theme.breakpoints.up('md')]: {
-        minWidth: 288,
-        maxWidth: 568,
-        borderRadius: 2,
-      },
-      [theme.breakpoints.down('sm')]: {
-        flexGrow: 1,
-      },
-    },
+      padding: "6px ".concat(theme.spacing.unit * 3, "px")
+    }, (0, _defineProperty2.default)(_root, theme.breakpoints.up('md'), {
+      minWidth: 288,
+      maxWidth: 568,
+      borderRadius: 2
+    }), (0, _defineProperty2.default)(_root, theme.breakpoints.down('sm'), {
+      flexGrow: 1
+    }), _root),
     message: {
-      padding: `${theme.spacing.unit}px 0`,
+      padding: "".concat(theme.spacing.unit, "px 0")
     },
     action: {
       display: 'flex',
       alignItems: 'center',
       marginLeft: 'auto',
       paddingLeft: theme.spacing.unit * 3,
-      marginRight: -theme.spacing.unit,
-    },
+      marginRight: -theme.spacing.unit
+    }
   };
 };
 
-function SnackbarContent(props) {
-  const { action, classes, className, message, ...other } = props;
+exports.styles = styles;
 
-  return (
-    <Paper
-      component={Typography}
-      headlineMapping={{
-        body1: 'div',
-      }}
-      role="alertdialog"
-      square
-      elevation={6}
-      className={classNames(classes.root, className)}
-      {...other}
-    >
-      <div className={classes.message}>{message}</div>
-      {action ? <div className={classes.action}>{action}</div> : null}
-    </Paper>
-  );
+function SnackbarContent(props) {
+  var action = props.action,
+      classes = props.classes,
+      className = props.className,
+      message = props.message,
+      other = (0, _objectWithoutProperties2.default)(props, ["action", "classes", "className", "message"]);
+  return _react.default.createElement(_Paper.default, (0, _extends2.default)({
+    component: _Typography.default,
+    headlineMapping: {
+      body1: 'div'
+    },
+    role: "alertdialog",
+    square: true,
+    elevation: 6,
+    className: (0, _classnames.default)(classes.root, className)
+  }, other), _react.default.createElement("div", {
+    className: classes.message
+  }, message), action ? _react.default.createElement("div", {
+    className: classes.action
+  }, action) : null);
 }
 
-SnackbarContent.propTypes = {
+SnackbarContent.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The action to display.
    */
-  action: PropTypes.node,
+  action: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * The message to display.
    */
-  message: PropTypes.node,
-};
+  message: _propTypes.default.node
+} : {};
 
-export default withStyles(styles, { name: 'MuiSnackbarContent' })(SnackbarContent);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiSnackbarContent'
+})(SnackbarContent);
+
+exports.default = _default;

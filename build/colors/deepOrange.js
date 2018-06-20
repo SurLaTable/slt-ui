@@ -1,4 +1,10 @@
-const deepOrange = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var deepOrange = {
   50: '#fbe9e7',
   100: '#ffccbc',
   200: '#ffab91',
@@ -12,7 +18,7 @@ const deepOrange = {
   A100: '#ff9e80',
   A200: '#ff6e40',
   A400: '#ff3d00',
-  A700: '#dd2c00',
+  A700: '#dd2c00'
 };
-
-export default deepOrange;
+var _default = deepOrange;
+exports.default = _default;

@@ -1,291 +1,338 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import Slide from '../transitions/Slide';
-import createMuiTheme from '../styles/createMuiTheme';
-import Paper from '../Paper';
-import Modal from '../Modal';
-import Drawer, { getAnchor, isHorizontal } from './Drawer';
+"use strict";
 
-describe('<Drawer />', () => {
-  let shallow;
-  let classes;
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(
-      <Drawer>
-        <div />
-      </Drawer>,
-    );
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _Slide = _interopRequireDefault(require("../transitions/Slide"));
+
+var _createMuiTheme = _interopRequireDefault(require("../styles/createMuiTheme"));
+
+var _Paper = _interopRequireDefault(require("../Paper"));
+
+var _Modal = _interopRequireDefault(require("../Modal"));
+
+var _Drawer = _interopRequireWildcard(require("./Drawer"));
+
+var _ref = _react.default.createElement(_Drawer.default, null, _react.default.createElement("div", null));
+
+var _ref2 = _react.default.createElement(_Drawer.default, null, _react.default.createElement("div", null));
+
+var _ref3 = _react.default.createElement(_Drawer.default, null, _react.default.createElement("div", null));
+
+var _ref6 = _react.default.createElement("div", null);
+
+var _ref7 = _react.default.createElement("div", null);
+
+var _ref8 = _react.default.createElement("div", null);
+
+var _ref9 = _react.default.createElement(_Drawer.default, {
+  className: "woofDrawer",
+  variant: "temporary"
+}, _react.default.createElement("h1", null, "Hello"));
+
+var _ref10 = _react.default.createElement("h1", null, "Hello");
+
+var _ref11 = _react.default.createElement(_Drawer.default, null, _react.default.createElement("h1", null, "Hello"));
+
+var _ref12 = _react.default.createElement(_Drawer.default, null, _react.default.createElement("h1", null, "Hello"));
+
+var _ref13 = _react.default.createElement(_Drawer.default, {
+  variant: "persistent"
+}, _react.default.createElement("h1", null, "Hello"));
+
+var _ref14 = _react.default.createElement(_Drawer.default, {
+  variant: "permanent"
+}, _react.default.createElement("h1", null, "Hello"));
+
+var _ref15 = _react.default.createElement(_Drawer.default, null, _react.default.createElement("div", null));
+
+var _ref16 = _react.default.createElement("div", null);
+
+describe('<Drawer />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
   });
+  describe('prop: variant=temporary', function () {
+    it('should render a Modal', function () {
+      var wrapper = shallow(_ref2);
 
-  describe('prop: variant=temporary', () => {
-    it('should render a Modal', () => {
-      const wrapper = shallow(
-        <Drawer>
-          <div />
-        </Drawer>,
-      );
-      assert.strictEqual(wrapper.type(), Modal);
+      _chai.assert.strictEqual(wrapper.type(), _Modal.default);
     });
+    it('should render Slide > Paper inside the Modal', function () {
+      var wrapper = shallow(_ref3);
+      var slide = wrapper.childAt(0);
 
-    it('should render Slide > Paper inside the Modal', () => {
-      const wrapper = shallow(
-        <Drawer>
-          <div />
-        </Drawer>,
-      );
+      _chai.assert.strictEqual(slide.length === 1 && slide.is(_Slide.default), true, 'immediate wrapper child should be Slide');
 
-      const slide = wrapper.childAt(0);
-      assert.strictEqual(
-        slide.length === 1 && slide.is(Slide),
-        true,
-        'immediate wrapper child should be Slide',
-      );
+      var paper = slide.childAt(0);
 
-      const paper = slide.childAt(0);
-      assert.strictEqual(paper.length === 1 && paper.type(), Paper);
-      assert.strictEqual(paper.hasClass(classes.paper), true, 'should have the paper class');
+      _chai.assert.strictEqual(paper.length === 1 && paper.type(), _Paper.default);
+
+      _chai.assert.strictEqual(paper.hasClass(classes.paper), true, 'should have the paper class');
     });
-
-    describe('transitionDuration property', () => {
-      const transitionDuration = {
+    describe('transitionDuration property', function () {
+      var transitionDuration = {
         enter: 854,
-        exit: 2967,
+        exit: 2967
       };
 
-      it('should be passed to Slide', () => {
-        const wrapper = shallow(
-          <Drawer transitionDuration={transitionDuration}>
-            <div />
-          </Drawer>,
-        );
-        assert.strictEqual(wrapper.find(Slide).props().timeout, transitionDuration);
+      var _ref4 = _react.default.createElement(_Drawer.default, {
+        transitionDuration: transitionDuration
+      }, _ref6);
+
+      it('should be passed to Slide', function () {
+        var wrapper = shallow(_ref4);
+
+        _chai.assert.strictEqual(wrapper.find(_Slide.default).props().timeout, transitionDuration);
       });
 
-      it("should be passed to to Modal's BackdropTransitionDuration when open=true", () => {
-        const wrapper = shallow(
-          <Drawer open transitionDuration={transitionDuration}>
-            <div />
-          </Drawer>,
-        );
-        assert.strictEqual(
-          wrapper.find(Modal).props().BackdropProps.transitionDuration,
-          transitionDuration,
-        );
+      var _ref5 = _react.default.createElement(_Drawer.default, {
+        open: true,
+        transitionDuration: transitionDuration
+      }, _ref7);
+
+      it("should be passed to to Modal's BackdropTransitionDuration when open=true", function () {
+        var wrapper = shallow(_ref5);
+
+        _chai.assert.strictEqual(wrapper.find(_Modal.default).props().BackdropProps.transitionDuration, transitionDuration);
       });
     });
+    it("should override Modal's BackdropTransitionDuration from property when specified", function () {
+      var testDuration = 335;
+      var wrapper = shallow(_react.default.createElement(_Drawer.default, {
+        BackdropTransitionDuration: testDuration
+      }, _ref8));
 
-    it("should override Modal's BackdropTransitionDuration from property when specified", () => {
-      const testDuration = 335;
-      const wrapper = shallow(
-        <Drawer BackdropTransitionDuration={testDuration}>
-          <div />
-        </Drawer>,
-      );
-      assert.strictEqual(wrapper.find(Modal).props().BackdropTransitionDuration, testDuration);
+      _chai.assert.strictEqual(wrapper.find(_Modal.default).props().BackdropTransitionDuration, testDuration);
     });
+    it('should set the custom className for Modal when variant is temporary', function () {
+      var wrapper = shallow(_ref9);
+      var modal = wrapper.find(_Modal.default);
 
-    it('should set the custom className for Modal when variant is temporary', () => {
-      const wrapper = shallow(
-        <Drawer className="woofDrawer" variant="temporary">
-          <h1>Hello</h1>
-        </Drawer>,
-      );
-
-      const modal = wrapper.find(Modal);
-
-      assert.strictEqual(modal.hasClass('woofDrawer'), true, 'should have the woofDrawer class');
+      _chai.assert.strictEqual(modal.hasClass('woofDrawer'), true, 'should have the woofDrawer class');
     });
+    it('should set the Paper className', function () {
+      var wrapper = shallow(_react.default.createElement(_Drawer.default, {
+        classes: {
+          paper: 'woofDrawer'
+        }
+      }, _ref10));
+      var paper = wrapper.find(_Paper.default);
 
-    it('should set the Paper className', () => {
-      const wrapper = shallow(
-        <Drawer classes={{ paper: 'woofDrawer' }}>
-          <h1>Hello</h1>
-        </Drawer>,
-      );
-      const paper = wrapper.find(Paper);
-      assert.strictEqual(paper.hasClass(classes.paper), true, 'should have the paper class');
-      assert.strictEqual(paper.hasClass('woofDrawer'), true, 'should have the woofDrawer class');
+      _chai.assert.strictEqual(paper.hasClass(classes.paper), true, 'should have the paper class');
+
+      _chai.assert.strictEqual(paper.hasClass('woofDrawer'), true, 'should have the woofDrawer class');
     });
+    it('should be closed by default', function () {
+      var wrapper = shallow(_ref11);
+      var modal = wrapper;
+      var slide = modal.find(_Slide.default);
 
-    it('should be closed by default', () => {
-      const wrapper = shallow(
-        <Drawer>
-          <h1>Hello</h1>
-        </Drawer>,
-      );
+      _chai.assert.strictEqual(modal.props().open, false, 'should not show the modal');
 
-      const modal = wrapper;
-      const slide = modal.find(Slide);
-
-      assert.strictEqual(modal.props().open, false, 'should not show the modal');
-      assert.strictEqual(slide.props().in, false, 'should not transition in');
+      _chai.assert.strictEqual(slide.props().in, false, 'should not transition in');
     });
-
-    describe('opening and closing', () => {
-      let wrapper;
-
-      before(() => {
-        wrapper = shallow(
-          <Drawer>
-            <h1>Hello</h1>
-          </Drawer>,
-        );
+    describe('opening and closing', function () {
+      var wrapper;
+      before(function () {
+        wrapper = shallow(_ref12);
         wrapper.update();
       });
+      it('should start closed', function () {
+        _chai.assert.strictEqual(wrapper.props().open, false, 'should not show the modal');
 
-      it('should start closed', () => {
-        assert.strictEqual(wrapper.props().open, false, 'should not show the modal');
-        assert.strictEqual(wrapper.find(Slide).props().in, false, 'should not transition in');
+        _chai.assert.strictEqual(wrapper.find(_Slide.default).props().in, false, 'should not transition in');
       });
+      it('should open', function () {
+        wrapper.setProps({
+          open: true
+        });
 
-      it('should open', () => {
-        wrapper.setProps({ open: true });
-        assert.strictEqual(wrapper.props().open, true, 'should show the modal');
-        assert.strictEqual(wrapper.find(Slide).props().in, true, 'should transition in');
+        _chai.assert.strictEqual(wrapper.props().open, true, 'should show the modal');
+
+        _chai.assert.strictEqual(wrapper.find(_Slide.default).props().in, true, 'should transition in');
       });
+      it('should close', function () {
+        wrapper.setProps({
+          open: false
+        });
 
-      it('should close', () => {
-        wrapper.setProps({ open: false });
-        assert.strictEqual(wrapper.props().open, false, 'should not show the modal');
-        assert.strictEqual(wrapper.find(Slide).props().in, false, 'should not transition in');
+        _chai.assert.strictEqual(wrapper.props().open, false, 'should not show the modal');
+
+        _chai.assert.strictEqual(wrapper.find(_Slide.default).props().in, false, 'should not transition in');
       });
     });
   });
-
-  describe('prop: variant=persistent', () => {
-    let wrapper;
-
-    before(() => {
-      wrapper = shallow(
-        <Drawer variant="persistent">
-          <h1>Hello</h1>
-        </Drawer>,
-      );
+  describe('prop: variant=persistent', function () {
+    var wrapper;
+    before(function () {
+      wrapper = shallow(_ref13);
     });
+    it('should render a div instead of a Modal when persistent', function () {
+      _chai.assert.strictEqual(wrapper.name(), 'div');
 
-    it('should render a div instead of a Modal when persistent', () => {
-      assert.strictEqual(wrapper.name(), 'div');
-      assert.strictEqual(wrapper.hasClass(classes.docked), true, 'should have the docked class');
+      _chai.assert.strictEqual(wrapper.hasClass(classes.docked), true, 'should have the docked class');
     });
+    it('should render Slide > Paper inside the div', function () {
+      var slide = wrapper.childAt(0);
 
-    it('should render Slide > Paper inside the div', () => {
-      const slide = wrapper.childAt(0);
-      assert.strictEqual(slide.length, 1);
-      assert.strictEqual(slide.type(), Slide);
+      _chai.assert.strictEqual(slide.length, 1);
 
-      const paper = slide.childAt(0);
-      assert.strictEqual(paper.length === 1 && paper.type(), Paper);
+      _chai.assert.strictEqual(slide.type(), _Slide.default);
+
+      var paper = slide.childAt(0);
+
+      _chai.assert.strictEqual(paper.length === 1 && paper.type(), _Paper.default);
     });
   });
-
-  describe('prop: variant=permanent', () => {
-    let wrapper;
-
-    before(() => {
-      wrapper = shallow(
-        <Drawer variant="permanent">
-          <h1>Hello</h1>
-        </Drawer>,
-      );
+  describe('prop: variant=permanent', function () {
+    var wrapper;
+    before(function () {
+      wrapper = shallow(_ref14);
     });
+    it('should render a div instead of a Modal when permanent', function () {
+      _chai.assert.strictEqual(wrapper.name(), 'div');
 
-    it('should render a div instead of a Modal when permanent', () => {
-      assert.strictEqual(wrapper.name(), 'div');
-      assert.strictEqual(wrapper.hasClass(classes.docked), true, 'should have the docked class');
+      _chai.assert.strictEqual(wrapper.hasClass(classes.docked), true, 'should have the docked class');
     });
+    it('should render div > Paper inside the div', function () {
+      var slide = wrapper;
 
-    it('should render div > Paper inside the div', () => {
-      const slide = wrapper;
-      assert.strictEqual(slide.length, 1);
-      assert.strictEqual(slide.name(), 'div');
+      _chai.assert.strictEqual(slide.length, 1);
 
-      const paper = slide.childAt(0);
-      assert.strictEqual(paper.length === 1 && paper.type(), Paper);
+      _chai.assert.strictEqual(slide.name(), 'div');
+
+      var paper = slide.childAt(0);
+
+      _chai.assert.strictEqual(paper.length === 1 && paper.type(), _Paper.default);
     });
   });
-
-  describe('slide direction', () => {
-    let wrapper;
-
-    before(() => {
-      wrapper = shallow(
-        <Drawer>
-          <div />
-        </Drawer>,
-      );
+  describe('slide direction', function () {
+    var wrapper;
+    before(function () {
+      wrapper = shallow(_ref15);
     });
-
-    it('should return the opposing slide direction', () => {
-      wrapper.setProps({ anchor: 'left' });
-      assert.strictEqual(wrapper.find(Slide).props().direction, 'right');
-
-      wrapper.setProps({ anchor: 'right' });
-      assert.strictEqual(wrapper.find(Slide).props().direction, 'left');
-
-      wrapper.setProps({ anchor: 'top' });
-      assert.strictEqual(wrapper.find(Slide).props().direction, 'down');
-
-      wrapper.setProps({ anchor: 'bottom' });
-      assert.strictEqual(wrapper.find(Slide).props().direction, 'up');
-    });
-  });
-
-  describe('Right To Left', () => {
-    let wrapper;
-
-    before(() => {
-      const theme = createMuiTheme({
-        direction: 'rtl',
+    it('should return the opposing slide direction', function () {
+      wrapper.setProps({
+        anchor: 'left'
       });
-      wrapper = shallow(
-        <Drawer theme={theme}>
-          <div />
-        </Drawer>,
-      );
+
+      _chai.assert.strictEqual(wrapper.find(_Slide.default).props().direction, 'right');
+
+      wrapper.setProps({
+        anchor: 'right'
+      });
+
+      _chai.assert.strictEqual(wrapper.find(_Slide.default).props().direction, 'left');
+
+      wrapper.setProps({
+        anchor: 'top'
+      });
+
+      _chai.assert.strictEqual(wrapper.find(_Slide.default).props().direction, 'down');
+
+      wrapper.setProps({
+        anchor: 'bottom'
+      });
+
+      _chai.assert.strictEqual(wrapper.find(_Slide.default).props().direction, 'up');
     });
+  });
+  describe('Right To Left', function () {
+    var wrapper;
+    before(function () {
+      var theme = (0, _createMuiTheme.default)({
+        direction: 'rtl'
+      });
+      wrapper = shallow(_react.default.createElement(_Drawer.default, {
+        theme: theme
+      }, _ref16));
+    });
+    it('should switch left and right anchor when theme is right-to-left', function () {
+      wrapper.setProps({
+        anchor: 'left'
+      }); // slide direction for left is right, if left is switched to right, we should get left
 
-    it('should switch left and right anchor when theme is right-to-left', () => {
-      wrapper.setProps({ anchor: 'left' });
-      // slide direction for left is right, if left is switched to right, we should get left
-      assert.strictEqual(wrapper.find(Slide).props().direction, 'left');
+      _chai.assert.strictEqual(wrapper.find(_Slide.default).props().direction, 'left');
 
-      wrapper.setProps({ anchor: 'right' });
-      // slide direction for right is left, if right is switched to left, we should get right
-      assert.strictEqual(wrapper.find(Slide).props().direction, 'right');
+      wrapper.setProps({
+        anchor: 'right'
+      }); // slide direction for right is left, if right is switched to left, we should get right
+
+      _chai.assert.strictEqual(wrapper.find(_Slide.default).props().direction, 'right');
     });
   });
 });
+describe('isHorizontal', function () {
+  it('should recognize left and right as horizontal swiping directions', function () {
+    _chai.assert.strictEqual((0, _Drawer.isHorizontal)({
+      anchor: 'left'
+    }), true);
 
-describe('isHorizontal', () => {
-  it('should recognize left and right as horizontal swiping directions', () => {
-    assert.strictEqual(isHorizontal({ anchor: 'left' }), true);
-    assert.strictEqual(isHorizontal({ anchor: 'right' }), true);
-    assert.strictEqual(isHorizontal({ anchor: 'top' }), false);
-    assert.strictEqual(isHorizontal({ anchor: 'bottom' }), false);
+    _chai.assert.strictEqual((0, _Drawer.isHorizontal)({
+      anchor: 'right'
+    }), true);
+
+    _chai.assert.strictEqual((0, _Drawer.isHorizontal)({
+      anchor: 'top'
+    }), false);
+
+    _chai.assert.strictEqual((0, _Drawer.isHorizontal)({
+      anchor: 'bottom'
+    }), false);
   });
 });
-
-describe('getAnchor', () => {
-  it('should return the anchor', () => {
-    const theme = createMuiTheme({
-      direction: 'ltr',
+describe('getAnchor', function () {
+  it('should return the anchor', function () {
+    var theme = (0, _createMuiTheme.default)({
+      direction: 'ltr'
     });
 
-    assert.strictEqual(getAnchor({ anchor: 'left', theme }), 'left');
-    assert.strictEqual(getAnchor({ anchor: 'right', theme }), 'right');
-    assert.strictEqual(getAnchor({ anchor: 'top', theme }), 'top');
-    assert.strictEqual(getAnchor({ anchor: 'bottom', theme }), 'bottom');
+    _chai.assert.strictEqual((0, _Drawer.getAnchor)({
+      anchor: 'left',
+      theme: theme
+    }), 'left');
+
+    _chai.assert.strictEqual((0, _Drawer.getAnchor)({
+      anchor: 'right',
+      theme: theme
+    }), 'right');
+
+    _chai.assert.strictEqual((0, _Drawer.getAnchor)({
+      anchor: 'top',
+      theme: theme
+    }), 'top');
+
+    _chai.assert.strictEqual((0, _Drawer.getAnchor)({
+      anchor: 'bottom',
+      theme: theme
+    }), 'bottom');
   });
-
-  it('should switch left/right if RTL is enabled', () => {
-    const theme = createMuiTheme({
-      direction: 'rtl',
+  it('should switch left/right if RTL is enabled', function () {
+    var theme = (0, _createMuiTheme.default)({
+      direction: 'rtl'
     });
 
-    assert.strictEqual(getAnchor({ anchor: 'left', theme }), 'right');
-    assert.strictEqual(getAnchor({ anchor: 'right', theme }), 'left');
+    _chai.assert.strictEqual((0, _Drawer.getAnchor)({
+      anchor: 'left',
+      theme: theme
+    }), 'right');
+
+    _chai.assert.strictEqual((0, _Drawer.getAnchor)({
+      anchor: 'right',
+      theme: theme
+    }), 'left');
   });
 });

@@ -1,37 +1,64 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import Card from './Card';
-import Paper from '../Paper';
+"use strict";
 
-describe('<Card />', () => {
-  let shallow;
-  let classes;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(<Card />);
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _Card = _interopRequireDefault(require("./Card"));
+
+var _Paper = _interopRequireDefault(require("../Paper"));
+
+var _ref = _react.default.createElement(_Card.default, null);
+
+var _ref2 = _react.default.createElement(_Card.default, null);
+
+var _ref3 = _react.default.createElement(_Card.default, {
+  className: "card"
+});
+
+var _ref4 = _react.default.createElement(_Card.default, {
+  raised: true
+});
+
+var _ref5 = _react.default.createElement(_Card.default, {
+  "data-my-prop": "woofCard"
+});
+
+describe('<Card />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
   });
+  it('should render Paper with the root class & with 2dp', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should render Paper with the root class & with 2dp', () => {
-    const wrapper = shallow(<Card />);
-    assert.strictEqual(wrapper.type(), Paper);
-    assert.strictEqual(wrapper.props().elevation, 2);
+    _chai.assert.strictEqual(wrapper.type(), _Paper.default);
+
+    _chai.assert.strictEqual(wrapper.props().elevation, 2);
   });
+  it('should have the root and custom class', function () {
+    var wrapper = shallow(_ref3);
 
-  it('should have the root and custom class', () => {
-    const wrapper = shallow(<Card className="card" />);
-    assert.strictEqual(wrapper.hasClass(classes.root), true);
-    assert.strictEqual(wrapper.hasClass('card'), true);
+    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
+
+    _chai.assert.strictEqual(wrapper.hasClass('card'), true);
   });
+  it('should render Paper with 8dp', function () {
+    var wrapper = shallow(_ref4);
 
-  it('should render Paper with 8dp', () => {
-    const wrapper = shallow(<Card raised />);
-    assert.strictEqual(wrapper.props().elevation, 8);
+    _chai.assert.strictEqual(wrapper.props().elevation, 8);
   });
+  it('should spread custom props on the root node', function () {
+    var wrapper = shallow(_ref5);
 
-  it('should spread custom props on the root node', () => {
-    const wrapper = shallow(<Card data-my-prop="woofCard" />);
-    assert.strictEqual(wrapper.prop('data-my-prop'), 'woofCard', 'custom prop should be woofCard');
+    _chai.assert.strictEqual(wrapper.prop('data-my-prop'), 'woofCard', 'custom prop should be woofCard');
   });
 });

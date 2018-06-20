@@ -1,195 +1,252 @@
-// @flow
+"use strict";
 
-import { spy } from 'sinon';
-import { assert } from 'chai';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { SheetsRegistry } from 'jss';
-import JssProvider from 'react-jss/lib/JssProvider';
-import { renderToString } from 'react-dom/server';
-import { createMount } from '../test-utils';
-import createMuiTheme from './createMuiTheme';
-import Button from '../Button';
-import createGenerateClassName from './createGenerateClassName';
-import withTheme from './withTheme';
-import MuiThemeProvider from './MuiThemeProvider';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _map = _interopRequireDefault(require("@babel/runtime/core-js/map"));
+
+var _sinon = require("sinon");
+
+var _chai = require("chai");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _jss = require("jss");
+
+var _JssProvider = _interopRequireDefault(require("react-jss/lib/JssProvider"));
+
+var _server = require("react-dom/server");
+
+var _testUtils = require("../test-utils");
+
+var _createMuiTheme = _interopRequireDefault(require("./createMuiTheme"));
+
+var _Button = _interopRequireDefault(require("../Button"));
+
+var _createGenerateClassName = _interopRequireDefault(require("./createGenerateClassName"));
+
+var _withTheme = _interopRequireDefault(require("./withTheme"));
+
+var _MuiThemeProvider = _interopRequireDefault(require("./MuiThemeProvider"));
 
 function getThemeSpy() {
-  const themeSpy = spy();
-  const ThemeSpy = (props: Object) => {
+  var themeSpy = (0, _sinon.spy)();
+
+  var ThemeSpy = function ThemeSpy(props) {
     themeSpy(props.theme);
     return props.children;
   };
 
   ThemeSpy.propTypes = {
-    children: PropTypes.node.isRequired,
-    theme: PropTypes.object,
+    children: _propTypes.default.node.isRequired,
+    theme: _propTypes.default.object
   };
-
   return {
-    ThemeSpy: withTheme()(ThemeSpy),
-    themeSpy,
+    ThemeSpy: (0, _withTheme.default)()(ThemeSpy),
+    themeSpy: themeSpy
   };
 }
 
 function getOptionsSpy() {
-  const optionsSpy = spy();
-  const OptionsSpy = (props, context) => {
+  var optionsSpy = (0, _sinon.spy)();
+
+  var OptionsSpy = function OptionsSpy(props, context) {
     optionsSpy(context.muiThemeProviderOptions);
     return props.children;
   };
 
   OptionsSpy.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: _propTypes.default.element.isRequired
   };
-
   OptionsSpy.contextTypes = {
-    muiThemeProviderOptions: PropTypes.object,
+    muiThemeProviderOptions: _propTypes.default.object
   };
-
   return {
-    OptionsSpy,
-    optionsSpy,
+    OptionsSpy: OptionsSpy,
+    optionsSpy: optionsSpy
   };
 }
 
-describe('<MuiThemeProvider />', () => {
-  let mount;
+var _ref = _react.default.createElement(_Button.default, null, "Hello World");
 
-  before(() => {
-    mount = createMount();
+var _ref2 = _react.default.createElement("span", null, "Foo");
+
+var _ref3 = _react.default.createElement("span", null, "Bar");
+
+var _ref4 = _react.default.createElement("div", null);
+
+var _ref5 = _react.default.createElement("div", null, "Foo");
+
+describe('<MuiThemeProvider />', function () {
+  var mount;
+  before(function () {
+    mount = (0, _testUtils.createMount)();
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
-
-  describe('server side', () => {
+  describe('server side', function () {
     // Only run the test on node.
     if (!/jsdom/.test(window.navigator.userAgent)) {
       return;
     }
 
-    it('should be able to extract the styles', () => {
-      const theme = createMuiTheme();
-      const sheetsRegistry = new SheetsRegistry();
-      const generateClassName = createGenerateClassName();
+    it('should be able to extract the styles', function () {
+      var theme = (0, _createMuiTheme.default)();
+      var sheetsRegistry = new _jss.SheetsRegistry();
+      var generateClassName = (0, _createGenerateClassName.default)();
+      var markup = (0, _server.renderToString)(_react.default.createElement(_JssProvider.default, {
+        registry: sheetsRegistry,
+        generateClassName: generateClassName
+      }, _react.default.createElement(_MuiThemeProvider.default, {
+        theme: theme,
+        sheetsManager: new _map.default()
+      }, _ref)));
 
-      const markup = renderToString(
-        <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
-          <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
-            <Button>Hello World</Button>
-          </MuiThemeProvider>
-        </JssProvider>,
-      );
+      _chai.assert.notStrictEqual(markup.match('Hello World'), null);
 
-      assert.notStrictEqual(markup.match('Hello World'), null);
-      assert.strictEqual(sheetsRegistry.registry.length, 3);
-      assert.strictEqual(sheetsRegistry.toString().length > 4000, true);
-      assert.strictEqual(sheetsRegistry.registry[0].classes.root, 'MuiTouchRipple-root-19');
-      assert.deepEqual(
-        sheetsRegistry.registry[1].classes,
-        {
-          disabled: 'MuiButtonBase-disabled-17',
-          focusVisible: 'MuiButtonBase-focusVisible-18',
-          root: 'MuiButtonBase-root-16',
-        },
-        'the class names should be deterministic',
-      );
-      assert.strictEqual(sheetsRegistry.registry[2].classes.root, 'MuiButton-root-1');
+      _chai.assert.strictEqual(sheetsRegistry.registry.length, 3);
+
+      _chai.assert.strictEqual(sheetsRegistry.toString().length > 4000, true);
+
+      _chai.assert.strictEqual(sheetsRegistry.registry[0].classes.root, 'MuiTouchRipple-root-19');
+
+      _chai.assert.deepEqual(sheetsRegistry.registry[1].classes, {
+        disabled: 'MuiButtonBase-disabled-17',
+        focusVisible: 'MuiButtonBase-focusVisible-18',
+        root: 'MuiButtonBase-root-16'
+      }, 'the class names should be deterministic');
+
+      _chai.assert.strictEqual(sheetsRegistry.registry[2].classes.root, 'MuiButton-root-1');
     });
   });
+  describe('mount', function () {
+    it('should work with nesting theme', function () {
+      var _getThemeSpy = getThemeSpy(),
+          themeSpy1 = _getThemeSpy.themeSpy,
+          ThemeSpy1 = _getThemeSpy.ThemeSpy;
 
-  describe('mount', () => {
-    it('should work with nesting theme', () => {
-      const { themeSpy: themeSpy1, ThemeSpy: ThemeSpy1 } = getThemeSpy();
-      const { themeSpy: themeSpy2, ThemeSpy: ThemeSpy2 } = getThemeSpy();
-      const { themeSpy: themeSpy3, ThemeSpy: ThemeSpy3 } = getThemeSpy();
+      var _getThemeSpy2 = getThemeSpy(),
+          themeSpy2 = _getThemeSpy2.themeSpy,
+          ThemeSpy2 = _getThemeSpy2.ThemeSpy;
 
-      const theme1 = createMuiTheme({ status: { color: 'orange' } });
-      const theme2 = outerTheme => ({ ...outerTheme, status: { color: 'green' } });
-      const theme3 = createMuiTheme({ status: { color: 'yellow' } });
+      var _getThemeSpy3 = getThemeSpy(),
+          themeSpy3 = _getThemeSpy3.themeSpy,
+          ThemeSpy3 = _getThemeSpy3.ThemeSpy;
 
-      const wrapper = mount(
-        <MuiThemeProvider theme={theme1}>
-          <ThemeSpy1>
-            <MuiThemeProvider theme={theme2}>
-              <ThemeSpy2>
-                <span>Foo</span>
-              </ThemeSpy2>
-            </MuiThemeProvider>
-            <MuiThemeProvider theme={theme3}>
-              <ThemeSpy3>
-                <span>Bar</span>
-              </ThemeSpy3>
-            </MuiThemeProvider>
-          </ThemeSpy1>
-        </MuiThemeProvider>,
-      );
+      var theme1 = (0, _createMuiTheme.default)({
+        status: {
+          color: 'orange'
+        }
+      });
 
-      assert.strictEqual(themeSpy1.callCount, 1);
-      assert.strictEqual(themeSpy1.args[0][0].status.color, 'orange');
-      assert.strictEqual(themeSpy2.callCount, 1);
-      assert.strictEqual(themeSpy2.args[0][0].status.color, 'green');
-      assert.strictEqual(themeSpy3.callCount, 1);
-      assert.strictEqual(themeSpy3.args[0][0].status.color, 'yellow');
+      var theme2 = function theme2(outerTheme) {
+        return (0, _objectSpread2.default)({}, outerTheme, {
+          status: {
+            color: 'green'
+          }
+        });
+      };
 
-      wrapper.setProps({ theme: createMuiTheme({ status: { color: 'blue' } }) });
+      var theme3 = (0, _createMuiTheme.default)({
+        status: {
+          color: 'yellow'
+        }
+      });
+      var wrapper = mount(_react.default.createElement(_MuiThemeProvider.default, {
+        theme: theme1
+      }, _react.default.createElement(ThemeSpy1, null, _react.default.createElement(_MuiThemeProvider.default, {
+        theme: theme2
+      }, _react.default.createElement(ThemeSpy2, null, _ref2)), _react.default.createElement(_MuiThemeProvider.default, {
+        theme: theme3
+      }, _react.default.createElement(ThemeSpy3, null, _ref3)))));
 
-      assert.strictEqual(themeSpy1.callCount, 3);
-      assert.strictEqual(themeSpy1.args[2][0].status.color, 'blue');
-      assert.strictEqual(themeSpy2.callCount, 3);
-      assert.strictEqual(themeSpy2.args[2][0].status.color, 'green');
-      assert.strictEqual(themeSpy3.callCount, 3);
-      assert.strictEqual(themeSpy3.args[2][0].status.color, 'yellow');
+      _chai.assert.strictEqual(themeSpy1.callCount, 1);
+
+      _chai.assert.strictEqual(themeSpy1.args[0][0].status.color, 'orange');
+
+      _chai.assert.strictEqual(themeSpy2.callCount, 1);
+
+      _chai.assert.strictEqual(themeSpy2.args[0][0].status.color, 'green');
+
+      _chai.assert.strictEqual(themeSpy3.callCount, 1);
+
+      _chai.assert.strictEqual(themeSpy3.args[0][0].status.color, 'yellow');
+
+      wrapper.setProps({
+        theme: (0, _createMuiTheme.default)({
+          status: {
+            color: 'blue'
+          }
+        })
+      });
+
+      _chai.assert.strictEqual(themeSpy1.callCount, 3);
+
+      _chai.assert.strictEqual(themeSpy1.args[2][0].status.color, 'blue');
+
+      _chai.assert.strictEqual(themeSpy2.callCount, 3);
+
+      _chai.assert.strictEqual(themeSpy2.args[2][0].status.color, 'green');
+
+      _chai.assert.strictEqual(themeSpy3.callCount, 3);
+
+      _chai.assert.strictEqual(themeSpy3.args[2][0].status.color, 'yellow');
     });
-
-    it('should forward the parent options', () => {
-      const theme = createMuiTheme({ status: { color: 'orange' } });
-
-      const optionsSpy = spy();
+    it('should forward the parent options', function () {
+      var theme = (0, _createMuiTheme.default)({
+        status: {
+          color: 'orange'
+        }
+      });
+      var optionsSpy = (0, _sinon.spy)();
 
       function OptionsSpy(props, context) {
         optionsSpy(context.muiThemeProviderOptions);
-        return <div />;
+        return _ref4;
       }
 
       OptionsSpy.contextTypes = {
-        muiThemeProviderOptions: PropTypes.object.isRequired,
+        muiThemeProviderOptions: _propTypes.default.object.isRequired
       };
+      mount(_react.default.createElement(_MuiThemeProvider.default, {
+        theme: theme,
+        disableStylesGeneration: true
+      }, _react.default.createElement(_MuiThemeProvider.default, {
+        theme: theme
+      }, _react.default.createElement(OptionsSpy, null))));
 
-      mount(
-        <MuiThemeProvider theme={theme} disableStylesGeneration>
-          <MuiThemeProvider theme={theme}>
-            <OptionsSpy />
-          </MuiThemeProvider>
-        </MuiThemeProvider>,
-      );
-      assert.strictEqual(optionsSpy.callCount, 1);
-      assert.deepEqual(optionsSpy.args[0][0], {
-        disableStylesGeneration: true,
+      _chai.assert.strictEqual(optionsSpy.callCount, 1);
+
+      _chai.assert.deepEqual(optionsSpy.args[0][0], {
+        disableStylesGeneration: true
       });
     });
   });
+  describe('prop: disableStylesGeneration', function () {
+    it('should provide the property down the context', function () {
+      var _getOptionsSpy = getOptionsSpy(),
+          optionsSpy = _getOptionsSpy.optionsSpy,
+          OptionsSpy = _getOptionsSpy.OptionsSpy;
 
-  describe('prop: disableStylesGeneration', () => {
-    it('should provide the property down the context', () => {
-      const { optionsSpy, OptionsSpy } = getOptionsSpy();
+      var theme = (0, _createMuiTheme.default)();
+      var wrapper = mount(_react.default.createElement(_MuiThemeProvider.default, {
+        theme: theme,
+        disableStylesGeneration: true
+      }, _react.default.createElement(OptionsSpy, null, _ref5)));
 
-      const theme = createMuiTheme();
-      const wrapper = mount(
-        <MuiThemeProvider theme={theme} disableStylesGeneration>
-          <OptionsSpy>
-            <div>Foo</div>
-          </OptionsSpy>
-        </MuiThemeProvider>,
-      );
+      _chai.assert.strictEqual(optionsSpy.callCount, 1);
 
-      assert.strictEqual(optionsSpy.callCount, 1);
-      assert.strictEqual(optionsSpy.args[0][0].disableStylesGeneration, true);
+      _chai.assert.strictEqual(optionsSpy.args[0][0].disableStylesGeneration, true);
 
-      wrapper.setProps({ disableStylesGeneration: false });
-      assert.strictEqual(optionsSpy.args[1][0].disableStylesGeneration, false);
+      wrapper.setProps({
+        disableStylesGeneration: false
+      });
+
+      _chai.assert.strictEqual(optionsSpy.args[1][0].disableStylesGeneration, false);
     });
   });
 });

@@ -1,30 +1,50 @@
-// @flow weak
+"use strict";
 
-function shallowRecursively(wrapper, selector, { context, ...other }) {
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = until;
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+//  weak
+function shallowRecursively(wrapper, selector, _ref) {
+  var context = _ref.context,
+      other = (0, _objectWithoutProperties2.default)(_ref, ["context"]);
+
   if (wrapper.isEmptyRender() || typeof wrapper.getElement().type === 'string') {
     return wrapper;
   }
 
-  let newContext = context;
+  var newContext = context;
+  var instance = wrapper.root().instance(); // The instance can be null with a stateless functional component and react >= 16.
 
-  const instance = wrapper.root().instance();
-  // The instance can be null with a stateless functional component and react >= 16.
   if (instance && instance.getChildContext) {
-    newContext = {
-      ...context,
-      ...instance.getChildContext(),
-    };
+    newContext = (0, _objectSpread2.default)({}, context, instance.getChildContext());
   }
 
-  const nextWrapper = wrapper.shallow({ context: newContext, ...other });
+  var nextWrapper = wrapper.shallow((0, _objectSpread2.default)({
+    context: newContext
+  }, other));
 
   if (selector && wrapper.is(selector)) {
     return nextWrapper;
   }
 
-  return shallowRecursively(nextWrapper, selector, { context: newContext });
+  return shallowRecursively(nextWrapper, selector, {
+    context: newContext
+  });
 }
 
-export default function until(selector, options = {}) {
-  return this.single('until', () => shallowRecursively(this, selector, options));
+function until(selector) {
+  var _this = this;
+
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return this.single('until', function () {
+    return shallowRecursively(_this, selector, options);
+  });
 }

@@ -1,4 +1,10 @@
-const blueGrey = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var blueGrey = {
   50: '#eceff1',
   100: '#cfd8dc',
   200: '#b0bec5',
@@ -12,7 +18,7 @@ const blueGrey = {
   A100: '#cfd8dc',
   A200: '#b0bec5',
   A400: '#78909c',
-  A700: '#455a64',
+  A700: '#455a64'
 };
-
-export default blueGrey;
+var _default = blueGrey;
+exports.default = _default;

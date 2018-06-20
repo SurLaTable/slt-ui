@@ -1,4 +1,10 @@
-const orange = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var orange = {
   50: '#fff3e0',
   100: '#ffe0b2',
   200: '#ffcc80',
@@ -12,7 +18,7 @@ const orange = {
   A100: '#ffd180',
   A200: '#ffab40',
   A400: '#ff9100',
-  A700: '#ff6d00',
+  A700: '#ff6d00'
 };
-
-export default orange;
+var _default = orange;
+exports.default = _default;

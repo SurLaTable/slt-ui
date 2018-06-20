@@ -1,35 +1,45 @@
-// @flow
+"use strict";
 
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import ExpansionPanelDetails from './ExpansionPanelDetails';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-describe('<ExpansionPanelDetails />', () => {
-  let shallow;
-  let classes;
+var _react = _interopRequireDefault(require("react"));
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(<ExpansionPanelDetails>foo</ExpansionPanelDetails>);
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _ExpansionPanelDetails = _interopRequireDefault(require("./ExpansionPanelDetails"));
+
+var _ref = _react.default.createElement(_ExpansionPanelDetails.default, null, "foo");
+
+var _ref2 = _react.default.createElement(_ExpansionPanelDetails.default, {
+  className: "woofExpansionPanelDetails"
+}, "foo");
+
+var _ref3 = _react.default.createElement(_ExpansionPanelDetails.default, null, _react.default.createElement("div", null, "Hello"));
+
+describe('<ExpansionPanelDetails />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
   });
+  it('should render a div', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should render a div', () => {
-    const wrapper = shallow(
-      <ExpansionPanelDetails className="woofExpansionPanelDetails">foo</ExpansionPanelDetails>,
-    );
-    assert.strictEqual(wrapper.name(), 'div');
-    assert.strictEqual(wrapper.hasClass(classes.root), true);
-    assert.strictEqual(wrapper.hasClass('woofExpansionPanelDetails'), true);
+    _chai.assert.strictEqual(wrapper.name(), 'div');
+
+    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
+
+    _chai.assert.strictEqual(wrapper.hasClass('woofExpansionPanelDetails'), true);
   });
+  it('should render a children element', function () {
+    var wrapper = shallow(_ref3);
+    var container = wrapper.childAt(0);
 
-  it('should render a children element', () => {
-    const wrapper = shallow(
-      <ExpansionPanelDetails>
-        <div>Hello</div>
-      </ExpansionPanelDetails>,
-    );
-    const container = wrapper.childAt(0);
-    assert.strictEqual(container.type(), 'div');
+    _chai.assert.strictEqual(container.type(), 'div');
   });
 });

@@ -1,8 +1,12 @@
-// @flow
+"use strict";
 
-const common = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var common = {
   black: '#000',
-  white: '#fff',
+  white: '#fff'
 };
-
-export default common;
+var _default = common;
+exports.default = _default;

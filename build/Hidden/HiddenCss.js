@@ -1,154 +1,173 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import warning from 'warning';
-import { keys as breakpointKeys } from '../styles/createBreakpoints';
-import { capitalize } from '../utils/helpers';
-import withStyles from '../styles/withStyles';
+"use strict";
 
-const styles = theme => {
-  const hidden = {
-    display: 'none',
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _warning = _interopRequireDefault(require("warning"));
+
+var _createBreakpoints = require("../styles/createBreakpoints");
+
+var _helpers = require("../utils/helpers");
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var styles = function styles(theme) {
+  var hidden = {
+    display: 'none'
   };
-
-  return breakpointKeys.reduce((acc, key) => {
-    acc[`only${capitalize(key)}`] = {
-      [theme.breakpoints.only(key)]: hidden,
-    };
-    acc[`${key}Up`] = {
-      [theme.breakpoints.up(key)]: hidden,
-    };
-    acc[`${key}Down`] = {
-      [theme.breakpoints.down(key)]: hidden,
-    };
-
+  return _createBreakpoints.keys.reduce(function (acc, key) {
+    acc["only".concat((0, _helpers.capitalize)(key))] = (0, _defineProperty2.default)({}, theme.breakpoints.only(key), hidden);
+    acc["".concat(key, "Up")] = (0, _defineProperty2.default)({}, theme.breakpoints.up(key), hidden);
+    acc["".concat(key, "Down")] = (0, _defineProperty2.default)({}, theme.breakpoints.down(key), hidden);
     return acc;
   }, {});
 };
-
 /**
  * @ignore - internal component.
  */
+
+
 function HiddenCss(props) {
-  const {
-    children,
-    classes,
-    className,
-    lgDown,
-    lgUp,
-    mdDown,
-    mdUp,
-    only,
-    smDown,
-    smUp,
-    xlDown,
-    xlUp,
-    xsDown,
-    xsUp,
-    ...other
-  } = props;
-
-  warning(
-    Object.keys(other).length === 0 ||
-      (Object.keys(other).length === 1 && other.hasOwnProperty('ref')),
-    `Material-UI: unsupported properties received ${Object.keys(other).join(
-      ', ',
-    )} by \`<Hidden />\`.`,
-  );
-
-  const classNames = [];
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      lgDown = props.lgDown,
+      lgUp = props.lgUp,
+      mdDown = props.mdDown,
+      mdUp = props.mdUp,
+      only = props.only,
+      smDown = props.smDown,
+      smUp = props.smUp,
+      xlDown = props.xlDown,
+      xlUp = props.xlUp,
+      xsDown = props.xsDown,
+      xsUp = props.xsUp,
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "lgDown", "lgUp", "mdDown", "mdUp", "only", "smDown", "smUp", "xlDown", "xlUp", "xsDown", "xsUp"]);
+  process.env.NODE_ENV !== "production" ? (0, _warning.default)((0, _keys.default)(other).length === 0 || (0, _keys.default)(other).length === 1 && other.hasOwnProperty('ref'), "Material-UI: unsupported properties received ".concat((0, _keys.default)(other).join(', '), " by `<Hidden />`.")) : void 0;
+  var classNames = [];
 
   if (className) {
     classNames.push(className);
   }
 
-  for (let i = 0; i < breakpointKeys.length; i += 1) {
-    const breakpoint = breakpointKeys[i];
-    const breakpointUp = props[`${breakpoint}Up`];
-    const breakpointDown = props[`${breakpoint}Down`];
+  for (var i = 0; i < _createBreakpoints.keys.length; i += 1) {
+    var breakpoint = _createBreakpoints.keys[i];
+    var breakpointUp = props["".concat(breakpoint, "Up")];
+    var breakpointDown = props["".concat(breakpoint, "Down")];
 
     if (breakpointUp) {
-      classNames.push(classes[`${breakpoint}Up`]);
+      classNames.push(classes["".concat(breakpoint, "Up")]);
     }
+
     if (breakpointDown) {
-      classNames.push(classes[`${breakpoint}Down`]);
+      classNames.push(classes["".concat(breakpoint, "Down")]);
     }
   }
 
   if (only) {
-    const onlyBreakpoints = Array.isArray(only) ? only : [only];
-    onlyBreakpoints.forEach(breakpoint => {
-      classNames.push(classes[`only${capitalize(breakpoint)}`]);
+    var onlyBreakpoints = Array.isArray(only) ? only : [only];
+    onlyBreakpoints.forEach(function (breakpoint) {
+      classNames.push(classes["only".concat((0, _helpers.capitalize)(breakpoint))]);
     });
   }
 
-  return <div className={classNames.join(' ')}>{children}</div>;
+  return _react.default.createElement("div", {
+    className: classNames.join(' ')
+  }, children);
 }
 
-HiddenCss.propTypes = {
+HiddenCss.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The content of the component.
    */
-  children: PropTypes.node,
+  children: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * Specify which implementation to use.  'js' is the default, 'css' works better for server
    * side rendering.
    */
-  implementation: PropTypes.oneOf(['js', 'css']),
+  implementation: _propTypes.default.oneOf(['js', 'css']),
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  lgDown: PropTypes.bool,
+  lgDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  lgUp: PropTypes.bool,
+  lgUp: _propTypes.default.bool,
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  mdDown: PropTypes.bool,
+  mdDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  mdUp: PropTypes.bool,
+  mdUp: _propTypes.default.bool,
+
   /**
    * Hide the given breakpoint(s).
    */
-  only: PropTypes.oneOfType([
-    PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-    PropTypes.arrayOf(PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl'])),
-  ]),
-  /**
-   * If true, screens this size and down will be hidden.
-   */
-  smDown: PropTypes.bool,
-  /**
-   * If true, screens this size and up will be hidden.
-   */
-  smUp: PropTypes.bool,
-  /**
-   * If true, screens this size and down will be hidden.
-   */
-  xlDown: PropTypes.bool,
-  /**
-   * If true, screens this size and up will be hidden.
-   */
-  xlUp: PropTypes.bool,
-  /**
-   * If true, screens this size and down will be hidden.
-   */
-  xsDown: PropTypes.bool,
-  /**
-   * If true, screens this size and up will be hidden.
-   */
-  xsUp: PropTypes.bool,
-};
+  only: _propTypes.default.oneOfType([_propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), _propTypes.default.arrayOf(_propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
 
-export default withStyles(styles)(HiddenCss);
+  /**
+   * If true, screens this size and down will be hidden.
+   */
+  smDown: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and up will be hidden.
+   */
+  smUp: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and down will be hidden.
+   */
+  xlDown: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and up will be hidden.
+   */
+  xlUp: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and down will be hidden.
+   */
+  xsDown: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and up will be hidden.
+   */
+  xsUp: _propTypes.default.bool
+} : {};
+
+var _default = (0, _withStyles.default)(styles)(HiddenCss);
+
+exports.default = _default;

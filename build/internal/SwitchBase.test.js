@@ -1,389 +1,395 @@
-// @flow
+"use strict";
 
-import React from 'react';
-import { assert } from 'chai';
-import { spy } from 'sinon';
-import { createShallow, createMount, getClasses, unwrap } from '../test-utils';
-import SwitchBase from './SwitchBase';
-import IconButton from '../IconButton';
-import Icon from '../Icon';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _sinon = require("sinon");
+
+var _testUtils = require("../test-utils");
+
+var _SwitchBase = _interopRequireDefault(require("./SwitchBase"));
+
+var _IconButton = _interopRequireDefault(require("../IconButton"));
+
+var _Icon = _interopRequireDefault(require("../Icon"));
 
 function assertIsChecked(wrapper) {
-  const iconButton = wrapper.find('span').at(0);
+  var iconButton = wrapper.find('span').at(0);
 
-  assert.strictEqual(
-    iconButton.hasClass('test-class-checked'),
-    true,
-    'should have the checked class on the root node',
-  );
+  _chai.assert.strictEqual(iconButton.hasClass('test-class-checked'), true, 'should have the checked class on the root node');
 
-  const input = wrapper.find('input');
-  assert.strictEqual(input.instance().checked, true, 'the DOM node should be checked');
+  var input = wrapper.find('input');
 
-  const label = iconButton.childAt(0);
-  const icon = label.childAt(0);
-  assert.strictEqual(icon.is('h2'), true, 'should be the checked icon');
+  _chai.assert.strictEqual(input.instance().checked, true, 'the DOM node should be checked');
+
+  var label = iconButton.childAt(0);
+  var icon = label.childAt(0);
+
+  _chai.assert.strictEqual(icon.is('h2'), true, 'should be the checked icon');
 }
 
 function assertIsNotChecked(wrapper) {
-  const iconButton = wrapper.find('span').at(0);
+  var iconButton = wrapper.find('span').at(0);
 
-  assert.strictEqual(
-    iconButton.hasClass('test-class-checked'),
-    false,
-    'should not have the checked class on the root node',
-  );
+  _chai.assert.strictEqual(iconButton.hasClass('test-class-checked'), false, 'should not have the checked class on the root node');
 
-  const input = wrapper.find('input');
-  assert.strictEqual(input.instance().checked, false, 'the DOM node should not be checked');
+  var input = wrapper.find('input');
 
-  const label = iconButton.childAt(0);
-  const icon = label.childAt(0);
-  assert.strictEqual(icon.is('h1'), true, 'should be the icon');
+  _chai.assert.strictEqual(input.instance().checked, false, 'the DOM node should not be checked');
+
+  var label = iconButton.childAt(0);
+  var icon = label.childAt(0);
+
+  _chai.assert.strictEqual(icon.is('h1'), true, 'should be the icon');
 }
 
-describe('<SwitchBase />', () => {
-  let shallow;
-  let mount;
-  let classes;
-  let SwitchBaseNaked;
-  const defaultProps = {
-    icon: <h1>h1</h1>,
-    checkedIcon: <h2>h2</h2>,
+var _ref = _react.default.createElement("h1", null, "h1");
+
+var _ref2 = _react.default.createElement("h2", null, "h2");
+
+var _ref3 = _react.default.createElement(_Icon.default, null, "heart");
+
+describe('<SwitchBase />', function () {
+  var shallow;
+  var mount;
+  var classes;
+  var SwitchBaseNaked;
+  var defaultProps = {
+    icon: _ref,
+    checkedIcon: _ref2
   };
-
-  before(() => {
-    SwitchBaseNaked = unwrap(SwitchBase);
-    shallow = createShallow({ dive: true });
-    mount = createMount();
-    classes = getClasses(<SwitchBase {...defaultProps} />);
+  before(function () {
+    SwitchBaseNaked = (0, _testUtils.unwrap)(_SwitchBase.default);
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    mount = (0, _testUtils.createMount)();
+    classes = (0, _testUtils.getClasses)(_react.default.createElement(_SwitchBase.default, defaultProps));
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
+  it('should render an IconButton', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, defaultProps));
 
-  it('should render an IconButton', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} />);
-    assert.strictEqual(wrapper.type(), IconButton);
+    _chai.assert.strictEqual(wrapper.type(), _IconButton.default);
   });
+  it('should render an icon and input inside the button by default', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, defaultProps));
 
-  it('should render an icon and input inside the button by default', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} />);
-    assert.strictEqual(wrapper.childAt(0).is('h1'), true, 'should be the icon');
-    assert.strictEqual(
-      wrapper.childAt(1).is('input[type="checkbox"]'),
-      true,
-      'should be a checkbox input',
-    );
+    _chai.assert.strictEqual(wrapper.childAt(0).is('h1'), true, 'should be the icon');
+
+    _chai.assert.strictEqual(wrapper.childAt(1).is('input[type="checkbox"]'), true, 'should be a checkbox input');
   });
+  it('should have a ripple by default', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, defaultProps));
 
-  it('should have a ripple by default', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} />);
-    assert.strictEqual(wrapper.props().disableRipple, undefined);
+    _chai.assert.strictEqual(wrapper.props().disableRipple, undefined);
   });
+  it('should pass disableRipple={true} to IconButton', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+      disableRipple: true
+    })));
 
-  it('should pass disableRipple={true} to IconButton', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} disableRipple />);
-    assert.strictEqual(wrapper.props().disableRipple, true, 'should set disableRipple to true');
+    _chai.assert.strictEqual(wrapper.props().disableRipple, true, 'should set disableRipple to true');
+  }); // className is put on the root node, this is a special case!
+
+  it('should render with the user and root classes', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+      className: "woofSwitchBase"
+    })));
+
+    _chai.assert.strictEqual(wrapper.hasClass('woofSwitchBase'), true);
+
+    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
   });
+  it('should spread custom props on the root node', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+      "data-my-prop": "woofSwitchBase"
+    })));
 
-  // className is put on the root node, this is a special case!
-  it('should render with the user and root classes', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} className="woofSwitchBase" />);
-    assert.strictEqual(wrapper.hasClass('woofSwitchBase'), true);
-    assert.strictEqual(wrapper.hasClass(classes.root), true);
+    _chai.assert.strictEqual(wrapper.props()['data-my-prop'], 'woofSwitchBase', 'custom prop should be woofSwitchBase');
   });
+  it('should pass tabIndex to the input so it can be taken out of focus rotation', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+      tabIndex: -1
+    })));
+    var input = wrapper.find('input');
 
-  it('should spread custom props on the root node', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} data-my-prop="woofSwitchBase" />);
-    assert.strictEqual(
-      wrapper.props()['data-my-prop'],
-      'woofSwitchBase',
-      'custom prop should be woofSwitchBase',
-    );
+    _chai.assert.strictEqual(input.props().tabIndex, -1);
   });
-
-  it('should pass tabIndex to the input so it can be taken out of focus rotation', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} tabIndex={-1} />);
-    const input = wrapper.find('input');
-    assert.strictEqual(input.props().tabIndex, -1);
-  });
-
-  it('should pass value, disabled, checked, and name to the input', () => {
-    const props = { name: 'gender', disabled: true, value: 'male' };
-
-    const wrapper = shallow(<SwitchBase {...defaultProps} {...props} />);
-    const input = wrapper.find('input');
-
-    Object.keys(props).forEach(n => {
-      assert.strictEqual(input.props()[n], props[n]);
-    });
-  });
-
-  it('should disable the components, and render the IconButton with the disabled className', () => {
-    const wrapper = shallow(<SwitchBase {...defaultProps} disabled />);
-    assert.strictEqual(wrapper.props().disabled, true, 'should disable the root node');
-    assert.strictEqual(wrapper.childAt(1).props().disabled, true, 'should disable the input node');
-  });
-
-  it('should apply the custom disabled className when disabled', () => {
-    const disabledClassName = 'foo';
-    const wrapperA = shallow(
-      <SwitchBase {...defaultProps} disabled classes={{ disabled: disabledClassName }} />,
-    );
-
-    assert.strictEqual(
-      wrapperA.hasClass(disabledClassName),
-      true,
-      'should have the custom disabled class',
-    );
-
-    wrapperA.setProps({ disabled: false });
-    wrapperA.setProps({ checked: true });
-
-    assert.strictEqual(
-      wrapperA.hasClass(disabledClassName),
-      false,
-      'should not have the custom disabled class',
-    );
-  });
-
-  describe('controlled', () => {
-    let wrapper;
-
-    beforeEach(() => {
-      wrapper = mount(
-        <SwitchBaseNaked
-          {...defaultProps}
-          classes={{
-            checked: 'test-class-checked',
-          }}
-          className="test-class"
-          checked={false}
-        />,
-      );
-    });
-
-    it('should recognize a controlled input', () => {
-      assert.strictEqual(
-        wrapper.instance().isControlled,
-        true,
-        'should set instance.isControlled to true',
-      );
-      assertIsNotChecked(wrapper);
-    });
-
-    it('should check the checkbox', () => {
-      wrapper.setProps({ checked: true });
-      assertIsChecked(wrapper);
-    });
-
-    it('should uncheck the checkbox', () => {
-      wrapper.setProps({ checked: true });
-      wrapper.setProps({ checked: false });
-      assertIsNotChecked(wrapper);
-    });
-  });
-
-  describe('prop: defaultChecked', () => {
-    it('should work uncontrolled', () => {
-      const wrapper = mount(<SwitchBaseNaked {...defaultProps} classes={{}} defaultChecked />);
-      wrapper
-        .find('input')
-        .instance()
-        .click();
-      wrapper.update();
-      assertIsNotChecked(wrapper);
-    });
-  });
-
-  describe('uncontrolled', () => {
-    let wrapper;
-
-    beforeEach(() => {
-      wrapper = mount(
-        <SwitchBaseNaked
-          {...defaultProps}
-          classes={{
-            checked: 'test-class-checked',
-          }}
-          className="test-class"
-        />,
-      );
-    });
-
-    it('should recognize an uncontrolled input', () => {
-      assert.strictEqual(wrapper.instance().isControlled, false);
-      assertIsNotChecked(wrapper);
-    });
-
-    it('should check the checkbox', () => {
-      wrapper
-        .find('input')
-        .instance()
-        .click();
-      wrapper.update();
-      assertIsChecked(wrapper);
-    });
-
-    it('should uncheck the checkbox', () => {
-      wrapper
-        .find('input')
-        .instance()
-        .click();
-      wrapper
-        .find('input')
-        .instance()
-        .click();
-      wrapper.update();
-      assertIsNotChecked(wrapper);
-    });
-  });
-
-  describe('prop: icon', () => {
-    it('should render an Icon', () => {
-      const wrapper = shallow(<SwitchBase {...defaultProps} icon={<Icon>heart</Icon>} />);
-      assert.strictEqual(wrapper.childAt(0).is(Icon), true);
-    });
-  });
-
-  describe('handleInputChange()', () => {
-    const event = {
-      target: {
-        checked: false,
-      },
+  it('should pass value, disabled, checked, and name to the input', function () {
+    var props = {
+      name: 'gender',
+      disabled: true,
+      value: 'male'
     };
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, props)));
+    var input = wrapper.find('input');
+    (0, _keys.default)(props).forEach(function (n) {
+      _chai.assert.strictEqual(input.props()[n], props[n]);
+    });
+  });
+  it('should disable the components, and render the IconButton with the disabled className', function () {
+    var wrapper = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+      disabled: true
+    })));
 
-    it('should call onChange exactly once with event', () => {
-      const onChangeSpy = spy();
-      const wrapper = mount(
-        <SwitchBaseNaked {...defaultProps} classes={{}} onChange={onChangeSpy} />,
-      );
-      const instance = wrapper.instance();
+    _chai.assert.strictEqual(wrapper.props().disabled, true, 'should disable the root node');
+
+    _chai.assert.strictEqual(wrapper.childAt(1).props().disabled, true, 'should disable the input node');
+  });
+  it('should apply the custom disabled className when disabled', function () {
+    var disabledClassName = 'foo';
+    var wrapperA = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+      disabled: true,
+      classes: {
+        disabled: disabledClassName
+      }
+    })));
+
+    _chai.assert.strictEqual(wrapperA.hasClass(disabledClassName), true, 'should have the custom disabled class');
+
+    wrapperA.setProps({
+      disabled: false
+    });
+    wrapperA.setProps({
+      checked: true
+    });
+
+    _chai.assert.strictEqual(wrapperA.hasClass(disabledClassName), false, 'should not have the custom disabled class');
+  });
+  describe('controlled', function () {
+    var wrapper;
+    beforeEach(function () {
+      wrapper = mount(_react.default.createElement(SwitchBaseNaked, (0, _extends2.default)({}, defaultProps, {
+        classes: {
+          checked: 'test-class-checked'
+        },
+        className: "test-class",
+        checked: false
+      })));
+    });
+    it('should recognize a controlled input', function () {
+      _chai.assert.strictEqual(wrapper.instance().isControlled, true, 'should set instance.isControlled to true');
+
+      assertIsNotChecked(wrapper);
+    });
+    it('should check the checkbox', function () {
+      wrapper.setProps({
+        checked: true
+      });
+      assertIsChecked(wrapper);
+    });
+    it('should uncheck the checkbox', function () {
+      wrapper.setProps({
+        checked: true
+      });
+      wrapper.setProps({
+        checked: false
+      });
+      assertIsNotChecked(wrapper);
+    });
+  });
+  describe('prop: defaultChecked', function () {
+    it('should work uncontrolled', function () {
+      var wrapper = mount(_react.default.createElement(SwitchBaseNaked, (0, _extends2.default)({}, defaultProps, {
+        classes: {},
+        defaultChecked: true
+      })));
+      wrapper.find('input').instance().click();
+      wrapper.update();
+      assertIsNotChecked(wrapper);
+    });
+  });
+  describe('uncontrolled', function () {
+    var wrapper;
+    beforeEach(function () {
+      wrapper = mount(_react.default.createElement(SwitchBaseNaked, (0, _extends2.default)({}, defaultProps, {
+        classes: {
+          checked: 'test-class-checked'
+        },
+        className: "test-class"
+      })));
+    });
+    it('should recognize an uncontrolled input', function () {
+      _chai.assert.strictEqual(wrapper.instance().isControlled, false);
+
+      assertIsNotChecked(wrapper);
+    });
+    it('should check the checkbox', function () {
+      wrapper.find('input').instance().click();
+      wrapper.update();
+      assertIsChecked(wrapper);
+    });
+    it('should uncheck the checkbox', function () {
+      wrapper.find('input').instance().click();
+      wrapper.find('input').instance().click();
+      wrapper.update();
+      assertIsNotChecked(wrapper);
+    });
+  });
+  describe('prop: icon', function () {
+    it('should render an Icon', function () {
+      var wrapper = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+        icon: _ref3
+      })));
+
+      _chai.assert.strictEqual(wrapper.childAt(0).is(_Icon.default), true);
+    });
+  });
+  describe('handleInputChange()', function () {
+    var event = {
+      target: {
+        checked: false
+      }
+    };
+    it('should call onChange exactly once with event', function () {
+      var onChangeSpy = (0, _sinon.spy)();
+      var wrapper = mount(_react.default.createElement(SwitchBaseNaked, (0, _extends2.default)({}, defaultProps, {
+        classes: {},
+        onChange: onChangeSpy
+      })));
+      var instance = wrapper.instance();
       instance.handleInputChange(event);
 
-      assert.strictEqual(onChangeSpy.callCount, 1);
-      assert.strictEqual(onChangeSpy.calledWith(event), true);
+      _chai.assert.strictEqual(onChangeSpy.callCount, 1);
+
+      _chai.assert.strictEqual(onChangeSpy.calledWith(event), true);
 
       onChangeSpy.resetHistory();
     });
-
-    describe('controlled', () => {
-      it('should call onChange once', () => {
-        const checked = true;
-        const onChangeSpy = spy();
-        const wrapper = mount(
-          <SwitchBaseNaked
-            {...defaultProps}
-            classes={{}}
-            checked={checked}
-            onChange={onChangeSpy}
-          />,
-        );
-        const instance = wrapper.instance();
+    describe('controlled', function () {
+      it('should call onChange once', function () {
+        var checked = true;
+        var onChangeSpy = (0, _sinon.spy)();
+        var wrapper = mount(_react.default.createElement(SwitchBaseNaked, (0, _extends2.default)({}, defaultProps, {
+          classes: {},
+          checked: checked,
+          onChange: onChangeSpy
+        })));
+        var instance = wrapper.instance();
         instance.handleInputChange(event);
 
-        assert.strictEqual(onChangeSpy.callCount, 1);
-        assert.strictEqual(
-          onChangeSpy.calledWith(event, !checked),
-          true,
-          'call onChange with event and !props.checked',
-        );
+        _chai.assert.strictEqual(onChangeSpy.callCount, 1);
+
+        _chai.assert.strictEqual(onChangeSpy.calledWith(event, !checked), true, 'call onChange with event and !props.checked');
       });
     });
-
-    describe('not controlled no input', () => {
-      let checkedMock;
-      let wrapper;
-      let onChangeSpy;
-
-      before(() => {
-        onChangeSpy = spy();
-        wrapper = mount(<SwitchBaseNaked {...defaultProps} classes={{}} onChange={onChangeSpy} />);
+    describe('not controlled no input', function () {
+      var checkedMock;
+      var wrapper;
+      var onChangeSpy;
+      before(function () {
+        onChangeSpy = (0, _sinon.spy)();
+        wrapper = mount(_react.default.createElement(SwitchBaseNaked, (0, _extends2.default)({}, defaultProps, {
+          classes: {},
+          onChange: onChangeSpy
+        })));
         checkedMock = true;
-        const instance = wrapper.instance();
-        wrapper.setState({ checked: checkedMock });
+        var instance = wrapper.instance();
+        wrapper.setState({
+          checked: checkedMock
+        });
         instance.handleInputChange(event);
       });
-
-      it('should call onChange exactly once', () => {
-        assert.strictEqual(onChangeSpy.callCount, 1);
+      it('should call onChange exactly once', function () {
+        _chai.assert.strictEqual(onChangeSpy.callCount, 1);
       });
-
-      it('should call onChange with right params', () => {
-        assert.strictEqual(onChangeSpy.calledWith(event, !checkedMock), true);
+      it('should call onChange with right params', function () {
+        _chai.assert.strictEqual(onChangeSpy.calledWith(event, !checkedMock), true);
       });
-
-      it('should change state.checked !checkedMock', () => {
-        assert.strictEqual(wrapper.state('checked'), !checkedMock);
+      it('should change state.checked !checkedMock', function () {
+        _chai.assert.strictEqual(wrapper.state('checked'), !checkedMock);
       });
     });
+    describe('prop: inputProps', function () {
+      it('should be able to add aria', function () {
+        var wrapper2 = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+          inputProps: {
+            'aria-label': 'foo'
+          }
+        })));
 
-    describe('prop: inputProps', () => {
-      it('should be able to add aria', () => {
-        const wrapper2 = shallow(
-          <SwitchBase {...defaultProps} inputProps={{ 'aria-label': 'foo' }} />,
-        );
-        assert.strictEqual(wrapper2.find('input').props()['aria-label'], 'foo');
+        _chai.assert.strictEqual(wrapper2.find('input').props()['aria-label'], 'foo');
       });
     });
+    describe('prop: id', function () {
+      it('should be able to add id to a checkbox input', function () {
+        var wrapper2 = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+          type: "checkbox",
+          id: "foo"
+        })));
 
-    describe('prop: id', () => {
-      it('should be able to add id to a checkbox input', () => {
-        const wrapper2 = shallow(<SwitchBase {...defaultProps} type="checkbox" id="foo" />);
-        assert.strictEqual(wrapper2.find('input').props().id, 'foo');
+        _chai.assert.strictEqual(wrapper2.find('input').props().id, 'foo');
       });
+      it('should be able to add id to a radio input', function () {
+        var wrapper2 = shallow(_react.default.createElement(_SwitchBase.default, (0, _extends2.default)({}, defaultProps, {
+          type: "radio",
+          id: "foo"
+        })));
 
-      it('should be able to add id to a radio input', () => {
-        const wrapper2 = shallow(<SwitchBase {...defaultProps} type="radio" id="foo" />);
-        assert.strictEqual(wrapper2.find('input').props().id, 'foo');
+        _chai.assert.strictEqual(wrapper2.find('input').props().id, 'foo');
       });
     });
   });
-
-  describe('with muiFormControl context', () => {
-    let wrapper;
-    let muiFormControl;
+  describe('with muiFormControl context', function () {
+    var wrapper;
+    var muiFormControl;
 
     function setFormControlContext(muiFormControlContext) {
       muiFormControl = muiFormControlContext;
-      wrapper.setContext({ ...wrapper.context(), muiFormControl });
+      wrapper.setContext((0, _objectSpread2.default)({}, wrapper.context(), {
+        muiFormControl: muiFormControl
+      }));
     }
 
-    beforeEach(() => {
-      wrapper = shallow(<SwitchBase {...defaultProps} />);
+    beforeEach(function () {
+      wrapper = shallow(_react.default.createElement(_SwitchBase.default, defaultProps));
     });
-
-    describe('enabled', () => {
-      beforeEach(() => {
+    describe('enabled', function () {
+      beforeEach(function () {
         setFormControlContext({});
       });
-
-      it('should not have the disabled class', () => {
-        assert.strictEqual(wrapper.hasClass(classes.disabled), false);
+      it('should not have the disabled class', function () {
+        _chai.assert.strictEqual(wrapper.hasClass(classes.disabled), false);
       });
+      it('should be overridden by props', function () {
+        _chai.assert.strictEqual(wrapper.hasClass(classes.disabled), false);
 
-      it('should be overridden by props', () => {
-        assert.strictEqual(wrapper.hasClass(classes.disabled), false);
-        wrapper.setProps({ disabled: true });
-        assert.strictEqual(wrapper.hasClass(classes.disabled), true);
+        wrapper.setProps({
+          disabled: true
+        });
+
+        _chai.assert.strictEqual(wrapper.hasClass(classes.disabled), true);
       });
     });
-
-    describe('disabled', () => {
-      beforeEach(() => {
-        setFormControlContext({ disabled: true });
+    describe('disabled', function () {
+      beforeEach(function () {
+        setFormControlContext({
+          disabled: true
+        });
       });
-
-      it('should have the disabled class', () => {
-        assert.strictEqual(wrapper.hasClass(classes.disabled), true);
+      it('should have the disabled class', function () {
+        _chai.assert.strictEqual(wrapper.hasClass(classes.disabled), true);
       });
+      it('should honor props', function () {
+        _chai.assert.strictEqual(wrapper.hasClass(classes.disabled), true);
 
-      it('should honor props', () => {
-        assert.strictEqual(wrapper.hasClass(classes.disabled), true);
-        wrapper.setProps({ disabled: false });
-        assert.strictEqual(wrapper.hasClass(classes.disabled), false);
+        wrapper.setProps({
+          disabled: false
+        });
+
+        _chai.assert.strictEqual(wrapper.hasClass(classes.disabled), false);
       });
     });
   });

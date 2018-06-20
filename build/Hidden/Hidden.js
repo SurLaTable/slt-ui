@@ -1,35 +1,53 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import HiddenJs from './HiddenJs';
-import HiddenCss from './HiddenCss';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _HiddenJs = _interopRequireDefault(require("./HiddenJs"));
+
+var _HiddenCss = _interopRequireDefault(require("./HiddenCss"));
 
 /**
  * Responsively hides children based on the selected implementation.
  */
 function Hidden(props) {
-  const { implementation, ...other } = props;
+  var implementation = props.implementation,
+      other = (0, _objectWithoutProperties2.default)(props, ["implementation"]);
 
   if (implementation === 'js') {
-    return <HiddenJs {...other} />;
+    return _react.default.createElement(_HiddenJs.default, other);
   }
 
-  return <HiddenCss {...other} />;
+  return _react.default.createElement(_HiddenCss.default, other);
 }
 
-Hidden.propTypes = {
+Hidden.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The content of the component.
    */
-  children: PropTypes.node,
+  children: _propTypes.default.node,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * Specify which implementation to use.  'js' is the default, 'css' works better for server
    * side rendering.
    */
-  implementation: PropTypes.oneOf(['js', 'css']),
+  implementation: _propTypes.default.oneOf(['js', 'css']),
+
   /**
    * You can use this property when choosing the `js` implementation with server side rendering.
    *
@@ -41,56 +59,63 @@ Hidden.propTypes = {
    * For instance, you could be using the user-agent or the client-hints.
    * http://caniuse.com/#search=client%20hint
    */
-  initialWidth: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  initialWidth: _propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  lgDown: PropTypes.bool,
+  lgDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  lgUp: PropTypes.bool,
+  lgUp: _propTypes.default.bool,
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  mdDown: PropTypes.bool,
+  mdDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  mdUp: PropTypes.bool,
+  mdUp: _propTypes.default.bool,
+
   /**
    * Hide the given breakpoint(s).
    */
-  only: PropTypes.oneOfType([
-    PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-    PropTypes.arrayOf(PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl'])),
-  ]),
-  /**
-   * If true, screens this size and down will be hidden.
-   */
-  smDown: PropTypes.bool,
-  /**
-   * If true, screens this size and up will be hidden.
-   */
-  smUp: PropTypes.bool,
-  /**
-   * If true, screens this size and down will be hidden.
-   */
-  xlDown: PropTypes.bool,
-  /**
-   * If true, screens this size and up will be hidden.
-   */
-  xlUp: PropTypes.bool,
-  /**
-   * If true, screens this size and down will be hidden.
-   */
-  xsDown: PropTypes.bool,
-  /**
-   * If true, screens this size and up will be hidden.
-   */
-  xsUp: PropTypes.bool,
-};
+  only: _propTypes.default.oneOfType([_propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), _propTypes.default.arrayOf(_propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
 
+  /**
+   * If true, screens this size and down will be hidden.
+   */
+  smDown: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and up will be hidden.
+   */
+  smUp: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and down will be hidden.
+   */
+  xlDown: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and up will be hidden.
+   */
+  xlUp: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and down will be hidden.
+   */
+  xsDown: _propTypes.default.bool,
+
+  /**
+   * If true, screens this size and up will be hidden.
+   */
+  xsUp: _propTypes.default.bool
+} : {};
 Hidden.defaultProps = {
   implementation: 'js',
   lgDown: false,
@@ -102,7 +127,7 @@ Hidden.defaultProps = {
   xlDown: false,
   xlUp: false,
   xsDown: false,
-  xsUp: false,
+  xsUp: false
 };
-
-export default Hidden;
+var _default = Hidden;
+exports.default = _default;

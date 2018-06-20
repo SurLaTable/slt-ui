@@ -1,94 +1,155 @@
-import React from 'react';
-import { assert } from 'chai';
-import { createShallow, getClasses } from '../test-utils';
-import Hidden from '../Hidden';
-import Grid from './Grid';
+"use strict";
 
-describe('<Grid />', () => {
-  let shallow;
-  let classes;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    const shallowInner = createShallow({ dive: true });
-    // Render deeper to bypass the GridWrapper.
-    shallow = node => {
-      return shallowInner(node)
-        .find('Grid')
-        .shallow({ context: shallowInner.context });
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _testUtils = require("../test-utils");
+
+var _Hidden = _interopRequireDefault(require("../Hidden"));
+
+var _Grid = _interopRequireDefault(require("./Grid"));
+
+var _ref = _react.default.createElement(_Grid.default, null);
+
+var _ref2 = _react.default.createElement(_Grid.default, {
+  className: "woofGrid"
+});
+
+var _ref3 = _react.default.createElement(_Grid.default, {
+  container: true
+});
+
+var _ref4 = _react.default.createElement(_Grid.default, {
+  item: true
+});
+
+var _ref5 = _react.default.createElement(_Grid.default, {
+  component: "span"
+});
+
+var _ref6 = _react.default.createElement(_Grid.default, {
+  item: true,
+  xs: true
+});
+
+var _ref7 = _react.default.createElement(_Grid.default, {
+  item: true,
+  xs: 3
+});
+
+var _ref8 = _react.default.createElement(_Grid.default, {
+  container: true,
+  spacing: 8
+});
+
+var _ref9 = _react.default.createElement(_Grid.default, {
+  alignItems: "center",
+  container: true
+});
+
+var _ref10 = _react.default.createElement(_Grid.default, {
+  alignContent: "center",
+  container: true
+});
+
+describe('<Grid />', function () {
+  var shallow;
+  var classes;
+  before(function () {
+    var shallowInner = (0, _testUtils.createShallow)({
+      dive: true
+    }); // Render deeper to bypass the GridWrapper.
+
+    shallow = function shallow(node) {
+      return shallowInner(node).find('Grid').shallow({
+        context: shallowInner.context
+      });
     };
-    classes = getClasses(<Grid />);
-  });
 
-  it('should render', () => {
-    const wrapper = shallow(<Grid className="woofGrid" />);
-    assert.strictEqual(wrapper.name(), 'div');
-    assert.strictEqual(wrapper.hasClass('woofGrid'), true, 'should have the user class');
+    classes = (0, _testUtils.getClasses)(_ref);
   });
+  it('should render', function () {
+    var wrapper = shallow(_ref2);
 
-  describe('prop: container', () => {
-    it('should apply the container class', () => {
-      const wrapper = shallow(<Grid container />);
-      assert.strictEqual(wrapper.hasClass(classes.container), true);
+    _chai.assert.strictEqual(wrapper.name(), 'div');
+
+    _chai.assert.strictEqual(wrapper.hasClass('woofGrid'), true, 'should have the user class');
+  });
+  describe('prop: container', function () {
+    it('should apply the container class', function () {
+      var wrapper = shallow(_ref3);
+
+      _chai.assert.strictEqual(wrapper.hasClass(classes.container), true);
     });
   });
+  describe('prop: item', function () {
+    it('should apply the item class', function () {
+      var wrapper = shallow(_ref4);
 
-  describe('prop: item', () => {
-    it('should apply the item class', () => {
-      const wrapper = shallow(<Grid item />);
-      assert.strictEqual(wrapper.hasClass(classes.item), true);
+      _chai.assert.strictEqual(wrapper.hasClass(classes.item), true);
     });
   });
+  describe('prop: component', function () {
+    it('should change the component', function () {
+      var wrapper = shallow(_ref5);
 
-  describe('prop: component', () => {
-    it('should change the component', () => {
-      const wrapper = shallow(<Grid component="span" />);
-      assert.strictEqual(wrapper.name(), 'span');
+      _chai.assert.strictEqual(wrapper.name(), 'span');
     });
   });
+  describe('prop: xs', function () {
+    it('should apply the flex-grow class', function () {
+      var wrapper = shallow(_ref6);
 
-  describe('prop: xs', () => {
-    it('should apply the flex-grow class', () => {
-      const wrapper = shallow(<Grid item xs />);
-      assert.strictEqual(wrapper.hasClass(classes['grid-xs']), true);
+      _chai.assert.strictEqual(wrapper.hasClass(classes['grid-xs']), true);
     });
+    it('should apply the flex size class', function () {
+      var wrapper = shallow(_ref7);
 
-    it('should apply the flex size class', () => {
-      const wrapper = shallow(<Grid item xs={3} />);
-      assert.strictEqual(wrapper.hasClass(classes['grid-xs-3']), true);
-    });
-  });
-
-  describe('prop: spacing', () => {
-    it('should have a spacing', () => {
-      const wrapper = shallow(<Grid container spacing={8} />);
-      assert.strictEqual(wrapper.hasClass(classes['spacing-xs-8']), true);
+      _chai.assert.strictEqual(wrapper.hasClass(classes['grid-xs-3']), true);
     });
   });
+  describe('prop: spacing', function () {
+    it('should have a spacing', function () {
+      var wrapper = shallow(_ref8);
 
-  describe('prop: alignItems', () => {
-    it('should apply the align-item class', () => {
-      const wrapper = shallow(<Grid alignItems="center" container />);
-      assert.strictEqual(wrapper.hasClass(classes['align-items-xs-center']), true);
+      _chai.assert.strictEqual(wrapper.hasClass(classes['spacing-xs-8']), true);
     });
   });
+  describe('prop: alignItems', function () {
+    it('should apply the align-item class', function () {
+      var wrapper = shallow(_ref9);
 
-  describe('prop: alignContent', () => {
-    it('should apply the align-content class', () => {
-      const wrapper = shallow(<Grid alignContent="center" container />);
-      assert.strictEqual(wrapper.hasClass(classes['align-content-xs-center']), true);
+      _chai.assert.strictEqual(wrapper.hasClass(classes['align-items-xs-center']), true);
     });
   });
+  describe('prop: alignContent', function () {
+    it('should apply the align-content class', function () {
+      var wrapper = shallow(_ref10);
 
-  describe('prop: other', () => {
-    it('should spread the other properties to the root element', () => {
-      const handleClick = () => {};
-      const wrapper = shallow(<Grid component="span" onClick={handleClick} />);
-      assert.strictEqual(wrapper.props().onClick, handleClick);
+      _chai.assert.strictEqual(wrapper.hasClass(classes['align-content-xs-center']), true);
     });
   });
+  describe('prop: other', function () {
+    it('should spread the other properties to the root element', function () {
+      var handleClick = function handleClick() {};
 
-  describe('hidden', () => {
-    const hiddenProps = {
+      var wrapper = shallow(_react.default.createElement(_Grid.default, {
+        component: "span",
+        onClick: handleClick
+      }));
+
+      _chai.assert.strictEqual(wrapper.props().onClick, handleClick);
+    });
+  });
+  describe('hidden', function () {
+    var hiddenProps = {
       onlyHidden: 'xs',
       xsUpHidden: true,
       smUpHidden: true,
@@ -99,15 +160,16 @@ describe('<Grid />', () => {
       smDownHidden: true,
       mdDownHidden: true,
       lgDownHidden: true,
-      xlDownHidden: true,
+      xlDownHidden: true
     };
+    (0, _keys.default)(hiddenProps).forEach(function (key) {
+      var value = hiddenProps[key];
+      it("should render ".concat(key, " with Hidden"), function () {
+        var wrapper = shallow(_react.default.createElement(_Grid.default, {
+          hidden: (0, _defineProperty2.default)({}, key, value)
+        }));
 
-    Object.keys(hiddenProps).forEach(key => {
-      const value = hiddenProps[key];
-
-      it(`should render ${key} with Hidden`, () => {
-        const wrapper = shallow(<Grid hidden={{ [key]: value }} />);
-        assert.strictEqual(wrapper.type(), Hidden);
+        _chai.assert.strictEqual(wrapper.type(), _Hidden.default);
       });
     });
   });

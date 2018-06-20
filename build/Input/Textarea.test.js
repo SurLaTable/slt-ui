@@ -1,159 +1,218 @@
-// @flow
+"use strict";
 
-import React from 'react';
-import { assert } from 'chai';
-import { spy, useFakeTimers } from 'sinon';
-import { createShallow, createMount, unwrap } from '../test-utils';
-import Textarea from './Textarea';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _sinon = require("sinon");
+
+var _testUtils = require("../test-utils");
+
+var _Textarea = _interopRequireDefault(require("./Textarea"));
 
 function assignRefs(wrapper) {
   // refs don't work with shallow renders in enzyme so here we directly define
   // 'this.input', 'this.shadow', etc. for this Textarea via wrapper.instance()
-  const input = wrapper.find('textarea').last();
+  var input = wrapper.find('textarea').last();
   wrapper.instance().input = input;
-  const textareaShadow = wrapper.find('textarea').at(2);
+  var textareaShadow = wrapper.find('textarea').at(2);
   wrapper.instance().shadow = textareaShadow;
-  const singlelineShadow = wrapper.find('textarea').first();
+  var singlelineShadow = wrapper.find('textarea').first();
   wrapper.instance().singlelineShadow = singlelineShadow;
-
   return {
-    singlelineShadow,
-    textareaShadow,
-    input,
+    singlelineShadow: singlelineShadow,
+    textareaShadow: textareaShadow,
+    input: input
   };
 }
 
-describe('<Textarea />', () => {
-  let shallow;
-  let mount;
+var _ref = _react.default.createElement(_Textarea.default, null);
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    mount = createMount();
+var _ref2 = _react.default.createElement(_Textarea.default, null);
+
+var _ref3 = _react.default.createElement(_Textarea.default, null);
+
+var _ref4 = _react.default.createElement(_Textarea.default, null);
+
+describe('<Textarea />', function () {
+  var shallow;
+  var mount;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    mount = (0, _testUtils.createMount)();
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
+  it('should render 3 textareas', function () {
+    var wrapper = shallow(_ref);
 
-  it('should render 3 textareas', () => {
-    const wrapper = shallow(<Textarea />);
-    assert.strictEqual(wrapper.find('textarea').length, 3);
+    _chai.assert.strictEqual(wrapper.find('textarea').length, 3);
   });
+  it('should change its height when the height of its shadows changes', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should change its height when the height of its shadows changes', () => {
-    const wrapper = shallow(<Textarea />);
-    assert.strictEqual(wrapper.state().height, 19);
+    _chai.assert.strictEqual(wrapper.state().height, 19);
 
-    const refs = assignRefs(wrapper);
-
-    // jsdom doesn't support scroll height so we have to simulate it changing
+    var refs = assignRefs(wrapper); // jsdom doesn't support scroll height so we have to simulate it changing
     // which makes this not so great of a test :(
+
     refs.textareaShadow.scrollHeight = 43;
-    refs.singlelineShadow.scrollHeight = 43;
-    // this is needed to trigger the resize
-    refs.input.simulate('change', { target: { value: 'x' } });
-    assert.strictEqual(wrapper.state().height, 43);
+    refs.singlelineShadow.scrollHeight = 43; // this is needed to trigger the resize
+
+    refs.input.simulate('change', {
+      target: {
+        value: 'x'
+      }
+    });
+
+    _chai.assert.strictEqual(wrapper.state().height, 43);
 
     refs.textareaShadow.scrollHeight = 19;
     refs.singlelineShadow.scrollHeight = 19;
-    refs.input.simulate('change', { target: { value: '' } });
-    assert.strictEqual(wrapper.state().height, 19);
-  });
-
-  describe('height behavior', () => {
-    let wrapper;
-
-    beforeEach(() => {
-      const TextareaNaked = unwrap(Textarea);
-      wrapper = mount(<TextareaNaked classes={{}} value="f" />);
+    refs.input.simulate('change', {
+      target: {
+        value: ''
+      }
     });
 
-    afterEach(() => {
+    _chai.assert.strictEqual(wrapper.state().height, 19);
+  });
+  describe('height behavior', function () {
+    var wrapper;
+    beforeEach(function () {
+      var TextareaNaked = (0, _testUtils.unwrap)(_Textarea.default);
+      wrapper = mount(_react.default.createElement(TextareaNaked, {
+        classes: {},
+        value: "f"
+      }));
+    });
+    afterEach(function () {
       wrapper.unmount();
     });
+    it('should update the height when the value change', function () {
+      var instance = wrapper.instance();
+      instance.singlelineShadow = {
+        scrollHeight: 19
+      };
+      instance.shadow = {
+        scrollHeight: 19
+      };
+      wrapper.setProps({
+        value: 'fo'
+      });
 
-    it('should update the height when the value change', () => {
-      const instance = wrapper.instance();
-      instance.singlelineShadow = { scrollHeight: 19 };
-      instance.shadow = { scrollHeight: 19 };
-      wrapper.setProps({ value: 'fo' });
-      assert.strictEqual(wrapper.state().height, 19);
-      instance.shadow = { scrollHeight: 48 };
-      wrapper.setProps({ value: 'foooooo' });
-      assert.strictEqual(wrapper.state().height, 48);
+      _chai.assert.strictEqual(wrapper.state().height, 19);
+
+      instance.shadow = {
+        scrollHeight: 48
+      };
+      wrapper.setProps({
+        value: 'foooooo'
+      });
+
+      _chai.assert.strictEqual(wrapper.state().height, 48);
     });
+    it('should respect the rowsMax property', function () {
+      var instance = wrapper.instance();
+      var rowsMax = 4;
+      var lineHeight = 19;
+      instance.singlelineShadow = {
+        scrollHeight: lineHeight
+      };
+      instance.shadow = {
+        scrollHeight: lineHeight * 5
+      };
+      wrapper.setProps({
+        rowsMax: rowsMax
+      });
 
-    it('should respect the rowsMax property', () => {
-      const instance = wrapper.instance();
-      const rowsMax = 4;
-      const lineHeight = 19;
-      instance.singlelineShadow = { scrollHeight: lineHeight };
-      instance.shadow = { scrollHeight: lineHeight * 5 };
-      wrapper.setProps({ rowsMax });
-      assert.strictEqual(wrapper.state().height, lineHeight * rowsMax);
-    });
-  });
-
-  it('should set filled', () => {
-    const wrapper = shallow(<Textarea />);
-    assert.strictEqual(wrapper.find('textarea').length, 3);
-
-    const refs = assignRefs(wrapper);
-    // this is needed to trigger the resize
-    refs.input.simulate('change', { target: { value: 'x' } });
-    assert.strictEqual(wrapper.instance().value, 'x');
-    // this is needed to trigger the resize
-    refs.input.simulate('change', { target: { value: '' } });
-    assert.strictEqual(wrapper.instance().value, '');
-  });
-
-  describe('prop: textareaRef', () => {
-    it('should be able to access the native textarea', () => {
-      const handleRef = spy();
-      mount(<Textarea textareaRef={handleRef} />);
-      assert.strictEqual(handleRef.callCount, 1);
+      _chai.assert.strictEqual(wrapper.state().height, lineHeight * rowsMax);
     });
   });
+  it('should set filled', function () {
+    var wrapper = shallow(_ref3);
 
-  describe('prop: onChange', () => {
-    it('should be call the callback', () => {
-      const handleChange = spy();
-      const wrapper = shallow(<Textarea value="x" onChange={handleChange} />);
-      assert.strictEqual(wrapper.find('textarea').length, 3);
+    _chai.assert.strictEqual(wrapper.find('textarea').length, 3);
 
-      const refs = assignRefs(wrapper);
-      const event = { target: { value: 'xx' } };
+    var refs = assignRefs(wrapper); // this is needed to trigger the resize
+
+    refs.input.simulate('change', {
+      target: {
+        value: 'x'
+      }
+    });
+
+    _chai.assert.strictEqual(wrapper.instance().value, 'x'); // this is needed to trigger the resize
+
+
+    refs.input.simulate('change', {
+      target: {
+        value: ''
+      }
+    });
+
+    _chai.assert.strictEqual(wrapper.instance().value, '');
+  });
+  describe('prop: textareaRef', function () {
+    it('should be able to access the native textarea', function () {
+      var handleRef = (0, _sinon.spy)();
+      mount(_react.default.createElement(_Textarea.default, {
+        textareaRef: handleRef
+      }));
+
+      _chai.assert.strictEqual(handleRef.callCount, 1);
+    });
+  });
+  describe('prop: onChange', function () {
+    it('should be call the callback', function () {
+      var handleChange = (0, _sinon.spy)();
+      var wrapper = shallow(_react.default.createElement(_Textarea.default, {
+        value: "x",
+        onChange: handleChange
+      }));
+
+      _chai.assert.strictEqual(wrapper.find('textarea').length, 3);
+
+      var refs = assignRefs(wrapper);
+      var event = {
+        target: {
+          value: 'xx'
+        }
+      };
       refs.input.simulate('change', event);
-      assert.strictEqual(wrapper.instance().value, 'xx');
-      assert.strictEqual(handleChange.callCount, 1);
-      assert.deepEqual(handleChange.args[0], [event]);
+
+      _chai.assert.strictEqual(wrapper.instance().value, 'xx');
+
+      _chai.assert.strictEqual(handleChange.callCount, 1);
+
+      _chai.assert.deepEqual(handleChange.args[0], [event]);
     });
   });
-
-  describe('resize', () => {
-    let clock;
-
-    before(() => {
-      clock = useFakeTimers();
+  describe('resize', function () {
+    var clock;
+    before(function () {
+      clock = (0, _sinon.useFakeTimers)();
     });
-
-    after(() => {
+    after(function () {
       clock.restore();
     });
-
-    it('should handle the resize event', () => {
-      const wrapper = shallow(<Textarea />);
-      const refs = assignRefs(wrapper);
+    it('should handle the resize event', function () {
+      var wrapper = shallow(_ref4);
+      var refs = assignRefs(wrapper);
       refs.textareaShadow.scrollHeight = 43;
       refs.singlelineShadow.scrollHeight = 43;
-      wrapper
-        .find('EventListener')
-        .at(0)
-        .simulate('resize');
-      assert.strictEqual(wrapper.state().height, 19);
+      wrapper.find('EventListener').at(0).simulate('resize');
+
+      _chai.assert.strictEqual(wrapper.state().height, 19);
+
       clock.tick(166);
-      assert.strictEqual(wrapper.state().height, 43);
+
+      _chai.assert.strictEqual(wrapper.state().height, 43);
     });
   });
 });

@@ -1,210 +1,288 @@
-// @flow
+"use strict";
 
-import { assert } from 'chai';
-import { stub } from 'sinon';
-import transitions, { easing, duration, formatMs, isString, isNumber } from './transitions';
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-describe('transitions', () => {
-  let consoleErrorStub;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  beforeEach(() => {
-    consoleErrorStub = stub(console, 'error');
+var _isNan = _interopRequireDefault(require("@babel/runtime/core-js/number/is-nan"));
+
+var _chai = require("chai");
+
+var _sinon = require("sinon");
+
+var _transitions = _interopRequireWildcard(require("./transitions"));
+
+describe('transitions', function () {
+  var consoleErrorStub;
+  beforeEach(function () {
+    consoleErrorStub = (0, _sinon.stub)(console, 'error');
   });
-
-  afterEach(() => {
+  afterEach(function () {
     consoleErrorStub.restore();
   });
+  describe('formatMs() function', function () {
+    it('should round decimal digits and return formatted value', function () {
+      var formattedValue = (0, _transitions.formatMs)(12.125);
 
-  describe('formatMs() function', () => {
-    it('should round decimal digits and return formatted value', () => {
-      const formattedValue = formatMs(12.125);
-      assert.strictEqual(formattedValue, '12ms');
+      _chai.assert.strictEqual(formattedValue, '12ms');
     });
   });
+  describe('isString() function', function () {
+    it('should return false when passed undefined', function () {
+      var value = (0, _transitions.isString)();
 
-  describe('isString() function', () => {
-    it('should return false when passed undefined', () => {
-      const value = isString();
-      assert.strictEqual(value, false);
+      _chai.assert.strictEqual(value, false);
     });
+    it('should return false when not passed a string', function () {
+      var value = (0, _transitions.isString)(1);
 
-    it('should return false when not passed a string', () => {
-      let value = isString(1);
-      assert.strictEqual(value, false);
-      value = isString({});
-      assert.strictEqual(value, false);
-      value = isString([]);
-      assert.strictEqual(value, false);
+      _chai.assert.strictEqual(value, false);
+
+      value = (0, _transitions.isString)({});
+
+      _chai.assert.strictEqual(value, false);
+
+      value = (0, _transitions.isString)([]);
+
+      _chai.assert.strictEqual(value, false);
     });
+    it('should return true when passed a string', function () {
+      var value = (0, _transitions.isString)('');
 
-    it('should return true when passed a string', () => {
-      let value = isString('');
-      assert.strictEqual(value, true);
-      value = isString('test');
-      assert.strictEqual(value, true);
-    });
-  });
+      _chai.assert.strictEqual(value, true);
 
-  describe('isNumber() function', () => {
-    it('should return false when passed undefined', () => {
-      const value = isNumber();
-      assert.strictEqual(value, false);
-    });
+      value = (0, _transitions.isString)('test');
 
-    it('should return false when not passed a number', () => {
-      let value = isNumber('');
-      assert.strictEqual(value, false);
-      value = isNumber('test');
-      assert.strictEqual(value, false);
-      value = isNumber({});
-      assert.strictEqual(value, false);
-      value = isNumber([]);
-      assert.strictEqual(value, false);
-    });
-
-    it('should return true when passed a number', () => {
-      let value = isNumber(1);
-      assert.strictEqual(value, true);
-      value = isNumber(1.5);
-      assert.strictEqual(value, true);
+      _chai.assert.strictEqual(value, true);
     });
   });
+  describe('isNumber() function', function () {
+    it('should return false when passed undefined', function () {
+      var value = (0, _transitions.isNumber)();
 
-  describe('create() function', () => {
-    it('should create default transition without arguments', () => {
-      const transition = transitions.create();
-      assert.strictEqual(transition, `all ${duration.standard}ms ${easing.easeInOut} 0ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(value, false);
     });
+    it('should return false when not passed a number', function () {
+      var value = (0, _transitions.isNumber)('');
 
-    it('should take string props as a first argument', () => {
-      const transition = transitions.create('color');
-      assert.strictEqual(transition, `color ${duration.standard}ms ${easing.easeInOut} 0ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(value, false);
+
+      value = (0, _transitions.isNumber)('test');
+
+      _chai.assert.strictEqual(value, false);
+
+      value = (0, _transitions.isNumber)({});
+
+      _chai.assert.strictEqual(value, false);
+
+      value = (0, _transitions.isNumber)([]);
+
+      _chai.assert.strictEqual(value, false);
     });
+    it('should return true when passed a number', function () {
+      var value = (0, _transitions.isNumber)(1);
 
-    it('should also take array of props as first argument', () => {
-      const options = { delay: 20 };
-      const multiple = transitions.create(['color', 'size'], options);
-      const single1 = transitions.create('color', options);
-      const single2 = transitions.create('size', options);
-      const expected = `${single1},${single2}`;
-      assert.strictEqual(multiple, expected);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(value, true);
+
+      value = (0, _transitions.isNumber)(1.5);
+
+      _chai.assert.strictEqual(value, true);
     });
+  });
+  describe('create() function', function () {
+    it('should create default transition without arguments', function () {
+      var transition = _transitions.default.create();
 
-    it('should warn when first argument is of bad type', () => {
+      _chai.assert.strictEqual(transition, "all ".concat(_transitions.duration.standard, "ms ").concat(_transitions.easing.easeInOut, " 0ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should take string props as a first argument', function () {
+      var transition = _transitions.default.create('color');
+
+      _chai.assert.strictEqual(transition, "color ".concat(_transitions.duration.standard, "ms ").concat(_transitions.easing.easeInOut, " 0ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should also take array of props as first argument', function () {
+      var options = {
+        delay: 20
+      };
+
+      var multiple = _transitions.default.create(['color', 'size'], options);
+
+      var single1 = _transitions.default.create('color', options);
+
+      var single2 = _transitions.default.create('size', options);
+
+      var expected = "".concat(single1, ",").concat(single2);
+
+      _chai.assert.strictEqual(multiple, expected);
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should warn when first argument is of bad type', function () {
       // $FlowIgnore
-      transitions.create(5554);
+      _transitions.default.create(5554); // $FlowIgnore
+
+
+      _transitions.default.create({});
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
+    });
+    it('should optionally accept number "duration" option in second argument', function () {
+      var transition = _transitions.default.create('font', {
+        duration: 500
+      });
+
+      _chai.assert.strictEqual(transition, "font 500ms ".concat(_transitions.easing.easeInOut, " 0ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should optionally accept string "duration" option in second argument', function () {
+      var transition = _transitions.default.create('font', {
+        duration: '500ms'
+      });
+
+      _chai.assert.strictEqual(transition, "font 500ms ".concat(_transitions.easing.easeInOut, " 0ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should round decimal digits of "duration" prop to whole numbers', function () {
+      var transition = _transitions.default.create('font', {
+        duration: 12.125
+      });
+
+      _chai.assert.strictEqual(transition, "font 12ms ".concat(_transitions.easing.easeInOut, " 0ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should warn when bad "duration" option type', function () {
       // $FlowIgnore
-      transitions.create({});
-      assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
-    });
+      _transitions.default.create('font', {
+        duration: null
+      }); // $FlowIgnore
 
-    it('should optionally accept number "duration" option in second argument', () => {
-      const transition = transitions.create('font', { duration: 500 });
-      assert.strictEqual(transition, `font 500ms ${easing.easeInOut} 0ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
-    });
 
-    it('should optionally accept string "duration" option in second argument', () => {
-      const transition = transitions.create('font', { duration: '500ms' });
-      assert.strictEqual(transition, `font 500ms ${easing.easeInOut} 0ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
-    });
+      _transitions.default.create('font', {
+        duration: {}
+      });
 
-    it('should round decimal digits of "duration" prop to whole numbers', () => {
-      const transition = transitions.create('font', { duration: 12.125 });
-      assert.strictEqual(transition, `font 12ms ${easing.easeInOut} 0ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
     });
+    it('should optionally accept string "easing" option in second argument', function () {
+      var transition = _transitions.default.create('transform', {
+        easing: _transitions.easing.sharp
+      });
 
-    it('should warn when bad "duration" option type', () => {
+      _chai.assert.strictEqual(transition, "transform ".concat(_transitions.duration.standard, "ms ").concat(_transitions.easing.sharp, " 0ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should warn when bad "easing" option type', function () {
       // $FlowIgnore
-      transitions.create('font', { duration: null });
+      _transitions.default.create('transform', {
+        easing: 123
+      }); // $FlowIgnore
+
+
+      _transitions.default.create('transform', {
+        easing: {}
+      });
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
+    });
+    it('should optionally accept number "delay" option in second argument', function () {
+      var transition = _transitions.default.create('size', {
+        delay: 150
+      });
+
+      _chai.assert.strictEqual(transition, "size ".concat(_transitions.duration.standard, "ms ").concat(_transitions.easing.easeInOut, " 150ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should optionally accept string "delay" option in second argument', function () {
+      var transition = _transitions.default.create('size', {
+        delay: '150ms'
+      });
+
+      _chai.assert.strictEqual(transition, "size ".concat(_transitions.duration.standard, "ms ").concat(_transitions.easing.easeInOut, " 150ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should round decimal digits of "delay" prop to whole numbers', function () {
+      var transition = _transitions.default.create('size', {
+        delay: 1.547
+      });
+
+      _chai.assert.strictEqual(transition, "size ".concat(_transitions.duration.standard, "ms ").concat(_transitions.easing.easeInOut, " 2ms"));
+
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+    });
+    it('should warn when bad "delay" option type', function () {
       // $FlowIgnore
-      transitions.create('font', { duration: {} });
-      assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
-    });
+      _transitions.default.create('size', {
+        delay: null
+      }); // $FlowIgnore
 
-    it('should optionally accept string "easing" option in second argument', () => {
-      const transition = transitions.create('transform', { easing: easing.sharp });
-      assert.strictEqual(transition, `transform ${duration.standard}ms ${easing.sharp} 0ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
-    });
 
-    it('should warn when bad "easing" option type', () => {
-      // $FlowIgnore
-      transitions.create('transform', { easing: 123 });
-      // $FlowIgnore
-      transitions.create('transform', { easing: {} });
-      assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
-    });
+      _transitions.default.create('size', {
+        delay: {}
+      });
 
-    it('should optionally accept number "delay" option in second argument', () => {
-      const transition = transitions.create('size', { delay: 150 });
-      assert.strictEqual(transition, `size ${duration.standard}ms ${easing.easeInOut} 150ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
     });
+    it('should warn when passed unrecognized option', function () {
+      _transitions.default.create('size', {
+        fffds: 'value'
+      });
 
-    it('should optionally accept string "delay" option in second argument', () => {
-      const transition = transitions.create('size', { delay: '150ms' });
-      assert.strictEqual(transition, `size ${duration.standard}ms ${easing.easeInOut} 150ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(consoleErrorStub.callCount, 1, 'Wrong number of calls of warning()');
     });
+    it('should return zero when not passed arguments', function () {
+      var zeroHeightDuration = _transitions.default.getAutoHeightDuration();
 
-    it('should round decimal digits of "delay" prop to whole numbers', () => {
-      const transition = transitions.create('size', { delay: 1.547 });
-      assert.strictEqual(transition, `size ${duration.standard}ms ${easing.easeInOut} 2ms`);
-      assert.strictEqual(consoleErrorStub.callCount, 0, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(zeroHeightDuration, 0);
     });
+    it('should return zero when passed undefined', function () {
+      var zeroHeightDuration = _transitions.default.getAutoHeightDuration(undefined);
 
-    it('should warn when bad "delay" option type', () => {
-      // $FlowIgnore
-      transitions.create('size', { delay: null });
-      // $FlowIgnore
-      transitions.create('size', { delay: {} });
-      assert.strictEqual(consoleErrorStub.callCount, 2, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(zeroHeightDuration, 0);
     });
+    it('should return zero when passed null', function () {
+      var zeroHeightDuration = _transitions.default.getAutoHeightDuration(null);
 
-    it('should warn when passed unrecognized option', () => {
-      transitions.create('size', { fffds: 'value' });
-      assert.strictEqual(consoleErrorStub.callCount, 1, 'Wrong number of calls of warning()');
+      _chai.assert.strictEqual(zeroHeightDuration, 0);
     });
+    it('should return NaN when passed a negative number', function () {
+      var zeroHeightDurationNegativeOne = _transitions.default.getAutoHeightDuration(-1);
 
-    it('should return zero when not passed arguments', () => {
-      const zeroHeightDuration = transitions.getAutoHeightDuration();
-      assert.strictEqual(zeroHeightDuration, 0);
+      _chai.assert.strictEqual((0, _isNan.default)(zeroHeightDurationNegativeOne), true);
+
+      var zeroHeightDurationSmallNegative = _transitions.default.getAutoHeightDuration(-0.000001);
+
+      _chai.assert.strictEqual((0, _isNan.default)(zeroHeightDurationSmallNegative), true);
+
+      var zeroHeightDurationBigNegative = _transitions.default.getAutoHeightDuration(-100000);
+
+      _chai.assert.strictEqual((0, _isNan.default)(zeroHeightDurationBigNegative), true);
     });
+    it('should return values for pre-calculated positive examples', function () {
+      var zeroHeightDuration = _transitions.default.getAutoHeightDuration(14);
 
-    it('should return zero when passed undefined', () => {
-      const zeroHeightDuration = transitions.getAutoHeightDuration(undefined);
-      assert.strictEqual(zeroHeightDuration, 0);
-    });
+      _chai.assert.strictEqual(zeroHeightDuration, 159);
 
-    it('should return zero when passed null', () => {
-      const zeroHeightDuration = transitions.getAutoHeightDuration(null);
-      assert.strictEqual(zeroHeightDuration, 0);
-    });
+      zeroHeightDuration = _transitions.default.getAutoHeightDuration(100);
 
-    it('should return NaN when passed a negative number', () => {
-      const zeroHeightDurationNegativeOne = transitions.getAutoHeightDuration(-1);
-      assert.strictEqual(Number.isNaN(zeroHeightDurationNegativeOne), true);
-      const zeroHeightDurationSmallNegative = transitions.getAutoHeightDuration(-0.000001);
-      assert.strictEqual(Number.isNaN(zeroHeightDurationSmallNegative), true);
-      const zeroHeightDurationBigNegative = transitions.getAutoHeightDuration(-100000);
-      assert.strictEqual(Number.isNaN(zeroHeightDurationBigNegative), true);
-    });
+      _chai.assert.strictEqual(zeroHeightDuration, 239);
 
-    it('should return values for pre-calculated positive examples', () => {
-      let zeroHeightDuration = transitions.getAutoHeightDuration(14);
-      assert.strictEqual(zeroHeightDuration, 159);
-      zeroHeightDuration = transitions.getAutoHeightDuration(100);
-      assert.strictEqual(zeroHeightDuration, 239);
-      zeroHeightDuration = transitions.getAutoHeightDuration(0.0001);
-      assert.strictEqual(zeroHeightDuration, 46);
-      zeroHeightDuration = transitions.getAutoHeightDuration(100000);
-      assert.strictEqual(zeroHeightDuration, 6685);
+      zeroHeightDuration = _transitions.default.getAutoHeightDuration(0.0001);
+
+      _chai.assert.strictEqual(zeroHeightDuration, 46);
+
+      zeroHeightDuration = _transitions.default.getAutoHeightDuration(100000);
+
+      _chai.assert.strictEqual(zeroHeightDuration, 6685);
     });
   });
 });

@@ -1,47 +1,68 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import withStyles from '../styles/withStyles';
+"use strict";
 
-export const styles = theme => ({
-  root: {
-    color: theme.palette.text.secondary,
-    fontFamily: theme.typography.fontFamily,
-    fontSize: theme.typography.pxToRem(12),
-    textAlign: 'left',
-    marginTop: theme.spacing.unit,
-    lineHeight: '1em',
-    minHeight: '1em',
-    margin: 0,
-    '&$error': {
-      color: theme.palette.error.main,
-    },
-    '&$disabled': {
-      color: theme.palette.text.disabled,
-    },
-  },
-  error: {},
-  disabled: {},
-  marginDense: {
-    marginTop: theme.spacing.unit / 2,
-  },
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      color: theme.palette.text.secondary,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: theme.typography.pxToRem(12),
+      textAlign: 'left',
+      marginTop: theme.spacing.unit,
+      lineHeight: '1em',
+      minHeight: '1em',
+      margin: 0,
+      '&$error': {
+        color: theme.palette.error.main
+      },
+      '&$disabled': {
+        color: theme.palette.text.disabled
+      }
+    },
+    error: {},
+    disabled: {},
+    marginDense: {
+      marginTop: theme.spacing.unit / 2
+    }
+  };
+};
+
+exports.styles = styles;
 
 function FormHelperText(props, context) {
-  const {
-    classes,
-    className: classNameProp,
-    disabled: disabledProp,
-    error: errorProp,
-    margin: marginProp,
-    component: Component,
-    ...other
-  } = props;
-  const { muiFormControl } = context;
+  var _classNames;
 
-  let disabled = disabledProp;
-  let error = errorProp;
-  let margin = marginProp;
+  var classes = props.classes,
+      classNameProp = props.className,
+      disabledProp = props.disabled,
+      errorProp = props.error,
+      marginProp = props.margin,
+      Component = props.component,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "disabled", "error", "margin", "component"]);
+  var muiFormControl = context.muiFormControl;
+  var disabled = disabledProp;
+  var error = errorProp;
+  var margin = marginProp;
 
   if (muiFormControl) {
     if (typeof disabled === 'undefined') {
@@ -57,58 +78,59 @@ function FormHelperText(props, context) {
     }
   }
 
-  const className = classNames(
-    classes.root,
-    {
-      [classes.disabled]: disabled,
-      [classes.error]: error,
-      [classes.marginDense]: margin === 'dense',
-    },
-    classNameProp,
-  );
-
-  return <Component className={className} {...other} />;
+  var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), (0, _defineProperty2.default)(_classNames, classes.error, error), (0, _defineProperty2.default)(_classNames, classes.marginDense, margin === 'dense'), _classNames), classNameProp);
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: className
+  }, other));
 }
 
-FormHelperText.propTypes = {
+FormHelperText.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The content of the component.
    */
-  children: PropTypes.node,
+  children: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: PropTypes.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: PropTypes.string,
+  className: _propTypes.default.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * If `true`, the helper text should be displayed in a disabled state.
    */
-  disabled: PropTypes.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, helper text should be displayed in an error state.
    */
-  error: PropTypes.bool,
+  error: _propTypes.default.bool,
+
   /**
    * If `dense`, will adjust vertical spacing. This is normally obtained via context from
    * FormControl.
    */
-  margin: PropTypes.oneOf(['dense']),
-};
-
+  margin: _propTypes.default.oneOf(['dense'])
+} : {};
 FormHelperText.defaultProps = {
-  component: 'p',
+  component: 'p'
 };
-
 FormHelperText.contextTypes = {
-  muiFormControl: PropTypes.object,
+  muiFormControl: _propTypes.default.object
 };
 
-export default withStyles(styles, { name: 'MuiFormHelperText' })(FormHelperText);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiFormHelperText'
+})(FormHelperText);
+
+exports.default = _default;

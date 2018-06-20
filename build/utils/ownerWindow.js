@@ -1,10 +1,19 @@
-// @flow
+"use strict";
 
-import ownerDocument from 'dom-helpers/ownerDocument';
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-const ownerWindow = (node: Node, fallback: window = window) => {
-  const doc: Document = ownerDocument(node);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _ownerDocument = _interopRequireDefault(require("dom-helpers/ownerDocument"));
+
+var ownerWindow = function ownerWindow(node) {
+  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
+  var doc = (0, _ownerDocument.default)(node);
   return doc.defaultView || doc.parentView || fallback;
 };
 
-export default ownerWindow;
+var _default = ownerWindow;
+exports.default = _default;

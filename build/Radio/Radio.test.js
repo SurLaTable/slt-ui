@@ -1,50 +1,73 @@
-import React from 'react';
-import { assert } from 'chai';
-import RadioButtonCheckedIcon from '../internal/svg-icons/RadioButtonChecked';
-import RadioButtonUncheckedIcon from '../internal/svg-icons/RadioButtonUnchecked';
-import { getClasses, createShallow, createMount } from '../test-utils';
-import SwitchBase from '../internal/SwitchBase';
-import Radio from './Radio';
+"use strict";
 
-describe('<Radio />', () => {
-  let shallow;
-  let classes;
-  let mount;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-  before(() => {
-    shallow = createShallow({ dive: true });
-    classes = getClasses(<Radio />);
-    mount = createMount();
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _chai = require("chai");
+
+var _RadioButtonChecked = _interopRequireDefault(require("../internal/svg-icons/RadioButtonChecked"));
+
+var _RadioButtonUnchecked = _interopRequireDefault(require("../internal/svg-icons/RadioButtonUnchecked"));
+
+var _testUtils = require("../test-utils");
+
+var _SwitchBase = _interopRequireDefault(require("../internal/SwitchBase"));
+
+var _Radio = _interopRequireDefault(require("./Radio"));
+
+var _ref = _react.default.createElement(_Radio.default, null);
+
+var _ref2 = _react.default.createElement(_Radio.default, null);
+
+var _ref3 = _react.default.createElement(_Radio.default, null);
+
+var _ref4 = _react.default.createElement(_Radio.default, {
+  checked: true
+});
+
+describe('<Radio />', function () {
+  var shallow;
+  var classes;
+  var mount;
+  before(function () {
+    shallow = (0, _testUtils.createShallow)({
+      dive: true
+    });
+    classes = (0, _testUtils.getClasses)(_ref);
+    mount = (0, _testUtils.createMount)();
   });
-
-  after(() => {
+  after(function () {
     mount.cleanUp();
   });
+  describe('styleSheet', function () {
+    it('should have the classes required for SwitchBase', function () {
+      _chai.assert.strictEqual((0, _typeof2.default)(classes.root), 'string');
 
-  describe('styleSheet', () => {
-    it('should have the classes required for SwitchBase', () => {
-      assert.strictEqual(typeof classes.root, 'string');
-      assert.strictEqual(typeof classes.checked, 'string');
-      assert.strictEqual(typeof classes.disabled, 'string');
+      _chai.assert.strictEqual((0, _typeof2.default)(classes.checked), 'string');
+
+      _chai.assert.strictEqual((0, _typeof2.default)(classes.disabled), 'string');
     });
   });
+  it('should be using SwitchBase', function () {
+    var wrapper = shallow(_ref2);
 
-  it('should be using SwitchBase', () => {
-    const wrapper = shallow(<Radio />);
-    assert.strictEqual(wrapper.type(), SwitchBase);
+    _chai.assert.strictEqual(wrapper.type(), _SwitchBase.default);
   });
+  describe('prop: unchecked', function () {
+    it('should render an unchecked icon', function () {
+      var wrapper = mount(_ref3);
 
-  describe('prop: unchecked', () => {
-    it('should render an unchecked icon', () => {
-      const wrapper = mount(<Radio />);
-      assert.strictEqual(wrapper.find(RadioButtonUncheckedIcon).length, 1);
+      _chai.assert.strictEqual(wrapper.find(_RadioButtonUnchecked.default).length, 1);
     });
   });
+  describe('prop: checked', function () {
+    it('should render a checked icon', function () {
+      var wrapper = mount(_ref4);
 
-  describe('prop: checked', () => {
-    it('should render a checked icon', () => {
-      const wrapper = mount(<Radio checked />);
-      assert.strictEqual(wrapper.find(RadioButtonCheckedIcon).length, 1);
+      _chai.assert.strictEqual(wrapper.find(_RadioButtonChecked.default).length, 1);
     });
   });
 });
