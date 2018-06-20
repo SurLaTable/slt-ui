@@ -1,21 +1,18 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _reactDom = require('react-dom');
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var _Portal = _interopRequireDefault(require("./Portal"));
 
-var _Portal = require('./Portal');
+var _LegacyPortal = _interopRequireDefault(require("./LegacyPortal"));
 
-var _Portal2 = _interopRequireDefault(_Portal);
+var _default = _reactDom.default.createPortal ? _Portal.default : _LegacyPortal.default;
 
-var _LegacyPortal = require('./LegacyPortal');
-
-var _LegacyPortal2 = _interopRequireDefault(_LegacyPortal);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _reactDom2.default.createPortal ? _Portal2.default : _LegacyPortal2.default;
+exports.default = _default;

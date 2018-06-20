@@ -1,28 +1,31 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.InputLabel = exports.InputAdornment = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Input" */
-  resolve: function resolve() {
-    return import('./Input');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Input.default;
   }
 });
-var InputAdornment = exports.InputAdornment = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "InputAdornment" */
-  resolve: function resolve() {
-    return import('./InputAdornment');
+Object.defineProperty(exports, "InputAdornment", {
+  enumerable: true,
+  get: function get() {
+    return _InputAdornment.default;
+  }
+});
+Object.defineProperty(exports, "InputLabel", {
+  enumerable: true,
+  get: function get() {
+    return _InputLabel.default;
   }
 });
 
-var InputLabel = exports.InputLabel = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "InputLabel" */
-  resolve: function resolve() {
-    return import('./InputLabel');
-  }
-});
+var _Input = _interopRequireDefault(require("./Input"));
+
+var _InputAdornment = _interopRequireDefault(require("./InputAdornment"));
+
+var _InputLabel = _interopRequireDefault(require("./InputLabel"));

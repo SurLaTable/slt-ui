@@ -1,26 +1,5 @@
-import { asyncComponent } from 'react-async-component';
-
-export const Slide = asyncComponent({
-  /* webpackChunkName: "Slide" */
-  resolve: () => import('./Slide')
-});
-
-export const Grow = asyncComponent({
-  /* webpackChunkName: "Grow" */
-  resolve: () => import('./Grow')
-});
-
-export const Fade = asyncComponent({
-  /* webpackChunkName: "Fade" */
-  resolve: () => import('./Fade')
-});
-
-export const Collapse = asyncComponent({
-  /* webpackChunkName: "Collapse" */
-  resolve: () => import('./Collapse')
-});
-
-export const Zoom = asyncComponent({
-  /* webpackChunkName: "Zoom" */
-  resolve: () => import('./Zoom')
-});
+export { default as Slide } from './Slide';
+export { default as Grow } from './Grow';
+export { default as Fade } from './Fade';
+export { default as Collapse } from './Collapse';
+export { default as Zoom } from './Zoom';

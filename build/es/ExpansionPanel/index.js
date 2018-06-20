@@ -1,21 +1,4 @@
-import { asyncComponent } from 'react-async-component';
-
-export default asyncComponent({
-  /* webpackChunkName: "ExpansionPanel" */
-  resolve: () => import('./ExpansionPanel')
-});
-
-export const ExpansionPanelActions = asyncComponent({
-  /* webpackChunkName: "ExpansionPanelActions" */
-  resolve: () => import('./ExpansionPanelActions')
-});
-
-export const ExpansionPanelDetails = asyncComponent({
-  /* webpackChunkName: "ExpansionPanelDetails" */
-  resolve: () => import('./ExpansionPanelDetails')
-});
-
-export const ExpansionPanelSummary = asyncComponent({
-  /* webpackChunkName: "ExpansionPanelSummary" */
-  resolve: () => import('./ExpansionPanelSummary')
-});
+export { default } from './ExpansionPanel';
+export { default as ExpansionPanelActions } from './ExpansionPanelActions';
+export { default as ExpansionPanelDetails } from './ExpansionPanelDetails';
+export { default as ExpansionPanelSummary } from './ExpansionPanelSummary';

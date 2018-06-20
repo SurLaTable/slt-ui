@@ -14,5 +14,4 @@ const deepPurple = {
   A400: '#651fff',
   A700: '#6200ea'
 };
-
 export default deepPurple;

@@ -1,13 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Button } from '@sur-la-table/slt-ui';
+import { StoreProvider, CompareCheckbox, CompareBar } from '@sur-la-table/slt-ui';
+
+const styles = {
+  fontFamily: 'sans-serif',
+  textAlign: 'center',
+};
 
 const App = () => (
-  <React.Fragment>
-    <Button color="primary" variant="raised">
-      Baz
-    </Button>
-  </React.Fragment>
+  <StoreProvider>
+    <div style={styles}>
+      <CompareCheckbox />
+      <CompareBar />
+    </div>
+  </StoreProvider>
 );
 
 render(<App />, document.querySelector('.app'));

@@ -1,70 +1,53 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _IconButton = _interopRequireDefault(require("../IconButton"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _IconButton = require('../IconButton');
-
-var _IconButton2 = _interopRequireDefault(_IconButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = {
+// @inheritedComponent IconButton
+var styles = {
   root: {
     display: 'inline-flex',
     alignItems: 'center',
-    transition: 'none'
+    transition: 'none',
+    '&:hover': {
+      // Disable the hover effect for the IconButton.
+      backgroundColor: 'transparent'
+    }
   },
+  checked: {},
+  disabled: {},
   input: {
     cursor: 'inherit',
     position: 'absolute',
@@ -75,51 +58,68 @@ var styles = exports.styles = {
     left: 0,
     margin: 0,
     padding: 0
-  },
-  default: {},
-  checked: {},
-  disabled: {}
+  }
 };
+exports.styles = styles;
 
-/**
- * @ignore - internal component.
- */
-// @inheritedComponent IconButton
-
-var SwitchBase = function (_React$Component) {
-  (0, _inherits3.default)(SwitchBase, _React$Component);
+var SwitchBase =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(SwitchBase, _React$Component);
 
   function SwitchBase(props, context) {
-    (0, _classCallCheck3.default)(this, SwitchBase);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (SwitchBase.__proto__ || (0, _getPrototypeOf2.default)(SwitchBase)).call(this, props, context));
+    (0, _classCallCheck2.default)(this, SwitchBase);
+    _this = (0, _possibleConstructorReturn2.default)(this, (SwitchBase.__proto__ || (0, _getPrototypeOf.default)(SwitchBase)).call(this, props, context));
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {}
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "input", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "isControlled", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleInputChange", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        var checked = event.target.checked;
 
-    _this.state = {};
-    _this.input = null;
-    _this.isControlled = null;
+        if (!_this.isControlled) {
+          _this.setState({
+            checked: checked
+          });
+        }
 
-    _this.handleInputChange = function (event) {
-      var checked = event.target.checked;
-
-      if (!_this.isControlled) {
-        _this.setState({ checked: checked });
+        if (_this.props.onChange) {
+          _this.props.onChange(event, checked);
+        }
       }
-
-      if (_this.props.onChange) {
-        _this.props.onChange(event, checked);
-      }
-    };
-
+    });
     _this.isControlled = props.checked != null;
+
     if (!_this.isControlled) {
       // not controlled, use internal state
       _this.state.checked = props.defaultChecked !== undefined ? props.defaultChecked : false;
     }
+
     return _this;
   }
 
-  (0, _createClass3.default)(SwitchBase, [{
-    key: 'render',
+  (0, _createClass2.default)(SwitchBase, [{
+    key: "render",
     value: function render() {
       var _classNames;
 
@@ -129,7 +129,7 @@ var SwitchBase = function (_React$Component) {
           classes = _props.classes,
           classNameProp = _props.className,
           disabledProp = _props.disabled,
-          iconProp = _props.icon,
+          icon = _props.icon,
           id = _props.id,
           inputProps = _props.inputProps,
           inputRef = _props.inputRef,
@@ -138,9 +138,8 @@ var SwitchBase = function (_React$Component) {
           tabIndex = _props.tabIndex,
           type = _props.type,
           value = _props.value,
-          other = (0, _objectWithoutProperties3.default)(_props, ['checked', 'checkedIcon', 'classes', 'className', 'disabled', 'icon', 'id', 'inputProps', 'inputRef', 'name', 'onChange', 'tabIndex', 'type', 'value']);
+          other = (0, _objectWithoutProperties2.default)(_props, ["checked", "checkedIcon", "classes", "className", "disabled", "icon", "id", "inputProps", "inputRef", "name", "onChange", "tabIndex", "type", "value"]);
       var muiFormControl = this.context.muiFormControl;
-
       var disabled = disabledProp;
 
       if (muiFormControl) {
@@ -150,41 +149,29 @@ var SwitchBase = function (_React$Component) {
       }
 
       var checked = this.isControlled ? checkedProp : this.state.checked;
-      var className = (0, _classnames2.default)(classes.root, classes.default, classNameProp, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes.checked, checked), (0, _defineProperty3.default)(_classNames, classes.disabled, disabled), _classNames));
-
-      var icon = checked ? checkedIcon : iconProp;
-
       var hasLabelFor = type === 'checkbox' || type === 'radio';
-
-      return _react2.default.createElement(
-        _IconButton2.default,
-        (0, _extends3.default)({
-          component: 'span',
-          className: className,
-          disabled: disabled,
-          tabIndex: null,
-          role: undefined
-        }, other),
-        icon,
-        _react2.default.createElement('input', (0, _extends3.default)({
-          id: hasLabelFor && id,
-          type: type,
-          name: name,
-          checked: checked,
-          onChange: this.handleInputChange,
-          className: classes.input,
-          disabled: disabled,
-          tabIndex: tabIndex,
-          value: value,
-          ref: inputRef
-        }, inputProps))
-      );
+      return _react.default.createElement(_IconButton.default, (0, _extends2.default)({
+        component: "span",
+        className: (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.checked, checked), (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), _classNames), classNameProp),
+        disabled: disabled,
+        tabIndex: null,
+        role: undefined
+      }, other), checked ? checkedIcon : icon, _react.default.createElement("input", (0, _extends2.default)({
+        id: hasLabelFor && id,
+        type: type,
+        name: name,
+        checked: checked,
+        onChange: this.handleInputChange,
+        className: classes.input,
+        disabled: disabled,
+        tabIndex: tabIndex,
+        value: value,
+        ref: inputRef
+      }, inputProps)));
     }
   }]);
   return SwitchBase;
-}(_react2.default.Component);
-
-// NB: If changed, please update Checkbox, Switch and Radio
+}(_react.default.Component); // NB: If changed, please update Checkbox, Switch and Radio
 // so that the API documentation is updated.
 
 
@@ -192,59 +179,73 @@ SwitchBase.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * If `true`, the component is checked.
    */
-  checked: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.string]),
+  checked: _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.string]),
+
   /**
    * The icon to display when the component is checked.
    */
-  checkedIcon: _propTypes2.default.node.isRequired,
+  checkedIcon: _propTypes.default.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * @ignore
    */
-  defaultChecked: _propTypes2.default.bool,
+  defaultChecked: _propTypes.default.bool,
+
   /**
    * If `true`, the switch will be disabled.
    */
-  disabled: _propTypes2.default.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, the ripple effect will be disabled.
    */
-  disableRipple: _propTypes2.default.bool,
+  disableRipple: _propTypes.default.bool,
+
   /**
    * The icon to display when the component is unchecked.
    */
-  icon: _propTypes2.default.node.isRequired,
+  icon: _propTypes.default.node.isRequired,
+
   /**
    * The id of the `input` element.
    */
-  id: _propTypes2.default.string,
+  id: _propTypes.default.string,
+
   /**
    * If `true`, the component appears indeterminate.
    */
-  indeterminate: _propTypes2.default.bool,
+  indeterminate: _propTypes.default.bool,
+
   /**
    * The icon to display when the component is indeterminate.
    */
-  indeterminateIcon: _propTypes2.default.node,
+  indeterminateIcon: _propTypes.default.node,
+
   /**
    * Properties applied to the `input` element.
    */
-  inputProps: _propTypes2.default.object,
+  inputProps: _propTypes.default.object,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
-  inputRef: _propTypes2.default.func,
+  inputRef: _propTypes.default.func,
+
   /*
    * @ignore
    */
-  name: _propTypes2.default.string,
+  name: _propTypes.default.string,
+
   /**
    * Callback fired when the state is changed.
    *
@@ -252,27 +253,32 @@ SwitchBase.propTypes = process.env.NODE_ENV !== "production" ? {
    * You can pull out the new value by accessing `event.target.checked`.
    * @param {boolean} checked The `checked` value of the switch
    */
-  onChange: _propTypes2.default.func,
+  onChange: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  tabIndex: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  tabIndex: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+
   /**
    * The input component property `type`.
    */
-  type: _propTypes2.default.string,
+  type: _propTypes.default.string,
+
   /**
    * The value of the component.
    */
-  value: _propTypes2.default.string
+  value: _propTypes.default.string
 } : {};
-
 SwitchBase.defaultProps = {
   type: 'checkbox'
 };
-
 SwitchBase.contextTypes = {
-  muiFormControl: _propTypes2.default.object
+  muiFormControl: _propTypes.default.object
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiSwitchBase' })(SwitchBase);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiSwitchBase'
+})(SwitchBase);
+
+exports.default = _default;

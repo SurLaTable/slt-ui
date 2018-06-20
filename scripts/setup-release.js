@@ -4,16 +4,20 @@ const fse = require('fs-extra');
 const path = require('path');
 
 async function copyFile(file) {
-  const buildPath = path.resolve(__dirname, '../build/', file.replace('./material-ui/build/', ''));
+  const buildPath = path.resolve(
+    __dirname,
+    '../build/',
+    file.replace('./material-ui/packages/material-ui/build/', ''),
+  );
   await fse.copy(file, buildPath);
-  console.log(`Copied ${file} to ${buildPath}`);
+  console.log(`Copied ${file} to ${buildPath}.`);
 }
 
 async function changePackage() {
   const pkg = require(path.resolve(__dirname, '../package.json'));
   const { nyc, scripts, devDependencies, workspaces, ...packageDataOther } = require(path.resolve(
     __dirname,
-    '../material-ui/package.json',
+    '../material-ui/packages/material-ui/package.json',
   ));
 
   var releasePkg = {
@@ -36,8 +40,8 @@ async function changePackage() {
 }
 
 (function() {
-  console.log('Copying Material build files');
-  glob('./material-ui/build/**/@(*.js|*.json|LICENSE)', function(err, files) {
+  console.log('Copying Material build files:');
+  glob('./material-ui/packages/material-ui/build/**/@(*.js|*.json|LICENSE)', function(err, files) {
     if (err) {
       reject(err);
     }
@@ -48,7 +52,7 @@ async function changePackage() {
     )
       .then(changePackage)
       .then(function() {
-        console.log('Finished Copying Files');
+        console.log('Finished copying files.');
       });
   });
 })();

@@ -14,5 +14,4 @@ const orange = {
   A400: '#ff9100',
   A700: '#ff6d00'
 };
-
 export default orange;

@@ -5,7 +5,7 @@ const transformer = (file, api, options) => {
   const root = j(file.source);
   const componentNameStyle = /^\W+[A-Z]/;
 
-  console.log('Inspecting', file.path);
+  console.log('Inspecting:', file.path);
 
   const body = root.get().node.program.body;
   const header = `import { asyncComponent } from 'react-async-component';`;
@@ -26,7 +26,7 @@ const transformer = (file, api, options) => {
         const sourceLocation = path.node.source.value;
         if (sourceLocation.match(componentNameStyle)) {
           console.log(
-            'Transforming at line',
+            'Transforming at line:',
             path.node.loc.start.line,
             '\n',
             highlight(j(path.node).toSource(), {

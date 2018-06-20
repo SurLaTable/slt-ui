@@ -1,42 +1,47 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CardHeader = exports.CardMedia = exports.CardActions = exports.CardContent = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Card" */
-  resolve: function resolve() {
-    return import('./Card');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Card.default;
   }
 });
-var CardContent = exports.CardContent = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "CardContent" */
-  resolve: function resolve() {
-    return import('./CardContent');
+Object.defineProperty(exports, "CardContent", {
+  enumerable: true,
+  get: function get() {
+    return _CardContent.default;
+  }
+});
+Object.defineProperty(exports, "CardActions", {
+  enumerable: true,
+  get: function get() {
+    return _CardActions.default;
+  }
+});
+Object.defineProperty(exports, "CardMedia", {
+  enumerable: true,
+  get: function get() {
+    return _CardMedia.default;
+  }
+});
+Object.defineProperty(exports, "CardHeader", {
+  enumerable: true,
+  get: function get() {
+    return _CardHeader.default;
   }
 });
 
-var CardActions = exports.CardActions = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "CardActions" */
-  resolve: function resolve() {
-    return import('./CardActions');
-  }
-});
+var _Card = _interopRequireDefault(require("./Card"));
 
-var CardMedia = exports.CardMedia = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "CardMedia" */
-  resolve: function resolve() {
-    return import('./CardMedia');
-  }
-});
+var _CardContent = _interopRequireDefault(require("./CardContent"));
 
-var CardHeader = exports.CardHeader = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "CardHeader" */
-  resolve: function resolve() {
-    return import('./CardHeader');
-  }
-});
+var _CardActions = _interopRequireDefault(require("./CardActions"));
+
+var _CardMedia = _interopRequireDefault(require("./CardMedia"));
+
+var _CardHeader = _interopRequireDefault(require("./CardHeader"));

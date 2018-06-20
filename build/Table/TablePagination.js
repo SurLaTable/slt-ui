@@ -1,83 +1,51 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Input = _interopRequireDefault(require("../Input"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _Menu = require("../Menu");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _Select = _interopRequireDefault(require("../Select"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _TableCell = _interopRequireDefault(require("./TableCell"));
 
-var _react = require('react');
+var _Toolbar = _interopRequireDefault(require("../Toolbar"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Typography = _interopRequireDefault(require("../Typography"));
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _Input = require('../Input');
-
-var _Input2 = _interopRequireDefault(_Input);
-
-var _Menu = require('../Menu');
-
-var _Select = require('../Select');
-
-var _Select2 = _interopRequireDefault(_Select);
-
-var _TableCell = require('./TableCell');
-
-var _TableCell2 = _interopRequireDefault(_TableCell);
-
-var _Toolbar = require('../Toolbar');
-
-var _Toolbar2 = _interopRequireDefault(_Toolbar);
-
-var _Typography = require('../Typography');
-
-var _Typography2 = _interopRequireDefault(_Typography);
-
-var _TablePaginationActions = require('./TablePaginationActions');
-
-var _TablePaginationActions2 = _interopRequireDefault(_TablePaginationActions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _TablePaginationActions = _interopRequireDefault(require("./TablePaginationActions"));
 
 // @inheritedComponent TableCell
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     root: {
+      fontSize: theme.typography.pxToRem(12),
       // Increase the specificity to override TableCell.
       '&:last-child': {
         padding: 0
@@ -91,6 +59,7 @@ var styles = exports.styles = function styles(theme) {
     spacer: {
       flex: '1 1 100%'
     },
+    menuItem: {},
     caption: {
       flexShrink: 0
     },
@@ -117,22 +86,25 @@ var styles = exports.styles = function styles(theme) {
     }
   };
 };
-
 /**
  * A `TableCell` based component for placing inside `TableFooter` for pagination.
  */
 
-var TablePagination = function (_React$Component) {
-  (0, _inherits3.default)(TablePagination, _React$Component);
+
+exports.styles = styles;
+
+var TablePagination =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(TablePagination, _React$Component);
 
   function TablePagination() {
-    (0, _classCallCheck3.default)(this, TablePagination);
-    return (0, _possibleConstructorReturn3.default)(this, (TablePagination.__proto__ || (0, _getPrototypeOf2.default)(TablePagination)).apply(this, arguments));
+    (0, _classCallCheck2.default)(this, TablePagination);
+    return (0, _possibleConstructorReturn2.default)(this, (TablePagination.__proto__ || (0, _getPrototypeOf.default)(TablePagination)).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(TablePagination, [{
-    key: 'componentDidUpdate',
-
+  (0, _createClass2.default)(TablePagination, [{
+    key: "componentDidUpdate",
     // This logic would be better handled on userside.
     // However, we have it just in case.
     value: function componentDidUpdate() {
@@ -141,17 +113,17 @@ var TablePagination = function (_React$Component) {
           onChangePage = _props.onChangePage,
           page = _props.page,
           rowsPerPage = _props.rowsPerPage;
-
       var newLastPage = Math.max(0, Math.ceil(count / rowsPerPage) - 1);
+
       if (page > newLastPage) {
         onChangePage(null, newLastPage);
       }
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _props2 = this.props,
-          Actions = _props2.Actions,
+          ActionsComponent = _props2.ActionsComponent,
           backIconButtonProps = _props2.backIconButtonProps,
           classes = _props2.classes,
           colSpanProp = _props2.colSpan,
@@ -166,155 +138,163 @@ var TablePagination = function (_React$Component) {
           rowsPerPage = _props2.rowsPerPage,
           rowsPerPageOptions = _props2.rowsPerPageOptions,
           SelectProps = _props2.SelectProps,
-          other = (0, _objectWithoutProperties3.default)(_props2, ['Actions', 'backIconButtonProps', 'classes', 'colSpan', 'component', 'count', 'labelDisplayedRows', 'labelRowsPerPage', 'nextIconButtonProps', 'onChangePage', 'onChangeRowsPerPage', 'page', 'rowsPerPage', 'rowsPerPageOptions', 'SelectProps']);
+          other = (0, _objectWithoutProperties2.default)(_props2, ["ActionsComponent", "backIconButtonProps", "classes", "colSpan", "component", "count", "labelDisplayedRows", "labelRowsPerPage", "nextIconButtonProps", "onChangePage", "onChangeRowsPerPage", "page", "rowsPerPage", "rowsPerPageOptions", "SelectProps"]);
+      var colSpan;
 
-
-      var colSpan = void 0;
-
-      if (Component === _TableCell2.default || Component === 'td') {
+      if (Component === _TableCell.default || Component === 'td') {
         colSpan = colSpanProp || 1000; // col-span over everything
       }
 
-      return _react2.default.createElement(
-        Component,
-        (0, _extends3.default)({ className: classes.root, colSpan: colSpan }, other),
-        _react2.default.createElement(
-          _Toolbar2.default,
-          { className: classes.toolbar },
-          _react2.default.createElement('div', { className: classes.spacer }),
-          rowsPerPageOptions.length > 1 && _react2.default.createElement(
-            _Typography2.default,
-            { variant: 'caption', className: classes.caption },
-            labelRowsPerPage
-          ),
-          rowsPerPageOptions.length > 1 && _react2.default.createElement(
-            _Select2.default,
-            (0, _extends3.default)({
-              classes: {
-                root: classes.selectRoot,
-                select: classes.select,
-                icon: classes.selectIcon
-              },
-              input: _react2.default.createElement(_Input2.default, { className: classes.input, disableUnderline: true }),
-              value: rowsPerPage,
-              onChange: onChangeRowsPerPage
-            }, SelectProps),
-            rowsPerPageOptions.map(function (rowsPerPageOption) {
-              return _react2.default.createElement(
-                _Menu.MenuItem,
-                { key: rowsPerPageOption, value: rowsPerPageOption },
-                rowsPerPageOption
-              );
-            })
-          ),
-          _react2.default.createElement(
-            _Typography2.default,
-            { variant: 'caption', className: classes.caption },
-            labelDisplayedRows({
-              from: count === 0 ? 0 : page * rowsPerPage + 1,
-              to: Math.min(count, (page + 1) * rowsPerPage),
-              count: count,
-              page: page
-            })
-          ),
-          _react2.default.createElement(Actions, {
-            backIconButtonProps: backIconButtonProps,
-            count: count,
-            nextIconButtonProps: nextIconButtonProps,
-            onChangePage: onChangePage,
-            page: page,
-            rowsPerPage: rowsPerPage
-          })
-        )
-      );
+      return _react.default.createElement(Component, (0, _extends2.default)({
+        className: classes.root,
+        colSpan: colSpan
+      }, other), _react.default.createElement(_Toolbar.default, {
+        className: classes.toolbar
+      }, _react.default.createElement("div", {
+        className: classes.spacer
+      }), rowsPerPageOptions.length > 1 && _react.default.createElement(_Typography.default, {
+        variant: "caption",
+        className: classes.caption
+      }, labelRowsPerPage), rowsPerPageOptions.length > 1 && _react.default.createElement(_Select.default, (0, _extends2.default)({
+        classes: {
+          root: classes.selectRoot,
+          select: classes.select,
+          icon: classes.selectIcon
+        },
+        input: _react.default.createElement(_Input.default, {
+          className: classes.input,
+          disableUnderline: true
+        }),
+        value: rowsPerPage,
+        onChange: onChangeRowsPerPage
+      }, SelectProps), rowsPerPageOptions.map(function (rowsPerPageOption) {
+        return _react.default.createElement(_Menu.MenuItem, {
+          className: classes.menuItem,
+          key: rowsPerPageOption,
+          value: rowsPerPageOption
+        }, rowsPerPageOption);
+      })), _react.default.createElement(_Typography.default, {
+        variant: "caption",
+        className: classes.caption
+      }, labelDisplayedRows({
+        from: count === 0 ? 0 : page * rowsPerPage + 1,
+        to: Math.min(count, (page + 1) * rowsPerPage),
+        count: count,
+        page: page
+      })), _react.default.createElement(ActionsComponent, {
+        className: classes.actions,
+        backIconButtonProps: backIconButtonProps,
+        count: count,
+        nextIconButtonProps: nextIconButtonProps,
+        onChangePage: onChangePage,
+        page: page,
+        rowsPerPage: rowsPerPage
+      })));
     }
   }]);
   return TablePagination;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 TablePagination.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The component used for displaying the actions.
    * Either a string to use a DOM element or a component.
    */
-  Actions: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  ActionsComponent: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * Properties applied to the back arrow `IconButton` component.
    */
-  backIconButtonProps: _propTypes2.default.object,
+  backIconButtonProps: _propTypes.default.object,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  colSpan: _propTypes2.default.number,
+  colSpan: _propTypes.default.number,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * The total number of rows.
    */
-  count: _propTypes2.default.number.isRequired,
+  count: _propTypes.default.number.isRequired,
+
   /**
    * Useful to customize the displayed rows label.
    */
-  labelDisplayedRows: _propTypes2.default.func,
+  labelDisplayedRows: _propTypes.default.func,
+
   /**
    * Useful to customize the rows per page label. Invoked with a `{ from, to, count, page }`
    * object.
    */
-  labelRowsPerPage: _propTypes2.default.node,
+  labelRowsPerPage: _propTypes.default.node,
+
   /**
    * Properties applied to the next arrow `IconButton` element.
    */
-  nextIconButtonProps: _propTypes2.default.object,
+  nextIconButtonProps: _propTypes.default.object,
+
   /**
    * Callback fired when the page is changed.
    *
    * @param {object} event The event source of the callback
    * @param {number} page The page selected
    */
-  onChangePage: _propTypes2.default.func.isRequired,
+  onChangePage: _propTypes.default.func.isRequired,
+
   /**
    * Callback fired when the number of rows per page is changed.
    *
    * @param {object} event The event source of the callback
    */
-  onChangeRowsPerPage: _propTypes2.default.func,
+  onChangeRowsPerPage: _propTypes.default.func,
+
   /**
    * The zero-based index of the current page.
    */
-  page: _propTypes2.default.number.isRequired,
+  page: _propTypes.default.number.isRequired,
+
   /**
    * The number of rows per page.
    */
-  rowsPerPage: _propTypes2.default.number.isRequired,
+  rowsPerPage: _propTypes.default.number.isRequired,
+
   /**
    * Customizes the options of the rows per page select field. If less than two options are
    * available, no select field will be displayed.
    */
-  rowsPerPageOptions: _propTypes2.default.array,
+  rowsPerPageOptions: _propTypes.default.array,
+
   /**
    * Properties applied to the rows per page `Select` element.
    */
-  SelectProps: _propTypes2.default.object
+  SelectProps: _propTypes.default.object
 } : {};
-
 TablePagination.defaultProps = {
-  Actions: _TablePaginationActions2.default,
-  component: _TableCell2.default,
+  ActionsComponent: _TablePaginationActions.default,
+  component: _TableCell.default,
   labelDisplayedRows: function labelDisplayedRows(_ref) {
     var from = _ref.from,
         to = _ref.to,
         count = _ref.count;
-    return from + '-' + to + ' of ' + count;
+    return "".concat(from, "-").concat(to, " of ").concat(count);
   },
   labelRowsPerPage: 'Rows per page:',
   rowsPerPageOptions: [5, 10, 25]
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiTablePagination' })(TablePagination);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiTablePagination'
+})(TablePagination);
+
+exports.default = _default;

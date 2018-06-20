@@ -14,5 +14,4 @@ const cyan = {
   A400: '#00e5ff',
   A700: '#00b8d4'
 };
-
 export default cyan;

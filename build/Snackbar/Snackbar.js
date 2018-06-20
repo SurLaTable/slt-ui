@@ -1,100 +1,85 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _objectSpread8 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _react = _interopRequireDefault(require("react"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _reactEventListener = _interopRequireDefault(require("react-event-listener"));
 
-var _extends8 = require('babel-runtime/helpers/extends');
+var _reactLifecyclesCompat = require("react-lifecycles-compat");
 
-var _extends9 = _interopRequireDefault(_extends8);
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _react = require('react');
+var _transitions = require("../styles/transitions");
 
-var _react2 = _interopRequireDefault(_react);
+var _ClickAwayListener = _interopRequireDefault(require("../utils/ClickAwayListener"));
 
-var _propTypes = require('prop-types');
+var _helpers = require("../utils/helpers");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _Slide = _interopRequireDefault(require("../transitions/Slide"));
 
-var _classnames = require('classnames');
+var _SnackbarContent = _interopRequireDefault(require("./SnackbarContent"));
 
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _reactEventListener = require('react-event-listener');
-
-var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
-
-var _reactLifecyclesCompat = require('react-lifecycles-compat');
-
-var _reactLifecyclesCompat2 = _interopRequireDefault(_reactLifecyclesCompat);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _transitions = require('../styles/transitions');
-
-var _ClickAwayListener = require('../utils/ClickAwayListener');
-
-var _ClickAwayListener2 = _interopRequireDefault(_ClickAwayListener);
-
-var _helpers = require('../utils/helpers');
-
-var _Slide = require('../transitions/Slide');
-
-var _Slide2 = _interopRequireDefault(_Slide);
-
-var _SnackbarContent = require('./SnackbarContent');
-
-var _SnackbarContent2 = _interopRequireDefault(_SnackbarContent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   var gutter = theme.spacing.unit * 3;
-  var top = { top: 0 };
-  var bottom = { bottom: 0 };
-  var right = { justifyContent: 'flex-end' };
-  var left = { justifyContent: 'flex-start' };
-  var topSpace = { top: gutter };
-  var bottomSpace = { bottom: gutter };
-  var rightSpace = { right: gutter };
-  var leftSpace = { left: gutter };
+  var top = {
+    top: 0
+  };
+  var bottom = {
+    bottom: 0
+  };
+  var right = {
+    justifyContent: 'flex-end'
+  };
+  var left = {
+    justifyContent: 'flex-start'
+  };
+  var topSpace = {
+    top: gutter
+  };
+  var bottomSpace = {
+    bottom: gutter
+  };
+  var rightSpace = {
+    right: gutter
+  };
+  var leftSpace = {
+    left: gutter
+  };
   var center = {
     left: '50%',
     right: 'auto',
     transform: 'translateX(-50%)'
   };
-
   return {
     root: {
       zIndex: theme.zIndex.snackbar,
@@ -105,75 +90,125 @@ var styles = exports.styles = function styles(theme) {
       justifyContent: 'center',
       alignItems: 'center'
     },
-    anchorOriginTopCenter: (0, _extends9.default)({}, top, (0, _defineProperty3.default)({}, theme.breakpoints.up('md'), (0, _extends9.default)({}, center))),
-    anchorOriginBottomCenter: (0, _extends9.default)({}, bottom, (0, _defineProperty3.default)({}, theme.breakpoints.up('md'), (0, _extends9.default)({}, center))),
-    anchorOriginTopRight: (0, _extends9.default)({}, top, right, (0, _defineProperty3.default)({}, theme.breakpoints.up('md'), (0, _extends9.default)({
+    anchorOriginTopCenter: (0, _objectSpread8.default)({}, top, (0, _defineProperty2.default)({}, theme.breakpoints.up('md'), (0, _objectSpread8.default)({}, center))),
+    anchorOriginBottomCenter: (0, _objectSpread8.default)({}, bottom, (0, _defineProperty2.default)({}, theme.breakpoints.up('md'), (0, _objectSpread8.default)({}, center))),
+    anchorOriginTopRight: (0, _objectSpread8.default)({}, top, right, (0, _defineProperty2.default)({}, theme.breakpoints.up('md'), (0, _objectSpread8.default)({
       left: 'auto'
     }, topSpace, rightSpace))),
-    anchorOriginBottomRight: (0, _extends9.default)({}, bottom, right, (0, _defineProperty3.default)({}, theme.breakpoints.up('md'), (0, _extends9.default)({
+    anchorOriginBottomRight: (0, _objectSpread8.default)({}, bottom, right, (0, _defineProperty2.default)({}, theme.breakpoints.up('md'), (0, _objectSpread8.default)({
       left: 'auto'
     }, bottomSpace, rightSpace))),
-    anchorOriginTopLeft: (0, _extends9.default)({}, top, left, (0, _defineProperty3.default)({}, theme.breakpoints.up('md'), (0, _extends9.default)({
+    anchorOriginTopLeft: (0, _objectSpread8.default)({}, top, left, (0, _defineProperty2.default)({}, theme.breakpoints.up('md'), (0, _objectSpread8.default)({
       right: 'auto'
     }, topSpace, leftSpace))),
-    anchorOriginBottomLeft: (0, _extends9.default)({}, bottom, left, (0, _defineProperty3.default)({}, theme.breakpoints.up('md'), (0, _extends9.default)({
+    anchorOriginBottomLeft: (0, _objectSpread8.default)({}, bottom, left, (0, _defineProperty2.default)({}, theme.breakpoints.up('md'), (0, _objectSpread8.default)({
       right: 'auto'
     }, bottomSpace, leftSpace)))
   };
 };
 
-var Snackbar = function (_React$Component) {
-  (0, _inherits3.default)(Snackbar, _React$Component);
+exports.styles = styles;
+
+var Snackbar =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Snackbar, _React$Component);
 
   function Snackbar() {
     var _ref;
 
-    var _temp, _this, _ret;
+    var _temp, _this;
 
-    (0, _classCallCheck3.default)(this, Snackbar);
+    (0, _classCallCheck2.default)(this, Snackbar);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Snackbar.__proto__ || (0, _getPrototypeOf2.default)(Snackbar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.timerAutoHide = null, _this.handleMouseEnter = function (event) {
-      if (_this.props.onMouseEnter) {
-        _this.props.onMouseEnter(event);
-      }
-      _this.handlePause();
-    }, _this.handleMouseLeave = function (event) {
-      if (_this.props.onMouseLeave) {
-        _this.props.onMouseLeave(event);
-      }
-      _this.handleResume();
-    }, _this.handleClickAway = function (event) {
-      if (_this.props.onClose) {
-        _this.props.onClose(event, 'clickaway');
-      }
-    }, _this.handlePause = function () {
-      clearTimeout(_this.timerAutoHide);
-    }, _this.handleResume = function () {
-      if (_this.props.autoHideDuration != null) {
-        if (_this.props.resumeHideDuration !== undefined) {
-          _this.setAutoHideTimer(_this.props.resumeHideDuration);
-          return;
+    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = Snackbar.__proto__ || (0, _getPrototypeOf.default)(Snackbar)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {}
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "timerAutoHide", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleMouseEnter", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        if (_this.props.onMouseEnter) {
+          _this.props.onMouseEnter(event);
         }
-        _this.setAutoHideTimer((_this.props.autoHideDuration || 0) * 0.5);
+
+        _this.handlePause();
       }
-    }, _this.handleExited = function () {
-      _this.setState({ exited: true });
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleMouseLeave", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        if (_this.props.onMouseLeave) {
+          _this.props.onMouseLeave(event);
+        }
+
+        _this.handleResume();
+      }
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleClickAway", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        if (_this.props.onClose) {
+          _this.props.onClose(event, 'clickaway');
+        }
+      }
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handlePause", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        clearTimeout(_this.timerAutoHide);
+      }
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleResume", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        if (_this.props.autoHideDuration != null) {
+          if (_this.props.resumeHideDuration !== undefined) {
+            _this.setAutoHideTimer(_this.props.resumeHideDuration);
+
+            return;
+          }
+
+          _this.setAutoHideTimer((_this.props.autoHideDuration || 0) * 0.5);
+        }
+      }
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleExited", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        _this.setState({
+          exited: true
+        });
+      }
+    }), _temp));
   }
 
-  (0, _createClass3.default)(Snackbar, [{
-    key: 'componentDidMount',
+  (0, _createClass2.default)(Snackbar, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.open) {
         this.setAutoHideTimer();
       }
     }
   }, {
-    key: 'componentDidUpdate',
+    key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.open !== this.props.open) {
         if (this.props.open) {
@@ -184,15 +219,13 @@ var Snackbar = function (_React$Component) {
       }
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       clearTimeout(this.timerAutoHide);
-    }
-
-    // Timer that controls delay before snackbar auto hides
+    } // Timer that controls delay before snackbar auto hides
 
   }, {
-    key: 'setAutoHideTimer',
+    key: "setAutoHideTimer",
     value: function setAutoHideTimer() {
       var _this2 = this;
 
@@ -211,16 +244,8 @@ var Snackbar = function (_React$Component) {
         _this2.props.onClose(null, 'timeout');
       }, autoHideDuration || this.props.autoHideDuration || 0);
     }
-
-    // Pause the timer when the user is interacting with the Snackbar
-    // or when the user hide the window.
-
-
-    // Restart the timer when the user is no longer interacting with the Snackbar
-    // or when the window is shown back.
-
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _props = this.props,
           action = _props.action,
@@ -231,6 +256,7 @@ var Snackbar = function (_React$Component) {
           children = _props.children,
           classes = _props.classes,
           className = _props.className,
+          ContentProps = _props.ContentProps,
           disableWindowBlurListener = _props.disableWindowBlurListener,
           message = _props.message,
           onClose = _props.onClose,
@@ -244,59 +270,43 @@ var Snackbar = function (_React$Component) {
           onMouseLeave = _props.onMouseLeave,
           open = _props.open,
           resumeHideDuration = _props.resumeHideDuration,
-          SnackbarContentProps = _props.SnackbarContentProps,
-          TransitionProp = _props.transition,
+          TransitionComponent = _props.TransitionComponent,
           transitionDuration = _props.transitionDuration,
-          other = (0, _objectWithoutProperties3.default)(_props, ['action', 'anchorOrigin', 'autoHideDuration', 'children', 'classes', 'className', 'disableWindowBlurListener', 'message', 'onClose', 'onEnter', 'onEntered', 'onEntering', 'onExit', 'onExited', 'onExiting', 'onMouseEnter', 'onMouseLeave', 'open', 'resumeHideDuration', 'SnackbarContentProps', 'transition', 'transitionDuration']);
-
-      // So we only render active snackbars.
+          TransitionProps = _props.TransitionProps,
+          other = (0, _objectWithoutProperties2.default)(_props, ["action", "anchorOrigin", "autoHideDuration", "children", "classes", "className", "ContentProps", "disableWindowBlurListener", "message", "onClose", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "onMouseEnter", "onMouseLeave", "open", "resumeHideDuration", "TransitionComponent", "transitionDuration", "TransitionProps"]); // So we only render active snackbars.
 
       if (!open && this.state.exited) {
         return null;
       }
 
-      var transitionProps = {};
-
-      // The provided transition might not support the direction property.
-      if (TransitionProp === _Slide2.default) {
-        transitionProps.direction = vertical === 'top' ? 'down' : 'up';
-      }
-
-      return _react2.default.createElement(
-        _ClickAwayListener2.default,
-        { onClickAway: this.handleClickAway },
-        _react2.default.createElement(
-          'div',
-          (0, _extends9.default)({
-            className: (0, _classnames2.default)(classes.root, classes['anchorOrigin' + (0, _helpers.capitalize)(vertical) + (0, _helpers.capitalize)(horizontal)], className),
-            onMouseEnter: this.handleMouseEnter,
-            onMouseLeave: this.handleMouseLeave
-          }, other),
-          _react2.default.createElement(_reactEventListener2.default, {
-            target: 'window',
-            onFocus: disableWindowBlurListener ? undefined : this.handleResume,
-            onBlur: disableWindowBlurListener ? undefined : this.handlePause
-          }),
-          _react2.default.createElement(
-            TransitionProp,
-            (0, _extends9.default)({
-              appear: true,
-              'in': open,
-              onEnter: onEnter,
-              onEntered: onEntered,
-              onEntering: onEntering,
-              onExit: onExit,
-              onExited: (0, _helpers.createChainedFunction)(this.handleExited, onExited),
-              onExiting: onExiting,
-              timeout: transitionDuration
-            }, transitionProps),
-            children || _react2.default.createElement(_SnackbarContent2.default, (0, _extends9.default)({ message: message, action: action }, SnackbarContentProps))
-          )
-        )
-      );
+      return _react.default.createElement(_ClickAwayListener.default, {
+        onClickAway: this.handleClickAway
+      }, _react.default.createElement("div", (0, _extends2.default)({
+        className: (0, _classnames.default)(classes.root, classes["anchorOrigin".concat((0, _helpers.capitalize)(vertical)).concat((0, _helpers.capitalize)(horizontal))], className),
+        onMouseEnter: this.handleMouseEnter,
+        onMouseLeave: this.handleMouseLeave
+      }, other), _react.default.createElement(_reactEventListener.default, {
+        target: "window",
+        onFocus: disableWindowBlurListener ? undefined : this.handleResume,
+        onBlur: disableWindowBlurListener ? undefined : this.handlePause
+      }), _react.default.createElement(TransitionComponent, (0, _extends2.default)({
+        appear: true,
+        "in": open,
+        onEnter: onEnter,
+        onEntered: onEntered,
+        onEntering: onEntering,
+        onExit: onExit,
+        onExited: (0, _helpers.createChainedFunction)(this.handleExited, onExited),
+        onExiting: onExiting,
+        timeout: transitionDuration,
+        direction: vertical === 'top' ? 'down' : 'up'
+      }, TransitionProps), children || _react.default.createElement(_SnackbarContent.default, (0, _extends2.default)({
+        message: message,
+        action: action
+      }, ContentProps)))));
     }
   }], [{
-    key: 'getDerivedStateFromProps',
+    key: "getDerivedStateFromProps",
     value: function getDerivedStateFromProps(nextProps, prevState) {
       if (typeof prevState.exited === 'undefined') {
         return {
@@ -314,55 +324,69 @@ var Snackbar = function (_React$Component) {
     }
   }]);
   return Snackbar;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 Snackbar.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The action to display.
    */
-  action: _propTypes2.default.node,
+  action: _propTypes.default.node,
+
   /**
    * The anchor of the `Snackbar`.
    */
-  anchorOrigin: _propTypes2.default.shape({
-    horizontal: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.oneOf(['left', 'center', 'right'])]),
-    vertical: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.oneOf(['top', 'center', 'bottom'])])
+  anchorOrigin: _propTypes.default.shape({
+    horizontal: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.oneOf(['left', 'center', 'right'])]),
+    vertical: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.oneOf(['top', 'center', 'bottom'])])
   }),
+
   /**
    * The number of milliseconds to wait before automatically calling the
    * `onClose` function. `onClose` should then set the state of the `open`
    * prop to hide the Snackbar. This behavior is disabled by default with
    * the `null` value.
    */
-  autoHideDuration: _propTypes2.default.number,
+  autoHideDuration: _propTypes.default.number,
+
   /**
    * If you wish the take control over the children of the component you can use this property.
    * When used, you replace the `SnackbarContent` component with the children.
    */
-  children: _propTypes2.default.element,
+  children: _propTypes.default.element,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
+  /**
+   * Properties applied to the `SnackbarContent` element.
+   */
+  ContentProps: _propTypes.default.object,
+
   /**
    * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
    */
-  disableWindowBlurListener: _propTypes2.default.bool,
+  disableWindowBlurListener: _propTypes.default.bool,
+
   /**
    * When displaying multiple consecutive Snackbars from a parent rendering a single
    * <Snackbar/>, add the key property to ensure independent treatment of each message.
    * e.g. <Snackbar key={message} />, otherwise, the message may update-in-place and
    * features such as autoHideDuration may be canceled.
    */
-  key: _propTypes2.default.any,
+  key: _propTypes.default.any,
+
   /**
    * The message to display.
    */
-  message: _propTypes2.default.node,
+  message: _propTypes.default.node,
+
   /**
    * Callback fired when the component requests to be closed.
    * Typically `onClose` is used to set state in the parent component,
@@ -373,76 +397,96 @@ Snackbar.propTypes = process.env.NODE_ENV !== "production" ? {
    * @param {object} event The event source of the callback
    * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
    */
-  onClose: _propTypes2.default.func,
+  onClose: _propTypes.default.func,
+
   /**
    * Callback fired before the transition is entering.
    */
-  onEnter: _propTypes2.default.func,
+  onEnter: _propTypes.default.func,
+
   /**
    * Callback fired when the transition has entered.
    */
-  onEntered: _propTypes2.default.func,
+  onEntered: _propTypes.default.func,
+
   /**
    * Callback fired when the transition is entering.
    */
-  onEntering: _propTypes2.default.func,
+  onEntering: _propTypes.default.func,
+
   /**
    * Callback fired before the transition is exiting.
    */
-  onExit: _propTypes2.default.func,
+  onExit: _propTypes.default.func,
+
   /**
    * Callback fired when the transition has exited.
    */
-  onExited: _propTypes2.default.func,
+  onExited: _propTypes.default.func,
+
   /**
    * Callback fired when the transition is exiting.
    */
-  onExiting: _propTypes2.default.func,
+  onExiting: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onMouseEnter: _propTypes2.default.func,
+  onMouseEnter: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onMouseLeave: _propTypes2.default.func,
+  onMouseLeave: _propTypes.default.func,
+
   /**
    * If true, `Snackbar` is open.
    */
-  open: _propTypes2.default.bool,
+  open: _propTypes.default.bool,
+
   /**
    * The number of milliseconds to wait before dismissing after user interaction.
    * If `autoHideDuration` property isn't specified, it does nothing.
    * If `autoHideDuration` property is specified but `resumeHideDuration` isn't,
    * we default to `autoHideDuration / 2` ms.
    */
-  resumeHideDuration: _propTypes2.default.number,
-  /**
-   * Properties applied to the `SnackbarContent` element.
-   */
-  SnackbarContentProps: _propTypes2.default.object,
+  resumeHideDuration: _propTypes.default.number,
+
   /**
    * Transition component.
    */
-  transition: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  TransitionComponent: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * The duration for the transition, in milliseconds.
    * You may specify a single timeout for all transitions, or individually with an object.
    */
-  transitionDuration: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.shape({ enter: _propTypes2.default.number, exit: _propTypes2.default.number })])
-} : {};
+  transitionDuration: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+    enter: _propTypes.default.number,
+    exit: _propTypes.default.number
+  })]),
 
+  /**
+   * Properties applied to the `Transition` element.
+   */
+  TransitionProps: _propTypes.default.object
+} : {};
 Snackbar.defaultProps = {
   anchorOrigin: {
     vertical: 'bottom',
     horizontal: 'center'
   },
   disableWindowBlurListener: false,
-  transition: _Slide2.default,
+  TransitionComponent: _Slide.default,
   transitionDuration: {
     enter: _transitions.duration.enteringScreen,
     exit: _transitions.duration.leavingScreen
   }
 };
 
-exports.default = (0, _withStyles2.default)(styles, { flip: false, name: 'MuiSnackbar' })((0, _reactLifecyclesCompat2.default)(Snackbar));
+var _default = (0, _withStyles.default)(styles, {
+  flip: false,
+  name: 'MuiSnackbar'
+})((0, _reactLifecyclesCompat.polyfill)(Snackbar));
+
+exports.default = _default;

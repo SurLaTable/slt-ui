@@ -1,10 +1,9 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
-
 export const styles = theme => ({
   root: {
     position: 'absolute',
@@ -68,48 +67,32 @@ function GridListTileBar(props) {
     title,
     titlePosition
   } = props,
-        other = _objectWithoutProperties(props, ['actionIcon', 'actionPosition', 'classes', 'className', 'subtitle', 'title', 'titlePosition']);
+        other = _objectWithoutProperties(props, ["actionIcon", "actionPosition", "classes", "className", "subtitle", "title", "titlePosition"]);
 
   const actionPos = actionIcon && actionPosition;
   const className = classNames(classes.root, {
     [classes.titlePositionBottom]: titlePosition === 'bottom',
     [classes.titlePositionTop]: titlePosition === 'top',
     [classes.rootSubtitle]: subtitle
-  }, classNameProp);
+  }, classNameProp); // Remove the margin between the title / subtitle wrapper, and the Action Icon
 
-  // Remove the margin between the title / subtitle wrapper, and the Action Icon
   const titleWrapClassName = classNames(classes.titleWrap, {
     [classes.titleWrapActionPosLeft]: actionPos === 'left',
     [classes.titleWrapActionPosRight]: actionPos === 'right'
   });
-
-  return React.createElement(
-    'div',
-    _extends({ className: className }, other),
-    React.createElement(
-      'div',
-      { className: titleWrapClassName },
-      React.createElement(
-        'div',
-        { className: classes.title },
-        title
-      ),
-      subtitle ? React.createElement(
-        'div',
-        { className: classes.subtitle },
-        subtitle
-      ) : null
-    ),
-    actionIcon ? React.createElement(
-      'div',
-      {
-        className: classNames(classes.actionIcon, {
-          [classes.actionIconActionPosLeft]: actionPos === 'left'
-        })
-      },
-      actionIcon
-    ) : null
-  );
+  return React.createElement("div", _extends({
+    className: className
+  }, other), React.createElement("div", {
+    className: titleWrapClassName
+  }, React.createElement("div", {
+    className: classes.title
+  }, title), subtitle ? React.createElement("div", {
+    className: classes.subtitle
+  }, subtitle) : null), actionIcon ? React.createElement("div", {
+    className: classNames(classes.actionIcon, {
+      [classes.actionIconActionPosLeft]: actionPos === 'left'
+    })
+  }, actionIcon) : null);
 }
 
 GridListTileBar.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -118,35 +101,41 @@ GridListTileBar.propTypes = process.env.NODE_ENV !== "production" ? {
    * (primary action target is the tile itself).
    */
   actionIcon: PropTypes.node,
+
   /**
    * Position of secondary action IconButton.
    */
   actionPosition: PropTypes.oneOf(['left', 'right']),
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * String or element serving as subtitle (support text).
    */
   subtitle: PropTypes.node,
+
   /**
    * Title to be displayed on tile.
    */
   title: PropTypes.node,
+
   /**
    * Position of the title bar.
    */
   titlePosition: PropTypes.oneOf(['top', 'bottom'])
 } : {};
-
 GridListTileBar.defaultProps = {
   actionPosition: 'right',
   titlePosition: 'bottom'
 };
-
-export default withStyles(styles, { name: 'MuiGridListTileBar' })(GridListTileBar);
+export default withStyles(styles, {
+  name: 'MuiGridListTileBar'
+})(GridListTileBar);

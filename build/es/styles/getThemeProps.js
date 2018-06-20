@@ -1,5 +1,8 @@
 function getThemeProps(params) {
-  const { theme, name } = params;
+  const {
+    theme,
+    name
+  } = params;
 
   if (!name || !theme.props || !theme.props[name]) {
     return {};

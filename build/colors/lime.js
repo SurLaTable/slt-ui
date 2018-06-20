@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 var lime = {
   50: '#f9fbe7',
   100: '#f0f4c3',
@@ -19,5 +20,5 @@ var lime = {
   A400: '#c6ff00',
   A700: '#aeea00'
 };
-
-exports.default = lime;
+var _default = lime;
+exports.default = _default;

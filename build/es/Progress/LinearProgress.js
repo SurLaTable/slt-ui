@@ -1,12 +1,11 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import warning from 'warning';
 import withStyles from '../styles/withStyles';
 import { lighten } from '../styles/colorManipulator';
-
 const TRANSITION_DURATION = 4; // 400ms
 
 export const styles = theme => ({
@@ -132,7 +131,6 @@ export const styles = theme => ({
     }
   }
 });
-
 /**
  * ## ARIA
  *
@@ -140,9 +138,17 @@ export const styles = theme => ({
  * you should use `aria-describedby` to point to the progress bar, and set the `aria-busy`
  * attribute to `true` on that region until it has finished loading.
  */
+
 function LinearProgress(props) {
-  const { classes, className: classNameProp, color, value, valueBuffer, variant } = props,
-        other = _objectWithoutProperties(props, ['classes', 'className', 'color', 'value', 'valueBuffer', 'variant']);
+  const {
+    classes,
+    className: classNameProp,
+    color,
+    value,
+    valueBuffer,
+    variant
+  } = props,
+        other = _objectWithoutProperties(props, ["classes", "className", "color", "value", "valueBuffer", "variant"]);
 
   const className = classNames(classes.root, {
     [classes.colorPrimary]: color === 'primary',
@@ -170,7 +176,10 @@ function LinearProgress(props) {
     [classes.bar2Buffer]: variant === 'buffer'
   });
   const rootProps = {};
-  const inlineStyles = { bar1: {}, bar2: {} };
+  const inlineStyles = {
+    bar1: {},
+    bar2: {}
+  };
 
   if (variant === 'determinate' || variant === 'buffer') {
     if (value !== undefined) {
@@ -180,6 +189,7 @@ function LinearProgress(props) {
       process.env.NODE_ENV !== "production" ? warning(false, 'Material-UI: you need to provide a value property ' + 'when using the determinate or buffer variant of LinearProgress .') : void 0;
     }
   }
+
   if (variant === 'buffer') {
     if (valueBuffer !== undefined) {
       inlineStyles.bar2.transform = `scaleX(${(valueBuffer || 0) / 100})`;
@@ -188,13 +198,18 @@ function LinearProgress(props) {
     }
   }
 
-  return React.createElement(
-    'div',
-    _extends({ className: className, role: 'progressbar' }, rootProps, other),
-    variant === 'buffer' ? React.createElement('div', { className: dashedClass }) : null,
-    React.createElement('div', { className: bar1ClassName, style: inlineStyles.bar1 }),
-    variant === 'determinate' ? null : React.createElement('div', { className: bar2ClassName, style: inlineStyles.bar2 })
-  );
+  return React.createElement("div", _extends({
+    className: className,
+    role: "progressbar"
+  }, rootProps, other), variant === 'buffer' ? React.createElement("div", {
+    className: dashedClass
+  }) : null, React.createElement("div", {
+    className: bar1ClassName,
+    style: inlineStyles.bar1
+  }), variant === 'determinate' ? null : React.createElement("div", {
+    className: bar2ClassName,
+    style: inlineStyles.bar2
+  }));
 }
 
 LinearProgress.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -202,34 +217,39 @@ LinearProgress.propTypes = process.env.NODE_ENV !== "production" ? {
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: PropTypes.oneOf(['primary', 'secondary']),
+
   /**
    * The value of the progress indicator for the determinate and buffer variants.
    * Value between 0 and 100.
    */
   value: PropTypes.number,
+
   /**
    * The value for the buffer variant.
    * Value between 0 and 100.
    */
   valueBuffer: PropTypes.number,
+
   /**
    * The variant of progress indicator. Use indeterminate or query
    * when there is no progress value.
    */
   variant: PropTypes.oneOf(['determinate', 'indeterminate', 'buffer', 'query'])
 } : {};
-
 LinearProgress.defaultProps = {
   color: 'primary',
   variant: 'indeterminate'
 };
-
-export default withStyles(styles, { name: 'MuiLinearProgress' })(LinearProgress);
+export default withStyles(styles, {
+  name: 'MuiLinearProgress'
+})(LinearProgress);

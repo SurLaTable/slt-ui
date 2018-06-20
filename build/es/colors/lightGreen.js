@@ -14,5 +14,4 @@ const lightGreen = {
   A400: '#76ff03',
   A700: '#64dd17'
 };
-
 export default lightGreen;

@@ -1,10 +1,9 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 // Sorted ASC by size. That's important.
 // It can't be configured as it's used statically for propTypes.
-export const keys = ['xs', 'sm', 'md', 'lg', 'xl'];
+export const keys = ['xs', 'sm', 'md', 'lg', 'xl']; // Keep in mind that @media is inclusive by the CSS specification.
 
-// Keep in mind that @media is inclusive by the CSS specification.
 export default function createBreakpoints(breakpoints) {
   const {
     // The breakpoint **start** at this value.
@@ -19,7 +18,7 @@ export default function createBreakpoints(breakpoints) {
     unit = 'px',
     step = 5
   } = breakpoints,
-        other = _objectWithoutProperties(breakpoints, ['values', 'unit', 'step']);
+        other = _objectWithoutProperties(breakpoints, ["values", "unit", "step"]);
 
   function up(key) {
     const value = typeof values[key] === 'number' ? values[key] : key;
@@ -57,7 +56,7 @@ export default function createBreakpoints(breakpoints) {
     return values[key];
   }
 
-  return _extends({
+  return _objectSpread({
     keys,
     values,
     up,

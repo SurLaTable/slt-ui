@@ -1,22 +1,23 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LinearProgress = exports.CircularProgress = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-var CircularProgress = exports.CircularProgress = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "CircularProgress" */
-  resolve: function resolve() {
-    return import('./CircularProgress');
+Object.defineProperty(exports, "CircularProgress", {
+  enumerable: true,
+  get: function get() {
+    return _CircularProgress.default;
+  }
+});
+Object.defineProperty(exports, "LinearProgress", {
+  enumerable: true,
+  get: function get() {
+    return _LinearProgress.default;
   }
 });
 
-var LinearProgress = exports.LinearProgress = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "LinearProgress" */
-  resolve: function resolve() {
-    return import('./LinearProgress');
-  }
-});
+var _CircularProgress = _interopRequireDefault(require("./CircularProgress"));
+
+var _LinearProgress = _interopRequireDefault(require("./LinearProgress"));

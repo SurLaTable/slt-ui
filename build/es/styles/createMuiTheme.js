@@ -1,6 +1,7 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
+
 import warning from 'warning';
 import createTypography from './createTypography';
 import createBreakpoints from './createBreakpoints';
@@ -19,18 +20,20 @@ function createMuiTheme(options = {}) {
     typography: typographyInput = {},
     shadows: shadowsInput
   } = options,
-        other = _objectWithoutProperties(options, ['palette', 'breakpoints', 'mixins', 'typography', 'shadows']);
+        other = _objectWithoutProperties(options, ["palette", "breakpoints", "mixins", "typography", "shadows"]);
 
   const palette = createPalette(paletteInput);
   const breakpoints = createBreakpoints(breakpointsInput);
 
-  const muiTheme = _extends({
+  const muiTheme = _objectSpread({
     breakpoints,
     direction: 'ltr',
     mixins: createMixins(breakpoints, spacing, mixinsInput),
-    overrides: {}, // Inject custom styles
+    overrides: {},
+    // Inject custom styles
     palette,
-    props: {}, // Inject custom properties
+    props: {},
+    // Inject custom properties
     shadows: shadowsInput || shadows,
     typography: createTypography(palette, typographyInput)
   }, deepmerge({
@@ -40,7 +43,6 @@ function createMuiTheme(options = {}) {
   }, other));
 
   process.env.NODE_ENV !== "production" ? warning(muiTheme.shadows.length === 25, 'Material-UI: the shadows array provided to createMuiTheme should support 25 elevations.') : void 0;
-
   return muiTheme;
 }
 

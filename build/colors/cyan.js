@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 var cyan = {
   50: '#e0f7fa',
   100: '#b2ebf2',
@@ -19,5 +20,5 @@ var cyan = {
   A400: '#00e5ff',
   A700: '#00b8d4'
 };
-
-exports.default = cyan;
+var _default = cyan;
+exports.default = _default;

@@ -1,5 +1,4 @@
 //  weak
-
 const requirePropFactory = componentNameInError => {
   const requireProp = requiredProp => (props, propName, componentName, location, propFullName) => {
     const propFullNameSafe = propFullName || propName;
@@ -10,6 +9,7 @@ const requirePropFactory = componentNameInError => {
 
     return null;
   };
+
   return requireProp;
 };
 

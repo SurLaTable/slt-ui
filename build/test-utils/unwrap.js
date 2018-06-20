@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = unwrap;
-//  weak
 
+//  weak
 function unwrap(component) {
   return component.Naked ? unwrap(component.Naked) : component;
 }

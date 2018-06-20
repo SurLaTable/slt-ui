@@ -1,99 +1,67 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
 exports.setTranslateValue = setTranslateValue;
+exports.default = void 0;
 
-var _react = require('react');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react2 = _interopRequireDefault(_react);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _propTypes = require('prop-types');
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _reactDom = require('react-dom');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _reactEventListener = require('react-event-listener');
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _debounce = require('lodash/debounce');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _debounce2 = _interopRequireDefault(_debounce);
+var _react = _interopRequireDefault(require("react"));
 
-var _Transition = require('react-transition-group/Transition');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Transition2 = _interopRequireDefault(_Transition);
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _ownerWindow = require('dom-helpers/ownerWindow');
+var _reactEventListener = _interopRequireDefault(require("react-event-listener"));
 
-var _ownerWindow2 = _interopRequireDefault(_ownerWindow);
+var _debounce = _interopRequireDefault(require("lodash/debounce"));
 
-var _reactLifecyclesCompat = require('react-lifecycles-compat');
+var _Transition = _interopRequireDefault(require("react-transition-group/Transition"));
 
-var _reactLifecyclesCompat2 = _interopRequireDefault(_reactLifecyclesCompat);
+var _reactLifecyclesCompat = require("react-lifecycles-compat");
 
-var _withTheme = require('../styles/withTheme');
+var _ownerWindow = _interopRequireDefault(require("../utils/ownerWindow"));
 
-var _withTheme2 = _interopRequireDefault(_withTheme);
+var _withTheme = _interopRequireDefault(require("../styles/withTheme"));
 
-var _transitions = require('../styles/transitions');
+var _transitions = require("../styles/transitions");
 
-var _utils = require('./utils');
+var _utils = require("./utils");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GUTTER = 24;
-
-// Translate the node so he can't be seen on the screen.
+// @inheritedComponent Transition
+var GUTTER = 24; // Translate the node so he can't be seen on the screen.
 // Later, we gonna translate back the node to his original location
 // with `translate3d(0, 0, 0)`.`
-// @inheritedComponent Transition
 
 function getTranslateValue(props, node) {
   var direction = props.direction;
-
   var rect = node.getBoundingClientRect();
-
-  var transform = void 0;
+  var transform;
 
   if (node.fakeTransform) {
     transform = node.fakeTransform;
   } else {
-    var computedStyle = (0, _ownerWindow2.default)(node).getComputedStyle(node);
+    var computedStyle = (0, _ownerWindow.default)(node).getComputedStyle(node);
     transform = computedStyle.getPropertyValue('-webkit-transform') || computedStyle.getPropertyValue('transform');
   }
 
@@ -107,15 +75,15 @@ function getTranslateValue(props, node) {
   }
 
   if (direction === 'left') {
-    return 'translateX(100vw) translateX(-' + (rect.left - offsetX) + 'px)';
+    return "translateX(100vw) translateX(-".concat(rect.left - offsetX, "px)");
   } else if (direction === 'right') {
-    return 'translateX(-' + (rect.left + rect.width + GUTTER - offsetX) + 'px)';
+    return "translateX(-".concat(rect.left + rect.width + GUTTER - offsetX, "px)");
   } else if (direction === 'up') {
-    return 'translateY(100vh) translateY(-' + (rect.top - offsetY) + 'px)';
-  }
+    return "translateY(100vh) translateY(-".concat(rect.top - offsetY, "px)");
+  } // direction === 'down'
 
-  // direction === 'down'
-  return 'translateY(-' + (rect.top + rect.height + GUTTER - offsetY) + 'px)';
+
+  return "translateY(-".concat(rect.top + rect.height + GUTTER - offsetY, "px)");
 }
 
 function setTranslateValue(props, node) {
@@ -126,92 +94,127 @@ function setTranslateValue(props, node) {
     node.style.transform = transform;
   }
 }
-
 /**
  * The Slide transition is used by the [Snackbar](/demos/snackbars) component.
  * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
  */
 
-var Slide = function (_React$Component) {
-  (0, _inherits3.default)(Slide, _React$Component);
+
+var Slide =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Slide, _React$Component);
 
   function Slide() {
     var _ref;
 
-    var _temp, _this, _ret;
+    var _temp, _this;
 
-    (0, _classCallCheck3.default)(this, Slide);
+    (0, _classCallCheck2.default)(this, Slide);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Slide.__proto__ || (0, _getPrototypeOf2.default)(Slide)).call.apply(_ref, [this].concat(args))), _this), _this.mounted = false, _this.transition = null, _this.handleResize = (0, _debounce2.default)(function () {
-      // Skip configuration where the position is screen size invariant.
-      if (_this.props.in || _this.props.direction === 'down' || _this.props.direction === 'right') {
-        return;
-      }
+    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = Slide.__proto__ || (0, _getPrototypeOf.default)(Slide)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "mounted", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: false
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "transition", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleResize", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (0, _debounce.default)(function () {
+        // Skip configuration where the position is screen size invariant.
+        if (_this.props.in || _this.props.direction === 'down' || _this.props.direction === 'right') {
+          return;
+        }
 
-      var node = _reactDom2.default.findDOMNode(_this.transition);
-      if (node) {
+        var node = _reactDom.default.findDOMNode(_this.transition);
+
+        if (node) {
+          setTranslateValue(_this.props, node);
+        }
+      }, 166)
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleEnter", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(node) {
         setTranslateValue(_this.props, node);
+        (0, _utils.reflow)(node);
+
+        if (_this.props.onEnter) {
+          _this.props.onEnter(node);
+        }
       }
-    }, 166), _this.handleEnter = function (node) {
-      setTranslateValue(_this.props, node);
-      (0, _utils.reflow)(node);
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleEntering", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(node) {
+        var theme = _this.props.theme;
+        var transitionProps = (0, _utils.getTransitionProps)(_this.props, {
+          mode: 'enter'
+        });
+        node.style.webkitTransition = theme.transitions.create('-webkit-transform', (0, _objectSpread2.default)({}, transitionProps, {
+          easing: theme.transitions.easing.easeOut
+        }));
+        node.style.transition = theme.transitions.create('transform', (0, _objectSpread2.default)({}, transitionProps, {
+          easing: theme.transitions.easing.easeOut
+        }));
+        node.style.webkitTransform = 'translate(0, 0)';
+        node.style.transform = 'translate(0, 0)';
 
-      if (_this.props.onEnter) {
-        _this.props.onEnter(node);
+        if (_this.props.onEntering) {
+          _this.props.onEntering(node);
+        }
       }
-    }, _this.handleEntering = function (node) {
-      var theme = _this.props.theme;
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleExit", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(node) {
+        var theme = _this.props.theme;
+        var transitionProps = (0, _utils.getTransitionProps)(_this.props, {
+          mode: 'exit'
+        });
+        node.style.webkitTransition = theme.transitions.create('-webkit-transform', (0, _objectSpread2.default)({}, transitionProps, {
+          easing: theme.transitions.easing.sharp
+        }));
+        node.style.transition = theme.transitions.create('transform', (0, _objectSpread2.default)({}, transitionProps, {
+          easing: theme.transitions.easing.sharp
+        }));
+        setTranslateValue(_this.props, node);
 
-
-      var transitionProps = (0, _utils.getTransitionProps)(_this.props, {
-        mode: 'enter'
-      });
-      node.style.webkitTransition = theme.transitions.create('-webkit-transform', (0, _extends3.default)({}, transitionProps, {
-        easing: theme.transitions.easing.easeOut
-      }));
-      node.style.transition = theme.transitions.create('transform', (0, _extends3.default)({}, transitionProps, {
-        easing: theme.transitions.easing.easeOut
-      }));
-      node.style.webkitTransform = 'translate(0, 0)';
-      node.style.transform = 'translate(0, 0)';
-      if (_this.props.onEntering) {
-        _this.props.onEntering(node);
+        if (_this.props.onExit) {
+          _this.props.onExit(node);
+        }
       }
-    }, _this.handleExit = function (node) {
-      var theme = _this.props.theme;
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleExited", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(node) {
+        // No need for transitions when the component is hidden
+        node.style.webkitTransition = '';
+        node.style.transition = '';
 
-
-      var transitionProps = (0, _utils.getTransitionProps)(_this.props, {
-        mode: 'exit'
-      });
-      node.style.webkitTransition = theme.transitions.create('-webkit-transform', (0, _extends3.default)({}, transitionProps, {
-        easing: theme.transitions.easing.sharp
-      }));
-      node.style.transition = theme.transitions.create('transform', (0, _extends3.default)({}, transitionProps, {
-        easing: theme.transitions.easing.sharp
-      }));
-      setTranslateValue(_this.props, node);
-
-      if (_this.props.onExit) {
-        _this.props.onExit(node);
+        if (_this.props.onExited) {
+          _this.props.onExited(node);
+        }
       }
-    }, _this.handleExited = function (node) {
-      // No need for transitions when the component is hidden
-      node.style.webkitTransition = '';
-      node.style.transition = '';
-
-      if (_this.props.onExited) {
-        _this.props.onExited(node);
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }), _temp));
   }
 
-  (0, _createClass3.default)(Slide, [{
-    key: 'componentDidMount',
+  (0, _createClass2.default)(Slide, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
       // state.mounted handle SSR, once the component is mounted, we need
       // to properly hide it.
@@ -224,7 +227,7 @@ var Slide = function (_React$Component) {
       this.mounted = true;
     }
   }, {
-    key: 'componentDidUpdate',
+    key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.direction !== this.props.direction && !this.props.in) {
         // We need to update the position of the drawer when the direction change and
@@ -233,22 +236,22 @@ var Slide = function (_React$Component) {
       }
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.handleResize.cancel();
     }
   }, {
-    key: 'updatePosition',
+    key: "updatePosition",
     value: function updatePosition() {
-      var node = _reactDom2.default.findDOMNode(this.transition);
+      var node = _reactDom.default.findDOMNode(this.transition);
+
       if (node) {
         node.style.visibility = 'inherit';
         setTranslateValue(this.props, node);
       }
-    } // Corresponds to 10 frames at 60 Hz.
-
+    }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this2 = this;
 
@@ -260,88 +263,90 @@ var Slide = function (_React$Component) {
           onExited = _props.onExited,
           styleProp = _props.style,
           theme = _props.theme,
-          other = (0, _objectWithoutProperties3.default)(_props, ['children', 'onEnter', 'onEntering', 'onExit', 'onExited', 'style', 'theme']);
-
-
-      var style = {};
-
-      // We use this state to handle the server-side rendering.
+          other = (0, _objectWithoutProperties2.default)(_props, ["children", "onEnter", "onEntering", "onExit", "onExited", "style", "theme"]);
+      var style = {}; // We use this state to handle the server-side rendering.
       // We don't know the width of the children ahead of time.
       // We need to render it.
+
       if (!this.props.in && !this.mounted) {
         style.visibility = 'hidden';
       }
 
-      style = (0, _extends3.default)({}, style, styleProp, _react2.default.isValidElement(children) ? children.props.style : {});
-
-      return _react2.default.createElement(
-        _reactEventListener2.default,
-        { target: 'window', onResize: this.handleResize },
-        _react2.default.createElement(
-          _Transition2.default,
-          (0, _extends3.default)({
-            onEnter: this.handleEnter,
-            onEntering: this.handleEntering,
-            onExit: this.handleExit,
-            onExited: this.handleExited,
-            appear: true,
-            style: style,
-            ref: function ref(node) {
-              _this2.transition = node;
-            }
-          }, other),
-          children
-        )
-      );
+      style = (0, _objectSpread2.default)({}, style, styleProp, _react.default.isValidElement(children) ? children.props.style : {});
+      return _react.default.createElement(_reactEventListener.default, {
+        target: "window",
+        onResize: this.handleResize
+      }, _react.default.createElement(_Transition.default, (0, _extends2.default)({
+        onEnter: this.handleEnter,
+        onEntering: this.handleEntering,
+        onExit: this.handleExit,
+        onExited: this.handleExited,
+        appear: true,
+        style: style,
+        ref: function ref(node) {
+          _this2.transition = node;
+        }
+      }, other), children));
     }
   }]);
   return Slide;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 Slide.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * A single child content element.
    */
-  children: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.func]),
+  children: _propTypes.default.oneOfType([_propTypes.default.element, _propTypes.default.func]),
+
   /**
    * Direction the child node will enter from.
    */
-  direction: _propTypes2.default.oneOf(['left', 'right', 'up', 'down']),
+  direction: _propTypes.default.oneOf(['left', 'right', 'up', 'down']),
+
   /**
    * If `true`, show the component; triggers the enter or exit animation.
    */
-  in: _propTypes2.default.bool,
+  in: _propTypes.default.bool,
+
   /**
    * @ignore
    */
-  onEnter: _propTypes2.default.func,
+  onEnter: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onEntering: _propTypes2.default.func,
+  onEntering: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onExit: _propTypes2.default.func,
+  onExit: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onExited: _propTypes2.default.func,
+  onExited: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  style: _propTypes2.default.object,
+  style: _propTypes.default.object,
+
   /**
    * @ignore
    */
-  theme: _propTypes2.default.object.isRequired,
+  theme: _propTypes.default.object.isRequired,
+
   /**
    * The duration for the transition, in milliseconds.
    * You may specify a single timeout for all transitions, or individually with an object.
    */
-  timeout: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.shape({ enter: _propTypes2.default.number, exit: _propTypes2.default.number })])
+  timeout: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+    enter: _propTypes.default.number,
+    exit: _propTypes.default.number
+  })])
 } : {};
-
 Slide.defaultProps = {
   direction: 'down',
   timeout: {
@@ -350,4 +355,6 @@ Slide.defaultProps = {
   }
 };
 
-exports.default = (0, _withTheme2.default)()((0, _reactLifecyclesCompat2.default)(Slide));
+var _default = (0, _withTheme.default)()((0, _reactLifecyclesCompat.polyfill)(Slide));
+
+exports.default = _default;

@@ -32,13 +32,10 @@ export { default as Radio, RadioGroup } from './Radio';
 export { default as Select } from './Select';
 export { default as Snackbar, SnackbarContent } from './Snackbar';
 export { default as Stepper, Step, StepButton, StepIcon, StepContent, StepLabel } from './Stepper';
-export { MuiThemeProvider, withStyles, withTheme, createMuiTheme, jssPreset } from './styles';
+export { createGenerateClassName, createMuiTheme, jssPreset, MuiThemeProvider, withStyles, withTheme } from './styles'; // eslint-disable-next-line import/first
 
-// eslint-disable-next-line import/first
 import * as colors from './colors';
-
 export { colors };
-
 export { default as SvgIcon } from './SvgIcon';
 export { default as SwipeableDrawer } from './SwipeableDrawer';
 export { default as Switch } from './Switch';
@@ -49,6 +46,6 @@ export { default as TextField } from './TextField';
 export { default as Toolbar } from './Toolbar';
 export { default as Tooltip } from './Tooltip';
 export { Slide, Grow, Fade, Collapse, Zoom } from './transitions';
-
 export { default as withWidth } from './utils/withWidth';
-export { default as SLTTest } from './SLTTest';
+export { StoreProvider, ComparisonCheckbox, ComparisonTable, ComparisonBar } from './ComparisonChart';
+export {} from './SLTTest';

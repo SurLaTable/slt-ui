@@ -1,14 +1,15 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Avatar" */
-  resolve: function resolve() {
-    return import('./Avatar');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Avatar.default;
   }
 });
+
+var _Avatar = _interopRequireDefault(require("./Avatar"));

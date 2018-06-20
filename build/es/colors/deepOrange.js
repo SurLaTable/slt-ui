@@ -14,5 +14,4 @@ const deepOrange = {
   A400: '#ff3d00',
   A700: '#dd2c00'
 };
-
 export default deepOrange;

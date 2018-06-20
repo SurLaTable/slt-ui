@@ -1,11 +1,10 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import warning from 'warning';
 import withStyles from '../styles/withStyles';
-
 export const styles = theme => ({
   root: {
     width: 36,
@@ -19,13 +18,17 @@ export const styles = theme => ({
     fontSize: theme.typography.pxToRem(20)
   }
 });
-
 /**
  * It's a simple wrapper to apply the `dense` mode styles to `Avatar`.
  */
+
 function ListItemAvatar(props, context) {
-  const { children, classes, className: classNameProp } = props,
-        other = _objectWithoutProperties(props, ['children', 'classes', 'className']);
+  const {
+    children,
+    classes,
+    className: classNameProp
+  } = props,
+        other = _objectWithoutProperties(props, ["children", "classes", "className"]);
 
   if (context.dense === undefined) {
     process.env.NODE_ENV !== "production" ? warning(false, `Material-UI: <ListItemAvatar> is a simple wrapper to apply the dense styles
@@ -33,9 +36,13 @@ function ListItemAvatar(props, context) {
     return props.children;
   }
 
-  return React.cloneElement(children, _extends({
-    className: classNames({ [classes.root]: context.dense }, classNameProp, children.props.className),
-    childrenClassName: classNames({ [classes.icon]: context.dense }, children.props.childrenClassName)
+  return React.cloneElement(children, _objectSpread({
+    className: classNames({
+      [classes.root]: context.dense
+    }, classNameProp, children.props.className),
+    childrenClassName: classNames({
+      [classes.icon]: context.dense
+    }, children.props.childrenClassName)
   }, other));
 }
 
@@ -44,20 +51,21 @@ ListItemAvatar.propTypes = process.env.NODE_ENV !== "production" ? {
    * The content of the component, normally `Avatar`.
    */
   children: PropTypes.element.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string
 } : {};
-
 ListItemAvatar.contextTypes = {
   dense: PropTypes.bool
 };
-
 ListItemAvatar.muiName = 'ListItemAvatar';
-
-export default withStyles(styles, { name: 'MuiListItemAvatar' })(ListItemAvatar);
+export default withStyles(styles, {
+  name: 'MuiListItemAvatar'
+})(ListItemAvatar);

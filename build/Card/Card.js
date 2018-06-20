@@ -1,48 +1,67 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _react = _interopRequireDefault(require("react"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _react = require('react');
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Paper = _interopRequireDefault(require("../Paper"));
 
-var _propTypes = require('prop-types');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _Paper = require('../Paper');
-
-var _Paper2 = _interopRequireDefault(_Paper);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+// @inheritedComponent Paper
+var styles = {
+  root: {
+    overflow: 'hidden'
+  }
+};
+exports.styles = styles;
 
 function Card(props) {
-  var raised = props.raised,
-      other = (0, _objectWithoutProperties3.default)(props, ['raised']);
-
-
-  return _react2.default.createElement(_Paper2.default, (0, _extends3.default)({ elevation: raised ? 8 : 2 }, other));
-} // @inheritedComponent Paper
+  var classes = props.classes,
+      className = props.className,
+      raised = props.raised,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "raised"]);
+  return _react.default.createElement(_Paper.default, (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, className),
+    elevation: raised ? 8 : 2
+  }, other));
+}
 
 Card.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
+   * Useful to extend the style applied to components.
+   */
+  classes: _propTypes.default.object.isRequired,
+
+  /**
+   * @ignore
+   */
+  className: _propTypes.default.string,
+
+  /**
    * If `true`, the card will use raised styling.
    */
-  raised: _propTypes2.default.bool
+  raised: _propTypes.default.bool
 } : {};
-
 Card.defaultProps = {
   raised: false
 };
 
-exports.default = Card;
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiCard'
+})(Card);
+
+exports.default = _default;

@@ -1,14 +1,13 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 // @inheritedComponent Paper
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import Paper from '../Paper';
 import StepConnector from './StepConnector';
-
 export const styles = theme => ({
   root: {
     display: 'flex',
@@ -37,13 +36,14 @@ function Stepper(props) {
     nonLinear,
     orientation
   } = props,
-        other = _objectWithoutProperties(props, ['activeStep', 'alternativeLabel', 'children', 'classes', 'className', 'connector', 'nonLinear', 'orientation']);
+        other = _objectWithoutProperties(props, ["activeStep", "alternativeLabel", "children", "classes", "className", "connector", "nonLinear", "orientation"]);
 
   const className = classNames(classes.root, classes[orientation], {
     [classes.alternativeLabel]: alternativeLabel
   }, classNameProp);
-
-  const connector = React.isValidElement(connectorProp) ? React.cloneElement(connectorProp, { orientation }) : null;
+  const connector = React.isValidElement(connectorProp) ? React.cloneElement(connectorProp, {
+    orientation
+  }) : null;
   const childrenArray = React.Children.toArray(children);
   const steps = childrenArray.map((step, index) => {
     const controlProps = {
@@ -67,14 +67,14 @@ function Stepper(props) {
 
     return [!alternativeLabel && connector && index > 0 && React.cloneElement(connector, {
       key: index // eslint-disable-line react/no-array-index-key
-    }), React.cloneElement(step, _extends({}, controlProps, step.props))];
-  });
 
-  return React.createElement(
-    Paper,
-    _extends({ square: true, elevation: 0, className: className }, other),
-    steps
-  );
+    }), React.cloneElement(step, _objectSpread({}, controlProps, step.props))];
+  });
+  return React.createElement(Paper, _extends({
+    square: true,
+    elevation: 0,
+    className: className
+  }, other), steps);
 }
 
 Stepper.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -82,37 +82,43 @@ Stepper.propTypes = process.env.NODE_ENV !== "production" ? {
    * Set the active step (zero based index).
    */
   activeStep: PropTypes.number,
+
   /**
    * If set to 'true' and orientation is horizontal,
    * then the step label will be positioned under the icon.
    */
   alternativeLabel: PropTypes.bool,
+
   /**
    * Two or more `<Step />` components.
    */
   children: PropTypes.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * A component to be placed between each step.
    */
   connector: PropTypes.element,
+
   /**
    * If set the `Stepper` will not assist in controlling steps for linear flow.
    */
   nonLinear: PropTypes.bool,
+
   /**
    * The stepper orientation (layout flow direction).
    */
   orientation: PropTypes.oneOf(['horizontal', 'vertical'])
 } : {};
-
 Stepper.defaultProps = {
   activeStep: 0,
   alternativeLabel: false,
@@ -120,7 +126,7 @@ Stepper.defaultProps = {
   nonLinear: false,
   orientation: 'horizontal'
 };
-
 Stepper.muiName = 'Stepper';
-
-export default withStyles(styles, { name: 'MuiStepper' })(Stepper);
+export default withStyles(styles, {
+  name: 'MuiStepper'
+})(Stepper);

@@ -1,14 +1,15 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "MobileStepper" */
-  resolve: function resolve() {
-    return import('./MobileStepper');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _MobileStepper.default;
   }
 });
+
+var _MobileStepper = _interopRequireDefault(require("./MobileStepper"));

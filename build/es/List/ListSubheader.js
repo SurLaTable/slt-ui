@@ -1,11 +1,10 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import { capitalize } from '../utils/helpers';
-
 export const styles = theme => ({
   root: theme.mixins.gutters({
     boxSizing: 'border-box',
@@ -34,8 +33,15 @@ export const styles = theme => ({
 });
 
 function ListSubheader(props) {
-  const { classes, className, color, component: Component, disableSticky, inset } = props,
-        other = _objectWithoutProperties(props, ['classes', 'className', 'color', 'component', 'disableSticky', 'inset']);
+  const {
+    classes,
+    className,
+    color,
+    component: Component,
+    disableSticky,
+    inset
+  } = props,
+        other = _objectWithoutProperties(props, ["classes", "className", "color", "component", "disableSticky", "inset"]);
 
   return React.createElement(Component, _extends({
     className: classNames(classes.root, {
@@ -51,40 +57,45 @@ ListSubheader.propTypes = process.env.NODE_ENV !== "production" ? {
    * The content of the component.
    */
   children: PropTypes.node,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: PropTypes.oneOf(['default', 'primary', 'inherit']),
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+
   /**
    * If `true`, the List Subheader will not stick to the top during scroll.
    */
   disableSticky: PropTypes.bool,
+
   /**
    * If `true`, the List Subheader will be indented.
    */
   inset: PropTypes.bool
 } : {};
-
 ListSubheader.defaultProps = {
   color: 'default',
   component: 'li',
   disableSticky: false,
   inset: false
 };
-
 ListSubheader.muiName = 'ListSubheader';
-
-export default withStyles(styles, { name: 'MuiListSubheader' })(ListSubheader);
+export default withStyles(styles, {
+  name: 'MuiListSubheader'
+})(ListSubheader);

@@ -1,23 +1,21 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 // @inheritedComponent Paper
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import { capitalize } from '../utils/helpers';
 import Paper from '../Paper';
-
 export const styles = theme => {
   const backgroundColorDefault = theme.palette.type === 'light' ? theme.palette.grey[100] : theme.palette.grey[900];
-
   return {
     root: {
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
-      boxSizing: 'border-box', // Prevent padding issue with the Modal and fixed positioned AppBar.
+      boxSizing: 'border-box',
+      // Prevent padding issue with the Modal and fixed positioned AppBar.
       zIndex: theme.zIndex.appBar,
       flexShrink: 0
     },
@@ -58,19 +56,26 @@ export const styles = theme => {
 };
 
 function AppBar(props) {
-  const { children, classes, className: classNameProp, color, position } = props,
-        other = _objectWithoutProperties(props, ['children', 'classes', 'className', 'color', 'position']);
+  const {
+    children,
+    classes,
+    className: classNameProp,
+    color,
+    position
+  } = props,
+        other = _objectWithoutProperties(props, ["children", "classes", "className", "color", "position"]);
 
   const className = classNames(classes.root, classes[`position${capitalize(position)}`], {
     [classes[`color${capitalize(color)}`]]: color !== 'inherit',
     'mui-fixed': position === 'fixed' // Useful for the Dialog
-  }, classNameProp);
 
-  return React.createElement(
-    Paper,
-    _extends({ square: true, component: 'header', elevation: 4, className: className }, other),
-    children
-  );
+  }, classNameProp);
+  return React.createElement(Paper, _extends({
+    square: true,
+    component: "header",
+    elevation: 4,
+    className: className
+  }, other), children);
 }
 
 AppBar.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -78,18 +83,22 @@ AppBar.propTypes = process.env.NODE_ENV !== "production" ? {
    * The content of the component.
    */
   children: PropTypes.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: PropTypes.oneOf(['inherit', 'primary', 'secondary', 'default']),
+
   /**
    * The positioning type. The behavior of the different options is described
    * [here](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning).
@@ -97,10 +106,10 @@ AppBar.propTypes = process.env.NODE_ENV !== "production" ? {
    */
   position: PropTypes.oneOf(['fixed', 'absolute', 'sticky', 'static'])
 } : {};
-
 AppBar.defaultProps = {
   color: 'primary',
   position: 'fixed'
 };
-
-export default withStyles(styles, { name: 'MuiAppBar' })(AppBar);
+export default withStyles(styles, {
+  name: 'MuiAppBar'
+})(AppBar);

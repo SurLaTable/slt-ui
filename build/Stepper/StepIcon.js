@@ -1,45 +1,29 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _react = _interopRequireDefault(require("react"));
 
-var _react = require('react');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _react2 = _interopRequireDefault(_react);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _propTypes = require('prop-types');
+var _CheckCircle = _interopRequireDefault(require("../internal/svg-icons/CheckCircle"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _Warning = _interopRequireDefault(require("../internal/svg-icons/Warning"));
 
-var _classnames = require('classnames');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _classnames2 = _interopRequireDefault(_classnames);
+var _StepPositionIcon = _interopRequireDefault(require("./StepPositionIcon"));
 
-var _CheckCircle = require('../internal/svg-icons/CheckCircle');
-
-var _CheckCircle2 = _interopRequireDefault(_CheckCircle);
-
-var _Warning = require('../internal/svg-icons/Warning');
-
-var _Warning2 = _interopRequireDefault(_Warning);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _StepPositionIcon = require('./StepPositionIcon');
-
-var _StepPositionIcon2 = _interopRequireDefault(_StepPositionIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     root: {
       display: 'block',
@@ -59,6 +43,8 @@ var styles = exports.styles = function styles(theme) {
   };
 };
 
+exports.styles = styles;
+
 function StepIcon(props) {
   var completed = props.completed,
       icon = props.icon,
@@ -66,16 +52,21 @@ function StepIcon(props) {
       error = props.error,
       classes = props.classes;
 
-
   if (typeof icon === 'number' || typeof icon === 'string') {
     if (error) {
-      return _react2.default.createElement(_Warning2.default, { className: (0, _classnames2.default)(classes.root, classes.error) });
+      return _react.default.createElement(_Warning.default, {
+        className: (0, _classnames.default)(classes.root, classes.error)
+      });
     }
+
     if (completed) {
-      return _react2.default.createElement(_CheckCircle2.default, { className: (0, _classnames2.default)(classes.root, classes.completed) });
+      return _react.default.createElement(_CheckCircle.default, {
+        className: (0, _classnames.default)(classes.root, classes.completed)
+      });
     }
-    return _react2.default.createElement(_StepPositionIcon2.default, {
-      className: (0, _classnames2.default)(classes.root, (0, _defineProperty3.default)({}, classes.active, active)),
+
+    return _react.default.createElement(_StepPositionIcon.default, {
+      className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.active, active)),
       position: icon
     });
   }
@@ -87,29 +78,36 @@ StepIcon.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Whether this step is active.
    */
-  active: _propTypes2.default.bool,
+  active: _propTypes.default.bool,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * Mark the step as completed. Is passed to child components.
    */
-  completed: _propTypes2.default.bool,
+  completed: _propTypes.default.bool,
+
   /**
    * Mark the step as failed.
    */
-  error: _propTypes2.default.bool,
+  error: _propTypes.default.bool,
+
   /**
    * The icon displayed by the step label.
    */
-  icon: _propTypes2.default.node.isRequired
+  icon: _propTypes.default.node.isRequired
 } : {};
-
 StepIcon.defaultProps = {
   active: false,
   completed: false,
   error: false
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiStepIcon' })(StepIcon);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiStepIcon'
+})(StepIcon);
+
+exports.default = _default;

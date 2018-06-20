@@ -1,60 +1,46 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _keys = require('babel-runtime/core-js/object/keys');
+var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
 
-var _keys2 = _interopRequireDefault(_keys);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _react = _interopRequireDefault(require("react"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _warning = _interopRequireDefault(require("warning"));
 
-var _react = require('react');
+var _createBreakpoints = require("../styles/createBreakpoints");
 
-var _react2 = _interopRequireDefault(_react);
+var _helpers = require("../utils/helpers");
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _warning = require('warning');
-
-var _warning2 = _interopRequireDefault(_warning);
-
-var _createBreakpoints = require('../styles/createBreakpoints');
-
-var _helpers = require('../utils/helpers');
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
 var styles = function styles(theme) {
   var hidden = {
     display: 'none'
   };
-
   return _createBreakpoints.keys.reduce(function (acc, key) {
-    acc['only' + (0, _helpers.capitalize)(key)] = (0, _defineProperty3.default)({}, theme.breakpoints.only(key), hidden);
-    acc[key + 'Up'] = (0, _defineProperty3.default)({}, theme.breakpoints.up(key), hidden);
-    acc[key + 'Down'] = (0, _defineProperty3.default)({}, theme.breakpoints.down(key), hidden);
-
+    acc["only".concat((0, _helpers.capitalize)(key))] = (0, _defineProperty2.default)({}, theme.breakpoints.only(key), hidden);
+    acc["".concat(key, "Up")] = (0, _defineProperty2.default)({}, theme.breakpoints.up(key), hidden);
+    acc["".concat(key, "Down")] = (0, _defineProperty2.default)({}, theme.breakpoints.down(key), hidden);
     return acc;
   }, {});
 };
-
 /**
  * @ignore - internal component.
  */
+
+
 function HiddenCss(props) {
   var children = props.children,
       classes = props.classes,
@@ -70,11 +56,8 @@ function HiddenCss(props) {
       xlUp = props.xlUp,
       xsDown = props.xsDown,
       xsUp = props.xsUp,
-      other = (0, _objectWithoutProperties3.default)(props, ['children', 'classes', 'className', 'lgDown', 'lgUp', 'mdDown', 'mdUp', 'only', 'smDown', 'smUp', 'xlDown', 'xlUp', 'xsDown', 'xsUp']);
-
-
-  process.env.NODE_ENV !== "production" ? (0, _warning2.default)((0, _keys2.default)(other).length === 0 || (0, _keys2.default)(other).length === 1 && other.hasOwnProperty('ref'), 'Material-UI: unsupported properties received ' + (0, _keys2.default)(other).join(', ') + ' by `<Hidden />`.') : void 0;
-
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "lgDown", "lgUp", "mdDown", "mdUp", "only", "smDown", "smUp", "xlDown", "xlUp", "xsDown", "xsUp"]);
+  process.env.NODE_ENV !== "production" ? (0, _warning.default)((0, _keys.default)(other).length === 0 || (0, _keys.default)(other).length === 1 && other.hasOwnProperty('ref'), "Material-UI: unsupported properties received ".concat((0, _keys.default)(other).join(', '), " by `<Hidden />`.")) : void 0;
   var classNames = [];
 
   if (className) {
@@ -83,93 +66,108 @@ function HiddenCss(props) {
 
   for (var i = 0; i < _createBreakpoints.keys.length; i += 1) {
     var breakpoint = _createBreakpoints.keys[i];
-    var breakpointUp = props[breakpoint + 'Up'];
-    var breakpointDown = props[breakpoint + 'Down'];
+    var breakpointUp = props["".concat(breakpoint, "Up")];
+    var breakpointDown = props["".concat(breakpoint, "Down")];
 
     if (breakpointUp) {
-      classNames.push(classes[breakpoint + 'Up']);
+      classNames.push(classes["".concat(breakpoint, "Up")]);
     }
+
     if (breakpointDown) {
-      classNames.push(classes[breakpoint + 'Down']);
+      classNames.push(classes["".concat(breakpoint, "Down")]);
     }
   }
 
   if (only) {
     var onlyBreakpoints = Array.isArray(only) ? only : [only];
     onlyBreakpoints.forEach(function (breakpoint) {
-      classNames.push(classes['only' + (0, _helpers.capitalize)(breakpoint)]);
+      classNames.push(classes["only".concat((0, _helpers.capitalize)(breakpoint))]);
     });
   }
 
-  return _react2.default.createElement(
-    'div',
-    { className: classNames.join(' ') },
-    children
-  );
+  return _react.default.createElement("div", {
+    className: classNames.join(' ')
+  }, children);
 }
 
 HiddenCss.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The content of the component.
    */
-  children: _propTypes2.default.node,
+  children: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * Specify which implementation to use.  'js' is the default, 'css' works better for server
    * side rendering.
    */
-  implementation: _propTypes2.default.oneOf(['js', 'css']),
+  implementation: _propTypes.default.oneOf(['js', 'css']),
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  lgDown: _propTypes2.default.bool,
+  lgDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  lgUp: _propTypes2.default.bool,
+  lgUp: _propTypes.default.bool,
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  mdDown: _propTypes2.default.bool,
+  mdDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  mdUp: _propTypes2.default.bool,
+  mdUp: _propTypes.default.bool,
+
   /**
    * Hide the given breakpoint(s).
    */
-  only: _propTypes2.default.oneOfType([_propTypes2.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), _propTypes2.default.arrayOf(_propTypes2.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
+  only: _propTypes.default.oneOfType([_propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), _propTypes.default.arrayOf(_propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  smDown: _propTypes2.default.bool,
+  smDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  smUp: _propTypes2.default.bool,
+  smUp: _propTypes.default.bool,
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  xlDown: _propTypes2.default.bool,
+  xlDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  xlUp: _propTypes2.default.bool,
+  xlUp: _propTypes.default.bool,
+
   /**
    * If true, screens this size and down will be hidden.
    */
-  xsDown: _propTypes2.default.bool,
+  xsDown: _propTypes.default.bool,
+
   /**
    * If true, screens this size and up will be hidden.
    */
-  xsUp: _propTypes2.default.bool
+  xsUp: _propTypes.default.bool
 } : {};
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiHiddenCss' })(HiddenCss);
+var _default = (0, _withStyles.default)(styles)(HiddenCss);
+
+exports.default = _default;

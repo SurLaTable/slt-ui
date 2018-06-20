@@ -1,28 +1,31 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GridListTileBar = exports.GridListTile = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "GridList" */
-  resolve: function resolve() {
-    return import('./GridList');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _GridList.default;
   }
 });
-var GridListTile = exports.GridListTile = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "GridListTile" */
-  resolve: function resolve() {
-    return import('./GridListTile');
+Object.defineProperty(exports, "GridListTile", {
+  enumerable: true,
+  get: function get() {
+    return _GridListTile.default;
+  }
+});
+Object.defineProperty(exports, "GridListTileBar", {
+  enumerable: true,
+  get: function get() {
+    return _GridListTileBar.default;
   }
 });
 
-var GridListTileBar = exports.GridListTileBar = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "GridListTileBar" */
-  resolve: function resolve() {
-    return import('./GridListTileBar');
-  }
-});
+var _GridList = _interopRequireDefault(require("./GridList"));
+
+var _GridListTile = _interopRequireDefault(require("./GridListTile"));
+
+var _GridListTileBar = _interopRequireDefault(require("./GridListTileBar"));

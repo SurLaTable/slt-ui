@@ -1,67 +1,44 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
 exports.hasValue = hasValue;
 exports.isFilled = isFilled;
 exports.isAdornedStart = isAdornedStart;
+exports.default = exports.styles = void 0;
 
-var _react = require('react');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react2 = _interopRequireDefault(_react);
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _propTypes = require('prop-types');
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _classnames = require('classnames');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _classnames2 = _interopRequireDefault(_classnames);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _withStyles = require('../styles/withStyles');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _withStyles2 = _interopRequireDefault(_withStyles);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _Textarea = require('./Textarea');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _Textarea2 = _interopRequireDefault(_Textarea);
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _Textarea = _interopRequireDefault(require("./Textarea"));
 
 // Supports determination of isControlled().
 // Controlled input accepts its current value as a prop.
@@ -71,32 +48,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // @returns {boolean} true if string (including '') or number (including zero)
 function hasValue(value) {
   return value != null && !(Array.isArray(value) && value.length === 0);
-}
-
-// Determine if field is empty or filled.
+} // Determine if field is empty or filled.
 // Response determines if label is presented above field or as placeholder.
 //
 // @param obj
 // @param SSR
 // @returns {boolean} False when not present or empty string.
 //                    True when any number or string with length.
+
+
 function isFilled(obj) {
   var SSR = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
   return obj && (hasValue(obj.value) && obj.value !== '' || SSR && hasValue(obj.defaultValue) && obj.defaultValue !== '');
-}
-
-// Determine if an Input is adorned on start.
+} // Determine if an Input is adorned on start.
 // It's corresponding to the left with LTR.
 //
 // @param obj
 // @returns {boolean} False when no adornments.
 //                    True when adorned at the start.
+
+
 function isAdornedStart(obj) {
   return obj.startAdornment;
 }
 
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   var light = theme.palette.type === 'light';
   var placeholder = {
     color: 'currentColor',
@@ -112,7 +88,6 @@ var styles = exports.styles = function styles(theme) {
     opacity: light ? 0.42 : 0.5
   };
   var bottomLineColor = light ? 'rgba(0, 0, 0, 0.42)' : 'rgba(255, 255, 255, 0.7)';
-
   return {
     root: {
       // Mimics the default input display property used by browsers for an input.
@@ -121,7 +96,11 @@ var styles = exports.styles = function styles(theme) {
       fontFamily: theme.typography.fontFamily,
       color: light ? 'rgba(0, 0, 0, 0.87)' : theme.palette.common.white,
       fontSize: theme.typography.pxToRem(16),
-      lineHeight: '1.1875em' // Reset (19px), match the native input line-height
+      lineHeight: '1.1875em',
+      // Reset (19px), match the native input line-height
+      '&$disabled': {
+        color: theme.palette.text.disabled
+      }
     },
     formControl: {
       'label + &': {
@@ -129,9 +108,7 @@ var styles = exports.styles = function styles(theme) {
       }
     },
     focused: {},
-    disabled: {
-      color: theme.palette.text.disabled
-    },
+    disabled: {},
     underline: {
       '&:after': {
         backgroundColor: theme.palette.primary[light ? 'dark' : 'light'],
@@ -148,9 +125,15 @@ var styles = exports.styles = function styles(theme) {
           easing: theme.transitions.easing.easeOut
         }),
         pointerEvents: 'none' // Transparent to the hover style.
+
       },
       '&$focused:after': {
         transform: 'scaleX(1)'
+      },
+      '&$error:after': {
+        backgroundColor: theme.palette.error.main,
+        transform: 'scaleX(1)' // error is always underlined in red
+
       },
       '&:before': {
         backgroundColor: bottomLineColor,
@@ -165,6 +148,7 @@ var styles = exports.styles = function styles(theme) {
           duration: theme.transitions.duration.shorter
         }),
         pointerEvents: 'none' // Transparent to the hover style.
+
       },
       '&:hover:not($disabled):before': {
         backgroundColor: theme.palette.text.primary,
@@ -172,20 +156,15 @@ var styles = exports.styles = function styles(theme) {
       },
       '&$disabled:before': {
         background: 'transparent',
-        backgroundImage: 'linear-gradient(to right, ' + bottomLineColor + ' 33%, transparent 0%)',
+        backgroundImage: "linear-gradient(to right, ".concat(bottomLineColor, " 33%, transparent 0%)"),
         backgroundPosition: 'left top',
         backgroundRepeat: 'repeat-x',
         backgroundSize: '5px 1px'
       }
     },
-    error: {
-      '&:after': {
-        backgroundColor: theme.palette.error.main,
-        transform: 'scaleX(1)' // error is always underlined in red
-      }
-    },
+    error: {},
     multiline: {
-      padding: theme.spacing.unit - 2 + 'px 0 ' + (theme.spacing.unit - 1) + 'px'
+      padding: "".concat(theme.spacing.unit - 2, "px 0 ").concat(theme.spacing.unit - 1, "px")
     },
     fullWidth: {
       width: '100%'
@@ -193,12 +172,13 @@ var styles = exports.styles = function styles(theme) {
     input: {
       font: 'inherit',
       color: 'currentColor',
-      padding: theme.spacing.unit - 2 + 'px 0 ' + (theme.spacing.unit - 1) + 'px',
+      padding: "".concat(theme.spacing.unit - 2, "px 0 ").concat(theme.spacing.unit - 1, "px"),
       border: 0,
       boxSizing: 'content-box',
       verticalAlign: 'middle',
       background: 'none',
-      margin: 0, // Reset for Safari
+      margin: 0,
+      // Reset for Safari
       // Remove grey highlight
       WebkitTapHighlightColor: 'transparent',
       display: 'block',
@@ -206,9 +186,12 @@ var styles = exports.styles = function styles(theme) {
       minWidth: 0,
       flexGrow: 1,
       '&::-webkit-input-placeholder': placeholder,
-      '&::-moz-placeholder': placeholder, // Firefox 19+
-      '&:-ms-input-placeholder': placeholder, // IE 11
-      '&::-ms-input-placeholder': placeholder, // Edge
+      '&::-moz-placeholder': placeholder,
+      // Firefox 19+
+      '&:-ms-input-placeholder': placeholder,
+      // IE 11
+      '&::-ms-input-placeholder': placeholder,
+      // Edge
       '&:focus': {
         outline: 0
       },
@@ -223,20 +206,27 @@ var styles = exports.styles = function styles(theme) {
       // Show and hide the placeholder logic
       'label[data-shrink=false] + $formControl &': {
         '&::-webkit-input-placeholder': placeholderHidden,
-        '&::-moz-placeholder': placeholderHidden, // Firefox 19+
-        '&:-ms-input-placeholder': placeholderHidden, // IE 11
-        '&::-ms-input-placeholder': placeholderHidden, // Edge
+        '&::-moz-placeholder': placeholderHidden,
+        // Firefox 19+
+        '&:-ms-input-placeholder': placeholderHidden,
+        // IE 11
+        '&::-ms-input-placeholder': placeholderHidden,
+        // Edge
         '&:focus::-webkit-input-placeholder': placeholderVisible,
-        '&:focus::-moz-placeholder': placeholderVisible, // Firefox 19+
-        '&:focus:-ms-input-placeholder': placeholderVisible, // IE 11
+        '&:focus::-moz-placeholder': placeholderVisible,
+        // Firefox 19+
+        '&:focus:-ms-input-placeholder': placeholderVisible,
+        // IE 11
         '&:focus::-ms-input-placeholder': placeholderVisible // Edge
+
+      },
+      '&$disabled': {
+        opacity: 1 // Reset iOS opacity
+
       }
     },
     inputMarginDense: {
       paddingTop: theme.spacing.unit / 2 - 1
-    },
-    inputDisabled: {
-      opacity: 1 // Reset iOS opacity
     },
     inputMultiline: {
       resize: 'none',
@@ -245,6 +235,7 @@ var styles = exports.styles = function styles(theme) {
     inputType: {
       // type="date" or type="time", etc. have specific styles we need to reset.
       height: '1.1875em' // Reset (19px), match the native input line-height
+
     },
     inputTypeSearch: {
       // Improve type search style.
@@ -253,6 +244,8 @@ var styles = exports.styles = function styles(theme) {
     }
   };
 };
+
+exports.styles = styles;
 
 function formControlState(props, context) {
   var disabled = props.disabled;
@@ -280,61 +273,100 @@ function formControlState(props, context) {
   };
 }
 
-var Input = function (_React$Component) {
-  (0, _inherits3.default)(Input, _React$Component);
+var Input =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Input, _React$Component);
 
   function Input(props, context) {
-    (0, _classCallCheck3.default)(this, Input);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (Input.__proto__ || (0, _getPrototypeOf2.default)(Input)).call(this, props, context));
-
-    _this.state = {
-      focused: false
-    };
-    _this.isControlled = _this.props.value != null;
-    _this.input = null;
-
-    _this.handleFocus = function (event) {
-      // Fix an bug with IE11 where the focus/blur events are triggered
-      // while the input is disabled.
-      if (formControlState(_this.props, _this.context).disabled) {
-        event.stopPropagation();
-        return;
+    (0, _classCallCheck2.default)(this, Input);
+    _this = (0, _possibleConstructorReturn2.default)(this, (Input.__proto__ || (0, _getPrototypeOf.default)(Input)).call(this, props, context));
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        focused: false
       }
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "isControlled", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _this.props.value != null
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "input", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleFocus", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        // Fix an bug with IE11 where the focus/blur events are triggered
+        // while the input is disabled.
+        if (formControlState(_this.props, _this.context).disabled) {
+          event.stopPropagation();
+          return;
+        }
 
-      _this.setState({ focused: true });
-      if (_this.props.onFocus) {
-        _this.props.onFocus(event);
+        _this.setState({
+          focused: true
+        });
+
+        if (_this.props.onFocus) {
+          _this.props.onFocus(event);
+        }
       }
-    };
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleBlur", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        _this.setState({
+          focused: false
+        });
 
-    _this.handleBlur = function (event) {
-      _this.setState({ focused: false });
-      if (_this.props.onBlur) {
-        _this.props.onBlur(event);
+        if (_this.props.onBlur) {
+          _this.props.onBlur(event);
+        }
       }
-    };
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleChange", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        if (!_this.isControlled) {
+          _this.checkDirty(_this.input);
+        } // Perform in the willUpdate
 
-    _this.handleChange = function (event) {
-      if (!_this.isControlled) {
-        _this.checkDirty(_this.input);
+
+        if (_this.props.onChange) {
+          _this.props.onChange(event);
+        }
       }
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleRefInput", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(node) {
+        _this.input = node;
 
-      // Perform in the willUpdate
-      if (_this.props.onChange) {
-        _this.props.onChange(event);
+        if (_this.props.inputRef) {
+          _this.props.inputRef(node);
+        } else if (_this.props.inputProps && _this.props.inputProps.ref) {
+          _this.props.inputProps.ref(node);
+        }
       }
-    };
-
-    _this.handleRefInput = function (node) {
-      _this.input = node;
-
-      if (_this.props.inputRef) {
-        _this.props.inputRef(node);
-      } else if (_this.props.inputProps && _this.props.inputProps.ref) {
-        _this.props.inputProps.ref(node);
-      }
-    };
+    });
 
     if (_this.isControlled) {
       _this.checkDirty(props);
@@ -359,22 +391,24 @@ var Input = function (_React$Component) {
           muiFormControl.onBlur();
         }
       }
-    };
+    }; // Support for react >= 16.3.0 && < 17.0.0
 
-    // Support for react >= 16.3.0 && < 17.0.0
     /* istanbul ignore else */
-    if (_react2.default.createContext) {
+
+
+    if (_react.default.createContext) {
       _this.UNSAFE_componentWillReceiveProps = componentWillReceiveProps;
       _this.UNSAFE_componentWillUpdate = componentWillUpdate;
     } else {
       _this.componentWillReceiveProps = componentWillReceiveProps;
       _this.componentWillUpdate = componentWillUpdate;
     }
+
     return _this;
   }
 
-  (0, _createClass3.default)(Input, [{
-    key: 'getChildContext',
+  (0, _createClass2.default)(Input, [{
+    key: "getChildContext",
     value: function getChildContext() {
       // We are consuming the parent muiFormControl context.
       // We don't want a child to consume it a second time.
@@ -383,45 +417,47 @@ var Input = function (_React$Component) {
       };
     }
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       if (!this.isControlled) {
         this.checkDirty(this.input);
       }
     }
   }, {
-    key: 'componentDidUpdate',
+    key: "componentDidUpdate",
     value: function componentDidUpdate() {
       if (this.isControlled) {
         this.checkDirty(this.props);
       } // else performed in the onChange
-    } // Holds the input reference
 
+    }
   }, {
-    key: 'checkDirty',
+    key: "checkDirty",
     value: function checkDirty(obj) {
       var muiFormControl = this.context.muiFormControl;
-
 
       if (isFilled(obj)) {
         if (muiFormControl && muiFormControl.onFilled) {
           muiFormControl.onFilled();
         }
+
         if (this.props.onFilled) {
           this.props.onFilled();
         }
+
         return;
       }
 
       if (muiFormControl && muiFormControl.onEmpty) {
         muiFormControl.onEmpty();
       }
+
       if (this.props.onEmpty) {
         this.props.onEmpty();
       }
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _classNames, _classNames2;
 
@@ -439,9 +475,9 @@ var Input = function (_React$Component) {
           id = _props.id,
           inputComponent = _props.inputComponent,
           _props$inputProps = _props.inputProps;
-      _props$inputProps = _props$inputProps === undefined ? {} : _props$inputProps;
+      _props$inputProps = _props$inputProps === void 0 ? {} : _props$inputProps;
       var inputPropsClassName = _props$inputProps.className,
-          inputPropsProp = (0, _objectWithoutProperties3.default)(_props$inputProps, ['className']),
+          inputPropsProp = (0, _objectWithoutProperties2.default)(_props$inputProps, ["className"]),
           inputRef = _props.inputRef,
           marginProp = _props.margin,
           multiline = _props.multiline,
@@ -460,7 +496,7 @@ var Input = function (_React$Component) {
           startAdornment = _props.startAdornment,
           type = _props.type,
           value = _props.value,
-          other = (0, _objectWithoutProperties3.default)(_props, ['autoComplete', 'autoFocus', 'classes', 'className', 'defaultValue', 'disabled', 'disableUnderline', 'endAdornment', 'error', 'fullWidth', 'id', 'inputComponent', 'inputProps', 'inputRef', 'margin', 'multiline', 'name', 'onBlur', 'onChange', 'onEmpty', 'onFilled', 'onFocus', 'onKeyDown', 'onKeyUp', 'placeholder', 'readOnly', 'rows', 'rowsMax', 'startAdornment', 'type', 'value']);
+          other = (0, _objectWithoutProperties2.default)(_props, ["autoComplete", "autoFocus", "classes", "className", "defaultValue", "disabled", "disableUnderline", "endAdornment", "error", "fullWidth", "id", "inputComponent", "inputProps", "inputRef", "margin", "multiline", "name", "onBlur", "onChange", "onEmpty", "onFilled", "onFocus", "onKeyDown", "onKeyUp", "placeholder", "readOnly", "rows", "rowsMax", "startAdornment", "type", "value"]);
       var muiFormControl = this.context.muiFormControl;
 
       var _formControlState = formControlState(this.props, this.context),
@@ -468,20 +504,17 @@ var Input = function (_React$Component) {
           error = _formControlState.error,
           margin = _formControlState.margin;
 
-      var className = (0, _classnames2.default)(classes.root, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes.disabled, disabled), (0, _defineProperty3.default)(_classNames, classes.error, error), (0, _defineProperty3.default)(_classNames, classes.fullWidth, fullWidth), (0, _defineProperty3.default)(_classNames, classes.focused, this.state.focused), (0, _defineProperty3.default)(_classNames, classes.formControl, muiFormControl), (0, _defineProperty3.default)(_classNames, classes.multiline, multiline), (0, _defineProperty3.default)(_classNames, classes.underline, !disableUnderline), _classNames), classNameProp);
-
-      var inputClassName = (0, _classnames2.default)(classes.input, (_classNames2 = {}, (0, _defineProperty3.default)(_classNames2, classes.inputDisabled, disabled), (0, _defineProperty3.default)(_classNames2, classes.inputType, type !== 'text'), (0, _defineProperty3.default)(_classNames2, classes.inputTypeSearch, type === 'search'), (0, _defineProperty3.default)(_classNames2, classes.inputMultiline, multiline), (0, _defineProperty3.default)(_classNames2, classes.inputMarginDense, margin === 'dense'), _classNames2), inputPropsClassName);
-
+      var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), (0, _defineProperty2.default)(_classNames, classes.error, error), (0, _defineProperty2.default)(_classNames, classes.fullWidth, fullWidth), (0, _defineProperty2.default)(_classNames, classes.focused, this.state.focused), (0, _defineProperty2.default)(_classNames, classes.formControl, muiFormControl), (0, _defineProperty2.default)(_classNames, classes.multiline, multiline), (0, _defineProperty2.default)(_classNames, classes.underline, !disableUnderline), _classNames), classNameProp);
+      var inputClassName = (0, _classnames.default)(classes.input, (_classNames2 = {}, (0, _defineProperty2.default)(_classNames2, classes.disabled, disabled), (0, _defineProperty2.default)(_classNames2, classes.inputType, type !== 'text'), (0, _defineProperty2.default)(_classNames2, classes.inputTypeSearch, type === 'search'), (0, _defineProperty2.default)(_classNames2, classes.inputMultiline, multiline), (0, _defineProperty2.default)(_classNames2, classes.inputMarginDense, margin === 'dense'), _classNames2), inputPropsClassName);
       var required = muiFormControl && muiFormControl.required === true;
-
       var InputComponent = 'input';
-      var inputProps = (0, _extends3.default)({}, inputPropsProp, {
+      var inputProps = (0, _objectSpread2.default)({}, inputPropsProp, {
         ref: this.handleRefInput
       });
 
       if (inputComponent) {
         InputComponent = inputComponent;
-        inputProps = (0, _extends3.default)({
+        inputProps = (0, _objectSpread2.default)({
           // Rename ref to inputRef as we don't know the
           // provided `inputComponent` structure.
           inputRef: this.handleRefInput
@@ -492,48 +525,44 @@ var Input = function (_React$Component) {
         if (rows && !rowsMax) {
           InputComponent = 'textarea';
         } else {
-          inputProps = (0, _extends3.default)({
+          inputProps = (0, _objectSpread2.default)({
             rowsMax: rowsMax,
             textareaRef: this.handleRefInput
           }, inputProps, {
             ref: null
           });
-          InputComponent = _Textarea2.default;
+          InputComponent = _Textarea.default;
         }
       }
 
-      return _react2.default.createElement(
-        'div',
-        (0, _extends3.default)({ className: className }, other),
-        startAdornment,
-        _react2.default.createElement(InputComponent, (0, _extends3.default)({
-          'aria-invalid': error,
-          'aria-required': required,
-          autoComplete: autoComplete,
-          autoFocus: autoFocus,
-          className: inputClassName,
-          defaultValue: defaultValue,
-          disabled: disabled,
-          id: id,
-          name: name,
-          onBlur: this.handleBlur,
-          onChange: this.handleChange,
-          onFocus: this.handleFocus,
-          onKeyDown: onKeyDown,
-          onKeyUp: onKeyUp,
-          placeholder: placeholder,
-          readOnly: readOnly,
-          required: required ? true : undefined,
-          rows: rows,
-          type: type,
-          value: value
-        }, inputProps)),
-        endAdornment
-      );
+      return _react.default.createElement("div", (0, _extends2.default)({
+        className: className
+      }, other), startAdornment, _react.default.createElement(InputComponent, (0, _extends2.default)({
+        "aria-invalid": error,
+        "aria-required": required,
+        autoComplete: autoComplete,
+        autoFocus: autoFocus,
+        className: inputClassName,
+        defaultValue: defaultValue,
+        disabled: disabled,
+        id: id,
+        name: name,
+        onBlur: this.handleBlur,
+        onChange: this.handleChange,
+        onFocus: this.handleFocus,
+        onKeyDown: onKeyDown,
+        onKeyUp: onKeyUp,
+        placeholder: placeholder,
+        readOnly: readOnly,
+        required: required ? true : undefined,
+        rows: rows,
+        type: type,
+        value: value
+      }, inputProps)), endAdornment);
     }
   }]);
   return Input;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 Input.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
@@ -542,150 +571,180 @@ Input.propTypes = process.env.NODE_ENV !== "production" ? {
    * You can learn more about it here:
    * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
-  autoComplete: _propTypes2.default.string,
+  autoComplete: _propTypes.default.string,
+
   /**
    * If `true`, the input will be focused during the first mount.
    */
-  autoFocus: _propTypes2.default.bool,
+  autoFocus: _propTypes.default.bool,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * The CSS class name of the wrapper element.
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * The default input value, useful when not controlling the component.
    */
-  defaultValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  defaultValue: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
   /**
    * If `true`, the input will be disabled.
    */
-  disabled: _propTypes2.default.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, the input will not have an underline.
    */
-  disableUnderline: _propTypes2.default.bool,
+  disableUnderline: _propTypes.default.bool,
+
   /**
    * End `InputAdornment` for this component.
    */
-  endAdornment: _propTypes2.default.node,
+  endAdornment: _propTypes.default.node,
+
   /**
    * If `true`, the input will indicate an error. This is normally obtained via context from
    * FormControl.
    */
-  error: _propTypes2.default.bool,
+  error: _propTypes.default.bool,
+
   /**
    * If `true`, the input will take up the full width of its container.
    */
-  fullWidth: _propTypes2.default.bool,
+  fullWidth: _propTypes.default.bool,
+
   /**
    * The id of the `input` element.
    */
-  id: _propTypes2.default.string,
+  id: _propTypes.default.string,
+
   /**
    * The component used for the native input.
    * Either a string to use a DOM element or a component.
    */
-  inputComponent: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  inputComponent: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * Properties applied to the `input` element.
    */
-  inputProps: _propTypes2.default.object,
+  inputProps: _propTypes.default.object,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
-  inputRef: _propTypes2.default.func,
+  inputRef: _propTypes.default.func,
+
   /**
    * If `dense`, will adjust vertical spacing. This is normally obtained via context from
    * FormControl.
    */
-  margin: _propTypes2.default.oneOf(['dense', 'none']),
+  margin: _propTypes.default.oneOf(['dense', 'none']),
+
   /**
    * If `true`, a textarea element will be rendered.
    */
-  multiline: _propTypes2.default.bool,
+  multiline: _propTypes.default.bool,
+
   /**
    * Name attribute of the `input` element.
    */
-  name: _propTypes2.default.string,
+  name: _propTypes.default.string,
+
   /**
    * @ignore
    */
-  onBlur: _propTypes2.default.func,
+  onBlur: _propTypes.default.func,
+
   /**
    * Callback fired when the value is changed.
    *
    * @param {object} event The event source of the callback.
    * You can pull out the new value by accessing `event.target.value`.
    */
-  onChange: _propTypes2.default.func,
+  onChange: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onEmpty: _propTypes2.default.func,
+  onEmpty: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onFilled: _propTypes2.default.func,
+  onFilled: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onFocus: _propTypes2.default.func,
+  onFocus: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onKeyDown: _propTypes2.default.func,
+  onKeyDown: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onKeyUp: _propTypes2.default.func,
+  onKeyUp: _propTypes.default.func,
+
   /**
    * The short hint displayed in the input before the user enters a value.
    */
-  placeholder: _propTypes2.default.string,
+  placeholder: _propTypes.default.string,
+
   /**
    * @ignore
    */
-  readOnly: _propTypes2.default.bool,
+  readOnly: _propTypes.default.bool,
+
   /**
    * Number of rows to display when multiline option is set to true.
    */
-  rows: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  rows: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
   /**
    * Maximum number of rows to display when multiline option is set to true.
    */
-  rowsMax: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  rowsMax: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
   /**
    * Start `InputAdornment` for this component.
    */
-  startAdornment: _propTypes2.default.node,
+  startAdornment: _propTypes.default.node,
+
   /**
    * Type of the input element. It should be a valid HTML5 input type.
    */
-  type: _propTypes2.default.string,
+  type: _propTypes.default.string,
+
   /**
    * The input value, required for a controlled component.
    */
-  value: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number, _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))])
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number, _propTypes.default.arrayOf(_propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]))])
 } : {};
-
 Input.muiName = 'Input';
-
 Input.defaultProps = {
   disableUnderline: false,
   fullWidth: false,
   multiline: false,
   type: 'text'
 };
-
 Input.contextTypes = {
-  muiFormControl: _propTypes2.default.object
+  muiFormControl: _propTypes.default.object
 };
-
 Input.childContextTypes = {
-  muiFormControl: _propTypes2.default.object
+  muiFormControl: _propTypes.default.object
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiInput' })(Input);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiInput'
+})(Input);
+
+exports.default = _default;

@@ -1,12 +1,11 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import { capitalize } from '../utils/helpers';
 import { darken, fade, lighten } from '../styles/colorManipulator';
-
 export const styles = theme => ({
   root: {
     display: 'table-cell',
@@ -27,8 +26,9 @@ export const styles = theme => ({
     fontWeight: theme.typography.fontWeightMedium
   },
   body: {
+    color: theme.palette.text.primary,
     fontSize: theme.typography.pxToRem(13),
-    color: theme.palette.text.primary
+    fontWeight: theme.typography.fontWeightRegular
   },
   footer: {
     borderBottom: 0,
@@ -38,6 +38,7 @@ export const styles = theme => ({
   numeric: {
     textAlign: 'right',
     flexDirection: 'row-reverse' // can be dynamically inherited at runtime by contents
+
   },
   paddingDense: {
     paddingRight: theme.spacing.unit * 3
@@ -65,9 +66,13 @@ function TableCell(props, context) {
     scope: scopeProp,
     variant
   } = props,
-        other = _objectWithoutProperties(props, ['children', 'classes', 'className', 'component', 'sortDirection', 'numeric', 'padding', 'scope', 'variant']);
-  const { table } = context;
+        other = _objectWithoutProperties(props, ["children", "classes", "className", "component", "sortDirection", "numeric", "padding", "scope", "variant"]);
+
+  const {
+    table
+  } = context;
   let Component;
+
   if (component) {
     Component = component;
   } else {
@@ -75,6 +80,7 @@ function TableCell(props, context) {
   }
 
   let scope = scopeProp;
+
   if (!scope && table && table.head) {
     scope = 'col';
   }
@@ -86,17 +92,17 @@ function TableCell(props, context) {
     [classes.numeric]: numeric,
     [classes[`padding${capitalize(padding)}`]]: padding !== 'default'
   }, classNameProp);
-
   let ariaSort = null;
+
   if (sortDirection) {
     ariaSort = sortDirection === 'asc' ? 'ascending' : 'descending';
   }
 
-  return React.createElement(
-    Component,
-    _extends({ className: className, 'aria-sort': ariaSort, scope: scope }, other),
-    children
-  );
+  return React.createElement(Component, _extends({
+    className: className,
+    "aria-sort": ariaSort,
+    scope: scope
+  }, other), children);
 }
 
 TableCell.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -104,49 +110,56 @@ TableCell.propTypes = process.env.NODE_ENV !== "production" ? {
    * The table cell contents.
    */
   children: PropTypes.node,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+
   /**
    * If `true`, content will align to the right.
    */
   numeric: PropTypes.bool,
+
   /**
    * Sets the padding applied to the cell.
    */
   padding: PropTypes.oneOf(['default', 'checkbox', 'dense', 'none']),
+
   /**
    * Set scope attribute.
    */
   scope: PropTypes.string,
+
   /**
    * Set aria-sort direction.
    */
   sortDirection: PropTypes.oneOf(['asc', 'desc', false]),
+
   /**
    * Specify the cell type.
    * By default, the TableHead, TableBody or TableFooter parent component set the value.
    */
   variant: PropTypes.oneOf(['head', 'body', 'footer'])
 } : {};
-
 TableCell.defaultProps = {
   numeric: false,
   padding: 'default'
 };
-
 TableCell.contextTypes = {
   table: PropTypes.object.isRequired
 };
-
-export default withStyles(styles, { name: 'MuiTableCell' })(TableCell);
+export default withStyles(styles, {
+  name: 'MuiTableCell'
+})(TableCell);

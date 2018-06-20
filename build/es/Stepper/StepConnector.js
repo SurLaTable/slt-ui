@@ -1,17 +1,17 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
-
 export const styles = theme => ({
   root: {
     flex: '1 1 auto'
   },
   horizontal: {},
   vertical: {
-    marginLeft: 12, // half icon
+    marginLeft: 12,
+    // half icon
     padding: `0 0 ${theme.spacing.unit}px`
   },
   alternativeLabel: {
@@ -34,13 +34,18 @@ export const styles = theme => ({
     minHeight: theme.spacing.unit * 3
   }
 });
-
 /**
  * @ignore - internal component.
  */
+
 function StepConnector(props) {
-  const { alternativeLabel, className: classNameProp, classes, orientation } = props,
-        other = _objectWithoutProperties(props, ['alternativeLabel', 'className', 'classes', 'orientation']);
+  const {
+    alternativeLabel,
+    className: classNameProp,
+    classes,
+    orientation
+  } = props,
+        other = _objectWithoutProperties(props, ["alternativeLabel", "className", "classes", "orientation"]);
 
   const className = classNames(classes.root, classes[orientation], {
     [classes.alternativeLabel]: alternativeLabel
@@ -49,12 +54,11 @@ function StepConnector(props) {
     [classes.lineHorizontal]: orientation === 'horizontal',
     [classes.lineVertical]: orientation === 'vertical'
   });
-
-  return React.createElement(
-    'div',
-    _extends({ className: className }, other),
-    React.createElement('span', { className: lineClassName })
-  );
+  return React.createElement("div", _extends({
+    className: className
+  }, other), React.createElement("span", {
+    className: lineClassName
+  }));
 }
 
 StepConnector.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -63,23 +67,24 @@ StepConnector.propTypes = process.env.NODE_ENV !== "production" ? {
    * Set internally by Step when it's supplied with the alternativeLabel property.
    */
   alternativeLabel: PropTypes.bool,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * @ignore
    */
   orientation: PropTypes.oneOf(['horizontal', 'vertical'])
 } : {};
-
 StepConnector.defaultProps = {
   alternativeLabel: false,
   orientation: 'horizontal'
 };
-
-export default withStyles(styles, { name: 'MuiStepConnector' })(StepConnector);
+export default withStyles(styles)(StepConnector);

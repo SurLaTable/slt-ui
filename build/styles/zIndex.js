@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 // We need to centralize the zIndex definitions as they work
 // like global values in the browser.
 var zIndex = {
@@ -13,5 +14,5 @@ var zIndex = {
   snackbar: 1400,
   tooltip: 1500
 };
-
-exports.default = zIndex;
+var _default = zIndex;
+exports.default = _default;

@@ -1,26 +1,5 @@
-import { asyncComponent } from 'react-async-component';
-
-export default asyncComponent({
-  /* webpackChunkName: "Card" */
-  resolve: () => import('./Card')
-});
-
-export const CardContent = asyncComponent({
-  /* webpackChunkName: "CardContent" */
-  resolve: () => import('./CardContent')
-});
-
-export const CardActions = asyncComponent({
-  /* webpackChunkName: "CardActions" */
-  resolve: () => import('./CardActions')
-});
-
-export const CardMedia = asyncComponent({
-  /* webpackChunkName: "CardMedia" */
-  resolve: () => import('./CardMedia')
-});
-
-export const CardHeader = asyncComponent({
-  /* webpackChunkName: "CardHeader" */
-  resolve: () => import('./CardHeader')
-});
+export { default } from './Card';
+export { default as CardContent } from './CardContent';
+export { default as CardActions } from './CardActions';
+export { default as CardMedia } from './CardMedia';
+export { default as CardHeader } from './CardHeader';

@@ -1,75 +1,60 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _Collapse = _interopRequireDefault(require("../transitions/Collapse"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _Paper = _interopRequireDefault(require("../Paper"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _react = require('react');
+var _reactHelpers = require("../utils/reactHelpers");
 
-var _react2 = _interopRequireDefault(_react);
+// @inheritedComponent Paper
+// Workaround https://github.com/jsdom/jsdom/issues/2026
+var edgeFix = typeof window !== 'undefined' && /jsdom/.test(window.navigator.userAgent) ? {} : {
+  // Fix a rendering issue on Edge
+  '@supports (-ms-ime-align: auto)': {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0
+  }
+};
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _Collapse = require('../transitions/Collapse');
-
-var _Collapse2 = _interopRequireDefault(_Collapse);
-
-var _Paper = require('../Paper');
-
-var _Paper2 = _interopRequireDefault(_Paper);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _reactHelpers = require('../utils/reactHelpers');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   var transition = {
     duration: theme.transitions.duration.shortest
   };
-
   return {
     root: {
       position: 'relative',
@@ -92,10 +77,10 @@ var styles = exports.styles = function styles(theme) {
           display: 'none'
         }
       },
-      '&:last-child': {
+      '&:last-child': (0, _objectSpread2.default)({
         borderBottomLeftRadius: 2,
         borderBottomRightRadius: 2
-      },
+      }, edgeFix),
       '&$expanded + &': {
         '&:before': {
           display: 'none'
@@ -103,7 +88,7 @@ var styles = exports.styles = function styles(theme) {
       }
     },
     expanded: {
-      margin: theme.spacing.unit * 2 + 'px 0',
+      margin: "".concat(theme.spacing.unit * 2, "px 0"),
       '&:first-child': {
         marginTop: 0
       },
@@ -118,41 +103,62 @@ var styles = exports.styles = function styles(theme) {
       backgroundColor: theme.palette.action.disabledBackground
     }
   };
-}; // @inheritedComponent Paper
+};
 
-var ExpansionPanel = function (_React$Component) {
-  (0, _inherits3.default)(ExpansionPanel, _React$Component);
+exports.styles = styles;
+
+var ExpansionPanel =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(ExpansionPanel, _React$Component);
 
   function ExpansionPanel(props, context) {
-    (0, _classCallCheck3.default)(this, ExpansionPanel);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ExpansionPanel.__proto__ || (0, _getPrototypeOf2.default)(ExpansionPanel)).call(this, props, context));
+    (0, _classCallCheck2.default)(this, ExpansionPanel);
+    _this = (0, _possibleConstructorReturn2.default)(this, (ExpansionPanel.__proto__ || (0, _getPrototypeOf.default)(ExpansionPanel)).call(this, props, context));
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {}
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "isControlled", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleChange", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        var expanded = _this.isControlled ? _this.props.expanded : _this.state.expanded;
 
-    _this.state = {};
-    _this.isControlled = null;
+        if (!_this.isControlled) {
+          _this.setState({
+            expanded: !expanded
+          });
+        }
 
-    _this.handleChange = function (event) {
-      var expanded = _this.isControlled ? _this.props.expanded : _this.state.expanded;
-
-      if (!_this.isControlled) {
-        _this.setState({ expanded: !expanded });
+        if (_this.props.onChange) {
+          _this.props.onChange(event, !expanded);
+        }
       }
-
-      if (_this.props.onChange) {
-        _this.props.onChange(event, !expanded);
-      }
-    };
-
+    });
     _this.isControlled = props.expanded != null;
+
     if (!_this.isControlled) {
       // not controlled, use internal state
       _this.state.expanded = props.defaultExpanded !== undefined ? props.defaultExpanded : false;
     }
+
     return _this;
   }
 
-  (0, _createClass3.default)(ExpansionPanel, [{
-    key: 'render',
+  (0, _createClass2.default)(ExpansionPanel, [{
+    key: "render",
     value: function render() {
       var _classNames,
           _this2 = this;
@@ -166,21 +172,18 @@ var ExpansionPanel = function (_React$Component) {
           disabled = _props.disabled,
           expandedProp = _props.expanded,
           onChange = _props.onChange,
-          other = (0, _objectWithoutProperties3.default)(_props, ['children', 'classes', 'className', 'CollapseProps', 'defaultExpanded', 'disabled', 'expanded', 'onChange']);
-
+          other = (0, _objectWithoutProperties2.default)(_props, ["children", "classes", "className", "CollapseProps", "defaultExpanded", "disabled", "expanded", "onChange"]);
       var expanded = this.isControlled ? expandedProp : this.state.expanded;
-
-      var className = (0, _classnames2.default)(classes.root, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes.expanded, expanded), (0, _defineProperty3.default)(_classNames, classes.disabled, disabled), _classNames), classNameProp);
-
+      var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.expanded, expanded), (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), _classNames), classNameProp);
       var summary = null;
 
-      var children = _react2.default.Children.map(childrenProp, function (child) {
-        if (!_react2.default.isValidElement(child)) {
+      var children = _react.default.Children.map(childrenProp, function (child) {
+        if (!_react.default.isValidElement(child)) {
           return null;
         }
 
         if ((0, _reactHelpers.isMuiElement)(child, ['ExpansionPanelSummary'])) {
-          summary = _react2.default.cloneElement(child, {
+          summary = _react.default.cloneElement(child, {
             disabled: disabled,
             expanded: expanded,
             onChange: _this2.handleChange
@@ -194,64 +197,71 @@ var ExpansionPanel = function (_React$Component) {
       var CollapseProps = !expanded ? {
         'aria-hidden': 'true'
       } : null;
-
-      return _react2.default.createElement(
-        _Paper2.default,
-        (0, _extends3.default)({ className: className, elevation: 1, square: true }, other),
-        summary,
-        _react2.default.createElement(
-          _Collapse2.default,
-          (0, _extends3.default)({ 'in': expanded, timeout: 'auto' }, CollapseProps, CollapsePropsProp),
-          children
-        )
-      );
+      return _react.default.createElement(_Paper.default, (0, _extends2.default)({
+        className: className,
+        elevation: 1,
+        square: true
+      }, other), summary, _react.default.createElement(_Collapse.default, (0, _extends2.default)({
+        "in": expanded,
+        timeout: "auto"
+      }, CollapseProps, CollapsePropsProp), children));
     }
   }]);
   return ExpansionPanel;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 ExpansionPanel.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The content of the expansion panel.
    */
-  children: _propTypes2.default.node.isRequired,
+  children: _propTypes.default.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * Properties applied to the `Collapse` element.
    */
-  CollapseProps: _propTypes2.default.object,
+  CollapseProps: _propTypes.default.object,
+
   /**
    * If `true`, expands the panel by default.
    */
-  defaultExpanded: _propTypes2.default.bool,
+  defaultExpanded: _propTypes.default.bool,
+
   /**
    * If `true`, the panel will be displayed in a disabled state.
    */
-  disabled: _propTypes2.default.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, expands the panel, otherwise collapse it.
    * Setting this prop enables control over the panel.
    */
-  expanded: _propTypes2.default.bool,
+  expanded: _propTypes.default.bool,
+
   /**
    * Callback fired when the expand/collapse state is changed.
    *
    * @param {object} event The event source of the callback
    * @param {boolean} expanded The `expanded` state of the panel
    */
-  onChange: _propTypes2.default.func
+  onChange: _propTypes.default.func
 } : {};
-
 ExpansionPanel.defaultProps = {
   defaultExpanded: false,
   disabled: false
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiExpansionPanel' })(ExpansionPanel);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiExpansionPanel'
+})(ExpansionPanel);
+
+exports.default = _default;

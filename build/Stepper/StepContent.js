@@ -1,56 +1,40 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _react = _interopRequireDefault(require("react"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _warning = _interopRequireDefault(require("warning"));
 
-var _react = require('react');
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Collapse = _interopRequireDefault(require("../transitions/Collapse"));
 
-var _propTypes = require('prop-types');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _warning = require('warning');
-
-var _warning2 = _interopRequireDefault(_warning);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _Collapse = require('../transitions/Collapse');
-
-var _Collapse2 = _interopRequireDefault(_Collapse);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     root: {
       marginTop: theme.spacing.unit,
-      marginLeft: 12, // half icon
-      paddingLeft: theme.spacing.unit + 12, // margin + half icon
+      marginLeft: 12,
+      // half icon
+      paddingLeft: theme.spacing.unit + 12,
+      // margin + half icon
       paddingRight: theme.spacing.unit,
-      borderLeft: '1px solid ' + (theme.palette.type === 'light' ? theme.palette.grey[400] : theme.palette.grey[600])
+      borderLeft: "1px solid ".concat(theme.palette.type === 'light' ? theme.palette.grey[400] : theme.palette.grey[600])
     },
     last: {
       borderLeft: 'none'
@@ -58,6 +42,8 @@ var styles = exports.styles = function styles(theme) {
     transition: {}
   };
 };
+
+exports.styles = styles;
 
 function StepContent(props) {
   var active = props.active,
@@ -69,27 +55,19 @@ function StepContent(props) {
       last = props.last,
       optional = props.optional,
       orientation = props.orientation,
-      Transition = props.transition,
+      TransitionComponent = props.TransitionComponent,
       transitionDuration = props.transitionDuration,
-      other = (0, _objectWithoutProperties3.default)(props, ['active', 'alternativeLabel', 'children', 'classes', 'className', 'completed', 'last', 'optional', 'orientation', 'transition', 'transitionDuration']);
-
-
-  process.env.NODE_ENV !== "production" ? (0, _warning2.default)(orientation === 'vertical', 'Material-UI: <StepContent /> is only designed for use with the vertical stepper.') : void 0;
-
-  return _react2.default.createElement(
-    'div',
-    (0, _extends3.default)({ className: (0, _classnames2.default)(classes.root, (0, _defineProperty3.default)({}, classes.last, last), className) }, other),
-    _react2.default.createElement(
-      Transition,
-      {
-        'in': active,
-        className: classes.transition,
-        timeout: transitionDuration,
-        unmountOnExit: true
-      },
-      children
-    )
-  );
+      TransitionProps = props.TransitionProps,
+      other = (0, _objectWithoutProperties2.default)(props, ["active", "alternativeLabel", "children", "classes", "className", "completed", "last", "optional", "orientation", "TransitionComponent", "transitionDuration", "TransitionProps"]);
+  process.env.NODE_ENV !== "production" ? (0, _warning.default)(orientation === 'vertical', 'Material-UI: <StepContent /> is only designed for use with the vertical stepper.') : void 0;
+  return _react.default.createElement("div", (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.last, last), className)
+  }, other), _react.default.createElement(TransitionComponent, (0, _extends2.default)({
+    "in": active,
+    className: classes.transition,
+    timeout: transitionDuration,
+    unmountOnExit: true
+  }, TransitionProps), children));
 }
 
 StepContent.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -97,57 +75,78 @@ StepContent.propTypes = process.env.NODE_ENV !== "production" ? {
    * @ignore
    * Expands the content.
    */
-  active: _propTypes2.default.bool,
+  active: _propTypes.default.bool,
+
   /**
    * @ignore
    * Set internally by Step when it's supplied with the alternativeLabel property.
    */
-  alternativeLabel: _propTypes2.default.bool,
+  alternativeLabel: _propTypes.default.bool,
+
   /**
    * Step content.
    */
-  children: _propTypes2.default.node,
+  children: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * @ignore
    */
-  completed: _propTypes2.default.bool,
+  completed: _propTypes.default.bool,
+
   /**
    * @ignore
    */
-  last: _propTypes2.default.bool,
+  last: _propTypes.default.bool,
+
   /**
    * @ignore
    * Set internally by Step when it's supplied with the optional property.
    */
-  optional: _propTypes2.default.bool,
+  optional: _propTypes.default.bool,
+
   /**
    * @ignore
    */
-  orientation: _propTypes2.default.oneOf(['horizontal', 'vertical']),
+  orientation: _propTypes.default.oneOf(['horizontal', 'vertical']),
+
   /**
    * Collapse component.
    */
-  transition: _propTypes2.default.func,
+  TransitionComponent: _propTypes.default.func,
+
   /**
    * Adjust the duration of the content expand transition.
    * Passed as a property to the transition component.
    *
    * Set to 'auto' to automatically calculate transition time based on height.
    */
-  transitionDuration: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.shape({ enter: _propTypes2.default.number, exit: _propTypes2.default.number }), _propTypes2.default.oneOf(['auto'])])
-} : {};
+  transitionDuration: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+    enter: _propTypes.default.number,
+    exit: _propTypes.default.number
+  }), _propTypes.default.oneOf(['auto'])]),
 
+  /**
+   * Properties applied to the `Transition` element.
+   */
+  TransitionProps: _propTypes.default.object
+} : {};
 StepContent.defaultProps = {
-  transition: _Collapse2.default,
+  TransitionComponent: _Collapse.default,
   transitionDuration: 'auto'
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiStepContent' })(StepContent);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiStepContent'
+})(StepContent);
+
+exports.default = _default;

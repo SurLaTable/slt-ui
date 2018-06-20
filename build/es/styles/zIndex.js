@@ -8,5 +8,4 @@ const zIndex = {
   snackbar: 1400,
   tooltip: 1500
 };
-
 export default zIndex;

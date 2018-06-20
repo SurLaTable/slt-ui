@@ -1,10 +1,10 @@
-import _extends from 'babel-runtime/helpers/extends';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import { capitalize } from '../utils/helpers';
-
 export const styles = theme => ({
   root: {
     position: 'absolute',
@@ -21,22 +21,21 @@ export const styles = theme => ({
     backgroundColor: theme.palette.secondary.main
   }
 });
-
 /**
  * @ignore - internal component.
  */
+
 function TabIndicator(props) {
-  const { classes, className: classNameProp, color, style: styleProp } = props;
-  const colorPredefined = ['primary', 'secondary'].indexOf(color) !== -1;
-  const className = classNames(classes.root, {
-    [classes[`color${capitalize(color)}`]]: colorPredefined
-  }, classNameProp);
+  const {
+    classes,
+    className,
+    color
+  } = props,
+        other = _objectWithoutProperties(props, ["classes", "className", "color"]);
 
-  const style = colorPredefined ? styleProp : _extends({}, styleProp, {
-    backgroundColor: color
-  });
-
-  return React.createElement('span', { className: className, style: style });
+  return React.createElement("span", _extends({
+    className: classNames(classes.root, classes[`color${capitalize(color)}`], className)
+  }, other));
 }
 
 TabIndicator.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -44,20 +43,16 @@ TabIndicator.propTypes = process.env.NODE_ENV !== "production" ? {
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * @ignore
    * The color of the tab indicator.
    */
-  color: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf(['primary', 'secondary'])]),
-  /**
-   * @ignore
-   * The style of the root element.
-   */
-  style: PropTypes.object
+  color: PropTypes.oneOf(['primary', 'secondary'])
 } : {};
-
-export default withStyles(styles, { name: 'MuiTabIndicator' })(TabIndicator);
+export default withStyles(styles)(TabIndicator);

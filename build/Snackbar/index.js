@@ -1,21 +1,23 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SnackbarContent = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Snackbar" */
-  resolve: function resolve() {
-    return import('./Snackbar');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Snackbar.default;
   }
 });
-var SnackbarContent = exports.SnackbarContent = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "SnackbarContent" */
-  resolve: function resolve() {
-    return import('./SnackbarContent');
+Object.defineProperty(exports, "SnackbarContent", {
+  enumerable: true,
+  get: function get() {
+    return _SnackbarContent.default;
   }
 });
+
+var _Snackbar = _interopRequireDefault(require("./Snackbar"));
+
+var _SnackbarContent = _interopRequireDefault(require("./SnackbarContent"));

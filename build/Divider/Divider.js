@@ -1,47 +1,34 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _react = _interopRequireDefault(require("react"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = require('react');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _react2 = _interopRequireDefault(_react);
+var _colorManipulator = require("../styles/colorManipulator");
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _colorManipulator = require('../styles/colorManipulator');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     root: {
       height: 1,
-      margin: 0, // Reset browser default style.
+      margin: 0,
+      // Reset browser default style.
       border: 'none',
       flexShrink: 0,
       backgroundColor: theme.palette.divider
@@ -61,6 +48,8 @@ var styles = exports.styles = function styles(theme) {
   };
 };
 
+exports.styles = styles;
+
 function Divider(props) {
   var _classNames;
 
@@ -70,39 +59,42 @@ function Divider(props) {
       Component = props.component,
       inset = props.inset,
       light = props.light,
-      other = (0, _objectWithoutProperties3.default)(props, ['absolute', 'classes', 'className', 'component', 'inset', 'light']);
-
-
-  var className = (0, _classnames2.default)(classes.root, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes.absolute, absolute), (0, _defineProperty3.default)(_classNames, classes.inset, inset), (0, _defineProperty3.default)(_classNames, classes.light, light), _classNames), classNameProp);
-
-  return _react2.default.createElement(Component, (0, _extends3.default)({ className: className }, other));
+      other = (0, _objectWithoutProperties2.default)(props, ["absolute", "classes", "className", "component", "inset", "light"]);
+  var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.absolute, absolute), (0, _defineProperty2.default)(_classNames, classes.inset, inset), (0, _defineProperty2.default)(_classNames, classes.light, light), _classNames), classNameProp);
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: className
+  }, other));
 }
 
 Divider.propTypes = process.env.NODE_ENV !== "production" ? {
-  absolute: _propTypes2.default.bool,
+  absolute: _propTypes.default.bool,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * If `true`, the divider will be indented.
    */
-  inset: _propTypes2.default.bool,
+  inset: _propTypes.default.bool,
+
   /**
    * If `true`, the divider will have a lighter color.
    */
-  light: _propTypes2.default.bool
+  light: _propTypes.default.bool
 } : {};
-
 Divider.defaultProps = {
   absolute: false,
   component: 'hr',
@@ -110,4 +102,8 @@ Divider.defaultProps = {
   light: false
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiDivider' })(Divider);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiDivider'
+})(Divider);
+
+exports.default = _default;

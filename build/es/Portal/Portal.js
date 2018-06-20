@@ -12,20 +12,26 @@ function getContainer(container, defaultContainer) {
 function getOwnerDocument(element) {
   return ownerDocument(ReactDOM.findDOMNode(element));
 }
-
 /**
  * This component shares many concepts with
  * [react-overlays](https://react-bootstrap.github.io/react-overlays/#portals)
  * But has been forked in order to fix some bugs, reduce the number of dependencies
  * and take the control of our destiny.
  */
+
+
 class Portal extends React.Component {
   constructor(...args) {
     var _temp;
 
-    return _temp = super(...args), this.getMountNode = () => {
-      return this.mountNode;
-    }, _temp;
+    return _temp = super(...args), Object.defineProperty(this, "getMountNode", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: () => {
+        return this.mountNode;
+      }
+    }), _temp;
   }
 
   componentDidMount() {
@@ -47,17 +53,18 @@ class Portal extends React.Component {
   setContainer(container) {
     this.mountNode = getContainer(container, getOwnerDocument(this).body);
   }
-
   /**
    * @public
    */
 
 
   render() {
-    const { children } = this.props;
-
+    const {
+      children
+    } = this.props;
     return this.mountNode ? ReactDOM.createPortal(children, this.mountNode) : null;
   }
+
 }
 
 Portal.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -65,6 +72,7 @@ Portal.propTypes = process.env.NODE_ENV !== "production" ? {
    * The children to render into the `container`.
    */
   children: PropTypes.node.isRequired,
+
   /**
    * A node, component instance, or function that returns either.
    * The `container` will have the portal children appended to it.
@@ -72,12 +80,11 @@ Portal.propTypes = process.env.NODE_ENV !== "production" ? {
    * so it's simply `document.body` most of the time.
    */
   container: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+
   /**
    * Callback fired once the children has been mounted into the `container`.
    */
   onRendered: PropTypes.func
 } : {};
-
 Portal.propTypes = process.env.NODE_ENV !== "production" ? exactProp(Portal.propTypes, 'Portal') : {};
-
 export default Portal;

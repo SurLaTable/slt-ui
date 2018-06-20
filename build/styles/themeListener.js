@@ -1,25 +1,21 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CHANNEL = undefined;
+exports.default = exports.CHANNEL = void 0;
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 // Same value used by react-jss
-var CHANNEL = exports.CHANNEL = '__THEMING__';
-
+var CHANNEL = '__THEMING__';
+exports.CHANNEL = CHANNEL;
 var themeListener = {
-  contextTypes: (0, _defineProperty3.default)({}, CHANNEL, _propTypes2.default.object),
+  contextTypes: (0, _defineProperty2.default)({}, CHANNEL, _propTypes.default.object),
   initial: function initial(context) {
     if (!context[CHANNEL]) {
       return null;
@@ -40,5 +36,5 @@ var themeListener = {
     }
   }
 };
-
-exports.default = themeListener;
+var _default = themeListener;
+exports.default = _default;

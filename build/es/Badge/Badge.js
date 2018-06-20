@@ -1,13 +1,11 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import { capitalize } from '../utils/helpers';
-
 const RADIUS = 12;
-
 export const styles = theme => ({
   root: {
     position: 'relative',
@@ -34,6 +32,7 @@ export const styles = theme => ({
     backgroundColor: theme.palette.color,
     color: theme.palette.textColor,
     zIndex: 1 // Render the badge on top of potential ripples.
+
   },
   colorPrimary: {
     backgroundColor: theme.palette.primary.main,
@@ -58,22 +57,16 @@ function Badge(props) {
     color,
     component: ComponentProp
   } = props,
-        other = _objectWithoutProperties(props, ['badgeContent', 'children', 'classes', 'className', 'color', 'component']);
+        other = _objectWithoutProperties(props, ["badgeContent", "children", "classes", "className", "color", "component"]);
 
   const badgeClassName = classNames(classes.badge, {
     [classes[`color${capitalize(color)}`]]: color !== 'default'
   });
-
-  return React.createElement(
-    ComponentProp,
-    _extends({ className: classNames(classes.root, classNameProp) }, other),
-    children,
-    React.createElement(
-      'span',
-      { className: badgeClassName },
-      badgeContent
-    )
-  );
+  return React.createElement(ComponentProp, _extends({
+    className: classNames(classes.root, classNameProp)
+  }, other), children, React.createElement("span", {
+    className: badgeClassName
+  }, badgeContent));
 }
 
 Badge.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -81,32 +74,37 @@ Badge.propTypes = process.env.NODE_ENV !== "production" ? {
    * The content rendered within the badge.
    */
   badgeContent: PropTypes.node.isRequired,
+
   /**
    * The badge will be added relative to this node.
    */
   children: PropTypes.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: PropTypes.oneOf(['default', 'primary', 'secondary', 'error']),
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
 } : {};
-
 Badge.defaultProps = {
   color: 'default',
   component: 'span'
 };
-
-export default withStyles(styles, { name: 'MuiBadge' })(Badge);
+export default withStyles(styles, {
+  name: 'MuiBadge'
+})(Badge);

@@ -1,49 +1,34 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _react = _interopRequireDefault(require("react"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = require('react');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _react2 = _interopRequireDefault(_react);
+var _colorManipulator = require("../styles/colorManipulator");
 
-var _propTypes = require('prop-types');
+var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _ButtonBase = require('../ButtonBase');
-
-var _ButtonBase2 = _interopRequireDefault(_ButtonBase);
-
-var _helpers = require('../utils/helpers');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _helpers = require("../utils/helpers");
 
 // @inheritedComponent ButtonBase
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     root: {
       textAlign: 'center',
@@ -56,20 +41,45 @@ var styles = exports.styles = function styles(theme) {
       color: theme.palette.action.active,
       transition: theme.transitions.create('background-color', {
         duration: theme.transitions.duration.shortest
-      })
+      }),
+      '&:hover': {
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.action.active, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        },
+        '&$disabled': {
+          backgroundColor: 'transparent'
+        }
+      },
+      '&$disabled': {
+        color: theme.palette.action.disabled
+      }
     },
     colorInherit: {
       color: 'inherit'
     },
     colorPrimary: {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
     },
     colorSecondary: {
-      color: theme.palette.secondary.main
+      color: theme.palette.secondary.main,
+      '&:hover': {
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
     },
-    disabled: {
-      color: theme.palette.action.disabled
-    },
+    disabled: {},
     label: {
       width: '100%',
       display: 'flex',
@@ -78,11 +88,14 @@ var styles = exports.styles = function styles(theme) {
     }
   };
 };
-
 /**
  * Refer to the [Icons](/style/icons) section of the documentation
  * regarding the available icon options.
  */
+
+
+exports.styles = styles;
+
 function IconButton(props) {
   var _classNames;
 
@@ -91,55 +104,55 @@ function IconButton(props) {
       className = props.className,
       color = props.color,
       disabled = props.disabled,
-      other = (0, _objectWithoutProperties3.default)(props, ['children', 'classes', 'className', 'color', 'disabled']);
-
-
-  return _react2.default.createElement(
-    _ButtonBase2.default,
-    (0, _extends3.default)({
-      className: (0, _classnames2.default)(classes.root, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes['color' + (0, _helpers.capitalize)(color)], color !== 'default'), (0, _defineProperty3.default)(_classNames, classes.disabled, disabled), _classNames), className),
-      centerRipple: true,
-      focusRipple: true,
-      disabled: disabled
-    }, other),
-    _react2.default.createElement(
-      'span',
-      { className: classes.label },
-      children
-    )
-  );
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "color", "disabled"]);
+  return _react.default.createElement(_ButtonBase.default, (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes["color".concat((0, _helpers.capitalize)(color))], color !== 'default'), (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), _classNames), className),
+    centerRipple: true,
+    focusRipple: true,
+    disabled: disabled
+  }, other), _react.default.createElement("span", {
+    className: classes.label
+  }, children));
 }
 
 IconButton.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The icon element.
    */
-  children: _propTypes2.default.node,
+  children: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
-  color: _propTypes2.default.oneOf(['default', 'inherit', 'primary', 'secondary']),
+  color: _propTypes.default.oneOf(['default', 'inherit', 'primary', 'secondary']),
+
   /**
    * If `true`, the button will be disabled.
    */
-  disabled: _propTypes2.default.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, the ripple will be disabled.
    */
-  disableRipple: _propTypes2.default.bool
+  disableRipple: _propTypes.default.bool
 } : {};
-
 IconButton.defaultProps = {
   color: 'default',
   disabled: false
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiIconButton' })(IconButton);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiIconButton'
+})(IconButton);
+
+exports.default = _default;

@@ -1,14 +1,14 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import warning from 'warning';
 import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
+
 import indigo from '../colors/indigo';
 import pink from '../colors/pink';
 import grey from '../colors/grey';
 import red from '../colors/red';
 import common from '../colors/common';
 import { getContrastRatio, darken, lighten } from './colorManipulator';
-
 export const light = {
   // The colors used to style the text.
   text: {
@@ -35,6 +35,7 @@ export const light = {
     active: 'rgba(0, 0, 0, 0.54)',
     // The color of an hovered action.
     hover: 'rgba(0, 0, 0, 0.08)',
+    hoverOpacity: 0.08,
     // The color of a selected action.
     selected: 'rgba(0, 0, 0, 0.14)',
     // The color of a disabled action.
@@ -43,7 +44,6 @@ export const light = {
     disabledBackground: 'rgba(0, 0, 0, 0.12)'
   }
 };
-
 export const dark = {
   text: {
     primary: common.white,
@@ -60,6 +60,7 @@ export const dark = {
   action: {
     active: common.white,
     hover: 'rgba(255, 255, 255, 0.1)',
+    hoverOpacity: 0.1,
     selected: 'rgba(255, 255, 255, 0.2)',
     disabled: 'rgba(255, 255, 255, 0.3)',
     disabledBackground: 'rgba(255, 255, 255, 0.12)'
@@ -99,7 +100,7 @@ export default function createPalette(palette) {
     contrastThreshold = 3,
     tonalOffset = 0.2
   } = palette,
-        other = _objectWithoutProperties(palette, ['primary', 'secondary', 'error', 'type', 'contrastThreshold', 'tonalOffset']);
+        other = _objectWithoutProperties(palette, ["primary", "secondary", "error", "type", "contrastThreshold", "tonalOffset"]);
 
   function getContrastText(background) {
     // Use the same logic as
@@ -119,8 +120,10 @@ export default function createPalette(palette) {
     if (!color.main && color[mainShade]) {
       color.main = color[mainShade];
     }
+
     addLightOrDark(color, 'light', lightShade, tonalOffset);
     addLightOrDark(color, 'dark', darkShade, tonalOffset);
+
     if (!color.contrastText) {
       color.contrastText = getContrastText(color.main);
     }
@@ -129,12 +132,12 @@ export default function createPalette(palette) {
   augmentColor(primary, 500, 300, 700);
   augmentColor(secondary, 'A400', 'A200', 'A700');
   augmentColor(error, 500, 300, 700);
-
-  const types = { dark, light };
-
+  const types = {
+    dark,
+    light
+  };
   process.env.NODE_ENV !== "production" ? warning(types[type], `Material-UI: the palette type \`${type}\` is not supported.`) : void 0;
-
-  const paletteOutput = deepmerge(_extends({
+  const paletteOutput = deepmerge(_objectSpread({
     // A collection of common colors.
     common,
     // The palette type, can be light or dark.
@@ -152,13 +155,15 @@ export default function createPalette(palette) {
     contrastThreshold,
     // Take a background color and return the color of the text to maximize the contrast.
     getContrastText,
+    // Generate a rich color object.
+    augmentColor,
     // Used by the functions below to shift a color's luminance by approximately
     // two indexes within its tonal palette.
     // E.g., shift from Red 500 to Red 300 or Red 700.
     tonalOffset
   }, types[type]), other, {
     clone: false // No need to clone deep
-  });
 
+  });
   return paletteOutput;
 }

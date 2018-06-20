@@ -1,190 +1,167 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.blueGrey = exports.grey = exports.brown = exports.deepOrange = exports.orange = exports.amber = exports.yellow = exports.lime = exports.lightGreen = exports.green = exports.teal = exports.cyan = exports.lightBlue = exports.blue = exports.indigo = exports.deepPurple = exports.purple = exports.pink = exports.red = exports.common = undefined;
-
-var _common = require('./common');
-
-Object.defineProperty(exports, 'common', {
+Object.defineProperty(exports, "common", {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_common).default;
+    return _common.default;
+  }
+});
+Object.defineProperty(exports, "red", {
+  enumerable: true,
+  get: function get() {
+    return _red.default;
+  }
+});
+Object.defineProperty(exports, "pink", {
+  enumerable: true,
+  get: function get() {
+    return _pink.default;
+  }
+});
+Object.defineProperty(exports, "purple", {
+  enumerable: true,
+  get: function get() {
+    return _purple.default;
+  }
+});
+Object.defineProperty(exports, "deepPurple", {
+  enumerable: true,
+  get: function get() {
+    return _deepPurple.default;
+  }
+});
+Object.defineProperty(exports, "indigo", {
+  enumerable: true,
+  get: function get() {
+    return _indigo.default;
+  }
+});
+Object.defineProperty(exports, "blue", {
+  enumerable: true,
+  get: function get() {
+    return _blue.default;
+  }
+});
+Object.defineProperty(exports, "lightBlue", {
+  enumerable: true,
+  get: function get() {
+    return _lightBlue.default;
+  }
+});
+Object.defineProperty(exports, "cyan", {
+  enumerable: true,
+  get: function get() {
+    return _cyan.default;
+  }
+});
+Object.defineProperty(exports, "teal", {
+  enumerable: true,
+  get: function get() {
+    return _teal.default;
+  }
+});
+Object.defineProperty(exports, "green", {
+  enumerable: true,
+  get: function get() {
+    return _green.default;
+  }
+});
+Object.defineProperty(exports, "lightGreen", {
+  enumerable: true,
+  get: function get() {
+    return _lightGreen.default;
+  }
+});
+Object.defineProperty(exports, "lime", {
+  enumerable: true,
+  get: function get() {
+    return _lime.default;
+  }
+});
+Object.defineProperty(exports, "yellow", {
+  enumerable: true,
+  get: function get() {
+    return _yellow.default;
+  }
+});
+Object.defineProperty(exports, "amber", {
+  enumerable: true,
+  get: function get() {
+    return _amber.default;
+  }
+});
+Object.defineProperty(exports, "orange", {
+  enumerable: true,
+  get: function get() {
+    return _orange.default;
+  }
+});
+Object.defineProperty(exports, "deepOrange", {
+  enumerable: true,
+  get: function get() {
+    return _deepOrange.default;
+  }
+});
+Object.defineProperty(exports, "brown", {
+  enumerable: true,
+  get: function get() {
+    return _brown.default;
+  }
+});
+Object.defineProperty(exports, "grey", {
+  enumerable: true,
+  get: function get() {
+    return _grey.default;
+  }
+});
+Object.defineProperty(exports, "blueGrey", {
+  enumerable: true,
+  get: function get() {
+    return _blueGrey.default;
   }
 });
 
-var _red = require('./red');
+var _common = _interopRequireDefault(require("./common"));
 
-Object.defineProperty(exports, 'red', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_red).default;
-  }
-});
+var _red = _interopRequireDefault(require("./red"));
 
-var _pink = require('./pink');
+var _pink = _interopRequireDefault(require("./pink"));
 
-Object.defineProperty(exports, 'pink', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_pink).default;
-  }
-});
+var _purple = _interopRequireDefault(require("./purple"));
 
-var _purple = require('./purple');
+var _deepPurple = _interopRequireDefault(require("./deepPurple"));
 
-Object.defineProperty(exports, 'purple', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_purple).default;
-  }
-});
+var _indigo = _interopRequireDefault(require("./indigo"));
 
-var _deepPurple = require('./deepPurple');
+var _blue = _interopRequireDefault(require("./blue"));
 
-Object.defineProperty(exports, 'deepPurple', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_deepPurple).default;
-  }
-});
+var _lightBlue = _interopRequireDefault(require("./lightBlue"));
 
-var _indigo = require('./indigo');
+var _cyan = _interopRequireDefault(require("./cyan"));
 
-Object.defineProperty(exports, 'indigo', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_indigo).default;
-  }
-});
+var _teal = _interopRequireDefault(require("./teal"));
 
-var _blue = require('./blue');
+var _green = _interopRequireDefault(require("./green"));
 
-Object.defineProperty(exports, 'blue', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_blue).default;
-  }
-});
+var _lightGreen = _interopRequireDefault(require("./lightGreen"));
 
-var _lightBlue = require('./lightBlue');
+var _lime = _interopRequireDefault(require("./lime"));
 
-Object.defineProperty(exports, 'lightBlue', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_lightBlue).default;
-  }
-});
+var _yellow = _interopRequireDefault(require("./yellow"));
 
-var _cyan = require('./cyan');
+var _amber = _interopRequireDefault(require("./amber"));
 
-Object.defineProperty(exports, 'cyan', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_cyan).default;
-  }
-});
+var _orange = _interopRequireDefault(require("./orange"));
 
-var _teal = require('./teal');
+var _deepOrange = _interopRequireDefault(require("./deepOrange"));
 
-Object.defineProperty(exports, 'teal', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_teal).default;
-  }
-});
+var _brown = _interopRequireDefault(require("./brown"));
 
-var _green = require('./green');
+var _grey = _interopRequireDefault(require("./grey"));
 
-Object.defineProperty(exports, 'green', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_green).default;
-  }
-});
-
-var _lightGreen = require('./lightGreen');
-
-Object.defineProperty(exports, 'lightGreen', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_lightGreen).default;
-  }
-});
-
-var _lime = require('./lime');
-
-Object.defineProperty(exports, 'lime', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_lime).default;
-  }
-});
-
-var _yellow = require('./yellow');
-
-Object.defineProperty(exports, 'yellow', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_yellow).default;
-  }
-});
-
-var _amber = require('./amber');
-
-Object.defineProperty(exports, 'amber', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_amber).default;
-  }
-});
-
-var _orange = require('./orange');
-
-Object.defineProperty(exports, 'orange', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_orange).default;
-  }
-});
-
-var _deepOrange = require('./deepOrange');
-
-Object.defineProperty(exports, 'deepOrange', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_deepOrange).default;
-  }
-});
-
-var _brown = require('./brown');
-
-Object.defineProperty(exports, 'brown', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_brown).default;
-  }
-});
-
-var _grey = require('./grey');
-
-Object.defineProperty(exports, 'grey', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_grey).default;
-  }
-});
-
-var _blueGrey = require('./blueGrey');
-
-Object.defineProperty(exports, 'blueGrey', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_blueGrey).default;
-  }
-});
-
-var _reactAsyncComponent = require('react-async-component');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _blueGrey = _interopRequireDefault(require("./blueGrey"));

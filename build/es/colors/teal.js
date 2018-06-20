@@ -14,5 +14,4 @@ const teal = {
   A400: '#1de9b6',
   A700: '#00bfa5'
 };
-
 export default teal;

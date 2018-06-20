@@ -1,15 +1,14 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 //  weak
-
 import { unmountComponentAtNode } from 'react-dom';
+import { mount as enzymeMount } from 'enzyme'; // Generate an enhanced mount function.
 
-import { mount as enzymeMount } from 'enzyme';
-
-// Generate an enhanced mount function.
 export default function createMount(options1 = {}) {
-  const { mount = enzymeMount } = options1,
-        other1 = _objectWithoutProperties(options1, ['mount']);
+  const {
+    mount = enzymeMount
+  } = options1,
+        other1 = _objectWithoutProperties(options1, ["mount"]);
 
   const attachTo = window.document.createElement('div');
   attachTo.className = 'app';
@@ -17,12 +16,13 @@ export default function createMount(options1 = {}) {
   window.document.body.insertBefore(attachTo, window.document.body.firstChild);
 
   const mountWithContext = function mountWithContext(node, options2 = {}) {
-    return mount(node, _extends({
+    return mount(node, _objectSpread({
       attachTo
     }, other1, options2));
   };
 
   mountWithContext.attachTo = attachTo;
+
   mountWithContext.cleanUp = () => {
     unmountComponentAtNode(attachTo);
     attachTo.parentNode.removeChild(attachTo);

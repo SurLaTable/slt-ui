@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-
 /**
  * @ignore - internal component.
  *
@@ -9,6 +8,7 @@ import PropTypes from 'prop-types';
  * child element that may not accept refs (functional component).
  * It's higly inspired by https://github.com/facebook/react/issues/11401#issuecomment-340543801
  */
+
 class RootRef extends React.Component {
   componentDidMount() {
     this.props.rootRef(ReactDOM.findDOMNode(this));
@@ -21,11 +21,11 @@ class RootRef extends React.Component {
   render() {
     return this.props.children;
   }
+
 }
 
 RootRef.propTypes = process.env.NODE_ENV !== "production" ? {
   children: PropTypes.element.isRequired,
   rootRef: PropTypes.func.isRequired
 } : {};
-
 export default RootRef;

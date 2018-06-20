@@ -1,41 +1,8 @@
-import { asyncComponent } from 'react-async-component';
-
-export default asyncComponent({
-  /* webpackChunkName: "Table" */
-  resolve: () => import('./Table')
-});
-
-export const TableBody = asyncComponent({
-  /* webpackChunkName: "TableBody" */
-  resolve: () => import('./TableBody')
-});
-
-export const TableCell = asyncComponent({
-  /* webpackChunkName: "TableCell" */
-  resolve: () => import('./TableCell')
-});
-
-export const TableFooter = asyncComponent({
-  /* webpackChunkName: "TableFooter" */
-  resolve: () => import('./TableFooter')
-});
-
-export const TableHead = asyncComponent({
-  /* webpackChunkName: "TableHead" */
-  resolve: () => import('./TableHead')
-});
-
-export const TablePagination = asyncComponent({
-  /* webpackChunkName: "TablePagination" */
-  resolve: () => import('./TablePagination')
-});
-
-export const TableRow = asyncComponent({
-  /* webpackChunkName: "TableRow" */
-  resolve: () => import('./TableRow')
-});
-
-export const TableSortLabel = asyncComponent({
-  /* webpackChunkName: "TableSortLabel" */
-  resolve: () => import('./TableSortLabel')
-});
+export { default } from './Table';
+export { default as TableBody } from './TableBody';
+export { default as TableCell } from './TableCell';
+export { default as TableFooter } from './TableFooter';
+export { default as TableHead } from './TableHead';
+export { default as TablePagination } from './TablePagination';
+export { default as TableRow } from './TableRow';
+export { default as TableSortLabel } from './TableSortLabel';

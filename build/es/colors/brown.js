@@ -14,5 +14,4 @@ const brown = {
   A400: '#8d6e63',
   A700: '#5d4037'
 };
-
 export default brown;

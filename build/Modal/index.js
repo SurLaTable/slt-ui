@@ -1,28 +1,31 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ModalManager = exports.Backdrop = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Modal" */
-  resolve: function resolve() {
-    return import('./Modal');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Modal.default;
   }
 });
-var Backdrop = exports.Backdrop = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Backdrop" */
-  resolve: function resolve() {
-    return import('./Backdrop');
+Object.defineProperty(exports, "Backdrop", {
+  enumerable: true,
+  get: function get() {
+    return _Backdrop.default;
+  }
+});
+Object.defineProperty(exports, "ModalManager", {
+  enumerable: true,
+  get: function get() {
+    return _ModalManager.default;
   }
 });
 
-var ModalManager = exports.ModalManager = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "ModalManager" */
-  resolve: function resolve() {
-    return import('./ModalManager');
-  }
-});
+var _Modal = _interopRequireDefault(require("./Modal"));
+
+var _Backdrop = _interopRequireDefault(require("./Backdrop"));
+
+var _ModalManager = _interopRequireDefault(require("./ModalManager"));

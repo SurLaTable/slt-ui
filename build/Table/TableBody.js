@@ -1,54 +1,33 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
 var styles = {
   root: {
@@ -56,16 +35,18 @@ var styles = {
   }
 };
 
-var TableBody = function (_React$Component) {
-  (0, _inherits3.default)(TableBody, _React$Component);
+var TableBody =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(TableBody, _React$Component);
 
   function TableBody() {
-    (0, _classCallCheck3.default)(this, TableBody);
-    return (0, _possibleConstructorReturn3.default)(this, (TableBody.__proto__ || (0, _getPrototypeOf2.default)(TableBody)).apply(this, arguments));
+    (0, _classCallCheck2.default)(this, TableBody);
+    return (0, _possibleConstructorReturn2.default)(this, (TableBody.__proto__ || (0, _getPrototypeOf.default)(TableBody)).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(TableBody, [{
-    key: 'getChildContext',
+  (0, _createClass2.default)(TableBody, [{
+    key: "getChildContext",
     value: function getChildContext() {
       // eslint-disable-line class-methods-use-this
       return {
@@ -75,47 +56,52 @@ var TableBody = function (_React$Component) {
       };
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _props = this.props,
           classes = _props.classes,
-          classNameProp = _props.className,
+          className = _props.className,
           Component = _props.component,
-          other = (0, _objectWithoutProperties3.default)(_props, ['classes', 'className', 'component']);
-
-
-      return _react2.default.createElement(Component, (0, _extends3.default)({ className: (0, _classnames2.default)(classes.root, classNameProp) }, other));
+          other = (0, _objectWithoutProperties2.default)(_props, ["classes", "className", "component"]);
+      return _react.default.createElement(Component, (0, _extends2.default)({
+        className: (0, _classnames.default)(classes.root, className)
+      }, other));
     }
   }]);
   return TableBody;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 TableBody.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * The content of the component, normally `TableRow`.
    */
-  children: _propTypes2.default.node.isRequired,
+  children: _propTypes.default.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
+  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func])
 } : {};
-
 TableBody.defaultProps = {
   component: 'tbody'
 };
-
 TableBody.childContextTypes = {
-  table: _propTypes2.default.object
+  table: _propTypes.default.object
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiTableBody' })(TableBody);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiTableBody'
+})(TableBody);
+
+exports.default = _default;

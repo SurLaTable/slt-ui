@@ -1,6 +1,1 @@
-import { asyncComponent } from 'react-async-component';
-
-export default asyncComponent({
-  /* webpackChunkName: "AppBar" */
-  resolve: () => import('./AppBar')
-});
+export { default } from './AppBar';

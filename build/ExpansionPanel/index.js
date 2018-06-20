@@ -1,35 +1,39 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ExpansionPanelSummary = exports.ExpansionPanelDetails = exports.ExpansionPanelActions = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "ExpansionPanel" */
-  resolve: function resolve() {
-    return import('./ExpansionPanel');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _ExpansionPanel.default;
   }
 });
-var ExpansionPanelActions = exports.ExpansionPanelActions = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "ExpansionPanelActions" */
-  resolve: function resolve() {
-    return import('./ExpansionPanelActions');
+Object.defineProperty(exports, "ExpansionPanelActions", {
+  enumerable: true,
+  get: function get() {
+    return _ExpansionPanelActions.default;
+  }
+});
+Object.defineProperty(exports, "ExpansionPanelDetails", {
+  enumerable: true,
+  get: function get() {
+    return _ExpansionPanelDetails.default;
+  }
+});
+Object.defineProperty(exports, "ExpansionPanelSummary", {
+  enumerable: true,
+  get: function get() {
+    return _ExpansionPanelSummary.default;
   }
 });
 
-var ExpansionPanelDetails = exports.ExpansionPanelDetails = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "ExpansionPanelDetails" */
-  resolve: function resolve() {
-    return import('./ExpansionPanelDetails');
-  }
-});
+var _ExpansionPanel = _interopRequireDefault(require("./ExpansionPanel"));
 
-var ExpansionPanelSummary = exports.ExpansionPanelSummary = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "ExpansionPanelSummary" */
-  resolve: function resolve() {
-    return import('./ExpansionPanelSummary');
-  }
-});
+var _ExpansionPanelActions = _interopRequireDefault(require("./ExpansionPanelActions"));
+
+var _ExpansionPanelDetails = _interopRequireDefault(require("./ExpansionPanelDetails"));
+
+var _ExpansionPanelSummary = _interopRequireDefault(require("./ExpansionPanelSummary"));

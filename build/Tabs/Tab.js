@@ -1,75 +1,48 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _keys = require('babel-runtime/core-js/object/keys');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _keys2 = _interopRequireDefault(_keys);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _objectSpread3 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _react = _interopRequireDefault(require("react"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _extends3 = require('babel-runtime/helpers/extends');
-
-var _extends4 = _interopRequireDefault(_extends3);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _ButtonBase = require('../ButtonBase');
-
-var _ButtonBase2 = _interopRequireDefault(_ButtonBase);
-
-var _helpers = require('../utils/helpers');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _helpers = require("../utils/helpers");
 
 // @inheritedComponent ButtonBase
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
-    root: (0, _extends4.default)({}, theme.typography.button, (0, _defineProperty3.default)({
+    root: (0, _objectSpread3.default)({}, theme.typography.button, (0, _defineProperty2.default)({
       maxWidth: 264,
       position: 'relative',
       minWidth: 72,
@@ -85,32 +58,34 @@ var styles = exports.styles = function styles(theme) {
     },
     textColorInherit: {
       color: 'inherit',
-      opacity: 0.7
+      opacity: 0.7,
+      '&$selected': {
+        opacity: 1
+      },
+      '&$disabled': {
+        opacity: 0.4
+      }
     },
     textColorPrimary: {
-      color: theme.palette.text.secondary
-    },
-    textColorPrimarySelected: {
-      color: theme.palette.primary.main
-    },
-    textColorPrimaryDisabled: {
-      color: theme.palette.text.disabled
+      color: theme.palette.text.secondary,
+      '&$selected': {
+        color: theme.palette.primary.main
+      },
+      '&$disabled': {
+        color: theme.palette.text.disabled
+      }
     },
     textColorSecondary: {
-      color: theme.palette.text.secondary
+      color: theme.palette.text.secondary,
+      '&$selected': {
+        color: theme.palette.secondary.main
+      },
+      '&$disabled': {
+        color: theme.palette.text.disabled
+      }
     },
-    textColorSecondarySelected: {
-      color: theme.palette.secondary.main
-    },
-    textColorSecondaryDisabled: {
-      color: theme.palette.text.disabled
-    },
-    textColorInheritSelected: {
-      opacity: 1
-    },
-    textColorInheritDisabled: {
-      opacity: 0.4
-    },
+    selected: {},
+    disabled: {},
     fullWidth: {
       flexGrow: 1
     },
@@ -121,7 +96,7 @@ var styles = exports.styles = function styles(theme) {
       width: '100%',
       flexDirection: 'column'
     },
-    labelContainer: (0, _defineProperty3.default)({
+    labelContainer: (0, _defineProperty2.default)({
       paddingTop: 6,
       paddingBottom: 6,
       paddingLeft: 12,
@@ -130,65 +105,91 @@ var styles = exports.styles = function styles(theme) {
       paddingLeft: theme.spacing.unit * 3,
       paddingRight: theme.spacing.unit * 3
     }),
-    label: (0, _defineProperty3.default)({
+    label: (0, _defineProperty2.default)({
       fontSize: theme.typography.pxToRem(14),
       whiteSpace: 'normal'
     }, theme.breakpoints.up('md'), {
       fontSize: theme.typography.pxToRem(13)
     }),
-    labelWrapped: (0, _defineProperty3.default)({}, theme.breakpoints.down('sm'), {
+    labelWrapped: (0, _defineProperty2.default)({}, theme.breakpoints.down('sm'), {
       fontSize: theme.typography.pxToRem(12)
     })
   };
 };
 
-var Tab = function (_React$Component) {
-  (0, _inherits3.default)(Tab, _React$Component);
+exports.styles = styles;
+
+var Tab =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Tab, _React$Component);
 
   function Tab() {
     var _ref;
 
-    var _temp, _this, _ret;
+    var _temp, _this;
 
-    (0, _classCallCheck3.default)(this, Tab);
+    (0, _classCallCheck2.default)(this, Tab);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Tab.__proto__ || (0, _getPrototypeOf2.default)(Tab)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      wrappedText: false
-    }, _this.handleChange = function (event) {
-      var _this$props = _this.props,
-          onChange = _this$props.onChange,
-          value = _this$props.value,
-          onClick = _this$props.onClick;
-
-
-      if (onChange) {
-        onChange(event, value);
+    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = Tab.__proto__ || (0, _getPrototypeOf.default)(Tab)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        wrappedText: false
       }
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleChange", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        var _this$props = _this.props,
+            onChange = _this$props.onChange,
+            value = _this$props.value,
+            onClick = _this$props.onClick;
 
-      if (onClick) {
-        onClick(event);
-      }
-    }, _this.label = undefined, _this.checkTextWrap = function () {
-      if (_this.label) {
-        var wrappedText = _this.label.getClientRects().length > 1;
-        if (_this.state.wrappedText !== wrappedText) {
-          _this.setState({ wrappedText: wrappedText });
+        if (onChange) {
+          onChange(event, value);
+        }
+
+        if (onClick) {
+          onClick(event);
         }
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "label", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: undefined
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "checkTextWrap", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        if (_this.label) {
+          var wrappedText = _this.label.getClientRects().length > 1;
+
+          if (_this.state.wrappedText !== wrappedText) {
+            _this.setState({
+              wrappedText: wrappedText
+            });
+          }
+        }
+      }
+    }), _temp));
   }
 
-  (0, _createClass3.default)(Tab, [{
-    key: 'componentDidMount',
+  (0, _createClass2.default)(Tab, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
       this.checkTextWrap();
     }
   }, {
-    key: 'componentDidUpdate',
+    key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       if (this.state.wrappedText === prevState.wrappedText) {
         /**
@@ -200,7 +201,7 @@ var Tab = function (_React$Component) {
       }
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this2 = this,
           _classNames2;
@@ -215,126 +216,109 @@ var Tab = function (_React$Component) {
           labelProp = _props.label,
           onChange = _props.onChange,
           selected = _props.selected,
-          styleProp = _props.style,
           textColor = _props.textColor,
           value = _props.value,
-          other = (0, _objectWithoutProperties3.default)(_props, ['classes', 'className', 'disabled', 'fullWidth', 'icon', 'indicator', 'label', 'onChange', 'selected', 'style', 'textColor', 'value']);
-
-
-      var label = void 0;
+          other = (0, _objectWithoutProperties2.default)(_props, ["classes", "className", "disabled", "fullWidth", "icon", "indicator", "label", "onChange", "selected", "textColor", "value"]);
+      var label;
 
       if (labelProp !== undefined) {
-        label = _react2.default.createElement(
-          'span',
-          { className: classes.labelContainer },
-          _react2.default.createElement(
-            'span',
-            {
-              className: (0, _classnames2.default)(classes.label, (0, _defineProperty3.default)({}, classes.labelWrapped, this.state.wrappedText)),
-              ref: function ref(node) {
-                _this2.label = node;
-              }
-            },
-            labelProp
-          )
-        );
+        label = _react.default.createElement("span", {
+          className: classes.labelContainer
+        }, _react.default.createElement("span", {
+          className: (0, _classnames.default)(classes.label, (0, _defineProperty2.default)({}, classes.labelWrapped, this.state.wrappedText)),
+          ref: function ref(node) {
+            _this2.label = node;
+          }
+        }, labelProp));
       }
 
-      var className = (0, _classnames2.default)(classes.root, classes['textColor' + (0, _helpers.capitalize)(textColor)], (_classNames2 = {}, (0, _defineProperty3.default)(_classNames2, classes['textColor' + (0, _helpers.capitalize)(textColor) + 'Disabled'], disabled), (0, _defineProperty3.default)(_classNames2, classes['textColor' + (0, _helpers.capitalize)(textColor) + 'Selected'], selected), (0, _defineProperty3.default)(_classNames2, classes.labelIcon, icon && label), (0, _defineProperty3.default)(_classNames2, classes.fullWidth, fullWidth), _classNames2), classNameProp);
-
-      var style = {};
-
-      if (textColor !== 'secondary' && textColor !== 'inherit') {
-        style.color = textColor;
-      }
-
-      style = (0, _keys2.default)(style).length > 0 ? (0, _extends4.default)({}, style, styleProp) : styleProp;
-
-      return _react2.default.createElement(
-        _ButtonBase2.default,
-        (0, _extends4.default)({
-          focusRipple: true,
-          className: className,
-          style: style,
-          role: 'tab',
-          'aria-selected': selected,
-          disabled: disabled
-        }, other, {
-          onClick: this.handleChange
-        }),
-        _react2.default.createElement(
-          'span',
-          { className: classes.wrapper },
-          icon,
-          label
-        ),
-        indicator
-      );
+      var className = (0, _classnames.default)(classes.root, classes["textColor".concat((0, _helpers.capitalize)(textColor))], (_classNames2 = {}, (0, _defineProperty2.default)(_classNames2, classes.disabled, disabled), (0, _defineProperty2.default)(_classNames2, classes.selected, selected), (0, _defineProperty2.default)(_classNames2, classes.labelIcon, icon && label), (0, _defineProperty2.default)(_classNames2, classes.fullWidth, fullWidth), _classNames2), classNameProp);
+      return _react.default.createElement(_ButtonBase.default, (0, _extends2.default)({
+        focusRipple: true,
+        className: className,
+        role: "tab",
+        "aria-selected": selected,
+        disabled: disabled
+      }, other, {
+        onClick: this.handleChange
+      }), _react.default.createElement("span", {
+        className: classes.wrapper
+      }, icon, label), indicator);
     }
   }]);
   return Tab;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 Tab.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * If `true`, the tab will be disabled.
    */
-  disabled: _propTypes2.default.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * @ignore
    */
-  fullWidth: _propTypes2.default.bool,
+  fullWidth: _propTypes.default.bool,
+
   /**
    * The icon element.
    */
-  icon: _propTypes2.default.node,
+  icon: _propTypes.default.node,
+
   /**
    * @ignore
    * For server side rendering consideration, we let the selected tab
    * render the indicator.
    */
-  indicator: _propTypes2.default.node,
+  indicator: _propTypes.default.node,
+
   /**
    * The label element.
    */
-  label: _propTypes2.default.node,
+  label: _propTypes.default.node,
+
   /**
    * @ignore
    */
-  onChange: _propTypes2.default.func,
+  onChange: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onClick: _propTypes2.default.func,
+  onClick: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  selected: _propTypes2.default.bool,
+  selected: _propTypes.default.bool,
+
   /**
    * @ignore
    */
-  style: _propTypes2.default.object,
-  /**
-   * @ignore
-   */
-  textColor: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.oneOf(['secondary', 'primary', 'inherit'])]),
+  textColor: _propTypes.default.oneOf(['secondary', 'primary', 'inherit']),
+
   /**
    * You can provide your own value. Otherwise, we fallback to the child position index.
    */
-  value: _propTypes2.default.any
+  value: _propTypes.default.any
 } : {};
-
 Tab.defaultProps = {
   disabled: false,
   textColor: 'inherit'
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiTab' })(Tab);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiTab'
+})(Tab);
+
+exports.default = _default;

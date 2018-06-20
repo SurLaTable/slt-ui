@@ -1,19 +1,23 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 // @inheritedComponent IconButton
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import IconButton from '../IconButton';
-
 export const styles = {
   root: {
     display: 'inline-flex',
     alignItems: 'center',
-    transition: 'none'
+    transition: 'none',
+    '&:hover': {
+      // Disable the hover effect for the IconButton.
+      backgroundColor: 'transparent'
+    }
   },
+  checked: {},
+  disabled: {},
   input: {
     cursor: 'inherit',
     position: 'absolute',
@@ -24,36 +28,50 @@ export const styles = {
     left: 0,
     margin: 0,
     padding: 0
-  },
-  default: {},
-  checked: {},
-  disabled: {}
+  }
 };
 
-/**
- * @ignore - internal component.
- */
 class SwitchBase extends React.Component {
   constructor(props, context) {
     super(props, context);
+    Object.defineProperty(this, "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {}
+    });
+    Object.defineProperty(this, "input", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty(this, "isControlled", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty(this, "handleInputChange", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: event => {
+        const checked = event.target.checked;
 
-    this.state = {};
-    this.input = null;
-    this.isControlled = null;
+        if (!this.isControlled) {
+          this.setState({
+            checked
+          });
+        }
 
-    this.handleInputChange = event => {
-      const checked = event.target.checked;
-
-      if (!this.isControlled) {
-        this.setState({ checked });
+        if (this.props.onChange) {
+          this.props.onChange(event, checked);
+        }
       }
-
-      if (this.props.onChange) {
-        this.props.onChange(event, checked);
-      }
-    };
-
+    });
     this.isControlled = props.checked != null;
+
     if (!this.isControlled) {
       // not controlled, use internal state
       this.state.checked = props.defaultChecked !== undefined ? props.defaultChecked : false;
@@ -68,7 +86,7 @@ class SwitchBase extends React.Component {
       classes,
       className: classNameProp,
       disabled: disabledProp,
-      icon: iconProp,
+      icon,
       id,
       inputProps,
       inputRef,
@@ -78,9 +96,11 @@ class SwitchBase extends React.Component {
       type,
       value
     } = _props,
-          other = _objectWithoutProperties(_props, ['checked', 'checkedIcon', 'classes', 'className', 'disabled', 'icon', 'id', 'inputProps', 'inputRef', 'name', 'onChange', 'tabIndex', 'type', 'value']);
+          other = _objectWithoutProperties(_props, ["checked", "checkedIcon", "classes", "className", "disabled", "icon", "id", "inputProps", "inputRef", "name", "onChange", "tabIndex", "type", "value"]);
 
-    const { muiFormControl } = this.context;
+    const {
+      muiFormControl
+    } = this.context;
     let disabled = disabledProp;
 
     if (muiFormControl) {
@@ -90,100 +110,105 @@ class SwitchBase extends React.Component {
     }
 
     const checked = this.isControlled ? checkedProp : this.state.checked;
-    const className = classNames(classes.root, classes.default, classNameProp, {
-      [classes.checked]: checked,
-      [classes.disabled]: disabled
-    });
-
-    const icon = checked ? checkedIcon : iconProp;
-
     const hasLabelFor = type === 'checkbox' || type === 'radio';
-
-    return React.createElement(
-      IconButton,
-      _extends({
-        component: 'span',
-        className: className,
-        disabled: disabled,
-        tabIndex: null,
-        role: undefined
-      }, other),
-      icon,
-      React.createElement('input', _extends({
-        id: hasLabelFor && id,
-        type: type,
-        name: name,
-        checked: checked,
-        onChange: this.handleInputChange,
-        className: classes.input,
-        disabled: disabled,
-        tabIndex: tabIndex,
-        value: value,
-        ref: inputRef
-      }, inputProps))
-    );
+    return React.createElement(IconButton, _extends({
+      component: "span",
+      className: classNames(classes.root, {
+        [classes.checked]: checked,
+        [classes.disabled]: disabled
+      }, classNameProp),
+      disabled: disabled,
+      tabIndex: null,
+      role: undefined
+    }, other), checked ? checkedIcon : icon, React.createElement("input", _extends({
+      id: hasLabelFor && id,
+      type: type,
+      name: name,
+      checked: checked,
+      onChange: this.handleInputChange,
+      className: classes.input,
+      disabled: disabled,
+      tabIndex: tabIndex,
+      value: value,
+      ref: inputRef
+    }, inputProps)));
   }
-}
 
-// NB: If changed, please update Checkbox, Switch and Radio
+} // NB: If changed, please update Checkbox, Switch and Radio
 // so that the API documentation is updated.
+
+
 SwitchBase.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * If `true`, the component is checked.
    */
   checked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
   /**
    * The icon to display when the component is checked.
    */
   checkedIcon: PropTypes.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * @ignore
    */
   defaultChecked: PropTypes.bool,
+
   /**
    * If `true`, the switch will be disabled.
    */
   disabled: PropTypes.bool,
+
   /**
    * If `true`, the ripple effect will be disabled.
    */
   disableRipple: PropTypes.bool,
+
   /**
    * The icon to display when the component is unchecked.
    */
   icon: PropTypes.node.isRequired,
+
   /**
    * The id of the `input` element.
    */
   id: PropTypes.string,
+
   /**
    * If `true`, the component appears indeterminate.
    */
   indeterminate: PropTypes.bool,
+
   /**
    * The icon to display when the component is indeterminate.
    */
   indeterminateIcon: PropTypes.node,
+
   /**
    * Properties applied to the `input` element.
    */
   inputProps: PropTypes.object,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
   inputRef: PropTypes.func,
+
   /*
    * @ignore
    */
   name: PropTypes.string,
+
   /**
    * Callback fired when the state is changed.
    *
@@ -192,26 +217,28 @@ SwitchBase.propTypes = process.env.NODE_ENV !== "production" ? {
    * @param {boolean} checked The `checked` value of the switch
    */
   onChange: PropTypes.func,
+
   /**
    * @ignore
    */
   tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
   /**
    * The input component property `type`.
    */
   type: PropTypes.string,
+
   /**
    * The value of the component.
    */
   value: PropTypes.string
 } : {};
-
 SwitchBase.defaultProps = {
   type: 'checkbox'
 };
-
 SwitchBase.contextTypes = {
   muiFormControl: PropTypes.object
 };
-
-export default withStyles(styles, { name: 'MuiSwitchBase' })(SwitchBase);
+export default withStyles(styles, {
+  name: 'MuiSwitchBase'
+})(SwitchBase);

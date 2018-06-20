@@ -1,4 +1,4 @@
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
 
 function round(value) {
@@ -10,7 +10,8 @@ export default function createTypography(palette, typography) {
         {
     fontFamily = '"Roboto", "Helvetica", "Arial", sans-serif',
     // The default font size of the Material Specification.
-    fontSize = 14, // px
+    fontSize = 14,
+    // px
     fontWeightLight = 300,
     fontWeightRegular = 400,
     fontWeightMedium = 500,
@@ -18,9 +19,10 @@ export default function createTypography(palette, typography) {
     // 16px is the default font-size used by browsers.
     htmlFontSize = 16
   } = _ref,
-        other = _objectWithoutProperties(_ref, ['fontFamily', 'fontSize', 'fontWeightLight', 'fontWeightRegular', 'fontWeightMedium', 'htmlFontSize']);
+        other = _objectWithoutProperties(_ref, ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "htmlFontSize"]);
 
   const coef = fontSize / 14;
+
   function pxToRem(value) {
     return `${value / htmlFontSize * coef}rem`;
   }
@@ -116,5 +118,6 @@ export default function createTypography(palette, typography) {
     }
   }, other, {
     clone: false // No need to clone deep
+
   });
 }

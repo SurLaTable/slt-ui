@@ -1,28 +1,31 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MenuItem = exports.MenuList = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Menu" */
-  resolve: function resolve() {
-    return import('./Menu');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Menu.default;
   }
 });
-var MenuList = exports.MenuList = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "MenuList" */
-  resolve: function resolve() {
-    return import('./MenuList');
+Object.defineProperty(exports, "MenuList", {
+  enumerable: true,
+  get: function get() {
+    return _MenuList.default;
+  }
+});
+Object.defineProperty(exports, "MenuItem", {
+  enumerable: true,
+  get: function get() {
+    return _MenuItem.default;
   }
 });
 
-var MenuItem = exports.MenuItem = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "MenuItem" */
-  resolve: function resolve() {
-    return import('./MenuItem');
-  }
-});
+var _Menu = _interopRequireDefault(require("./Menu"));
+
+var _MenuList = _interopRequireDefault(require("./MenuList"));
+
+var _MenuItem = _interopRequireDefault(require("./MenuItem"));

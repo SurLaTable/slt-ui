@@ -1,31 +1,48 @@
-import _extends from 'babel-runtime/helpers/extends';
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
 import React from 'react';
 import PropTypes from 'prop-types';
 import warning from 'warning';
 import createBroadcast from 'brcast';
 import themeListener, { CHANNEL } from './themeListener';
 import exactProp from '../utils/exactProp';
-
 /**
  * This component takes a `theme` property.
  * It makes the `theme` available down the React tree thanks to React context.
  * This component should preferably be used at **the root of your component tree**.
  */
+
 class MuiThemeProvider extends React.Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context); // Get the outer theme from the context, can be null
 
-    // Get the outer theme from the context, can be null
-    this.broadcast = createBroadcast();
-    this.unsubscribeId = null;
-    this.outerTheme = null;
-    this.outerTheme = themeListener.initial(context);
-    // Propagate the theme so it can be accessed by the children
+    Object.defineProperty(this, "broadcast", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: createBroadcast()
+    });
+    Object.defineProperty(this, "unsubscribeId", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty(this, "outerTheme", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    this.outerTheme = themeListener.initial(context); // Propagate the theme so it can be accessed by the children
+
     this.broadcast.setState(this.mergeOuterLocalTheme(this.props.theme));
   }
 
   getChildContext() {
-    const { sheetsManager, disableStylesGeneration } = this.props;
+    const {
+      sheetsManager,
+      disableStylesGeneration
+    } = this.props;
     const muiThemeProviderOptions = this.context.muiThemeProviderOptions || {};
 
     if (sheetsManager !== undefined) {
@@ -45,8 +62,8 @@ class MuiThemeProvider extends React.Component {
   componentDidMount() {
     // Subscribe on the outer theme, if present
     this.unsubscribeId = themeListener.subscribe(this.context, outerTheme => {
-      this.outerTheme = outerTheme;
-      // Forward the parent theme update to the children
+      this.outerTheme = outerTheme; // Forward the parent theme update to the children
+
       this.broadcast.setState(this.mergeOuterLocalTheme(this.props.theme));
     });
   }
@@ -63,8 +80,6 @@ class MuiThemeProvider extends React.Component {
       themeListener.unsubscribe(this.context, this.unsubscribeId);
     }
   }
-  // We are not using the React state in order to avoid unnecessary rerender.
-
 
   // Simple merge between the outer theme and the local theme
   mergeOuterLocalTheme(localTheme) {
@@ -78,12 +93,22 @@ class MuiThemeProvider extends React.Component {
       return localTheme;
     }
 
-    return _extends({}, this.outerTheme, localTheme);
+    return _objectSpread({}, this.outerTheme, localTheme);
   }
 
   render() {
+    // TODO move the sheetsManager property to a different component.
+    // warning(
+    //   typeof window !== 'undefined' || this.props.sheetsManager,
+    //   [
+    //     'Material-UI: you need to provide a sheetsManager to the MuiThemeProvider ' +
+    //       'when rendering on the server.',
+    //     'If you do not, you might experience a memory leak',
+    //   ].join('\n'),
+    // );
     return this.props.children;
   }
+
 }
 
 MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -91,6 +116,7 @@ MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? {
    * You can only provide a single element with react@15, a node with react@16.
    */
   children: PropTypes.node.isRequired,
+
   /**
    * You can disable the generation of the styles with this option.
    * It can be useful when traversing the React tree outside of the HTML
@@ -100,26 +126,24 @@ MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? {
    * You can significantly speed up the traversal with this property.
    */
   disableStylesGeneration: PropTypes.bool,
+
   /**
    * The sheetsManager is used to deduplicate style sheet injection in the page.
    * It's deduplicating using the (theme, styles) couple.
    * On the server, you should provide a new instance for each request.
    */
   sheetsManager: PropTypes.object,
+
   /**
    * A theme object.
    */
   theme: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired
 } : {};
-
 MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? exactProp(MuiThemeProvider.propTypes, 'MuiThemeProvider') : {};
-
-MuiThemeProvider.childContextTypes = _extends({}, themeListener.contextTypes, {
+MuiThemeProvider.childContextTypes = _objectSpread({}, themeListener.contextTypes, {
   muiThemeProviderOptions: PropTypes.object
 });
-
-MuiThemeProvider.contextTypes = _extends({}, themeListener.contextTypes, {
+MuiThemeProvider.contextTypes = _objectSpread({}, themeListener.contextTypes, {
   muiThemeProviderOptions: PropTypes.object
 });
-
 export default MuiThemeProvider;

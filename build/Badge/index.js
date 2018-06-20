@@ -1,14 +1,15 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Badge" */
-  resolve: function resolve() {
-    return import('./Badge');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Badge.default;
   }
 });
+
+var _Badge = _interopRequireDefault(require("./Badge"));

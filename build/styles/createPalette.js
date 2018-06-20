@@ -1,54 +1,35 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.dark = exports.light = undefined;
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
 exports.default = createPalette;
+exports.dark = exports.light = void 0;
 
-var _warning = require('warning');
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _warning2 = _interopRequireDefault(_warning);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _deepmerge = require('deepmerge');
+var _warning = _interopRequireDefault(require("warning"));
 
-var _deepmerge2 = _interopRequireDefault(_deepmerge);
+var _deepmerge = _interopRequireDefault(require("deepmerge"));
 
-var _indigo = require('../colors/indigo');
+var _indigo = _interopRequireDefault(require("../colors/indigo"));
 
-var _indigo2 = _interopRequireDefault(_indigo);
+var _pink = _interopRequireDefault(require("../colors/pink"));
 
-var _pink = require('../colors/pink');
+var _grey = _interopRequireDefault(require("../colors/grey"));
 
-var _pink2 = _interopRequireDefault(_pink);
+var _red = _interopRequireDefault(require("../colors/red"));
 
-var _grey = require('../colors/grey');
+var _common = _interopRequireDefault(require("../colors/common"));
 
-var _grey2 = _interopRequireDefault(_grey);
-
-var _red = require('../colors/red');
-
-var _red2 = _interopRequireDefault(_red);
-
-var _common = require('../colors/common');
-
-var _common2 = _interopRequireDefault(_common);
-
-var _colorManipulator = require('./colorManipulator');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _colorManipulator = require("./colorManipulator");
 
 // < 1kb payload overhead when lodash/merge is > 3kb.
-var light = exports.light = {
+var light = {
   // The colors used to style the text.
   text: {
     // The most important text.
@@ -65,8 +46,8 @@ var light = exports.light = {
   // The background colors used to style the surfaces.
   // Consistency between these values is important.
   background: {
-    paper: _common2.default.white,
-    default: _grey2.default[50]
+    paper: _common.default.white,
+    default: _grey.default[50]
   },
   // The colors used to style the action elements.
   action: {
@@ -74,6 +55,7 @@ var light = exports.light = {
     active: 'rgba(0, 0, 0, 0.54)',
     // The color of an hovered action.
     hover: 'rgba(0, 0, 0, 0.08)',
+    hoverOpacity: 0.08,
     // The color of a selected action.
     selected: 'rgba(0, 0, 0, 0.14)',
     // The color of a disabled action.
@@ -82,10 +64,10 @@ var light = exports.light = {
     disabledBackground: 'rgba(0, 0, 0, 0.12)'
   }
 };
-
-var dark = exports.dark = {
+exports.light = light;
+var dark = {
   text: {
-    primary: _common2.default.white,
+    primary: _common.default.white,
     secondary: 'rgba(255, 255, 255, 0.7)',
     disabled: 'rgba(255, 255, 255, 0.5)',
     hint: 'rgba(255, 255, 255, 0.5)',
@@ -93,17 +75,19 @@ var dark = exports.dark = {
   },
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
-    paper: _grey2.default[800],
+    paper: _grey.default[800],
     default: '#303030'
   },
   action: {
-    active: _common2.default.white,
+    active: _common.default.white,
     hover: 'rgba(255, 255, 255, 0.1)',
+    hoverOpacity: 0.1,
     selected: 'rgba(255, 255, 255, 0.2)',
     disabled: 'rgba(255, 255, 255, 0.3)',
     disabledBackground: 'rgba(255, 255, 255, 0.12)'
   }
 };
+exports.dark = dark;
 
 function addLightOrDark(intent, direction, shade, tonalOffset) {
   if (!intent[direction]) {
@@ -119,31 +103,30 @@ function addLightOrDark(intent, direction, shade, tonalOffset) {
 
 function createPalette(palette) {
   var _palette$primary = palette.primary,
-      primary = _palette$primary === undefined ? {
-    light: _indigo2.default[300],
-    main: _indigo2.default[500],
-    dark: _indigo2.default[700]
+      primary = _palette$primary === void 0 ? {
+    light: _indigo.default[300],
+    main: _indigo.default[500],
+    dark: _indigo.default[700]
   } : _palette$primary,
       _palette$secondary = palette.secondary,
-      secondary = _palette$secondary === undefined ? {
-    light: _pink2.default.A200,
-    main: _pink2.default.A400,
-    dark: _pink2.default.A700
+      secondary = _palette$secondary === void 0 ? {
+    light: _pink.default.A200,
+    main: _pink.default.A400,
+    dark: _pink.default.A700
   } : _palette$secondary,
       _palette$error = palette.error,
-      error = _palette$error === undefined ? {
-    light: _red2.default[300],
-    main: _red2.default[500],
-    dark: _red2.default[700]
+      error = _palette$error === void 0 ? {
+    light: _red.default[300],
+    main: _red.default[500],
+    dark: _red.default[700]
   } : _palette$error,
       _palette$type = palette.type,
-      type = _palette$type === undefined ? 'light' : _palette$type,
+      type = _palette$type === void 0 ? 'light' : _palette$type,
       _palette$contrastThre = palette.contrastThreshold,
-      contrastThreshold = _palette$contrastThre === undefined ? 3 : _palette$contrastThre,
+      contrastThreshold = _palette$contrastThre === void 0 ? 3 : _palette$contrastThre,
       _palette$tonalOffset = palette.tonalOffset,
-      tonalOffset = _palette$tonalOffset === undefined ? 0.2 : _palette$tonalOffset,
-      other = (0, _objectWithoutProperties3.default)(palette, ['primary', 'secondary', 'error', 'type', 'contrastThreshold', 'tonalOffset']);
-
+      tonalOffset = _palette$tonalOffset === void 0 ? 0.2 : _palette$tonalOffset,
+      other = (0, _objectWithoutProperties2.default)(palette, ["primary", "secondary", "error", "type", "contrastThreshold", "tonalOffset"]);
 
   function getContrastText(background) {
     // Use the same logic as
@@ -153,7 +136,7 @@ function createPalette(palette) {
 
     if (process.env.NODE_ENV !== 'production') {
       var contrast = (0, _colorManipulator.getContrastRatio)(background, contrastText);
-      process.env.NODE_ENV !== "production" ? (0, _warning2.default)(contrast >= 3, ['Material-UI: the contrast ratio of ' + contrast + ':1 for ' + contrastText + ' on ' + background, 'falls below the WACG recommended absolute minimum contrast ratio of 3:1.', 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast'].join('\n')) : void 0;
+      process.env.NODE_ENV !== "production" ? (0, _warning.default)(contrast >= 3, ["Material-UI: the contrast ratio of ".concat(contrast, ":1 for ").concat(contrastText, " on ").concat(background), 'falls below the WACG recommended absolute minimum contrast ratio of 3:1.', 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast'].join('\n')) : void 0;
     }
 
     return contrastText;
@@ -163,8 +146,10 @@ function createPalette(palette) {
     if (!color.main && color[mainShade]) {
       color.main = color[mainShade];
     }
+
     addLightOrDark(color, 'light', lightShade, tonalOffset);
     addLightOrDark(color, 'dark', darkShade, tonalOffset);
+
     if (!color.contrastText) {
       color.contrastText = getContrastText(color.main);
     }
@@ -173,14 +158,14 @@ function createPalette(palette) {
   augmentColor(primary, 500, 300, 700);
   augmentColor(secondary, 'A400', 'A200', 'A700');
   augmentColor(error, 500, 300, 700);
-
-  var types = { dark: dark, light: light };
-
-  process.env.NODE_ENV !== "production" ? (0, _warning2.default)(types[type], 'Material-UI: the palette type `' + type + '` is not supported.') : void 0;
-
-  var paletteOutput = (0, _deepmerge2.default)((0, _extends3.default)({
+  var types = {
+    dark: dark,
+    light: light
+  };
+  process.env.NODE_ENV !== "production" ? (0, _warning.default)(types[type], "Material-UI: the palette type `".concat(type, "` is not supported.")) : void 0;
+  var paletteOutput = (0, _deepmerge.default)((0, _objectSpread2.default)({
     // A collection of common colors.
-    common: _common2.default,
+    common: _common.default,
     // The palette type, can be light or dark.
     type: type,
     // The colors used to represent primary interface elements for a user.
@@ -190,19 +175,21 @@ function createPalette(palette) {
     // The colors used to represent interface elements that the user should be made aware of.
     error: error,
     // The grey colors.
-    grey: _grey2.default,
+    grey: _grey.default,
     // Used by `getContrastText()` to maximize the contrast between the background and
     // the text.
     contrastThreshold: contrastThreshold,
     // Take a background color and return the color of the text to maximize the contrast.
     getContrastText: getContrastText,
+    // Generate a rich color object.
+    augmentColor: augmentColor,
     // Used by the functions below to shift a color's luminance by approximately
     // two indexes within its tonal palette.
     // E.g., shift from Red 500 to Red 300 or Red 700.
     tonalOffset: tonalOffset
   }, types[type]), other, {
     clone: false // No need to clone deep
-  });
 
+  });
   return paletteOutput;
 }

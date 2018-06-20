@@ -1,51 +1,38 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireDefault(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _styles = require("../styles");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _styles = require('../styles');
-
-var _exactProp = require('../utils/exactProp');
-
-var _exactProp2 = _interopRequireDefault(_exactProp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _exactProp = _interopRequireDefault(require("../utils/exactProp"));
 
 var styles = function styles(theme) {
   return {
     '@global': {
       html: {
-        WebkitFontSmoothing: 'antialiased', // Antialiasing.
-        MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+        WebkitFontSmoothing: 'antialiased',
+        // Antialiasing.
+        MozOsxFontSmoothing: 'grayscale',
+        // Antialiasing.
         // Change from `box-sizing: content-box` so that `width`
         // is not affected by `padding` or `border`.
         boxSizing: 'border-box'
@@ -54,7 +41,8 @@ var styles = function styles(theme) {
         boxSizing: 'inherit'
       },
       body: {
-        margin: 0, // Remove the margin in all browsers.
+        margin: 0,
+        // Remove the margin in all browsers.
         backgroundColor: theme.palette.background.default,
         '@media print': {
           // Save printer ink.
@@ -64,43 +52,48 @@ var styles = function styles(theme) {
     }
   };
 };
-
 /**
  * Kickstart an elegant, consistent, and simple baseline to build upon.
  */
 
-var CssBaseline = function (_React$Component) {
-  (0, _inherits3.default)(CssBaseline, _React$Component);
+
+var CssBaseline =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(CssBaseline, _React$Component);
 
   function CssBaseline() {
-    (0, _classCallCheck3.default)(this, CssBaseline);
-    return (0, _possibleConstructorReturn3.default)(this, (CssBaseline.__proto__ || (0, _getPrototypeOf2.default)(CssBaseline)).apply(this, arguments));
+    (0, _classCallCheck2.default)(this, CssBaseline);
+    return (0, _possibleConstructorReturn2.default)(this, (CssBaseline.__proto__ || (0, _getPrototypeOf.default)(CssBaseline)).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(CssBaseline, [{
-    key: 'render',
+  (0, _createClass2.default)(CssBaseline, [{
+    key: "render",
     value: function render() {
       return this.props.children;
     }
   }]);
   return CssBaseline;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * You can only provide a single element with react@15, a node with react@16.
    */
-  children: _propTypes2.default.node,
+  children: _propTypes.default.node,
+
   /**
    * @ignore
    */
-  classes: _propTypes2.default.object.isRequired
+  classes: _propTypes.default.object.isRequired
 } : {};
-
-CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? (0, _exactProp2.default)(CssBaseline.propTypes, 'CssBaseline') : {};
-
+CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? (0, _exactProp.default)(CssBaseline.propTypes, 'CssBaseline') : {};
 CssBaseline.defaultProps = {
   children: null
 };
 
-exports.default = (0, _styles.withStyles)(styles, { name: 'MuiCssBaseline' })(CssBaseline);
+var _default = (0, _styles.withStyles)(styles, {
+  name: 'MuiCssBaseline'
+})(CssBaseline);
+
+exports.default = _default;

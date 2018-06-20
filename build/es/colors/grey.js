@@ -14,5 +14,4 @@ const grey = {
   A400: '#303030',
   A700: '#616161'
 };
-
 export default grey;

@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 var indigo = {
   50: '#e8eaf6',
   100: '#c5cae9',
@@ -19,5 +20,5 @@ var indigo = {
   A400: '#3d5afe',
   A700: '#304ffe'
 };
-
-exports.default = indigo;
+var _default = indigo;
+exports.default = _default;

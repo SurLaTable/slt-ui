@@ -6,8 +6,10 @@ import exactProp from '../utils/exactProp';
 const styles = theme => ({
   '@global': {
     html: {
-      WebkitFontSmoothing: 'antialiased', // Antialiasing.
-      MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+      WebkitFontSmoothing: 'antialiased',
+      // Antialiasing.
+      MozOsxFontSmoothing: 'grayscale',
+      // Antialiasing.
       // Change from `box-sizing: content-box` so that `width`
       // is not affected by `padding` or `border`.
       boxSizing: 'border-box'
@@ -16,7 +18,8 @@ const styles = theme => ({
       boxSizing: 'inherit'
     },
     body: {
-      margin: 0, // Remove the margin in all browsers.
+      margin: 0,
+      // Remove the margin in all browsers.
       backgroundColor: theme.palette.background.default,
       '@media print': {
         // Save printer ink.
@@ -25,14 +28,16 @@ const styles = theme => ({
     }
   }
 });
-
 /**
  * Kickstart an elegant, consistent, and simple baseline to build upon.
  */
+
+
 class CssBaseline extends React.Component {
   render() {
     return this.props.children;
   }
+
 }
 
 CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -40,16 +45,16 @@ CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? {
    * You can only provide a single element with react@15, a node with react@16.
    */
   children: PropTypes.node,
+
   /**
    * @ignore
    */
   classes: PropTypes.object.isRequired
 } : {};
-
 CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? exactProp(CssBaseline.propTypes, 'CssBaseline') : {};
-
 CssBaseline.defaultProps = {
   children: null
 };
-
-export default withStyles(styles, { name: 'MuiCssBaseline' })(CssBaseline);
+export default withStyles(styles, {
+  name: 'MuiCssBaseline'
+})(CssBaseline);

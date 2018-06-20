@@ -1,95 +1,91 @@
-'use strict';
+"use strict";
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _warning = _interopRequireDefault(require("warning"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _brcast = _interopRequireDefault(require("brcast"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _themeListener = _interopRequireWildcard(require("./themeListener"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _warning = require('warning');
-
-var _warning2 = _interopRequireDefault(_warning);
-
-var _brcast = require('brcast');
-
-var _brcast2 = _interopRequireDefault(_brcast);
-
-var _themeListener = require('./themeListener');
-
-var _themeListener2 = _interopRequireDefault(_themeListener);
-
-var _exactProp = require('../utils/exactProp');
-
-var _exactProp2 = _interopRequireDefault(_exactProp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _exactProp = _interopRequireDefault(require("../utils/exactProp"));
 
 /**
  * This component takes a `theme` property.
  * It makes the `theme` available down the React tree thanks to React context.
  * This component should preferably be used at **the root of your component tree**.
  */
-var MuiThemeProvider = function (_React$Component) {
-  (0, _inherits3.default)(MuiThemeProvider, _React$Component);
+var MuiThemeProvider =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(MuiThemeProvider, _React$Component);
 
   function MuiThemeProvider(props, context) {
-    (0, _classCallCheck3.default)(this, MuiThemeProvider);
+    var _this;
 
-    // Get the outer theme from the context, can be null
-    var _this = (0, _possibleConstructorReturn3.default)(this, (MuiThemeProvider.__proto__ || (0, _getPrototypeOf2.default)(MuiThemeProvider)).call(this, props, context));
+    (0, _classCallCheck2.default)(this, MuiThemeProvider);
+    _this = (0, _possibleConstructorReturn2.default)(this, (MuiThemeProvider.__proto__ || (0, _getPrototypeOf.default)(MuiThemeProvider)).call(this, props, context)); // Get the outer theme from the context, can be null
 
-    _this.broadcast = (0, _brcast2.default)();
-    _this.unsubscribeId = null;
-    _this.outerTheme = null;
-    _this.outerTheme = _themeListener2.default.initial(context);
-    // Propagate the theme so it can be accessed by the children
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "broadcast", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (0, _brcast.default)()
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "unsubscribeId", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "outerTheme", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    _this.outerTheme = _themeListener.default.initial(context); // Propagate the theme so it can be accessed by the children
+
     _this.broadcast.setState(_this.mergeOuterLocalTheme(_this.props.theme));
+
     return _this;
   }
 
-  (0, _createClass3.default)(MuiThemeProvider, [{
-    key: 'getChildContext',
+  (0, _createClass2.default)(MuiThemeProvider, [{
+    key: "getChildContext",
     value: function getChildContext() {
       var _ref;
 
       var _props = this.props,
           sheetsManager = _props.sheetsManager,
           disableStylesGeneration = _props.disableStylesGeneration;
-
       var muiThemeProviderOptions = this.context.muiThemeProviderOptions || {};
 
       if (sheetsManager !== undefined) {
@@ -100,22 +96,22 @@ var MuiThemeProvider = function (_React$Component) {
         muiThemeProviderOptions.disableStylesGeneration = disableStylesGeneration;
       }
 
-      return _ref = {}, (0, _defineProperty3.default)(_ref, _themeListener.CHANNEL, this.broadcast), (0, _defineProperty3.default)(_ref, 'muiThemeProviderOptions', muiThemeProviderOptions), _ref;
+      return _ref = {}, (0, _defineProperty2.default)(_ref, _themeListener.CHANNEL, this.broadcast), (0, _defineProperty2.default)(_ref, "muiThemeProviderOptions", muiThemeProviderOptions), _ref;
     }
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
       // Subscribe on the outer theme, if present
-      this.unsubscribeId = _themeListener2.default.subscribe(this.context, function (outerTheme) {
-        _this2.outerTheme = outerTheme;
-        // Forward the parent theme update to the children
+      this.unsubscribeId = _themeListener.default.subscribe(this.context, function (outerTheme) {
+        _this2.outerTheme = outerTheme; // Forward the parent theme update to the children
+
         _this2.broadcast.setState(_this2.mergeOuterLocalTheme(_this2.props.theme));
       });
     }
   }, {
-    key: 'componentDidUpdate',
+    key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       // Propagate a local theme update
       if (this.props.theme !== prevProps.theme) {
@@ -123,23 +119,19 @@ var MuiThemeProvider = function (_React$Component) {
       }
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       if (this.unsubscribeId !== null) {
-        _themeListener2.default.unsubscribe(this.context, this.unsubscribeId);
+        _themeListener.default.unsubscribe(this.context, this.unsubscribeId);
       }
     }
-    // We are not using the React state in order to avoid unnecessary rerender.
-
   }, {
-    key: 'mergeOuterLocalTheme',
-
-
+    key: "mergeOuterLocalTheme",
     // Simple merge between the outer theme and the local theme
     value: function mergeOuterLocalTheme(localTheme) {
       // To support composition of theme.
       if (typeof localTheme === 'function') {
-        process.env.NODE_ENV !== "production" ? (0, _warning2.default)(this.outerTheme, ['Material-UI: you are providing a theme function property ' + 'to the MuiThemeProvider component:', '<MuiThemeProvider theme={outerTheme => outerTheme} />', '', 'However, no outer theme is present.', 'Make sure a theme is already injected higher in the React tree ' + 'or provide a theme object.'].join('\n')) : void 0;
+        process.env.NODE_ENV !== "production" ? (0, _warning.default)(this.outerTheme, ['Material-UI: you are providing a theme function property ' + 'to the MuiThemeProvider component:', '<MuiThemeProvider theme={outerTheme => outerTheme} />', '', 'However, no outer theme is present.', 'Make sure a theme is already injected higher in the React tree ' + 'or provide a theme object.'].join('\n')) : void 0;
         return localTheme(this.outerTheme);
       }
 
@@ -147,22 +139,32 @@ var MuiThemeProvider = function (_React$Component) {
         return localTheme;
       }
 
-      return (0, _extends3.default)({}, this.outerTheme, localTheme);
+      return (0, _objectSpread2.default)({}, this.outerTheme, localTheme);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
+      // TODO move the sheetsManager property to a different component.
+      // warning(
+      //   typeof window !== 'undefined' || this.props.sheetsManager,
+      //   [
+      //     'Material-UI: you need to provide a sheetsManager to the MuiThemeProvider ' +
+      //       'when rendering on the server.',
+      //     'If you do not, you might experience a memory leak',
+      //   ].join('\n'),
+      // );
       return this.props.children;
     }
   }]);
   return MuiThemeProvider;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * You can only provide a single element with react@15, a node with react@16.
    */
-  children: _propTypes2.default.node.isRequired,
+  children: _propTypes.default.node.isRequired,
+
   /**
    * You can disable the generation of the styles with this option.
    * It can be useful when traversing the React tree outside of the HTML
@@ -171,27 +173,26 @@ MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? {
    * the queries made by the interface server side.
    * You can significantly speed up the traversal with this property.
    */
-  disableStylesGeneration: _propTypes2.default.bool,
+  disableStylesGeneration: _propTypes.default.bool,
+
   /**
    * The sheetsManager is used to deduplicate style sheet injection in the page.
    * It's deduplicating using the (theme, styles) couple.
    * On the server, you should provide a new instance for each request.
    */
-  sheetsManager: _propTypes2.default.object,
+  sheetsManager: _propTypes.default.object,
+
   /**
    * A theme object.
    */
-  theme: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.func]).isRequired
+  theme: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.func]).isRequired
 } : {};
-
-MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? (0, _exactProp2.default)(MuiThemeProvider.propTypes, 'MuiThemeProvider') : {};
-
-MuiThemeProvider.childContextTypes = (0, _extends3.default)({}, _themeListener2.default.contextTypes, {
-  muiThemeProviderOptions: _propTypes2.default.object
+MuiThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? (0, _exactProp.default)(MuiThemeProvider.propTypes, 'MuiThemeProvider') : {};
+MuiThemeProvider.childContextTypes = (0, _objectSpread2.default)({}, _themeListener.default.contextTypes, {
+  muiThemeProviderOptions: _propTypes.default.object
 });
-
-MuiThemeProvider.contextTypes = (0, _extends3.default)({}, _themeListener2.default.contextTypes, {
-  muiThemeProviderOptions: _propTypes2.default.object
+MuiThemeProvider.contextTypes = (0, _objectSpread2.default)({}, _themeListener.default.contextTypes, {
+  muiThemeProviderOptions: _propTypes.default.object
 });
-
-exports.default = MuiThemeProvider;
+var _default = MuiThemeProvider;
+exports.default = _default;

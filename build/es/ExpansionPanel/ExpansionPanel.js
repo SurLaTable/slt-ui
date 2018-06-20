@@ -1,20 +1,26 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
 // @inheritedComponent Paper
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Collapse from '../transitions/Collapse';
 import Paper from '../Paper';
 import withStyles from '../styles/withStyles';
-import { isMuiElement } from '../utils/reactHelpers';
+import { isMuiElement } from '../utils/reactHelpers'; // Workaround https://github.com/jsdom/jsdom/issues/2026
 
+const edgeFix = typeof window !== 'undefined' && /jsdom/.test(window.navigator.userAgent) ? {} : {
+  // Fix a rendering issue on Edge
+  '@supports (-ms-ime-align: auto)': {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0
+  }
+};
 export const styles = theme => {
   const transition = {
     duration: theme.transitions.duration.shortest
   };
-
   return {
     root: {
       position: 'relative',
@@ -37,10 +43,10 @@ export const styles = theme => {
           display: 'none'
         }
       },
-      '&:last-child': {
+      '&:last-child': _objectSpread({
         borderBottomLeftRadius: 2,
         borderBottomRightRadius: 2
-      },
+      }, edgeFix),
       '&$expanded + &': {
         '&:before': {
           display: 'none'
@@ -68,23 +74,38 @@ export const styles = theme => {
 class ExpansionPanel extends React.Component {
   constructor(props, context) {
     super(props, context);
+    Object.defineProperty(this, "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {}
+    });
+    Object.defineProperty(this, "isControlled", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    Object.defineProperty(this, "handleChange", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: event => {
+        const expanded = this.isControlled ? this.props.expanded : this.state.expanded;
 
-    this.state = {};
-    this.isControlled = null;
+        if (!this.isControlled) {
+          this.setState({
+            expanded: !expanded
+          });
+        }
 
-    this.handleChange = event => {
-      const expanded = this.isControlled ? this.props.expanded : this.state.expanded;
-
-      if (!this.isControlled) {
-        this.setState({ expanded: !expanded });
+        if (this.props.onChange) {
+          this.props.onChange(event, !expanded);
+        }
       }
-
-      if (this.props.onChange) {
-        this.props.onChange(event, !expanded);
-      }
-    };
-
+    });
     this.isControlled = props.expanded != null;
+
     if (!this.isControlled) {
       // not controlled, use internal state
       this.state.expanded = props.defaultExpanded !== undefined ? props.defaultExpanded : false;
@@ -103,16 +124,14 @@ class ExpansionPanel extends React.Component {
       expanded: expandedProp,
       onChange
     } = _props,
-          other = _objectWithoutProperties(_props, ['children', 'classes', 'className', 'CollapseProps', 'defaultExpanded', 'disabled', 'expanded', 'onChange']);
-    const expanded = this.isControlled ? expandedProp : this.state.expanded;
+          other = _objectWithoutProperties(_props, ["children", "classes", "className", "CollapseProps", "defaultExpanded", "disabled", "expanded", "onChange"]);
 
+    const expanded = this.isControlled ? expandedProp : this.state.expanded;
     const className = classNames(classes.root, {
       [classes.expanded]: expanded,
       [classes.disabled]: disabled
     }, classNameProp);
-
     let summary = null;
-
     const children = React.Children.map(childrenProp, child => {
       if (!React.isValidElement(child)) {
         return null;
@@ -129,22 +148,19 @@ class ExpansionPanel extends React.Component {
 
       return child;
     });
-
     const CollapseProps = !expanded ? {
       'aria-hidden': 'true'
     } : null;
-
-    return React.createElement(
-      Paper,
-      _extends({ className: className, elevation: 1, square: true }, other),
-      summary,
-      React.createElement(
-        Collapse,
-        _extends({ 'in': expanded, timeout: 'auto' }, CollapseProps, CollapsePropsProp),
-        children
-      )
-    );
+    return React.createElement(Paper, _extends({
+      className: className,
+      elevation: 1,
+      square: true
+    }, other), summary, React.createElement(Collapse, _extends({
+      "in": expanded,
+      timeout: "auto"
+    }, CollapseProps, CollapsePropsProp), children));
   }
+
 }
 
 ExpansionPanel.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -152,31 +168,38 @@ ExpansionPanel.propTypes = process.env.NODE_ENV !== "production" ? {
    * The content of the expansion panel.
    */
   children: PropTypes.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * Properties applied to the `Collapse` element.
    */
   CollapseProps: PropTypes.object,
+
   /**
    * If `true`, expands the panel by default.
    */
   defaultExpanded: PropTypes.bool,
+
   /**
    * If `true`, the panel will be displayed in a disabled state.
    */
   disabled: PropTypes.bool,
+
   /**
    * If `true`, expands the panel, otherwise collapse it.
    * Setting this prop enables control over the panel.
    */
   expanded: PropTypes.bool,
+
   /**
    * Callback fired when the expand/collapse state is changed.
    *
@@ -185,10 +208,10 @@ ExpansionPanel.propTypes = process.env.NODE_ENV !== "production" ? {
    */
   onChange: PropTypes.func
 } : {};
-
 ExpansionPanel.defaultProps = {
   defaultExpanded: false,
   disabled: false
 };
-
-export default withStyles(styles, { name: 'MuiExpansionPanel' })(ExpansionPanel);
+export default withStyles(styles, {
+  name: 'MuiExpansionPanel'
+})(ExpansionPanel);

@@ -1,60 +1,44 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireDefault(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _Transition = _interopRequireDefault(require("react-transition-group/Transition"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _withTheme = _interopRequireDefault(require("../styles/withTheme"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _utils = require("./utils");
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _Transition = require('react-transition-group/Transition');
-
-var _Transition2 = _interopRequireDefault(_Transition);
-
-var _withTheme = require('../styles/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _utils = require('./utils');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+// @inheritedComponent Transition
 function getScale(value) {
-  return 'scale(' + value + ', ' + Math.pow(value, 2) + ')';
-} // @inheritedComponent Transition
+  return "scale(".concat(value, ", ").concat(Math.pow(value, 2), ")");
+}
 
 var styles = {
   entering: {
@@ -66,106 +50,130 @@ var styles = {
     transform: getScale(1)
   }
 };
-
 /**
  * The Grow transition is used by the [Popover](/utils/popovers) component.
  * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
  */
 
-var Grow = function (_React$Component) {
-  (0, _inherits3.default)(Grow, _React$Component);
+var Grow =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Grow, _React$Component);
 
   function Grow() {
     var _ref;
 
-    var _temp, _this, _ret;
+    var _temp, _this;
 
-    (0, _classCallCheck3.default)(this, Grow);
+    (0, _classCallCheck2.default)(this, Grow);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Grow.__proto__ || (0, _getPrototypeOf2.default)(Grow)).call.apply(_ref, [this].concat(args))), _this), _this.autoTimeout = undefined, _this.timer = null, _this.handleEnter = function (node) {
-      var _this$props = _this.props,
-          theme = _this$props.theme,
-          timeout = _this$props.timeout;
+    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = Grow.__proto__ || (0, _getPrototypeOf.default)(Grow)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "autoTimeout", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: undefined
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "timer", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleEnter", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(node) {
+        var _this$props = _this.props,
+            theme = _this$props.theme,
+            timeout = _this$props.timeout;
+        (0, _utils.reflow)(node); // So the animation always start from the start.
 
-      (0, _utils.reflow)(node); // So the animation always start from the start.
+        var _getTransitionProps = (0, _utils.getTransitionProps)(_this.props, {
+          mode: 'enter'
+        }),
+            transitionDuration = _getTransitionProps.duration,
+            delay = _getTransitionProps.delay;
 
-      var _getTransitionProps = (0, _utils.getTransitionProps)(_this.props, {
-        mode: 'enter'
-      }),
-          transitionDuration = _getTransitionProps.duration,
-          delay = _getTransitionProps.delay;
+        var duration = 0;
 
-      var duration = 0;
-      if (timeout === 'auto') {
-        duration = theme.transitions.getAutoHeightDuration(node.clientHeight);
-        _this.autoTimeout = duration;
-      } else {
-        duration = transitionDuration;
+        if (timeout === 'auto') {
+          duration = theme.transitions.getAutoHeightDuration(node.clientHeight);
+          _this.autoTimeout = duration;
+        } else {
+          duration = transitionDuration;
+        }
+
+        node.style.transition = [theme.transitions.create('opacity', {
+          duration: duration,
+          delay: delay
+        }), theme.transitions.create('transform', {
+          duration: duration * 0.666,
+          delay: delay
+        })].join(',');
+
+        if (_this.props.onEnter) {
+          _this.props.onEnter(node);
+        }
       }
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleExit", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(node) {
+        var _this$props2 = _this.props,
+            theme = _this$props2.theme,
+            timeout = _this$props2.timeout;
+        var duration = 0;
 
-      node.style.transition = [theme.transitions.create('opacity', {
-        duration: duration,
-        delay: delay
-      }), theme.transitions.create('transform', {
-        duration: duration * 0.666,
-        delay: delay
-      })].join(',');
+        var _getTransitionProps2 = (0, _utils.getTransitionProps)(_this.props, {
+          mode: 'exit'
+        }),
+            transitionDuration = _getTransitionProps2.duration,
+            delay = _getTransitionProps2.delay;
 
-      if (_this.props.onEnter) {
-        _this.props.onEnter(node);
+        if (timeout === 'auto') {
+          duration = theme.transitions.getAutoHeightDuration(node.clientHeight);
+          _this.autoTimeout = duration;
+        } else {
+          duration = transitionDuration;
+        }
+
+        node.style.transition = [theme.transitions.create('opacity', {
+          duration: duration,
+          delay: delay
+        }), theme.transitions.create('transform', {
+          duration: duration * 0.666,
+          delay: delay || duration * 0.333
+        })].join(',');
+        node.style.opacity = '0';
+        node.style.transform = getScale(0.75);
+
+        if (_this.props.onExit) {
+          _this.props.onExit(node);
+        }
       }
-    }, _this.handleExit = function (node) {
-      var _this$props2 = _this.props,
-          theme = _this$props2.theme,
-          timeout = _this$props2.timeout;
-
-      var duration = 0;
-
-      var _getTransitionProps2 = (0, _utils.getTransitionProps)(_this.props, {
-        mode: 'exit'
-      }),
-          transitionDuration = _getTransitionProps2.duration,
-          delay = _getTransitionProps2.delay;
-
-      if (timeout === 'auto') {
-        duration = theme.transitions.getAutoHeightDuration(node.clientHeight);
-        _this.autoTimeout = duration;
-      } else {
-        duration = transitionDuration;
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "addEndListener", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(_, next) {
+        if (_this.props.timeout === 'auto') {
+          _this.timer = setTimeout(next, _this.autoTimeout || 0);
+        }
       }
-
-      node.style.transition = [theme.transitions.create('opacity', {
-        duration: duration,
-        delay: delay
-      }), theme.transitions.create('transform', {
-        duration: duration * 0.666,
-        delay: delay || duration * 0.333
-      })].join(',');
-
-      node.style.opacity = '0';
-      node.style.transform = getScale(0.75);
-
-      if (_this.props.onExit) {
-        _this.props.onExit(node);
-      }
-    }, _this.addEndListener = function (_, next) {
-      if (_this.props.timeout === 'auto') {
-        _this.timer = setTimeout(next, _this.autoTimeout || 0);
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }), _temp));
   }
 
-  (0, _createClass3.default)(Grow, [{
-    key: 'componentWillUnmount',
+  (0, _createClass2.default)(Grow, [{
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       clearTimeout(this.timer);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _props = this.props,
           children = _props.children,
@@ -174,70 +182,73 @@ var Grow = function (_React$Component) {
           styleProp = _props.style,
           theme = _props.theme,
           timeout = _props.timeout,
-          other = (0, _objectWithoutProperties3.default)(_props, ['children', 'onEnter', 'onExit', 'style', 'theme', 'timeout']);
-
-
-      var style = (0, _extends3.default)({}, styleProp, _react2.default.isValidElement(children) ? children.props.style : {});
-
-      return _react2.default.createElement(
-        _Transition2.default,
-        (0, _extends3.default)({
-          appear: true,
-          onEnter: this.handleEnter,
-          onExit: this.handleExit,
-          addEndListener: this.addEndListener,
-          timeout: timeout === 'auto' ? null : timeout
-        }, other),
-        function (state, childProps) {
-          return _react2.default.cloneElement(children, (0, _extends3.default)({
-            style: (0, _extends3.default)({
-              opacity: 0,
-              transform: getScale(0.75)
-            }, styles[state], style)
-          }, childProps));
-        }
-      );
+          other = (0, _objectWithoutProperties2.default)(_props, ["children", "onEnter", "onExit", "style", "theme", "timeout"]);
+      var style = (0, _objectSpread2.default)({}, styleProp, _react.default.isValidElement(children) ? children.props.style : {});
+      return _react.default.createElement(_Transition.default, (0, _extends2.default)({
+        appear: true,
+        onEnter: this.handleEnter,
+        onExit: this.handleExit,
+        addEndListener: this.addEndListener,
+        timeout: timeout === 'auto' ? null : timeout
+      }, other), function (state, childProps) {
+        return _react.default.cloneElement(children, (0, _objectSpread2.default)({
+          style: (0, _objectSpread2.default)({
+            opacity: 0,
+            transform: getScale(0.75)
+          }, styles[state], style)
+        }, childProps));
+      });
     }
   }]);
   return Grow;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 Grow.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * A single child content element.
    */
-  children: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.func]),
+  children: _propTypes.default.oneOfType([_propTypes.default.element, _propTypes.default.func]),
+
   /**
    * If `true`, show the component; triggers the enter or exit animation.
    */
-  in: _propTypes2.default.bool,
+  in: _propTypes.default.bool,
+
   /**
    * @ignore
    */
-  onEnter: _propTypes2.default.func,
+  onEnter: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onExit: _propTypes2.default.func,
+  onExit: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  style: _propTypes2.default.object,
+  style: _propTypes.default.object,
+
   /**
    * @ignore
    */
-  theme: _propTypes2.default.object.isRequired,
+  theme: _propTypes.default.object.isRequired,
+
   /**
    * The duration for the transition, in milliseconds.
    * You may specify a single timeout for all transitions, or individually with an object.
    *
    * Set to 'auto' to automatically calculate transition time based on height.
    */
-  timeout: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.shape({ enter: _propTypes2.default.number, exit: _propTypes2.default.number }), _propTypes2.default.oneOf(['auto'])])
+  timeout: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+    enter: _propTypes.default.number,
+    exit: _propTypes.default.number
+  }), _propTypes.default.oneOf(['auto'])])
 } : {};
-
 Grow.defaultProps = {
   timeout: 'auto'
 };
 
-exports.default = (0, _withTheme2.default)()(Grow);
+var _default = (0, _withTheme.default)()(Grow);
+
+exports.default = _default;

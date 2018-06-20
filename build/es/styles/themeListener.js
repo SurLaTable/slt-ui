@@ -1,8 +1,6 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; // Same value used by react-jss
 
-// Same value used by react-jss
 export const CHANNEL = '__THEMING__';
-
 const themeListener = {
   contextTypes: {
     [CHANNEL]: PropTypes.object
@@ -21,11 +19,12 @@ const themeListener = {
 
     return context[CHANNEL].subscribe(cb);
   },
+
   unsubscribe(context, subscriptionId) {
     if (context[CHANNEL]) {
       context[CHANNEL].unsubscribe(subscriptionId);
     }
   }
-};
 
+};
 export default themeListener;

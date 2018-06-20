@@ -1,21 +1,23 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RadioGroup = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Radio" */
-  resolve: function resolve() {
-    return import('./Radio');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Radio.default;
   }
 });
-var RadioGroup = exports.RadioGroup = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "RadioGroup" */
-  resolve: function resolve() {
-    return import('./RadioGroup');
+Object.defineProperty(exports, "RadioGroup", {
+  enumerable: true,
+  get: function get() {
+    return _RadioGroup.default;
   }
 });
+
+var _Radio = _interopRequireDefault(require("./Radio"));
+
+var _RadioGroup = _interopRequireDefault(require("./RadioGroup"));

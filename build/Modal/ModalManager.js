@@ -1,40 +1,27 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _style = _interopRequireDefault(require("dom-helpers/style"));
 
-var _keys = require('babel-runtime/core-js/object/keys');
+var _ownerDocument = _interopRequireDefault(require("dom-helpers/ownerDocument"));
 
-var _keys2 = _interopRequireDefault(_keys);
+var _scrollbarSize = _interopRequireDefault(require("dom-helpers/util/scrollbarSize"));
 
-var _style = require('dom-helpers/style');
+var _isOverflowing = _interopRequireDefault(require("./isOverflowing"));
 
-var _style2 = _interopRequireDefault(_style);
-
-var _ownerDocument = require('dom-helpers/ownerDocument');
-
-var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
-
-var _scrollbarSize = require('dom-helpers/util/scrollbarSize');
-
-var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
-
-var _isOverflowing = require('./isOverflowing');
-
-var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
-
-var _manageAriaHidden = require('./manageAriaHidden');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _manageAriaHidden = require("./manageAriaHidden");
 
 function findIndexOf(data, callback) {
   var idx = -1;
@@ -43,58 +30,53 @@ function findIndexOf(data, callback) {
       idx = index;
       return true;
     }
+
     return false;
   });
   return idx;
 }
 
-function findContainer(data, modal) {
-  return findIndexOf(data, function (item) {
-    return item.modals.indexOf(modal) !== -1;
-  });
-}
-
 function getPaddingRight(node) {
-  return parseInt((0, _style2.default)(node, 'paddingRight') || 0, 10);
+  return parseInt((0, _style.default)(node, 'paddingRight') || 0, 10);
 }
 
 function setContainerStyle(data, container) {
-  var style = { overflow: 'hidden' };
+  var style = {
+    overflow: 'hidden'
+  }; // We are only interested in the actual `style` here because we will override it.
 
-  // We are only interested in the actual `style` here because we will override it.
   data.style = {
     overflow: container.style.overflow,
     paddingRight: container.style.paddingRight
   };
 
   if (data.overflowing) {
-    var scrollbarSize = (0, _scrollbarSize2.default)();
+    var scrollbarSize = (0, _scrollbarSize.default)(); // Use computed style, here to get the real padding to add our scrollbar width.
 
-    // Use computed style, here to get the real padding to add our scrollbar width.
-    style.paddingRight = getPaddingRight(container) + scrollbarSize + 'px';
+    style.paddingRight = "".concat(getPaddingRight(container) + scrollbarSize, "px"); // .mui-fixed is a global helper.
 
-    // .mui-fixed is a global helper.
-    var fixedNodes = (0, _ownerDocument2.default)(container).querySelectorAll('.mui-fixed');
+    var fixedNodes = (0, _ownerDocument.default)(container).querySelectorAll('.mui-fixed');
+
     for (var i = 0; i < fixedNodes.length; i += 1) {
       var paddingRight = getPaddingRight(fixedNodes[i]);
       data.prevPaddings.push(paddingRight);
-      fixedNodes[i].style.paddingRight = paddingRight + scrollbarSize + 'px';
+      fixedNodes[i].style.paddingRight = "".concat(paddingRight + scrollbarSize, "px");
     }
   }
 
-  (0, _keys2.default)(style).forEach(function (key) {
+  (0, _keys.default)(style).forEach(function (key) {
     container.style[key] = style[key];
   });
 }
 
 function removeContainerStyle(data, container) {
-  (0, _keys2.default)(data.style).forEach(function (key) {
+  (0, _keys.default)(data.style).forEach(function (key) {
     container.style[key] = data.style[key];
   });
+  var fixedNodes = (0, _ownerDocument.default)(container).querySelectorAll('.mui-fixed');
 
-  var fixedNodes = (0, _ownerDocument2.default)(container).querySelectorAll('.mui-fixed');
   for (var i = 0; i < fixedNodes.length; i += 1) {
-    fixedNodes[i].style.paddingRight = data.prevPaddings[i] + 'px';
+    fixedNodes[i].style.paddingRight = "".concat(data.prevPaddings[i], "px");
   }
 }
 /**
@@ -105,33 +87,33 @@ function removeContainerStyle(data, container) {
  * Used by the Modal to ensure proper styling of containers.
  */
 
-var ModalManager = function () {
+
+var ModalManager =
+/*#__PURE__*/
+function () {
   function ModalManager() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref$hideSiblingNodes = _ref.hideSiblingNodes,
-        hideSiblingNodes = _ref$hideSiblingNodes === undefined ? true : _ref$hideSiblingNodes,
-        _ref$handleContainerO = _ref.handleContainerOverflow,
-        handleContainerOverflow = _ref$handleContainerO === undefined ? true : _ref$handleContainerO;
-
-    (0, _classCallCheck3.default)(this, ModalManager);
-
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    (0, _classCallCheck2.default)(this, ModalManager);
+    var _options$hideSiblingN = options.hideSiblingNodes,
+        hideSiblingNodes = _options$hideSiblingN === void 0 ? true : _options$hideSiblingN,
+        _options$handleContai = options.handleContainerOverflow,
+        handleContainerOverflow = _options$handleContai === void 0 ? true : _options$handleContai;
     this.hideSiblingNodes = hideSiblingNodes;
-    this.handleContainerOverflow = handleContainerOverflow;
-    // this.modals[modalIdx] = modal
-    this.modals = [];
-    // this.containers[containerIdx] = container
-    this.containers = [];
-    // this.data[containerIdx] = {
+    this.handleContainerOverflow = handleContainerOverflow; // this.modals[modalIdx] = modal
+
+    this.modals = []; // this.containers[containerIdx] = container
+
+    this.containers = []; // this.data[containerIdx] = {
     //   modals: [],
     // }
+
     this.data = [];
   }
 
-  (0, _createClass3.default)(ModalManager, [{
-    key: 'add',
+  (0, _createClass2.default)(ModalManager, [{
+    key: "add",
     value: function add(modal, container) {
       var modalIdx = this.modals.indexOf(modal);
-      var containerIdx = this.containers.indexOf(container);
 
       if (modalIdx !== -1) {
         return modalIdx;
@@ -144,6 +126,8 @@ var ModalManager = function () {
         (0, _manageAriaHidden.hideSiblings)(container, modal.mountNode);
       }
 
+      var containerIdx = this.containers.indexOf(container);
+
       if (containerIdx !== -1) {
         this.data[containerIdx].modals.push(modal);
         return modalIdx;
@@ -151,7 +135,7 @@ var ModalManager = function () {
 
       var data = {
         modals: [modal],
-        overflowing: (0, _isOverflowing2.default)(container),
+        overflowing: (0, _isOverflowing.default)(container),
         prevPaddings: []
       };
 
@@ -161,11 +145,10 @@ var ModalManager = function () {
 
       this.containers.push(container);
       this.data.push(data);
-
       return modalIdx;
     }
   }, {
-    key: 'remove',
+    key: "remove",
     value: function remove(modal) {
       var modalIdx = this.modals.indexOf(modal);
 
@@ -173,14 +156,14 @@ var ModalManager = function () {
         return modalIdx;
       }
 
-      var containerIdx = findContainer(this.data, modal);
+      var containerIdx = findIndexOf(this.data, function (item) {
+        return item.modals.indexOf(modal) !== -1;
+      });
       var data = this.data[containerIdx];
       var container = this.containers[containerIdx];
-
       data.modals.splice(data.modals.indexOf(modal), 1);
-      this.modals.splice(modalIdx, 1);
+      this.modals.splice(modalIdx, 1); // If that was the last modal in a container, clean up the container.
 
-      // If that was the last modal in a container, clean up the container.
       if (data.modals.length === 0) {
         if (this.handleContainerOverflow) {
           removeContainerStyle(data, container);
@@ -189,17 +172,18 @@ var ModalManager = function () {
         if (this.hideSiblingNodes) {
           (0, _manageAriaHidden.showSiblings)(container, modal.mountNode);
         }
+
         this.containers.splice(containerIdx, 1);
         this.data.splice(containerIdx, 1);
       } else if (this.hideSiblingNodes) {
-        // Otherwise make sure the next top modal is visible to a SR.
+        // Otherwise make sure the next top modal is visible to a screan reader.
         (0, _manageAriaHidden.ariaHidden)(false, data.modals[data.modals.length - 1].mountNode);
       }
 
       return modalIdx;
     }
   }, {
-    key: 'isTopModal',
+    key: "isTopModal",
     value: function isTopModal(modal) {
       return !!this.modals.length && this.modals[this.modals.length - 1] === modal;
     }
@@ -207,4 +191,5 @@ var ModalManager = function () {
   return ModalManager;
 }();
 
-exports.default = ModalManager;
+var _default = ModalManager;
+exports.default = _default;

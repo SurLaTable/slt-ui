@@ -1,120 +1,115 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireDefault(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _wrapDisplayName = _interopRequireDefault(require("recompose/wrapDisplayName"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _createMuiTheme = _interopRequireDefault(require("./createMuiTheme"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _themeListener = _interopRequireDefault(require("./themeListener"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _hoistNonReactStatics = require('hoist-non-react-statics');
-
-var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
-
-var _wrapDisplayName = require('recompose/wrapDisplayName');
-
-var _wrapDisplayName2 = _interopRequireDefault(_wrapDisplayName);
-
-var _createMuiTheme = require('./createMuiTheme');
-
-var _createMuiTheme2 = _interopRequireDefault(_createMuiTheme);
-
-var _themeListener = require('./themeListener');
-
-var _themeListener2 = _interopRequireDefault(_themeListener);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var defaultTheme = void 0;
+var defaultTheme;
 
 function getDefaultTheme() {
   if (defaultTheme) {
     return defaultTheme;
   }
 
-  defaultTheme = (0, _createMuiTheme2.default)();
+  defaultTheme = (0, _createMuiTheme.default)();
   return defaultTheme;
-}
+} // Provide the theme object as a property to the input component.
 
-// Provide the theme object as a property to the input component.
+
 var withTheme = function withTheme() {
   return function (Component) {
-    var WithTheme = function (_React$Component) {
-      (0, _inherits3.default)(WithTheme, _React$Component);
+    var WithTheme =
+    /*#__PURE__*/
+    function (_React$Component) {
+      (0, _inherits2.default)(WithTheme, _React$Component);
 
       function WithTheme(props, context) {
-        (0, _classCallCheck3.default)(this, WithTheme);
+        var _this;
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (WithTheme.__proto__ || (0, _getPrototypeOf2.default)(WithTheme)).call(this, props, context));
-
-        _this.state = {};
-        _this.unsubscribeId = null;
-
-
+        (0, _classCallCheck2.default)(this, WithTheme);
+        _this = (0, _possibleConstructorReturn2.default)(this, (WithTheme.__proto__ || (0, _getPrototypeOf.default)(WithTheme)).call(this, props, context));
+        Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
+          configurable: true,
+          enumerable: true,
+          writable: true,
+          value: {}
+        });
+        Object.defineProperty((0, _assertThisInitialized2.default)(_this), "unsubscribeId", {
+          configurable: true,
+          enumerable: true,
+          writable: true,
+          value: null
+        });
         _this.state = {
           // We use || as the function call is lazy evaluated.
-          theme: _themeListener2.default.initial(context) || getDefaultTheme()
+          theme: _themeListener.default.initial(context) || getDefaultTheme()
         };
         return _this;
       }
 
-      (0, _createClass3.default)(WithTheme, [{
-        key: 'componentDidMount',
+      (0, _createClass2.default)(WithTheme, [{
+        key: "componentDidMount",
         value: function componentDidMount() {
           var _this2 = this;
 
-          this.unsubscribeId = _themeListener2.default.subscribe(this.context, function (theme) {
-            _this2.setState({ theme: theme });
+          this.unsubscribeId = _themeListener.default.subscribe(this.context, function (theme) {
+            _this2.setState({
+              theme: theme
+            });
           });
         }
       }, {
-        key: 'componentWillUnmount',
+        key: "componentWillUnmount",
         value: function componentWillUnmount() {
           if (this.unsubscribeId !== null) {
-            _themeListener2.default.unsubscribe(this.context, this.unsubscribeId);
+            _themeListener.default.unsubscribe(this.context, this.unsubscribeId);
           }
         }
       }, {
-        key: 'render',
+        key: "render",
         value: function render() {
-          return _react2.default.createElement(Component, (0, _extends3.default)({ theme: this.state.theme }, this.props));
+          return _react.default.createElement(Component, (0, _extends2.default)({
+            theme: this.state.theme
+          }, this.props));
         }
       }]);
       return WithTheme;
-    }(_react2.default.Component);
+    }(_react.default.Component);
 
-    WithTheme.contextTypes = _themeListener2.default.contextTypes;
+    WithTheme.contextTypes = _themeListener.default.contextTypes;
 
     if (process.env.NODE_ENV !== 'production') {
-      WithTheme.displayName = (0, _wrapDisplayName2.default)(Component, 'WithTheme');
+      WithTheme.displayName = (0, _wrapDisplayName.default)(Component, 'WithTheme');
     }
 
-    (0, _hoistNonReactStatics2.default)(WithTheme, Component);
+    (0, _hoistNonReactStatics.default)(WithTheme, Component);
 
     if (process.env.NODE_ENV !== 'production') {
       // Exposed for test purposes.
@@ -125,4 +120,5 @@ var withTheme = function withTheme() {
   };
 };
 
-exports.default = withTheme;
+var _default = withTheme;
+exports.default = _default;

@@ -1,49 +1,55 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.StepLabel = exports.StepIcon = exports.StepContent = exports.StepButton = exports.Step = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Stepper" */
-  resolve: function resolve() {
-    return import('./Stepper');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Stepper.default;
   }
 });
-var Step = exports.Step = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Step" */
-  resolve: function resolve() {
-    return import('./Step');
+Object.defineProperty(exports, "Step", {
+  enumerable: true,
+  get: function get() {
+    return _Step.default;
+  }
+});
+Object.defineProperty(exports, "StepButton", {
+  enumerable: true,
+  get: function get() {
+    return _StepButton.default;
+  }
+});
+Object.defineProperty(exports, "StepContent", {
+  enumerable: true,
+  get: function get() {
+    return _StepContent.default;
+  }
+});
+Object.defineProperty(exports, "StepIcon", {
+  enumerable: true,
+  get: function get() {
+    return _StepIcon.default;
+  }
+});
+Object.defineProperty(exports, "StepLabel", {
+  enumerable: true,
+  get: function get() {
+    return _StepLabel.default;
   }
 });
 
-var StepButton = exports.StepButton = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "StepButton" */
-  resolve: function resolve() {
-    return import('./StepButton');
-  }
-});
+var _Stepper = _interopRequireDefault(require("./Stepper"));
 
-var StepContent = exports.StepContent = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "StepContent" */
-  resolve: function resolve() {
-    return import('./StepContent');
-  }
-});
+var _Step = _interopRequireDefault(require("./Step"));
 
-var StepIcon = exports.StepIcon = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "StepIcon" */
-  resolve: function resolve() {
-    return import('./StepIcon');
-  }
-});
+var _StepButton = _interopRequireDefault(require("./StepButton"));
 
-var StepLabel = exports.StepLabel = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "StepLabel" */
-  resolve: function resolve() {
-    return import('./StepLabel');
-  }
-});
+var _StepContent = _interopRequireDefault(require("./StepContent"));
+
+var _StepIcon = _interopRequireDefault(require("./StepIcon"));
+
+var _StepLabel = _interopRequireDefault(require("./StepLabel"));

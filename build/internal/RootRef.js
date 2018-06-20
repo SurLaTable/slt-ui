@@ -1,42 +1,27 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireDefault(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 /**
  * @ignore - internal component.
@@ -45,36 +30,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * child element that may not accept refs (functional component).
  * It's higly inspired by https://github.com/facebook/react/issues/11401#issuecomment-340543801
  */
-var RootRef = function (_React$Component) {
-  (0, _inherits3.default)(RootRef, _React$Component);
+var RootRef =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(RootRef, _React$Component);
 
   function RootRef() {
-    (0, _classCallCheck3.default)(this, RootRef);
-    return (0, _possibleConstructorReturn3.default)(this, (RootRef.__proto__ || (0, _getPrototypeOf2.default)(RootRef)).apply(this, arguments));
+    (0, _classCallCheck2.default)(this, RootRef);
+    return (0, _possibleConstructorReturn2.default)(this, (RootRef.__proto__ || (0, _getPrototypeOf.default)(RootRef)).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(RootRef, [{
-    key: 'componentDidMount',
+  (0, _createClass2.default)(RootRef, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.rootRef(_reactDom2.default.findDOMNode(this));
+      this.props.rootRef(_reactDom.default.findDOMNode(this));
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.props.rootRef(null);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return this.props.children;
     }
   }]);
   return RootRef;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 RootRef.propTypes = process.env.NODE_ENV !== "production" ? {
-  children: _propTypes2.default.element.isRequired,
-  rootRef: _propTypes2.default.func.isRequired
+  children: _propTypes.default.element.isRequired,
+  rootRef: _propTypes.default.func.isRequired
 } : {};
-
-exports.default = RootRef;
+var _default = RootRef;
+exports.default = _default;

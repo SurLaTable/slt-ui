@@ -1,11 +1,2 @@
-import { asyncComponent } from 'react-async-component';
-
-export default asyncComponent({
-  /* webpackChunkName: "BottomNavigation" */
-  resolve: () => import('./BottomNavigation')
-});
-
-export const BottomNavigationAction = asyncComponent({
-  /* webpackChunkName: "BottomNavigationAction" */
-  resolve: () => import('./BottomNavigationAction')
-});
+export { default } from './BottomNavigation';
+export { default as BottomNavigationAction } from './BottomNavigationAction';

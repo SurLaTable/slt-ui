@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -14,6 +14,7 @@ function isHidable(node) {
 
 function siblings(container, mount, callback) {
   mount = [].concat(mount); // eslint-disable-line no-param-reassign
+
   [].forEach.call(container.children, function (node) {
     if (mount.indexOf(node) === -1 && isHidable(node)) {
       callback(node);
@@ -25,6 +26,7 @@ function ariaHidden(show, node) {
   if (!node) {
     return;
   }
+
   if (show) {
     node.setAttribute('aria-hidden', 'true');
   } else {

@@ -14,5 +14,4 @@ const amber = {
   A400: '#ffc400',
   A700: '#ffab00'
 };
-
 export default amber;

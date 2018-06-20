@@ -1,39 +1,27 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _react = _interopRequireDefault(require("react"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _react = require('react');
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react2 = _interopRequireDefault(_react);
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _propTypes = require('prop-types');
+var _helpers = require("../utils/helpers");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _helpers = require('../utils/helpers');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     root: {
       position: 'absolute',
@@ -51,45 +39,41 @@ var styles = exports.styles = function styles(theme) {
     }
   };
 };
-
 /**
  * @ignore - internal component.
  */
+
+
+exports.styles = styles;
+
 function TabIndicator(props) {
   var classes = props.classes,
-      classNameProp = props.className,
+      className = props.className,
       color = props.color,
-      styleProp = props.style;
-
-  var colorPredefined = ['primary', 'secondary'].indexOf(color) !== -1;
-  var className = (0, _classnames2.default)(classes.root, (0, _defineProperty3.default)({}, classes['color' + (0, _helpers.capitalize)(color)], colorPredefined), classNameProp);
-
-  var style = colorPredefined ? styleProp : (0, _extends3.default)({}, styleProp, {
-    backgroundColor: color
-  });
-
-  return _react2.default.createElement('span', { className: className, style: style });
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "color"]);
+  return _react.default.createElement("span", (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, classes["color".concat((0, _helpers.capitalize)(color))], className)
+  }, other));
 }
 
 TabIndicator.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * @ignore
    * The color of the tab indicator.
    */
-  color: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.oneOf(['primary', 'secondary'])]),
-  /**
-   * @ignore
-   * The style of the root element.
-   */
-  style: _propTypes2.default.object
+  color: _propTypes.default.oneOf(['primary', 'secondary'])
 } : {};
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiTabIndicator' })(TabIndicator);
+var _default = (0, _withStyles.default)(styles)(TabIndicator);
+
+exports.default = _default;

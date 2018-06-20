@@ -14,5 +14,4 @@ const lime = {
   A400: '#c6ff00',
   A700: '#aeea00'
 };
-
 export default lime;

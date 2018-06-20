@@ -1,79 +1,51 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _keycode = _interopRequireDefault(require("keycode"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _Cancel = _interopRequireDefault(require("../internal/svg-icons/Cancel"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _colorManipulator = require("../styles/colorManipulator");
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _keycode = require('keycode');
-
-var _keycode2 = _interopRequireDefault(_keycode);
-
-var _Cancel = require('../internal/svg-icons/Cancel');
-
-var _Cancel2 = _interopRequireDefault(_Cancel);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _colorManipulator = require('../styles/colorManipulator');
-
-require('../Avatar/Avatar');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+require("../Avatar/Avatar");
 
 // So we don't have any override priority issue.
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   var height = 32;
   var backgroundColor = theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700];
   var deleteIconColor = (0, _colorManipulator.fade)(theme.palette.text.primary, 0.26);
-
   return {
     root: {
       fontFamily: theme.typography.fontFamily,
@@ -86,12 +58,15 @@ var styles = exports.styles = function styles(theme) {
       backgroundColor: backgroundColor,
       borderRadius: height / 2,
       whiteSpace: 'nowrap',
-      transition: theme.transitions.create(),
+      transition: theme.transitions.create(['background-color', 'box-shadow']),
       // label will inherit this from root, then `clickable` class overrides this for both
       cursor: 'default',
-      outline: 'none', // No outline on focused element in Chrome (as triggered by tabIndex prop)
-      border: 'none', // Remove `button` border
+      // We disable the focus ring for mouse, touch and keyboard users.
+      outline: 'none',
+      border: 'none',
+      // Remove `button` border
       padding: 0 // Remove `button` padding
+
     },
     clickable: {
       // Remove grey highlight
@@ -143,67 +118,86 @@ var styles = exports.styles = function styles(theme) {
     }
   };
 };
-
 /**
  * Chips represent complex entities in small blocks, such as a contact.
  */
 
-var Chip = function (_React$Component) {
-  (0, _inherits3.default)(Chip, _React$Component);
+
+exports.styles = styles;
+
+var Chip =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Chip, _React$Component);
 
   function Chip() {
     var _ref;
 
-    var _temp, _this, _ret;
+    var _temp, _this;
 
-    (0, _classCallCheck3.default)(this, Chip);
+    (0, _classCallCheck2.default)(this, Chip);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Chip.__proto__ || (0, _getPrototypeOf2.default)(Chip)).call.apply(_ref, [this].concat(args))), _this), _this.chipRef = null, _this.handleDeleteIconClick = function (event) {
-      // Stop the event from bubbling up to the `Chip`
-      event.stopPropagation();
-      var onDelete = _this.props.onDelete;
+    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = Chip.__proto__ || (0, _getPrototypeOf.default)(Chip)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "chipRef", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleDeleteIconClick", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        // Stop the event from bubbling up to the `Chip`
+        event.stopPropagation();
+        var onDelete = _this.props.onDelete;
 
-      if (onDelete) {
-        onDelete(event);
-      }
-    }, _this.handleKeyDown = function (event) {
-      // Ignore events from children of `Chip`.
-      if (event.currentTarget !== event.target) {
-        return;
-      }
-
-      var _this$props = _this.props,
-          onClick = _this$props.onClick,
-          onDelete = _this$props.onDelete,
-          onKeyDown = _this$props.onKeyDown;
-
-      var key = (0, _keycode2.default)(event);
-
-      if (onClick && (key === 'space' || key === 'enter')) {
-        event.preventDefault();
-        onClick(event);
-      } else if (onDelete && key === 'backspace') {
-        event.preventDefault();
-        onDelete(event);
-      } else if (key === 'esc') {
-        event.preventDefault();
-        if (_this.chipRef) {
-          _this.chipRef.blur();
+        if (onDelete) {
+          onDelete(event);
         }
       }
+    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleKeyDown", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        // Ignore events from children of `Chip`.
+        if (event.currentTarget !== event.target) {
+          return;
+        }
 
-      if (onKeyDown) {
-        onKeyDown(event);
+        var _this$props = _this.props,
+            onClick = _this$props.onClick,
+            onDelete = _this$props.onDelete,
+            onKeyDown = _this$props.onKeyDown;
+        var key = (0, _keycode.default)(event);
+
+        if (onClick && (key === 'space' || key === 'enter')) {
+          event.preventDefault();
+          onClick(event);
+        } else if (onDelete && key === 'backspace') {
+          event.preventDefault();
+          onDelete(event);
+        } else if (key === 'esc') {
+          event.preventDefault();
+
+          if (_this.chipRef) {
+            _this.chipRef.blur();
+          }
+        }
+
+        if (onKeyDown) {
+          onKeyDown(event);
+        }
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }), _temp));
   }
 
-  (0, _createClass3.default)(Chip, [{
-    key: 'render',
+  (0, _createClass2.default)(Chip, [{
+    key: "render",
     value: function render() {
       var _this2 = this;
 
@@ -218,24 +212,26 @@ var Chip = function (_React$Component) {
           onDelete = _props.onDelete,
           onKeyDown = _props.onKeyDown,
           tabIndexProp = _props.tabIndex,
-          other = (0, _objectWithoutProperties3.default)(_props, ['avatar', 'classes', 'className', 'component', 'deleteIcon', 'label', 'onClick', 'onDelete', 'onKeyDown', 'tabIndex']);
-
-
-      var className = (0, _classnames2.default)(classes.root, (0, _defineProperty3.default)({}, classes.clickable, onClick), (0, _defineProperty3.default)({}, classes.deletable, onDelete), classNameProp);
-
+          other = (0, _objectWithoutProperties2.default)(_props, ["avatar", "classes", "className", "component", "deleteIcon", "label", "onClick", "onDelete", "onKeyDown", "tabIndex"]);
+      var className = (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.clickable, onClick), (0, _defineProperty2.default)({}, classes.deletable, onDelete), classNameProp);
       var deleteIcon = null;
+
       if (onDelete) {
-        deleteIcon = deleteIconProp && _react2.default.isValidElement(deleteIconProp) ? _react2.default.cloneElement(deleteIconProp, {
-          className: (0, _classnames2.default)(deleteIconProp.props.className, classes.deleteIcon),
+        deleteIcon = deleteIconProp && _react.default.isValidElement(deleteIconProp) ? _react.default.cloneElement(deleteIconProp, {
+          className: (0, _classnames.default)(deleteIconProp.props.className, classes.deleteIcon),
           onClick: this.handleDeleteIconClick
-        }) : _react2.default.createElement(_Cancel2.default, { className: classes.deleteIcon, onClick: this.handleDeleteIconClick });
+        }) : _react.default.createElement(_Cancel.default, {
+          className: classes.deleteIcon,
+          onClick: this.handleDeleteIconClick
+        });
       }
 
       var avatar = null;
-      if (avatarProp && _react2.default.isValidElement(avatarProp)) {
-        avatar = _react2.default.cloneElement(avatarProp, {
-          className: (0, _classnames2.default)(classes.avatar, avatarProp.props.className),
-          childrenClassName: (0, _classnames2.default)(classes.avatarChildren, avatarProp.props.childrenClassName)
+
+      if (avatarProp && _react.default.isValidElement(avatarProp)) {
+        avatar = _react.default.cloneElement(avatarProp, {
+          className: (0, _classnames.default)(classes.avatar, avatarProp.props.className),
+          childrenClassName: (0, _classnames.default)(classes.avatarChildren, avatarProp.props.childrenClassName)
         });
       }
 
@@ -245,78 +241,82 @@ var Chip = function (_React$Component) {
         tabIndex = onClick || onDelete ? 0 : -1;
       }
 
-      return _react2.default.createElement(
-        Component,
-        (0, _extends3.default)({
-          role: 'button',
-          className: className,
-          tabIndex: tabIndex,
-          onClick: onClick,
-          onKeyDown: this.handleKeyDown,
-          ref: function ref(node) {
-            _this2.chipRef = node;
-          }
-        }, other),
-        avatar,
-        _react2.default.createElement(
-          'span',
-          { className: classes.label },
-          label
-        ),
-        deleteIcon
-      );
+      return _react.default.createElement(Component, (0, _extends2.default)({
+        role: "button",
+        className: className,
+        tabIndex: tabIndex,
+        onClick: onClick,
+        onKeyDown: this.handleKeyDown,
+        ref: function ref(node) {
+          _this2.chipRef = node;
+        }
+      }, other), avatar, _react.default.createElement("span", {
+        className: classes.label
+      }, label), deleteIcon);
     }
   }]);
   return Chip;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 Chip.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Avatar element.
    */
-  avatar: _propTypes2.default.element,
+  avatar: _propTypes.default.element,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
+
   /**
    * Override the default delete icon element. Shown only if `onDelete` is set.
    */
-  deleteIcon: _propTypes2.default.element,
+  deleteIcon: _propTypes.default.element,
+
   /**
    * The content of the label.
    */
-  label: _propTypes2.default.node,
+  label: _propTypes.default.node,
+
   /**
    * @ignore
    */
-  onClick: _propTypes2.default.func,
+  onClick: _propTypes.default.func,
+
   /**
    * Callback function fired when the delete icon is clicked.
    * If set, the delete icon will be shown.
    */
-  onDelete: _propTypes2.default.func,
-  /**
-   * @ignore
-   */
-  onKeyDown: _propTypes2.default.func,
-  /**
-   * @ignore
-   */
-  tabIndex: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string])
-} : {};
+  onDelete: _propTypes.default.func,
 
+  /**
+   * @ignore
+   */
+  onKeyDown: _propTypes.default.func,
+
+  /**
+   * @ignore
+   */
+  tabIndex: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string])
+} : {};
 Chip.defaultProps = {
   component: 'div'
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiChip' })(Chip);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiChip'
+})(Chip);
+
+exports.default = _default;

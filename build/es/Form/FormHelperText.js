@@ -1,10 +1,9 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
-
 export const styles = theme => ({
   root: {
     color: theme.palette.text.secondary,
@@ -14,14 +13,16 @@ export const styles = theme => ({
     marginTop: theme.spacing.unit,
     lineHeight: '1em',
     minHeight: '1em',
-    margin: 0
+    margin: 0,
+    '&$error': {
+      color: theme.palette.error.main
+    },
+    '&$disabled': {
+      color: theme.palette.text.disabled
+    }
   },
-  error: {
-    color: theme.palette.error.main
-  },
-  disabled: {
-    color: theme.palette.text.disabled
-  },
+  error: {},
+  disabled: {},
   marginDense: {
     marginTop: theme.spacing.unit / 2
   }
@@ -36,9 +37,11 @@ function FormHelperText(props, context) {
     margin: marginProp,
     component: Component
   } = props,
-        other = _objectWithoutProperties(props, ['classes', 'className', 'disabled', 'error', 'margin', 'component']);
-  const { muiFormControl } = context;
+        other = _objectWithoutProperties(props, ["classes", "className", "disabled", "error", "margin", "component"]);
 
+  const {
+    muiFormControl
+  } = context;
   let disabled = disabledProp;
   let error = errorProp;
   let margin = marginProp;
@@ -62,8 +65,9 @@ function FormHelperText(props, context) {
     [classes.error]: error,
     [classes.marginDense]: margin === 'dense'
   }, classNameProp);
-
-  return React.createElement(Component, _extends({ className: className }, other));
+  return React.createElement(Component, _extends({
+    className: className
+  }, other));
 }
 
 FormHelperText.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -71,40 +75,45 @@ FormHelperText.propTypes = process.env.NODE_ENV !== "production" ? {
    * The content of the component.
    */
   children: PropTypes.node,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+
   /**
    * If `true`, the helper text should be displayed in a disabled state.
    */
   disabled: PropTypes.bool,
+
   /**
    * If `true`, helper text should be displayed in an error state.
    */
   error: PropTypes.bool,
+
   /**
    * If `dense`, will adjust vertical spacing. This is normally obtained via context from
    * FormControl.
    */
   margin: PropTypes.oneOf(['dense'])
 } : {};
-
 FormHelperText.defaultProps = {
   component: 'p'
 };
-
 FormHelperText.contextTypes = {
   muiFormControl: PropTypes.object
 };
-
-export default withStyles(styles, { name: 'MuiFormHelperText' })(FormHelperText);
+export default withStyles(styles, {
+  name: 'MuiFormHelperText'
+})(FormHelperText);

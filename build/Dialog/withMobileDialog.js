@@ -1,26 +1,21 @@
-'use strict';
+"use strict";
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _react = _interopRequireDefault(require("react"));
 
-var _react = require('react');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _withWidth = require('../utils/withWidth');
-
-var _withWidth2 = _interopRequireDefault(_withWidth);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _withWidth = _interopRequireWildcard(require("../utils/withWidth"));
 
 /**
  * Dialog will responsively be full screen *at or below* the given breakpoint
@@ -31,19 +26,20 @@ var withMobileDialog = function withMobileDialog() {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return function (Component) {
     var _options$breakpoint = options.breakpoint,
-        breakpoint = _options$breakpoint === undefined ? 'sm' : _options$breakpoint;
-
+        breakpoint = _options$breakpoint === void 0 ? 'sm' : _options$breakpoint;
 
     function WithMobileDialog(props) {
-      return _react2.default.createElement(Component, (0, _extends3.default)({ fullScreen: (0, _withWidth.isWidthDown)(breakpoint, props.width) }, props));
+      return _react.default.createElement(Component, (0, _extends2.default)({
+        fullScreen: (0, _withWidth.isWidthDown)(breakpoint, props.width)
+      }, props));
     }
 
     WithMobileDialog.propTypes = process.env.NODE_ENV !== "production" ? {
-      width: _propTypes2.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired
+      width: _propTypes.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired
     } : {};
-
-    return (0, _withWidth2.default)()(WithMobileDialog);
+    return (0, _withWidth.default)()(WithMobileDialog);
   };
 };
 
-exports.default = withMobileDialog;
+var _default = withMobileDialog;
+exports.default = _default;

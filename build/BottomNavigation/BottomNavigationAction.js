@@ -1,65 +1,42 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _react = _interopRequireDefault(require("react"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _ButtonBase = require('../ButtonBase');
-
-var _ButtonBase2 = _interopRequireDefault(_ButtonBase);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+// @inheritedComponent ButtonBase
+var styles = function styles(theme) {
   return {
     root: {
       transition: theme.transitions.create(['color', 'padding-top'], {
@@ -72,15 +49,17 @@ var styles = exports.styles = function styles(theme) {
       minWidth: 80,
       maxWidth: 168,
       color: theme.palette.text.secondary,
-      flex: '1'
+      flex: '1',
+      '&$iconOnly': {
+        paddingTop: theme.spacing.unit * 2
+      },
+      '&$selected': {
+        paddingTop: 6,
+        color: theme.palette.primary.main
+      }
     },
-    selected: {
-      paddingTop: 6,
-      color: theme.palette.primary.main
-    },
-    selectedIconOnly: {
-      paddingTop: theme.spacing.unit * 2
-    },
+    selected: {},
+    iconOnly: {},
     wrapper: {
       display: 'inline-flex',
       alignItems: 'center',
@@ -93,51 +72,59 @@ var styles = exports.styles = function styles(theme) {
       fontSize: theme.typography.pxToRem(12),
       opacity: 1,
       transition: 'font-size 0.2s, opacity 0.2s',
-      transitionDelay: '0.1s'
-    },
-    labelSelected: {
-      fontSize: theme.typography.pxToRem(14)
-    },
-    labelHidden: {
-      opacity: 0,
-      transitionDelay: '0s'
+      transitionDelay: '0.1s',
+      '&$iconOnly': {
+        opacity: 0,
+        transitionDelay: '0s'
+      },
+      '&$selected': {
+        fontSize: theme.typography.pxToRem(14)
+      }
     }
   };
-}; // @inheritedComponent ButtonBase
+};
 
-var BottomNavigationAction = function (_React$Component) {
-  (0, _inherits3.default)(BottomNavigationAction, _React$Component);
+exports.styles = styles;
+
+var BottomNavigationAction =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(BottomNavigationAction, _React$Component);
 
   function BottomNavigationAction() {
     var _ref;
 
-    var _temp, _this, _ret;
+    var _temp, _this;
 
-    (0, _classCallCheck3.default)(this, BottomNavigationAction);
+    (0, _classCallCheck2.default)(this, BottomNavigationAction);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = BottomNavigationAction.__proto__ || (0, _getPrototypeOf2.default)(BottomNavigationAction)).call.apply(_ref, [this].concat(args))), _this), _this.handleChange = function (event) {
-      var _this$props = _this.props,
-          onChange = _this$props.onChange,
-          value = _this$props.value,
-          onClick = _this$props.onClick;
+    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = BottomNavigationAction.__proto__ || (0, _getPrototypeOf.default)(BottomNavigationAction)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleChange", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(event) {
+        var _this$props = _this.props,
+            onChange = _this$props.onChange,
+            value = _this$props.value,
+            onClick = _this$props.onClick;
 
+        if (onChange) {
+          onChange(event, value);
+        }
 
-      if (onChange) {
-        onChange(event, value);
+        if (onClick) {
+          onClick(event);
+        }
       }
-
-      if (onClick) {
-        onClick(event);
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }), _temp));
   }
 
-  (0, _createClass3.default)(BottomNavigationAction, [{
-    key: 'render',
+  (0, _createClass2.default)(BottomNavigationAction, [{
+    key: "render",
     value: function render() {
       var _classNames, _classNames2;
 
@@ -151,69 +138,72 @@ var BottomNavigationAction = function (_React$Component) {
           selected = _props.selected,
           showLabelProp = _props.showLabel,
           value = _props.value,
-          other = (0, _objectWithoutProperties3.default)(_props, ['classes', 'className', 'icon', 'label', 'onChange', 'onClick', 'selected', 'showLabel', 'value']);
-
-
-      var className = (0, _classnames2.default)(classes.root, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes.selected, selected), (0, _defineProperty3.default)(_classNames, classes.selectedIconOnly, !showLabelProp && !selected), _classNames), classNameProp);
-
-      var labelClassName = (0, _classnames2.default)(classes.label, (_classNames2 = {}, (0, _defineProperty3.default)(_classNames2, classes.labelSelected, selected), (0, _defineProperty3.default)(_classNames2, classes.labelHidden, !showLabelProp && !selected), _classNames2));
-
-      return _react2.default.createElement(
-        _ButtonBase2.default,
-        (0, _extends3.default)({ className: className, focusRipple: true, onClick: this.handleChange }, other),
-        _react2.default.createElement(
-          'span',
-          { className: classes.wrapper },
-          icon,
-          _react2.default.createElement(
-            'span',
-            { className: labelClassName },
-            label
-          )
-        )
-      );
+          other = (0, _objectWithoutProperties2.default)(_props, ["classes", "className", "icon", "label", "onChange", "onClick", "selected", "showLabel", "value"]);
+      var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.selected, selected), (0, _defineProperty2.default)(_classNames, classes.iconOnly, !showLabelProp && !selected), _classNames), classNameProp);
+      var labelClassName = (0, _classnames.default)(classes.label, (_classNames2 = {}, (0, _defineProperty2.default)(_classNames2, classes.selected, selected), (0, _defineProperty2.default)(_classNames2, classes.iconOnly, !showLabelProp && !selected), _classNames2));
+      return _react.default.createElement(_ButtonBase.default, (0, _extends2.default)({
+        className: className,
+        focusRipple: true,
+        onClick: this.handleChange
+      }, other), _react.default.createElement("span", {
+        className: classes.wrapper
+      }, icon, _react.default.createElement("span", {
+        className: labelClassName
+      }, label)));
     }
   }]);
   return BottomNavigationAction;
-}(_react2.default.Component);
+}(_react.default.Component);
 
 BottomNavigationAction.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * The icon element.
    */
-  icon: _propTypes2.default.node,
+  icon: _propTypes.default.node,
+
   /**
    * The label element.
    */
-  label: _propTypes2.default.node,
+  label: _propTypes.default.node,
+
   /**
    * @ignore
    */
-  onChange: _propTypes2.default.func,
+  onChange: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  onClick: _propTypes2.default.func,
+  onClick: _propTypes.default.func,
+
   /**
    * @ignore
    */
-  selected: _propTypes2.default.bool,
+  selected: _propTypes.default.bool,
+
   /**
    * If `true`, the BottomNavigationAction will show its label.
    */
-  showLabel: _propTypes2.default.bool,
+  showLabel: _propTypes.default.bool,
+
   /**
    * You can provide your own value. Otherwise, we fallback to the child position index.
    */
-  value: _propTypes2.default.any
+  value: _propTypes.default.any
 } : {};
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiBottomNavigationAction' })(BottomNavigationAction);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiBottomNavigationAction'
+})(BottomNavigationAction);
+
+exports.default = _default;

@@ -1,45 +1,30 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _react = _interopRequireDefault(require("react"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = require('react');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Typography = _interopRequireDefault(require("../Typography"));
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _Typography = require('../Typography');
-
-var _Typography2 = _interopRequireDefault(_Typography);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+/* eslint-disable jsx-a11y/label-has-for */
+var styles = function styles(theme) {
   return {
     root: {
       display: 'inline-flex',
@@ -50,23 +35,27 @@ var styles = exports.styles = function styles(theme) {
       // Remove grey highlight
       WebkitTapHighlightColor: 'transparent',
       marginLeft: -14,
-      marginRight: theme.spacing.unit * 2 // used for row presentation of radio/checkbox
+      marginRight: theme.spacing.unit * 2,
+      // used for row presentation of radio/checkbox
+      '&$disabled': {
+        cursor: 'default'
+      }
     },
-    disabled: {
-      cursor: 'default'
-    },
-    label: {},
-    labelDisabled: {
-      color: theme.palette.text.disabled
+    disabled: {},
+    label: {
+      '&$disabled': {
+        color: theme.palette.text.disabled
+      }
     }
   };
 };
-
 /**
  * Drop in replacement of the `Radio`, `Switch` and `Checkbox` component.
  * Use this component if you want to display an extra label.
  */
-/* eslint-disable jsx-a11y/label-has-for */
+
+
+exports.styles = styles;
 
 function FormControlLabel(props, context) {
   var checked = props.checked,
@@ -79,9 +68,8 @@ function FormControlLabel(props, context) {
       name = props.name,
       onChange = props.onChange,
       value = props.value,
-      other = (0, _objectWithoutProperties3.default)(props, ['checked', 'classes', 'className', 'control', 'disabled', 'inputRef', 'label', 'name', 'onChange', 'value']);
+      other = (0, _objectWithoutProperties2.default)(props, ["checked", "classes", "className", "control", "disabled", "inputRef", "label", "name", "onChange", "value"]);
   var muiFormControl = context.muiFormControl;
-
   var disabled = disabledProp;
 
   if (typeof control.props.disabled !== 'undefined') {
@@ -96,63 +84,63 @@ function FormControlLabel(props, context) {
     }
   }
 
-  var className = (0, _classnames2.default)(classes.root, (0, _defineProperty3.default)({}, classes.disabled, disabled), classNameProp);
-
-  return _react2.default.createElement(
-    'label',
-    (0, _extends3.default)({ className: className }, other),
-    _react2.default.cloneElement(control, {
-      disabled: disabled,
-      checked: typeof control.props.checked === 'undefined' ? checked : control.props.checked,
-      name: control.props.name || name,
-      onChange: control.props.onChange || onChange,
-      value: control.props.value || value,
-      inputRef: control.props.inputRef || inputRef
-    }),
-    _react2.default.createElement(
-      _Typography2.default,
-      {
-        component: 'span',
-        className: (0, _classnames2.default)(classes.label, (0, _defineProperty3.default)({}, classes.labelDisabled, disabled))
-      },
-      label
-    )
-  );
+  var className = (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.disabled, disabled), classNameProp);
+  return _react.default.createElement("label", (0, _extends2.default)({
+    className: className
+  }, other), _react.default.cloneElement(control, {
+    disabled: disabled,
+    checked: typeof control.props.checked === 'undefined' ? checked : control.props.checked,
+    name: control.props.name || name,
+    onChange: control.props.onChange || onChange,
+    value: control.props.value || value,
+    inputRef: control.props.inputRef || inputRef
+  }), _react.default.createElement(_Typography.default, {
+    component: "span",
+    className: (0, _classnames.default)(classes.label, (0, _defineProperty2.default)({}, classes.disabled, disabled))
+  }, label));
 }
 
 FormControlLabel.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * If `true`, the component appears selected.
    */
-  checked: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.string]),
+  checked: _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.string]),
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * A control element. For instance, it can be be a `Radio`, a `Switch` or a `Checkbox`.
    */
-  control: _propTypes2.default.element,
+  control: _propTypes.default.element,
+
   /**
    * If `true`, the control will be disabled.
    */
-  disabled: _propTypes2.default.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
-  inputRef: _propTypes2.default.func,
+  inputRef: _propTypes.default.func,
+
   /**
    * The text to be used in an enclosing label element.
    */
-  label: _propTypes2.default.node,
+  label: _propTypes.default.node,
+
   /*
    * @ignore
    */
-  name: _propTypes2.default.string,
+  name: _propTypes.default.string,
+
   /**
    * Callback fired when the state is changed.
    *
@@ -160,15 +148,19 @@ FormControlLabel.propTypes = process.env.NODE_ENV !== "production" ? {
    * You can pull out the new value by accessing `event.target.checked`.
    * @param {boolean} checked The `checked` value of the switch
    */
-  onChange: _propTypes2.default.func,
+  onChange: _propTypes.default.func,
+
   /**
    * The value of the component.
    */
-  value: _propTypes2.default.string
+  value: _propTypes.default.string
 } : {};
-
 FormControlLabel.contextTypes = {
-  muiFormControl: _propTypes2.default.object
+  muiFormControl: _propTypes.default.object
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiFormControlLabel' })(FormControlLabel);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiFormControlLabel'
+})(FormControlLabel);
+
+exports.default = _default;

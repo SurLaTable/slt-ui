@@ -1,10 +1,9 @@
-import _extends from 'babel-runtime/helpers/extends';
+import _extends from "@babel/runtime/helpers/extends";
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import wrapDisplayName from 'recompose/wrapDisplayName';
 import createMuiTheme from './createMuiTheme';
 import themeListener from './themeListener';
-
 let defaultTheme;
 
 function getDefaultTheme() {
@@ -14,16 +13,25 @@ function getDefaultTheme() {
 
   defaultTheme = createMuiTheme();
   return defaultTheme;
-}
+} // Provide the theme object as a property to the input component.
 
-// Provide the theme object as a property to the input component.
+
 const withTheme = () => Component => {
   class WithTheme extends React.Component {
     constructor(props, context) {
       super(props, context);
-
-      this.state = {};
-      this.unsubscribeId = null;
+      Object.defineProperty(this, "state", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: {}
+      });
+      Object.defineProperty(this, "unsubscribeId", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: null
+      });
       this.state = {
         // We use || as the function call is lazy evaluated.
         theme: themeListener.initial(context) || getDefaultTheme()
@@ -32,7 +40,9 @@ const withTheme = () => Component => {
 
     componentDidMount() {
       this.unsubscribeId = themeListener.subscribe(this.context, theme => {
-        this.setState({ theme });
+        this.setState({
+          theme
+        });
       });
     }
 
@@ -43,8 +53,11 @@ const withTheme = () => Component => {
     }
 
     render() {
-      return React.createElement(Component, _extends({ theme: this.state.theme }, this.props));
+      return React.createElement(Component, _extends({
+        theme: this.state.theme
+      }, this.props));
     }
+
   }
 
   WithTheme.contextTypes = themeListener.contextTypes;

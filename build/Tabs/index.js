@@ -1,21 +1,23 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tab = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Tabs" */
-  resolve: function resolve() {
-    return import('./Tabs');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Tabs.default;
   }
 });
-var Tab = exports.Tab = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Tab" */
-  resolve: function resolve() {
-    return import('./Tab');
+Object.defineProperty(exports, "Tab", {
+  enumerable: true,
+  get: function get() {
+    return _Tab.default;
   }
 });
+
+var _Tabs = _interopRequireDefault(require("./Tabs"));
+
+var _Tab = _interopRequireDefault(require("./Tab"));

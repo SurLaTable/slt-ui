@@ -1,8 +1,9 @@
-import _Object$keys from 'babel-runtime/core-js/object/keys';
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
-import _Map from 'babel-runtime/core-js/map';
-import _Number$MIN_SAFE_INTEGER from 'babel-runtime/core-js/number/min-safe-integer';
+import _extends from "@babel/runtime/helpers/extends";
+import _Object$keys from "@babel/runtime/core-js/object/keys";
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
+import _Map from "@babel/runtime/core-js/map";
+import _Number$MIN_SAFE_INTEGER from "@babel/runtime/core-js/number/min-safe-integer";
 import React from 'react';
 import PropTypes from 'prop-types';
 import warning from 'warning';
@@ -17,15 +18,11 @@ import createMuiTheme from './createMuiTheme';
 import themeListener from './themeListener';
 import createGenerateClassName from './createGenerateClassName';
 import getStylesCreator from './getStylesCreator';
-import getThemeProps from './getThemeProps';
+import getThemeProps from './getThemeProps'; // Default JSS instance.
 
-// Default JSS instance.
-const jss = create(jssPreset());
+const jss = create(jssPreset()); // Use a singleton or the provided one by the context.
 
-// Use a singleton or the provided one by the context.
-const generateClassName = createGenerateClassName();
-
-// Global index counter to preserve source order.
+const generateClassName = createGenerateClassName(); // Global index counter to preserve source order.
 // We create the style sheet during at the creation of the component,
 // children are handled after the parents, so the order of style elements would be parent->child.
 // It is a problem though when a parent passes a className
@@ -33,14 +30,12 @@ const generateClassName = createGenerateClassName();
 // StyleSheet of the child has a higher specificity, because of the source order.
 // So our solution is to render sheets them in the reverse order child->sheet, so
 // that parent has a higher specificity.
+
 let indexCounter = _Number$MIN_SAFE_INTEGER;
+export const sheetsManager = new _Map(); // We use the same empty object to ref count the styles that don't need a theme object.
 
-export const sheetsManager = new _Map();
+const noopTheme = {}; // In order to have self-supporting components, we rely on default theme when not provided.
 
-// We use the same empty object to ref count the styles that don't need a theme object.
-const noopTheme = {};
-
-// In order to have self-supporting components, we rely on default theme when not provided.
 let defaultTheme;
 
 function getDefaultTheme() {
@@ -50,56 +45,107 @@ function getDefaultTheme() {
 
   defaultTheme = createMuiTheme();
   return defaultTheme;
-}
-
-// Link a style sheet with a component.
+} // Link a style sheet with a component.
 // It does not modify the component passed to it;
 // instead, it returns a new component, with a `classes` property.
+
+
 const withStyles = (stylesOrCreator, options = {}) => Component => {
-  const { withTheme = false, flip = null, name } = options,
-        styleSheetOptions = _objectWithoutProperties(options, ['withTheme', 'flip', 'name']);
+  const {
+    withTheme = false,
+    flip = null,
+    name
+  } = options,
+        styleSheetOptions = _objectWithoutProperties(options, ["withTheme", "flip", "name"]);
+
   const stylesCreator = getStylesCreator(stylesOrCreator);
   const listenToTheme = stylesCreator.themingEnabled || withTheme || typeof name === 'string';
-
   indexCounter += 1;
   stylesCreator.options.index = indexCounter;
-
   process.env.NODE_ENV !== "production" ? warning(indexCounter < 0, ['Material-UI: you might have a memory leak.', 'The indexCounter is not supposed to grow that much.'].join(' ')) : void 0;
 
   class WithStyles extends React.Component {
     constructor(props, context) {
       super(props, context);
-
-      this.state = {};
-      this.disableStylesGeneration = false;
-      this.jss = null;
-      this.sheetOptions = null;
-      this.sheetsManager = sheetsManager;
-      this.stylesCreatorSaved = null;
-      this.theme = null;
-      this.unsubscribeId = null;
+      Object.defineProperty(this, "state", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: {}
+      });
+      Object.defineProperty(this, "disableStylesGeneration", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: false
+      });
+      Object.defineProperty(this, "jss", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: null
+      });
+      Object.defineProperty(this, "sheetOptions", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: null
+      });
+      Object.defineProperty(this, "sheetsManager", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: sheetsManager
+      });
+      Object.defineProperty(this, "stylesCreatorSaved", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: null
+      });
+      Object.defineProperty(this, "theme", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: null
+      });
+      Object.defineProperty(this, "unsubscribeId", {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: null
+      });
       this.jss = this.context[ns.jss] || jss;
+      const {
+        muiThemeProviderOptions
+      } = this.context;
 
-      const { muiThemeProviderOptions } = this.context;
       if (muiThemeProviderOptions) {
         if (muiThemeProviderOptions.sheetsManager) {
           this.sheetsManager = muiThemeProviderOptions.sheetsManager;
         }
 
         this.disableStylesGeneration = muiThemeProviderOptions.disableStylesGeneration;
-      }
-
-      // Attach the stylesCreator to the instance of the component as in the context
+      } // Attach the stylesCreator to the instance of the component as in the context
       // of react-hot-loader the hooks can be executed in a different closure context:
       // https://github.com/gaearon/react-hot-loader/blob/master/src/patch.dev.js#L107
-      this.stylesCreatorSaved = stylesCreator;
-      this.sheetOptions = _extends({
-        generateClassName
-      }, this.context[ns.sheetOptions]);
-      // We use || as the function call is lazy evaluated.
-      this.theme = listenToTheme ? themeListener.initial(context) || getDefaultTheme() : noopTheme;
 
+
+      this.stylesCreatorSaved = stylesCreator;
+      this.sheetOptions = _objectSpread({
+        generateClassName
+      }, this.context[ns.sheetOptions]); // We use || as the function call is lazy evaluated.
+
+      this.theme = listenToTheme ? themeListener.initial(context) || getDefaultTheme() : noopTheme;
       this.attach(this.theme);
+      this.cacheClasses = {
+        // Cache for the finalized classes value.
+        value: null,
+        // Cache for the last used classes prop pointer.
+        lastProp: null,
+        // Cache for the last used rendered classes pointer.
+        lastJSS: {}
+      };
     }
 
     componentDidMount() {
@@ -110,10 +156,9 @@ const withStyles = (stylesOrCreator, options = {}) => Component => {
       this.unsubscribeId = themeListener.subscribe(this.context, theme => {
         const oldTheme = this.theme;
         this.theme = theme;
-        this.attach(this.theme);
-
-        // Rerender the component so the underlying component gets the theme update.
+        this.attach(this.theme); // Rerender the component so the underlying component gets the theme update.
         // By theme update we mean receiving and applying the new class names.
+
         this.setState({}, () => {
           this.detach(oldTheme);
         });
@@ -138,6 +183,46 @@ const withStyles = (stylesOrCreator, options = {}) => Component => {
       if (this.unsubscribeId !== null) {
         themeListener.unsubscribe(this.context, this.unsubscribeId);
       }
+    }
+
+    getClasses() {
+      // Tracks if either the rendered classes or classes prop has changed,
+      // requiring the generation of a new finalized classes object.
+      let generate = false;
+
+      if (!this.disableStylesGeneration) {
+        const sheetManager = this.sheetsManager.get(this.stylesCreatorSaved);
+        const sheetsManagerTheme = sheetManager.get(this.theme);
+
+        if (sheetsManagerTheme.sheet.classes !== this.cacheClasses.lastJSS) {
+          this.cacheClasses.lastJSS = sheetsManagerTheme.sheet.classes;
+          generate = true;
+        }
+      }
+
+      if (this.props.classes !== this.cacheClasses.lastProp) {
+        this.cacheClasses.lastProp = this.props.classes;
+        generate = true;
+      }
+
+      if (generate) {
+        if (this.props.classes) {
+          this.cacheClasses.value = _objectSpread({}, this.cacheClasses.lastJSS, _Object$keys(this.props.classes).reduce((accumulator, key) => {
+            process.env.NODE_ENV !== "production" ? warning(this.cacheClasses.lastJSS[key] || this.disableStylesGeneration, [`Material-UI: the key \`${key}\` ` + `provided to the classes property is not implemented in ${getDisplayName(Component)}.`, `You can only override one of the following: ${_Object$keys(this.cacheClasses.lastJSS).join(',')}`].join('\n')) : void 0;
+            process.env.NODE_ENV !== "production" ? warning(!this.props.classes[key] || typeof this.props.classes[key] === 'string', [`Material-UI: the key \`${key}\` ` + `provided to the classes property is not valid for ${getDisplayName(Component)}.`, `You need to provide a non empty string instead of: ${this.props.classes[key]}.`].join('\n')) : void 0;
+
+            if (this.props.classes[key]) {
+              accumulator[key] = `${this.cacheClasses.lastJSS[key]} ${this.props.classes[key]}`;
+            }
+
+            return accumulator;
+          }, {}));
+        } else {
+          this.cacheClasses.value = this.cacheClasses.lastJSS;
+        }
+      }
+
+      return this.cacheClasses.value;
     }
 
     attach(theme) {
@@ -171,7 +256,7 @@ const withStyles = (stylesOrCreator, options = {}) => Component => {
           meta = getDisplayName(Component);
         }
 
-        const sheet = this.jss.createStyleSheet(styles, _extends({
+        const sheet = this.jss.createStyleSheet(styles, _objectSpread({
           meta,
           classNamePrefix: meta,
           flip: typeof flip === 'boolean' ? flip : theme.direction === 'rtl',
@@ -179,11 +264,10 @@ const withStyles = (stylesOrCreator, options = {}) => Component => {
         }, this.sheetOptions, stylesCreatorSaved.options, {
           name
         }, styleSheetOptions));
-
         sheetManagerTheme.sheet = sheet;
         sheet.attach();
-
         const sheetsRegistry = this.context[ns.sheetsRegistry];
+
         if (sheetsRegistry) {
           sheetsRegistry.add(sheet);
         }
@@ -200,13 +284,13 @@ const withStyles = (stylesOrCreator, options = {}) => Component => {
       const stylesCreatorSaved = this.stylesCreatorSaved;
       const sheetManager = this.sheetsManager.get(stylesCreatorSaved);
       const sheetManagerTheme = sheetManager.get(theme);
-
       sheetManagerTheme.refs -= 1;
 
       if (sheetManagerTheme.refs === 0) {
         sheetManager.delete(theme);
         this.jss.removeStyleSheet(sheetManagerTheme.sheet);
         const sheetsRegistry = this.context[ns.sheetsRegistry];
+
         if (sheetsRegistry) {
           sheetsRegistry.remove(sheetManagerTheme.sheet);
         }
@@ -215,44 +299,28 @@ const withStyles = (stylesOrCreator, options = {}) => Component => {
 
     render() {
       const _props = this.props,
-            { classes: classesProp, innerRef } = _props,
-            other = _objectWithoutProperties(_props, ['classes', 'innerRef']);
+            {
+        classes,
+        innerRef
+      } = _props,
+            other = _objectWithoutProperties(_props, ["classes", "innerRef"]);
 
-      let classes;
-      let renderedClasses = {};
-
-      if (!this.disableStylesGeneration) {
-        const sheetManager = this.sheetsManager.get(this.stylesCreatorSaved);
-        const sheetsManagerTheme = sheetManager.get(this.theme);
-        renderedClasses = sheetsManagerTheme.sheet.classes;
-      }
-
-      if (classesProp) {
-        classes = _extends({}, renderedClasses, _Object$keys(classesProp).reduce((accumulator, key) => {
-          process.env.NODE_ENV !== "production" ? warning(renderedClasses[key] || this.disableStylesGeneration, [`Material-UI: the key \`${key}\` ` + `provided to the classes property is not implemented in ${getDisplayName(Component)}.`, `You can only override one of the following: ${_Object$keys(renderedClasses).join(',')}`].join('\n')) : void 0;
-
-          process.env.NODE_ENV !== "production" ? warning(!classesProp[key] || typeof classesProp[key] === 'string', [`Material-UI: the key \`${key}\` ` + `provided to the classes property is not valid for ${getDisplayName(Component)}.`, `You need to provide a non empty string instead of: ${classesProp[key]}.`].join('\n')) : void 0;
-
-          if (classesProp[key]) {
-            accumulator[key] = `${renderedClasses[key]} ${classesProp[key]}`;
-          }
-
-          return accumulator;
-        }, {}));
-      } else {
-        classes = renderedClasses;
-      }
-
-      const more = getThemeProps({ theme: this.theme, name });
-
-      // Provide the theme to the wrapped component.
+      const more = getThemeProps({
+        theme: this.theme,
+        name
+      }); // Provide the theme to the wrapped component.
       // So we don't have to use the `withTheme()` Higher-order Component.
+
       if (withTheme) {
         more.theme = this.theme;
       }
 
-      return React.createElement(Component, _extends({}, more, { classes: classes, ref: innerRef }, other));
+      return React.createElement(Component, _extends({}, more, {
+        classes: this.getClasses(),
+        ref: innerRef
+      }, other));
     }
+
   }
 
   WithStyles.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -260,13 +328,13 @@ const withStyles = (stylesOrCreator, options = {}) => Component => {
      * Useful to extend the style applied to components.
      */
     classes: PropTypes.object,
+
     /**
      * Use that property to pass a ref callback to the decorated component.
      */
-    innerRef: PropTypes.func
+    innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
   } : {};
-
-  WithStyles.contextTypes = _extends({
+  WithStyles.contextTypes = _objectSpread({
     muiThemeProviderOptions: PropTypes.object
   }, contextTypes, listenToTheme ? themeListener.contextTypes : {});
 

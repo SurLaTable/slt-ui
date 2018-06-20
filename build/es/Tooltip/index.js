@@ -1,6 +1,1 @@
-import { asyncComponent } from 'react-async-component';
-
-export default asyncComponent({
-  /* webpackChunkName: "Tooltip" */
-  resolve: () => import('./Tooltip')
-});
+export { default } from './Tooltip';

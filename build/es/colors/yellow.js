@@ -14,5 +14,4 @@ const yellow = {
   A400: '#ffea00',
   A700: '#ffd600'
 };
-
 export default yellow;

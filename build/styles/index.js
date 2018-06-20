@@ -1,62 +1,55 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.withTheme = exports.withStyles = exports.MuiThemeProvider = exports.jssPreset = exports.createMuiTheme = exports.createGenerateClassName = undefined;
-
-var _createGenerateClassName = require('./createGenerateClassName');
-
-Object.defineProperty(exports, 'createGenerateClassName', {
+Object.defineProperty(exports, "createGenerateClassName", {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_createGenerateClassName).default;
+    return _createGenerateClassName.default;
   }
 });
-
-var _createMuiTheme = require('./createMuiTheme');
-
-Object.defineProperty(exports, 'createMuiTheme', {
+Object.defineProperty(exports, "createMuiTheme", {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_createMuiTheme).default;
+    return _createMuiTheme.default;
   }
 });
-
-var _jssPreset = require('./jssPreset');
-
-Object.defineProperty(exports, 'jssPreset', {
+Object.defineProperty(exports, "jssPreset", {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_jssPreset).default;
+    return _jssPreset.default;
   }
 });
-
-var _withStyles = require('./withStyles');
-
-Object.defineProperty(exports, 'withStyles', {
+Object.defineProperty(exports, "MuiThemeProvider", {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_withStyles).default;
+    return _MuiThemeProvider.default;
   }
 });
-
-var _withTheme = require('./withTheme');
-
-Object.defineProperty(exports, 'withTheme', {
+Object.defineProperty(exports, "withStyles", {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_withTheme).default;
+    return _withStyles.default;
+  }
+});
+Object.defineProperty(exports, "withTheme", {
+  enumerable: true,
+  get: function get() {
+    return _withTheme.default;
   }
 });
 
-var _reactAsyncComponent = require('react-async-component');
+var _createGenerateClassName = _interopRequireDefault(require("./createGenerateClassName"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _createMuiTheme = _interopRequireDefault(require("./createMuiTheme"));
 
-var MuiThemeProvider = exports.MuiThemeProvider = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "MuiThemeProvider" */
-  resolve: function resolve() {
-    return import('./MuiThemeProvider');
-  }
-});
+var _jssPreset = _interopRequireDefault(require("./jssPreset"));
+
+var _MuiThemeProvider = _interopRequireDefault(require("./MuiThemeProvider"));
+
+var _withStyles = _interopRequireDefault(require("./withStyles"));
+
+var _withTheme = _interopRequireDefault(require("./withTheme"));

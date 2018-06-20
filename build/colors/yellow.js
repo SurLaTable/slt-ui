@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 var yellow = {
   50: '#fffde7',
   100: '#fff9c4',
@@ -19,5 +20,5 @@ var yellow = {
   A400: '#ffea00',
   A700: '#ffd600'
 };
-
-exports.default = yellow;
+var _default = yellow;
+exports.default = _default;

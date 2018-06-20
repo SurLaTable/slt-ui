@@ -1,45 +1,29 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _react = _interopRequireDefault(require("react"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = require('react');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Fade = _interopRequireDefault(require("../transitions/Fade"));
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _Fade = require('../transitions/Fade');
-
-var _Fade2 = _interopRequireDefault(_Fade);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = {
+var styles = {
   root: {
     zIndex: -1,
     width: '100%',
@@ -55,6 +39,7 @@ var styles = exports.styles = {
     backgroundColor: 'transparent'
   }
 };
+exports.styles = styles;
 
 function Backdrop(props) {
   var classes = props.classes,
@@ -62,46 +47,54 @@ function Backdrop(props) {
       invisible = props.invisible,
       open = props.open,
       transitionDuration = props.transitionDuration,
-      other = (0, _objectWithoutProperties3.default)(props, ['classes', 'className', 'invisible', 'open', 'transitionDuration']);
-
-
-  return _react2.default.createElement(
-    _Fade2.default,
-    (0, _extends3.default)({ appear: true, 'in': open, timeout: transitionDuration }, other),
-    _react2.default.createElement('div', {
-      className: (0, _classnames2.default)(classes.root, (0, _defineProperty3.default)({}, classes.invisible, invisible), className),
-      'aria-hidden': 'true'
-    })
-  );
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "invisible", "open", "transitionDuration"]);
+  return _react.default.createElement(_Fade.default, (0, _extends2.default)({
+    appear: true,
+    "in": open,
+    timeout: transitionDuration
+  }, other), _react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.invisible, invisible), className),
+    "aria-hidden": "true"
+  }));
 }
 
 Backdrop.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * If `true`, the backdrop is invisible.
    * It can be used when rendering a popover or a custom select component.
    */
-  invisible: _propTypes2.default.bool,
+  invisible: _propTypes.default.bool,
+
   /**
    * If `true`, the backdrop is open.
    */
-  open: _propTypes2.default.bool.isRequired,
+  open: _propTypes.default.bool.isRequired,
+
   /**
    * The duration for the transition, in milliseconds.
    * You may specify a single timeout for all transitions, or individually with an object.
    */
-  transitionDuration: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.shape({ enter: _propTypes2.default.number, exit: _propTypes2.default.number })])
+  transitionDuration: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+    enter: _propTypes.default.number,
+    exit: _propTypes.default.number
+  })])
 } : {};
-
 Backdrop.defaultProps = {
   invisible: false
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiBackdrop' })(Backdrop);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiBackdrop'
+})(Backdrop);
+
+exports.default = _default;

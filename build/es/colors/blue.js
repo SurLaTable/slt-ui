@@ -14,5 +14,4 @@ const blue = {
   A400: '#2979ff',
   A700: '#2962ff'
 };
-
 export default blue;

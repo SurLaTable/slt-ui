@@ -1,5 +1,5 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -9,35 +9,46 @@ import CheckBoxIcon from '../internal/svg-icons/CheckBox';
 import IndeterminateCheckBoxIcon from '../internal/svg-icons/IndeterminateCheckBox';
 import { capitalize } from '../utils/helpers';
 import withStyles from '../styles/withStyles';
-
 export const styles = theme => ({
-  default: {
+  root: {
     color: theme.palette.text.secondary
   },
   checked: {},
-  checkedPrimary: {
-    color: theme.palette.primary.main
+  disabled: {},
+  colorPrimary: {
+    '&$checked': {
+      color: theme.palette.primary.main
+    },
+    '&$disabled': {
+      color: theme.palette.action.disabled
+    }
   },
-  checkedSecondary: {
-    color: theme.palette.secondary.main
-  },
-  disabled: {
-    color: theme.palette.action.disabled
+  colorSecondary: {
+    '&$checked': {
+      color: theme.palette.secondary.main
+    },
+    '&$disabled': {
+      color: theme.palette.action.disabled
+    }
   }
 });
 
 function Checkbox(props) {
-  const { checkedIcon, classes, color, icon, indeterminate, indeterminateIcon } = props,
-        other = _objectWithoutProperties(props, ['checkedIcon', 'classes', 'color', 'icon', 'indeterminate', 'indeterminateIcon']);
-  const checkedClass = classNames(classes.checked, {
-    [classes[`checked${capitalize(color)}`]]: color !== 'default'
-  });
+  const {
+    checkedIcon,
+    classes,
+    color,
+    icon,
+    indeterminate,
+    indeterminateIcon
+  } = props,
+        other = _objectWithoutProperties(props, ["checkedIcon", "classes", "color", "icon", "indeterminate", "indeterminateIcon"]);
 
   return React.createElement(SwitchBase, _extends({
     checkedIcon: indeterminate ? indeterminateIcon : checkedIcon,
     classes: {
-      default: classes.default,
-      checked: checkedClass,
+      root: classNames(classes.root, classes[`color${capitalize(color)}`]),
+      checked: classes.checked,
       disabled: classes.disabled
     },
     icon: indeterminate ? indeterminateIcon : icon
@@ -49,50 +60,62 @@ Checkbox.propTypes = process.env.NODE_ENV !== "production" ? {
    * If `true`, the component is checked.
    */
   checked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
   /**
    * The icon to display when the component is checked.
    */
   checkedIcon: PropTypes.node,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: PropTypes.oneOf(['primary', 'secondary', 'default']),
+
   /**
    * If `true`, the switch will be disabled.
    */
   disabled: PropTypes.bool,
+
   /**
    * If `true`, the ripple effect will be disabled.
    */
   disableRipple: PropTypes.bool,
+
   /**
    * The icon to display when the component is unchecked.
    */
   icon: PropTypes.node,
+
   /**
    * The id of the `input` element.
    */
   id: PropTypes.string,
+
   /**
    * If `true`, the component appears indeterminate.
    */
   indeterminate: PropTypes.bool,
+
   /**
    * The icon to display when the component is indeterminate.
    */
   indeterminateIcon: PropTypes.node,
+
   /**
    * Properties applied to the `input` element.
    */
   inputProps: PropTypes.object,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
   inputRef: PropTypes.func,
+
   /**
    * Callback fired when the state is changed.
    *
@@ -101,16 +124,17 @@ Checkbox.propTypes = process.env.NODE_ENV !== "production" ? {
    * @param {boolean} checked The `checked` value of the switch
    */
   onChange: PropTypes.func,
+
   /**
    * The input component property `type`.
    */
   type: PropTypes.string,
+
   /**
    * The value of the component.
    */
   value: PropTypes.string
 } : {};
-
 Checkbox.defaultProps = {
   checkedIcon: React.createElement(CheckBoxIcon, null),
   color: 'secondary',
@@ -118,5 +142,6 @@ Checkbox.defaultProps = {
   indeterminate: false,
   indeterminateIcon: React.createElement(IndeterminateCheckBoxIcon, null)
 };
-
-export default withStyles(styles, { name: 'MuiCheckbox' })(Checkbox);
+export default withStyles(styles, {
+  name: 'MuiCheckbox'
+})(Checkbox);

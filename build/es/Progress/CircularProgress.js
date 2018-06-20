@@ -1,11 +1,11 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
 import { capitalize } from '../utils/helpers';
-
 const SIZE = 50;
 
 function getRelativeValue(value, min, max) {
@@ -14,8 +14,8 @@ function getRelativeValue(value, min, max) {
 }
 
 function easeOut(t) {
-  t = getRelativeValue(t, 0, 1);
-  // https://gist.github.com/gre/1650294
+  t = getRelativeValue(t, 0, 1); // https://gist.github.com/gre/1650294
+
   t = (t -= 1) * t * t + 1;
   return t;
 }
@@ -47,6 +47,7 @@ export const styles = theme => ({
     // Some default value that looks fine waiting for the animation to kicks in.
     strokeDasharray: '80px, 200px',
     strokeDashoffset: '0px' // Add the unit to fix a Edge 16 and below bug.
+
   },
   '@keyframes mui-progress-circular-rotate': {
     '100%': {
@@ -68,7 +69,6 @@ export const styles = theme => ({
     }
   }
 });
-
 /**
  * ## ARIA
  *
@@ -76,71 +76,63 @@ export const styles = theme => ({
  * you should use `aria-describedby` to point to the progress bar, and set the `aria-busy`
  * attribute to `true` on that region until it has finished loading.
  */
+
 function CircularProgress(props) {
   const {
     classes,
     className,
     color,
-    max,
-    min,
     size,
     style,
     thickness,
     value,
     variant
   } = props,
-        other = _objectWithoutProperties(props, ['classes', 'className', 'color', 'max', 'min', 'size', 'style', 'thickness', 'value', 'variant']);
+        other = _objectWithoutProperties(props, ["classes", "className", "color", "size", "style", "thickness", "value", "variant"]);
 
   const circleStyle = {};
   const rootStyle = {};
   const rootProps = {};
 
   if (variant === 'determinate' || variant === 'static') {
-    const relVal = getRelativeValue(value, min, max) * 100;
     const circumference = 2 * Math.PI * (SIZE / 2 - 5);
     circleStyle.strokeDasharray = circumference.toFixed(3);
-    rootProps['aria-valuenow'] = Math.round(relVal);
+    rootProps['aria-valuenow'] = Math.round(value);
 
     if (variant === 'static') {
-      circleStyle.strokeDashoffset = `${((100 - relVal) / 100 * circumference).toFixed(3)}px`;
+      circleStyle.strokeDashoffset = `${((100 - value) / 100 * circumference).toFixed(3)}px`;
       rootStyle.transform = 'rotate(-90deg)';
     } else {
-      circleStyle.strokeDashoffset = `${(easeIn((100 - relVal) / 100) * circumference).toFixed(3)}px`;
-      rootStyle.transform = `rotate(${(easeOut(relVal / 70) * 270).toFixed(3)}deg)`;
+      circleStyle.strokeDashoffset = `${(easeIn((100 - value) / 100) * circumference).toFixed(3)}px`;
+      rootStyle.transform = `rotate(${(easeOut(value / 70) * 270).toFixed(3)}deg)`;
     }
   }
 
-  return React.createElement(
-    'div',
-    _extends({
-      className: classNames(classes.root, {
-        [classes[`color${capitalize(color)}`]]: color !== 'inherit'
-      }, className),
-      style: _extends({ width: size, height: size }, rootStyle, style),
-      role: 'progressbar'
-    }, rootProps, other),
-    React.createElement(
-      'svg',
-      {
-        className: classNames(classes.svg, {
-          [classes.svgIndeterminate]: variant === 'indeterminate',
-          [classes.svgStatic]: variant === 'static'
-        }),
-        viewBox: `0 0 ${SIZE} ${SIZE}`
-      },
-      React.createElement('circle', {
-        className: classNames(classes.circle, {
-          [classes.circleIndeterminate]: variant === 'indeterminate'
-        }),
-        style: circleStyle,
-        cx: SIZE / 2,
-        cy: SIZE / 2,
-        r: SIZE / 2 - 5,
-        fill: 'none',
-        strokeWidth: thickness
-      })
-    )
-  );
+  return React.createElement("div", _extends({
+    className: classNames(classes.root, {
+      [classes[`color${capitalize(color)}`]]: color !== 'inherit'
+    }, className),
+    style: _objectSpread({
+      width: size,
+      height: size
+    }, rootStyle, style),
+    role: "progressbar"
+  }, rootProps, other), React.createElement("svg", {
+    className: classNames(classes.svg, {
+      [classes.svgIndeterminate]: variant === 'indeterminate'
+    }),
+    viewBox: `0 0 ${SIZE} ${SIZE}`
+  }, React.createElement("circle", {
+    className: classNames(classes.circle, {
+      [classes.circleIndeterminate]: variant === 'indeterminate'
+    }),
+    style: circleStyle,
+    cx: SIZE / 2,
+    cy: SIZE / 2,
+    r: SIZE / 2 - 5,
+    fill: "none",
+    strokeWidth: thickness
+  })));
 }
 
 CircularProgress.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -148,54 +140,52 @@ CircularProgress.propTypes = process.env.NODE_ENV !== "production" ? {
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: PropTypes.oneOf(['primary', 'secondary', 'inherit']),
-  /**
-   * The max value of progress in determinate variant.
-   */
-  max: PropTypes.number,
-  /**
-   * The min value of progress in determinate variant.
-   */
-  min: PropTypes.number,
+
   /**
    * The size of the circle.
    */
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
   /**
    * @ignore
    */
   style: PropTypes.object,
+
   /**
    * The thickness of the circle.
    */
   thickness: PropTypes.number,
+
   /**
    * The value of the progress indicator for the determinate and static variants.
    * Value between 0 and 100.
    */
   value: PropTypes.number,
+
   /**
    * The variant of progress indicator. Use indeterminate
    * when there is no progress value.
    */
   variant: PropTypes.oneOf(['determinate', 'indeterminate', 'static'])
 } : {};
-
 CircularProgress.defaultProps = {
   color: 'primary',
-  max: 100,
-  min: 0,
   size: 40,
   thickness: 3.6,
   value: 0,
   variant: 'indeterminate'
 };
-
-export default withStyles(styles, { name: 'MuiCircularProgress', flip: false })(CircularProgress);
+export default withStyles(styles, {
+  name: 'MuiCircularProgress',
+  flip: false
+})(CircularProgress);

@@ -1,12 +1,12 @@
-import _extends from 'babel-runtime/helpers/extends';
+import _objectSpread from "@babel/runtime/helpers/objectSpread";
 export default function createMixins(breakpoints, spacing, mixins) {
-  return _extends({
+  return _objectSpread({
     gutters: (styles = {}) => {
-      return _extends({
+      return _objectSpread({
         paddingLeft: spacing.unit * 2,
         paddingRight: spacing.unit * 2
       }, styles, {
-        [breakpoints.up('sm')]: _extends({
+        [breakpoints.up('sm')]: _objectSpread({
           paddingLeft: spacing.unit * 3,
           paddingRight: spacing.unit * 3
         }, styles[breakpoints.up('sm')])

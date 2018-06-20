@@ -1,53 +1,55 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.withMobileDialog = exports.DialogContentText = exports.DialogContent = exports.DialogTitle = exports.DialogActions = undefined;
-
-var _withMobileDialog = require('./withMobileDialog');
-
-Object.defineProperty(exports, 'withMobileDialog', {
+Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_withMobileDialog).default;
+    return _Dialog.default;
+  }
+});
+Object.defineProperty(exports, "DialogActions", {
+  enumerable: true,
+  get: function get() {
+    return _DialogActions.default;
+  }
+});
+Object.defineProperty(exports, "DialogTitle", {
+  enumerable: true,
+  get: function get() {
+    return _DialogTitle.default;
+  }
+});
+Object.defineProperty(exports, "DialogContent", {
+  enumerable: true,
+  get: function get() {
+    return _DialogContent.default;
+  }
+});
+Object.defineProperty(exports, "DialogContentText", {
+  enumerable: true,
+  get: function get() {
+    return _DialogContentText.default;
+  }
+});
+Object.defineProperty(exports, "withMobileDialog", {
+  enumerable: true,
+  get: function get() {
+    return _withMobileDialog.default;
   }
 });
 
-var _reactAsyncComponent = require('react-async-component');
+var _Dialog = _interopRequireDefault(require("./Dialog"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _DialogActions = _interopRequireDefault(require("./DialogActions"));
 
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Dialog" */
-  resolve: function resolve() {
-    return import('./Dialog');
-  }
-});
-var DialogActions = exports.DialogActions = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "DialogActions" */
-  resolve: function resolve() {
-    return import('./DialogActions');
-  }
-});
+var _DialogTitle = _interopRequireDefault(require("./DialogTitle"));
 
-var DialogTitle = exports.DialogTitle = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "DialogTitle" */
-  resolve: function resolve() {
-    return import('./DialogTitle');
-  }
-});
+var _DialogContent = _interopRequireDefault(require("./DialogContent"));
 
-var DialogContent = exports.DialogContent = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "DialogContent" */
-  resolve: function resolve() {
-    return import('./DialogContent');
-  }
-});
+var _DialogContentText = _interopRequireDefault(require("./DialogContentText"));
 
-var DialogContentText = exports.DialogContentText = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "DialogContentText" */
-  resolve: function resolve() {
-    return import('./DialogContentText');
-  }
-});
+var _withMobileDialog = _interopRequireDefault(require("./withMobileDialog"));

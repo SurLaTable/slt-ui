@@ -1,43 +1,29 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _react = _interopRequireDefault(require("react"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = require('react');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _react2 = _interopRequireDefault(_react);
+var _helpers = require("../utils/helpers");
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _helpers = require('../utils/helpers');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
     root: {
       userSelect: 'none',
@@ -60,14 +46,16 @@ var styles = exports.styles = function styles(theme) {
     colorAction: {
       color: theme.palette.action.active
     },
-    colorDisabled: {
-      color: theme.palette.action.disabled
-    },
     colorError: {
       color: theme.palette.error.main
+    },
+    colorDisabled: {
+      color: theme.palette.action.disabled
     }
   };
 };
+
+exports.styles = styles;
 
 function SvgIcon(props) {
   var children = props.children,
@@ -77,56 +65,50 @@ function SvgIcon(props) {
       nativeColor = props.nativeColor,
       titleAccess = props.titleAccess,
       viewBox = props.viewBox,
-      other = (0, _objectWithoutProperties3.default)(props, ['children', 'classes', 'className', 'color', 'nativeColor', 'titleAccess', 'viewBox']);
-
-
-  var className = (0, _classnames2.default)(classes.root, (0, _defineProperty3.default)({}, classes['color' + (0, _helpers.capitalize)(color)], color !== 'inherit'), classNameProp);
-
-  return _react2.default.createElement(
-    'svg',
-    (0, _extends3.default)({
-      className: className,
-      focusable: 'false',
-      viewBox: viewBox,
-      color: nativeColor,
-      'aria-hidden': titleAccess ? 'false' : 'true'
-    }, other),
-    titleAccess ? _react2.default.createElement(
-      'title',
-      null,
-      titleAccess
-    ) : null,
-    children
-  );
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "color", "nativeColor", "titleAccess", "viewBox"]);
+  var className = (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes["color".concat((0, _helpers.capitalize)(color))], color !== 'inherit'), classNameProp);
+  return _react.default.createElement("svg", (0, _extends2.default)({
+    className: className,
+    focusable: "false",
+    viewBox: viewBox,
+    color: nativeColor,
+    "aria-hidden": titleAccess ? 'false' : 'true'
+  }, other), titleAccess ? _react.default.createElement("title", null, titleAccess) : null, children);
 }
 
 SvgIcon.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * Node passed into the SVG element.
    */
-  children: _propTypes2.default.node.isRequired,
+  children: _propTypes.default.node.isRequired,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * @ignore
    */
-  className: _propTypes2.default.string,
+  className: _propTypes.default.string,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    * You can use the `nativeColor` property to apply a color attribute to the SVG element.
    */
-  color: _propTypes2.default.oneOf(['action', 'disabled', 'error', 'inherit', 'primary', 'secondary']),
+  color: _propTypes.default.oneOf(['inherit', 'primary', 'secondary', 'action', 'error', 'disabled']),
+
   /**
    * Applies a color attribute to the SVG element.
    */
-  nativeColor: _propTypes2.default.string,
+  nativeColor: _propTypes.default.string,
+
   /**
    * Provides a human-readable title for the element that contains it.
    * https://www.w3.org/TR/SVG-access/#Equivalent
    */
-  titleAccess: _propTypes2.default.string,
+  titleAccess: _propTypes.default.string,
+
   /**
    * Allows you to redefine what the coordinates without units mean inside an SVG element.
    * For example, if the SVG element is 500 (width) by 200 (height),
@@ -134,14 +116,16 @@ SvgIcon.propTypes = process.env.NODE_ENV !== "production" ? {
    * this means that the coordinates inside the SVG will go from the top left corner (0,0)
    * to bottom right (50,20) and each unit will be worth 10px.
    */
-  viewBox: _propTypes2.default.string
+  viewBox: _propTypes.default.string
 } : {};
-
 SvgIcon.defaultProps = {
   color: 'inherit',
   viewBox: '0 0 24 24'
 };
-
 SvgIcon.muiName = 'SvgIcon';
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiSvgIcon' })(SvgIcon);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiSvgIcon'
+})(SvgIcon);
+
+exports.default = _default;

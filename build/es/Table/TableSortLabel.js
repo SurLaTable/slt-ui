@@ -1,7 +1,6 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 // @inheritedComponent ButtonBase
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -9,7 +8,6 @@ import ArrowDownwardIcon from '../internal/svg-icons/ArrowDownward';
 import withStyles from '../styles/withStyles';
 import ButtonBase from '../ButtonBase';
 import { capitalize } from '../utils/helpers';
-
 export const styles = theme => ({
   root: {
     cursor: 'pointer',
@@ -48,26 +46,29 @@ export const styles = theme => ({
     transform: 'rotate(180deg)'
   }
 });
-
 /**
  * A button based label for placing inside `TableCell` for column sorting.
  */
-function TableSortLabel(props) {
-  const { active, classes, className, children, direction } = props,
-        other = _objectWithoutProperties(props, ['active', 'classes', 'className', 'children', 'direction']);
 
-  return React.createElement(
-    ButtonBase,
-    _extends({
-      className: classNames(classes.root, { [classes.active]: active }, className),
-      component: 'span',
-      disableRipple: true
-    }, other),
+function TableSortLabel(props) {
+  const {
+    active,
+    classes,
+    className,
     children,
-    React.createElement(ArrowDownwardIcon, {
-      className: classNames(classes.icon, classes[`iconDirection${capitalize(direction)}`])
-    })
-  );
+    direction
+  } = props,
+        other = _objectWithoutProperties(props, ["active", "classes", "className", "children", "direction"]);
+
+  return React.createElement(ButtonBase, _extends({
+    className: classNames(classes.root, {
+      [classes.active]: active
+    }, className),
+    component: "span",
+    disableRipple: true
+  }, other), children, React.createElement(ArrowDownwardIcon, {
+    className: classNames(classes.icon, classes[`iconDirection${capitalize(direction)}`])
+  }));
 }
 
 TableSortLabel.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -75,27 +76,31 @@ TableSortLabel.propTypes = process.env.NODE_ENV !== "production" ? {
    * If `true`, the label will have the active styling (should be true for the sorted column).
    */
   active: PropTypes.bool,
+
   /**
    * Label contents, the arrow will be appended automatically.
    */
   children: PropTypes.node,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The current sort direction.
    */
   direction: PropTypes.oneOf(['asc', 'desc'])
 } : {};
-
 TableSortLabel.defaultProps = {
   active: false,
   direction: 'desc'
 };
-
-export default withStyles(styles, { name: 'MuiTableSortLabel' })(TableSortLabel);
+export default withStyles(styles, {
+  name: 'MuiTableSortLabel'
+})(TableSortLabel);

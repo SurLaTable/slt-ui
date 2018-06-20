@@ -1,43 +1,47 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FormControlLabel = exports.FormHelperText = exports.FormControl = exports.FormLabel = exports.FormGroup = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-var FormGroup = exports.FormGroup = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "FormGroup" */
-  resolve: function resolve() {
-    return import('./FormGroup');
+Object.defineProperty(exports, "FormGroup", {
+  enumerable: true,
+  get: function get() {
+    return _FormGroup.default;
+  }
+});
+Object.defineProperty(exports, "FormLabel", {
+  enumerable: true,
+  get: function get() {
+    return _FormLabel.default;
+  }
+});
+Object.defineProperty(exports, "FormControl", {
+  enumerable: true,
+  get: function get() {
+    return _FormControl.default;
+  }
+});
+Object.defineProperty(exports, "FormHelperText", {
+  enumerable: true,
+  get: function get() {
+    return _FormHelperText.default;
+  }
+});
+Object.defineProperty(exports, "FormControlLabel", {
+  enumerable: true,
+  get: function get() {
+    return _FormControlLabel.default;
   }
 });
 
-var FormLabel = exports.FormLabel = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "FormLabel" */
-  resolve: function resolve() {
-    return import('./FormLabel');
-  }
-});
+var _FormGroup = _interopRequireDefault(require("./FormGroup"));
 
-var FormControl = exports.FormControl = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "FormControl" */
-  resolve: function resolve() {
-    return import('./FormControl');
-  }
-});
+var _FormLabel = _interopRequireDefault(require("./FormLabel"));
 
-var FormHelperText = exports.FormHelperText = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "FormHelperText" */
-  resolve: function resolve() {
-    return import('./FormHelperText');
-  }
-});
+var _FormControl = _interopRequireDefault(require("./FormControl"));
 
-var FormControlLabel = exports.FormControlLabel = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "FormControlLabel" */
-  resolve: function resolve() {
-    return import('./FormControlLabel');
-  }
-});
+var _FormHelperText = _interopRequireDefault(require("./FormHelperText"));
+
+var _FormControlLabel = _interopRequireDefault(require("./FormControlLabel"));

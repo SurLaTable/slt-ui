@@ -1,21 +1,23 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.BottomNavigationAction = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "BottomNavigation" */
-  resolve: function resolve() {
-    return import('./BottomNavigation');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _BottomNavigation.default;
   }
 });
-var BottomNavigationAction = exports.BottomNavigationAction = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "BottomNavigationAction" */
-  resolve: function resolve() {
-    return import('./BottomNavigationAction');
+Object.defineProperty(exports, "BottomNavigationAction", {
+  enumerable: true,
+  get: function get() {
+    return _BottomNavigationAction.default;
   }
 });
+
+var _BottomNavigation = _interopRequireDefault(require("./BottomNavigation"));
+
+var _BottomNavigationAction = _interopRequireDefault(require("./BottomNavigationAction"));

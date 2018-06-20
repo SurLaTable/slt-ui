@@ -1,10 +1,9 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutProperties';
+import _extends from "@babel/runtime/helpers/extends";
+import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
-
 export const styles = theme => ({
   root: {
     position: 'relative',
@@ -46,7 +45,7 @@ function Avatar(props) {
     src,
     srcSet
   } = props,
-        other = _objectWithoutProperties(props, ['alt', 'children', 'childrenClassName', 'classes', 'className', 'component', 'imgProps', 'sizes', 'src', 'srcSet']);
+        other = _objectWithoutProperties(props, ["alt", "children", "childrenClassName", "classes", "className", "component", "imgProps", "sizes", "src", "srcSet"]);
 
   const className = classNames(classes.root, {
     [classes.colorDefault]: childrenProp && !src && !srcSet
@@ -56,12 +55,14 @@ function Avatar(props) {
   if (childrenProp) {
     if (childrenClassNameProp && typeof childrenProp !== 'string' && React.isValidElement(childrenProp)) {
       const childrenClassName = classNames(childrenClassNameProp, childrenProp.props.className);
-      children = React.cloneElement(childrenProp, { className: childrenClassName });
+      children = React.cloneElement(childrenProp, {
+        className: childrenClassName
+      });
     } else {
       children = childrenProp;
     }
   } else if (src || srcSet) {
-    children = React.createElement('img', _extends({
+    children = React.createElement("img", _extends({
       alt: alt,
       src: src,
       srcSet: srcSet,
@@ -70,11 +71,9 @@ function Avatar(props) {
     }, imgProps));
   }
 
-  return React.createElement(
-    Component,
-    _extends({ className: className }, other),
-    children
-  );
+  return React.createElement(Component, _extends({
+    className: className
+  }, other), children);
 }
 
 Avatar.propTypes = process.env.NODE_ENV !== "production" ? {
@@ -83,6 +82,7 @@ Avatar.propTypes = process.env.NODE_ENV !== "production" ? {
    * provide an alt attribute for the rendered `img` element.
    */
   alt: PropTypes.string,
+
   /**
    * Used to render icon or text elements inside the Avatar.
    * `src` and `alt` props will not be used and no `img` will
@@ -91,46 +91,54 @@ Avatar.propTypes = process.env.NODE_ENV !== "production" ? {
    * This can be an element, or just a string.
    */
   children: PropTypes.node,
+
   /**
    * @ignore
    * The className of the child element.
    * Used by Chip and ListItemIcon to style the Avatar icon.
    */
   childrenClassName: PropTypes.string,
+
   /**
    * Useful to extend the style applied to components.
    */
   classes: PropTypes.object.isRequired,
+
   /**
    * @ignore
    */
   className: PropTypes.string,
+
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+
   /**
    * Properties applied to the `img` element when the component
    * is used to display an image.
    */
   imgProps: PropTypes.object,
+
   /**
    * The `sizes` attribute for the `img` element.
    */
   sizes: PropTypes.string,
+
   /**
    * The `src` attribute for the `img` element.
    */
   src: PropTypes.string,
+
   /**
    * The `srcSet` attribute for the `img` element.
    */
   srcSet: PropTypes.string
 } : {};
-
 Avatar.defaultProps = {
   component: 'div'
 };
-
-export default withStyles(styles, { name: 'MuiAvatar' })(Avatar);
+export default withStyles(styles, {
+  name: 'MuiAvatar'
+})(Avatar);

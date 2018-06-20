@@ -1,43 +1,47 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Zoom = exports.Collapse = exports.Fade = exports.Grow = exports.Slide = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-var Slide = exports.Slide = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Slide" */
-  resolve: function resolve() {
-    return import('./Slide');
+Object.defineProperty(exports, "Slide", {
+  enumerable: true,
+  get: function get() {
+    return _Slide.default;
+  }
+});
+Object.defineProperty(exports, "Grow", {
+  enumerable: true,
+  get: function get() {
+    return _Grow.default;
+  }
+});
+Object.defineProperty(exports, "Fade", {
+  enumerable: true,
+  get: function get() {
+    return _Fade.default;
+  }
+});
+Object.defineProperty(exports, "Collapse", {
+  enumerable: true,
+  get: function get() {
+    return _Collapse.default;
+  }
+});
+Object.defineProperty(exports, "Zoom", {
+  enumerable: true,
+  get: function get() {
+    return _Zoom.default;
   }
 });
 
-var Grow = exports.Grow = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Grow" */
-  resolve: function resolve() {
-    return import('./Grow');
-  }
-});
+var _Slide = _interopRequireDefault(require("./Slide"));
 
-var Fade = exports.Fade = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Fade" */
-  resolve: function resolve() {
-    return import('./Fade');
-  }
-});
+var _Grow = _interopRequireDefault(require("./Grow"));
 
-var Collapse = exports.Collapse = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Collapse" */
-  resolve: function resolve() {
-    return import('./Collapse');
-  }
-});
+var _Fade = _interopRequireDefault(require("./Fade"));
 
-var Zoom = exports.Zoom = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Zoom" */
-  resolve: function resolve() {
-    return import('./Zoom');
-  }
-});
+var _Collapse = _interopRequireDefault(require("./Collapse"));
+
+var _Zoom = _interopRequireDefault(require("./Zoom"));

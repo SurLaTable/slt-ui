@@ -1,75 +1,61 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.styles = undefined;
+exports.default = exports.styles = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _react = _interopRequireDefault(require("react"));
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _SwitchBase = _interopRequireDefault(require("../internal/SwitchBase"));
 
-var _react = require('react');
+var _CheckBoxOutlineBlank = _interopRequireDefault(require("../internal/svg-icons/CheckBoxOutlineBlank"));
 
-var _react2 = _interopRequireDefault(_react);
+var _CheckBox = _interopRequireDefault(require("../internal/svg-icons/CheckBox"));
 
-var _propTypes = require('prop-types');
+var _IndeterminateCheckBox = _interopRequireDefault(require("../internal/svg-icons/IndeterminateCheckBox"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _helpers = require("../utils/helpers");
 
-var _classnames = require('classnames');
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _SwitchBase = require('../internal/SwitchBase');
-
-var _SwitchBase2 = _interopRequireDefault(_SwitchBase);
-
-var _CheckBoxOutlineBlank = require('../internal/svg-icons/CheckBoxOutlineBlank');
-
-var _CheckBoxOutlineBlank2 = _interopRequireDefault(_CheckBoxOutlineBlank);
-
-var _CheckBox = require('../internal/svg-icons/CheckBox');
-
-var _CheckBox2 = _interopRequireDefault(_CheckBox);
-
-var _IndeterminateCheckBox = require('../internal/svg-icons/IndeterminateCheckBox');
-
-var _IndeterminateCheckBox2 = _interopRequireDefault(_IndeterminateCheckBox);
-
-var _helpers = require('../utils/helpers');
-
-var _withStyles = require('../styles/withStyles');
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = function styles(theme) {
+var styles = function styles(theme) {
   return {
-    default: {
+    root: {
       color: theme.palette.text.secondary
     },
     checked: {},
-    checkedPrimary: {
-      color: theme.palette.primary.main
+    disabled: {},
+    colorPrimary: {
+      '&$checked': {
+        color: theme.palette.primary.main
+      },
+      '&$disabled': {
+        color: theme.palette.action.disabled
+      }
     },
-    checkedSecondary: {
-      color: theme.palette.secondary.main
-    },
-    disabled: {
-      color: theme.palette.action.disabled
+    colorSecondary: {
+      '&$checked': {
+        color: theme.palette.secondary.main
+      },
+      '&$disabled': {
+        color: theme.palette.action.disabled
+      }
     }
   };
 };
+
+exports.styles = styles;
 
 function Checkbox(props) {
   var checkedIcon = props.checkedIcon,
@@ -78,15 +64,12 @@ function Checkbox(props) {
       icon = props.icon,
       indeterminate = props.indeterminate,
       indeterminateIcon = props.indeterminateIcon,
-      other = (0, _objectWithoutProperties3.default)(props, ['checkedIcon', 'classes', 'color', 'icon', 'indeterminate', 'indeterminateIcon']);
-
-  var checkedClass = (0, _classnames2.default)(classes.checked, (0, _defineProperty3.default)({}, classes['checked' + (0, _helpers.capitalize)(color)], color !== 'default'));
-
-  return _react2.default.createElement(_SwitchBase2.default, (0, _extends3.default)({
+      other = (0, _objectWithoutProperties2.default)(props, ["checkedIcon", "classes", "color", "icon", "indeterminate", "indeterminateIcon"]);
+  return _react.default.createElement(_SwitchBase.default, (0, _extends2.default)({
     checkedIcon: indeterminate ? indeterminateIcon : checkedIcon,
     classes: {
-      default: classes.default,
-      checked: checkedClass,
+      root: (0, _classnames.default)(classes.root, classes["color".concat((0, _helpers.capitalize)(color))]),
+      checked: classes.checked,
       disabled: classes.disabled
     },
     icon: indeterminate ? indeterminateIcon : icon
@@ -97,51 +80,63 @@ Checkbox.propTypes = process.env.NODE_ENV !== "production" ? {
   /**
    * If `true`, the component is checked.
    */
-  checked: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.string]),
+  checked: _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.string]),
+
   /**
    * The icon to display when the component is checked.
    */
-  checkedIcon: _propTypes2.default.node,
+  checkedIcon: _propTypes.default.node,
+
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes2.default.object.isRequired,
+  classes: _propTypes.default.object.isRequired,
+
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
-  color: _propTypes2.default.oneOf(['primary', 'secondary', 'default']),
+  color: _propTypes.default.oneOf(['primary', 'secondary', 'default']),
+
   /**
    * If `true`, the switch will be disabled.
    */
-  disabled: _propTypes2.default.bool,
+  disabled: _propTypes.default.bool,
+
   /**
    * If `true`, the ripple effect will be disabled.
    */
-  disableRipple: _propTypes2.default.bool,
+  disableRipple: _propTypes.default.bool,
+
   /**
    * The icon to display when the component is unchecked.
    */
-  icon: _propTypes2.default.node,
+  icon: _propTypes.default.node,
+
   /**
    * The id of the `input` element.
    */
-  id: _propTypes2.default.string,
+  id: _propTypes.default.string,
+
   /**
    * If `true`, the component appears indeterminate.
    */
-  indeterminate: _propTypes2.default.bool,
+  indeterminate: _propTypes.default.bool,
+
   /**
    * The icon to display when the component is indeterminate.
    */
-  indeterminateIcon: _propTypes2.default.node,
+  indeterminateIcon: _propTypes.default.node,
+
   /**
    * Properties applied to the `input` element.
    */
-  inputProps: _propTypes2.default.object,
+  inputProps: _propTypes.default.object,
+
   /**
    * Use that property to pass a ref callback to the native input component.
    */
-  inputRef: _propTypes2.default.func,
+  inputRef: _propTypes.default.func,
+
   /**
    * Callback fired when the state is changed.
    *
@@ -149,23 +144,28 @@ Checkbox.propTypes = process.env.NODE_ENV !== "production" ? {
    * You can pull out the new value by accessing `event.target.checked`.
    * @param {boolean} checked The `checked` value of the switch
    */
-  onChange: _propTypes2.default.func,
+  onChange: _propTypes.default.func,
+
   /**
    * The input component property `type`.
    */
-  type: _propTypes2.default.string,
+  type: _propTypes.default.string,
+
   /**
    * The value of the component.
    */
-  value: _propTypes2.default.string
+  value: _propTypes.default.string
 } : {};
-
 Checkbox.defaultProps = {
-  checkedIcon: _react2.default.createElement(_CheckBox2.default, null),
+  checkedIcon: _react.default.createElement(_CheckBox.default, null),
   color: 'secondary',
-  icon: _react2.default.createElement(_CheckBoxOutlineBlank2.default, null),
+  icon: _react.default.createElement(_CheckBoxOutlineBlank.default, null),
   indeterminate: false,
-  indeterminateIcon: _react2.default.createElement(_IndeterminateCheckBox2.default, null)
+  indeterminateIcon: _react.default.createElement(_IndeterminateCheckBox.default, null)
 };
 
-exports.default = (0, _withStyles2.default)(styles, { name: 'MuiCheckbox' })(Checkbox);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiCheckbox'
+})(Checkbox);
+
+exports.default = _default;

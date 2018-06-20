@@ -1,40 +1,35 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = createGenerateClassName;
 
-var _warning = require('warning');
+var _warning = _interopRequireDefault(require("warning"));
 
-var _warning2 = _interopRequireDefault(_warning);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var generatorCounter = 0;
-
-// Returns a function which generates unique class names based on counters.
+var generatorCounter = 0; // Returns a function which generates unique class names based on counters.
 // When new generator function is created, rule counter is reset.
 // We need to reset the rule counter for SSR for each request.
 //
 // It's inspired by
 // https://github.com/cssinjs/jss/blob/4e6a05dd3f7b6572fdd3ab216861d9e446c20331/src/utils/createGenerateClassName.js
+
 function createGenerateClassName() {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var _options$dangerouslyU = options.dangerouslyUseGlobalCSS,
-      dangerouslyUseGlobalCSS = _options$dangerouslyU === undefined ? false : _options$dangerouslyU,
+      dangerouslyUseGlobalCSS = _options$dangerouslyU === void 0 ? false : _options$dangerouslyU,
       _options$productionPr = options.productionPrefix,
-      productionPrefix = _options$productionPr === undefined ? 'jss' : _options$productionPr;
-
+      productionPrefix = _options$productionPr === void 0 ? 'jss' : _options$productionPr;
   var escapeRegex = /([[\].#*$><+~=|^:(),"'`\s])/g;
-  var ruleCounter = 0;
-
-  // - HMR can lead to many class name generators being instantiated,
+  var ruleCounter = 0; // - HMR can lead to many class name generators being instantiated,
   // so the warning is only triggered in production.
   // - We expect a class name generator to be instantiated per new request on the server,
   // so the warning is only triggered client side.
   // - You can get away with having multiple class name generators
   // by modifying the `productionPrefix`.
+
   if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined' && productionPrefix === 'jss') {
     generatorCounter += 1;
 
@@ -46,43 +41,41 @@ function createGenerateClassName() {
 
   return function (rule, styleSheet) {
     ruleCounter += 1;
-    process.env.NODE_ENV !== "production" ? (0, _warning2.default)(ruleCounter < 1e10, ['Material-UI: you might have a memory leak.', 'The ruleCounter is not supposed to grow that much.'].join('')) : void 0;
+    process.env.NODE_ENV !== "production" ? (0, _warning.default)(ruleCounter < 1e10, ['Material-UI: you might have a memory leak.', 'The ruleCounter is not supposed to grow that much.'].join('')) : void 0; // Code branch the whole block at the expense of more code.
 
-    // Code branch the whole block at the expense of more code.
     if (dangerouslyUseGlobalCSS) {
       if (styleSheet && styleSheet.options.classNamePrefix) {
-        var prefix = styleSheet.options.classNamePrefix;
-        // Sanitize the string as will be used to prefix the generated class name.
+        var prefix = styleSheet.options.classNamePrefix; // Sanitize the string as will be used to prefix the generated class name.
+
         prefix = prefix.replace(escapeRegex, '-');
 
         if (prefix.match(/^Mui/)) {
-          return prefix + '-' + rule.key;
+          return "".concat(prefix, "-").concat(rule.key);
         }
 
         if (process.env.NODE_ENV !== 'production') {
-          return prefix + '-' + rule.key + '-' + ruleCounter;
+          return "".concat(prefix, "-").concat(rule.key, "-").concat(ruleCounter);
         }
       }
 
       if (process.env.NODE_ENV === 'production') {
-        return '' + productionPrefix + ruleCounter;
+        return "".concat(productionPrefix).concat(ruleCounter);
       }
 
-      return rule.key + '-' + ruleCounter;
+      return "".concat(rule.key, "-").concat(ruleCounter);
     }
 
     if (process.env.NODE_ENV === 'production') {
-      return '' + productionPrefix + ruleCounter;
+      return "".concat(productionPrefix).concat(ruleCounter);
     }
 
     if (styleSheet && styleSheet.options.classNamePrefix) {
-      var _prefix = styleSheet.options.classNamePrefix;
-      // Sanitize the string as will be used to prefix the generated class name.
-      _prefix = _prefix.replace(escapeRegex, '-');
+      var _prefix = styleSheet.options.classNamePrefix; // Sanitize the string as will be used to prefix the generated class name.
 
-      return _prefix + '-' + rule.key + '-' + ruleCounter;
+      _prefix = _prefix.replace(escapeRegex, '-');
+      return "".concat(_prefix, "-").concat(rule.key, "-").concat(ruleCounter);
     }
 
-    return rule.key + '-' + ruleCounter;
+    return "".concat(rule.key, "-").concat(ruleCounter);
   };
 }

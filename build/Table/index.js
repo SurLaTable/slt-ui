@@ -1,63 +1,71 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TableSortLabel = exports.TableRow = exports.TablePagination = exports.TableHead = exports.TableFooter = exports.TableCell = exports.TableBody = undefined;
-
-var _reactAsyncComponent = require('react-async-component');
-
-exports.default = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "Table" */
-  resolve: function resolve() {
-    return import('./Table');
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Table.default;
   }
 });
-var TableBody = exports.TableBody = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "TableBody" */
-  resolve: function resolve() {
-    return import('./TableBody');
+Object.defineProperty(exports, "TableBody", {
+  enumerable: true,
+  get: function get() {
+    return _TableBody.default;
   }
 });
-
-var TableCell = exports.TableCell = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "TableCell" */
-  resolve: function resolve() {
-    return import('./TableCell');
+Object.defineProperty(exports, "TableCell", {
+  enumerable: true,
+  get: function get() {
+    return _TableCell.default;
   }
 });
-
-var TableFooter = exports.TableFooter = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "TableFooter" */
-  resolve: function resolve() {
-    return import('./TableFooter');
+Object.defineProperty(exports, "TableFooter", {
+  enumerable: true,
+  get: function get() {
+    return _TableFooter.default;
   }
 });
-
-var TableHead = exports.TableHead = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "TableHead" */
-  resolve: function resolve() {
-    return import('./TableHead');
+Object.defineProperty(exports, "TableHead", {
+  enumerable: true,
+  get: function get() {
+    return _TableHead.default;
   }
 });
-
-var TablePagination = exports.TablePagination = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "TablePagination" */
-  resolve: function resolve() {
-    return import('./TablePagination');
+Object.defineProperty(exports, "TablePagination", {
+  enumerable: true,
+  get: function get() {
+    return _TablePagination.default;
   }
 });
-
-var TableRow = exports.TableRow = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "TableRow" */
-  resolve: function resolve() {
-    return import('./TableRow');
+Object.defineProperty(exports, "TableRow", {
+  enumerable: true,
+  get: function get() {
+    return _TableRow.default;
+  }
+});
+Object.defineProperty(exports, "TableSortLabel", {
+  enumerable: true,
+  get: function get() {
+    return _TableSortLabel.default;
   }
 });
 
-var TableSortLabel = exports.TableSortLabel = (0, _reactAsyncComponent.asyncComponent)({
-  /* webpackChunkName: "TableSortLabel" */
-  resolve: function resolve() {
-    return import('./TableSortLabel');
-  }
-});
+var _Table = _interopRequireDefault(require("./Table"));
+
+var _TableBody = _interopRequireDefault(require("./TableBody"));
+
+var _TableCell = _interopRequireDefault(require("./TableCell"));
+
+var _TableFooter = _interopRequireDefault(require("./TableFooter"));
+
+var _TableHead = _interopRequireDefault(require("./TableHead"));
+
+var _TablePagination = _interopRequireDefault(require("./TablePagination"));
+
+var _TableRow = _interopRequireDefault(require("./TableRow"));
+
+var _TableSortLabel = _interopRequireDefault(require("./TableSortLabel"));
