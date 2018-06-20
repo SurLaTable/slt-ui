@@ -1,6 +1,5 @@
 import _objectSpread from "@babel/runtime/helpers/objectSpread";
 import _Object$keys from "@babel/runtime/core-js/object/keys";
-import _JSON$stringify from "@babel/runtime/core-js/json/stringify";
 import React from 'react';
 import { actionRemoveProduct } from '../actions/productComparisonActions';
 import { connect } from 'react-redux'; // import { Badge } from '../../Badge';
@@ -9,9 +8,14 @@ import { connect } from 'react-redux'; // import { Badge } from '../../Badge';
 // import { Paper } from '../../Paper';
 // import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core';
 
-import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '../../index.js';
+import { createMuiTheme, MuiThemeProvider, Badge, BottomNavigation, BottomNavigationAction, Paper } from '../../index.js';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
+const theme = createMuiTheme({
+  typography: {
+    fontSize: 22
+  }
+});
 
 var _ref = React.createElement(ComparisonTable, {
   type: "cutlery"
@@ -26,11 +30,17 @@ class ComparisonBar extends React.Component {
     // we populate an array with those,
     // otherwise we fill the array with
     // the indices.
+    // We force the type to be a number,
+    // in case it gets passed as a string using
+    // React Habitat's `data-prop` vs `data-n-prop`.
 
-    const selection = Array(props.numberOfItems).fill().map((ignore, index) => props.selection && props.selection[index] || index); // If the selection is not an object, it is just an index and we
+    const selection = Array(Number(props.numberOfItems)).fill().map((ignore, index) => props.selection && props.selection[index] || index); // If the selection is not an object, it is just an index and we
     // return an empty 'add' box.
 
-    return typeof selection[0] === 'object' ? React.createElement(Paper, {
+    return typeof selection[0] === 'object' ? React.createElement(MuiThemeProvider, {
+      theme: theme
+    }, React.createElement(Paper, {
+      className: "comparison-bar",
       ref: ComparisonBarContainer => this.ComparisonBarContainer = ComparisonBarContainer,
       style: {
         backgroundColor: '#E4E4E4',
@@ -47,7 +57,7 @@ class ComparisonBar extends React.Component {
         backgroundColor: '#E4E4E4',
         marginTop: '10px'
       }
-    }, _ref, React.createElement(React.Fragment, null, "Selectionfoo:", _JSON$stringify(selection)), selection && selection.map((product, index) => {
+    }, _ref, selection && selection.map((product, index) => {
       // Since the product data contains multiple skus,
       // we just grab the first one available.
       // We may decide later to change this behavior,
@@ -79,7 +89,7 @@ class ComparisonBar extends React.Component {
           }
         }))
       });
-    }))) : null;
+    })))) : null;
   }
 
 }

@@ -11,8 +11,6 @@ var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/obje
 
 var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
 
-var _stringify = _interopRequireDefault(require("@babel/runtime/core-js/json/stringify"));
-
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 
 var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
@@ -42,6 +40,12 @@ var _ComparisonTable = _interopRequireDefault(require("../ComparisonTable/Compar
 // import { BottomNavigationAction } from '../../BottomNavigation';
 // import { Paper } from '../../Paper';
 // import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core';
+var theme = (0, _index.createMuiTheme)({
+  typography: {
+    fontSize: 22
+  }
+});
+
 var _ref = _react.default.createElement(_ComparisonTable.default, {
   type: "cutlery"
 });
@@ -68,13 +72,19 @@ function (_React$Component) {
       // we populate an array with those,
       // otherwise we fill the array with
       // the indices.
+      // We force the type to be a number,
+      // in case it gets passed as a string using
+      // React Habitat's `data-prop` vs `data-n-prop`.
 
-      var selection = Array(props.numberOfItems).fill().map(function (ignore, index) {
+      var selection = Array(Number(props.numberOfItems)).fill().map(function (ignore, index) {
         return props.selection && props.selection[index] || index;
       }); // If the selection is not an object, it is just an index and we
       // return an empty 'add' box.
 
-      return (0, _typeof2.default)(selection[0]) === 'object' ? _react.default.createElement(_index.Paper, {
+      return (0, _typeof2.default)(selection[0]) === 'object' ? _react.default.createElement(_index.MuiThemeProvider, {
+        theme: theme
+      }, _react.default.createElement(_index.Paper, {
+        className: "comparison-bar",
         ref: function ref(ComparisonBarContainer) {
           return _this.ComparisonBarContainer = ComparisonBarContainer;
         },
@@ -93,7 +103,7 @@ function (_React$Component) {
           backgroundColor: '#E4E4E4',
           marginTop: '10px'
         }
-      }, _ref, _react.default.createElement(_react.default.Fragment, null, "Selectionfoo:", (0, _stringify.default)(selection)), selection && selection.map(function (product, index) {
+      }, _ref, selection && selection.map(function (product, index) {
         // Since the product data contains multiple skus,
         // we just grab the first one available.
         // We may decide later to change this behavior,
@@ -125,7 +135,7 @@ function (_React$Component) {
             }
           }))
         });
-      }))) : null;
+      })))) : null;
     }
   }]);
   return ComparisonBar;

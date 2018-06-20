@@ -1,13 +1,22 @@
 import _objectSpread from "@babel/runtime/helpers/objectSpread";
 import React from 'react';
 import { connect } from 'react-redux';
-import { Checkbox, FormControlLabel } from '../../index.js'; // import { FormControlLabel } from '../../Form';
+import { createMuiTheme, MuiThemeProvider, Checkbox, FormControlLabel } from '../../index.js'; // import { FormControlLabel } from '../../Form';
 // import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 import { actionToggleProductSelection } from '../actions/productComparisonActions';
+const theme = createMuiTheme({
+  typography: {
+    fontSize: 22
+  }
+});
 
 let ComparisonCheckbox = props => {
-  return React.createElement("div", null, React.createElement(FormControlLabel, {
+  return React.createElement(MuiThemeProvider, {
+    theme: theme
+  }, React.createElement("div", {
+    className: "comparison-checkbox"
+  }, React.createElement(FormControlLabel, {
     control: React.createElement(Checkbox, {
       onChange: (event, checked) => {
         props.dispatch(actionToggleProductSelection(props.product, checked));
@@ -17,7 +26,7 @@ let ComparisonCheckbox = props => {
       "data-product": props.product
     }),
     label: props.checked ? 'Added' : 'Compare'
-  }));
+  })));
 };
 
 ComparisonCheckbox = connect((state, props) => {

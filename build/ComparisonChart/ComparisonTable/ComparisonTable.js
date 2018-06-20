@@ -57,6 +57,11 @@ var _icons = require("../icons");
 //   TableRow,
 //   Typography
 // } from '@material-ui/core';
+var theme = (0, _index.createMuiTheme)({
+  typography: {
+    fontSize: 22
+  }
+});
 var imageStyles = {
   border: '1px solid black',
   display: 'block',
@@ -80,8 +85,8 @@ var tableModels = {
     }, {
       name: "What's in the Box",
       format: 'html'
-    }],
-    SHIPPING: ['Drop Ship Ind']
+    }] // SHIPPING: ['Drop Ship Ind'],
+
   },
   // This is just an example of another possible type:
   appliance: {
@@ -195,7 +200,11 @@ function (_React$Component) {
       var props = this.props;
       var sections = (0, _keys.default)(tableModels[props.type]);
       var attributes = tableModels[props.type];
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_index.Button, {
+      return _react.default.createElement(_index.MuiThemeProvider, {
+        theme: theme
+      }, _react.default.createElement("div", {
+        className: "comparison-table"
+      }, _react.default.createElement(_index.Button, {
         onClick: this.handleClickOpen.bind(this),
         variant: "raised",
         color: "primary",
@@ -203,11 +212,13 @@ function (_React$Component) {
         style: {
           backgroundColor: '#6d8b19',
           color: '#ffffff',
+          display: 'inline-block',
           height: '20%',
-          marginTop: '1.5rem'
+          marginTop: '-40px'
         }
       }, "COMPARE"), _react.default.createElement(_index.Typography, {
         style: {
+          display: 'inline-block',
           margin: '10px 30px',
           width: '250px',
           textAlign: 'left'
@@ -217,6 +228,7 @@ function (_React$Component) {
           props.dispatch((0, _productComparisonActions.actionRemoveAll)());
         },
         style: {
+          padding: 0,
           textDecoration: 'underline'
         }
       }, "REMOVE ALL")), _react.default.createElement(_index.Dialog, {
@@ -329,7 +341,7 @@ function (_React$Component) {
             }, cellData);
           }));
         })));
-      }))));
+      })))));
     }
   }]);
   return ComparisonTable;

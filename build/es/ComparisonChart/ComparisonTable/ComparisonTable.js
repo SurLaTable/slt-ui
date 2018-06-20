@@ -26,8 +26,13 @@ import { actionRemoveAll, actionRemoveProduct, actionSetProducts } from '../acti
 //   Typography
 // } from '@material-ui/core';
 
-import { Badge, Button, Dialog, Slide, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '../../index.js';
+import { createMuiTheme, MuiThemeProvider, Badge, Button, Dialog, Slide, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '../../index.js';
 import { Cancel as CancelIcon } from '../icons';
+const theme = createMuiTheme({
+  typography: {
+    fontSize: 22
+  }
+});
 const imageStyles = {
   border: '1px solid black',
   display: 'block',
@@ -51,8 +56,8 @@ const tableModels = {
     }, {
       name: "What's in the Box",
       format: 'html'
-    }],
-    SHIPPING: ['Drop Ship Ind']
+    }] // SHIPPING: ['Drop Ship Ind'],
+
   },
   // This is just an example of another possible type:
   appliance: {
@@ -149,7 +154,11 @@ class ComparisonTable extends React.Component {
     const sections = _Object$keys(tableModels[props.type]);
 
     const attributes = tableModels[props.type];
-    return React.createElement(React.Fragment, null, React.createElement(Button, {
+    return React.createElement(MuiThemeProvider, {
+      theme: theme
+    }, React.createElement("div", {
+      className: "comparison-table"
+    }, React.createElement(Button, {
       onClick: this.handleClickOpen.bind(this),
       variant: "raised",
       color: "primary",
@@ -157,11 +166,13 @@ class ComparisonTable extends React.Component {
       style: {
         backgroundColor: '#6d8b19',
         color: '#ffffff',
+        display: 'inline-block',
         height: '20%',
-        marginTop: '1.5rem'
+        marginTop: '-40px'
       }
     }, "COMPARE"), React.createElement(Typography, {
       style: {
+        display: 'inline-block',
         margin: '10px 30px',
         width: '250px',
         textAlign: 'left'
@@ -171,6 +182,7 @@ class ComparisonTable extends React.Component {
         props.dispatch(actionRemoveAll());
       },
       style: {
+        padding: 0,
         textDecoration: 'underline'
       }
     }, "REMOVE ALL")), React.createElement(Dialog, {
@@ -282,7 +294,7 @@ class ComparisonTable extends React.Component {
           }, cellData);
         }));
       })));
-    }))));
+    })))));
   }
 
 }

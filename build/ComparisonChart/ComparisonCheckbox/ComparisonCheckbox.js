@@ -19,8 +19,18 @@ var _productComparisonActions = require("../actions/productComparisonActions");
 
 // import { FormControlLabel } from '../../Form';
 // import { Checkbox, FormControlLabel } from '@material-ui/core';
+var theme = (0, _index.createMuiTheme)({
+  typography: {
+    fontSize: 22
+  }
+});
+
 var ComparisonCheckbox = function ComparisonCheckbox(props) {
-  return _react.default.createElement("div", null, _react.default.createElement(_index.FormControlLabel, {
+  return _react.default.createElement(_index.MuiThemeProvider, {
+    theme: theme
+  }, _react.default.createElement("div", {
+    className: "comparison-checkbox"
+  }, _react.default.createElement(_index.FormControlLabel, {
     control: _react.default.createElement(_index.Checkbox, {
       onChange: function onChange(event, checked) {
         props.dispatch((0, _productComparisonActions.actionToggleProductSelection)(props.product, checked));
@@ -30,7 +40,7 @@ var ComparisonCheckbox = function ComparisonCheckbox(props) {
       "data-product": props.product
     }),
     label: props.checked ? 'Added' : 'Compare'
-  }));
+  })));
 };
 
 ComparisonCheckbox = (0, _reactRedux.connect)(function (state, props) {
