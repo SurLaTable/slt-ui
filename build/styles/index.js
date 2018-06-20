@@ -1,55 +1,6 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "createGenerateClassName", {
-  enumerable: true,
-  get: function get() {
-    return _createGenerateClassName.default;
-  }
-});
-Object.defineProperty(exports, "createMuiTheme", {
-  enumerable: true,
-  get: function get() {
-    return _createMuiTheme.default;
-  }
-});
-Object.defineProperty(exports, "jssPreset", {
-  enumerable: true,
-  get: function get() {
-    return _jssPreset.default;
-  }
-});
-Object.defineProperty(exports, "MuiThemeProvider", {
-  enumerable: true,
-  get: function get() {
-    return _MuiThemeProvider.default;
-  }
-});
-Object.defineProperty(exports, "withStyles", {
-  enumerable: true,
-  get: function get() {
-    return _withStyles.default;
-  }
-});
-Object.defineProperty(exports, "withTheme", {
-  enumerable: true,
-  get: function get() {
-    return _withTheme.default;
-  }
-});
-
-var _createGenerateClassName = _interopRequireDefault(require("./createGenerateClassName"));
-
-var _createMuiTheme = _interopRequireDefault(require("./createMuiTheme"));
-
-var _jssPreset = _interopRequireDefault(require("./jssPreset"));
-
-var _MuiThemeProvider = _interopRequireDefault(require("./MuiThemeProvider"));
-
-var _withStyles = _interopRequireDefault(require("./withStyles"));
-
-var _withTheme = _interopRequireDefault(require("./withTheme"));
+export { default as createGenerateClassName } from './createGenerateClassName';
+export { default as createMuiTheme } from './createMuiTheme';
+export { default as jssPreset } from './jssPreset';
+export { default as MuiThemeProvider } from './MuiThemeProvider';
+export { default as withStyles } from './withStyles';
+export { default as withTheme } from './withTheme';

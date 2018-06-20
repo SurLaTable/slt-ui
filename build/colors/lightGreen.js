@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var lightGreen = {
+const lightGreen = {
   50: '#f1f8e9',
   100: '#dcedc8',
   200: '#c5e1a5',
@@ -18,7 +12,7 @@ var lightGreen = {
   A100: '#ccff90',
   A200: '#b2ff59',
   A400: '#76ff03',
-  A700: '#64dd17'
+  A700: '#64dd17',
 };
-var _default = lightGreen;
-exports.default = _default;
+
+export default lightGreen;

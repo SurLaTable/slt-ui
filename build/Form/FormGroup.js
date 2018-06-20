@@ -1,82 +1,64 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = {
+export const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   row: {
-    flexDirection: 'row'
-  }
+    flexDirection: 'row',
+  },
 };
+
 /**
  * `FormGroup` wraps controls such as `Checkbox` and `Switch`.
  * It provides compact row layout.
  * For the `Radio`, you should be using the `RadioGroup` component instead of this one.
  */
-
-exports.styles = styles;
-
 function FormGroup(props) {
-  var classes = props.classes,
-      className = props.className,
-      children = props.children,
-      row = props.row,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "children", "row"]);
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.row, row), className)
-  }, other), children);
+  const { classes, className, children, row, ...other } = props;
+
+  return (
+    <div
+      className={classNames(
+        classes.root,
+        {
+          [classes.row]: row,
+        },
+        className,
+      )}
+      {...other}
+    >
+      {children}
+    </div>
+  );
 }
 
-FormGroup.propTypes = process.env.NODE_ENV !== "production" ? {
+FormGroup.propTypes = {
   /**
    * The content of the component.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * Display group of elements in a compact row.
    */
-  row: _propTypes.default.bool
-} : {};
-FormGroup.defaultProps = {
-  row: false
+  row: PropTypes.bool,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiFormGroup'
-})(FormGroup);
+FormGroup.defaultProps = {
+  row: false,
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiFormGroup' })(FormGroup);

@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var pink = {
+const pink = {
   50: '#fce4ec',
   100: '#f8bbd0',
   200: '#f48fb1',
@@ -18,7 +12,7 @@ var pink = {
   A100: '#ff80ab',
   A200: '#ff4081',
   A400: '#f50057',
-  A700: '#c51162'
+  A700: '#c51162',
 };
-var _default = pink;
-exports.default = _default;
+
+export default pink;

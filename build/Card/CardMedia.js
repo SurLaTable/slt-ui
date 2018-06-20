@@ -1,106 +1,85 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import warning from 'warning';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _warning = _interopRequireDefault(require("warning"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = {
+export const styles = {
   root: {
     display: 'block',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center'
+    backgroundPosition: 'center',
   },
   media: {
-    width: '100%'
-  }
+    width: '100%',
+  },
 };
-exports.styles = styles;
-var MEDIA_COMPONENTS = ['video', 'audio', 'picture', 'iframe', 'img'];
+
+const MEDIA_COMPONENTS = ['video', 'audio', 'picture', 'iframe', 'img'];
 
 function CardMedia(props) {
-  var classes = props.classes,
-      className = props.className,
-      Component = props.component,
-      image = props.image,
-      src = props.src,
-      style = props.style,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "component", "image", "src", "style"]);
-  process.env.NODE_ENV !== "production" ? (0, _warning.default)(Boolean(image || src), 'Material-UI: either `image` or `src` property must be specified.') : void 0;
-  var isMediaComponent = MEDIA_COMPONENTS.indexOf(Component) !== -1;
-  var composedStyle = !isMediaComponent && image ? (0, _objectSpread2.default)({
-    backgroundImage: "url(\"".concat(image, "\")")
-  }, style) : style;
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.media, isMediaComponent), className),
-    style: composedStyle,
-    src: isMediaComponent ? image || src : undefined
-  }, other));
+  const { classes, className, component: Component, image, src, style, ...other } = props;
+
+  warning(
+    Boolean(image || src),
+    'Material-UI: either `image` or `src` property must be specified.',
+  );
+
+  const isMediaComponent = MEDIA_COMPONENTS.indexOf(Component) !== -1;
+  const composedStyle =
+    !isMediaComponent && image ? { backgroundImage: `url("${image}")`, ...style } : style;
+
+  return (
+    <Component
+      className={classNames(
+        classes.root,
+        {
+          [classes.media]: isMediaComponent,
+        },
+        className,
+      )}
+      style={composedStyle}
+      src={isMediaComponent ? image || src : undefined}
+      {...other}
+    />
+  );
 }
 
-CardMedia.propTypes = process.env.NODE_ENV !== "production" ? {
+CardMedia.propTypes = {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * Component for rendering image.
    * Either a string to use a DOM element or a component.
    */
-  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
-
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /**
    * Image to be displayed as a background image.
    * Either `image` or `src` prop must be specified.
    * Note that caller must specify height otherwise the image will not be visible.
    */
-  image: _propTypes.default.string,
-
+  image: PropTypes.string,
   /**
    * An alias for `image` property.
    * Available only with media components.
    * Media components: `video`, `audio`, `picture`, `iframe`, `img`.
    */
-  src: _propTypes.default.string,
-
+  src: PropTypes.string,
   /**
    * @ignore
    */
-  style: _propTypes.default.object
-} : {};
-CardMedia.defaultProps = {
-  component: 'div'
+  style: PropTypes.object,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiCardMedia'
-})(CardMedia);
+CardMedia.defaultProps = {
+  component: 'div',
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiCardMedia' })(CardMedia);

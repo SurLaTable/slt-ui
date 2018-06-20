@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var teal = {
+const teal = {
   50: '#e0f2f1',
   100: '#b2dfdb',
   200: '#80cbc4',
@@ -18,7 +12,7 @@ var teal = {
   A100: '#a7ffeb',
   A200: '#64ffda',
   A400: '#1de9b6',
-  A700: '#00bfa5'
+  A700: '#00bfa5',
 };
-var _default = teal;
-exports.default = _default;
+
+export default teal;

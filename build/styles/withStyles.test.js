@@ -1,402 +1,260 @@
-"use strict";
+// @flow
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _sinon = require("sinon");
-
-var _chai = require("chai");
-
-var _JssProvider = _interopRequireDefault(require("react-jss/lib/JssProvider"));
-
-var _jss = require("jss");
-
-var _consoleErrorMock = _interopRequireDefault(require("test/utils/consoleErrorMock"));
-
-var _jssPreset = _interopRequireDefault(require("./jssPreset"));
-
-var _withStyles = _interopRequireDefault(require("./withStyles"));
-
-var _MuiThemeProvider = _interopRequireDefault(require("./MuiThemeProvider"));
-
-var _createMuiTheme = _interopRequireDefault(require("./createMuiTheme"));
-
-var _createGenerateClassName = _interopRequireDefault(require("./createGenerateClassName"));
-
-var _testUtils = require("../test-utils");
-
-var _ref = _react.default.createElement("div", null);
+import React from 'react';
+import { spy } from 'sinon';
+import { assert } from 'chai';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create, SheetsRegistry } from 'jss';
+import consoleErrorMock from 'test/utils/consoleErrorMock';
+import jssPreset from './jssPreset';
+import withStyles from './withStyles';
+import MuiThemeProvider from './MuiThemeProvider';
+import createMuiTheme from './createMuiTheme';
+import createGenerateClassName from './createGenerateClassName';
+import { createShallow, createMount, getClasses } from '../test-utils';
 
 // eslint-disable-next-line react/prefer-stateless-function
-var Empty =
-/*#__PURE__*/
-function (_React$Component) {
-  (0, _inherits2.default)(Empty, _React$Component);
-
-  function Empty() {
-    (0, _classCallCheck2.default)(this, Empty);
-    return (0, _possibleConstructorReturn2.default)(this, (Empty.__proto__ || (0, _getPrototypeOf.default)(Empty)).apply(this, arguments));
+class Empty extends React.Component<{ classes: Object, theme?: Object }> {
+  render() {
+    return <div />;
   }
+}
 
-  (0, _createClass2.default)(Empty, [{
-    key: "render",
-    value: function render() {
-      return _ref;
-    }
-  }]);
-  return Empty;
-}(_react.default.Component);
+describe('withStyles', () => {
+  let shallow;
+  let mount;
 
-describe('withStyles', function () {
-  var shallow;
-  var mount;
-  before(function () {
-    shallow = (0, _testUtils.createShallow)();
-    mount = (0, _testUtils.createMount)();
+  before(() => {
+    shallow = createShallow();
+    mount = createMount();
   });
-  after(function () {
+
+  after(() => {
     mount.cleanUp();
   });
-  describe('props', function () {
-    var StyledComponent1;
-    var classes;
 
-    var _ref2 = _react.default.createElement(StyledComponent1, null);
+  describe('props', () => {
+    let StyledComponent1;
+    let classes;
 
-    before(function () {
-      var styles = {
-        root: {
-          display: 'flex'
-        }
-      };
-      StyledComponent1 = (0, _withStyles.default)(styles, {
-        name: 'MuiTextField'
-      })(Empty);
-      classes = (0, _testUtils.getClasses)(_ref2);
+    before(() => {
+      const styles = { root: { display: 'flex' } };
+      StyledComponent1 = withStyles(styles, { name: 'MuiTextField' })(Empty);
+      classes = getClasses(<StyledComponent1 />);
     });
 
-    var _ref3 = _react.default.createElement(StyledComponent1, null);
-
-    it('should provide a classes property', function () {
-      var wrapper = shallow(_ref3);
-
-      _chai.assert.deepEqual(wrapper.props().classes, classes, 'Should provide the classes property');
+    it('should provide a classes property', () => {
+      const wrapper = shallow(<StyledComponent1 />);
+      assert.deepEqual(wrapper.props().classes, classes, 'Should provide the classes property');
     });
-    describe('prop: classes', function () {
-      before(function () {
-        _consoleErrorMock.default.spy();
+
+    describe('prop: classes', () => {
+      before(() => {
+        consoleErrorMock.spy();
       });
-      after(function () {
-        _consoleErrorMock.default.reset();
+
+      after(() => {
+        consoleErrorMock.reset();
       });
-      it('should accept a classes property', function () {
-        var wrapper = shallow(_react.default.createElement(StyledComponent1, {
-          classes: {
-            root: 'h1'
-          }
-        }));
 
-        _chai.assert.deepEqual(wrapper.props().classes, {
-          root: "".concat(classes.root, " h1")
-        });
-
-        _chai.assert.strictEqual(_consoleErrorMock.default.callCount(), 0);
+      it('should accept a classes property', () => {
+        const wrapper = shallow(<StyledComponent1 classes={{ root: 'h1' }} />);
+        assert.deepEqual(wrapper.props().classes, { root: `${classes.root} h1` });
+        assert.strictEqual(consoleErrorMock.callCount(), 0);
       });
-      it('should ignore undefined property', function () {
-        var wrapper = shallow(_react.default.createElement(StyledComponent1, {
-          classes: {
-            root: undefined
-          }
-        }));
 
-        _chai.assert.deepEqual(wrapper.props().classes, {
-          root: classes.root
-        });
-
-        _chai.assert.strictEqual(_consoleErrorMock.default.callCount(), 0);
+      it('should ignore undefined property', () => {
+        const wrapper = shallow(<StyledComponent1 classes={{ root: undefined }} />);
+        assert.deepEqual(wrapper.props().classes, { root: classes.root });
+        assert.strictEqual(consoleErrorMock.callCount(), 0);
       });
-      it('should warn if providing a unknown key', function () {
-        var wrapper = shallow(_react.default.createElement(StyledComponent1, {
-          classes: {
-            bar: 'foo'
-          }
-        }));
 
-        _chai.assert.deepEqual(wrapper.props().classes, {
-          root: classes.root,
-          bar: 'undefined foo'
-        });
+      it('should warn if providing a unknown key', () => {
+        const wrapper = shallow(<StyledComponent1 classes={{ bar: 'foo' }} />);
 
-        _chai.assert.strictEqual(_consoleErrorMock.default.callCount(), 1);
-
-        _chai.assert.match(_consoleErrorMock.default.args()[0][0], /Material-UI: the key `bar` provided to the classes property is not implemented/);
+        assert.deepEqual(wrapper.props().classes, { root: classes.root, bar: 'undefined foo' });
+        assert.strictEqual(consoleErrorMock.callCount(), 1);
+        assert.match(
+          consoleErrorMock.args()[0][0],
+          /Material-UI: the key `bar` provided to the classes property is not implemented/,
+        );
       });
-      it('should warn if providing a non string', function () {
-        var wrapper = shallow(_react.default.createElement(StyledComponent1, {
-          classes: {
-            root: {}
-          }
-        }));
 
-        _chai.assert.deepEqual(wrapper.props().classes, {
-          root: "".concat(classes.root, " [object Object]")
-        });
+      it('should warn if providing a non string', () => {
+        const wrapper = shallow(<StyledComponent1 classes={{ root: {} }} />);
 
-        _chai.assert.strictEqual(_consoleErrorMock.default.callCount(), 2);
-
-        _chai.assert.match(_consoleErrorMock.default.args()[1][0], /Material-UI: the key `root` provided to the classes property is not valid/);
-      });
-    });
-    describe('prop: innerRef', function () {
-      it('should provide a ref on the inner component', function () {
-        var handleRef = (0, _sinon.spy)();
-        mount(_react.default.createElement(StyledComponent1, {
-          innerRef: handleRef
-        }));
-
-        _chai.assert.strictEqual(handleRef.callCount, 1);
+        assert.deepEqual(wrapper.props().classes, { root: `${classes.root} [object Object]` });
+        assert.strictEqual(consoleErrorMock.callCount(), 2);
+        assert.match(
+          consoleErrorMock.args()[1][0],
+          /Material-UI: the key `root` provided to the classes property is not valid/,
+        );
       });
     });
 
-    var _ref4 = _react.default.createElement(StyledComponent1, null);
+    describe('prop: innerRef', () => {
+      it('should provide a ref on the inner component', () => {
+        const handleRef = spy();
+        mount(<StyledComponent1 innerRef={handleRef} />);
+        assert.strictEqual(handleRef.callCount, 1);
+      });
+    });
 
-    describe('cache', function () {
-      it('should recycle with no classes property', function () {
-        var wrapper = mount(_ref4);
-        var classes1 = wrapper.find(Empty).props().classes;
+    describe('cache', () => {
+      it('should recycle with no classes property', () => {
+        const wrapper = mount(<StyledComponent1 />);
+        const classes1 = wrapper.find(Empty).props().classes;
         wrapper.update();
-        var classes2 = wrapper.find(Empty).props().classes;
-
-        _chai.assert.strictEqual(classes1, classes2);
+        const classes2 = wrapper.find(Empty).props().classes;
+        assert.strictEqual(classes1, classes2);
       });
-      it('should recycle even when a classes property is provided', function () {
-        var inputClasses = {
-          root: 'foo'
-        };
-        var wrapper = mount(_react.default.createElement(StyledComponent1, {
-          classes: inputClasses
-        }));
-        var classes1 = wrapper.find(Empty).props().classes;
-        wrapper.setProps({
-          classes: inputClasses
-        });
-        var classes2 = wrapper.find(Empty).props().classes;
 
-        _chai.assert.strictEqual(classes1, classes2);
+      it('should recycle even when a classes property is provided', () => {
+        const inputClasses = { root: 'foo' };
+        const wrapper = mount(<StyledComponent1 classes={inputClasses} />);
+        const classes1 = wrapper.find(Empty).props().classes;
+        wrapper.setProps({
+          classes: inputClasses,
+        });
+        const classes2 = wrapper.find(Empty).props().classes;
+        assert.strictEqual(classes1, classes2);
       });
-      it('should invalidate the cache', function () {
-        var wrapper = mount(_react.default.createElement(StyledComponent1, {
-          classes: {
-            root: 'foo'
-          }
-        }));
-        var classes1 = wrapper.find(Empty).props().classes;
 
-        _chai.assert.deepEqual(classes1, {
-          root: "".concat(classes.root, " foo")
+      it('should invalidate the cache', () => {
+        const wrapper = mount(<StyledComponent1 classes={{ root: 'foo' }} />);
+        const classes1 = wrapper.find(Empty).props().classes;
+        assert.deepEqual(classes1, {
+          root: `${classes.root} foo`,
         });
-
         wrapper.setProps({
-          classes: {
-            root: 'bar'
-          }
+          classes: { root: 'bar' },
         });
-        var classes2 = wrapper.find(Empty).props().classes;
-
-        _chai.assert.notStrictEqual(classes1, classes2);
-
-        _chai.assert.deepEqual(classes2, {
-          root: "".concat(classes.root, " bar")
+        const classes2 = wrapper.find(Empty).props().classes;
+        assert.notStrictEqual(classes1, classes2);
+        assert.deepEqual(classes2, {
+          root: `${classes.root} bar`,
         });
       });
     });
   });
-  describe('mount', function () {
-    var sheetsRegistry;
-    var jss;
-    var generateClassName;
-    beforeEach(function () {
-      jss = (0, _jss.create)((0, _jssPreset.default)());
-      generateClassName = (0, _createGenerateClassName.default)();
-      sheetsRegistry = new _jss.SheetsRegistry();
+
+  describe('mount', () => {
+    let sheetsRegistry;
+    let jss;
+    let generateClassName;
+
+    beforeEach(() => {
+      jss = create(jssPreset());
+      generateClassName = createGenerateClassName();
+      sheetsRegistry = new SheetsRegistry();
     });
-    it('should run lifecycles with no theme', function () {
-      var styles = {
-        root: {
-          display: 'flex'
-        }
-      };
-      var StyledComponent = (0, _withStyles.default)(styles)(Empty);
-      var wrapper = mount(_react.default.createElement(_MuiThemeProvider.default, {
-        theme: (0, _createMuiTheme.default)()
-      }, _react.default.createElement(_JssProvider.default, {
-        registry: sheetsRegistry,
-        jss: jss,
-        generateClassName: generateClassName
-      }, _react.default.createElement(StyledComponent, null))));
 
-      _chai.assert.strictEqual(sheetsRegistry.registry.length, 1);
+    it('should run lifecycles with no theme', () => {
+      const styles = { root: { display: 'flex' } };
+      const StyledComponent = withStyles(styles)(Empty);
 
-      _chai.assert.deepEqual(sheetsRegistry.registry[0].classes, {
-        root: 'Empty-root-1'
-      });
-
+      const wrapper = mount(
+        <MuiThemeProvider theme={createMuiTheme()}>
+          <JssProvider registry={sheetsRegistry} jss={jss} generateClassName={generateClassName}>
+            <StyledComponent />
+          </JssProvider>
+        </MuiThemeProvider>,
+      );
+      assert.strictEqual(sheetsRegistry.registry.length, 1);
+      assert.deepEqual(sheetsRegistry.registry[0].classes, { root: 'Empty-root-1' });
       wrapper.update();
-
-      _chai.assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
-
-      _chai.assert.deepEqual(sheetsRegistry.registry[0].classes, {
-        root: 'Empty-root-1'
-      });
-
-      wrapper.setProps({
-        theme: (0, _createMuiTheme.default)()
-      });
-
-      _chai.assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
-
-      _chai.assert.deepEqual(sheetsRegistry.registry[0].classes, {
-        root: 'Empty-root-1'
-      });
+      assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
+      assert.deepEqual(sheetsRegistry.registry[0].classes, { root: 'Empty-root-1' });
+      wrapper.setProps({ theme: createMuiTheme() });
+      assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
+      assert.deepEqual(sheetsRegistry.registry[0].classes, { root: 'Empty-root-1' });
 
       wrapper.unmount();
-
-      _chai.assert.strictEqual(sheetsRegistry.registry.length, 0);
+      assert.strictEqual(sheetsRegistry.registry.length, 0);
     });
-    it('should work when depending on a theme', function () {
-      var styles = function styles(theme) {
-        return {
-          root: {
-            padding: theme.spacing.unit
-          }
-        };
-      };
 
-      var StyledComponent = (0, _withStyles.default)(styles, {
-        name: 'MuiTextField'
-      })(Empty);
-      var wrapper = mount(_react.default.createElement(_MuiThemeProvider.default, {
-        theme: (0, _createMuiTheme.default)()
-      }, _react.default.createElement(_JssProvider.default, {
-        registry: sheetsRegistry,
-        jss: jss,
-        generateClassName: generateClassName
-      }, _react.default.createElement(StyledComponent, null))));
+    it('should work when depending on a theme', () => {
+      const styles = theme => ({ root: { padding: theme.spacing.unit } });
+      const StyledComponent = withStyles(styles, { name: 'MuiTextField' })(Empty);
 
-      _chai.assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
-
-      _chai.assert.deepEqual(sheetsRegistry.registry[0].classes, {
-        root: 'MuiTextField-root-1'
-      });
-
-      wrapper.setProps({
-        theme: (0, _createMuiTheme.default)()
-      });
-
-      _chai.assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
-
-      _chai.assert.deepEqual(sheetsRegistry.registry[0].classes, {
-        root: 'MuiTextField-root-2'
-      });
+      const wrapper = mount(
+        <MuiThemeProvider theme={createMuiTheme()}>
+          <JssProvider registry={sheetsRegistry} jss={jss} generateClassName={generateClassName}>
+            <StyledComponent />
+          </JssProvider>
+        </MuiThemeProvider>,
+      );
+      assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
+      assert.deepEqual(sheetsRegistry.registry[0].classes, { root: 'MuiTextField-root-1' });
+      wrapper.setProps({ theme: createMuiTheme() });
+      assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
+      assert.deepEqual(sheetsRegistry.registry[0].classes, { root: 'MuiTextField-root-2' });
     });
-    it('should support the overrides key', function () {
-      var styles = {
-        root: {
-          padding: 8
-        }
-      };
-      var StyledComponent = (0, _withStyles.default)(styles, {
-        name: 'MuiTextField'
-      })(Empty);
-      mount(_react.default.createElement(_MuiThemeProvider.default, {
-        theme: (0, _createMuiTheme.default)({
-          overrides: {
-            MuiTextField: {
-              root: {
-                padding: 9
-              }
-            }
-          }
-        })
-      }, _react.default.createElement(_JssProvider.default, {
-        registry: sheetsRegistry,
-        jss: jss,
-        generateClassName: generateClassName
-      }, _react.default.createElement(StyledComponent, null))));
 
-      _chai.assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
+    it('should support the overrides key', () => {
+      const styles = { root: { padding: 8 } };
+      const StyledComponent = withStyles(styles, { name: 'MuiTextField' })(Empty);
 
-      _chai.assert.deepEqual(sheetsRegistry.registry[0].rules.raw, {
-        root: {
-          padding: 9
-        }
-      });
+      mount(
+        <MuiThemeProvider
+          theme={createMuiTheme({
+            overrides: {
+              MuiTextField: {
+                root: {
+                  padding: 9,
+                },
+              },
+            },
+          })}
+        >
+          <JssProvider registry={sheetsRegistry} jss={jss} generateClassName={generateClassName}>
+            <StyledComponent />
+          </JssProvider>
+        </MuiThemeProvider>,
+      );
+
+      assert.strictEqual(sheetsRegistry.registry.length, 1, 'should only attach once');
+      assert.deepEqual(sheetsRegistry.registry[0].rules.raw, { root: { padding: 9 } });
     });
-    describe('options: disableStylesGeneration', function () {
-      it('should not generate the styles', function () {
-        var styles = {
-          root: {
-            display: 'flex'
-          }
-        };
-        var StyledComponent = (0, _withStyles.default)(styles)(Empty);
-        var wrapper = mount(_react.default.createElement(_MuiThemeProvider.default, {
-          theme: (0, _createMuiTheme.default)(),
-          disableStylesGeneration: true
-        }, _react.default.createElement(_JssProvider.default, {
-          registry: sheetsRegistry,
-          jss: jss,
-          generateClassName: generateClassName
-        }, _react.default.createElement(StyledComponent, null))));
 
-        _chai.assert.strictEqual(sheetsRegistry.registry.length, 0);
+    describe('options: disableStylesGeneration', () => {
+      it('should not generate the styles', () => {
+        const styles = { root: { display: 'flex' } };
+        const StyledComponent = withStyles(styles)(Empty);
 
-        _chai.assert.deepEqual(wrapper.find(Empty).props().classes, {});
-
+        const wrapper = mount(
+          <MuiThemeProvider theme={createMuiTheme()} disableStylesGeneration>
+            <JssProvider registry={sheetsRegistry} jss={jss} generateClassName={generateClassName}>
+              <StyledComponent />
+            </JssProvider>
+          </MuiThemeProvider>,
+        );
+        assert.strictEqual(sheetsRegistry.registry.length, 0);
+        assert.deepEqual(wrapper.find(Empty).props().classes, {});
         wrapper.unmount();
-
-        _chai.assert.strictEqual(sheetsRegistry.registry.length, 0);
+        assert.strictEqual(sheetsRegistry.registry.length, 0);
       });
     });
   });
-  describe('HMR with same state', function () {
-    it('should take the new stylesCreator into account', function () {
-      var styles1 = {
-        root: {
-          padding: 1
-        }
-      };
-      var StyledComponent1 = (0, _withStyles.default)(styles1, {
-        name: 'MuiTextField'
-      })(Empty);
-      var wrapper = mount(_react.default.createElement(StyledComponent1, null));
-      var styles2 = {
-        root: {
-          padding: 2
-        }
-      };
-      var StyledComponent2 = (0, _withStyles.default)(styles2, {
-        name: 'MuiTextField'
-      })(Empty); // Simulate react-hot-loader behavior
 
+  describe('HMR with same state', () => {
+    it('should take the new stylesCreator into account', () => {
+      const styles1 = { root: { padding: 1 } };
+      const StyledComponent1 = withStyles(styles1, { name: 'MuiTextField' })(Empty);
+      const wrapper = mount(<StyledComponent1 />);
+
+      const styles2 = { root: { padding: 2 } };
+      const StyledComponent2 = withStyles(styles2, { name: 'MuiTextField' })(Empty);
+
+      // Simulate react-hot-loader behavior
       wrapper.instance().componentDidUpdate = StyledComponent2.prototype.componentDidUpdate;
-      var classes1 = wrapper.childAt(0).props().classes.root;
+
+      const classes1 = wrapper.childAt(0).props().classes.root;
       wrapper.setProps({});
       wrapper.update();
-      var classes2 = wrapper.childAt(0).props().classes.root;
+      const classes2 = wrapper.childAt(0).props().classes.root;
 
-      _chai.assert.notStrictEqual(classes1, classes2, 'should generate new classes');
+      assert.notStrictEqual(classes1, classes2, 'should generate new classes');
     });
   });
 });

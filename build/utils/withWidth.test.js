@@ -1,184 +1,139 @@
-"use strict";
+import React from 'react';
+import { assert } from 'chai';
+import { useFakeTimers } from 'sinon';
+import { createMount, createShallow } from '../test-utils';
+import withWidth, { isWidthDown, isWidthUp } from './withWidth';
+import createBreakpoints from '../styles/createBreakpoints';
+import createMuiTheme from '../styles/createMuiTheme';
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+const Empty = () => <div />;
+const EmptyWithWidth = withWidth()(Empty);
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+const breakpoints = createBreakpoints({});
+const TEST_ENV_WIDTH = window.innerWidth > breakpoints.values.md ? 'md' : 'sm';
 
-var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
+describe('withWidth', () => {
+  let shallow;
+  let mount;
 
-var _react = _interopRequireDefault(require("react"));
-
-var _chai = require("chai");
-
-var _sinon = require("sinon");
-
-var _testUtils = require("../test-utils");
-
-var _withWidth = _interopRequireWildcard(require("./withWidth"));
-
-var _createBreakpoints = _interopRequireDefault(require("../styles/createBreakpoints"));
-
-var _createMuiTheme = _interopRequireDefault(require("../styles/createMuiTheme"));
-
-var _ref = _react.default.createElement("div", null);
-
-var Empty = function Empty() {
-  return _ref;
-};
-
-var EmptyWithWidth = (0, _withWidth.default)()(Empty);
-var breakpoints = (0, _createBreakpoints.default)({});
-var TEST_ENV_WIDTH = window.innerWidth > breakpoints.values.md ? 'md' : 'sm';
-
-var _ref2 = _react.default.createElement(EmptyWithWidth, null);
-
-var _ref3 = _react.default.createElement(EmptyWithWidth, {
-  width: "xl"
-});
-
-var _ref4 = _react.default.createElement(EmptyWithWidth, null);
-
-var _ref5 = _react.default.createElement(EmptyWithWidth, null);
-
-var _ref6 = _react.default.createElement(EmptyWithWidth, {
-  width: "sm"
-});
-
-var _ref7 = _react.default.createElement(EmptyWithWidth, {
-  initialWidth: "lg"
-});
-
-describe('withWidth', function () {
-  var shallow;
-  var mount;
-  before(function () {
-    shallow = (0, _testUtils.createShallow)({
-      dive: true,
-      disableLifecycleMethods: true
-    });
-    mount = (0, _testUtils.createMount)();
+  before(() => {
+    shallow = createShallow({ dive: true, disableLifecycleMethods: true });
+    mount = createMount();
   });
-  after(function () {
+
+  after(() => {
     mount.cleanUp();
   });
-  describe('server side rendering', function () {
-    it('should not render the children as the width is unknown', function () {
-      var wrapper = shallow(_ref2);
 
-      _chai.assert.strictEqual(wrapper.type(), null, 'should render nothing');
+  describe('server side rendering', () => {
+    it('should not render the children as the width is unknown', () => {
+      const wrapper = shallow(<EmptyWithWidth />);
+      assert.strictEqual(wrapper.type(), null, 'should render nothing');
     });
   });
-  describe('prop: width', function () {
-    it('should be able to override it', function () {
-      var wrapper = mount(_ref3);
 
-      _chai.assert.strictEqual(wrapper.find(Empty).props().width, 'xl');
+  describe('prop: width', () => {
+    it('should be able to override it', () => {
+      const wrapper = mount(<EmptyWithWidth width="xl" />);
+
+      assert.strictEqual(wrapper.find(Empty).props().width, 'xl');
     });
   });
-  describe('browser', function () {
-    it('should provide the right width to the child element', function () {
-      var wrapper = mount(_ref4);
 
-      _chai.assert.strictEqual(wrapper.find(Empty).props().width, TEST_ENV_WIDTH);
+  describe('browser', () => {
+    it('should provide the right width to the child element', () => {
+      const wrapper = mount(<EmptyWithWidth />);
+
+      assert.strictEqual(wrapper.find(Empty).props().width, TEST_ENV_WIDTH);
     });
   });
-  describe('isWidthUp', function () {
-    it('should work as default inclusive', function () {
-      _chai.assert.strictEqual((0, _withWidth.isWidthUp)('md', 'lg'), true, 'should accept larger size');
 
-      _chai.assert.strictEqual((0, _withWidth.isWidthUp)('md', 'md'), true, 'should be inclusive');
-
-      _chai.assert.strictEqual((0, _withWidth.isWidthUp)('md', 'sm'), false, 'should reject smaller size');
+  describe('isWidthUp', () => {
+    it('should work as default inclusive', () => {
+      assert.strictEqual(isWidthUp('md', 'lg'), true, 'should accept larger size');
+      assert.strictEqual(isWidthUp('md', 'md'), true, 'should be inclusive');
+      assert.strictEqual(isWidthUp('md', 'sm'), false, 'should reject smaller size');
     });
-    it('should work as exclusive', function () {
-      _chai.assert.strictEqual((0, _withWidth.isWidthUp)('md', 'lg', false), true, 'should accept larger size');
-
-      _chai.assert.strictEqual((0, _withWidth.isWidthUp)('md', 'md', false), false, 'should be exclusive');
-
-      _chai.assert.strictEqual((0, _withWidth.isWidthUp)('md', 'sm', false), false, 'should reject smaller size');
+    it('should work as exclusive', () => {
+      assert.strictEqual(isWidthUp('md', 'lg', false), true, 'should accept larger size');
+      assert.strictEqual(isWidthUp('md', 'md', false), false, 'should be exclusive');
+      assert.strictEqual(isWidthUp('md', 'sm', false), false, 'should reject smaller size');
     });
   });
-  describe('isWidthDown', function () {
-    it('should work as default inclusive', function () {
-      _chai.assert.strictEqual((0, _withWidth.isWidthDown)('md', 'lg', true), false, 'should reject larger size');
 
-      _chai.assert.strictEqual((0, _withWidth.isWidthDown)('md', 'md', true), true, 'should be inclusive');
-
-      _chai.assert.strictEqual((0, _withWidth.isWidthDown)('md', 'sm', true), true, 'should accept smaller size');
+  describe('isWidthDown', () => {
+    it('should work as default inclusive', () => {
+      assert.strictEqual(isWidthDown('md', 'lg', true), false, 'should reject larger size');
+      assert.strictEqual(isWidthDown('md', 'md', true), true, 'should be inclusive');
+      assert.strictEqual(isWidthDown('md', 'sm', true), true, 'should accept smaller size');
     });
-    it('should work as exclusive', function () {
-      _chai.assert.strictEqual((0, _withWidth.isWidthDown)('md', 'lg', false), false, 'should reject larger size');
-
-      _chai.assert.strictEqual((0, _withWidth.isWidthDown)('md', 'md', false), false, 'should be exclusive');
-
-      _chai.assert.strictEqual((0, _withWidth.isWidthDown)('md', 'sm', false), true, 'should accept smaller size');
+    it('should work as exclusive', () => {
+      assert.strictEqual(isWidthDown('md', 'lg', false), false, 'should reject larger size');
+      assert.strictEqual(isWidthDown('md', 'md', false), false, 'should be exclusive');
+      assert.strictEqual(isWidthDown('md', 'sm', false), true, 'should accept smaller size');
     });
   });
-  describe('width computation', function () {
-    it('should work as expected', function () {
-      var wrapper = shallow(_ref5);
-      var instance = wrapper.instance();
-      var updateWidth = instance.updateWidth.bind(instance);
-      breakpoints.keys.forEach(function (key) {
+
+  describe('width computation', () => {
+    it('should work as expected', () => {
+      const wrapper = shallow(<EmptyWithWidth />);
+      const instance = wrapper.instance();
+      const updateWidth = instance.updateWidth.bind(instance);
+
+      breakpoints.keys.forEach(key => {
         updateWidth(breakpoints.values[key]);
-
-        _chai.assert.strictEqual(wrapper.state().width, key, 'should return the matching width');
+        assert.strictEqual(wrapper.state().width, key, 'should return the matching width');
       });
     });
   });
-  describe('handle resize', function () {
-    var clock;
-    before(function () {
-      clock = (0, _sinon.useFakeTimers)();
+
+  describe('handle resize', () => {
+    let clock;
+
+    before(() => {
+      clock = useFakeTimers();
     });
-    after(function () {
+
+    after(() => {
       clock.restore();
     });
-    it('should handle resize event', function () {
-      var wrapper = shallow(_ref6);
 
-      _chai.assert.strictEqual(wrapper.state().width, undefined);
-
+    it('should handle resize event', () => {
+      const wrapper = shallow(<EmptyWithWidth width="sm" />);
+      assert.strictEqual(wrapper.state().width, undefined);
       wrapper.simulate('resize');
       clock.tick(166);
-
-      _chai.assert.strictEqual(wrapper.state().width, TEST_ENV_WIDTH);
+      assert.strictEqual(wrapper.state().width, TEST_ENV_WIDTH);
     });
   });
-  describe('prop: initialWidth', function () {
-    it('should work as expected', function () {
-      var element = _ref7; // First mount on the server
 
-      var wrapper1 = shallow(element);
+  describe('prop: initialWidth', () => {
+    it('should work as expected', () => {
+      const element = <EmptyWithWidth initialWidth="lg" />;
 
-      _chai.assert.strictEqual(wrapper1.find(Empty).props().width, 'lg');
+      // First mount on the server
+      const wrapper1 = shallow(element);
+      assert.strictEqual(wrapper1.find(Empty).props().width, 'lg');
+      const wrapper2 = mount(element);
 
-      var wrapper2 = mount(element); // Second mount on the client
-
-      _chai.assert.strictEqual(wrapper2.find(Empty).props().width, TEST_ENV_WIDTH);
-
-      _chai.assert.strictEqual(TEST_ENV_WIDTH !== 'lg', true);
+      // Second mount on the client
+      assert.strictEqual(wrapper2.find(Empty).props().width, TEST_ENV_WIDTH);
+      assert.strictEqual(TEST_ENV_WIDTH !== 'lg', true);
     });
   });
-  describe('option: withTheme', function () {
-    it('should inject the theme', function () {
-      var EmptyWithWidth2 = (0, _withWidth.default)({
-        withTheme: true
-      })(Empty);
-      var wrapper = mount(_react.default.createElement(EmptyWithWidth2, null));
 
-      _chai.assert.strictEqual((0, _typeof2.default)(wrapper.find(Empty).props().theme), 'object');
+  describe('option: withTheme', () => {
+    it('should inject the theme', () => {
+      const EmptyWithWidth2 = withWidth({ withTheme: true })(Empty);
+      const wrapper = mount(<EmptyWithWidth2 />);
+      assert.strictEqual(typeof wrapper.find(Empty).props().theme, 'object');
     });
-    it('should forward the theme', function () {
-      var EmptyWithWidth2 = (0, _withWidth.default)({
-        withTheme: true
-      })(Empty);
-      var theme = (0, _createMuiTheme.default)();
-      var wrapper = mount(_react.default.createElement(EmptyWithWidth2, {
-        theme: theme
-      }));
 
-      _chai.assert.strictEqual(wrapper.find(Empty).props().theme, theme);
+    it('should forward the theme', () => {
+      const EmptyWithWidth2 = withWidth({ withTheme: true })(Empty);
+      const theme = createMuiTheme();
+      const wrapper = mount(<EmptyWithWidth2 theme={theme} />);
+      assert.strictEqual(wrapper.find(Empty).props().theme, theme);
     });
   });
 });

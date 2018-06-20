@@ -1,23 +1,11 @@
-"use strict";
+export const reflow = node => node.scrollTop;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getTransitionProps = getTransitionProps;
-exports.reflow = void 0;
+export function getTransitionProps(props, options) {
+  const { timeout, style = {} } = props;
 
-var reflow = function reflow(node) {
-  return node.scrollTop;
-};
-
-exports.reflow = reflow;
-
-function getTransitionProps(props, options) {
-  var timeout = props.timeout,
-      _props$style = props.style,
-      style = _props$style === void 0 ? {} : _props$style;
   return {
-    duration: style.transitionDuration || typeof timeout === 'number' ? timeout : timeout[options.mode],
-    delay: style.transitionDelay
+    duration:
+      style.transitionDuration || typeof timeout === 'number' ? timeout : timeout[options.mode],
+    delay: style.transitionDelay,
   };
 }

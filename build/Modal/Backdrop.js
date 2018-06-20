@@ -1,29 +1,10 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
+import Fade from '../transitions/Fade';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _Fade = _interopRequireDefault(require("../transitions/Fade"));
-
-var styles = {
+export const styles = {
   root: {
     zIndex: -1,
     width: '100%',
@@ -33,68 +14,63 @@ var styles = {
     left: 0,
     // Remove grey highlight
     WebkitTapHighlightColor: 'transparent',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   invisible: {
-    backgroundColor: 'transparent'
-  }
+    backgroundColor: 'transparent',
+  },
 };
-exports.styles = styles;
 
 function Backdrop(props) {
-  var classes = props.classes,
-      className = props.className,
-      invisible = props.invisible,
-      open = props.open,
-      transitionDuration = props.transitionDuration,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "invisible", "open", "transitionDuration"]);
-  return _react.default.createElement(_Fade.default, (0, _extends2.default)({
-    appear: true,
-    "in": open,
-    timeout: transitionDuration
-  }, other), _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.invisible, invisible), className),
-    "aria-hidden": "true"
-  }));
+  const { classes, className, invisible, open, transitionDuration, ...other } = props;
+
+  return (
+    <Fade appear in={open} timeout={transitionDuration} {...other}>
+      <div
+        data-mui-test="Backdrop"
+        className={classNames(
+          classes.root,
+          {
+            [classes.invisible]: invisible,
+          },
+          className,
+        )}
+        aria-hidden="true"
+      />
+    </Fade>
+  );
 }
 
-Backdrop.propTypes = process.env.NODE_ENV !== "production" ? {
+Backdrop.propTypes = {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * If `true`, the backdrop is invisible.
    * It can be used when rendering a popover or a custom select component.
    */
-  invisible: _propTypes.default.bool,
-
+  invisible: PropTypes.bool,
   /**
    * If `true`, the backdrop is open.
    */
-  open: _propTypes.default.bool.isRequired,
-
+  open: PropTypes.bool.isRequired,
   /**
    * The duration for the transition, in milliseconds.
    * You may specify a single timeout for all transitions, or individually with an object.
    */
-  transitionDuration: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
-    enter: _propTypes.default.number,
-    exit: _propTypes.default.number
-  })])
-} : {};
-Backdrop.defaultProps = {
-  invisible: false
+  transitionDuration: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
+  ]),
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiBackdrop'
-})(Backdrop);
+Backdrop.defaultProps = {
+  invisible: false,
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiBackdrop' })(Backdrop);

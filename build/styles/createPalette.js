@@ -1,35 +1,13 @@
-"use strict";
+import warning from 'warning';
+import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
+import indigo from '../colors/indigo';
+import pink from '../colors/pink';
+import grey from '../colors/grey';
+import red from '../colors/red';
+import common from '../colors/common';
+import { getContrastRatio, darken, lighten } from './colorManipulator';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createPalette;
-exports.dark = exports.light = void 0;
-
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _warning = _interopRequireDefault(require("warning"));
-
-var _deepmerge = _interopRequireDefault(require("deepmerge"));
-
-var _indigo = _interopRequireDefault(require("../colors/indigo"));
-
-var _pink = _interopRequireDefault(require("../colors/pink"));
-
-var _grey = _interopRequireDefault(require("../colors/grey"));
-
-var _red = _interopRequireDefault(require("../colors/red"));
-
-var _common = _interopRequireDefault(require("../colors/common"));
-
-var _colorManipulator = require("./colorManipulator");
-
-// < 1kb payload overhead when lodash/merge is > 3kb.
-var light = {
+export const light = {
   // The colors used to style the text.
   text: {
     // The most important text.
@@ -39,15 +17,15 @@ var light = {
     // Disabled text have even lower visual prominence.
     disabled: 'rgba(0, 0, 0, 0.38)',
     // Text hints.
-    hint: 'rgba(0, 0, 0, 0.38)'
+    hint: 'rgba(0, 0, 0, 0.38)',
   },
   // The color used to divide different elements.
   divider: 'rgba(0, 0, 0, 0.12)',
   // The background colors used to style the surfaces.
   // Consistency between these values is important.
   background: {
-    paper: _common.default.white,
-    default: _grey.default[50]
+    paper: common.white,
+    default: grey[50],
   },
   // The colors used to style the action elements.
   action: {
@@ -61,82 +39,87 @@ var light = {
     // The color of a disabled action.
     disabled: 'rgba(0, 0, 0, 0.26)',
     // The background color of a disabled action.
-    disabledBackground: 'rgba(0, 0, 0, 0.12)'
-  }
+    disabledBackground: 'rgba(0, 0, 0, 0.12)',
+  },
 };
-exports.light = light;
-var dark = {
+
+export const dark = {
   text: {
-    primary: _common.default.white,
+    primary: common.white,
     secondary: 'rgba(255, 255, 255, 0.7)',
     disabled: 'rgba(255, 255, 255, 0.5)',
     hint: 'rgba(255, 255, 255, 0.5)',
-    icon: 'rgba(255, 255, 255, 0.5)'
+    icon: 'rgba(255, 255, 255, 0.5)',
   },
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
-    paper: _grey.default[800],
-    default: '#303030'
+    paper: grey[800],
+    default: '#303030',
   },
   action: {
-    active: _common.default.white,
+    active: common.white,
     hover: 'rgba(255, 255, 255, 0.1)',
     hoverOpacity: 0.1,
     selected: 'rgba(255, 255, 255, 0.2)',
     disabled: 'rgba(255, 255, 255, 0.3)',
-    disabledBackground: 'rgba(255, 255, 255, 0.12)'
-  }
+    disabledBackground: 'rgba(255, 255, 255, 0.12)',
+  },
 };
-exports.dark = dark;
 
 function addLightOrDark(intent, direction, shade, tonalOffset) {
   if (!intent[direction]) {
     if (intent.hasOwnProperty(shade)) {
       intent[direction] = intent[shade];
     } else if (direction === 'light') {
-      intent.light = (0, _colorManipulator.lighten)(intent.main, tonalOffset);
+      intent.light = lighten(intent.main, tonalOffset);
     } else if (direction === 'dark') {
-      intent.dark = (0, _colorManipulator.darken)(intent.main, tonalOffset * 1.5);
+      intent.dark = darken(intent.main, tonalOffset * 1.5);
     }
   }
 }
 
-function createPalette(palette) {
-  var _palette$primary = palette.primary,
-      primary = _palette$primary === void 0 ? {
-    light: _indigo.default[300],
-    main: _indigo.default[500],
-    dark: _indigo.default[700]
-  } : _palette$primary,
-      _palette$secondary = palette.secondary,
-      secondary = _palette$secondary === void 0 ? {
-    light: _pink.default.A200,
-    main: _pink.default.A400,
-    dark: _pink.default.A700
-  } : _palette$secondary,
-      _palette$error = palette.error,
-      error = _palette$error === void 0 ? {
-    light: _red.default[300],
-    main: _red.default[500],
-    dark: _red.default[700]
-  } : _palette$error,
-      _palette$type = palette.type,
-      type = _palette$type === void 0 ? 'light' : _palette$type,
-      _palette$contrastThre = palette.contrastThreshold,
-      contrastThreshold = _palette$contrastThre === void 0 ? 3 : _palette$contrastThre,
-      _palette$tonalOffset = palette.tonalOffset,
-      tonalOffset = _palette$tonalOffset === void 0 ? 0.2 : _palette$tonalOffset,
-      other = (0, _objectWithoutProperties2.default)(palette, ["primary", "secondary", "error", "type", "contrastThreshold", "tonalOffset"]);
+export default function createPalette(palette: Object) {
+  const {
+    primary = {
+      light: indigo[300],
+      main: indigo[500],
+      dark: indigo[700],
+    },
+    secondary = {
+      light: pink.A200,
+      main: pink.A400,
+      dark: pink.A700,
+    },
+    error = {
+      light: red[300],
+      main: red[500],
+      dark: red[700],
+    },
+    type = 'light',
+    contrastThreshold = 3,
+    tonalOffset = 0.2,
+    ...other
+  } = palette;
 
   function getContrastText(background) {
     // Use the same logic as
     // Bootstrap: https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59
     // and material-components-web https://github.com/material-components/material-components-web/blob/ac46b8863c4dab9fc22c4c662dc6bd1b65dd652f/packages/mdc-theme/_functions.scss#L54
-    var contrastText = (0, _colorManipulator.getContrastRatio)(background, dark.text.primary) >= contrastThreshold ? dark.text.primary : light.text.primary;
+    const contrastText =
+      getContrastRatio(background, dark.text.primary) >= contrastThreshold
+        ? dark.text.primary
+        : light.text.primary;
 
     if (process.env.NODE_ENV !== 'production') {
-      var contrast = (0, _colorManipulator.getContrastRatio)(background, contrastText);
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(contrast >= 3, ["Material-UI: the contrast ratio of ".concat(contrast, ":1 for ").concat(contrastText, " on ").concat(background), 'falls below the WACG recommended absolute minimum contrast ratio of 3:1.', 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast'].join('\n')) : void 0;
+      const contrast = getContrastRatio(background, contrastText);
+      warning(
+        contrast >= 3,
+        [
+          `Material-UI: the contrast ratio of ${contrast}:1 for ${contrastText} on ${background}`,
+          'falls below the WACG recommended absolute minimum contrast ratio of 3:1.',
+          'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast',
+        ].join('\n'),
+      );
     }
 
     return contrastText;
@@ -146,10 +129,8 @@ function createPalette(palette) {
     if (!color.main && color[mainShade]) {
       color.main = color[mainShade];
     }
-
     addLightOrDark(color, 'light', lightShade, tonalOffset);
     addLightOrDark(color, 'dark', darkShade, tonalOffset);
-
     if (!color.contrastText) {
       color.contrastText = getContrastText(color.main);
     }
@@ -158,38 +139,44 @@ function createPalette(palette) {
   augmentColor(primary, 500, 300, 700);
   augmentColor(secondary, 'A400', 'A200', 'A700');
   augmentColor(error, 500, 300, 700);
-  var types = {
-    dark: dark,
-    light: light
-  };
-  process.env.NODE_ENV !== "production" ? (0, _warning.default)(types[type], "Material-UI: the palette type `".concat(type, "` is not supported.")) : void 0;
-  var paletteOutput = (0, _deepmerge.default)((0, _objectSpread2.default)({
-    // A collection of common colors.
-    common: _common.default,
-    // The palette type, can be light or dark.
-    type: type,
-    // The colors used to represent primary interface elements for a user.
-    primary: primary,
-    // The colors used to represent secondary interface elements for a user.
-    secondary: secondary,
-    // The colors used to represent interface elements that the user should be made aware of.
-    error: error,
-    // The grey colors.
-    grey: _grey.default,
-    // Used by `getContrastText()` to maximize the contrast between the background and
-    // the text.
-    contrastThreshold: contrastThreshold,
-    // Take a background color and return the color of the text to maximize the contrast.
-    getContrastText: getContrastText,
-    // Generate a rich color object.
-    augmentColor: augmentColor,
-    // Used by the functions below to shift a color's luminance by approximately
-    // two indexes within its tonal palette.
-    // E.g., shift from Red 500 to Red 300 or Red 700.
-    tonalOffset: tonalOffset
-  }, types[type]), other, {
-    clone: false // No need to clone deep
 
-  });
+  const types = { dark, light };
+
+  warning(types[type], `Material-UI: the palette type \`${type}\` is not supported.`);
+
+  const paletteOutput = deepmerge(
+    {
+      // A collection of common colors.
+      common,
+      // The palette type, can be light or dark.
+      type,
+      // The colors used to represent primary interface elements for a user.
+      primary,
+      // The colors used to represent secondary interface elements for a user.
+      secondary,
+      // The colors used to represent interface elements that the user should be made aware of.
+      error,
+      // The grey colors.
+      grey,
+      // Used by `getContrastText()` to maximize the contrast between the background and
+      // the text.
+      contrastThreshold,
+      // Take a background color and return the color of the text to maximize the contrast.
+      getContrastText,
+      // Generate a rich color object.
+      augmentColor,
+      // Used by the functions below to shift a color's luminance by approximately
+      // two indexes within its tonal palette.
+      // E.g., shift from Red 500 to Red 300 or Red 700.
+      tonalOffset,
+      // The light and dark type object.
+      ...types[type],
+    },
+    other,
+    {
+      clone: false, // No need to clone deep
+    },
+  );
+
   return paletteOutput;
 }

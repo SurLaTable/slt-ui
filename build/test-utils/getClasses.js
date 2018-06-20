@@ -1,36 +1,24 @@
-"use strict";
+// @flow
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+import * as ns from 'react-jss/lib/ns';
+import { SheetsRegistry } from 'jss';
+import createShallow from './createShallow';
+import { sheetsManager } from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+const shallow = createShallow();
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = getClasses;
+// Helper function to extract the classes from a styleSheet.
+export default function getClasses(element: Object, options: Object = {}) {
+  const sheetsRegistry = new SheetsRegistry();
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+  sheetsManager.clear();
+  shallow(element, {
+    ...options,
+    context: {
+      [ns.sheetsRegistry]: sheetsRegistry,
+      ...options.context,
+    },
+  });
 
-var _objectSpread3 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
-var ns = _interopRequireWildcard(require("react-jss/lib/ns"));
-
-var _jss = require("jss");
-
-var _createShallow = _interopRequireDefault(require("./createShallow"));
-
-var _withStyles = require("../styles/withStyles");
-
-var shallow = (0, _createShallow.default)(); // Helper function to extract the classes from a styleSheet.
-
-function getClasses(element) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var sheetsRegistry = new _jss.SheetsRegistry();
-
-  _withStyles.sheetsManager.clear();
-
-  shallow(element, (0, _objectSpread3.default)({}, options, {
-    context: (0, _objectSpread3.default)((0, _defineProperty2.default)({}, ns.sheetsRegistry, sheetsRegistry), options.context)
-  }));
   return sheetsRegistry.registry[0].classes;
 }

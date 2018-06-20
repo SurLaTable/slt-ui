@@ -1,152 +1,139 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      fontFamily: theme.typography.fontFamily,
-      color: theme.palette.text.secondary,
-      fontSize: theme.typography.pxToRem(16),
-      lineHeight: 1,
-      padding: 0,
-      '&$focused': {
-        color: theme.palette.primary[theme.palette.type === 'light' ? 'dark' : 'light']
-      },
-      '&$disabled': {
-        color: theme.palette.text.disabled
-      },
-      '&$error': {
-        color: theme.palette.error.main
-      }
+export const styles = theme => ({
+  root: {
+    fontFamily: theme.typography.fontFamily,
+    color: theme.palette.text.secondary,
+    fontSize: theme.typography.pxToRem(16),
+    lineHeight: 1,
+    padding: 0,
+    '&$focused': {
+      color: theme.palette.primary[theme.palette.type === 'light' ? 'dark' : 'light'],
     },
-    focused: {},
-    disabled: {},
-    error: {},
-    asterisk: {
-      '&$error': {
-        color: theme.palette.error.main
-      }
-    }
-  };
-};
-
-exports.styles = styles;
+    '&$disabled': {
+      color: theme.palette.text.disabled,
+    },
+    '&$error': {
+      color: theme.palette.error.main,
+    },
+  },
+  focused: {},
+  disabled: {},
+  error: {},
+  asterisk: {
+    '&$error': {
+      color: theme.palette.error.main,
+    },
+  },
+});
 
 function FormLabel(props, context) {
-  var _classNames;
+  const {
+    children,
+    classes,
+    className: classNameProp,
+    component: Component,
+    disabled: disabledProp,
+    error: errorProp,
+    focused: focusedProp,
+    required: requiredProp,
+    ...other
+  } = props;
 
-  var children = props.children,
-      classes = props.classes,
-      classNameProp = props.className,
-      Component = props.component,
-      disabledProp = props.disabled,
-      errorProp = props.error,
-      focusedProp = props.focused,
-      requiredProp = props.required,
-      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "component", "disabled", "error", "focused", "required"]);
-  var muiFormControl = context.muiFormControl;
-  var required = requiredProp;
-  var focused = focusedProp;
-  var disabled = disabledProp;
-  var error = errorProp;
+  const { muiFormControl } = context;
+
+  let required = requiredProp;
+  let focused = focusedProp;
+  let disabled = disabledProp;
+  let error = errorProp;
 
   if (muiFormControl) {
     if (typeof required === 'undefined') {
       required = muiFormControl.required;
     }
-
     if (typeof focused === 'undefined') {
       focused = muiFormControl.focused;
     }
-
     if (typeof disabled === 'undefined') {
       disabled = muiFormControl.disabled;
     }
-
     if (typeof error === 'undefined') {
       error = muiFormControl.error;
     }
   }
 
-  var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.focused, focused), (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), (0, _defineProperty2.default)(_classNames, classes.error, error), _classNames), classNameProp);
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: className
-  }, other), children, required && _react.default.createElement("span", {
-    className: (0, _classnames.default)(classes.asterisk, (0, _defineProperty2.default)({}, classes.error, error))
-  }, "\u2009*"));
+  const className = classNames(
+    classes.root,
+    {
+      [classes.focused]: focused,
+      [classes.disabled]: disabled,
+      [classes.error]: error,
+    },
+    classNameProp,
+  );
+
+  return (
+    <Component className={className} {...other}>
+      {children}
+      {required && (
+        <span
+          className={classNames(classes.asterisk, {
+            [classes.error]: error,
+          })}
+          data-mui-test="FormLabelAsterisk"
+        >
+          {'\u2009*'}
+        </span>
+      )}
+    </Component>
+  );
 }
 
-FormLabel.propTypes = process.env.NODE_ENV !== "production" ? {
+FormLabel.propTypes = {
   /**
    * The content of the component.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
-
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /**
    * If `true`, the label should be displayed in a disabled state.
    */
-  disabled: _propTypes.default.bool,
-
+  disabled: PropTypes.bool,
   /**
    * If `true`, the label should be displayed in an error state.
    */
-  error: _propTypes.default.bool,
-
+  error: PropTypes.bool,
   /**
    * If `true`, the input of this label is focused (used by `FormGroup` components).
    */
-  focused: _propTypes.default.bool,
-
+  focused: PropTypes.bool,
   /**
    * If `true`, the label will indicate that the input is required.
    */
-  required: _propTypes.default.bool
-} : {};
+  required: PropTypes.bool,
+};
+
 FormLabel.defaultProps = {
-  component: 'label'
+  component: 'label',
 };
+
 FormLabel.contextTypes = {
-  muiFormControl: _propTypes.default.object
+  muiFormControl: PropTypes.object,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiFormLabel'
-})(FormLabel);
-
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiFormLabel' })(FormLabel);

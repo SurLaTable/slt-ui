@@ -1,13 +1,5 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
 function getThemeProps(params) {
-  var theme = params.theme,
-      name = params.name;
+  const { theme, name } = params;
 
   if (!name || !theme.props || !theme.props[name]) {
     return {};
@@ -16,5 +8,4 @@ function getThemeProps(params) {
   return theme.props[name];
 }
 
-var _default = getThemeProps;
-exports.default = _default;
+export default getThemeProps;

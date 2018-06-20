@@ -1,40 +1,33 @@
-"use strict";
+// @flow
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.CHANNEL = void 0;
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
+import PropTypes from 'prop-types';
 
 // Same value used by react-jss
-var CHANNEL = '__THEMING__';
-exports.CHANNEL = CHANNEL;
-var themeListener = {
-  contextTypes: (0, _defineProperty2.default)({}, CHANNEL, _propTypes.default.object),
-  initial: function initial(context) {
+export const CHANNEL = '__THEMING__';
+
+const themeListener = {
+  contextTypes: {
+    [CHANNEL]: PropTypes.object,
+  },
+  initial: (context: Object) => {
     if (!context[CHANNEL]) {
       return null;
     }
 
     return context[CHANNEL].getState();
   },
-  subscribe: function subscribe(context, cb) {
+  subscribe: (context: Object, cb: Function) => {
     if (!context[CHANNEL]) {
       return null;
     }
 
     return context[CHANNEL].subscribe(cb);
   },
-  unsubscribe: function unsubscribe(context, subscriptionId) {
+  unsubscribe(context: Object, subscriptionId: number) {
     if (context[CHANNEL]) {
       context[CHANNEL].unsubscribe(subscriptionId);
     }
-  }
+  },
 };
-var _default = themeListener;
-exports.default = _default;
+
+export default themeListener;

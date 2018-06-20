@@ -1,181 +1,160 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
+import { capitalize } from '../utils/helpers';
+import { darken, fade, lighten } from '../styles/colorManipulator';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _helpers = require("../utils/helpers");
-
-var _colorManipulator = require("../styles/colorManipulator");
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      display: 'table-cell',
-      verticalAlign: 'inherit',
-      // Workaround for a rendering bug with spanned columns in Chrome 62.0.
-      // Removes the alpha (sets it to 1), and lightens or darkens the theme color.
-      borderBottom: "1px solid\n    ".concat(theme.palette.type === 'light' ? (0, _colorManipulator.lighten)((0, _colorManipulator.fade)(theme.palette.divider, 1), 0.88) : (0, _colorManipulator.darken)((0, _colorManipulator.fade)(theme.palette.divider, 1), 0.8)),
-      textAlign: 'left',
-      padding: "".concat(theme.spacing.unit / 2, "px ").concat(theme.spacing.unit * 7, "px ").concat(theme.spacing.unit / 2, "px ").concat(theme.spacing.unit * 3, "px"),
-      '&:last-child': {
-        paddingRight: theme.spacing.unit * 3
-      }
+export const styles = theme => ({
+  root: {
+    display: 'table-cell',
+    verticalAlign: 'inherit',
+    // Workaround for a rendering bug with spanned columns in Chrome 62.0.
+    // Removes the alpha (sets it to 1), and lightens or darkens the theme color.
+    borderBottom: `1px solid
+    ${
+      theme.palette.type === 'light'
+        ? lighten(fade(theme.palette.divider, 1), 0.88)
+        : darken(fade(theme.palette.divider, 1), 0.8)
+    }`,
+    textAlign: 'left',
+    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 7}px ${theme.spacing.unit /
+      2}px ${theme.spacing.unit * 3}px`,
+    '&:last-child': {
+      paddingRight: theme.spacing.unit * 3,
     },
-    head: {
-      color: theme.palette.text.secondary,
-      fontSize: theme.typography.pxToRem(12),
-      fontWeight: theme.typography.fontWeightMedium
-    },
-    body: {
-      color: theme.palette.text.primary,
-      fontSize: theme.typography.pxToRem(13),
-      fontWeight: theme.typography.fontWeightRegular
-    },
-    footer: {
-      borderBottom: 0,
-      color: theme.palette.text.secondary,
-      fontSize: theme.typography.pxToRem(12)
-    },
-    numeric: {
-      textAlign: 'right',
-      flexDirection: 'row-reverse' // can be dynamically inherited at runtime by contents
-
-    },
-    paddingDense: {
-      paddingRight: theme.spacing.unit * 3
-    },
-    paddingCheckbox: {
-      padding: '0 12px'
-    },
-    paddingNone: {
+  },
+  head: {
+    color: theme.palette.text.secondary,
+    fontSize: theme.typography.pxToRem(12),
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  body: {
+    color: theme.palette.text.primary,
+    fontSize: theme.typography.pxToRem(13),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+  footer: {
+    borderBottom: 0,
+    color: theme.palette.text.secondary,
+    fontSize: theme.typography.pxToRem(12),
+  },
+  numeric: {
+    textAlign: 'right',
+    flexDirection: 'row-reverse', // can be dynamically inherited at runtime by contents
+  },
+  paddingDense: {
+    paddingRight: theme.spacing.unit * 3,
+  },
+  paddingCheckbox: {
+    padding: '0 12px',
+  },
+  paddingNone: {
+    padding: 0,
+    '&:last-child': {
       padding: 0,
-      '&:last-child': {
-        padding: 0
-      }
-    }
-  };
-};
-
-exports.styles = styles;
+    },
+  },
+});
 
 function TableCell(props, context) {
-  var _classNames;
-
-  var children = props.children,
-      classes = props.classes,
-      classNameProp = props.className,
-      component = props.component,
-      sortDirection = props.sortDirection,
-      numeric = props.numeric,
-      padding = props.padding,
-      scopeProp = props.scope,
-      variant = props.variant,
-      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "component", "sortDirection", "numeric", "padding", "scope", "variant"]);
-  var table = context.table;
-  var Component;
-
+  const {
+    children,
+    classes,
+    className: classNameProp,
+    component,
+    sortDirection,
+    numeric,
+    padding,
+    scope: scopeProp,
+    variant,
+    ...other
+  } = props;
+  const { table } = context;
+  let Component;
   if (component) {
     Component = component;
   } else {
     Component = table && table.head ? 'th' : 'td';
   }
 
-  var scope = scopeProp;
-
+  let scope = scopeProp;
   if (!scope && table && table.head) {
     scope = 'col';
   }
 
-  var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.head, variant ? variant === 'head' : table && table.head), (0, _defineProperty2.default)(_classNames, classes.body, variant ? variant === 'body' : table && table.body), (0, _defineProperty2.default)(_classNames, classes.footer, variant ? variant === 'footer' : table && table.footer), (0, _defineProperty2.default)(_classNames, classes.numeric, numeric), (0, _defineProperty2.default)(_classNames, classes["padding".concat((0, _helpers.capitalize)(padding))], padding !== 'default'), _classNames), classNameProp);
-  var ariaSort = null;
+  const className = classNames(
+    classes.root,
+    {
+      [classes.head]: variant ? variant === 'head' : table && table.head,
+      [classes.body]: variant ? variant === 'body' : table && table.body,
+      [classes.footer]: variant ? variant === 'footer' : table && table.footer,
+      [classes.numeric]: numeric,
+      [classes[`padding${capitalize(padding)}`]]: padding !== 'default',
+    },
+    classNameProp,
+  );
 
+  let ariaSort = null;
   if (sortDirection) {
     ariaSort = sortDirection === 'asc' ? 'ascending' : 'descending';
   }
 
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: className,
-    "aria-sort": ariaSort,
-    scope: scope
-  }, other), children);
+  return (
+    <Component className={className} aria-sort={ariaSort} scope={scope} {...other}>
+      {children}
+    </Component>
+  );
 }
 
-TableCell.propTypes = process.env.NODE_ENV !== "production" ? {
+TableCell.propTypes = {
   /**
    * The table cell contents.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
    */
-  component: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
-
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /**
    * If `true`, content will align to the right.
    */
-  numeric: _propTypes.default.bool,
-
+  numeric: PropTypes.bool,
   /**
    * Sets the padding applied to the cell.
    */
-  padding: _propTypes.default.oneOf(['default', 'checkbox', 'dense', 'none']),
-
+  padding: PropTypes.oneOf(['default', 'checkbox', 'dense', 'none']),
   /**
    * Set scope attribute.
    */
-  scope: _propTypes.default.string,
-
+  scope: PropTypes.string,
   /**
    * Set aria-sort direction.
    */
-  sortDirection: _propTypes.default.oneOf(['asc', 'desc', false]),
-
+  sortDirection: PropTypes.oneOf(['asc', 'desc', false]),
   /**
    * Specify the cell type.
    * By default, the TableHead, TableBody or TableFooter parent component set the value.
    */
-  variant: _propTypes.default.oneOf(['head', 'body', 'footer'])
-} : {};
+  variant: PropTypes.oneOf(['head', 'body', 'footer']),
+};
+
 TableCell.defaultProps = {
   numeric: false,
-  padding: 'default'
+  padding: 'default',
 };
+
 TableCell.contextTypes = {
-  table: _propTypes.default.object.isRequired
+  table: PropTypes.object.isRequired,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiTableCell'
-})(TableCell);
-
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiTableCell' })(TableCell);

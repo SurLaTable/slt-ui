@@ -1,119 +1,85 @@
-"use strict";
+import React from 'react';
+import { assert } from 'chai';
+import { createShallow, getClasses } from '../test-utils';
+import FormHelperText from './FormHelperText';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+describe('<FormHelperText />', () => {
+  let shallow;
+  let classes;
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _chai = require("chai");
-
-var _testUtils = require("../test-utils");
-
-var _FormHelperText = _interopRequireDefault(require("./FormHelperText"));
-
-var _ref = _react.default.createElement(_FormHelperText.default, null);
-
-var _ref2 = _react.default.createElement(_FormHelperText.default, {
-  className: "woofHelperText"
-});
-
-var _ref3 = _react.default.createElement(_FormHelperText.default, {
-  component: "div"
-});
-
-var _ref4 = _react.default.createElement(_FormHelperText.default, {
-  error: true
-});
-
-var _ref5 = _react.default.createElement(_FormHelperText.default, null, "Foo");
-
-describe('<FormHelperText />', function () {
-  var shallow;
-  var classes;
-  before(function () {
-    shallow = (0, _testUtils.createShallow)({
-      dive: true
-    });
-    classes = (0, _testUtils.getClasses)(_ref);
+  before(() => {
+    shallow = createShallow({ dive: true });
+    classes = getClasses(<FormHelperText />);
   });
-  it('should render a <p />', function () {
-    var wrapper = shallow(_ref2);
 
-    _chai.assert.strictEqual(wrapper.name(), 'p');
-
-    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
-
-    _chai.assert.strictEqual(wrapper.hasClass('woofHelperText'), true, 'should have the user class');
+  it('should render a <p />', () => {
+    const wrapper = shallow(<FormHelperText className="woofHelperText" />);
+    assert.strictEqual(wrapper.name(), 'p');
+    assert.strictEqual(wrapper.hasClass(classes.root), true);
+    assert.strictEqual(wrapper.hasClass('woofHelperText'), true, 'should have the user class');
   });
-  describe('prop: component', function () {
-    it('should render the prop component', function () {
-      var wrapper = shallow(_ref3);
 
-      _chai.assert.strictEqual(wrapper.name(), 'div');
+  describe('prop: component', () => {
+    it('should render the prop component', () => {
+      const wrapper = shallow(<FormHelperText component="div" />);
+      assert.strictEqual(wrapper.name(), 'div');
     });
   });
-  describe('prop: error', function () {
-    it('should have an error class', function () {
-      var wrapper = shallow(_ref4);
 
-      _chai.assert.strictEqual(wrapper.hasClass(classes.error), true);
+  describe('prop: error', () => {
+    it('should have an error class', () => {
+      const wrapper = shallow(<FormHelperText error />);
+      assert.strictEqual(wrapper.hasClass(classes.error), true);
     });
   });
-  describe('with muiFormControl context', function () {
-    var wrapper;
-    var muiFormControl;
+
+  describe('with muiFormControl context', () => {
+    let wrapper;
+    let muiFormControl;
 
     function setFormControlContext(muiFormControlContext) {
       muiFormControl = muiFormControlContext;
-      wrapper.setContext({
-        muiFormControl: muiFormControl
-      });
+      wrapper.setContext({ muiFormControl });
     }
 
-    beforeEach(function () {
-      wrapper = shallow(_ref5);
+    beforeEach(() => {
+      wrapper = shallow(<FormHelperText>Foo</FormHelperText>);
     });
-    ['error', 'disabled'].forEach(function (visualState) {
-      describe(visualState, function () {
-        beforeEach(function () {
-          setFormControlContext((0, _defineProperty2.default)({}, visualState, true));
+    ['error', 'disabled'].forEach(visualState => {
+      describe(visualState, () => {
+        beforeEach(() => {
+          setFormControlContext({ [visualState]: true });
         });
-        it("should have the ".concat(visualState, " class"), function () {
-          _chai.assert.strictEqual(wrapper.hasClass(classes[visualState]), true);
+
+        it(`should have the ${visualState} class`, () => {
+          assert.strictEqual(wrapper.hasClass(classes[visualState]), true);
         });
-        it('should be overridden by props', function () {
-          _chai.assert.strictEqual(wrapper.hasClass(classes[visualState]), true);
 
-          wrapper.setProps((0, _defineProperty2.default)({}, visualState, false));
-
-          _chai.assert.strictEqual(wrapper.hasClass(classes[visualState]), false);
-
-          wrapper.setProps((0, _defineProperty2.default)({}, visualState, true));
-
-          _chai.assert.strictEqual(wrapper.hasClass(classes[visualState]), true);
+        it('should be overridden by props', () => {
+          assert.strictEqual(wrapper.hasClass(classes[visualState]), true);
+          wrapper.setProps({ [visualState]: false });
+          assert.strictEqual(wrapper.hasClass(classes[visualState]), false);
+          wrapper.setProps({ [visualState]: true });
+          assert.strictEqual(wrapper.hasClass(classes[visualState]), true);
         });
       });
     });
-    describe('margin', function () {
-      describe('context margin: dense', function () {
-        beforeEach(function () {
-          setFormControlContext({
-            margin: 'dense'
-          });
+
+    describe('margin', () => {
+      describe('context margin: dense', () => {
+        beforeEach(() => {
+          setFormControlContext({ margin: 'dense' });
         });
-        it('should have the dense class', function () {
-          _chai.assert.strictEqual(wrapper.hasClass(classes.marginDense), true);
+
+        it('should have the dense class', () => {
+          assert.strictEqual(wrapper.hasClass(classes.marginDense), true);
         });
       });
-      it('should be overridden by props', function () {
-        _chai.assert.strictEqual(wrapper.hasClass(classes.marginDense), false);
 
-        wrapper.setProps({
-          margin: 'dense'
-        });
-
-        _chai.assert.strictEqual(wrapper.hasClass(classes.marginDense), true);
+      it('should be overridden by props', () => {
+        assert.strictEqual(wrapper.hasClass(classes.marginDense), false);
+        wrapper.setProps({ margin: 'dense' });
+        assert.strictEqual(wrapper.hasClass(classes.marginDense), true);
       });
     });
   });

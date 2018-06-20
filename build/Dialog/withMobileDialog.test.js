@@ -1,80 +1,73 @@
-"use strict";
+// @flow
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+import React from 'react';
+import { assert } from 'chai';
+import { createShallow, getClasses } from '../test-utils';
+import Paper from '../Paper';
+import type { Breakpoint } from '../styles/createBreakpoints';
+import Dialog from './Dialog';
+import withMobileDialog from './withMobileDialog';
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _chai = require("chai");
-
-var _testUtils = require("../test-utils");
-
-var _Paper = _interopRequireDefault(require("../Paper"));
-
-var _Dialog = _interopRequireDefault(require("./Dialog"));
-
-var _withMobileDialog = _interopRequireDefault(require("./withMobileDialog"));
-
-describe('withMobileDialog', function () {
-  var shallow;
-  var classes;
-  var defaultProps = {
-    open: false
+describe('withMobileDialog', () => {
+  let shallow;
+  let classes;
+  const defaultProps = {
+    open: false,
   };
-  before(function () {
-    shallow = (0, _testUtils.createShallow)({
-      untilSelector: 'Dialog'
-    });
-    classes = (0, _testUtils.getClasses)(_react.default.createElement(_Dialog.default, defaultProps, "foo"));
+
+  before(() => {
+    shallow = createShallow({ untilSelector: 'Dialog' });
+    classes = getClasses(<Dialog {...defaultProps}>foo</Dialog>);
   });
 
-  function isFullScreen(breakpoints, width) {
-    breakpoints.forEach(function (breakpoint) {
-      it("is for width: ".concat(width, " <= ").concat(breakpoint), function () {
-        var ResponsiveDialog = (0, _withMobileDialog.default)({
-          breakpoint: breakpoint
-        })(_Dialog.default);
-        var wrapper = shallow(_react.default.createElement(ResponsiveDialog, (0, _extends2.default)({}, defaultProps, {
-          width: width
-        }), "foo"));
-
-        _chai.assert.strictEqual(wrapper.find(_Paper.default).hasClass(classes.paperFullScreen), true);
+  function isFullScreen(breakpoints: Array<Breakpoint>, width: Breakpoint) {
+    breakpoints.forEach(breakpoint => {
+      it(`is for width: ${width} <= ${breakpoint}`, () => {
+        const ResponsiveDialog = withMobileDialog({ breakpoint })(Dialog);
+        const wrapper = shallow(
+          <ResponsiveDialog {...defaultProps} width={width}>
+            foo
+          </ResponsiveDialog>,
+        );
+        assert.strictEqual(wrapper.find(Paper).hasClass(classes.paperFullScreen), true);
       });
     });
   }
 
-  function isNotFullScreen(breakpoints, width) {
-    breakpoints.forEach(function (breakpoint) {
-      it("is not for width: ".concat(width, " > ").concat(breakpoint), function () {
-        var ResponsiveDialog = (0, _withMobileDialog.default)({
-          breakpoint: breakpoint
-        })(_Dialog.default);
-        var wrapper = shallow(_react.default.createElement(ResponsiveDialog, (0, _extends2.default)({}, defaultProps, {
-          width: width
-        }), "foo"));
-
-        _chai.assert.strictEqual(wrapper.find(_Paper.default).hasClass(classes.paperFullScreen), false);
+  function isNotFullScreen(breakpoints: Array<Breakpoint>, width: Breakpoint) {
+    breakpoints.forEach(breakpoint => {
+      it(`is not for width: ${width} > ${breakpoint}`, () => {
+        const ResponsiveDialog = withMobileDialog({ breakpoint })(Dialog);
+        const wrapper = shallow(
+          <ResponsiveDialog {...defaultProps} width={width}>
+            foo
+          </ResponsiveDialog>,
+        );
+        assert.strictEqual(wrapper.find(Paper).hasClass(classes.paperFullScreen), false);
       });
     });
   }
 
-  describe('screen width: xs', function () {
+  describe('screen width: xs', () => {
     isFullScreen(['xs', 'sm', 'md', 'lg', 'xl'], 'xs');
   });
-  describe('screen width: sm (default)', function () {
+
+  describe('screen width: sm (default)', () => {
     isFullScreen(['sm', 'md', 'lg', 'xl'], 'sm');
     isNotFullScreen(['xs'], 'sm');
   });
-  describe('screen width: md', function () {
+
+  describe('screen width: md', () => {
     isFullScreen(['md', 'lg', 'xl'], 'md');
     isNotFullScreen(['xs', 'sm'], 'md');
   });
-  describe('screen width: lg', function () {
+
+  describe('screen width: lg', () => {
     isFullScreen(['lg', 'xl'], 'lg');
     isNotFullScreen(['xs', 'sm', 'md'], 'lg');
   });
-  describe('screen width: xl', function () {
+
+  describe('screen width: xl', () => {
     isFullScreen(['xl'], 'xl');
     isNotFullScreen(['xs', 'sm', 'md', 'lg'], 'xl');
   });

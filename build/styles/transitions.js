@@ -1,24 +1,11 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.isNumber = exports.isString = exports.formatMs = exports.duration = exports.easing = void 0;
-
-var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _isNan = _interopRequireDefault(require("@babel/runtime/core-js/number/is-nan"));
-
-var _warning = _interopRequireDefault(require("warning"));
-
+// @flow
 /* eslint-disable no-param-reassign */
+
+import warning from 'warning';
+
 // Follow https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
 // to learn the context in which each easing should be used.
-var easing = {
+export const easing = {
   // This is the most common easing curve.
   easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
   // Objects enter the screen at full velocity from off-screen and
@@ -27,12 +14,12 @@ var easing = {
   // Objects leave the screen at full velocity. They do not decelerate when off-screen.
   easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
   // The sharp curve is used by objects that may return to the screen at any time.
-  sharp: 'cubic-bezier(0.4, 0, 0.6, 1)'
-}; // Follow https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
-// to learn when use what timing
+  sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
+};
 
-exports.easing = easing;
-var duration = {
+// Follow https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
+// to learn when use what timing
+export const duration = {
   shortest: 150,
   shorter: 200,
   short: 250,
@@ -43,25 +30,13 @@ var duration = {
   // recommended when something is entering screen
   enteringScreen: 225,
   // recommended when something is leaving screen
-  leavingScreen: 195
-};
-exports.duration = duration;
-
-var formatMs = function formatMs(milliseconds) {
-  return "".concat(Math.round(milliseconds), "ms");
+  leavingScreen: 195,
 };
 
-exports.formatMs = formatMs;
+export const formatMs = (milliseconds: number) => `${Math.round(milliseconds)}ms`;
+export const isString = (value: any) => typeof value === 'string';
+export const isNumber = (value: any) => !Number.isNaN(parseFloat(value));
 
-var isString = function isString(value) {
-  return typeof value === 'string';
-};
-
-exports.isString = isString;
-
-var isNumber = function isNumber(value) {
-  return !(0, _isNan.default)(parseFloat(value));
-};
 /**
  * @param {string|Array} props
  * @param {object} param
@@ -70,41 +45,60 @@ var isNumber = function isNumber(value) {
  * @param {string} param.easing
  * @param {number} param.delay
  */
+export default {
+  easing,
+  duration,
+  create(
+    props: string | Array<string> = ['all'],
+    options: {
+      prop?: string,
+      duration?: number | string,
+      easing?: string,
+      delay?: number | string,
+    } = {},
+  ) {
+    const {
+      duration: durationOption = duration.standard,
+      easing: easingOption = easing.easeInOut,
+      delay = 0,
+      ...other
+    } = options;
 
+    warning(
+      isString(props) || Array.isArray(props),
+      'Material-UI: argument "props" must be a string or Array.',
+    );
+    warning(
+      isNumber(durationOption) || isString(durationOption),
+      `Material-UI: argument "duration" must be a number or a string but found ${durationOption}.`,
+    );
+    warning(isString(easingOption), 'Material-UI: argument "easing" must be a string.');
+    warning(
+      isNumber(delay) || isString(delay),
+      'Material-UI: argument "delay" must be a number or a string.',
+    );
+    warning(
+      Object.keys(other).length === 0,
+      `Material-UI: unrecognized argument(s) [${Object.keys(other).join(',')}]`,
+    );
 
-exports.isNumber = isNumber;
-var _default = {
-  easing: easing,
-  duration: duration,
-  create: function create() {
-    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['all'];
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    return function () {
-      var _options$duration = options.duration,
-          durationOption = _options$duration === void 0 ? duration.standard : _options$duration,
-          _options$easing = options.easing,
-          easingOption = _options$easing === void 0 ? easing.easeInOut : _options$easing,
-          _options$delay = options.delay,
-          delay = _options$delay === void 0 ? 0 : _options$delay,
-          other = (0, _objectWithoutProperties2.default)(options, ["duration", "easing", "delay"]);
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(isString(props) || Array.isArray(props), 'Material-UI: argument "props" must be a string or Array.') : void 0;
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(isNumber(durationOption) || isString(durationOption), "Material-UI: argument \"duration\" must be a number or a string but found ".concat(durationOption, ".")) : void 0;
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(isString(easingOption), 'Material-UI: argument "easing" must be a string.') : void 0;
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(isNumber(delay) || isString(delay), 'Material-UI: argument "delay" must be a number or a string.') : void 0;
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)((0, _keys.default)(other).length === 0, "Material-UI: unrecognized argument(s) [".concat((0, _keys.default)(other).join(','), "]")) : void 0;
-      return (Array.isArray(props) ? props : [props]).map(function (animatedProp) {
-        return "".concat(animatedProp, " ").concat(typeof durationOption === 'string' ? durationOption : formatMs(durationOption), " ").concat(easingOption, " ").concat(typeof delay === 'string' ? delay : formatMs(delay));
-      }).join(',');
-    }();
+    return (Array.isArray(props) ? props : [props])
+      .map(
+        animatedProp =>
+          `${animatedProp} ${
+            typeof durationOption === 'string' ? durationOption : formatMs(durationOption)
+          } ${easingOption} ${typeof delay === 'string' ? delay : formatMs(delay)}`,
+      )
+      .join(',');
   },
-  getAutoHeightDuration: function getAutoHeightDuration(height) {
+  getAutoHeightDuration(height: ?number) {
     if (!height) {
       return 0;
     }
 
-    var constant = height / 36; // https://www.wolframalpha.com/input/?i=(4+%2B+15+*+(x+%2F+36+)+**+0.25+%2B+(x+%2F+36)+%2F+5)+*+10
+    const constant = height / 36;
 
-    return Math.round((4 + 15 * Math.pow(constant, 0.25) + constant / 5) * 10);
-  }
+    // https://www.wolframalpha.com/input/?i=(4+%2B+15+*+(x+%2F+36+)+**+0.25+%2B+(x+%2F+36)+%2F+5)+*+10
+    return Math.round((4 + 15 * constant ** 0.25 + constant / 5) * 10);
+  },
 };
-exports.default = _default;

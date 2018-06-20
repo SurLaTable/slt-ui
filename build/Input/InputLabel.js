@@ -1,158 +1,134 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _Form = require("../Form");
-
 // @inheritedComponent FormLabel
-var styles = function styles(theme) {
-  return {
-    root: {
-      transformOrigin: 'top left'
-    },
-    formControl: {
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      // slight alteration to spec spacing to match visual spec result
-      transform: "translate(0, ".concat(theme.spacing.unit * 3, "px) scale(1)")
-    },
-    marginDense: {
-      // Compensation for the `Input.inputDense` style.
-      transform: "translate(0, ".concat(theme.spacing.unit * 2.5 + 1, "px) scale(1)")
-    },
-    shrink: {
-      transform: 'translate(0, 1.5px) scale(0.75)',
-      transformOrigin: 'top left'
-    },
-    animated: {
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shorter,
-        easing: theme.transitions.easing.easeOut
-      })
-    }
-  };
-};
 
-exports.styles = styles;
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
+import { FormLabel } from '../Form';
+
+export const styles = theme => ({
+  root: {
+    transformOrigin: 'top left',
+  },
+  formControl: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    // slight alteration to spec spacing to match visual spec result
+    transform: `translate(0, ${theme.spacing.unit * 3}px) scale(1)`,
+  },
+  marginDense: {
+    // Compensation for the `Input.inputDense` style.
+    transform: `translate(0, ${theme.spacing.unit * 2.5 + 1}px) scale(1)`,
+  },
+  shrink: {
+    transform: 'translate(0, 1.5px) scale(0.75)',
+    transformOrigin: 'top left',
+  },
+  animated: {
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shorter,
+      easing: theme.transitions.easing.easeOut,
+    }),
+  },
+});
 
 function InputLabel(props, context) {
-  var _classNames;
+  const {
+    children,
+    classes,
+    className: classNameProp,
+    disableAnimation,
+    FormLabelClasses,
+    margin: marginProp,
+    shrink: shrinkProp,
+    ...other
+  } = props;
 
-  var children = props.children,
-      classes = props.classes,
-      classNameProp = props.className,
-      disableAnimation = props.disableAnimation,
-      FormLabelClasses = props.FormLabelClasses,
-      marginProp = props.margin,
-      shrinkProp = props.shrink,
-      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "disableAnimation", "FormLabelClasses", "margin", "shrink"]);
-  var muiFormControl = context.muiFormControl;
-  var shrink = shrinkProp;
+  const { muiFormControl } = context;
+  let shrink = shrinkProp;
 
   if (typeof shrink === 'undefined' && muiFormControl) {
     shrink = muiFormControl.filled || muiFormControl.focused || muiFormControl.adornedStart;
   }
 
-  var margin = marginProp;
-
+  let margin = marginProp;
   if (typeof margin === 'undefined' && muiFormControl) {
     margin = muiFormControl.margin;
   }
 
-  var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.formControl, muiFormControl), (0, _defineProperty2.default)(_classNames, classes.animated, !disableAnimation), (0, _defineProperty2.default)(_classNames, classes.shrink, shrink), (0, _defineProperty2.default)(_classNames, classes.marginDense, margin === 'dense'), _classNames), classNameProp);
-  return _react.default.createElement(_Form.FormLabel, (0, _extends2.default)({
-    "data-shrink": shrink,
-    className: className,
-    classes: FormLabelClasses
-  }, other), children);
+  const className = classNames(
+    classes.root,
+    {
+      [classes.formControl]: muiFormControl,
+      [classes.animated]: !disableAnimation,
+      [classes.shrink]: shrink,
+      [classes.marginDense]: margin === 'dense',
+    },
+    classNameProp,
+  );
+
+  return (
+    <FormLabel data-shrink={shrink} className={className} classes={FormLabelClasses} {...other}>
+      {children}
+    </FormLabel>
+  );
 }
 
-InputLabel.propTypes = process.env.NODE_ENV !== "production" ? {
+InputLabel.propTypes = {
   /**
    * The contents of the `InputLabel`.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * If `true`, the transition animation is disabled.
    */
-  disableAnimation: _propTypes.default.bool,
-
+  disableAnimation: PropTypes.bool,
   /**
    * If `true`, apply disabled class.
    */
-  disabled: _propTypes.default.bool,
-
+  disabled: PropTypes.bool,
   /**
    * If `true`, the label will be displayed in an error state.
    */
-  error: _propTypes.default.bool,
-
+  error: PropTypes.bool,
   /**
    * If `true`, the input of this label is focused.
    */
-  focused: _propTypes.default.bool,
-
+  focused: PropTypes.bool,
   /**
    * `classes` property applied to the `FormLabel` element.
    */
-  FormLabelClasses: _propTypes.default.object,
-
+  FormLabelClasses: PropTypes.object,
   /**
    * If `dense`, will adjust vertical spacing. This is normally obtained via context from
    * FormControl.
    */
-  margin: _propTypes.default.oneOf(['dense']),
-
+  margin: PropTypes.oneOf(['dense']),
   /**
    * if `true`, the label will indicate that the input is required.
    */
-  required: _propTypes.default.bool,
-
+  required: PropTypes.bool,
   /**
    * If `true`, the label is shrunk.
    */
-  shrink: _propTypes.default.bool
-} : {};
+  shrink: PropTypes.bool,
+};
+
 InputLabel.defaultProps = {
-  disableAnimation: false
+  disableAnimation: false,
 };
+
 InputLabel.contextTypes = {
-  muiFormControl: _propTypes.default.object
+  muiFormControl: PropTypes.object,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiInputLabel'
-})(InputLabel);
-
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiInputLabel' })(InputLabel);

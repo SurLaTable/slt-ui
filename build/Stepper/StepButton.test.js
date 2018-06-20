@@ -1,151 +1,128 @@
-"use strict";
+import React from 'react';
+import { assert } from 'chai';
+import { spy } from 'sinon';
+import { createShallow, createMount } from '../test-utils';
+import StepButton from './StepButton';
+import StepLabel from './StepLabel';
+import ButtonBase from '../ButtonBase';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+describe('<StepButton />', () => {
+  let shallow;
+  let mount;
+  const defaultProps = { orientation: 'horizontal' };
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _chai = require("chai");
-
-var _sinon = require("sinon");
-
-var _testUtils = require("../test-utils");
-
-var _StepButton = _interopRequireDefault(require("./StepButton"));
-
-var _StepLabel = _interopRequireDefault(require("./StepLabel"));
-
-var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
-
-var _ref = _react.default.createElement(_StepLabel.default, null, "Step One");
-
-describe('<StepButton />', function () {
-  var shallow;
-  var mount;
-  var defaultProps = {
-    orientation: 'horizontal'
-  };
-  before(function () {
-    shallow = (0, _testUtils.createShallow)({
-      dive: true
-    });
-    mount = (0, _testUtils.createMount)();
+  before(() => {
+    shallow = createShallow({ dive: true });
+    mount = createMount();
   });
-  after(function () {
+
+  after(() => {
     mount.cleanUp();
   });
-  it('merges user className into the root node', function () {
-    var wrapper = shallow(_react.default.createElement(_StepButton.default, (0, _extends2.default)({
-      className: "foo"
-    }, defaultProps), "Hello"));
 
-    _chai.assert.include(wrapper.props().className, 'foo');
+  it('merges user className into the root node', () => {
+    const wrapper = shallow(
+      <StepButton className="foo" {...defaultProps}>
+        Hello
+      </StepButton>,
+    );
+
+    assert.include(wrapper.props().className, 'foo');
   });
-  it('should render an ButtonBase with a StepLabel', function () {
-    var wrapper = shallow(_react.default.createElement(_StepButton.default, defaultProps, "Step One"));
 
-    _chai.assert.ok(wrapper.is(_ButtonBase.default), 'should be an ButtonBase');
-
-    var stepLabel = wrapper.find(_StepLabel.default);
-
-    _chai.assert.strictEqual(stepLabel.length, 1, 'should have a stepLabel');
-
-    _chai.assert.strictEqual(stepLabel.props().children, 'Step One');
+  it('should render an ButtonBase with a StepLabel', () => {
+    const wrapper = shallow(<StepButton {...defaultProps}>Step One</StepButton>);
+    assert.ok(wrapper.is(ButtonBase), 'should be an ButtonBase');
+    const stepLabel = wrapper.find(StepLabel);
+    assert.strictEqual(stepLabel.length, 1, 'should have a stepLabel');
+    assert.strictEqual(stepLabel.props().children, 'Step One');
   });
-  it('should pass props to StepLabel', function () {
-    var wrapper = shallow(_react.default.createElement(_StepButton.default, (0, _extends2.default)({
-      active: true,
-      completed: true,
-      disabled: true,
-      label: "Step One"
-    }, defaultProps), "Step One"));
-    var stepLabel = wrapper.find(_StepLabel.default);
 
-    _chai.assert.strictEqual(stepLabel.props().active, true, 'should be active');
-
-    _chai.assert.strictEqual(stepLabel.props().completed, true, 'should be completed');
-
-    _chai.assert.strictEqual(stepLabel.props().disabled, true, 'should be disabled');
+  it('should pass props to StepLabel', () => {
+    const wrapper = shallow(
+      <StepButton active completed disabled label="Step One" {...defaultProps}>
+        Step One
+      </StepButton>,
+    );
+    const stepLabel = wrapper.find(StepLabel);
+    assert.strictEqual(stepLabel.props().active, true, 'should be active');
+    assert.strictEqual(stepLabel.props().completed, true, 'should be completed');
+    assert.strictEqual(stepLabel.props().disabled, true, 'should be disabled');
   });
-  it('should pass props to a provided StepLabel', function () {
-    var wrapper = shallow(_react.default.createElement(_StepButton.default, (0, _extends2.default)({
-      active: true,
-      completed: true,
-      disabled: true,
-      label: "Step One"
-    }, defaultProps), _ref));
-    var stepLabel = wrapper.find(_StepLabel.default);
 
-    _chai.assert.strictEqual(stepLabel.props().active, true, 'should be active');
-
-    _chai.assert.strictEqual(stepLabel.props().completed, true, 'should be completed');
-
-    _chai.assert.strictEqual(stepLabel.props().disabled, true, 'should be disabled');
+  it('should pass props to a provided StepLabel', () => {
+    const wrapper = shallow(
+      <StepButton active completed disabled label="Step One" {...defaultProps}>
+        <StepLabel>Step One</StepLabel>
+      </StepButton>,
+    );
+    const stepLabel = wrapper.find(StepLabel);
+    assert.strictEqual(stepLabel.props().active, true, 'should be active');
+    assert.strictEqual(stepLabel.props().completed, true, 'should be completed');
+    assert.strictEqual(stepLabel.props().disabled, true, 'should be disabled');
   });
-  it("should pass disabled prop to a StepLabel's Button", function () {
-    var wrapper = shallow(_react.default.createElement(_StepButton.default, (0, _extends2.default)({
-      disabled: true
-    }, defaultProps), "Step One"));
-    var stepLabel = wrapper.find(_ButtonBase.default);
 
-    _chai.assert.strictEqual(stepLabel.props().disabled, true);
+  it("should pass disabled prop to a StepLabel's Button", () => {
+    const wrapper = shallow(
+      <StepButton disabled {...defaultProps}>
+        Step One
+      </StepButton>,
+    );
+    const stepLabel = wrapper.find(ButtonBase);
+    assert.strictEqual(stepLabel.props().disabled, true);
   });
-  describe('event handlers', function () {
-    describe('handleMouseEnter/Leave', function () {
-      var handleMouseEnter = (0, _sinon.spy)();
-      var handleMouseLeave = (0, _sinon.spy)();
-      it('should fire event callbacks', function () {
-        var wrapper = shallow(_react.default.createElement(_StepButton.default, (0, _extends2.default)({
-          onMouseEnter: handleMouseEnter,
-          onMouseLeave: handleMouseLeave
-        }, defaultProps), "Step One"));
+
+  describe('event handlers', () => {
+    describe('handleMouseEnter/Leave', () => {
+      const handleMouseEnter = spy();
+      const handleMouseLeave = spy();
+
+      it('should fire event callbacks', () => {
+        const wrapper = shallow(
+          <StepButton
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            {...defaultProps}
+          >
+            Step One
+          </StepButton>,
+        );
         wrapper.simulate('mouseEnter');
-
-        _chai.assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
-
+        assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
         wrapper.simulate('mouseLeave');
-
-        _chai.assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
-
-        _chai.assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
+        assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
+        assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
       });
     });
-    it('should bubble callbacks used internally', function () {
-      var handleMouseEnter = (0, _sinon.spy)();
-      var handleMouseLeave = (0, _sinon.spy)();
-      var handleTouchStart = (0, _sinon.spy)();
-      var wrapper = shallow(_react.default.createElement(_StepButton.default, (0, _extends2.default)({
-        onMouseEnter: handleMouseEnter,
-        onMouseLeave: handleMouseLeave,
-        onTouchStart: handleTouchStart
-      }, defaultProps), "Step One"));
+
+    it('should bubble callbacks used internally', () => {
+      const handleMouseEnter = spy();
+      const handleMouseLeave = spy();
+      const handleTouchStart = spy();
+      const wrapper = shallow(
+        <StepButton
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          {...defaultProps}
+        >
+          Step One
+        </StepButton>,
+      );
       wrapper.simulate('mouseEnter');
-
-      _chai.assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
-
+      assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
       wrapper.simulate('mouseLeave');
-
-      _chai.assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
-
-      _chai.assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
-
+      assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
+      assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
       wrapper.simulate('touchStart');
-
-      _chai.assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
-
-      _chai.assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
-
-      _chai.assert.strictEqual(handleTouchStart.callCount, 1, 'should call handleTouchStart once');
-
+      assert.strictEqual(handleMouseEnter.callCount, 1, 'should call handleMouseEnter once');
+      assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
+      assert.strictEqual(handleTouchStart.callCount, 1, 'should call handleTouchStart once');
       wrapper.simulate('mouseEnter');
       wrapper.simulate('touchStart');
-
-      _chai.assert.strictEqual(handleMouseEnter.callCount, 2, 'should call handleMouseEnter twice');
-
-      _chai.assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
-
-      _chai.assert.strictEqual(handleTouchStart.callCount, 2, 'should call handleTouchStart twice');
+      assert.strictEqual(handleMouseEnter.callCount, 2, 'should call handleMouseEnter twice');
+      assert.strictEqual(handleMouseLeave.callCount, 1, 'should call handleMouseLeave once');
+      assert.strictEqual(handleTouchStart.callCount, 2, 'should call handleTouchStart twice');
     });
   });
 });

@@ -1,64 +1,42 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = {
+export const styles = {
   root: {
     position: 'absolute',
     right: 4,
     top: '50%',
-    transform: 'translateY(-50%)'
-  }
+    transform: 'translateY(-50%)',
+  },
 };
-exports.styles = styles;
 
 function ListItemSecondaryAction(props) {
-  var children = props.children,
-      classes = props.classes,
-      className = props.className,
-      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className"]);
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: (0, _classnames.default)(classes.root, className)
-  }, other), children);
+  const { children, classes, className, ...other } = props;
+
+  return (
+    <div className={classNames(classes.root, className)} {...other}>
+      {children}
+    </div>
+  );
 }
 
-ListItemSecondaryAction.propTypes = process.env.NODE_ENV !== "production" ? {
+ListItemSecondaryAction.propTypes = {
   /**
    * The content of the component, normally an `IconButton` or selection control.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string
-} : {};
+  className: PropTypes.string,
+};
+
 ListItemSecondaryAction.muiName = 'ListItemSecondaryAction';
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiListItemSecondaryAction'
-})(ListItemSecondaryAction);
-
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiListItemSecondaryAction' })(ListItemSecondaryAction);

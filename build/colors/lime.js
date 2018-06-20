@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var lime = {
+const lime = {
   50: '#f9fbe7',
   100: '#f0f4c3',
   200: '#e6ee9c',
@@ -18,7 +12,7 @@ var lime = {
   A100: '#f4ff81',
   A200: '#eeff41',
   A400: '#c6ff00',
-  A700: '#aeea00'
+  A700: '#aeea00',
 };
-var _default = lime;
-exports.default = _default;
+
+export default lime;

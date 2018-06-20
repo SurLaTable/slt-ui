@@ -1,466 +1,365 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import warning from 'warning';
+import classNames from 'classnames';
+import EventListener from 'react-event-listener';
+import debounce from 'lodash/debounce';
+import ScrollbarSize from 'react-scrollbar-size';
+import { getNormalizedScrollLeft, detectScrollType } from 'normalize-scroll-left';
+import scroll from 'scroll';
+import withStyles from '../styles/withStyles';
+import TabIndicator from './TabIndicator';
+import TabScrollButton from './TabScrollButton';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+export const styles = theme => ({
+  root: {
+    overflow: 'hidden',
+    minHeight: 48,
+    WebkitOverflowScrolling: 'touch', // Add iOS momentum scrolling.
+  },
+  flexContainer: {
+    display: 'flex',
+  },
+  scroller: {
+    position: 'relative',
+    display: 'inline-block',
+    flex: '1 1 auto',
+    whiteSpace: 'nowrap',
+  },
+  fixed: {
+    overflowX: 'hidden',
+    width: '100%',
+  },
+  scrollable: {
+    overflowX: 'scroll',
+  },
+  centered: {
+    justifyContent: 'center',
+  },
+  scrollButtons: {},
+  scrollButtonsAuto: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+  },
+  indicator: {},
 });
-exports.default = exports.styles = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _isNan = _interopRequireDefault(require("@babel/runtime/core-js/number/is-nan"));
-
-var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _warning = _interopRequireDefault(require("warning"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _reactEventListener = _interopRequireDefault(require("react-event-listener"));
-
-var _debounce = _interopRequireDefault(require("lodash/debounce"));
-
-var _reactScrollbarSize = _interopRequireDefault(require("react-scrollbar-size"));
-
-var _normalizeScrollLeft = require("normalize-scroll-left");
-
-var _scroll = _interopRequireDefault(require("scroll"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _TabIndicator = _interopRequireDefault(require("./TabIndicator"));
-
-var _TabScrollButton = _interopRequireDefault(require("./TabScrollButton"));
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      overflow: 'hidden',
-      minHeight: 48,
-      WebkitOverflowScrolling: 'touch' // Add iOS momentum scrolling.
-
+class Tabs extends React.Component {
+  state = {
+    indicatorStyle: {},
+    scrollerStyle: {
+      marginBottom: 0,
     },
-    flexContainer: {
-      display: 'flex'
-    },
-    scroller: {
-      position: 'relative',
-      display: 'inline-block',
-      flex: '1 1 auto',
-      whiteSpace: 'nowrap'
-    },
-    fixed: {
-      overflowX: 'hidden',
-      width: '100%'
-    },
-    scrollable: {
-      overflowX: 'scroll'
-    },
-    centered: {
-      justifyContent: 'center'
-    },
-    scrollButtons: {},
-    scrollButtonsAuto: (0, _defineProperty2.default)({}, theme.breakpoints.down('xs'), {
-      display: 'none'
-    }),
-    indicator: {}
+    showLeftScroll: false,
+    showRightScroll: false,
+    mounted: false,
   };
-};
 
-exports.styles = styles;
+  componentDidMount() {
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({ mounted: true });
+    this.updateIndicatorState(this.props);
+    this.updateScrollButtonState();
 
-var Tabs =
-/*#__PURE__*/
-function (_React$Component) {
-  (0, _inherits2.default)(Tabs, _React$Component);
-
-  function Tabs() {
-    var _ref;
-
-    var _temp, _this;
-
-    (0, _classCallCheck2.default)(this, Tabs);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+    if (this.props.action) {
+      this.props.action({
+        updateIndicator: this.handleResize,
+      });
     }
-
-    return (0, _possibleConstructorReturn2.default)(_this, (_temp = _this = (0, _possibleConstructorReturn2.default)(this, (_ref = Tabs.__proto__ || (0, _getPrototypeOf.default)(Tabs)).call.apply(_ref, [this].concat(args))), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        indicatorStyle: {},
-        scrollerStyle: {
-          marginBottom: 0
-        },
-        showLeftScroll: false,
-        showRightScroll: false,
-        mounted: false
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "getConditionalElements", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        var _this$props = _this.props,
-            classes = _this$props.classes,
-            scrollable = _this$props.scrollable,
-            ScrollButtonComponent = _this$props.ScrollButtonComponent,
-            scrollButtons = _this$props.scrollButtons,
-            theme = _this$props.theme;
-        var conditionalElements = {};
-        conditionalElements.scrollbarSizeListener = scrollable ? _react.default.createElement(_reactScrollbarSize.default, {
-          onLoad: _this.handleScrollbarSizeChange,
-          onChange: _this.handleScrollbarSizeChange
-        }) : null;
-        var showScrollButtons = scrollable && (scrollButtons === 'auto' || scrollButtons === 'on');
-        conditionalElements.scrollButtonLeft = showScrollButtons ? _react.default.createElement(ScrollButtonComponent, {
-          direction: theme && theme.direction === 'rtl' ? 'right' : 'left',
-          onClick: _this.handleLeftScrollClick,
-          visible: _this.state.showLeftScroll,
-          className: (0, _classnames.default)(classes.scrollButtons, (0, _defineProperty2.default)({}, classes.scrollButtonsAuto, scrollButtons === 'auto'))
-        }) : null;
-        conditionalElements.scrollButtonRight = showScrollButtons ? _react.default.createElement(ScrollButtonComponent, {
-          direction: theme && theme.direction === 'rtl' ? 'left' : 'right',
-          onClick: _this.handleRightScrollClick,
-          visible: _this.state.showRightScroll,
-          className: (0, _classnames.default)(classes.scrollButtons, (0, _defineProperty2.default)({}, classes.scrollButtonsAuto, scrollButtons === 'auto'))
-        }) : null;
-        return conditionalElements;
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "getTabsMeta", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(_value, direction) {
-        var tabsMeta;
-
-        if (_this.tabs) {
-          var rect = _this.tabs.getBoundingClientRect(); // create a new object with ClientRect class props + scrollLeft
-
-
-          tabsMeta = {
-            clientWidth: _this.tabs ? _this.tabs.clientWidth : 0,
-            scrollLeft: _this.tabs ? _this.tabs.scrollLeft : 0,
-            scrollLeftNormalized: _this.tabs ? (0, _normalizeScrollLeft.getNormalizedScrollLeft)(_this.tabs, direction) : 0,
-            scrollWidth: _this.tabs ? _this.tabs.scrollWidth : 0,
-            left: rect.left,
-            right: rect.right
-          };
-        }
-
-        var tabMeta;
-
-        if (_this.tabs && _value !== false) {
-          var children = _this.tabs.children[0].children;
-
-          if (children.length > 0) {
-            var tab = children[_this.valueToIndex[_value]];
-            process.env.NODE_ENV !== "production" ? (0, _warning.default)(tab, "Material-UI: the value provided `".concat(_value, "` is invalid")) : void 0;
-            tabMeta = tab ? tab.getBoundingClientRect() : null;
-          }
-        }
-
-        return {
-          tabsMeta: tabsMeta,
-          tabMeta: tabMeta
-        };
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "tabs", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: undefined
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "valueToIndex", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {}
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleResize", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: (0, _debounce.default)(function () {
-        _this.updateIndicatorState(_this.props);
-
-        _this.updateScrollButtonState();
-      }, 166)
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleLeftScrollClick", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        if (_this.tabs) {
-          _this.moveTabsScroll(-_this.tabs.clientWidth);
-        }
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleRightScrollClick", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        if (_this.tabs) {
-          _this.moveTabsScroll(_this.tabs.clientWidth);
-        }
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleScrollbarSizeChange", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(_ref2) {
-        var scrollbarHeight = _ref2.scrollbarHeight;
-
-        _this.setState({
-          scrollerStyle: {
-            marginBottom: -scrollbarHeight
-          }
-        });
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleTabsScroll", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: (0, _debounce.default)(function () {
-        _this.updateScrollButtonState();
-      }, 166)
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "moveTabsScroll", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(delta) {
-        var theme = _this.props.theme;
-
-        if (_this.tabs) {
-          var multiplier = theme.direction === 'rtl' ? -1 : 1;
-          var nextScrollLeft = _this.tabs.scrollLeft + delta * multiplier; // Fix for Edge
-
-          var invert = theme.direction === 'rtl' && (0, _normalizeScrollLeft.detectScrollType)() === 'reverse' ? -1 : 1;
-
-          _scroll.default.left(_this.tabs, invert * nextScrollLeft);
-        }
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "scrollSelectedIntoView", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        var _this$props2 = _this.props,
-            theme = _this$props2.theme,
-            value = _this$props2.value;
-
-        var _this$getTabsMeta = _this.getTabsMeta(value, theme.direction),
-            tabsMeta = _this$getTabsMeta.tabsMeta,
-            tabMeta = _this$getTabsMeta.tabMeta;
-
-        if (!tabMeta || !tabsMeta) {
-          return;
-        }
-
-        if (tabMeta.left < tabsMeta.left) {
-          // left side of button is out of view
-          var nextScrollLeft = tabsMeta.scrollLeft + (tabMeta.left - tabsMeta.left);
-
-          _scroll.default.left(_this.tabs, nextScrollLeft);
-        } else if (tabMeta.right > tabsMeta.right) {
-          // right side of button is out of view
-          var _nextScrollLeft = tabsMeta.scrollLeft + (tabMeta.right - tabsMeta.right);
-
-          _scroll.default.left(_this.tabs, _nextScrollLeft);
-        }
-      }
-    }), Object.defineProperty((0, _assertThisInitialized2.default)(_this), "updateScrollButtonState", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        var _this$props3 = _this.props,
-            scrollable = _this$props3.scrollable,
-            scrollButtons = _this$props3.scrollButtons,
-            theme = _this$props3.theme;
-
-        if (_this.tabs && scrollable && scrollButtons !== 'off') {
-          var _this$tabs = _this.tabs,
-              scrollWidth = _this$tabs.scrollWidth,
-              clientWidth = _this$tabs.clientWidth;
-          var scrollLeft = (0, _normalizeScrollLeft.getNormalizedScrollLeft)(_this.tabs, theme.direction);
-          var showLeftScroll = theme.direction === 'rtl' ? scrollWidth > clientWidth + scrollLeft : scrollLeft > 0;
-          var showRightScroll = theme.direction === 'rtl' ? scrollLeft > 0 : scrollWidth > clientWidth + scrollLeft;
-
-          if (showLeftScroll !== _this.state.showLeftScroll || showRightScroll !== _this.state.showRightScroll) {
-            _this.setState({
-              showLeftScroll: showLeftScroll,
-              showRightScroll: showRightScroll
-            });
-          }
-        }
-      }
-    }), _temp));
   }
 
-  (0, _createClass2.default)(Tabs, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({
-        mounted: true
-      });
-      this.updateIndicatorState(this.props);
-      this.updateScrollButtonState();
+  componentDidUpdate(prevProps, prevState) {
+    this.updateScrollButtonState();
 
-      if (this.props.action) {
-        this.props.action({
-          updateIndicator: this.handleResize
-        });
-      }
+    // The index might have changed at the same time.
+    // We need to check again the right indicator position.
+    this.updateIndicatorState(this.props);
+
+    if (this.state.indicatorStyle !== prevState.indicatorStyle) {
+      this.scrollSelectedIntoView();
     }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      this.updateScrollButtonState(); // The index might have changed at the same time.
-      // We need to check again the right indicator position.
+  }
 
-      this.updateIndicatorState(this.props);
+  componentWillUnmount() {
+    this.handleResize.cancel();
+    this.handleTabsScroll.cancel();
+  }
 
-      if (this.state.indicatorStyle !== prevState.indicatorStyle) {
-        this.scrollSelectedIntoView();
-      }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.handleResize.cancel();
-      this.handleTabsScroll.cancel();
-    }
-  }, {
-    key: "updateIndicatorState",
-    value: function updateIndicatorState(props) {
-      var theme = props.theme,
-          value = props.value;
+  getConditionalElements = () => {
+    const { classes, scrollable, ScrollButtonComponent, scrollButtons, theme } = this.props;
+    const conditionalElements = {};
+    conditionalElements.scrollbarSizeListener = scrollable ? (
+      <ScrollbarSize
+        onLoad={this.handleScrollbarSizeChange}
+        onChange={this.handleScrollbarSizeChange}
+      />
+    ) : null;
 
-      var _getTabsMeta = this.getTabsMeta(value, theme.direction),
-          tabsMeta = _getTabsMeta.tabsMeta,
-          tabMeta = _getTabsMeta.tabMeta;
+    const showScrollButtons = scrollable && (scrollButtons === 'auto' || scrollButtons === 'on');
 
-      var left = 0;
+    conditionalElements.scrollButtonLeft = showScrollButtons ? (
+      <ScrollButtonComponent
+        direction={theme && theme.direction === 'rtl' ? 'right' : 'left'}
+        onClick={this.handleLeftScrollClick}
+        visible={this.state.showLeftScroll}
+        className={classNames(classes.scrollButtons, {
+          [classes.scrollButtonsAuto]: scrollButtons === 'auto',
+        })}
+      />
+    ) : null;
 
-      if (tabMeta && tabsMeta) {
-        var correction = theme.direction === 'rtl' ? tabsMeta.scrollLeftNormalized + tabsMeta.clientWidth - tabsMeta.scrollWidth : tabsMeta.scrollLeft;
-        left = tabMeta.left - tabsMeta.left + correction;
-      }
+    conditionalElements.scrollButtonRight = showScrollButtons ? (
+      <ScrollButtonComponent
+        direction={theme && theme.direction === 'rtl' ? 'left' : 'right'}
+        onClick={this.handleRightScrollClick}
+        visible={this.state.showRightScroll}
+        className={classNames(classes.scrollButtons, {
+          [classes.scrollButtonsAuto]: scrollButtons === 'auto',
+        })}
+      />
+    ) : null;
 
-      var indicatorStyle = {
-        left: left,
-        // May be wrong until the font is loaded.
-        width: tabMeta ? tabMeta.width : 0
+    return conditionalElements;
+  };
+
+  getTabsMeta = (value, direction) => {
+    let tabsMeta;
+    if (this.tabs) {
+      const rect = this.tabs.getBoundingClientRect();
+      // create a new object with ClientRect class props + scrollLeft
+      tabsMeta = {
+        clientWidth: this.tabs ? this.tabs.clientWidth : 0,
+        scrollLeft: this.tabs ? this.tabs.scrollLeft : 0,
+        scrollLeftNormalized: this.tabs ? getNormalizedScrollLeft(this.tabs, direction) : 0,
+        scrollWidth: this.tabs ? this.tabs.scrollWidth : 0,
+        left: rect.left,
+        right: rect.right,
       };
+    }
 
-      if ((indicatorStyle.left !== this.state.indicatorStyle.left || indicatorStyle.width !== this.state.indicatorStyle.width) && !(0, _isNan.default)(indicatorStyle.left) && !(0, _isNan.default)(indicatorStyle.width)) {
-        this.setState({
-          indicatorStyle: indicatorStyle
-        });
+    let tabMeta;
+    if (this.tabs && value !== false) {
+      const children = this.tabs.children[0].children;
+
+      if (children.length > 0) {
+        const tab = children[this.valueToIndex[value]];
+        warning(tab, `Material-UI: the value provided \`${value}\` is invalid`);
+        tabMeta = tab ? tab.getBoundingClientRect() : null;
       }
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _classNames3,
-          _this2 = this;
+    return { tabsMeta, tabMeta };
+  };
 
-      var _props = this.props,
-          action = _props.action,
-          centered = _props.centered,
-          childrenProp = _props.children,
-          classes = _props.classes,
-          classNameProp = _props.className,
-          fullWidth = _props.fullWidth,
-          indicatorColor = _props.indicatorColor,
-          onChange = _props.onChange,
-          scrollable = _props.scrollable,
-          ScrollButtonComponent = _props.ScrollButtonComponent,
-          scrollButtons = _props.scrollButtons,
-          TabIndicatorProps = _props.TabIndicatorProps,
-          textColor = _props.textColor,
-          theme = _props.theme,
-          value = _props.value,
-          other = (0, _objectWithoutProperties2.default)(_props, ["action", "centered", "children", "classes", "className", "fullWidth", "indicatorColor", "onChange", "scrollable", "ScrollButtonComponent", "scrollButtons", "TabIndicatorProps", "textColor", "theme", "value"]);
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(!centered || !scrollable, 'Material-UI: you can not use the `centered={true}` and `scrollable={true}` properties ' + 'at the same time on a `Tabs` component.') : void 0;
-      var className = (0, _classnames.default)(classes.root, classNameProp);
-      var scrollerClassName = (0, _classnames.default)(classes.scroller, (_classNames3 = {}, (0, _defineProperty2.default)(_classNames3, classes.fixed, !scrollable), (0, _defineProperty2.default)(_classNames3, classes.scrollable, scrollable), _classNames3));
-      var flexContainerClassName = (0, _classnames.default)(classes.flexContainer, (0, _defineProperty2.default)({}, classes.centered, centered && !scrollable));
+  tabs = undefined;
+  valueToIndex = {};
 
-      var indicator = _react.default.createElement(_TabIndicator.default, (0, _extends2.default)({
-        style: this.state.indicatorStyle,
-        className: classes.indicator,
-        color: indicatorColor
-      }, TabIndicatorProps));
+  handleResize = debounce(() => {
+    this.updateIndicatorState(this.props);
+    this.updateScrollButtonState();
+  }, 166); // Corresponds to 10 frames at 60 Hz.
 
-      this.valueToIndex = {};
-      var childIndex = 0;
-
-      var children = _react.default.Children.map(childrenProp, function (child) {
-        if (!_react.default.isValidElement(child)) {
-          return null;
-        }
-
-        var childValue = child.props.value === undefined ? childIndex : child.props.value;
-        _this2.valueToIndex[childValue] = childIndex;
-        var selected = childValue === value;
-        childIndex += 1;
-        return _react.default.cloneElement(child, {
-          fullWidth: fullWidth,
-          indicator: selected && !_this2.state.mounted && indicator,
-          selected: selected,
-          onChange: onChange,
-          textColor: textColor,
-          value: childValue
-        });
-      });
-
-      var conditionalElements = this.getConditionalElements();
-      return _react.default.createElement("div", (0, _extends2.default)({
-        className: className
-      }, other), _react.default.createElement(_reactEventListener.default, {
-        target: "window",
-        onResize: this.handleResize
-      }), conditionalElements.scrollbarSizeListener, _react.default.createElement("div", {
-        className: classes.flexContainer
-      }, conditionalElements.scrollButtonLeft, _react.default.createElement("div", {
-        className: scrollerClassName,
-        style: this.state.scrollerStyle,
-        ref: function ref(node) {
-          _this2.tabs = node;
-        },
-        role: "tablist",
-        onScroll: this.handleTabsScroll
-      }, _react.default.createElement("div", {
-        className: flexContainerClassName
-      }, children), this.state.mounted && indicator), conditionalElements.scrollButtonRight));
+  handleLeftScrollClick = () => {
+    if (this.tabs) {
+      this.moveTabsScroll(-this.tabs.clientWidth);
     }
-  }]);
-  return Tabs;
-}(_react.default.Component);
+  };
 
-Tabs.propTypes = process.env.NODE_ENV !== "production" ? {
+  handleRightScrollClick = () => {
+    if (this.tabs) {
+      this.moveTabsScroll(this.tabs.clientWidth);
+    }
+  };
+
+  handleScrollbarSizeChange = ({ scrollbarHeight }) => {
+    this.setState({
+      scrollerStyle: {
+        marginBottom: -scrollbarHeight,
+      },
+    });
+  };
+
+  handleTabsScroll = debounce(() => {
+    this.updateScrollButtonState();
+  }, 166); // Corresponds to 10 frames at 60 Hz.
+
+  moveTabsScroll = delta => {
+    const { theme } = this.props;
+
+    if (this.tabs) {
+      const multiplier = theme.direction === 'rtl' ? -1 : 1;
+      const nextScrollLeft = this.tabs.scrollLeft + delta * multiplier;
+      // Fix for Edge
+      const invert = theme.direction === 'rtl' && detectScrollType() === 'reverse' ? -1 : 1;
+      scroll.left(this.tabs, invert * nextScrollLeft);
+    }
+  };
+
+  updateIndicatorState(props) {
+    const { theme, value } = props;
+
+    const { tabsMeta, tabMeta } = this.getTabsMeta(value, theme.direction);
+    let left = 0;
+
+    if (tabMeta && tabsMeta) {
+      const correction =
+        theme.direction === 'rtl'
+          ? tabsMeta.scrollLeftNormalized + tabsMeta.clientWidth - tabsMeta.scrollWidth
+          : tabsMeta.scrollLeft;
+      left = tabMeta.left - tabsMeta.left + correction;
+    }
+
+    const indicatorStyle = {
+      left,
+      // May be wrong until the font is loaded.
+      width: tabMeta ? tabMeta.width : 0,
+    };
+
+    if (
+      (indicatorStyle.left !== this.state.indicatorStyle.left ||
+        indicatorStyle.width !== this.state.indicatorStyle.width) &&
+      !Number.isNaN(indicatorStyle.left) &&
+      !Number.isNaN(indicatorStyle.width)
+    ) {
+      this.setState({ indicatorStyle });
+    }
+  }
+
+  scrollSelectedIntoView = () => {
+    const { theme, value } = this.props;
+    const { tabsMeta, tabMeta } = this.getTabsMeta(value, theme.direction);
+
+    if (!tabMeta || !tabsMeta) {
+      return;
+    }
+
+    if (tabMeta.left < tabsMeta.left) {
+      // left side of button is out of view
+      const nextScrollLeft = tabsMeta.scrollLeft + (tabMeta.left - tabsMeta.left);
+      scroll.left(this.tabs, nextScrollLeft);
+    } else if (tabMeta.right > tabsMeta.right) {
+      // right side of button is out of view
+      const nextScrollLeft = tabsMeta.scrollLeft + (tabMeta.right - tabsMeta.right);
+      scroll.left(this.tabs, nextScrollLeft);
+    }
+  };
+
+  updateScrollButtonState = () => {
+    const { scrollable, scrollButtons, theme } = this.props;
+
+    if (this.tabs && scrollable && scrollButtons !== 'off') {
+      const { scrollWidth, clientWidth } = this.tabs;
+      const scrollLeft = getNormalizedScrollLeft(this.tabs, theme.direction);
+
+      const showLeftScroll =
+        theme.direction === 'rtl' ? scrollWidth > clientWidth + scrollLeft : scrollLeft > 0;
+
+      const showRightScroll =
+        theme.direction === 'rtl' ? scrollLeft > 0 : scrollWidth > clientWidth + scrollLeft;
+
+      if (
+        showLeftScroll !== this.state.showLeftScroll ||
+        showRightScroll !== this.state.showRightScroll
+      ) {
+        this.setState({ showLeftScroll, showRightScroll });
+      }
+    }
+  };
+
+  render() {
+    const {
+      action,
+      centered,
+      children: childrenProp,
+      classes,
+      className: classNameProp,
+      fullWidth,
+      indicatorColor,
+      onChange,
+      scrollable,
+      ScrollButtonComponent,
+      scrollButtons,
+      TabIndicatorProps,
+      textColor,
+      theme,
+      value,
+      ...other
+    } = this.props;
+
+    warning(
+      !centered || !scrollable,
+      'Material-UI: you can not use the `centered={true}` and `scrollable={true}` properties ' +
+        'at the same time on a `Tabs` component.',
+    );
+
+    const className = classNames(classes.root, classNameProp);
+    const scrollerClassName = classNames(classes.scroller, {
+      [classes.fixed]: !scrollable,
+      [classes.scrollable]: scrollable,
+    });
+    const flexContainerClassName = classNames(classes.flexContainer, {
+      [classes.centered]: centered && !scrollable,
+    });
+
+    const indicator = (
+      <TabIndicator
+        style={this.state.indicatorStyle}
+        className={classes.indicator}
+        color={indicatorColor}
+        {...TabIndicatorProps}
+      />
+    );
+
+    this.valueToIndex = {};
+    let childIndex = 0;
+    const children = React.Children.map(childrenProp, child => {
+      if (!React.isValidElement(child)) {
+        return null;
+      }
+
+      const childValue = child.props.value === undefined ? childIndex : child.props.value;
+      this.valueToIndex[childValue] = childIndex;
+      const selected = childValue === value;
+
+      childIndex += 1;
+      return React.cloneElement(child, {
+        fullWidth,
+        indicator: selected && !this.state.mounted && indicator,
+        selected,
+        onChange,
+        textColor,
+        value: childValue,
+      });
+    });
+
+    const conditionalElements = this.getConditionalElements();
+
+    return (
+      <div className={className} {...other}>
+        <EventListener target="window" onResize={this.handleResize} />
+        {conditionalElements.scrollbarSizeListener}
+        <div className={classes.flexContainer}>
+          {conditionalElements.scrollButtonLeft}
+          <div
+            className={scrollerClassName}
+            style={this.state.scrollerStyle}
+            ref={node => {
+              this.tabs = node;
+            }}
+            role="tablist"
+            onScroll={this.handleTabsScroll}
+          >
+            <div className={flexContainerClassName}>{children}</div>
+            {this.state.mounted && indicator}
+          </div>
+          {conditionalElements.scrollButtonRight}
+        </div>
+      </div>
+    );
+  }
+}
+
+Tabs.propTypes = {
   /**
    * Callback fired when the component mounts.
    * This is useful when you want to trigger an action programmatically.
@@ -469,101 +368,83 @@ Tabs.propTypes = process.env.NODE_ENV !== "production" ? {
    * @param {object} actions This object contains all possible actions
    * that can be triggered programmatically.
    */
-  action: _propTypes.default.func,
-
+  action: PropTypes.func,
   /**
    * If `true`, the tabs will be centered.
    * This property is intended for large views.
    */
-  centered: _propTypes.default.bool,
-
+  centered: PropTypes.bool,
   /**
    * The content of the component.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * If `true`, the tabs will grow to use all the available space.
    * This property is intended for small views, like on mobile.
    */
-  fullWidth: _propTypes.default.bool,
-
+  fullWidth: PropTypes.bool,
   /**
    * Determines the color of the indicator.
    */
-  indicatorColor: _propTypes.default.oneOf(['secondary', 'primary']),
-
+  indicatorColor: PropTypes.oneOf(['secondary', 'primary']),
   /**
    * Callback fired when the value changes.
    *
    * @param {object} event The event source of the callback
    * @param {number} value We default to the index of the child
    */
-  onChange: _propTypes.default.func,
-
+  onChange: PropTypes.func,
   /**
    * True invokes scrolling properties and allow for horizontally scrolling
    * (or swiping) the tab bar.
    */
-  scrollable: _propTypes.default.bool,
-
+  scrollable: PropTypes.bool,
   /**
    * The component used to render the scroll buttons.
    */
-  ScrollButtonComponent: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func]),
-
+  ScrollButtonComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /**
    * Determine behavior of scroll buttons when tabs are set to scroll
    * `auto` will only present them on medium and larger viewports
    * `on` will always present them
    * `off` will never present them
    */
-  scrollButtons: _propTypes.default.oneOf(['auto', 'on', 'off']),
-
+  scrollButtons: PropTypes.oneOf(['auto', 'on', 'off']),
   /**
    * Properties applied to the `TabIndicator` element.
    */
-  TabIndicatorProps: _propTypes.default.object,
-
+  TabIndicatorProps: PropTypes.object,
   /**
    * Determines the color of the `Tab`.
    */
-  textColor: _propTypes.default.oneOf(['secondary', 'primary', 'inherit']),
-
+  textColor: PropTypes.oneOf(['secondary', 'primary', 'inherit']),
   /**
    * @ignore
    */
-  theme: _propTypes.default.object.isRequired,
-
+  theme: PropTypes.object.isRequired,
   /**
    * The value of the currently selected `Tab`.
    * If you don't want any selected `Tab`, you can set this property to `false`.
    */
-  value: _propTypes.default.any
-} : {};
+  value: PropTypes.any,
+};
+
 Tabs.defaultProps = {
   centered: false,
   fullWidth: false,
   indicatorColor: 'secondary',
   scrollable: false,
-  ScrollButtonComponent: _TabScrollButton.default,
+  ScrollButtonComponent: TabScrollButton,
   scrollButtons: 'auto',
-  textColor: 'inherit'
+  textColor: 'inherit',
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiTabs',
-  withTheme: true
-})(Tabs);
-
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiTabs', withTheme: true })(Tabs);

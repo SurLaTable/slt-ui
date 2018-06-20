@@ -1,107 +1,84 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+export const styles = theme => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    height: 56,
+    backgroundColor: theme.palette.background.paper,
+  },
 });
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      display: 'flex',
-      justifyContent: 'center',
-      height: 56,
-      backgroundColor: theme.palette.background.paper
-    }
-  };
-};
-
-exports.styles = styles;
 
 function BottomNavigation(props) {
-  var childrenProp = props.children,
-      classes = props.classes,
-      classNameProp = props.className,
-      onChange = props.onChange,
-      showLabels = props.showLabels,
-      value = props.value,
-      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "onChange", "showLabels", "value"]);
-  var className = (0, _classnames.default)(classes.root, classNameProp);
+  const {
+    children: childrenProp,
+    classes,
+    className: classNameProp,
+    onChange,
+    showLabels,
+    value,
+    ...other
+  } = props;
 
-  var children = _react.default.Children.map(childrenProp, function (child, childIndex) {
-    if (!_react.default.isValidElement(child)) {
+  const className = classNames(classes.root, classNameProp);
+
+  const children = React.Children.map(childrenProp, (child, childIndex) => {
+    if (!React.isValidElement(child)) {
       return null;
     }
 
-    var childValue = child.props.value === undefined ? childIndex : child.props.value;
-    return _react.default.cloneElement(child, {
+    const childValue = child.props.value === undefined ? childIndex : child.props.value;
+    return React.cloneElement(child, {
       selected: childValue === value,
       showLabel: child.props.showLabel !== undefined ? child.props.showLabel : showLabels,
       value: childValue,
-      onChange: onChange
+      onChange,
     });
   });
 
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: className
-  }, other), children);
+  return (
+    <div className={className} {...other}>
+      {children}
+    </div>
+  );
 }
 
-BottomNavigation.propTypes = process.env.NODE_ENV !== "production" ? {
+BottomNavigation.propTypes = {
   /**
    * The content of the component.
    */
-  children: _propTypes.default.node.isRequired,
-
+  children: PropTypes.node.isRequired,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * Callback fired when the value changes.
    *
    * @param {object} event The event source of the callback
    * @param {any} value We default to the index of the child
    */
-  onChange: _propTypes.default.func,
-
+  onChange: PropTypes.func,
   /**
    * If `true`, all `BottomNavigationAction`s will show their labels.
    * By default, only the selected `BottomNavigationAction` will show its label.
    */
-  showLabels: _propTypes.default.bool,
-
+  showLabels: PropTypes.bool,
   /**
    * The value of the currently selected `BottomNavigationAction`.
    */
-  value: _propTypes.default.any
-} : {};
-BottomNavigation.defaultProps = {
-  showLabels: false
+  value: PropTypes.any,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiBottomNavigation'
-})(BottomNavigation);
+BottomNavigation.defaultProps = {
+  showLabels: false,
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiBottomNavigation' })(BottomNavigation);

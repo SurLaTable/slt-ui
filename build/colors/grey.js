@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var grey = {
+const grey = {
   50: '#fafafa',
   100: '#f5f5f5',
   200: '#eeeeee',
@@ -18,7 +12,7 @@ var grey = {
   A100: '#d5d5d5',
   A200: '#aaaaaa',
   A400: '#303030',
-  A700: '#616161'
+  A700: '#616161',
 };
-var _default = grey;
-exports.default = _default;
+
+export default grey;

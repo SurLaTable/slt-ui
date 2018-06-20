@@ -1,64 +1,38 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+export const styles = theme => ({
+  root: {
+    display: 'flex',
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+  },
 });
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      display: 'flex',
-      padding: "".concat(theme.spacing.unit, "px ").concat(theme.spacing.unit * 3, "px ").concat(theme.spacing.unit * 3, "px")
-    }
-  };
-};
-
-exports.styles = styles;
 
 function ExpansionPanelDetails(props) {
-  var classes = props.classes,
-      children = props.children,
-      className = props.className,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "children", "className"]);
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: (0, _classnames.default)(classes.root, className)
-  }, other), children);
+  const { classes, children, className, ...other } = props;
+
+  return (
+    <div className={classNames(classes.root, className)} {...other}>
+      {children}
+    </div>
+  );
 }
 
-ExpansionPanelDetails.propTypes = process.env.NODE_ENV !== "production" ? {
+ExpansionPanelDetails.propTypes = {
   /**
    * The content of the expansion panel details.
    */
-  children: _propTypes.default.node.isRequired,
-
+  children: PropTypes.node.isRequired,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string
-} : {};
+  className: PropTypes.string,
+};
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiExpansionPanelDetails'
-})(ExpansionPanelDetails);
-
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiExpansionPanelDetails' })(ExpansionPanelDetails);

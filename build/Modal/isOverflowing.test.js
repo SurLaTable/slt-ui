@@ -1,15 +1,11 @@
-"use strict";
+import { assert } from 'chai';
+import { isBody } from './isOverflowing';
 
-var _chai = require("chai");
-
-var _isOverflowing = require("./isOverflowing");
-
-describe('isOverflowing', function () {
-  describe('isBody', function () {
-    it('work as expected', function () {
-      _chai.assert.strictEqual((0, _isOverflowing.isBody)(document.body), true);
-
-      _chai.assert.strictEqual((0, _isOverflowing.isBody)(document.createElement('div')), false);
+describe('isOverflowing', () => {
+  describe('isBody', () => {
+    it('work as expected', () => {
+      assert.strictEqual(isBody(document.body), true);
+      assert.strictEqual(isBody(document.createElement('div')), false);
     });
   });
 });

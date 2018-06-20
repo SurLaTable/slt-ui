@@ -1,103 +1,62 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import KeyboardArrowLeft from '../internal/svg-icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '../internal/svg-icons/KeyboardArrowRight';
+import withStyles from '../styles/withStyles';
+import ButtonBase from '../ButtonBase';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+export const styles = theme => ({
+  root: {
+    color: 'inherit',
+    flex: `0 0 ${theme.spacing.unit * 7}px`,
+  },
 });
-exports.default = exports.styles = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _KeyboardArrowLeft = _interopRequireDefault(require("../internal/svg-icons/KeyboardArrowLeft"));
-
-var _KeyboardArrowRight = _interopRequireDefault(require("../internal/svg-icons/KeyboardArrowRight"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      color: 'inherit',
-      flex: "0 0 ".concat(theme.spacing.unit * 7, "px")
-    }
-  };
-};
 /**
  * @ignore - internal component.
  */
-
-
-exports.styles = styles;
-
-var _ref = _react.default.createElement(_KeyboardArrowLeft.default, null);
-
-var _ref2 = _react.default.createElement(_KeyboardArrowRight.default, null);
-
 function TabScrollButton(props) {
-  var classes = props.classes,
-      classNameProp = props.className,
-      direction = props.direction,
-      onClick = props.onClick,
-      visible = props.visible,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "direction", "onClick", "visible"]);
-  var className = (0, _classnames.default)(classes.root, classNameProp);
+  const { classes, className: classNameProp, direction, onClick, visible, ...other } = props;
+
+  const className = classNames(classes.root, classNameProp);
 
   if (!visible) {
-    return _react.default.createElement("div", {
-      className: className
-    });
+    return <div className={className} />;
   }
 
-  return _react.default.createElement(_ButtonBase.default, (0, _extends2.default)({
-    className: className,
-    onClick: onClick,
-    tabIndex: -1
-  }, other), direction === 'left' ? _ref : _ref2);
+  return (
+    <ButtonBase className={className} onClick={onClick} tabIndex={-1} {...other}>
+      {direction === 'left' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+    </ButtonBase>
+  );
 }
 
-TabScrollButton.propTypes = process.env.NODE_ENV !== "production" ? {
+TabScrollButton.propTypes = {
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * Which direction should the button indicate?
    */
-  direction: _propTypes.default.oneOf(['left', 'right']),
-
+  direction: PropTypes.oneOf(['left', 'right']),
   /**
    * Callback to execute for button press.
    */
-  onClick: _propTypes.default.func,
-
+  onClick: PropTypes.func,
   /**
    * Should the button be present or just consume space.
    */
-  visible: _propTypes.default.bool
-} : {};
-TabScrollButton.defaultProps = {
-  visible: true
+  visible: PropTypes.bool,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiTabScrollButton'
-})(TabScrollButton);
+TabScrollButton.defaultProps = {
+  visible: true,
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiTabScrollButton' })(TabScrollButton);

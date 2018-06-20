@@ -1,593 +1,484 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
-var _reactEventListener = _interopRequireDefault(require("react-event-listener"));
-
-var _debounce = _interopRequireDefault(require("lodash/debounce"));
-
-var _warning = _interopRequireDefault(require("warning"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _reactPopper = require("react-popper");
-
-var _helpers = require("../utils/helpers");
-
-var _RootRef = _interopRequireDefault(require("../internal/RootRef"));
-
-var _Portal = _interopRequireDefault(require("../Portal"));
-
-var _common = _interopRequireDefault(require("../colors/common"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
 /* eslint-disable react/no-multi-comp, no-underscore-dangle */
-var styles = function styles(theme) {
-  return {
-    // Will be gone once we drop React 15.x support.
-    root: {
-      display: 'inline-block',
-      flexDirection: 'inherit' // Makes the wrapper more transparent.
 
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import EventListener from 'react-event-listener';
+import debounce from 'lodash/debounce';
+import warning from 'warning';
+import classNames from 'classnames';
+import { Manager, Popper, Target } from 'react-popper';
+import { capitalize } from '../utils/helpers';
+import RootRef from '../internal/RootRef';
+import Portal from '../Portal';
+import common from '../colors/common';
+import withStyles from '../styles/withStyles';
+
+export const styles = theme => ({
+  // Will be gone once we drop React 15.x support.
+  root: {
+    display: 'inline-block',
+    flexDirection: 'inherit', // Makes the wrapper more transparent.
+  },
+  popper: {
+    zIndex: theme.zIndex.tooltip,
+    pointerEvents: 'none',
+    '&$open': {
+      pointerEvents: 'auto',
     },
-    popper: {
-      zIndex: theme.zIndex.tooltip,
-      pointerEvents: 'none',
-      '&$open': {
-        pointerEvents: 'auto'
-      }
-    },
-    open: {},
-    tooltip: {
-      backgroundColor: theme.palette.grey[700],
-      borderRadius: 2,
-      color: _common.default.white,
-      fontFamily: theme.typography.fontFamily,
-      opacity: 0,
-      transform: 'scale(0)',
+  },
+  open: {},
+  tooltip: {
+    backgroundColor: theme.palette.grey[700],
+    borderRadius: 2,
+    color: common.white,
+    fontFamily: theme.typography.fontFamily,
+    opacity: 0,
+    transform: 'scale(0)',
+    transition: theme.transitions.create(['opacity', 'transform'], {
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeIn,
+    }),
+    minHeight: 0,
+    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`,
+    fontSize: theme.typography.pxToRem(10),
+    lineHeight: `${theme.typography.round(14 / 10)}em`,
+    '&$open': {
+      opacity: 0.9,
+      transform: 'scale(1)',
       transition: theme.transitions.create(['opacity', 'transform'], {
         duration: theme.transitions.duration.shortest,
-        easing: theme.transitions.easing.easeIn
+        easing: theme.transitions.easing.easeOut,
       }),
-      minHeight: 0,
-      padding: "".concat(theme.spacing.unit / 2, "px ").concat(theme.spacing.unit, "px"),
-      fontSize: theme.typography.pxToRem(10),
-      lineHeight: "".concat(theme.typography.round(14 / 10), "em"),
-      '&$open': {
-        opacity: 0.9,
-        transform: 'scale(1)',
-        transition: theme.transitions.create(['opacity', 'transform'], {
-          duration: theme.transitions.duration.shortest,
-          easing: theme.transitions.easing.easeOut
-        })
-      }
     },
-    touch: {
-      padding: "".concat(theme.spacing.unit, "px ").concat(theme.spacing.unit * 2, "px"),
-      fontSize: theme.typography.pxToRem(14),
-      lineHeight: "".concat(theme.typography.round(16 / 14), "em")
+  },
+  touch: {
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+    fontSize: theme.typography.pxToRem(14),
+    lineHeight: `${theme.typography.round(16 / 14)}em`,
+  },
+  tooltipPlacementLeft: {
+    transformOrigin: 'right center',
+    margin: `0 ${theme.spacing.unit * 3}px`,
+    [theme.breakpoints.up('sm')]: {
+      margin: '0 14px',
     },
-    tooltipPlacementLeft: (0, _defineProperty2.default)({
-      transformOrigin: 'right center',
-      margin: "0 ".concat(theme.spacing.unit * 3, "px")
-    }, theme.breakpoints.up('sm'), {
-      margin: '0 14px'
-    }),
-    tooltipPlacementRight: (0, _defineProperty2.default)({
-      transformOrigin: 'left center',
-      margin: "0 ".concat(theme.spacing.unit * 3, "px")
-    }, theme.breakpoints.up('sm'), {
-      margin: '0 14px'
-    }),
-    tooltipPlacementTop: (0, _defineProperty2.default)({
-      transformOrigin: 'center bottom',
-      margin: "".concat(theme.spacing.unit * 3, "px 0")
-    }, theme.breakpoints.up('sm'), {
-      margin: '14px 0'
-    }),
-    tooltipPlacementBottom: (0, _defineProperty2.default)({
-      transformOrigin: 'center top',
-      margin: "".concat(theme.spacing.unit * 3, "px 0")
-    }, theme.breakpoints.up('sm'), {
-      margin: '14px 0'
-    })
-  };
-};
-
-exports.styles = styles;
+  },
+  tooltipPlacementRight: {
+    transformOrigin: 'left center',
+    margin: `0 ${theme.spacing.unit * 3}px`,
+    [theme.breakpoints.up('sm')]: {
+      margin: '0 14px',
+    },
+  },
+  tooltipPlacementTop: {
+    transformOrigin: 'center bottom',
+    margin: `${theme.spacing.unit * 3}px 0`,
+    [theme.breakpoints.up('sm')]: {
+      margin: '14px 0',
+    },
+  },
+  tooltipPlacementBottom: {
+    transformOrigin: 'center top',
+    margin: `${theme.spacing.unit * 3}px 0`,
+    [theme.breakpoints.up('sm')]: {
+      margin: '14px 0',
+    },
+  },
+});
 
 function flipPlacement(placement) {
   switch (placement) {
     case 'bottom-end':
       return 'bottom-start';
-
     case 'bottom-start':
       return 'bottom-end';
-
     case 'top-end':
       return 'top-start';
-
     case 'top-start':
       return 'top-end';
-
     default:
       return placement;
   }
 }
 
-var Tooltip =
-/*#__PURE__*/
-function (_React$Component) {
-  (0, _inherits2.default)(Tooltip, _React$Component);
+class Tooltip extends React.Component {
+  constructor(props, context) {
+    super(props, context);
 
-  function Tooltip(props, context) {
-    var _this;
-
-    (0, _classCallCheck2.default)(this, Tooltip);
-    _this = (0, _possibleConstructorReturn2.default)(this, (Tooltip.__proto__ || (0, _getPrototypeOf.default)(Tooltip)).call(this, props, context));
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {}
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "enterTimer", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "leaveTimer", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "touchTimer", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "closeTimer", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "isControlled", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "popper", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "children", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "ignoreNonTouchEvents", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: false
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleResize", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: (0, _debounce.default)(function () {
-        if (_this.popper) {
-          _this.popper._popper.scheduleUpdate();
-        }
-      }, 166)
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleEnter", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(event) {
-        var _this$props = _this.props,
-            children = _this$props.children,
-            enterDelay = _this$props.enterDelay;
-        var childrenProps = children.props;
-
-        if (event.type === 'focus' && childrenProps.onFocus) {
-          childrenProps.onFocus(event);
-        }
-
-        if (event.type === 'mouseover' && childrenProps.onMouseOver) {
-          childrenProps.onMouseOver(event);
-        }
-
-        if (_this.ignoreNonTouchEvents && event.type !== 'touchstart') {
-          return;
-        }
-
-        clearTimeout(_this.enterTimer);
-        clearTimeout(_this.leaveTimer);
-
-        if (enterDelay) {
-          event.persist();
-          _this.enterTimer = setTimeout(function () {
-            _this.handleOpen(event);
-          }, enterDelay);
-        } else {
-          _this.handleOpen(event);
-        }
-      }
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleOpen", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(event) {
-        if (!_this.isControlled) {
-          _this.setState({
-            open: true
-          });
-        }
-
-        if (_this.props.onOpen) {
-          _this.props.onOpen(event, true);
-        }
-      }
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleLeave", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(event) {
-        var _this$props2 = _this.props,
-            children = _this$props2.children,
-            leaveDelay = _this$props2.leaveDelay;
-        var childrenProps = children.props;
-
-        if (event.type === 'blur' && childrenProps.onBlur) {
-          childrenProps.onBlur(event);
-        }
-
-        if (event.type === 'mouseleave' && childrenProps.onMouseLeave) {
-          childrenProps.onMouseLeave(event);
-        }
-
-        clearTimeout(_this.enterTimer);
-        clearTimeout(_this.leaveTimer);
-
-        if (leaveDelay) {
-          event.persist();
-          _this.leaveTimer = setTimeout(function () {
-            _this.handleClose(event);
-          }, leaveDelay);
-        } else {
-          _this.handleClose(event);
-        }
-      }
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleClose", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(event) {
-        if (!_this.isControlled) {
-          _this.setState({
-            open: false
-          });
-        }
-
-        if (_this.props.onClose) {
-          _this.props.onClose(event, false);
-        }
-
-        clearTimeout(_this.closeTimer);
-        _this.closeTimer = setTimeout(function () {
-          _this.ignoreNonTouchEvents = false;
-        }, _this.props.theme.transitions.duration.shortest);
-      }
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleTouchStart", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(event) {
-        _this.ignoreNonTouchEvents = true;
-        var _this$props3 = _this.props,
-            children = _this$props3.children,
-            enterTouchDelay = _this$props3.enterTouchDelay;
-        var childrenProps = children.props;
-
-        if (childrenProps.onTouchStart) {
-          childrenProps.onTouchStart(event);
-        }
-
-        clearTimeout(_this.leaveTimer);
-        clearTimeout(_this.closeTimer);
-        clearTimeout(_this.touchTimer);
-        event.persist();
-        _this.touchTimer = setTimeout(function () {
-          _this.handleEnter(event);
-        }, enterTouchDelay);
-      }
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleTouchEnd", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(event) {
-        var _this$props4 = _this.props,
-            children = _this$props4.children,
-            leaveTouchDelay = _this$props4.leaveTouchDelay;
-        var childrenProps = children.props;
-
-        if (childrenProps.onTouchEnd) {
-          childrenProps.onTouchEnd(event);
-        }
-
-        clearTimeout(_this.touchTimer);
-        clearTimeout(_this.leaveTimer);
-        event.persist();
-        _this.leaveTimer = setTimeout(function () {
-          _this.handleClose(event);
-        }, leaveTouchDelay);
-      }
-    });
-    _this.isControlled = props.open != null;
-
-    if (!_this.isControlled) {
+    this.isControlled = props.open != null;
+    if (!this.isControlled) {
       // not controlled, use internal state
-      _this.state.open = false;
+      this.state.open = false;
     }
-
-    return _this;
   }
 
-  (0, _createClass2.default)(Tooltip, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(!this.children || !this.children.disabled || !this.children.tagName.toLowerCase() === 'button', ['Material-UI: you are providing a disabled `button` child to the Tooltip component.', 'A disabled element does not fire events.', "Tooltip needs to listen to the child element's events to display the title.", '', 'Place a `div` container on top of the element.'].join('\n')) : void 0;
+  state = {};
+
+  componentDidMount() {
+    warning(
+      !this.children ||
+        !this.children.disabled ||
+        !this.children.tagName.toLowerCase() === 'button',
+      [
+        'Material-UI: you are providing a disabled `button` child to the Tooltip component.',
+        'A disabled element does not fire events.',
+        "Tooltip needs to listen to the child element's events to display the title.",
+        '',
+        'Place a `div` container on top of the element.',
+      ].join('\n'),
+    );
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.enterTimer);
+    clearTimeout(this.leaveTimer);
+    clearTimeout(this.touchTimer);
+    clearTimeout(this.closeTimer);
+    this.handleResize.cancel();
+  }
+
+  enterTimer = null;
+  leaveTimer = null;
+  touchTimer = null;
+  closeTimer = null;
+  isControlled = null;
+  popper = null;
+  children = null;
+  ignoreNonTouchEvents = false;
+
+  handleResize = debounce(() => {
+    if (this.popper) {
+      this.popper._popper.scheduleUpdate();
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      clearTimeout(this.enterTimer);
-      clearTimeout(this.leaveTimer);
-      clearTimeout(this.touchTimer);
-      clearTimeout(this.closeTimer);
-      this.handleResize.cancel();
+  }, 166); // Corresponds to 10 frames at 60 Hz.
+
+  handleEnter = event => {
+    const { children, enterDelay } = this.props;
+    const childrenProps = children.props;
+
+    if (event.type === 'focus' && childrenProps.onFocus) {
+      childrenProps.onFocus(event);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
 
-      var _props = this.props,
-          children = _props.children,
-          classes = _props.classes,
-          className = _props.className,
-          disableFocusListener = _props.disableFocusListener,
-          disableHoverListener = _props.disableHoverListener,
-          disableTouchListener = _props.disableTouchListener,
-          enterDelay = _props.enterDelay,
-          enterTouchDelay = _props.enterTouchDelay,
-          id = _props.id,
-          leaveDelay = _props.leaveDelay,
-          leaveTouchDelay = _props.leaveTouchDelay,
-          onClose = _props.onClose,
-          onOpen = _props.onOpen,
-          openProp = _props.open,
-          placementProp = _props.placement,
-          _props$PopperProps = _props.PopperProps;
-      _props$PopperProps = _props$PopperProps === void 0 ? {} : _props$PopperProps;
-      var PopperClassName = _props$PopperProps.className,
-          PopperProps = (0, _objectWithoutProperties2.default)(_props$PopperProps, ["className"]),
-          theme = _props.theme,
-          title = _props.title,
-          other = (0, _objectWithoutProperties2.default)(_props, ["children", "classes", "className", "disableFocusListener", "disableHoverListener", "disableTouchListener", "enterDelay", "enterTouchDelay", "id", "leaveDelay", "leaveTouchDelay", "onClose", "onOpen", "open", "placement", "PopperProps", "theme", "title"]);
-      var placement = theme.direction === 'rtl' ? flipPlacement(placementProp) : placementProp;
-      var open = this.isControlled ? openProp : this.state.open;
-      var childrenProps = {
-        'aria-describedby': id
-      }; // There is no point at displaying an empty tooltip.
-
-      if (title === '') {
-        open = false;
-      }
-
-      if (!disableTouchListener) {
-        childrenProps.onTouchStart = this.handleTouchStart;
-        childrenProps.onTouchEnd = this.handleTouchEnd;
-      }
-
-      if (!disableHoverListener) {
-        childrenProps.onMouseOver = this.handleEnter;
-        childrenProps.onMouseLeave = this.handleLeave;
-      }
-
-      if (!disableFocusListener) {
-        childrenProps.onFocus = this.handleEnter;
-        childrenProps.onBlur = this.handleLeave;
-      }
-
-      process.env.NODE_ENV !== "production" ? (0, _warning.default)(!children.props.title, ['Material-UI: you have been providing a `title` property to the child of <Tooltip />.', "Remove this title property `".concat(children.props.title, "` or the Tooltip component.")].join('\n')) : void 0;
-      return _react.default.createElement(_reactPopper.Manager, (0, _extends2.default)({
-        tag: _reactDom.default.createPortal ? false : 'div',
-        className: (0, _classnames.default)(classes.root, className)
-      }, other), _react.default.createElement(_reactEventListener.default, {
-        target: "window",
-        onResize: this.handleResize
-      }), _react.default.createElement(_reactPopper.Target, null, function (_ref) {
-        var targetProps = _ref.targetProps;
-        return _react.default.createElement(_RootRef.default, {
-          rootRef: function rootRef(node) {
-            _this2.children = node;
-            targetProps.ref(_this2.children);
-          }
-        }, _react.default.cloneElement(children, childrenProps));
-      }), _react.default.createElement(_Portal.default, null, _react.default.createElement(_reactPopper.Popper, (0, _extends2.default)({
-        placement: placement,
-        eventsEnabled: open,
-        className: (0, _classnames.default)(classes.popper, (0, _defineProperty2.default)({}, classes.open, open), PopperClassName),
-        ref: function ref(node) {
-          _this2.popper = node;
-        }
-      }, PopperProps), function (_ref2) {
-        var popperProps = _ref2.popperProps,
-            restProps = _ref2.restProps;
-        var actualPlacement = (popperProps['data-placement'] || placement).split('-')[0];
-        return _react.default.createElement("div", (0, _extends2.default)({}, popperProps, restProps, {
-          style: (0, _objectSpread2.default)({}, popperProps.style, {
-            top: popperProps.style.top || 0,
-            left: popperProps.style.left || 0
-          }, restProps.style)
-        }), _react.default.createElement("div", {
-          id: id,
-          role: "tooltip",
-          "aria-hidden": !open,
-          className: (0, _classnames.default)(classes.tooltip, (0, _defineProperty2.default)({}, classes.open, open), (0, _defineProperty2.default)({}, classes.touch, _this2.ignoreNonTouchEvents), classes["tooltipPlacement".concat((0, _helpers.capitalize)(actualPlacement))])
-        }, title));
-      })));
+    if (event.type === 'mouseover' && childrenProps.onMouseOver) {
+      childrenProps.onMouseOver(event);
     }
-  }]);
-  return Tooltip;
-}(_react.default.Component);
 
-Tooltip.propTypes = process.env.NODE_ENV !== "production" ? {
+    if (this.ignoreNonTouchEvents && event.type !== 'touchstart') {
+      return;
+    }
+
+    clearTimeout(this.enterTimer);
+    clearTimeout(this.leaveTimer);
+    if (enterDelay) {
+      event.persist();
+      this.enterTimer = setTimeout(() => {
+        this.handleOpen(event);
+      }, enterDelay);
+    } else {
+      this.handleOpen(event);
+    }
+  };
+
+  handleOpen = event => {
+    if (!this.isControlled) {
+      this.setState({ open: true });
+    }
+
+    if (this.props.onOpen) {
+      this.props.onOpen(event, true);
+    }
+  };
+
+  handleLeave = event => {
+    const { children, leaveDelay } = this.props;
+    const childrenProps = children.props;
+
+    if (event.type === 'blur' && childrenProps.onBlur) {
+      childrenProps.onBlur(event);
+    }
+
+    if (event.type === 'mouseleave' && childrenProps.onMouseLeave) {
+      childrenProps.onMouseLeave(event);
+    }
+
+    clearTimeout(this.enterTimer);
+    clearTimeout(this.leaveTimer);
+    if (leaveDelay) {
+      event.persist();
+      this.leaveTimer = setTimeout(() => {
+        this.handleClose(event);
+      }, leaveDelay);
+    } else {
+      this.handleClose(event);
+    }
+  };
+
+  handleClose = event => {
+    if (!this.isControlled) {
+      this.setState({ open: false });
+    }
+
+    if (this.props.onClose) {
+      this.props.onClose(event, false);
+    }
+
+    clearTimeout(this.closeTimer);
+    this.closeTimer = setTimeout(() => {
+      this.ignoreNonTouchEvents = false;
+    }, this.props.theme.transitions.duration.shortest);
+  };
+
+  handleTouchStart = event => {
+    this.ignoreNonTouchEvents = true;
+    const { children, enterTouchDelay } = this.props;
+    const childrenProps = children.props;
+
+    if (childrenProps.onTouchStart) {
+      childrenProps.onTouchStart(event);
+    }
+
+    clearTimeout(this.leaveTimer);
+    clearTimeout(this.closeTimer);
+    clearTimeout(this.touchTimer);
+    event.persist();
+    this.touchTimer = setTimeout(() => {
+      this.handleEnter(event);
+    }, enterTouchDelay);
+  };
+
+  handleTouchEnd = event => {
+    const { children, leaveTouchDelay } = this.props;
+    const childrenProps = children.props;
+
+    if (childrenProps.onTouchEnd) {
+      childrenProps.onTouchEnd(event);
+    }
+
+    clearTimeout(this.touchTimer);
+    clearTimeout(this.leaveTimer);
+    event.persist();
+    this.leaveTimer = setTimeout(() => {
+      this.handleClose(event);
+    }, leaveTouchDelay);
+  };
+
+  render() {
+    const {
+      children,
+      classes,
+      className,
+      disableFocusListener,
+      disableHoverListener,
+      disableTouchListener,
+      enterDelay,
+      enterTouchDelay,
+      id,
+      leaveDelay,
+      leaveTouchDelay,
+      onClose,
+      onOpen,
+      open: openProp,
+      placement: placementProp,
+      PopperProps: { className: PopperClassName, ...PopperProps } = {},
+      theme,
+      title,
+      ...other
+    } = this.props;
+
+    const placement = theme.direction === 'rtl' ? flipPlacement(placementProp) : placementProp;
+    let open = this.isControlled ? openProp : this.state.open;
+    const childrenProps = { 'aria-describedby': id };
+
+    // There is no point at displaying an empty tooltip.
+    if (title === '') {
+      open = false;
+    }
+
+    if (!disableTouchListener) {
+      childrenProps.onTouchStart = this.handleTouchStart;
+      childrenProps.onTouchEnd = this.handleTouchEnd;
+    }
+
+    if (!disableHoverListener) {
+      childrenProps.onMouseOver = this.handleEnter;
+      childrenProps.onMouseLeave = this.handleLeave;
+    }
+
+    if (!disableFocusListener) {
+      childrenProps.onFocus = this.handleEnter;
+      childrenProps.onBlur = this.handleLeave;
+    }
+
+    warning(
+      !children.props.title,
+      [
+        'Material-UI: you have been providing a `title` property to the child of <Tooltip />.',
+        `Remove this title property \`${children.props.title}\` or the Tooltip component.`,
+      ].join('\n'),
+    );
+
+    return (
+      <Manager
+        tag={ReactDOM.createPortal ? false : 'div'}
+        className={classNames(classes.root, className)}
+        {...other}
+      >
+        <EventListener target="window" onResize={this.handleResize} />
+        <Target>
+          {({ targetProps }) => (
+            <RootRef
+              rootRef={node => {
+                this.children = node;
+                targetProps.ref(this.children);
+              }}
+            >
+              {React.cloneElement(children, childrenProps)}
+            </RootRef>
+          )}
+        </Target>
+        <Portal>
+          <Popper
+            placement={placement}
+            eventsEnabled={open}
+            className={classNames(classes.popper, { [classes.open]: open }, PopperClassName)}
+            ref={node => {
+              this.popper = node;
+            }}
+            {...PopperProps}
+          >
+            {({ popperProps, restProps }) => {
+              const actualPlacement = (popperProps['data-placement'] || placement).split('-')[0];
+              return (
+                <div
+                  {...popperProps}
+                  {...restProps}
+                  style={{
+                    ...popperProps.style,
+                    top: popperProps.style.top || 0,
+                    left: popperProps.style.left || 0,
+                    ...restProps.style,
+                  }}
+                >
+                  <div
+                    id={id}
+                    role="tooltip"
+                    aria-hidden={!open}
+                    className={classNames(
+                      classes.tooltip,
+                      { [classes.open]: open },
+                      { [classes.touch]: this.ignoreNonTouchEvents },
+                      classes[`tooltipPlacement${capitalize(actualPlacement)}`],
+                    )}
+                  >
+                    {title}
+                  </div>
+                </div>
+              );
+            }}
+          </Popper>
+        </Portal>
+      </Manager>
+    );
+  }
+}
+
+Tooltip.propTypes = {
   /**
    * Tooltip reference element.
    */
-  children: _propTypes.default.element.isRequired,
-
+  children: PropTypes.element.isRequired,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * Do not respond to focus events.
    */
-  disableFocusListener: _propTypes.default.bool,
-
+  disableFocusListener: PropTypes.bool,
   /**
    * Do not respond to hover events.
    */
-  disableHoverListener: _propTypes.default.bool,
-
+  disableHoverListener: PropTypes.bool,
   /**
    * Do not respond to long press touch events.
    */
-  disableTouchListener: _propTypes.default.bool,
-
+  disableTouchListener: PropTypes.bool,
   /**
    * The number of milliseconds to wait before showing the tooltip.
    * This property won't impact the enter touch delay (`enterTouchDelay`).
    */
-  enterDelay: _propTypes.default.number,
-
+  enterDelay: PropTypes.number,
   /**
    * The number of milliseconds a user must touch the element before showing the tooltip.
    */
-  enterTouchDelay: _propTypes.default.number,
-
+  enterTouchDelay: PropTypes.number,
   /**
    * The relationship between the tooltip and the wrapper component is not clear from the DOM.
    * By providing this property, we can use aria-describedby to solve the accessibility issue.
    */
-  id: _propTypes.default.string,
-
+  id: PropTypes.string,
   /**
    * The number of milliseconds to wait before hiding the tooltip.
    * This property won't impact the leave touch delay (`leaveTouchDelay`).
    */
-  leaveDelay: _propTypes.default.number,
-
+  leaveDelay: PropTypes.number,
   /**
    * The number of milliseconds after the user stops touching an element before hiding the tooltip.
    */
-  leaveTouchDelay: _propTypes.default.number,
-
+  leaveTouchDelay: PropTypes.number,
   /**
    * Callback fired when the tooltip requests to be closed.
    *
    * @param {object} event The event source of the callback
    */
-  onClose: _propTypes.default.func,
-
+  onClose: PropTypes.func,
   /**
    * Callback fired when the tooltip requests to be open.
    *
    * @param {object} event The event source of the callback
    */
-  onOpen: _propTypes.default.func,
-
+  onOpen: PropTypes.func,
   /**
    * If `true`, the tooltip is shown.
    */
-  open: _propTypes.default.bool,
-
+  open: PropTypes.bool,
   /**
    * Tooltip placement
    */
-  placement: _propTypes.default.oneOf(['bottom-end', 'bottom-start', 'bottom', 'left-end', 'left-start', 'left', 'right-end', 'right-start', 'right', 'top-end', 'top-start', 'top']),
-
+  placement: PropTypes.oneOf([
+    'bottom-end',
+    'bottom-start',
+    'bottom',
+    'left-end',
+    'left-start',
+    'left',
+    'right-end',
+    'right-start',
+    'right',
+    'top-end',
+    'top-start',
+    'top',
+  ]),
   /**
    * Properties applied to the `Popper` element.
    */
-  PopperProps: _propTypes.default.object,
-
+  PopperProps: PropTypes.object,
   /**
    * @ignore
    */
-  theme: _propTypes.default.object.isRequired,
-
+  theme: PropTypes.object.isRequired,
   /**
    * Tooltip title. Zero-length titles string are never displayed.
    */
-  title: _propTypes.default.node.isRequired
-} : {};
+  title: PropTypes.node.isRequired,
+};
+
 Tooltip.defaultProps = {
   disableFocusListener: false,
   disableHoverListener: false,
@@ -596,12 +487,7 @@ Tooltip.defaultProps = {
   enterTouchDelay: 1000,
   leaveDelay: 0,
   leaveTouchDelay: 1500,
-  placement: 'bottom'
+  placement: 'bottom',
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiTooltip',
-  withTheme: true
-})(Tooltip);
-
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiTooltip', withTheme: true })(Tooltip);

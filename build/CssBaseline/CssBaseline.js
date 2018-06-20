@@ -1,99 +1,55 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '../styles';
+import exactProp from '../utils/exactProp';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+const styles = theme => ({
+  '@global': {
+    html: {
+      WebkitFontSmoothing: 'antialiased', // Antialiasing.
+      MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+      // Change from `box-sizing: content-box` so that `width`
+      // is not affected by `padding` or `border`.
+      boxSizing: 'border-box',
+    },
+    '*, *::before, *::after': {
+      boxSizing: 'inherit',
+    },
+    body: {
+      margin: 0, // Remove the margin in all browsers.
+      backgroundColor: theme.palette.background.default,
+      '@media print': {
+        // Save printer ink.
+        backgroundColor: theme.palette.common.white,
+      },
+    },
+  },
 });
-exports.default = void 0;
 
-var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _styles = require("../styles");
-
-var _exactProp = _interopRequireDefault(require("../utils/exactProp"));
-
-var styles = function styles(theme) {
-  return {
-    '@global': {
-      html: {
-        WebkitFontSmoothing: 'antialiased',
-        // Antialiasing.
-        MozOsxFontSmoothing: 'grayscale',
-        // Antialiasing.
-        // Change from `box-sizing: content-box` so that `width`
-        // is not affected by `padding` or `border`.
-        boxSizing: 'border-box'
-      },
-      '*, *::before, *::after': {
-        boxSizing: 'inherit'
-      },
-      body: {
-        margin: 0,
-        // Remove the margin in all browsers.
-        backgroundColor: theme.palette.background.default,
-        '@media print': {
-          // Save printer ink.
-          backgroundColor: theme.palette.common.white
-        }
-      }
-    }
-  };
-};
 /**
  * Kickstart an elegant, consistent, and simple baseline to build upon.
  */
-
-
-var CssBaseline =
-/*#__PURE__*/
-function (_React$Component) {
-  (0, _inherits2.default)(CssBaseline, _React$Component);
-
-  function CssBaseline() {
-    (0, _classCallCheck2.default)(this, CssBaseline);
-    return (0, _possibleConstructorReturn2.default)(this, (CssBaseline.__proto__ || (0, _getPrototypeOf.default)(CssBaseline)).apply(this, arguments));
+class CssBaseline extends React.Component {
+  render() {
+    return this.props.children;
   }
+}
 
-  (0, _createClass2.default)(CssBaseline, [{
-    key: "render",
-    value: function render() {
-      return this.props.children;
-    }
-  }]);
-  return CssBaseline;
-}(_react.default.Component);
-
-CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? {
+CssBaseline.propTypes = {
   /**
    * You can only provide a single element with react@15, a node with react@16.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * @ignore
    */
-  classes: _propTypes.default.object.isRequired
-} : {};
-CssBaseline.propTypes = process.env.NODE_ENV !== "production" ? (0, _exactProp.default)(CssBaseline.propTypes, 'CssBaseline') : {};
-CssBaseline.defaultProps = {
-  children: null
+  classes: PropTypes.object.isRequired,
 };
 
-var _default = (0, _styles.withStyles)(styles, {
-  name: 'MuiCssBaseline'
-})(CssBaseline);
+CssBaseline.propTypes = exactProp(CssBaseline.propTypes, 'CssBaseline');
 
-exports.default = _default;
+CssBaseline.defaultProps = {
+  children: null,
+};
+
+export default withStyles(styles, { name: 'MuiCssBaseline' })(CssBaseline);

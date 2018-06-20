@@ -1,80 +1,57 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+export const styles = theme => ({
+  root: {
+    ...theme.mixins.toolbar,
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  gutters: theme.mixins.gutters(),
 });
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = function styles(theme) {
-  return {
-    root: (0, _objectSpread2.default)({}, theme.mixins.toolbar, {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center'
-    }),
-    gutters: theme.mixins.gutters()
-  };
-};
-
-exports.styles = styles;
 
 function Toolbar(props) {
-  var children = props.children,
-      classes = props.classes,
-      classNameProp = props.className,
-      disableGutters = props.disableGutters,
-      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "disableGutters"]);
-  var className = (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.gutters, !disableGutters), classNameProp);
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: className
-  }, other), children);
+  const { children, classes, className: classNameProp, disableGutters, ...other } = props;
+
+  const className = classNames(
+    classes.root,
+    {
+      [classes.gutters]: !disableGutters,
+    },
+    classNameProp,
+  );
+
+  return (
+    <div className={className} {...other}>
+      {children}
+    </div>
+  );
 }
 
-Toolbar.propTypes = process.env.NODE_ENV !== "production" ? {
+Toolbar.propTypes = {
   /**
    * Toolbar children, usually a mixture of `IconButton`, `Button` and `Typography`.
    */
-  children: _propTypes.default.node,
-
+  children: PropTypes.node,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * If `true`, disables gutter padding.
    */
-  disableGutters: _propTypes.default.bool
-} : {};
-Toolbar.defaultProps = {
-  disableGutters: false
+  disableGutters: PropTypes.bool,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiToolbar'
-})(Toolbar);
+Toolbar.defaultProps = {
+  disableGutters: false,
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiToolbar' })(Toolbar);

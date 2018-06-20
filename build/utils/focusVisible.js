@@ -1,35 +1,29 @@
-"use strict";
+// @flow weak
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+import keycode from 'keycode';
+import warning from 'warning';
+import contains from 'dom-helpers/query/contains';
+import ownerDocument from 'dom-helpers/ownerDocument';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.detectFocusVisible = detectFocusVisible;
-exports.listenForFocusKeys = listenForFocusKeys;
-
-var _keycode = _interopRequireDefault(require("keycode"));
-
-var _warning = _interopRequireDefault(require("warning"));
-
-var _contains = _interopRequireDefault(require("dom-helpers/query/contains"));
-
-var _ownerDocument = _interopRequireDefault(require("dom-helpers/ownerDocument"));
-
-//  weak
-var internal = {
+const internal = {
   focusKeyPressed: false,
-  keyUpEventTimeout: -1
+  keyUpEventTimeout: -1,
 };
 
-function detectFocusVisible(instance, element, callback) {
-  var attempt = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-  process.env.NODE_ENV !== "production" ? (0, _warning.default)(instance.focusVisibleCheckTime, 'Material-UI: missing instance.focusVisibleCheckTime') : void 0;
-  process.env.NODE_ENV !== "production" ? (0, _warning.default)(instance.focusVisibleMaxCheckTimes, 'Material-UI: missing instance.focusVisibleMaxCheckTimes') : void 0;
-  instance.focusVisibleTimeout = setTimeout(function () {
-    var doc = (0, _ownerDocument.default)(element);
+export function detectFocusVisible(instance, element, callback, attempt = 1) {
+  warning(instance.focusVisibleCheckTime, 'Material-UI: missing instance.focusVisibleCheckTime');
+  warning(
+    instance.focusVisibleMaxCheckTimes,
+    'Material-UI: missing instance.focusVisibleMaxCheckTimes',
+  );
 
-    if (internal.focusKeyPressed && (doc.activeElement === element || (0, _contains.default)(element, doc.activeElement))) {
+  instance.focusVisibleTimeout = setTimeout(() => {
+    const doc = ownerDocument(element);
+
+    if (
+      internal.focusKeyPressed &&
+      (doc.activeElement === element || contains(element, doc.activeElement))
+    ) {
       callback();
     } else if (attempt < instance.focusVisibleMaxCheckTimes) {
       detectFocusVisible(instance, element, callback, attempt + 1);
@@ -37,24 +31,25 @@ function detectFocusVisible(instance, element, callback) {
   }, instance.focusVisibleCheckTime);
 }
 
-var FOCUS_KEYS = ['tab', 'enter', 'space', 'esc', 'up', 'down', 'left', 'right'];
+const FOCUS_KEYS = ['tab', 'enter', 'space', 'esc', 'up', 'down', 'left', 'right'];
 
 function isFocusKey(event) {
-  return FOCUS_KEYS.indexOf((0, _keycode.default)(event)) !== -1;
+  return FOCUS_KEYS.indexOf(keycode(event)) !== -1;
 }
 
-var handleKeyUpEvent = function handleKeyUpEvent(event) {
+const handleKeyUpEvent = event => {
   if (isFocusKey(event)) {
-    internal.focusKeyPressed = true; // Let's consider that the user is using a keyboard during a window frame of 1s.
+    internal.focusKeyPressed = true;
 
+    // Let's consider that the user is using a keyboard during a window frame of 1s.
     clearTimeout(internal.keyUpEventTimeout);
-    internal.keyUpEventTimeout = setTimeout(function () {
+    internal.keyUpEventTimeout = setTimeout(() => {
       internal.focusKeyPressed = false;
     }, 1e3);
   }
 };
 
-function listenForFocusKeys(win) {
+export function listenForFocusKeys(win) {
   // The event listener will only be added once per window.
   // Duplicate event listeners will be ignored by addEventListener.
   // Also, this logic is client side only, we don't need a teardown.

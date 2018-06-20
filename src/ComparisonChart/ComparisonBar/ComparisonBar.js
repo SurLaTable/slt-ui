@@ -23,6 +23,8 @@ class ComparisonBar extends React.Component {
       .fill()
       .map((ignore, index) => (props.selection && props.selection[index]) || index);
 
+    // If the selection is not an object, it is just an index and we
+    // return an empty 'add' box.
     return typeof selection[0] === 'object' ? (
       <Paper
         ref={ComparisonBarContainer => (this.ComparisonBarContainer = ComparisonBarContainer)}
@@ -38,7 +40,7 @@ class ComparisonBar extends React.Component {
       >
         <BottomNavigation showLabels style={{ backgroundColor: '#E4E4E4', marginTop: '10px' }}>
           <ComparisonTable type="cutlery" />
-
+          Selectionfoo:{selection}
           {selection &&
             selection.map((product, index) => {
               // Since the product data contains multiple skus,

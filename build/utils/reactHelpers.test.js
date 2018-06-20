@@ -1,54 +1,41 @@
-"use strict";
+import React from 'react';
+import { assert } from 'chai';
+import { isMuiComponent, isMuiElement } from './reactHelpers';
+import { Input, ListItemAvatar, ListItemSecondaryAction, SvgIcon } from '../';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _chai = require("chai");
-
-var _reactHelpers = require("./reactHelpers");
-
-var _ = require("../");
-
-var _ref = _react.default.createElement("div", null);
-
-describe('utils/reactHelpers.js', function () {
-  describe('isMuiElement', function () {
-    it('should match static muiName property', function () {
-      var Component = function Component() {
-        return null;
-      };
-
+describe('utils/reactHelpers.js', () => {
+  describe('isMuiElement', () => {
+    it('should match static muiName property', () => {
+      const Component = () => null;
       Component.muiName = 'Component';
 
-      _chai.assert.strictEqual((0, _reactHelpers.isMuiElement)(_react.default.createElement(Component, null), ['Component']), true);
-
-      _chai.assert.strictEqual((0, _reactHelpers.isMuiElement)(_ref, ['Input']), false);
-
-      _chai.assert.strictEqual((0, _reactHelpers.isMuiElement)(null, ['SvgIcon']), false);
-
-      _chai.assert.strictEqual((0, _reactHelpers.isMuiElement)('TextNode', ['SvgIcon']), false);
+      assert.strictEqual(isMuiElement(<Component />, ['Component']), true);
+      assert.strictEqual(isMuiElement(<div />, ['Input']), false);
+      assert.strictEqual(isMuiElement(null, ['SvgIcon']), false);
+      assert.strictEqual(isMuiElement('TextNode', ['SvgIcon']), false);
     });
-    it('should be truthy for matching components', function () {
-      [[_.Input, 'Input'], [_.ListItemAvatar, 'ListItemAvatar'], [_.ListItemSecondaryAction, 'ListItemSecondaryAction'], [_.SvgIcon, 'SvgIcon']].forEach(function (_ref2) {
-        var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-            Component = _ref3[0],
-            muiName = _ref3[1];
 
-        _chai.assert.strictEqual((0, _reactHelpers.isMuiElement)(_react.default.createElement(Component, null), [muiName]), true);
+    it('should be truthy for matching components', () => {
+      [
+        [Input, 'Input'],
+        [ListItemAvatar, 'ListItemAvatar'],
+        [ListItemSecondaryAction, 'ListItemSecondaryAction'],
+        [SvgIcon, 'SvgIcon'],
+      ].forEach(([Component, muiName]) => {
+        assert.strictEqual(isMuiElement(<Component />, [muiName]), true);
       });
     });
   });
-  describe('isMuiComponent', function () {
-    it('should match static muiName property', function () {
-      [[_.Input, 'Input'], [_.ListItemAvatar, 'ListItemAvatar'], [_.ListItemSecondaryAction, 'ListItemSecondaryAction'], [_.SvgIcon, 'SvgIcon']].forEach(function (_ref4) {
-        var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
-            Component = _ref5[0],
-            muiName = _ref5[1];
 
-        _chai.assert.strictEqual((0, _reactHelpers.isMuiComponent)(Component, [muiName]), true);
+  describe('isMuiComponent', () => {
+    it('should match static muiName property', () => {
+      [
+        [Input, 'Input'],
+        [ListItemAvatar, 'ListItemAvatar'],
+        [ListItemSecondaryAction, 'ListItemSecondaryAction'],
+        [SvgIcon, 'SvgIcon'],
+      ].forEach(([Component, muiName]) => {
+        assert.strictEqual(isMuiComponent(Component, [muiName]), true);
       });
     });
   });

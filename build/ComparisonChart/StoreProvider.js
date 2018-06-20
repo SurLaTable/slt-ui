@@ -1,29 +1,19 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactRedux = require("react-redux");
-
-var _redux = require("redux");
-
-var _sltReducers = _interopRequireDefault(require("./reducers/sltReducers"));
-
+import React from 'react';
 // import { render } from 'react-dom';
-var sltStore = (0, _redux.createStore)(_sltReducers.default, // Enable DevTools, switch to localStorage on Prod:
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-var StoreProvider = function StoreProvider(props) {
-  return _react.default.createElement(_reactRedux.Provider, {
-    store: sltStore
-  }, _react.default.createElement(_react.default.Fragment, null, props.children));
-};
+import sltReducers from './reducers/sltReducers';
 
-var _default = StoreProvider;
-exports.default = _default;
+const sltStore = createStore(
+  sltReducers,
+  // Enable DevTools, switch to localStorage on Prod:
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+
+const StoreProvider = props => (
+  <Provider store={sltStore}>
+    <React.Fragment>{props.children}</React.Fragment>
+  </Provider>
+);
+export default StoreProvider;

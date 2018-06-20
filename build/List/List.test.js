@@ -1,105 +1,79 @@
-"use strict";
+// @flow
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+import React from 'react';
+import { assert } from 'chai';
+import { createShallow, getClasses } from '../test-utils';
+import ListSubheader from './ListSubheader';
+import List from './List';
 
-var _react = _interopRequireDefault(require("react"));
+describe('<List />', () => {
+  let shallow;
+  let classes;
 
-var _chai = require("chai");
+  before(() => {
+    shallow = createShallow({ dive: true });
+    classes = getClasses(<List />);
+  });
 
-var _testUtils = require("../test-utils");
+  it('should render a div', () => {
+    const wrapper = shallow(<List component="div" />);
+    assert.strictEqual(wrapper.name(), 'div');
+  });
 
-var _ListSubheader = _interopRequireDefault(require("./ListSubheader"));
+  it('should render a ul', () => {
+    const wrapper = shallow(<List />);
+    assert.strictEqual(wrapper.name(), 'ul');
+  });
 
-var _List = _interopRequireDefault(require("./List"));
+  it('should render with the user, root and padding classes', () => {
+    const wrapper = shallow(<List className="woofList" />);
+    assert.strictEqual(wrapper.hasClass('woofList'), true);
+    assert.strictEqual(wrapper.hasClass(classes.root), true);
+    assert.strictEqual(wrapper.hasClass(classes.padding), true, 'should have the padding class');
+  });
 
-var _ref = _react.default.createElement(_List.default, null);
+  it('should disable the padding', () => {
+    const wrapper = shallow(<List disablePadding />);
+    assert.strictEqual(wrapper.hasClass(classes.root), true);
+    assert.strictEqual(
+      wrapper.hasClass(classes.padding),
+      false,
+      'should not have the padding class',
+    );
+  });
 
-var _ref2 = _react.default.createElement(_List.default, {
-  component: "div"
-});
-
-var _ref3 = _react.default.createElement(_List.default, null);
-
-var _ref4 = _react.default.createElement(_List.default, {
-  className: "woofList"
-});
-
-var _ref5 = _react.default.createElement(_List.default, {
-  disablePadding: true
-});
-
-var _ref6 = _react.default.createElement(_List.default, {
-  subheader: _react.default.createElement(_ListSubheader.default, null, "Title")
-});
-
-var _ref7 = _react.default.createElement(_List.default, {
-  subheader: _react.default.createElement(_ListSubheader.default, null, "Title")
-});
-
-var _ref8 = _react.default.createElement(_List.default, null);
-
-var _ref9 = _react.default.createElement(_List.default, {
-  dense: true
-});
-
-describe('<List />', function () {
-  var shallow;
-  var classes;
-  before(function () {
-    shallow = (0, _testUtils.createShallow)({
-      dive: true
+  describe('prop: subheader', () => {
+    it('should render with subheader class', () => {
+      const wrapper = shallow(<List subheader={<ListSubheader>Title</ListSubheader>} />);
+      assert.strictEqual(wrapper.hasClass(classes.root), true);
+      assert.strictEqual(
+        wrapper.hasClass(classes.subheader),
+        true,
+        'should have the subheader class',
+      );
     });
-    classes = (0, _testUtils.getClasses)(_ref);
-  });
-  it('should render a div', function () {
-    var wrapper = shallow(_ref2);
 
-    _chai.assert.strictEqual(wrapper.name(), 'div');
-  });
-  it('should render a ul', function () {
-    var wrapper = shallow(_ref3);
-
-    _chai.assert.strictEqual(wrapper.name(), 'ul');
-  });
-  it('should render with the user, root and padding classes', function () {
-    var wrapper = shallow(_ref4);
-
-    _chai.assert.strictEqual(wrapper.hasClass('woofList'), true);
-
-    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
-
-    _chai.assert.strictEqual(wrapper.hasClass(classes.padding), true, 'should have the padding class');
-  });
-  it('should disable the padding', function () {
-    var wrapper = shallow(_ref5);
-
-    _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
-
-    _chai.assert.strictEqual(wrapper.hasClass(classes.padding), false, 'should not have the padding class');
-  });
-  describe('prop: subheader', function () {
-    it('should render with subheader class', function () {
-      var wrapper = shallow(_ref6);
-
-      _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
-
-      _chai.assert.strictEqual(wrapper.hasClass(classes.subheader), true, 'should have the subheader class');
-    });
-    it('should render ListSubheader', function () {
-      var wrapper = shallow(_ref7);
-
-      _chai.assert.strictEqual(wrapper.find(_ListSubheader.default).length, 1, 'should render ListSubheader');
+    it('should render ListSubheader', () => {
+      const wrapper = shallow(<List subheader={<ListSubheader>Title</ListSubheader>} />);
+      assert.strictEqual(wrapper.find(ListSubheader).length, 1, 'should render ListSubheader');
     });
   });
-  describe('context: dense', function () {
-    it('should forward the context', function () {
-      var wrapper1 = shallow(_ref8);
 
-      _chai.assert.strictEqual(wrapper1.instance().getChildContext().dense, false, 'dense should be false by default');
+  describe('context: dense', () => {
+    it('should forward the context', () => {
+      const wrapper1 = shallow(<List />);
+      assert.strictEqual(
+        wrapper1.instance().getChildContext().dense,
+        false,
+        'dense should be false by default',
+      );
 
-      var wrapper2 = shallow(_ref9);
-
-      _chai.assert.strictEqual(wrapper2.instance().getChildContext().dense, true, 'dense should be true when set');
+      const wrapper2 = shallow(<List dense />);
+      assert.strictEqual(
+        wrapper2.instance().getChildContext().dense,
+        true,
+        'dense should be true when set',
+      );
     });
   });
 });

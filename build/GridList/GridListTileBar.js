@@ -1,155 +1,144 @@
-"use strict";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+export const styles = theme => ({
+  root: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: 48,
+    background: 'rgba(0, 0, 0, 0.4)',
+    display: 'flex',
+    alignItems: 'center',
+    fontFamily: theme.typography.fontFamily,
+  },
+  titlePositionBottom: {
+    bottom: 0,
+  },
+  titlePositionTop: {
+    top: 0,
+  },
+  rootSubtitle: {
+    height: 68,
+  },
+  titleWrap: {
+    flexGrow: 1,
+    marginLeft: theme.mixins.gutters().paddingLeft,
+    marginRight: theme.mixins.gutters().paddingRight,
+    color: theme.palette.common.white,
+    overflow: 'hidden',
+  },
+  titleWrapActionPosLeft: {
+    marginLeft: 0,
+  },
+  titleWrapActionPosRight: {
+    marginRight: 0,
+  },
+  title: {
+    fontSize: theme.typography.pxToRem(16),
+    lineHeight: '24px',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+  },
+  subtitle: {
+    fontSize: theme.typography.pxToRem(12),
+    lineHeight: 1,
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+  },
+  actionIcon: {},
+  actionIconActionPosLeft: {
+    order: -1,
+  },
 });
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      height: 48,
-      background: 'rgba(0, 0, 0, 0.4)',
-      display: 'flex',
-      alignItems: 'center',
-      fontFamily: theme.typography.fontFamily
-    },
-    titlePositionBottom: {
-      bottom: 0
-    },
-    titlePositionTop: {
-      top: 0
-    },
-    rootSubtitle: {
-      height: 68
-    },
-    titleWrap: {
-      flexGrow: 1,
-      marginLeft: theme.mixins.gutters().paddingLeft,
-      marginRight: theme.mixins.gutters().paddingRight,
-      color: theme.palette.common.white,
-      overflow: 'hidden'
-    },
-    titleWrapActionPosLeft: {
-      marginLeft: 0
-    },
-    titleWrapActionPosRight: {
-      marginRight: 0
-    },
-    title: {
-      fontSize: theme.typography.pxToRem(16),
-      lineHeight: '24px',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap'
-    },
-    subtitle: {
-      fontSize: theme.typography.pxToRem(12),
-      lineHeight: 1,
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap'
-    },
-    actionIcon: {},
-    actionIconActionPosLeft: {
-      order: -1
-    }
-  };
-};
-
-exports.styles = styles;
 
 function GridListTileBar(props) {
-  var _classNames, _classNames2;
+  const {
+    actionIcon,
+    actionPosition,
+    classes,
+    className: classNameProp,
+    subtitle,
+    title,
+    titlePosition,
+    ...other
+  } = props;
 
-  var actionIcon = props.actionIcon,
-      actionPosition = props.actionPosition,
-      classes = props.classes,
-      classNameProp = props.className,
-      subtitle = props.subtitle,
-      title = props.title,
-      titlePosition = props.titlePosition,
-      other = (0, _objectWithoutProperties2.default)(props, ["actionIcon", "actionPosition", "classes", "className", "subtitle", "title", "titlePosition"]);
-  var actionPos = actionIcon && actionPosition;
-  var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.titlePositionBottom, titlePosition === 'bottom'), (0, _defineProperty2.default)(_classNames, classes.titlePositionTop, titlePosition === 'top'), (0, _defineProperty2.default)(_classNames, classes.rootSubtitle, subtitle), _classNames), classNameProp); // Remove the margin between the title / subtitle wrapper, and the Action Icon
+  const actionPos = actionIcon && actionPosition;
+  const className = classNames(
+    classes.root,
+    {
+      [classes.titlePositionBottom]: titlePosition === 'bottom',
+      [classes.titlePositionTop]: titlePosition === 'top',
+      [classes.rootSubtitle]: subtitle,
+    },
+    classNameProp,
+  );
 
-  var titleWrapClassName = (0, _classnames.default)(classes.titleWrap, (_classNames2 = {}, (0, _defineProperty2.default)(_classNames2, classes.titleWrapActionPosLeft, actionPos === 'left'), (0, _defineProperty2.default)(_classNames2, classes.titleWrapActionPosRight, actionPos === 'right'), _classNames2));
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: className
-  }, other), _react.default.createElement("div", {
-    className: titleWrapClassName
-  }, _react.default.createElement("div", {
-    className: classes.title
-  }, title), subtitle ? _react.default.createElement("div", {
-    className: classes.subtitle
-  }, subtitle) : null), actionIcon ? _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.actionIcon, (0, _defineProperty2.default)({}, classes.actionIconActionPosLeft, actionPos === 'left'))
-  }, actionIcon) : null);
+  // Remove the margin between the title / subtitle wrapper, and the Action Icon
+  const titleWrapClassName = classNames(classes.titleWrap, {
+    [classes.titleWrapActionPosLeft]: actionPos === 'left',
+    [classes.titleWrapActionPosRight]: actionPos === 'right',
+  });
+
+  return (
+    <div className={className} {...other}>
+      <div className={titleWrapClassName}>
+        <div className={classes.title}>{title}</div>
+        {subtitle ? <div className={classes.subtitle}>{subtitle}</div> : null}
+      </div>
+      {actionIcon ? (
+        <div
+          className={classNames(classes.actionIcon, {
+            [classes.actionIconActionPosLeft]: actionPos === 'left',
+          })}
+        >
+          {actionIcon}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
-GridListTileBar.propTypes = process.env.NODE_ENV !== "production" ? {
+GridListTileBar.propTypes = {
   /**
    * An IconButton element to be used as secondary action target
    * (primary action target is the tile itself).
    */
-  actionIcon: _propTypes.default.node,
-
+  actionIcon: PropTypes.node,
   /**
    * Position of secondary action IconButton.
    */
-  actionPosition: _propTypes.default.oneOf(['left', 'right']),
-
+  actionPosition: PropTypes.oneOf(['left', 'right']),
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * String or element serving as subtitle (support text).
    */
-  subtitle: _propTypes.default.node,
-
+  subtitle: PropTypes.node,
   /**
    * Title to be displayed on tile.
    */
-  title: _propTypes.default.node,
-
+  title: PropTypes.node,
   /**
    * Position of the title bar.
    */
-  titlePosition: _propTypes.default.oneOf(['top', 'bottom'])
-} : {};
-GridListTileBar.defaultProps = {
-  actionPosition: 'right',
-  titlePosition: 'bottom'
+  titlePosition: PropTypes.oneOf(['top', 'bottom']),
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiGridListTileBar'
-})(GridListTileBar);
+GridListTileBar.defaultProps = {
+  actionPosition: 'right',
+  titlePosition: 'bottom',
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiGridListTileBar' })(GridListTileBar);

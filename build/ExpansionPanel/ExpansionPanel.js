@@ -1,60 +1,30 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
-var _getPrototypeOf = _interopRequireDefault(require("@babel/runtime/core-js/object/get-prototype-of"));
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _Collapse = _interopRequireDefault(require("../transitions/Collapse"));
-
-var _Paper = _interopRequireDefault(require("../Paper"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _reactHelpers = require("../utils/reactHelpers");
-
 // @inheritedComponent Paper
-// Workaround https://github.com/jsdom/jsdom/issues/2026
-var edgeFix = typeof window !== 'undefined' && /jsdom/.test(window.navigator.userAgent) ? {} : {
-  // Fix a rendering issue on Edge
-  '@supports (-ms-ime-align: auto)': {
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0
-  }
-};
 
-var styles = function styles(theme) {
-  var transition = {
-    duration: theme.transitions.duration.shortest
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Collapse from '../transitions/Collapse';
+import Paper from '../Paper';
+import withStyles from '../styles/withStyles';
+import { isMuiElement } from '../utils/reactHelpers';
+
+// Workaround https://github.com/jsdom/jsdom/issues/2026
+const edgeFix =
+  typeof window !== 'undefined' && /jsdom/.test(window.navigator.userAgent)
+    ? {}
+    : {
+        // Fix a rendering issue on Edge
+        '@supports (-ms-ime-align: auto)': {
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        },
+      };
+
+export const styles = theme => {
+  const transition = {
+    duration: theme.transitions.duration.shortest,
   };
+
   return {
     root: {
       position: 'relative',
@@ -68,200 +38,172 @@ var styles = function styles(theme) {
         content: '""',
         opacity: 1,
         backgroundColor: theme.palette.divider,
-        transition: theme.transitions.create(['opacity', 'background-color'], transition)
+        transition: theme.transitions.create(['opacity', 'background-color'], transition),
       },
       '&:first-child': {
         borderTopLeftRadius: 2,
         borderTopRightRadius: 2,
         '&:before': {
-          display: 'none'
-        }
-      },
-      '&:last-child': (0, _objectSpread2.default)({
-        borderBottomLeftRadius: 2,
-        borderBottomRightRadius: 2
-      }, edgeFix),
-      '&$expanded + &': {
-        '&:before': {
-          display: 'none'
-        }
-      }
-    },
-    expanded: {
-      margin: "".concat(theme.spacing.unit * 2, "px 0"),
-      '&:first-child': {
-        marginTop: 0
+          display: 'none',
+        },
       },
       '&:last-child': {
-        marginBottom: 0
+        borderBottomLeftRadius: 2,
+        borderBottomRightRadius: 2,
+        ...edgeFix,
+      },
+      '&$expanded + &': {
+        '&:before': {
+          display: 'none',
+        },
+      },
+    },
+    expanded: {
+      margin: `${theme.spacing.unit * 2}px 0`,
+      '&:first-child': {
+        marginTop: 0,
+      },
+      '&:last-child': {
+        marginBottom: 0,
       },
       '&:before': {
-        opacity: 0
-      }
+        opacity: 0,
+      },
     },
     disabled: {
-      backgroundColor: theme.palette.action.disabledBackground
-    }
+      backgroundColor: theme.palette.action.disabledBackground,
+    },
   };
 };
 
-exports.styles = styles;
+class ExpansionPanel extends React.Component {
+  constructor(props, context) {
+    super(props, context);
 
-var ExpansionPanel =
-/*#__PURE__*/
-function (_React$Component) {
-  (0, _inherits2.default)(ExpansionPanel, _React$Component);
-
-  function ExpansionPanel(props, context) {
-    var _this;
-
-    (0, _classCallCheck2.default)(this, ExpansionPanel);
-    _this = (0, _possibleConstructorReturn2.default)(this, (ExpansionPanel.__proto__ || (0, _getPrototypeOf.default)(ExpansionPanel)).call(this, props, context));
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {}
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "isControlled", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: null
-    });
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "handleChange", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(event) {
-        var expanded = _this.isControlled ? _this.props.expanded : _this.state.expanded;
-
-        if (!_this.isControlled) {
-          _this.setState({
-            expanded: !expanded
-          });
-        }
-
-        if (_this.props.onChange) {
-          _this.props.onChange(event, !expanded);
-        }
-      }
-    });
-    _this.isControlled = props.expanded != null;
-
-    if (!_this.isControlled) {
+    this.isControlled = props.expanded != null;
+    if (!this.isControlled) {
       // not controlled, use internal state
-      _this.state.expanded = props.defaultExpanded !== undefined ? props.defaultExpanded : false;
+      this.state.expanded = props.defaultExpanded !== undefined ? props.defaultExpanded : false;
     }
-
-    return _this;
   }
 
-  (0, _createClass2.default)(ExpansionPanel, [{
-    key: "render",
-    value: function render() {
-      var _classNames,
-          _this2 = this;
+  state = {};
 
-      var _props = this.props,
-          childrenProp = _props.children,
-          classes = _props.classes,
-          classNameProp = _props.className,
-          CollapsePropsProp = _props.CollapseProps,
-          defaultExpanded = _props.defaultExpanded,
-          disabled = _props.disabled,
-          expandedProp = _props.expanded,
-          onChange = _props.onChange,
-          other = (0, _objectWithoutProperties2.default)(_props, ["children", "classes", "className", "CollapseProps", "defaultExpanded", "disabled", "expanded", "onChange"]);
-      var expanded = this.isControlled ? expandedProp : this.state.expanded;
-      var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.expanded, expanded), (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), _classNames), classNameProp);
-      var summary = null;
+  isControlled = null;
 
-      var children = _react.default.Children.map(childrenProp, function (child) {
-        if (!_react.default.isValidElement(child)) {
-          return null;
-        }
+  handleChange = event => {
+    const expanded = this.isControlled ? this.props.expanded : this.state.expanded;
 
-        if ((0, _reactHelpers.isMuiElement)(child, ['ExpansionPanelSummary'])) {
-          summary = _react.default.cloneElement(child, {
-            disabled: disabled,
-            expanded: expanded,
-            onChange: _this2.handleChange
-          });
-          return null;
-        }
-
-        return child;
-      });
-
-      var CollapseProps = !expanded ? {
-        'aria-hidden': 'true'
-      } : null;
-      return _react.default.createElement(_Paper.default, (0, _extends2.default)({
-        className: className,
-        elevation: 1,
-        square: true
-      }, other), summary, _react.default.createElement(_Collapse.default, (0, _extends2.default)({
-        "in": expanded,
-        timeout: "auto"
-      }, CollapseProps, CollapsePropsProp), children));
+    if (!this.isControlled) {
+      this.setState({ expanded: !expanded });
     }
-  }]);
-  return ExpansionPanel;
-}(_react.default.Component);
 
-ExpansionPanel.propTypes = process.env.NODE_ENV !== "production" ? {
+    if (this.props.onChange) {
+      this.props.onChange(event, !expanded);
+    }
+  };
+
+  render() {
+    const {
+      children: childrenProp,
+      classes,
+      className: classNameProp,
+      CollapseProps: CollapsePropsProp,
+      defaultExpanded,
+      disabled,
+      expanded: expandedProp,
+      onChange,
+      ...other
+    } = this.props;
+    const expanded = this.isControlled ? expandedProp : this.state.expanded;
+
+    const className = classNames(
+      classes.root,
+      {
+        [classes.expanded]: expanded,
+        [classes.disabled]: disabled,
+      },
+      classNameProp,
+    );
+
+    let summary = null;
+
+    const children = React.Children.map(childrenProp, child => {
+      if (!React.isValidElement(child)) {
+        return null;
+      }
+
+      if (isMuiElement(child, ['ExpansionPanelSummary'])) {
+        summary = React.cloneElement(child, {
+          disabled,
+          expanded,
+          onChange: this.handleChange,
+        });
+        return null;
+      }
+
+      return child;
+    });
+
+    const CollapseProps = !expanded
+      ? {
+          'aria-hidden': 'true',
+        }
+      : null;
+
+    return (
+      <Paper className={className} elevation={1} square {...other}>
+        {summary}
+        <Collapse in={expanded} timeout="auto" {...CollapseProps} {...CollapsePropsProp}>
+          {children}
+        </Collapse>
+      </Paper>
+    );
+  }
+}
+
+ExpansionPanel.propTypes = {
   /**
    * The content of the expansion panel.
    */
-  children: _propTypes.default.node.isRequired,
-
+  children: PropTypes.node.isRequired,
   /**
    * Useful to extend the style applied to components.
    */
-  classes: _propTypes.default.object.isRequired,
-
+  classes: PropTypes.object.isRequired,
   /**
    * @ignore
    */
-  className: _propTypes.default.string,
-
+  className: PropTypes.string,
   /**
    * Properties applied to the `Collapse` element.
    */
-  CollapseProps: _propTypes.default.object,
-
+  CollapseProps: PropTypes.object,
   /**
    * If `true`, expands the panel by default.
    */
-  defaultExpanded: _propTypes.default.bool,
-
+  defaultExpanded: PropTypes.bool,
   /**
    * If `true`, the panel will be displayed in a disabled state.
    */
-  disabled: _propTypes.default.bool,
-
+  disabled: PropTypes.bool,
   /**
    * If `true`, expands the panel, otherwise collapse it.
    * Setting this prop enables control over the panel.
    */
-  expanded: _propTypes.default.bool,
-
+  expanded: PropTypes.bool,
   /**
    * Callback fired when the expand/collapse state is changed.
    *
    * @param {object} event The event source of the callback
    * @param {boolean} expanded The `expanded` state of the panel
    */
-  onChange: _propTypes.default.func
-} : {};
-ExpansionPanel.defaultProps = {
-  defaultExpanded: false,
-  disabled: false
+  onChange: PropTypes.func,
 };
 
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiExpansionPanel'
-})(ExpansionPanel);
+ExpansionPanel.defaultProps = {
+  defaultExpanded: false,
+  disabled: false,
+};
 
-exports.default = _default;
+export default withStyles(styles, { name: 'MuiExpansionPanel' })(ExpansionPanel);

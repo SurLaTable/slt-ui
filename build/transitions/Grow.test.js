@@ -1,177 +1,169 @@
-"use strict";
+// @flow
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+import React from 'react';
+import { assert } from 'chai';
+import { spy, useFakeTimers } from 'sinon';
+import { createShallow } from '../test-utils';
+import Grow from './Grow';
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _chai = require("chai");
-
-var _sinon = require("sinon");
-
-var _testUtils = require("../test-utils");
-
-var _Grow = _interopRequireDefault(require("./Grow"));
-
-var _ref = _react.default.createElement("div", null);
-
-describe('<Grow />', function () {
-  var shallow;
-  var props = {
+describe('<Grow />', () => {
+  let shallow;
+  const props = {
     in: true,
-    children: _ref
+    children: <div />,
   };
-  before(function () {
-    shallow = (0, _testUtils.createShallow)({
-      dive: true
-    });
-  });
-  it('should render a Transition', function () {
-    var wrapper = shallow(_react.default.createElement(_Grow.default, props));
 
-    _chai.assert.strictEqual(wrapper.name(), 'Transition');
+  before(() => {
+    shallow = createShallow({ dive: true });
   });
-  describe('event callbacks', function () {
-    it('should fire event callbacks', function () {
-      var events = ['onEnter', 'onEntering', 'onEntered', 'onExit', 'onExiting', 'onExited'];
-      var handlers = events.reduce(function (result, n) {
-        result[n] = (0, _sinon.spy)();
+
+  it('should render a Transition', () => {
+    const wrapper = shallow(<Grow {...props} />);
+    assert.strictEqual(wrapper.name(), 'Transition');
+  });
+
+  describe('event callbacks', () => {
+    it('should fire event callbacks', () => {
+      const events = ['onEnter', 'onEntering', 'onEntered', 'onExit', 'onExiting', 'onExited'];
+
+      const handlers = events.reduce((result, n) => {
+        result[n] = spy();
         return result;
       }, {});
-      var wrapper = shallow(_react.default.createElement(_Grow.default, (0, _extends2.default)({}, props, handlers)));
-      events.forEach(function (n) {
-        var event = n.charAt(2).toLowerCase() + n.slice(3);
-        wrapper.simulate(event, {
-          style: {}
-        });
 
-        _chai.assert.strictEqual(handlers[n].callCount, 1, "should have called the ".concat(n, " handler"));
+      const wrapper = shallow(<Grow {...props} {...handlers} />);
 
-        _chai.assert.strictEqual(handlers[n].args[0].length, 1, 'should forward the element');
+      events.forEach(n => {
+        const event = n.charAt(2).toLowerCase() + n.slice(3);
+        wrapper.simulate(event, { style: {} });
+        assert.strictEqual(handlers[n].callCount, 1, `should have called the ${n} handler`);
+        assert.strictEqual(handlers[n].args[0].length, 1, 'should forward the element');
       });
     });
   });
-  describe('prop: timeout', function () {
-    var wrapper;
-    var instance;
-    var element;
-    var enterDuration = 556;
-    var leaveDuration = 446;
-    beforeEach(function () {
-      wrapper = shallow(_react.default.createElement(_Grow.default, (0, _extends2.default)({}, props, {
-        timeout: {
-          enter: enterDuration,
-          exit: leaveDuration
-        }
-      })));
+
+  describe('prop: timeout', () => {
+    let wrapper;
+    let instance;
+    let element;
+    const enterDuration = 556;
+    const leaveDuration = 446;
+
+    beforeEach(() => {
+      wrapper = shallow(
+        <Grow
+          {...props}
+          timeout={{
+            enter: enterDuration,
+            exit: leaveDuration,
+          }}
+        />,
+      );
       instance = wrapper.instance();
-      element = {
-        getBoundingClientRect: function getBoundingClientRect() {
-          return {};
-        },
-        style: {}
-      };
+      element = { getBoundingClientRect: () => ({}), style: {} };
     });
-    it('should create proper easeOut animation onEnter', function () {
+
+    it('should create proper easeOut animation onEnter', () => {
       instance.handleEnter(element);
-
-      _chai.assert.match(element.style.transition, new RegExp("".concat(enterDuration, "ms")));
+      assert.match(element.style.transition, new RegExp(`${enterDuration}ms`));
     });
-    it('should create proper sharp animation onExit', function () {
-      instance.handleExit(element);
 
-      _chai.assert.match(element.style.transition, new RegExp("".concat(leaveDuration, "ms")));
+    it('should create proper sharp animation onExit', () => {
+      instance.handleExit(element);
+      assert.match(element.style.transition, new RegExp(`${leaveDuration}ms`));
     });
   });
-  describe('transition lifecycle', function () {
-    var element = {
+
+  describe('transition lifecycle', () => {
+    const element = {
       style: {
         top: 'auto',
         left: 'auto',
         opacity: 1,
         transform: undefined,
         transformOrigin: undefined,
-        transition: undefined
-      }
+        transition: undefined,
+      },
     };
-    describe('handleEnter()', function () {
-      var wrapper;
-      before(function () {
-        wrapper = shallow(_react.default.createElement(_Grow.default, props));
+
+    describe('handleEnter()', () => {
+      let wrapper;
+
+      before(() => {
+        wrapper = shallow(<Grow {...props} />);
         wrapper.instance().handleEnter(element);
       });
-      it('should set the inline styles for the entering phase', function () {
-        _chai.assert.strictEqual(element.style.transition, 'opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,' + 'transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms');
+
+      it('should set the inline styles for the entering phase', () => {
+        assert.strictEqual(
+          element.style.transition,
+          'opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,' +
+            'transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+        );
       });
     });
-    describe('handleExit()', function () {
-      var wrapper;
-      before(function () {
-        wrapper = shallow(_react.default.createElement(_Grow.default, props));
+
+    describe('handleExit()', () => {
+      let wrapper;
+
+      before(() => {
+        wrapper = shallow(<Grow {...props} />);
         wrapper.instance().handleExit(element);
       });
-      it('should set the inline styles for the exit phase', function () {
-        _chai.assert.strictEqual(element.style.opacity, '0', 'should be transparent');
 
-        _chai.assert.strictEqual(element.style.transform, 'scale(0.75, 0.5625)', 'should have the exit scale');
+      it('should set the inline styles for the exit phase', () => {
+        assert.strictEqual(element.style.opacity, '0', 'should be transparent');
+        assert.strictEqual(
+          element.style.transform,
+          'scale(0.75, 0.5625)',
+          'should have the exit scale',
+        );
       });
     });
   });
-  describe('addEndListener()', function () {
-    var instance;
-    var clock;
-    before(function () {
-      clock = (0, _sinon.useFakeTimers)();
+
+  describe('addEndListener()', () => {
+    let instance;
+    let clock;
+
+    before(() => {
+      clock = useFakeTimers();
     });
-    after(function () {
+
+    after(() => {
       clock.restore();
     });
-    it('should return autoTransitionDuration when timeout is auto', function () {
-      var wrapper = shallow(_react.default.createElement(_Grow.default, (0, _extends2.default)({}, props, {
-        timeout: "auto"
-      })));
 
-      _chai.assert.strictEqual(wrapper.props().timeout, null);
-
+    it('should return autoTransitionDuration when timeout is auto', () => {
+      const wrapper = shallow(<Grow {...props} timeout="auto" />);
+      assert.strictEqual(wrapper.props().timeout, null);
       instance = wrapper.instance();
-      var next = (0, _sinon.spy)();
-      var autoTransitionDuration = 10;
+      const next = spy();
+
+      const autoTransitionDuration = 10;
       instance.autoTransitionDuration = autoTransitionDuration;
       instance.addEndListener(null, next);
-
-      _chai.assert.strictEqual(next.callCount, 0);
-
+      assert.strictEqual(next.callCount, 0);
       clock.tick(autoTransitionDuration);
-
-      _chai.assert.strictEqual(next.callCount, 1);
+      assert.strictEqual(next.callCount, 1);
 
       instance.autoTransitionDuration = undefined;
       instance.addEndListener(null, next);
-
-      _chai.assert.strictEqual(next.callCount, 1);
-
+      assert.strictEqual(next.callCount, 1);
       clock.tick(0);
-
-      _chai.assert.strictEqual(next.callCount, 2);
+      assert.strictEqual(next.callCount, 2);
     });
-    it('should return props.timeout when timeout is number', function () {
-      var timeout = 10;
-      var wrapper = shallow(_react.default.createElement(_Grow.default, (0, _extends2.default)({}, props, {
-        timeout: timeout
-      })));
 
-      _chai.assert.strictEqual(wrapper.props().timeout, timeout);
-
+    it('should return props.timeout when timeout is number', () => {
+      const timeout = 10;
+      const wrapper = shallow(<Grow {...props} timeout={timeout} />);
+      assert.strictEqual(wrapper.props().timeout, timeout);
       instance = wrapper.instance();
-      var next = (0, _sinon.spy)();
+      const next = spy();
       instance.addEndListener(null, next);
-
-      _chai.assert.strictEqual(next.callCount, 0);
-
+      assert.strictEqual(next.callCount, 0);
       clock.tick(timeout);
-
-      _chai.assert.strictEqual(next.callCount, 0);
+      assert.strictEqual(next.callCount, 0);
     });
   });
 });

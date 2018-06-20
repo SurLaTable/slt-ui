@@ -1,47 +1,43 @@
-"use strict";
+// @flow
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+import { assert } from 'chai';
+import exactProp, { specialProperty } from './exactProp';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+describe('exactProp()', () => {
+  const componentNameInError = 'componentNameInError';
+  let exactPropTypes;
 
-var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-
-var _chai = require("chai");
-
-var _exactProp = _interopRequireWildcard(require("./exactProp"));
-
-describe('exactProp()', function () {
-  var componentNameInError = 'componentNameInError';
-  var exactPropTypes;
-  before(function () {
-    exactPropTypes = (0, _exactProp.default)({
-      bar: {}
-    }, componentNameInError);
+  before(() => {
+    exactPropTypes = exactProp(
+      {
+        bar: {},
+      },
+      componentNameInError,
+    );
   });
-  it('should have the right shape', function () {
-    _chai.assert.strictEqual((0, _typeof2.default)(_exactProp.default), 'function', 'should be a function');
 
-    _chai.assert.strictEqual((0, _typeof2.default)(exactPropTypes), 'object', 'should be a function');
+  it('should have the right shape', () => {
+    assert.strictEqual(typeof exactProp, 'function', 'should be a function');
+    assert.strictEqual(typeof exactPropTypes, 'object', 'should be a function');
   });
-  describe('exactPropTypes', function () {
-    var props;
-    it('should return null for supported properties', function () {
+
+  describe('exactPropTypes', () => {
+    let props;
+
+    it('should return null for supported properties', () => {
       props = {
-        bar: false
+        bar: false,
       };
-
-      var result = exactPropTypes[_exactProp.specialProperty](props);
-
-      _chai.assert.strictEqual(result, null);
+      const result = exactPropTypes[specialProperty](props);
+      assert.strictEqual(result, null);
     });
-    it('should return an error for unknown properties', function () {
+
+    it('should return an error for unknown properties', () => {
       props = {
-        foo: true
+        foo: true,
       };
-
-      var result = exactPropTypes[_exactProp.specialProperty](props);
-
-      _chai.assert.match(result.message, /componentNameInError: unknown props found: foo/);
+      const result = exactPropTypes[specialProperty](props);
+      assert.match(result.message, /componentNameInError: unknown props found: foo/);
     });
   });
 });

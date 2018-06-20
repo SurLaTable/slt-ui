@@ -1,89 +1,64 @@
-"use strict";
+import React from 'react';
+import { assert } from 'chai';
+import KeyboardArrowLeft from '../internal/svg-icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '../internal/svg-icons/KeyboardArrowRight';
+import { createShallow, createMount, getClasses } from '../test-utils';
+import TabScrollButton from './TabScrollButton';
+import ButtonBase from '../ButtonBase';
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _chai = require("chai");
-
-var _KeyboardArrowLeft = _interopRequireDefault(require("../internal/svg-icons/KeyboardArrowLeft"));
-
-var _KeyboardArrowRight = _interopRequireDefault(require("../internal/svg-icons/KeyboardArrowRight"));
-
-var _testUtils = require("../test-utils");
-
-var _TabScrollButton = _interopRequireDefault(require("./TabScrollButton"));
-
-var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
-
-describe('<TabScrollButton />', function () {
-  var props = {
-    direction: 'left'
+describe('<TabScrollButton />', () => {
+  const props = {
+    direction: 'left',
   };
-  var shallow;
-  var mount;
-  var classes;
-  before(function () {
-    shallow = (0, _testUtils.createShallow)({
-      dive: true
-    });
-    classes = (0, _testUtils.getClasses)(_react.default.createElement(_TabScrollButton.default, props));
-    mount = (0, _testUtils.createMount)();
+  let shallow;
+  let mount;
+  let classes;
+
+  before(() => {
+    shallow = createShallow({ dive: true });
+    classes = getClasses(<TabScrollButton {...props} />);
+    mount = createMount();
   });
-  after(function () {
+
+  after(() => {
     mount.cleanUp();
   });
-  describe('prop: visible', function () {
-    it('should render as a button with the root class', function () {
-      var wrapper = shallow(_react.default.createElement(_TabScrollButton.default, (0, _extends2.default)({}, props, {
-        visible: true
-      })));
 
-      _chai.assert.strictEqual(wrapper.is(_ButtonBase.default), true, 'should be a button');
+  describe('prop: visible', () => {
+    it('should render as a button with the root class', () => {
+      const wrapper = shallow(<TabScrollButton {...props} visible />);
 
-      _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
+      assert.strictEqual(wrapper.is(ButtonBase), true, 'should be a button');
+      assert.strictEqual(wrapper.hasClass(classes.root), true);
     });
   });
-  describe('prop: !visible', function () {
-    it('should render as a div with root class', function () {
-      var wrapper = shallow(_react.default.createElement(_TabScrollButton.default, (0, _extends2.default)({}, props, {
-        visible: false
-      })));
 
-      _chai.assert.strictEqual(wrapper.name(), 'div');
+  describe('prop: !visible', () => {
+    it('should render as a div with root class', () => {
+      const wrapper = shallow(<TabScrollButton {...props} visible={false} />);
 
-      _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
+      assert.strictEqual(wrapper.name(), 'div');
+      assert.strictEqual(wrapper.hasClass(classes.root), true);
     });
   });
-  describe('prop: className', function () {
-    it('should render with the user and root classes', function () {
-      var wrapper = shallow(_react.default.createElement(_TabScrollButton.default, (0, _extends2.default)({}, props, {
-        className: "woofTabScrollButton"
-      })));
 
-      _chai.assert.strictEqual(wrapper.hasClass(classes.root), true);
-
-      _chai.assert.strictEqual(wrapper.hasClass('woofTabScrollButton'), true);
+  describe('prop: className', () => {
+    it('should render with the user and root classes', () => {
+      const wrapper = shallow(<TabScrollButton {...props} className="woofTabScrollButton" />);
+      assert.strictEqual(wrapper.hasClass(classes.root), true);
+      assert.strictEqual(wrapper.hasClass('woofTabScrollButton'), true);
     });
   });
-  describe('prop: direction', function () {
-    it('should render with the left icon', function () {
-      var wrapper = mount(_react.default.createElement(_TabScrollButton.default, (0, _extends2.default)({}, props, {
-        direction: "left",
-        visible: true
-      })));
 
-      _chai.assert.strictEqual(wrapper.find(_KeyboardArrowLeft.default).length, 1, 'should be the left icon');
+  describe('prop: direction', () => {
+    it('should render with the left icon', () => {
+      const wrapper = mount(<TabScrollButton {...props} direction="left" visible />);
+      assert.strictEqual(wrapper.find(KeyboardArrowLeft).length, 1, 'should be the left icon');
     });
-    it('should render with the right icon', function () {
-      var wrapper = mount(_react.default.createElement(_TabScrollButton.default, (0, _extends2.default)({}, props, {
-        direction: "right",
-        visible: true
-      })));
 
-      _chai.assert.strictEqual(wrapper.find(_KeyboardArrowRight.default).length, 1, 'should be the right icon');
+    it('should render with the right icon', () => {
+      const wrapper = mount(<TabScrollButton {...props} direction="right" visible />);
+      assert.strictEqual(wrapper.find(KeyboardArrowRight).length, 1, 'should be the right icon');
     });
   });
 });
