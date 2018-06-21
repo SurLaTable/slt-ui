@@ -1,2 +1,2 @@
 // Test
-export { default } from '../AppBar';
+export { AppBar as default } from '@material-ui/core';
