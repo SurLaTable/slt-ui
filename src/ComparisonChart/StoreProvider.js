@@ -5,6 +5,8 @@ import { createStore } from 'redux';
 
 import sltReducers from './reducers/sltReducers';
 
+let window = global ? global : window;
+
 const sltStore = createStore(
   sltReducers,
   // Enable DevTools, switch to localStorage on Prod:

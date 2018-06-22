@@ -4,7 +4,7 @@
   "description": "Sur La Table UI Library",
   "main": "./index.js",
   "scripts": {
-    "build": "gulp"
+    "build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js"
   },
   "repository": {
     "type": "git",
@@ -61,6 +61,7 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.51",
+    "@babel/node": "^7.0.0-beta.51",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.51",
     "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.51",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
@@ -100,6 +101,7 @@
     "lazypipe": "^1.0.1",
     "mocha": "^5.0.4",
     "prettier": "^1.13.4",
+    "rimraf": "^2.6.2",
     "value-loader": "^0.1.4",
     "vinyl-named": "^1.1.0",
     "webpack": "^4.12.0",
