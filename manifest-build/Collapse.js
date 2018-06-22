@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["Collapse"],{"./manifest/temp/material/Collapse.js":function(e,l,o){"use strict";l.__esModule=!0;var s=function(e){return e&&e.__esModule?e:{default:e}}(o("./node_modules/@material-ui/core/Collapse/index.js"));l.Collapse=s.default}}]);

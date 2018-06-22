@@ -2,3 +2,5 @@ node_modules
 yarn*
 package-lock.json
 build/
+manifest-build/
+manifest/temp/
