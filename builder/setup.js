@@ -28,9 +28,10 @@ export function remove(filename) {
   });
 }
 
-export function clean() {
-  return remove(path.resolve('./build/'))
-  .then(remove(path.resolve('./manifest/temp/')));
+export async function clean() {
+  await remove(path.resolve('./build/'));
+  await remove(path.resolve('./manifest/temp/'));
+  await remove(path.resolve('./manifest-build'));
 }
 export function done() {
   if (process.env.NODE_ENV == 'development') {

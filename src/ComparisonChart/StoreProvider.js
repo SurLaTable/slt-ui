@@ -1,17 +1,9 @@
 import React from 'react';
 // import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import configureStore from './store/configureStore.js';
 
-import sltReducers from './reducers/sltReducers';
-
-let window = global ? global : window;
-
-const sltStore = createStore(
-  sltReducers,
-  // Enable DevTools, switch to localStorage on Prod:
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+let sltStore = configureStore();
 
 const StoreProvider = props => (
   <Provider store={sltStore}>

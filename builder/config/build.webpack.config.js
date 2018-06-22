@@ -1,20 +1,23 @@
 import webpack from 'webpack';
 import path from 'path';
 import babelConfig from './babel.config.js';
+
 console.log(process.env.NODE_ENV);
 export default {
   mode: process.env.NODE_ENV,
+  stats: 'verbose',
+  devtool: false,
   optimization: {
     minimize: process.env.NODE_ENV === 'production',
-    namedChunks:true,
+    namedChunks: true,
+    namedModules: true,
     splitChunks: {
-      chunks: 'async',
-      name:'common'
+      
     }
   },
   resolve: {
-    alias:{
-      '@matierl-ui/core' : '@material-ui/core/index.es.js'
+    alias: {
+      '@matierl-ui/core': '@material-ui/core/index.es.js'
     }
   },
   resolveLoader: {
@@ -31,7 +34,6 @@ export default {
     'redux': 'Redux'
   },
   output: {
-    path: path.resolve('./build/'),
     filename: "[name].min.js",
     chunkFilename: "[name].js",
     jsonpFunction: "webpackJsonp",
@@ -53,11 +55,13 @@ export default {
           loader: "babel-loader",
           options: babelConfig
         },
-        //exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules)/
       }
     ]
   },
   plugins: [
-
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+    })
   ]
 };

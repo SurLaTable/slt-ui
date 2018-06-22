@@ -1,20 +1,28 @@
 import path from "path";
 import webpack from "webpack";
-
-import { componentPaths as paths } from "./config/paths.config";
+import {info} from './modules/print.js';
 import config from './config/build.webpack.config.js';
 
-async function buildComponents() {
+export async function buildComponents() {
+	info("BUILD COMPONENTS STARTED");
 	var finalConfig = {
 		...config,
 		entry: {
-	    'index': './src/index.js',
-			'manifest': './manifest/index.js'
-	  }
+	    'index': './src/index.js'
+	  },
+		output:{
+			...config.output,
+			path:path.resolve('./build')
+		}
 	}
 
 	return new Promise((resolve,reject)=>{
 		webpack(finalConfig,(err,stats)=>{
+			console.log(stats.toString({
+        // Shows colors in the console
+        colors: true
+      }));
+			info("BUILD COMPONENTS ENDED");
 			if(err || stats.hasErrors()){
 				reject(err);
 			}else{
@@ -26,5 +34,3 @@ async function buildComponents() {
 
 buildComponents.displayName = "components";
 buildComponents.description = "components";
-
-export default buildComponents;

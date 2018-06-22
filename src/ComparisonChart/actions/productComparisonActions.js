@@ -1,21 +1,36 @@
-const actionRemoveAll = () => ({
+
+export const actionRemoveAll = () => ({
   type: 'REMOVE_ALL',
 });
 
-const actionRemoveProduct = productId => ({
+export const actionRemoveProduct = productId => ({
   type: 'REMOVE_PRODUCT',
   productId: productId,
 });
 
-const actionToggleProductSelection = (productId, checked) => ({
+
+
+export const actionSetProducts = selection => ({
+  type: 'SET_PRODUCTS',
+  selection: selection,
+});
+
+const productDataSuccess = (data)=>({
+  type:'PRODUCT_DATA_SUCCESS',
+  data: data
+});
+
+const toggleSuccess = (productId, checked) => ({
   type: 'TOGGLE_PRODUCT',
   checked: checked,
   productId: productId,
 });
 
-const actionSetProducts = selection => ({
-  type: 'SET_PRODUCTS',
-  selection: selection,
-});
-
-export { actionRemoveAll, actionRemoveProduct, actionToggleProductSelection, actionSetProducts };
+export function actionToggleProductSelection(productId, checked){
+  return (dispatch)=>{
+    import('../data.js' /*webpackChunkName: 'productData'*/).then((data)=>{
+      productDataSuccess(data);
+      toggleSuccess(productId,checked);
+    });
+  };
+}

@@ -1,11 +1,13 @@
-import {done,clean} from './setup.js';
 import 'colors';
+import {done,clean} from './setup.js';
 import {error} from './modules/print';
-import components from "./components.js";
-import generateAsync from "./async.js";
+import {buildComponents} from "./components.js";
+import {generateAsync, buildManifest} from "./async.js";
 
 clean().then(()=>{
-  return Promise.all([generateAsync(),components()]).then(done);
+  return Promise.all([generateAsync().then(buildManifest),buildComponents()]).then(done);
 }).catch((err)=>{
-  error(err);
+  if(err){
+    error(err.stack);
+  }
 });
