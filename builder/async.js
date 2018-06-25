@@ -45,6 +45,10 @@ function generateSLTUIAsync(promises) {
       let code = `
         import {asyncComponent} from 'react-async-component';
         export * from './async-material-wrapper.js';
+
+        if(process.env.NODE_ENV === 'development'){
+          console.warn('Using development version of slt-ui');
+        }
       `;
       for (let i = 0; i < files.length; i++) {
         let file = files[i];
