@@ -1,6 +1,6 @@
 node_modules
 yarn*
 package-lock.json
-build/
-manifest-build/
+build/async
+build/sync
 manifest/temp/

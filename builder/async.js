@@ -4,12 +4,10 @@ import mkdirp from 'mkdirp';
 import glob from 'glob';
 import webpack from "webpack";
 import {data, info, error} from './modules/print';
-import config from './config/build.webpack.config.js';
+import webpackConfig from './config/build.webpack.config.js';
 
 import * as sltUI from '../src/index.js';
 import * as material from '@material-ui/core';
-
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 function write(filePath, code) {
   mkdirp.sync(path.dirname(filePath));
@@ -51,7 +49,7 @@ function generateSLTUIAsync(promises) {
       for (let i = 0; i < files.length; i++) {
         let file = files[i];
         let folderName = path.posix.basename(path.posix.dirname(file));
-        info("MADE IT", file);
+        info(file);
         var module = require(file);
 
         for (let component in module) {
@@ -66,14 +64,14 @@ function generateSLTUIAsync(promises) {
           data('ASYNC SLT-UI:', file, " - ", component);
           code += `
             export const ${component} = asyncComponent({
-              resolve: ()=>import('./temp/slt/${component}.js' /*webpackChunkName: '${component}'*/)
+              resolve: ()=>import('./slt/${component}.js' /*webpackChunkName: '${component}'*/)
             });
           `;
 
-          promises.push(write(path.resolve(`manifest/temp/slt/${component}.js`), `
+          promises.push(write(path.resolve(`./builder/temp/slt/${component}.js`), `
             export ${exportName} from '${
               path.posix.relative(
-                './manifest/temp/slt/',
+                './builder/temp/slt/',
                 path.posix.resolve(file)
               )
             }';
@@ -82,7 +80,7 @@ function generateSLTUIAsync(promises) {
       }
 
       // save source to async-wrapper.js in Manifest
-      promises.push(write(path.resolve('manifest/async-wrapper.js'), code));
+      promises.push(write(path.resolve('./builder/temp/async-wrapper.js'), code));
       resolve();
 
     });
@@ -90,36 +88,56 @@ function generateSLTUIAsync(promises) {
 }
 
 function generateMaterialAsync(promises) {
+
   return new Promise((resolve, reject) => {
-    let code = `
-      import {asyncComponent} from 'react-async-component';
-    `;
-    for (let component in material) {
-      //generate source code that wraps each component in asyncComponent
-      if (/^[A-Z]/.test(component) === false || hasModule(`@material-ui/core/${component}`) === false) {
-        continue;
+    glob('../node_modules/\\@material-ui/core/[A-Z]*/index.js', {
+      cwd: __dirname
+    }, async function(err, files) {
+      if (err) {
+        error(err);
+        reject(err);
       }
-      data('ASYNC MATERIAL:', `@material-ui/core/${component}`);
-      code += `
-        export const ${component} = asyncComponent({
-          resolve: ()=>import('./temp/material/${component}.js' /*webpackChunkName: '${component}'*/)
-        });
+
+      let code = `
+        import {asyncComponent} from 'react-async-component';
       `;
+      for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+        let folderName = path.posix.basename(path.posix.dirname(file));
+        info(file);
+        var module = require(file);
 
-      promises.push(write(path.resolve(`manifest/temp/material/${component}.js`), `
-        export ${component} from '${
-          path.posix.relative(
-            './manifest/temp/material/',
-            `./node_modules/@material-ui/core/${component}`
-          )
-        }';
-      `));
-    }
+        for (let component in module) {
+          if(module.hasOwnProperty(component) === false || component == "__esModule"){
+            continue;
+          }
+          let exportName = `{${component} as default}`;
+          if (component == 'default') {
+            component = folderName;
+            exportName = `{default}`;
+          }
+          data('ASYNC MATERIAL:', file, " - ", component);
+          code += `
+            export const ${component} = asyncComponent({
+              resolve: ()=>import('./material/${component}.js' /*webpackChunkName: '${component}'*/)
+            });
+          `;
 
-    // save source to async-wrapper.js in Manifest
-    promises.push(write(path.resolve('manifest/async-material-wrapper.js'), code));
+          promises.push(write(path.resolve(`./builder/temp/material/${component}.js`), `
+            export ${exportName} from '${
+              path.posix.relative(
+                './builder/temp/material/',
+                path.posix.resolve(file)
+              )
+            }';
+          `));
+        }
+      }
 
-    resolve();
+      promises.push(write(path.resolve('./builder/temp/async-material-wrapper.js'), code));
+      resolve();
+
+    });
   });
 }
 
@@ -129,8 +147,6 @@ export async function generateAsync() {
   await generateMaterialAsync(promises);
   await generateSLTUIAsync(promises);
 
-
-
   await Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';
@@ -138,27 +154,20 @@ generateAsync.description = 'wrap material and slt-ui components in asyncCompone
 
 export async function buildManifest() {
   info("BUILD MANIFEST STARTED");
-  var finalConfig = {
-    ...config,
+  var finalConfig = webpackConfig('Async',{
     entry: {
       'index': './manifest/index.js'
     },
     output: {
-      ...config.output,
-      path: path.resolve('./manifest-build')
+      path: path.resolve('./build/async')
     },
     resolve:{
-      ...config.resolve,
       alias:{
-        ...config.resolve.alias,
-        "@material-ui/core":path.resolve("./manifest/async-material-wrapper.js")
+        "@material-ui/core":path.resolve("./builder/temp/async-material-wrapper.js"),
+        "@sur-la-table/slt-ui":path.resolve('./builder/temp/async-wrapper.js')
       }
-    },
-    plugins:[
-      ...config.plugins,
-      new BundleAnalyzerPlugin()
-    ]
-  }
+    }
+  });
 
   return new Promise((resolve, reject) => {
     webpack(finalConfig, (err, stats) => {

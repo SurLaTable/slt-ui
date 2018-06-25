@@ -30,13 +30,13 @@ export function remove(filename) {
 
 export async function clean() {
   await remove(path.resolve('./build/'));
-  await remove(path.resolve('./manifest/temp/'));
-  await remove(path.resolve('./manifest-build'));
+  await remove(path.resolve('./builder/temp/'));
 }
-export function done() {
+export async function done() {
   if (process.env.NODE_ENV == 'development') {
     warn("DEVELOPMENT BUILD FINISHED");
   } else {
     info("PRODUCTION BUILD FINISHED");
+    await remove(path.resolve('./builder/temp/'));
   }
 }

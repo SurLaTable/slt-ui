@@ -9,7 +9,7 @@ import PubSub from "./pubsub";
 
 import { asyncComponent } from "react-async-component";
 //NOTE: This is a webpack specific loader, used to generate the async wrapper
-import * as sltUi from "./async-wrapper.js";
+import * as sltUi from "@sur-la-table/slt-ui";
 
 // Turn all attributes into props for an element:
 function getProps(ele) {

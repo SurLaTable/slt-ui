@@ -1,7 +1,17 @@
 import "colors";
 
+export function date(){
+  let d = new Date();
+  return `[${d.toDateString().split(' ').join('')}]`
+}
 export function time(){
-  return `[${new Date().toLocaleTimeString()}]`;
+  let d = new Date();
+  return `[${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}:${d.getMilliseconds()}]`;
+}
+
+export function dateTime(){
+  let d = new Date();
+  return `[${d.toDateString().split(' ').join('-')}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}]`
 }
 
 export function info(...args){

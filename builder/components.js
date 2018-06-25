@@ -1,20 +1,18 @@
 import path from "path";
 import webpack from "webpack";
 import {info} from './modules/print.js';
-import config from './config/build.webpack.config.js';
+import webpackConfig from './config/build.webpack.config.js';
 
 export async function buildComponents() {
 	info("BUILD COMPONENTS STARTED");
-	var finalConfig = {
-		...config,
+	var finalConfig = webpackConfig('Sync',{
 		entry: {
 	    'index': './src/index.js'
 	  },
 		output:{
-			...config.output,
-			path:path.resolve('./build')
+			path:path.resolve('./build/sync')
 		}
-	}
+	});
 
 	return new Promise((resolve,reject)=>{
 		webpack(finalConfig,(err,stats)=>{
