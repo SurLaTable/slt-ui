@@ -6,3 +6,6 @@
 ```
 yarn build --dev
 ```
+
+
+|Open bundle report after build|`yarn build --report`|

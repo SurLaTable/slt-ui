@@ -76,7 +76,7 @@ export default (name,config)=>{
     plugins:[
       new BundleAnalyzerPlugin({
         analyzerMode:"static",
-        openAnalyzer:process.env.NODE_ENV === 'development',
+        openAnalyzer:args.report,
         reportFilename:path.resolve(`./reports/${title(name)}${title(process.env.NODE_ENV)}Report${dateTime()}.html`)
       })
     ]

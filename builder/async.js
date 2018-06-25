@@ -159,7 +159,8 @@ export async function buildManifest() {
       'index': './manifest/index.js'
     },
     output: {
-      path: path.resolve('./build/async')
+      path: path.resolve('./build/async'),
+      publicPath:"/scripts/manifest/"
     },
     resolve:{
       alias:{
