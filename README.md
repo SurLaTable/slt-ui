@@ -2,10 +2,15 @@
 
 ![Travis build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)
 
-**To run development builds**
+**To run builds**
 ```
-yarn build --dev
+yarn build
 ```
+**Additional Flags**
+
+|Description|Flag|
+|----|----|
+| Development build|`--dev`|
+| Open bundle report after build|`--report`|
 
 
-|Open bundle report after build|`yarn build --report`|
