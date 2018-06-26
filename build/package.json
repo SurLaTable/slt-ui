@@ -1,8 +1,11 @@
 {
   "name": "@sur-la-table/slt-ui",
-  "version": "0.0.31-.beta",
+  "version": "2018.6.1-beta.2",
   "description": "Sur La Table UI Library",
   "main": "./sync/index.min.js",
+  "scripts":{
+    
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:SurLaTable/slt-ui.git"
