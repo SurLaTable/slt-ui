@@ -5,7 +5,7 @@
   "main": "./index.js",
   "scripts": {
     "build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
-    "server": "babel-node --config-file ./builder/config/babel.config.js ./sandbox/serve.config.js"
+    "sandbox": "babel-node --config-file ./builder/config/babel.config.js ./sandbox/serve.config.js"
   },
   "repository": {
     "type": "git",
