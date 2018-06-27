@@ -23,11 +23,11 @@ export default(name, config) => {
       namedModules: true,
       splitChunks: {}
     },
-    resolve: {
+    /*resolve: {
       alias: {
         '@matierl-ui/core': '@material-ui/core/index.es.js'
       }
-    },
+    },*/
     resolveLoader: {
       alias: {
         //needed to support requirejs module
@@ -50,14 +50,6 @@ export default(name, config) => {
     module: {
       rules: [
         {
-          test: /\.html$/,
-          use: {
-            loader: "html-loader",
-            options: {
-              removeComments: false
-            }
-          }
-        }, {
           test: /(\.js|\.jsx)$/,
           use: {
             loader: "babel-loader",
@@ -78,6 +70,6 @@ export default(name, config) => {
       reportFilename: path.resolve(`./reports/${title(name)}${title(process.env.NODE_ENV)}Report${dateTime()}.html`)
     }));
   }
-  
+
   return finalConfig;
 }

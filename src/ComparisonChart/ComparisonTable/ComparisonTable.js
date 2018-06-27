@@ -71,15 +71,15 @@ class ComparisonTable extends React.Component {
   constructor() {
     super();
     if (
-      window &&
-      window.history &&
-      window.history.state &&
-      window.history.state.type === 'OPEN_COMPARISON_TABLE'
+      global &&
+      global.history &&
+      global.history.state &&
+      global.history.state.type === 'OPEN_COMPARISON_TABLE'
     ) {
       // We refresh with the old state.
-      window.history.replaceState(null, 'ComparisonTable');
+      global.history.replaceState(null, 'ComparisonTable');
     }
-    window.addEventListener('popstate', event => {
+    global.addEventListener('popstate', event => {
       let state = event.state;
 
       if (state == null) {
@@ -88,14 +88,14 @@ class ComparisonTable extends React.Component {
       } else if (state.type === 'OPEN_COMPARISON_TABLE' && !this.state.open) {
         this.props.dispatch(actionSetProducts(state.selection));
         this.setState({ open: true });
-        window.history.replaceState(state, 'ComparisonTable');
+        global.history.replaceState(state, 'ComparisonTable');
       }
     });
   }
 
   handleClickOpen() {
-    if (window && window.history) {
-      window.history.pushState(
+    if (global && global.history) {
+      global.history.pushState(
         {
           type: 'OPEN_COMPARISON_TABLE',
           selection: this.props.selection,
@@ -107,8 +107,8 @@ class ComparisonTable extends React.Component {
   }
 
   handleClose() {
-    if (window && window.history) {
-      window.history.replaceState(null, 'ComparisonTable');
+    if (global && global.history) {
+      global.history.replaceState(null, 'ComparisonTable');
     }
     this.setState({ open: false });
   }

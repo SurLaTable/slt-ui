@@ -33,7 +33,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		super();
 
 		var app = this;
-		var ComponentManifest = (window.ComponentManifest = Object.assign(
+		var ComponentManifest = (global.ComponentManifest = Object.assign(
 			new PubSub(),
 			{
 				React: React,

@@ -29,8 +29,8 @@ const toggleSuccess = (productId, checked) => ({
 export function actionToggleProductSelection(productId, checked){
   return (dispatch)=>{
     import('../data.js' /*webpackChunkName: 'productData'*/).then((data)=>{
-      productDataSuccess(data);
-      toggleSuccess(productId,checked);
+      dispatch(productDataSuccess(data['default']));
+      dispatch(toggleSuccess(productId,checked));
     });
   };
 }

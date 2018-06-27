@@ -24,7 +24,7 @@ class ComparisonBar extends React.Component {
         style={{
           backgroundColor: '#E4E4E4',
           bottom: 0,
-          marginLeft: `${(window.innerWidth - window.innerWidth * 0.9) / 2}px`,
+          marginLeft: `${(global.innerWidth - global.innerWidth * 0.9) / 2}px`,
           paddingBottom: '48px',
           position: 'fixed',
           width: '90%',

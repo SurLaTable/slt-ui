@@ -1,4 +1,5 @@
 const productComparisonReducer = (state = {}, action) => {
+  console.log(action);
   let selection = state.selection
     ? state.selection.slice()
     : [];

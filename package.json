@@ -4,7 +4,8 @@
   "description": "Sur La Table UI Library",
   "main": "./index.js",
   "scripts": {
-    "build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js"
+    "build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
+    "server": "babel-node --config-file ./builder/config/babel.config.js ./sandbox/serve.config.js"
   },
   "repository": {
     "type": "git",
@@ -81,6 +82,7 @@
     "babel-loader": "^8.0.0-beta.3",
     "colors": "^1.3.0",
     "glob": "^7.1.2",
+    "html-webpack-plugin": "^3.2.0",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "prettier": "^1.13.4",
@@ -89,6 +91,7 @@
     "webpack": "^4.12.0",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.8",
-    "webpack-merge": "^4.1.3"
+    "webpack-merge": "^4.1.3",
+    "webpack-serve": "^1.0.4"
   }
 }
