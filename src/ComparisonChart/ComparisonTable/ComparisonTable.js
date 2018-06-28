@@ -6,29 +6,6 @@ import {
   actionSetProducts,
 } from '../actions/productComparisonActions';
 
-// import { Badge } from '../../Badge';
-// import { Button } from '../../Button';
-// import { Dialog } from '../../Dialog';
-// import { Slide } from '../../transitions';
-// import { Table } from '../../Table';
-// import { TableBody } from '../../Table';
-// import { TableCell } from '../../Table';
-// import { TableHead } from '../../Table';
-// import { TableRow } from '../../Table';
-// import { Typography } from '../../Typography';
-// import {
-//   Badge,
-//   Button,
-//   Dialog,
-//   Slide,
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableHead,
-//   TableRow,
-//   Typography
-// } from '@material-ui/core';
-
 import {
   createMuiTheme,
   MuiThemeProvider,
@@ -41,8 +18,9 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Typography,
-} from '../../index.js';
+  Typography
+} from '@material-ui/core';
+
 
 import { Cancel as CancelIcon } from '../icons';
 
@@ -102,15 +80,15 @@ class ComparisonTable extends React.Component {
   constructor() {
     super();
     if (
-      window &&
-      window.history &&
-      window.history.state &&
-      window.history.state.type === 'OPEN_COMPARISON_TABLE'
+      global &&
+      global.history &&
+      global.history.state &&
+      global.history.state.type === 'OPEN_COMPARISON_TABLE'
     ) {
       // We refresh with the old state.
-      window.history.replaceState(null, 'ComparisonTable');
+      global.history.replaceState(null, 'ComparisonTable');
     }
-    window.addEventListener('popstate', event => {
+    global.addEventListener('popstate', event => {
       let state = event.state;
 
       if (state == null) {
@@ -119,14 +97,14 @@ class ComparisonTable extends React.Component {
       } else if (state.type === 'OPEN_COMPARISON_TABLE' && !this.state.open) {
         this.props.dispatch(actionSetProducts(state.selection));
         this.setState({ open: true });
-        window.history.replaceState(state, 'ComparisonTable');
+        global.history.replaceState(state, 'ComparisonTable');
       }
     });
   }
 
   handleClickOpen() {
-    if (window && window.history) {
-      window.history.pushState(
+    if (global && global.history) {
+      global.history.pushState(
         {
           type: 'OPEN_COMPARISON_TABLE',
           selection: this.props.selection,
@@ -138,8 +116,8 @@ class ComparisonTable extends React.Component {
   }
 
   handleClose() {
-    if (window && window.history) {
-      window.history.replaceState(null, 'ComparisonTable');
+    if (global && global.history) {
+      global.history.replaceState(null, 'ComparisonTable');
     }
     this.setState({ open: false });
   }

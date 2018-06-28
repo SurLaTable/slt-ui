@@ -1,8 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+<<<<<<< HEAD
+import {Checkbox, FormControlLabel} from '@material-ui/core';
+=======
 import { createMuiTheme, MuiThemeProvider, Checkbox, FormControlLabel } from '../../index.js';
 // import { FormControlLabel } from '../../Form';
+>>>>>>> master
 // import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 import { actionToggleProductSelection } from '../actions/productComparisonActions';

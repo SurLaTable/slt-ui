@@ -10,7 +10,7 @@ import sltReducers from './reducers/sltReducers';
 const sltStore = createStore(
     sltReducers,
     // Enable DevTools, switch to localStorage on Prod:
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const styles = {

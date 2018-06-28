@@ -2,19 +2,9 @@ import React from 'react';
 import { actionRemoveProduct } from '../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
-// import { Badge } from '../../Badge';
-// import { BottomNavigation } from '../../BottomNavigation';
-// import { BottomNavigationAction } from '../../BottomNavigation';
-// import { Paper } from '../../Paper';
-// import { Badge, BottomNavigation, BottomNavigationAction, Paper } from '@material-ui/core';
-import {
-  createMuiTheme,
-  MuiThemeProvider,
-  Badge,
-  BottomNavigation,
-  BottomNavigationAction,
-  Paper,
-} from '../../index.js';
+import {createMuiTheme,
+MuiThemeProvider,Badge, BottomNavigation, BottomNavigationAction, Paper} from '@material-ui/core/';
+import Slide from '@material-ui/core/Slide';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
@@ -39,25 +29,25 @@ class ComparisonBar extends React.Component {
       .fill()
       .map((ignore, index) => (props.selection && props.selection[index]) || index);
 
-    // If the selection is not an object, it is just an index and we
-    // return an empty 'add' box.
-    return typeof selection[0] === 'object' ? (
+    return (
       <MuiThemeProvider theme={theme}>
+      <Slide direction="up" in={typeof selection[0] === 'object'} mountOnEnter unmountOn>
         <Paper
           className="comparison-bar"
           ref={ComparisonBarContainer => (this.ComparisonBarContainer = ComparisonBarContainer)}
+          elevation={4}
           style={{
             backgroundColor: '#E4E4E4',
             bottom: 0,
-            marginLeft: `${(window.innerWidth - window.innerWidth * 0.9) / 2}px`,
+            marginLeft: `${(global.innerWidth - global.innerWidth * 0.9) / 2}px`,
             paddingBottom: '48px',
             position: 'fixed',
             width: '90%',
-            zIndex: '1300',
           }}
         >
           <BottomNavigation showLabels style={{ backgroundColor: '#E4E4E4', marginTop: '10px' }}>
             <ComparisonTable type="cutlery" />
+
             {selection &&
               selection.map((product, index) => {
                 // Since the product data contains multiple skus,
@@ -107,8 +97,9 @@ class ComparisonBar extends React.Component {
               })}
           </BottomNavigation>
         </Paper>
+      </Slide>
       </MuiThemeProvider>
-    ) : null;
+    );
   }
 }
 

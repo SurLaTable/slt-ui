@@ -3,40 +3,29 @@
   "version": "0.0.30",
   "description": "Sur La Table UI Library",
   "main": "./index.js",
-  "config": {
-    "commit": "v1.0.0-beta.47"
-  },
-  "files": [
-    "material-ui/build"
-  ],
   "scripts": {
-    "build": "yarn cleanup && yarn prepare:material && yarn transform && cd ./material-ui/packages/material-ui/ && yarn build && cd ../../../ && node ./scripts/setup-release.js",
-    "cleanup": "yarn git-reset && rimraf build && rm material-ui/yarn.lock",
-    "prepare:material": "cd material-ui && yarn install && yarn add --dev babel-plugin-dynamic-import-node babel-plugin-syntax-dynamic-import -W && yarn add react-async-component -W && cd ..",
-    "prettier": "prettier --config ./prettier.config.js --write \"{,!(.git|*build|*dist|material-ui|node_modules|styleguide)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
-    "transform": "node ./transforms/index.js",
-    "test": "yarn test:transforms",
-    "test:transforms": "./node_modules/.bin/mocha --require babel-register ./transforms/*.spec.js",
-    "git-setup": "git submodule update --init --recursive && cd material-ui && cross-var git checkout $npm_package_config_commit && cd ..",
-    "git-reset": "cd material-ui && git fetch --all && cross-var git checkout -f $npm_package_config_commit && cd ..",
-    "git-mark-release": "cross-var git tag -a $npm_package_version -m '$npm_package_version'"
+    "build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
+    "sandbox": "babel-node --config-file ./builder/config/babel.config.js ./sandbox/serve.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/slt_development/slt-ui.git"
+    "url": "git+ssh://git@github.com:SurLaTable/slt-ui.git"
   },
   "keywords": [
     "component",
-    "library",
-    "jscodeshift"
+    "library"
   ],
-  "author": "SLT",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "author": "Sur La Table",
   "license": "GPL-2.0+",
-  "homepage": "https://bitbucket.org/slt_development/slt-ui/",
+  "homepage": "https://github.com/SurLaTable/slt-ui/",
   "dependencies": {
+    "@material-ui/core": "^1.2.2",
     "@types/jss": "^9.3.0",
     "@types/react-transition-group": "^2.0.6",
-    "babel-runtime": "^6.26.0",
     "brcast": "^3.0.1",
     "classnames": "^2.2.5",
     "deepmerge": "^2.0.1",
@@ -53,28 +42,56 @@
     "lodash": "^4.2.0",
     "normalize-scroll-left": "^0.1.2",
     "prop-types": "^15.6.1",
-    "react-async-component": "^2.0.0",
+    "react": "^16.2.0",
+    "react-async-component": "^1.0.2",
+    "react-dom": "^16.2.0",
     "react-event-listener": "^0.6.0",
+    "react-habitat": "^1.0.1",
+    "react-habitat-redux": "^2.0.4",
     "react-jss": "^8.1.0",
     "react-lifecycles-compat": "^1.0.2",
     "react-popper": "^0.8.0",
+    "react-redux": "^5.0.7",
     "react-scrollbar-size": "^2.0.2",
     "react-transition-group": "^2.2.1",
     "recompose": "^0.26.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0",
     "scroll": "^2.0.3",
     "warning": "^3.0.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "cli-highlight": "^1.2.3",
-    "cross-env": "^5.1.4",
-    "cross-var": "^1.1.0",
-    "fs-extra": "^5.0.0",
+    "@babel/cli": "^7.0.0-beta.51",
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/node": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.51",
+    "@babel/plugin-transform-classes": "^7.0.0-beta.51",
+    "@babel/plugin-transform-member-expression-literals": "^7.0.0-beta.51",
+    "@babel/plugin-transform-object-set-prototype-of-to-assign": "^7.0.0-beta.51",
+    "@babel/plugin-transform-property-literals": "^7.0.0-beta.51",
+    "@babel/plugin-transform-proto-to-assign": "^7.0.0-beta.51",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.51",
+    "@babel/plugin-transform-spread": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "@babel/preset-es2015": "^7.0.0-beta.51",
+    "@babel/preset-react": "^7.0.0-beta.51",
+    "@babel/register": "^7.0.0-beta.51",
+    "babel-loader": "^8.0.0-beta.3",
+    "colors": "^1.3.0",
     "glob": "^7.1.2",
-    "jscodeshift": "^0.5.0",
-    "mocha": "^5.0.4",
-    "prettier": "^1.13.4"
+    "html-webpack-plugin": "^3.2.0",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "prettier": "^1.13.4",
+    "rimraf": "^2.6.2",
+    "value-loader": "^0.1.4",
+    "webpack": "^4.12.0",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-merge": "^4.1.3",
+    "webpack-serve": "^1.0.4"
   }
 }
