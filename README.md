@@ -13,4 +13,5 @@ yarn build
 | Development build|`--dev`|
 | Open bundle report after build|`--report`|
 
-
+# TODO
+- describe publishing process

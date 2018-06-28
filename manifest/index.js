@@ -136,6 +136,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 
 		// Webpack specific build code:
 		for (let comp in sltUi) {
+			console.log(comp,sltUi[comp]);
 			containerBuilder.register(sltUi[comp]).as(comp);
 			ComponentManifest.components.push(comp);
 		}
