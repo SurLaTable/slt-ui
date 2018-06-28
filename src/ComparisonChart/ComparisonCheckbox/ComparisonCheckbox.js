@@ -1,28 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+<<<<<<< HEAD
 import {Checkbox, FormControlLabel} from '@material-ui/core';
+=======
+import { createMuiTheme, MuiThemeProvider, Checkbox, FormControlLabel } from '../../index.js';
+// import { FormControlLabel } from '../../Form';
+>>>>>>> master
 // import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 import { actionToggleProductSelection } from '../actions/productComparisonActions';
 
+const theme = createMuiTheme({
+  typography: {
+    fontSize: 22,
+  },
+});
+
 let ComparisonCheckbox = props => {
   return (
-    <div>
-      <FormControlLabel
-        control={
-          <Checkbox
-            onChange={(event, checked) => {
-              props.dispatch(actionToggleProductSelection(props.product, checked));
-            }}
-            disabled={props.disabled}
-            checked={props.checked}
-            data-product={props.product}
-          />
-        }
-        label={props.checked ? 'Added' : 'Compare'}
-      />
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div className="comparison-checkbox">
+        <FormControlLabel
+          control={
+            <Checkbox
+              onChange={(event, checked) => {
+                props.dispatch(actionToggleProductSelection(props.product, checked));
+              }}
+              disabled={props.disabled}
+              checked={props.checked}
+              data-product={props.product}
+            />
+          }
+          label={props.checked ? 'Added' : 'Compare'}
+        />
+      </div>
+    </MuiThemeProvider>
   );
 };
 

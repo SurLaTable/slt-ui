@@ -7,6 +7,8 @@ import {
 } from '../actions/productComparisonActions';
 
 import {
+  createMuiTheme,
+  MuiThemeProvider,
   Badge,
   Button,
   Dialog,
@@ -19,7 +21,14 @@ import {
   Typography
 } from '@material-ui/core';
 
+
 import { Cancel as CancelIcon } from '../icons';
+
+const theme = createMuiTheme({
+  typography: {
+    fontSize: 22,
+  },
+});
 
 const imageStyles = {
   border: '1px solid black',
@@ -53,7 +62,7 @@ const tableModels = {
       { name: 'Care & Usage', format: 'html' },
       { name: "What's in the Box", format: 'html' },
     ],
-    SHIPPING: ['Drop Ship Ind'],
+    // SHIPPING: ['Drop Ship Ind'],
   },
   // This is just an example of another possible type:
   appliance: {
@@ -134,198 +143,208 @@ class ComparisonTable extends React.Component {
     const attributes = tableModels[props.type];
 
     return (
-      <React.Fragment>
-        <Button
-          onClick={this.handleClickOpen.bind(this)}
-          variant="raised"
-          color="primary"
-          disabled={props.selection.length < 2}
-          style={{
-            backgroundColor: '#6d8b19',
-            color: '#ffffff',
-            height: '20%',
-            marginTop: '1.5rem',
-          }}
-        >
-          COMPARE
-        </Button>
-        <Typography
-          style={{
-            margin: '10px 30px',
-            width: '250px',
-            textAlign: 'left',
-          }}
-        >
-          Select up to 3 products to compare and find the best one for you.
-          <br />
+      <MuiThemeProvider theme={theme}>
+        <div className="comparison-table">
           <Button
-            onClick={(event, checked) => {
-              props.dispatch(actionRemoveAll());
+            onClick={this.handleClickOpen.bind(this)}
+            variant="raised"
+            color="primary"
+            disabled={props.selection.length < 2}
+            style={{
+              backgroundColor: '#6d8b19',
+              color: '#ffffff',
+              display: 'inline-block',
+              height: '20%',
+              marginTop: '-40px',
             }}
-            style={{ textDecoration: 'underline' }}
           >
-            REMOVE ALL
+            COMPARE
           </Button>
-        </Typography>
+          <Typography
+            style={{
+              display: 'inline-block',
+              margin: '10px 30px',
+              width: '250px',
+              textAlign: 'left',
+            }}
+          >
+            Select up to 3 products to compare and find the best one for you.
+            <br />
+            <Button
+              onClick={(event, checked) => {
+                props.dispatch(actionRemoveAll());
+              }}
+              style={{ padding: 0, textDecoration: 'underline' }}
+            >
+              REMOVE ALL
+            </Button>
+          </Typography>
 
-        <Dialog
-          fullScreen
-          open={this.state.open}
-          onClose={this.handleClose.bind(this)}
-          TransitionComponent={Transition}
-          transitionDuration={600}
-        >
-          <Table>
-            <TableHead>
-              <TableRow
-                style={{
-                  backgroundColor: '#E4E4E4',
-                }}
-              >
-                <TableCell style={tableCellStyles}>
-                  <Button onClick={this.handleClose.bind(this)}>
-                    <CancelIcon />Hide chart
-                  </Button>
-                </TableCell>
-                {props.selection.map((product, index) => {
-                  const first = product[Object.keys(product)[0]];
-                  return first ? (
-                    <TableCell key={index} style={tableCellStyles}>
-                      <Badge
-                        data-product-id={product.id}
-                        badgeContent={<CancelIcon />}
-                        style={badgeStyles}
-                        onClick={(event, checked) => {
-                          props.dispatch(actionRemoveProduct(product.id));
+          <Dialog
+            fullScreen
+            open={this.state.open}
+            onClose={this.handleClose.bind(this)}
+            TransitionComponent={Transition}
+            transitionDuration={600}
+          >
+            <Table>
+              <TableHead>
+                <TableRow
+                  style={{
+                    backgroundColor: '#E4E4E4',
+                  }}
+                >
+                  <TableCell style={tableCellStyles}>
+                    <Button onClick={this.handleClose.bind(this)}>
+                      <CancelIcon />Hide chart
+                    </Button>
+                  </TableCell>
+                  {props.selection.map((product, index) => {
+                    const first = product[Object.keys(product)[0]];
+                    return first ? (
+                      <TableCell key={index} style={tableCellStyles}>
+                        <Badge
+                          data-product-id={product.id}
+                          badgeContent={<CancelIcon />}
+                          style={badgeStyles}
+                          onClick={(event, checked) => {
+                            props.dispatch(actionRemoveProduct(product.id));
+                          }}
+                        >
+                          <img
+                            alt={`${first['Web Brand']} ${first.Collection}`}
+                            style={imageStyles}
+                            src={`https://www.surlatable.com/images/customers/c1079/${
+                              product.id
+                            }/generated/${product.id}_Default_1_200x200.jpg`}
+                          />
+                        </Badge>
+                        {`${first['Web Brand']} ${first.Collection}`}
+                      </TableCell>
+                    ) : null;
+                  })}
+                </TableRow>
+              </TableHead>
+
+              {sections.map((section, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <TableHead>
+                      <TableRow
+                        style={{
+                          backgroundColor: '#111111',
+                          height: '36px',
                         }}
                       >
-                        <img
-                          alt={`${first['Web Brand']} ${first.Collection}`}
-                          style={imageStyles}
-                          src={`https://www.surlatable.com/images/customers/c1079/${
-                            product.id
-                          }/generated/${product.id}_Default_1_200x200.jpg`}
-                        />
-                      </Badge>
-                      {`${first['Web Brand']} ${first.Collection}`}
-                    </TableCell>
-                  ) : null;
-                })}
-              </TableRow>
-            </TableHead>
-
-            {sections.map((section, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <TableHead>
-                    <TableRow
-                      style={{
-                        backgroundColor: '#111111',
-                        height: '36px',
-                      }}
-                    >
-                      {/*
+                        {/*
                         This Array().fill() has to exist to allow the column to
                         extend one beyond the selection length (for the sake of
                         the first column).
                       */}
-                      {props.selection &&
-                        Array(props.selection.length + 1)
-                          .fill()
-                          .map(
-                            (ignore, index) =>
-                              index ? (
-                                <TableCell key={index} style={tableCellStyles} />
-                              ) : (
-                                <TableCell
-                                  key={index}
-                                  style={
-                                    // Extend an empty object with our default styles:
-                                    Object.assign({}, tableCellStyles, {
-                                      color: '#ffffff',
-                                      fontWeight: 900,
-                                    })
-                                  }
-                                >
-                                  {section}
-                                </TableCell>
-                              ),
-                          )}
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {attributes[section].map((attribute, index) => {
-                      let format = 'default';
-                      // Determine if the property is an object or a string.
-                      // We don't need to use strings for our later processing.
-                      if (typeof attribute !== 'string') {
-                        format = attribute.format;
-                        attribute = attribute.name;
-                      }
-                      return (
-                        <TableRow
-                          key={index}
-                          style={{
-                            // This alternates the color of every other row:
-                            backgroundColor: (index === 1 || index % 2 !== 0) && '#eeeeee',
-                          }}
-                        >
-                          <TableCell
+                        {props.selection &&
+                          Array(props.selection.length + 1)
+                            .fill()
+                            .map(
+                              (ignore, index) =>
+                                index ? (
+                                  <TableCell key={index} style={tableCellStyles} />
+                                ) : (
+                                  <TableCell
+                                    key={index}
+                                    style={
+                                      // Extend an empty object with our default styles:
+                                      Object.assign({}, tableCellStyles, {
+                                        color: '#ffffff',
+                                        fontWeight: 900,
+                                      })
+                                    }
+                                  >
+                                    {section}
+                                  </TableCell>
+                                ),
+                            )}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {attributes[section].map((attribute, index) => {
+                        let format = 'default';
+                        // Determine if the property is an object or a string.
+                        // We don't need to use strings for our later processing.
+                        if (typeof attribute !== 'string') {
+                          format = attribute.format;
+                          attribute = attribute.name;
+                        }
+                        return (
+                          <TableRow
                             key={index}
-                            style={Object.assign({}, tableCellStyles, {
-                              fontWeight: 900,
-                            })}
+                            style={{
+                              // This alternates the color of every other row:
+                              backgroundColor: (index === 1 || index % 2 !== 0) && '#eeeeee',
+                            }}
                           >
-                            {attribute}
-                          </TableCell>
-                          {props.selection.map((product, index) => {
-                            let cellData = [];
+                            <TableCell
+                              key={index}
+                              style={Object.assign({}, tableCellStyles, {
+                                fontWeight: 900,
+                              })}
+                            >
+                              {attribute}
+                            </TableCell>
+                            {props.selection.map((product, index) => {
+                              let cellData = [];
 
-                            // At the end of processing the loop,
-                            // we store the last value, that
-                            // way we can check for duplicates.
-                            let lastValue;
-                            for (let sku in product) {
-                              if (product[sku][attribute] !== lastValue) {
-                                if (format === 'html') {
-                                  cellData.push(this.handleFormat(product[sku][attribute], format));
-                                } else if (cellData.indexOf(product[sku][attribute]) === -1) {
-                                  cellData.push(this.handleFormat(product[sku][attribute], format));
+                              // At the end of processing the loop,
+                              // we store the last value, that
+                              // way we can check for duplicates.
+                              let lastValue;
+                              for (let sku in product) {
+                                if (product[sku][attribute] !== lastValue) {
+                                  if (format === 'html') {
+                                    cellData.push(
+                                      this.handleFormat(product[sku][attribute], format),
+                                    );
+                                  } else if (cellData.indexOf(product[sku][attribute]) === -1) {
+                                    cellData.push(
+                                      this.handleFormat(product[sku][attribute], format),
+                                    );
+                                  }
+                                }
+
+                                lastValue = product[sku][attribute];
+                              }
+                              if (format === 'default') {
+                                const delimiter = ', ';
+                                cellData = cellData.join(delimiter);
+                                // Since there will always be
+                                // an extraneous comma and
+                                // space at the end after this
+                                // processing, we cut it off here.
+                                if (cellData.slice(-2) === delimiter) {
+                                  cellData = cellData.slice(0, -2);
                                 }
                               }
-
-                              lastValue = product[sku][attribute];
-                            }
-                            if (format === 'default') {
-                              const delimiter = ', ';
-                              cellData = cellData.join(delimiter);
-                              // Since there will always be
-                              // an extraneous comma and
-                              // space at the end after this
-                              // processing, we cut it off here.
-                              if (cellData.slice(-2) === delimiter) {
-                                cellData = cellData.slice(0, -2);
-                              }
-                            }
-                            return (
-                              <TableCell
-                                key={index}
-                                style={Object.assign({}, tableCellStyles, { textAlign: 'center' })}
-                              >
-                                {cellData}
-                              </TableCell>
-                            );
-                          })}
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </React.Fragment>
-              );
-            })}
-          </Table>
-        </Dialog>
-      </React.Fragment>
+                              return (
+                                <TableCell
+                                  key={index}
+                                  style={Object.assign({}, tableCellStyles, {
+                                    textAlign: 'center',
+                                  })}
+                                >
+                                  {cellData}
+                                </TableCell>
+                              );
+                            })}
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </React.Fragment>
+                );
+              })}
+            </Table>
+          </Dialog>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

@@ -2,10 +2,17 @@ import React from 'react';
 import { actionRemoveProduct } from '../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
-import {Badge, BottomNavigation, BottomNavigationAction, Paper} from '@material-ui/core/';
+import {createMuiTheme,
+MuiThemeProvider,Badge, BottomNavigation, BottomNavigationAction, Paper} from '@material-ui/core/';
 import Slide from '@material-ui/core/Slide';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
+
+const theme = createMuiTheme({
+  typography: {
+    fontSize: 22,
+  },
+});
 
 class ComparisonBar extends React.Component {
   render() {
@@ -15,13 +22,18 @@ class ComparisonBar extends React.Component {
     // we populate an array with those,
     // otherwise we fill the array with
     // the indices.
-    const selection = Array(props.numberOfItems)
+    // We force the type to be a number,
+    // in case it gets passed as a string using
+    // React Habitat's `data-prop` vs `data-n-prop`.
+    const selection = Array(Number(props.numberOfItems))
       .fill()
       .map((ignore, index) => (props.selection && props.selection[index]) || index);
 
     return (
+      <MuiThemeProvider theme={theme}>
       <Slide direction="up" in={typeof selection[0] === 'object'} mountOnEnter unmountOn>
         <Paper
+          className="comparison-bar"
           ref={ComparisonBarContainer => (this.ComparisonBarContainer = ComparisonBarContainer)}
           elevation={4}
           style={{
@@ -86,6 +98,7 @@ class ComparisonBar extends React.Component {
           </BottomNavigation>
         </Paper>
       </Slide>
+      </MuiThemeProvider>
     );
   }
 }
