@@ -8,7 +8,7 @@ export default function(){
     compose(
       applyMiddleware(thunk),
       // Enable DevTools, switch to localStorage on Prod:
-      (global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__())
+      (global.__REDUX_DEVTOOLS_EXTENSION__ ? global.__REDUX_DEVTOOLS_EXTENSION__() : (f)=>f)
     ),
   );
 }
