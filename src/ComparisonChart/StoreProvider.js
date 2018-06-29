@@ -5,9 +5,9 @@ import configureStore from './store/configureStore.js';
 
 let sltStore = configureStore();
 
-const StoreProvider = props => (
-  <Provider store={sltStore}>
-    <React.Fragment>{props.children}</React.Fragment>
-  </Provider>
+const StoreProvider = (props) => (
+	<Provider store={sltStore}>
+		<React.Fragment>{props.children}</React.Fragment>
+	</Provider>
 );
 export default StoreProvider;

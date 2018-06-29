@@ -1,17 +1,18 @@
 import React from 'react';
 import pure from 'recompose/pure';
-import {SvgIcon} from '@material-ui/core';
+import { SvgIcon } from '@material-ui/core';
 
-const SvgIconCustom = (typeof global !== 'undefined' && global.__MUI_SvgIcon__) || SvgIcon;
+const SvgIconCustom =
+	(typeof global !== 'undefined' && global.__MUI_SvgIcon__) || SvgIcon;
 
 function createSvgIcon(path, displayName) {
-  let Icon = props => <SvgIconCustom {...props}>{path}</SvgIconCustom>;
+	let Icon = (props) => <SvgIconCustom {...props}>{path}</SvgIconCustom>;
 
-  Icon.displayName = displayName;
-  Icon = pure(Icon);
-  Icon.muiName = 'SvgIcon';
+	Icon.displayName = displayName;
+	Icon = pure(Icon);
+	Icon.muiName = 'SvgIcon';
 
-  return Icon;
+	return Icon;
 }
 
 export default createSvgIcon;
