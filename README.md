@@ -60,7 +60,7 @@ For more details, head [here](build/README.md).
 
 ## Publishing:
 
-After building(https://github.com/SurLaTable/slt-ui#building) the repo, do:
+After [building](https://github.com/SurLaTable/slt-ui#building) the repo, do:
 
 ```
 cd build
