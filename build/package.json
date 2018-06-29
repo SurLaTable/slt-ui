@@ -1,6 +1,6 @@
 {
   "name": "@sur-la-table/slt-ui",
-  "version": "2018.6.29-beta",
+  "version": "1.0.0",
   "description": "Sur La Table UI Library",
   "main": "./sync/index.min.js",
   "scripts": {},
