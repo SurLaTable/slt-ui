@@ -15,4 +15,4 @@ const app = (
 		<ComparisonBar />
 	</StoreProvider>
 );
-render(app, document.querySelector('body'));
+render(app, document.querySelector('.app'));
