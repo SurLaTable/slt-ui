@@ -6,7 +6,9 @@ export default config('Sandbox', {
   mode: 'development',
   resolve:{
     alias:{
-      '@sur-la-table/slt-ui':path.resolve('./src/index.js')
+      '@sur-la-table/slt-ui':path.resolve('./src/index.js'),
+      '@sur-la-table/slt-ui$':path.resolve('./builder/temp/slt'),
+      '@material-ui/core$':path.resolve('./builder/temp/material'),
     }
   },
   externals: {
