@@ -38,7 +38,7 @@ We got a lot of help from these libraries:
 -   [Material UI](https://material-ui.com/)
 -   [React Habitat](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
-React Habitat was the leg up on incorporating ES-NEXT React components into a legacy system, the problem was that it did not handle nested child components, which kept us from starting with a large pattern library like Material UI. We've solved that [here](manifest/SLTDomFactory.js).
+React Habitat was the leg up on incorporating ES-NEXT React components into a legacy system, the problem was that it did not handle nested child components, which kept us from starting with a large pattern library like Material UI. We've solved that [here](manifest/SLTDomFactory.js) and [here](manifest/index.js).
 
 We also needed a way to asynchronously load individual components, to keep our clients from getting a huge payload for one component. We additively wrap each Material UI component (and our own components) using [`react-async-component`](https://github.com/ctrlplusb/react-async-component). The code for that lives [here](builder/async.js).
 
