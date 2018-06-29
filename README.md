@@ -1,6 +1,6 @@
 # SLT's component library
 
-![Travis build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)
+[![Travis build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui)
 
 ## Getting started:
 
@@ -57,3 +57,13 @@ import { Button } from '@sur-la-table/slt-ui';
 ```
 
 For more details, head [here](build/README.md).
+
+## Publishing:
+
+After building(https://github.com/SurLaTable/slt-ui#building) the repo, do:
+
+```
+cd build
+yarn login
+yarn publish
+```
