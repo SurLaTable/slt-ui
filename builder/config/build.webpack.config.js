@@ -24,11 +24,6 @@ export default (name, config) => {
 				namedModules: true,
 				splitChunks: {}
 			},
-			/*resolve: {
-      alias: {
-        '@matierl-ui/core': '@material-ui/core/index.es.js'
-      }
-    },*/
 			resolveLoader: {
 				alias: {
 					//needed to support requirejs module

@@ -6,20 +6,18 @@ import {
 	actionSetProducts
 } from '../actions/productComparisonActions';
 
-import {
-	createMuiTheme,
-	MuiThemeProvider,
-	Badge,
-	Button,
-	Dialog,
-	Slide,
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableRow,
-	Typography
-} from '@material-ui/core';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import Badge from '@material-ui/core/Badge';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import Slide from '@material-ui/core/Slide';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 
 import { Cancel as CancelIcon } from '../icons';
 

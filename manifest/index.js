@@ -9,7 +9,7 @@ import PubSub from './pubsub';
 
 import { asyncComponent } from 'react-async-component';
 //NOTE: This is a webpack specific loader, used to generate the async wrapper
-import * as sltUi from '@sur-la-table/slt-ui';
+import * as sltUi from '../builder/temp/slt';
 
 // Turn all attributes into props for an element:
 function getProps(ele) {
@@ -38,7 +38,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 			{
 				React: React,
 				ReactDom: ReactDom,
-				updateHabitat: this.update.bind(this),
+				updateHabitat: this.update.bind(this)
 			}
 		));
 

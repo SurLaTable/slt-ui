@@ -2,15 +2,14 @@ import React from 'react';
 import { actionRemoveProduct } from '../actions/productComparisonActions';
 import { connect } from 'react-redux';
 
-import {
-	createMuiTheme,
-	MuiThemeProvider,
-	Badge,
-	BottomNavigation,
-	BottomNavigationAction,
-	Paper
-} from '@material-ui/core/';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import Badge from '@material-ui/core/Badge';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Paper from '@material-ui/core/Paper';
 import Slide from '@material-ui/core/Slide';
+
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 

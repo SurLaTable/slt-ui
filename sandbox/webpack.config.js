@@ -6,7 +6,10 @@ export default config('Sandbox', {
 	mode: 'development',
 	resolve: {
 		alias: {
-			'@sur-la-table/slt-ui': path.resolve('./src/index.js')
+			//This will probably change
+			'@sur-la-table/slt-ui': path.resolve('./src/index.js'),
+			'@sur-la-table/slt-ui$': path.resolve('./builder/temp/slt'),
+			'@material-ui/core$': path.resolve('./builder/temp/material')
 		}
 	},
 	externals: {
@@ -18,9 +21,5 @@ export default config('Sandbox', {
 	entry: {
 		index: path.resolve(__dirname, 'index.js')
 	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, 'index.html')
-		})
-	]
+	plugins: [new HtmlWebpackPlugin()]
 });
