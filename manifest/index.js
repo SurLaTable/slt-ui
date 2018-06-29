@@ -39,7 +39,6 @@ class Manifest extends ReactHabitat.Bootstrapper {
 				React: React,
 				ReactDom: ReactDom,
 				updateHabitat: this.update.bind(this),
-				components: []
 			}
 		));
 
@@ -136,9 +135,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 
 		// Webpack specific build code:
 		for (let comp in sltUi) {
-			console.log(comp, sltUi[comp]);
 			containerBuilder.register(sltUi[comp]).as(comp);
-			ComponentManifest.components.push(comp);
 		}
 
 		// Set the DOM container:
@@ -153,11 +150,9 @@ class Manifest extends ReactHabitat.Bootstrapper {
 			if (typeof name != 'string') {
 				for (let i in name) {
 					containerBuilder.register(name[i]).as(i);
-					ComponentManifest.components.push(i);
 				}
 			} else {
 				containerBuilder.register(component).as(name);
-				ComponentManifest.components.push(name);
 			}
 
 			this.dispose();
