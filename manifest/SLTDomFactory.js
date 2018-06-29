@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDom from 'react-dom';
 // import { Provider }		from 'react-redux';
 // import { createStore } from "redux";
-import StoreProvider from "../src/ComparisonChart/StoreProvider.js";
+import StoreProvider from '../src/ComparisonChart/StoreProvider.js';
 /**
  * React DOM Factory
  */
@@ -41,7 +41,7 @@ export default class SLTDomFactory {
 					}
 				} catch (e) {
 					console.error(
-						"ReactHabitat failed constructing children: ",
+						'ReactHabitat failed constructing children: ',
 						e
 					);
 				}
@@ -50,8 +50,8 @@ export default class SLTDomFactory {
 			var wrapper = React.createElement(
 				target.nodeName.toLowerCase(),
 				{
-					"data-component-id":
-						props.proxy.getAttribute("data-component-id") ||
+					'data-component-id':
+						props.proxy.getAttribute('data-component-id') ||
 						props.proxy.getAttribute(this.componentSelector) +
 							`-${this.componentId++}`
 				},
