@@ -11,7 +11,7 @@ yarn install
 yarn sandbox
 ```
 
-More details on the sandbox functionality can be found [here](https://github.com/SurLaTable/slt-ui/blob/master/sandbox/README.md).
+More details on the sandbox functionality can be found [here](sandbox/README.md).
 
 ## Building:
 
@@ -38,9 +38,9 @@ We got a lot of help from these libraries:
 -   [Material UI](https://material-ui.com/)
 -   [React Habitat](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
-React Habitat was the leg up on incorporating ES-NEXT React components into a legacy system, the problem was that it did not handle nested child components, which kept us from starting with a large pattern library like Material UI. We've solved that [here](https://github.com/SurLaTable/slt-ui/blob/master/manifest/SLTDomFactory.js).
+React Habitat was the leg up on incorporating ES-NEXT React components into a legacy system, the problem was that it did not handle nested child components, which kept us from starting with a large pattern library like Material UI. We've solved that [here](manifest/SLTDomFactory.js).
 
-We also needed a way to asynchronously load individual components, to keep our clients from getting a huge payload for one component. We additively wrap each Material UI component (and our own components) using [`react-async-component`](https://github.com/ctrlplusb/react-async-component). The code for that lives [here](https://github.com/SurLaTable/slt-ui/blob/master/builder/async.js).
+We also needed a way to asynchronously load individual components, to keep our clients from getting a huge payload for one component. We additively wrap each Material UI component (and our own components) using [`react-async-component`](https://github.com/ctrlplusb/react-async-component). The code for that lives [here](builder/async.js).
 
 ## OK, I want to use this.
 
@@ -55,3 +55,5 @@ Then you can grab any component using:
 ```
 import { Button } from '@sur-la-table/slt-ui';
 ```
+
+For more details, head [here](build/README.md).
