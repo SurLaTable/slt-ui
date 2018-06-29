@@ -1,13 +1,13 @@
 import webpack from 'webpack';
 import path from 'path';
 import babelConfig from './babel.config.js';
-import {dateTime} from '../modules/print.js';
+import { dateTime } from '../modules/print.js';
 
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import merge from 'webpack-merge';
 
 function title(str) {
-  return str.replace(/(^[a-z]|\s[a-z])/g, ($1) => $1.toUpperCase());
+	return str.replace(/(^[a-z]|\s[a-z])/g, ($1) => $1.toUpperCase());
 }
 
 let args = global.args || {};
@@ -59,12 +59,18 @@ export default(name, config) => {
       })]
   }, config);
 
-  if (!!args.report == true) {
-    finalConfig.plugins.push(new BundleAnalyzerPlugin({
-      analyzerMode: "static",
-      reportFilename: path.resolve(`./reports/${title(name)}${title(process.env.NODE_ENV)}Report${dateTime()}.html`)
-    }));
-  }
+	if (!!args.report == true) {
+		finalConfig.plugins.push(
+			new BundleAnalyzerPlugin({
+				analyzerMode: 'static',
+				reportFilename: path.resolve(
+					`./reports/${title(name)}${title(
+						process.env.NODE_ENV
+					)}Report${dateTime()}.html`
+				)
+			})
+		);
+	}
 
-  return finalConfig;
-}
+	return finalConfig;
+};

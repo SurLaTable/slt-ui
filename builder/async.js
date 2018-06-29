@@ -2,33 +2,33 @@ import fs from 'fs';
 import path from 'path';
 import mkdirp from 'mkdirp';
 import glob from 'glob';
-import webpack from "webpack";
-import {data, info, error} from './modules/print';
+import webpack from 'webpack';
+import { data, info, error } from './modules/print';
 import webpackConfig from './config/build.webpack.config.js';
 
 import * as sltUI from '../src/index.js';
 import * as material from '@material-ui/core';
 
 function write(filePath, code) {
-  mkdirp.sync(path.dirname(filePath));
+	mkdirp.sync(path.dirname(filePath));
 
-  return new Promise((resolve, reject) => {
-    fs.writeFile(filePath, code, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
+	return new Promise((resolve, reject) => {
+		fs.writeFile(filePath, code, (err) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve();
+			}
+		});
+	});
 }
 
 function hasModule(filename) {
-  try {
-    return Boolean(require.resolve(filename));
-  } catch (e) {
-    return false;
-  }
+	try {
+		return Boolean(require.resolve(filename));
+	} catch (e) {
+		return false;
+	}
 }
 
 function generateSLTUIAsync(promises) {
@@ -151,15 +151,15 @@ function generateMaterialAsync(promises) {
 }
 
 export async function generateAsync() {
+	let promises = [];
+	await generateMaterialAsync(promises);
+	await generateSLTUIAsync(promises);
 
-  let promises = []
-  await generateMaterialAsync(promises);
-  await generateSLTUIAsync(promises);
-
-  await Promise.all(promises);
+	await Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';
-generateAsync.description = 'wrap material and slt-ui components in asyncComponent';
+generateAsync.description =
+	'wrap material and slt-ui components in asyncComponent';
 
 export async function buildManifest() {
   info("BUILD MANIFEST STARTED");
@@ -194,5 +194,5 @@ export async function buildManifest() {
   });
 }
 
-buildManifest.displayName = "manifest";
-buildManifest.description = "manifest";
+buildManifest.displayName = 'manifest';
+buildManifest.description = 'manifest';

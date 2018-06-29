@@ -6,6 +6,7 @@ export default config('Sandbox', {
   mode: 'development',
   resolve:{
     alias:{
+      //This will probably change
       '@sur-la-table/slt-ui':path.resolve('./src/index.js'),
       '@sur-la-table/slt-ui$':path.resolve('./builder/temp/slt'),
       '@material-ui/core$':path.resolve('./builder/temp/material'),

@@ -6,6 +6,6 @@ $(`
 		<div data-component="ComparisonBar" data-n-prop-number-of-items="3"></div>
 	</div>
 `).prepend('body');
-if(ComponentManifest){
+if (ComponentManifest) {
 	ComponentManifest.updateHabitat();
 }

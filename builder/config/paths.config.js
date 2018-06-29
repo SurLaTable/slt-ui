@@ -1,10 +1,10 @@
-import path from "path";
+import path from 'path';
 
-let destinationDirectory = "./build/";
+let destinationDirectory = './build/';
 export { destinationDirectory };
 
 export let componentPaths = {
-	src: "./src/",
+	src: './src/',
 	dest: {
 		js: destinationDirectory
 	}

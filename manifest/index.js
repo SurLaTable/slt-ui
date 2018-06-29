@@ -1,13 +1,13 @@
 /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
-import React from "react";
-import ReactDom from "react-dom";
-import ReactHabitat from "react-habitat";
+import React from 'react';
+import ReactDom from 'react-dom';
+import ReactHabitat from 'react-habitat';
 
-import SLTDomFactory from "./SLTDomFactory";
-import Habitat from "react-habitat/lib/Habitat";
-import PubSub from "./pubsub";
+import SLTDomFactory from './SLTDomFactory';
+import Habitat from 'react-habitat/lib/Habitat';
+import PubSub from './pubsub';
 
-import { asyncComponent } from "react-async-component";
+import { asyncComponent } from 'react-async-component';
 //NOTE: This is a webpack specific loader, used to generate the async wrapper
 import * as sltUi from "../builder/temp/slt";
 
@@ -109,7 +109,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 					ele.nodeName.toLowerCase(),
 					{
 						key: key,
-						"data-component-id": key
+						'data-component-id': key
 					},
 					React.createElement(Component, props, children)
 				);
@@ -144,10 +144,10 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		ComponentManifest.register = (name, component) => {
 			if (name == null) {
 				console.error(
-					"registering a component requires a name and the constructor for that component"
+					'registering a component requires a name and the constructor for that component'
 				);
 			}
-			if (typeof name != "string") {
+			if (typeof name != 'string') {
 				for (let i in name) {
 					containerBuilder.register(name[i]).as(i);
 				}
