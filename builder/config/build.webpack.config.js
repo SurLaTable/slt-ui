@@ -12,52 +12,57 @@ function title(str) {
 
 let args = global.args || {};
 
-export default(name, config) => {
-  let finalConfig = merge({
-    mode: process.env.NODE_ENV,
-    stats: 'verbose',
-    devtool: false,
-    optimization: {
-      minimize: process.env.NODE_ENV === 'production',
-      namedChunks: true,
-      namedModules: true,
-      splitChunks: {}
-    },
-    resolveLoader: {
-      alias: {
-        //needed to support requirejs module
-        text: "text-loader"
-      }
-    },
-    externals: {
-      jquery: "jQuery",
-      'react': 'React',
-      'react-dom': 'ReactDom',
-      'react-redux': 'ReactRedux',
-      'redux': 'Redux'
-    },
-    output: {
-      filename: "[name].min.js",
-      chunkFilename: "[name].js",
-      jsonpFunction: "webpackJsonp",
-      publicPath: ""
-    },
-    module: {
-      rules: [
-        {
-          test: /(\.js|\.jsx)$/,
-          use: {
-            loader: "babel-loader",
-            options: babelConfig
-          },
-          exclude: /(node_modules)/
-        }
-      ]
-    },
-    plugins: [new webpack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
-      })]
-  }, config);
+export default (name, config) => {
+	let finalConfig = merge(
+		{
+			mode: process.env.NODE_ENV,
+			stats: 'verbose',
+			devtool: false,
+			optimization: {
+				minimize: process.env.NODE_ENV === 'production',
+				namedChunks: true,
+				namedModules: true,
+				splitChunks: {}
+			},
+			resolveLoader: {
+				alias: {
+					//needed to support requirejs module
+					text: 'text-loader'
+				}
+			},
+			externals: {
+				jquery: 'jQuery',
+				react: 'React',
+				'react-dom': 'ReactDom',
+				'react-redux': 'ReactRedux',
+				redux: 'Redux'
+			},
+			output: {
+				filename: '[name].min.js',
+				chunkFilename: '[name].js',
+				jsonpFunction: 'webpackJsonp',
+				publicPath: ''
+			},
+			module: {
+				rules: [
+					{
+						test: /(\.js|\.jsx)$/,
+						use: {
+							loader: 'babel-loader',
+							options: babelConfig
+						},
+						exclude: /(node_modules)/
+					}
+				]
+			},
+			plugins: [
+				new webpack.DefinePlugin({
+					'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+				})
+			]
+		},
+		config
+	);
 
 	if (!!args.report == true) {
 		finalConfig.plugins.push(
