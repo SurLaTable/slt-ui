@@ -67,3 +67,12 @@ cd build
 yarn login
 yarn publish
 ```
+
+To publish the `beta` tag to `npm` (for development environments), just add a `--tag beta` argument to `yarn publish`, in other words:
+
+```
+cd build
+yarn login
+yarn publish --tag beta
+```
+
