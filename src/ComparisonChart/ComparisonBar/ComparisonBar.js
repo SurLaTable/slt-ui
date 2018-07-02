@@ -59,7 +59,8 @@ class ComparisonBar extends React.Component {
 								2}px`,
 							paddingBottom: '48px',
 							position: 'fixed',
-							width: '90%'
+							width: '90%',
+							zIndex: 1300
 						}}
 					>
 						<BottomNavigation
