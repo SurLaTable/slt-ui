@@ -2,17 +2,14 @@ import 'colors';
 import rimraf from 'rimraf';
 import path from 'path';
 import fs from 'fs';
-import { info, warn } from './modules/print.js';
-import parseArgs from 'minimist';
-
-//Give every script access to args
-global.args = parseArgs(process.argv.slice(2));
+import { logInfo, logWarn } from './print.js';
+import args from './args.js';
 
 if (args.dev) {
-	warn('DEVELOPMENT ENVIRONMENT');
+	logWarn('DEVELOPMENT ENVIRONMENT');
 	process.env.NODE_ENV = 'development';
 } else {
-	info('PRODUCTION ENVIRONMENT');
+	logInfo('PRODUCTION ENVIRONMENT');
 	process.env.NODE_ENV = 'production';
 }
 
@@ -33,15 +30,17 @@ export function remove(filename) {
 }
 
 export async function clean() {
-	await remove(path.resolve('./build/async'));
-	await remove(path.resolve('./build/sync'));
-	await remove(path.resolve('./builder/temp/'));
+	await Promise.all([
+		remove(path.resolve('./build/async')),
+		remove(path.resolve('./build/sync')),
+		remove(path.resolve('./builder/temp/'))
+	]);
 }
 export async function done() {
 	if (args.dev) {
-		warn('DEVELOPMENT ENVIRONMENT');
+		logWarn('DEVELOPMENT ENVIRONMENT');
 	} else {
-		info('PRODUCTION ENVIRONMENT');
+		logInfo('PRODUCTION ENVIRONMENT');
 		await remove(path.resolve('./builder/temp/'));
 	}
 }

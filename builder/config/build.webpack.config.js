@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import babelConfig from './babel.config.js';
-import { dateTime } from '../modules/print.js';
+import { logDateTime } from '../modules/print.js';
 
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import merge from 'webpack-merge';
@@ -71,7 +71,7 @@ export default (name, config) => {
 				reportFilename: path.resolve(
 					`./reports/${title(name)}${title(
 						process.env.NODE_ENV
-					)}Report${dateTime()}.html`
+					)}Report${logDateTime()}.html`
 				)
 			})
 		);

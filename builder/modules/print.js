@@ -1,18 +1,18 @@
 import 'colors';
 
-export function date() {
+export function logDate() {
 	let d = new Date();
 	return `[${d
 		.toDateString()
 		.split(' ')
 		.join('')}]`;
 }
-export function time() {
+export function logTime() {
 	let d = new Date();
 	return `[${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}:${d.getMilliseconds()}]`;
 }
 
-export function dateTime() {
+export function logDateTime() {
 	let d = new Date();
 	return `[${d
 		.toDateString()
@@ -22,18 +22,18 @@ export function dateTime() {
 		)}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}]`;
 }
 
-export function info(...args) {
-	return console.info([time(), ...args].join(' ').cyan);
+export function logInfo(...args) {
+	return console.info([logTime(), ...args].join(' ').cyan);
 }
 
-export function warn(...args) {
-	return console.warn([time(), ...args].join(' ').yellow);
+export function logWarn(...args) {
+	return console.warn([logTime(), ...args].join(' ').yellow);
 }
 
-export function error(...args) {
-	return console.error([time(), ...args].join(' ').bgRed.white);
+export function logError(...args) {
+	return console.error([logTime(), ...args].join(' ').bgRed.white);
 }
 
-export function data(...args) {
-	return console.log([time(), ...args].join(' ').grey);
+export function logData(...args) {
+	return console.log([logTime(), ...args].join(' ').grey);
 }

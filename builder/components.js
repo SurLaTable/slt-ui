@@ -1,10 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
-import { info } from './modules/print.js';
+import { logInfo } from './modules/print.js';
 import webpackConfig from './config/build.webpack.config.js';
 
 export async function buildComponents() {
-	info('BUILD COMPONENTS STARTED');
+	logInfo('BUILD COMPONENTS STARTED');
 	var finalConfig = webpackConfig('Sync', {
 		entry: {
 			index: './src/index.js'
@@ -22,7 +22,7 @@ export async function buildComponents() {
 					colors: true
 				})
 			);
-			info('BUILD COMPONENTS ENDED');
+			logInfo('BUILD COMPONENTS ENDED');
 			if (err || stats.hasErrors()) {
 				reject(err);
 			} else {
