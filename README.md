@@ -75,4 +75,3 @@ cd build
 yarn login
 yarn publish --tag beta
 ```
-
