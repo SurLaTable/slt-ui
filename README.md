@@ -13,6 +13,9 @@ yarn sandbox
 
 More details on the sandbox functionality can be found [here](sandbox/README.md).
 
+Conversely, you can also hack on components using CodeSandbox:
+[![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/master/)
+
 ## Building:
 
 ```
@@ -27,11 +30,11 @@ yarn build
 | Build the development version.                 | `--dev`    |
 | Open the webpack bundle report after building. | `--report` |
 
-### What is this?
+## What is this?
 
 `slt-ui` allows you to use modern components on legacy systems. Single page apps are great, but some of us still need to deal with a legacy CMS or other systems. That doesn't mean we want to write legacy code though! Imagine using [Material UI](https://material-ui.com/) to build high level components and dropping them in any ancient CMS (WordPress, ATG, Sitecore, Drupal, Adobe Experience Manager, et cetera). Now you can!
 
-### How did you do this?
+## How did you do this?
 
 We got a lot of help from these libraries:
 
@@ -57,6 +60,18 @@ import { Button } from '@sur-la-table/slt-ui';
 ```
 
 For more details, head [here](build/README.md).
+
+## Contributing components:
+
+Note that production-ready components that utilize Material UI components, must use the following import syntax:
+
+```js
+import Button from '@material-ui/core/Button';
+```
+
+Note the lack of curly brackets around the import name, and the direct path to the component in the package string. Luckily, this is the exact syntax used in Material UI's documentation.
+
+Without this direct reference to a component, all of Material UI will be included in each component, rather than the specific component itself. As you can guess, this causes needless bloat for the end user.
 
 ## Publishing:
 

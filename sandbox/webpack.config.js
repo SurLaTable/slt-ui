@@ -19,7 +19,9 @@ export default config('Sandbox', {
 	entry: {
 		index: path.resolve(__dirname, 'index.js')
 	},
-	plugins: [new HtmlWebpackPlugin({
-		template: path.resolve(__dirname, 'index.html')
-	})]
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, 'index.html')
+		})
+	]
 });
