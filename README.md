@@ -14,6 +14,7 @@ yarn sandbox
 More details on the sandbox functionality can be found [here](sandbox/README.md).
 
 Conversely, you can also hack on components using CodeSandbox:
+
 [![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/master/)
 
 ## Building:
