@@ -611,6 +611,16 @@ $('body').append(
 	</div>'
 );
 
+$(
+	'\
+<style>\
+.comparison-checkbox, .comparison-checkbox svg {\
+    color: #333333;\
+}\
+</style>\
+'
+).appendTo('body');
+
 if (ComponentManifest) {
 	ComponentManifest.updateHabitat();
 }

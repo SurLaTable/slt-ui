@@ -1,16 +1,19 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import sltReducers from '../reducers/sltReducers';
 import thunk from 'redux-thunk';
+import { loadState, saveState } from './localStorage';
 
 export default function() {
-	return createStore(
+	const persistedState = loadState();
+	const store = createStore(
 		sltReducers,
 		compose(
 			applyMiddleware(thunk),
-			// Enable DevTools, switch to localStorage on Prod:
-			global.__REDUX_DEVTOOLS_EXTENSION__
-				? global.__REDUX_DEVTOOLS_EXTENSION__()
-				: (f) => f
+			persistedState
 		)
 	);
+	store.subscribe(() => {
+		saveState(store.getState());
+	});
+	return store;
 }
