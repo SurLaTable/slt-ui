@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import sltReducers from '../reducers/sltReducers';
 import thunk from 'redux-thunk';
 import { loadState, saveState } from './localStorage';
+// import persistState from 'redux-localstorage';
 
 export default function() {
 	const persistedState = loadState();
@@ -10,6 +11,7 @@ export default function() {
 		compose(
 			applyMiddleware(thunk),
 			persistedState
+			// persistState()
 		)
 	);
 	store.subscribe(() => {
