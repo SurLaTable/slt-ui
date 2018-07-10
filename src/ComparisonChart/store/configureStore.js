@@ -1,19 +1,21 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import sltReducers from '../reducers/sltReducers';
 import thunk from 'redux-thunk';
-import { loadState, saveState } from './localStorage';
+// import { loadState, saveState } from './localStorage';
+import persistState from 'redux-localstorage';
 
 export default function() {
-	const persistedState = loadState();
+	// const persistedState = loadState();
 	const store = createStore(
 		sltReducers,
 		compose(
 			applyMiddleware(thunk),
-			persistedState
+			// persistedState
+			persistState()
 		)
 	);
-	store.subscribe(() => {
-		saveState(store.getState());
-	});
+	// store.subscribe(() => {
+	// 	saveState(store.getState());
+	// });
 	return store;
 }

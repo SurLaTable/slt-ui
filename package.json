@@ -17,9 +17,6 @@
 		"component",
 		"library"
 	],
-	"browser": {
-		"fs": false
-	},
 	"engineStrict": true,
 	"engines": {
 		"node": ">=10.0.0"
@@ -62,6 +59,7 @@
 		"react-transition-group": "^2.2.1",
 		"recompose": "^0.26.0",
 		"redux": "^3.7.2",
+		"redux-localstorage": "^0.4.1",
 		"redux-thunk": "^2.3.0",
 		"scroll": "^2.0.3",
 		"warning": "^3.0.0"

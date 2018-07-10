@@ -18,9 +18,9 @@ export default (name, config) => {
 			mode: process.env.NODE_ENV,
 			stats: 'verbose',
 			devtool: false,
-			node: {
-				fs: 'empty'
-			},
+			// node: {
+			// 	fs: 'empty'
+			// },
 			target: 'web',
 			optimization: {
 				minimize: process.env.NODE_ENV === 'production',
@@ -40,6 +40,7 @@ export default (name, config) => {
 				'react-dom': 'ReactDom',
 				'react-redux': 'ReactRedux',
 				redux: 'Redux'
+				// fs: 'commonjs fs'
 			},
 			output: {
 				filename: '[name].min.js',
