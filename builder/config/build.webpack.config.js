@@ -21,6 +21,7 @@ export default (name, config) => {
 			node: {
 				fs: 'empty'
 			},
+			target: 'web',
 			optimization: {
 				minimize: process.env.NODE_ENV === 'production',
 				namedChunks: true,
@@ -29,7 +30,7 @@ export default (name, config) => {
 			},
 			resolveLoader: {
 				alias: {
-					//needed to support requirejs module
+					// This is needed for the requirejs module.
 					text: 'text-loader'
 				}
 			},
