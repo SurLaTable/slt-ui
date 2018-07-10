@@ -1,6 +1,6 @@
 if (typeof localStorage === 'undefined' || localStorage === null) {
 	const LocalStorage = require('node-localstorage').LocalStorage;
-	var localStorage = new LocalStorage('./scratch');
+	var localStorage = new LocalStorage('./sltReduxStore');
 }
 
 const loadState = () => {

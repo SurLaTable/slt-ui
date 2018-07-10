@@ -18,6 +18,9 @@ export default (name, config) => {
 			mode: process.env.NODE_ENV,
 			stats: 'verbose',
 			devtool: false,
+			node: {
+				fs: 'empty'
+			},
 			optimization: {
 				minimize: process.env.NODE_ENV === 'production',
 				namedChunks: true,
