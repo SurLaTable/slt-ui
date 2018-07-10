@@ -13,6 +13,7 @@ const loadState = () => {
 		return JSON.parse(serializedState);
 	} catch (err) {
 		console.warn('Failed to load Redux state.', err);
+		return (x) => x;
 	}
 };
 
@@ -22,6 +23,7 @@ const saveState = (state) => {
 		localStorage.setItem('state', serializedState);
 	} catch (err) {
 		console.warn('Failed to save Redux state.', err);
+		return (x) => x;
 	}
 };
 

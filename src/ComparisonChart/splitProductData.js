@@ -1,5 +1,5 @@
-const data = require('./data');
-const fs = require('fs');
+import data from './data';
+import fs from 'fs';
 
 Object.keys(data).forEach(function(product) {
 	fs.writeFileSync(
