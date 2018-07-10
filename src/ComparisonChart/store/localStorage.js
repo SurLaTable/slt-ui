@@ -1,12 +1,19 @@
-import localForage from 'localforage';
+if (typeof localStorage === 'undefined' || localStorage === null) {
+	const LocalStorage = require('node-localstorage').LocalStorage;
+	var localStorage = new LocalStorage('./scratch');
+}
 
 const loadState = () => {
 	try {
-		const serializedState = localForage.getItem('sltReduxStore');
-		if (!serializedState) {
+		const serializedState = localStorage.getItem('sltReduxStore');
+		const returnState = JSON.parse(serializedState);
+		console.log('serializedState:');
+		console.log(returnState);
+
+		if (returnState === null) {
 			return undefined;
 		}
-		return JSON.parse(serializedState);
+		return returnState;
 	} catch (err) {
 		console.warn('Failed to load Redux state.', err);
 	}
@@ -15,7 +22,7 @@ const loadState = () => {
 const saveState = (state) => {
 	try {
 		const serializedState = JSON.stringify(state);
-		localForage.setItem('state', serializedState);
+		localStorage.setItem('state', serializedState);
 	} catch (err) {
 		console.warn('Failed to save Redux state.', err);
 	}
