@@ -6,14 +6,11 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
 const loadState = () => {
 	try {
 		const serializedState = localStorage.getItem('sltReduxStore');
-		const returnState = JSON.parse(serializedState);
-		console.log('serializedState:');
-		console.log(returnState);
 
-		if (returnState === null) {
-			return undefined;
+		if (serializedState === null) {
+			return (x) => x;
 		}
-		return returnState;
+		return JSON.parse(serializedState);
 	} catch (err) {
 		console.warn('Failed to load Redux state.', err);
 	}
