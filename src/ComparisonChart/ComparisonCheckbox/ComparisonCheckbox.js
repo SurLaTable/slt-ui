@@ -42,16 +42,17 @@ let ComparisonCheckbox = (props) => {
 };
 
 ComparisonCheckbox = connect((state, props) => {
+	console.log('state:', state.productComparisonReducer);
 	let selection = state.productComparisonReducer
 		? state.productComparisonReducer.selection
 		: [];
 	let checked = false;
 
 	// TODO: Figure out why `selection` is populated with `undefined`.
-
 	if (selection.length) {
 		for (let i = 0; i < selection.length; i++) {
-			if (selection[i].id == props.product) {
+			// console.log(selection);
+			if (selection[i].id === props.product) {
 				checked = true;
 				break;
 			}

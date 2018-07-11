@@ -205,6 +205,7 @@ class ComparisonTable extends React.Component {
 										</Button>
 									</TableCell>
 									{props.selection.map((product, index) => {
+										console.log('product', product);
 										const first =
 											product[Object.keys(product)[0]];
 										return first ? (

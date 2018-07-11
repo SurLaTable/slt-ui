@@ -2,6 +2,7 @@ const productComparisonReducer = (state = {}, action) => {
 	console.log(action);
 	let selection = state.selection ? state.selection.slice() : [];
 	let data = state.productData || {};
+	console.log('data:', data);
 
 	switch (action.type) {
 		case 'REMOVE_ALL':
@@ -11,7 +12,7 @@ const productComparisonReducer = (state = {}, action) => {
 			};
 		case 'REMOVE_PRODUCT':
 			for (let i = selection.length - 1; i >= 0; i--) {
-				if (selection[i].id == action.productId) {
+				if (selection[i].id === action.productId) {
 					selection.splice(i, 1);
 					break;
 				}

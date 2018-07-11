@@ -78,6 +78,7 @@ class ComparisonBar extends React.Component {
 									// we just grab the first one available.
 									// We may decide later to change this behavior,
 									// with some kind of user selection tool.
+									// console.log(product);
 									const productData = product
 										? product[Object.keys(product)[0]]
 										: index;
