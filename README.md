@@ -2,9 +2,7 @@
 
 [![Travis build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui)
 
-<aside class="notice">
-Our build requires Node 10.x or greater.
-</aside>
+# :warning: Our build requires Node 10.x or greater.
 
 ## Getting started:
 
