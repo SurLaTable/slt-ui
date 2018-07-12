@@ -155,6 +155,7 @@ class ComparisonTable extends React.Component {
 							color: '#ffffff',
 							display: 'inline-block',
 							height: '20%',
+							marginLeft: '10px',
 							marginTop: '-40px'
 						}}
 					>

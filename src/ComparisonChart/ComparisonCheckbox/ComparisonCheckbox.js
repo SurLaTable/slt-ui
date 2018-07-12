@@ -29,6 +29,7 @@ let ComparisonCheckbox = (props) => {
 									)
 								);
 							}}
+							color="#333333"
 							disabled={props.disabled}
 							checked={props.checked}
 							data-product={props.product}
