@@ -45,12 +45,12 @@ function generateSLTUIAsync(promises) {
 				}
 
 				let code = `
-        if(process.env.NODE_ENV === 'development'){
-          console.warn('Using development version of slt-ui');
-        }
+					if (process.env.NODE_ENV === 'development') {
+						console.warn('Using development version of slt-ui.');
+					}
 
-        export * from '../material/index.js';
-      `;
+					export * from '../material/index.js';
+				`;
 				for (let i = 0; i < files.length; i++) {
 					let file = files[i];
 					let folderName = path.posix.basename(
@@ -59,8 +59,8 @@ function generateSLTUIAsync(promises) {
 					info(file);
 					var module = require(file);
 					let indexCode = `
-          import {asyncComponent} from 'react-async-component';
-        `;
+						import { asyncComponent } from 'react-async-component';
+					`;
 					for (let component in module) {
 						if (
 							module.hasOwnProperty(component) === false ||
@@ -76,13 +76,13 @@ function generateSLTUIAsync(promises) {
 						data('ASYNC SLT-UI:', file, ' - ', component);
 
 						indexCode += `
-            export const ${component} = asyncComponent({
-              resolve: ()=>import('${path.posix.relative(
-					`./builder/temp/slt/${folderName}`,
-					path.posix.resolve(file)
-				)}' /*webpackChunkName: '${component}'*/).then((module)=>module['${component}'])
-            });
-          `;
+							export const ${component} = asyncComponent({
+								resolve: () => import('${path.posix.relative(
+									`./builder/temp/slt/${folderName}`,
+									path.posix.resolve(file)
+								)}' /*webpackChunkName: '${component}'*/).then((module) => module['${component}'])
+							});
+          	`;
 					}
 					promises.push(
 						write(
@@ -94,8 +94,8 @@ function generateSLTUIAsync(promises) {
 					);
 
 					code += `
-          export * from './${folderName}'
-        `;
+						export * from './${folderName}';
+					`;
 				}
 
 				promises.push(
@@ -145,13 +145,13 @@ function generateMaterialAsync(promises) {
 						}
 						data('ASYNC MATERIAL:', file, ' - ', component);
 						indexCode += `
-            export const ${component} = asyncComponent({
-              resolve: ()=>import('${path.posix.relative(
-					`./builder/temp/material/${folderName}`,
-					path.posix.resolve(file)
-				)}' /*webpackChunkName: '${component}'*/).then((module)=>module['${component}'])
-            });
-          `;
+							export const ${component} = asyncComponent({
+								resolve: () => import('${path.posix.relative(
+									`./builder/temp/material/${folderName}`,
+									path.posix.resolve(file)
+								)}' /*webpackChunkName: '${component}'*/).then((module) => module['${component}'])
+							});
+						`;
 					}
 
 					promises.push(
@@ -164,8 +164,8 @@ function generateMaterialAsync(promises) {
 					);
 
 					code += `
-          export * from './${folderName}'
-        `;
+						export * from './${folderName}';
+					`;
 				}
 
 				promises.push(
@@ -189,7 +189,7 @@ export async function generateAsync() {
 }
 generateAsync.displayName = 'generate-async';
 generateAsync.description =
-	'wrap material and slt-ui components in asyncComponent';
+	'Wrap material and slt-ui components in asyncComponent.';
 
 export async function buildManifest() {
 	info('BUILD MANIFEST STARTED');
@@ -210,9 +210,9 @@ export async function buildManifest() {
 
 	return new Promise((resolve, reject) => {
 		webpack(finalConfig, (err, stats) => {
-			console.log(
+			data(
 				stats.toString({
-					// Shows colors in the console
+					// Shows colors in the console:
 					colors: true
 				})
 			);

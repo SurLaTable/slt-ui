@@ -16,9 +16,9 @@ export async function buildComponents() {
 
 	return new Promise((resolve, reject) => {
 		webpack(finalConfig, (err, stats) => {
-			console.log(
+			data(
 				stats.toString({
-					// Shows colors in the console
+					// Shows colors in the console:
 					colors: true
 				})
 			);
