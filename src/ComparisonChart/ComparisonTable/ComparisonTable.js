@@ -21,11 +21,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { Cancel as CancelIcon } from '../icons';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22
-	}
-});
+const theme = createMuiTheme({});
 
 const imageStyles = {
 	border: '1px solid black',
@@ -206,7 +202,6 @@ class ComparisonTable extends React.Component {
 										</Button>
 									</TableCell>
 									{props.selection.map((product, index) => {
-										console.log('product', product);
 										const first =
 											product[Object.keys(product)[0]];
 										return first ? (
