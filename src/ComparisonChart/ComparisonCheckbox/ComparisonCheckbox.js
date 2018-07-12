@@ -8,11 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { actionToggleProductSelection } from '../actions/productComparisonActions';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22
-	}
-});
+const theme = createMuiTheme({});
 
 let ComparisonCheckbox = (props) => {
 	return (
@@ -29,6 +25,9 @@ let ComparisonCheckbox = (props) => {
 									)
 								);
 							}}
+							style={{
+								color: '#333333'
+							}}
 							disabled={props.disabled}
 							checked={props.checked}
 							data-product={props.product}
@@ -42,7 +41,6 @@ let ComparisonCheckbox = (props) => {
 };
 
 ComparisonCheckbox = connect((state, props) => {
-	console.log('state:', state.productComparisonReducer);
 	let selection = state.productComparisonReducer
 		? state.productComparisonReducer.selection
 		: [];
@@ -51,7 +49,6 @@ ComparisonCheckbox = connect((state, props) => {
 	// TODO: Figure out why `selection` is populated with `undefined`.
 	if (selection.length) {
 		for (let i = 0; i < selection.length; i++) {
-			// console.log(selection);
 			if (selection[i].id === props.product) {
 				checked = true;
 				break;

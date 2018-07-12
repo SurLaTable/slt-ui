@@ -13,11 +13,7 @@ import Slide from '@material-ui/core/Slide';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22
-	}
-});
+const theme = createMuiTheme({});
 
 class ComparisonBar extends React.Component {
 	render() {
@@ -43,7 +39,7 @@ class ComparisonBar extends React.Component {
 					direction="up"
 					in={typeof selection[0] === 'object'}
 					mountOnEnter
-					unmountOn
+					unmountOnExit
 				>
 					<Paper
 						className="comparison-bar"
@@ -78,7 +74,6 @@ class ComparisonBar extends React.Component {
 									// we just grab the first one available.
 									// We may decide later to change this behavior,
 									// with some kind of user selection tool.
-									// console.log(product);
 									const productData = product
 										? product[Object.keys(product)[0]]
 										: index;
