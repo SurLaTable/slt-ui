@@ -37,7 +37,7 @@ const badgeStyles = {
 
 const tableCellStyles = {
 	border: '1px solid #cccccc',
-	maxWidth: `${global.innerWidth * 0.25}px`
+	maxWidth: `${global.innerWidth * 0.1}px`
 };
 
 const tableModels = {
@@ -180,6 +180,17 @@ class ComparisonTable extends React.Component {
 					</Typography>
 
 					<Dialog
+						PaperProps={{
+							style: {
+								height: `${window.innerHeight}px`,
+								maxHeight: `${window.innerHeight}px`,
+								maxWidth: `${window.innerWidth * 0.95}px`,
+								width: `${window.innerWidth * 0.95}px`,
+								overflowX: 'hidden'
+							}
+						}}
+						maxWidth={false}
+						fullWidth={true}
 						open={this.state.open}
 						onClose={this.handleClose.bind(this)}
 						TransitionComponent={Transition}
