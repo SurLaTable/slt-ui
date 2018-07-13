@@ -9,11 +9,11 @@ export default function() {
 		compose(
 			applyMiddleware(thunk),
 			// Enable DevTools, switch to redux-localstorage for Production:
-			global.__REDUX_DEVTOOLS_EXTENSION__
-				? global.__REDUX_DEVTOOLS_EXTENSION__()
-				: (x) => x
+			// global.__REDUX_DEVTOOLS_EXTENSION__
+			// 	? global.__REDUX_DEVTOOLS_EXTENSION__()
+			// 	: (x) => x
 			// redux-localstorage:
-			// persistState()
+			persistState()
 		)
 	);
 	return store;

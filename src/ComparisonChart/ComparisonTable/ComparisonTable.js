@@ -19,7 +19,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
-import { Cancel as CancelIcon } from '../icons';
+import { Cancel as CancelIcon, PlayForWork as PlayForWorkIcon } from '../icons';
 
 const theme = createMuiTheme({});
 
@@ -198,7 +198,7 @@ class ComparisonTable extends React.Component {
 												this
 											)}
 										>
-											<CancelIcon />Hide chart
+											<PlayForWorkIcon />Hide chart
 										</Button>
 									</TableCell>
 									{props.selection.map((product, index) => {
