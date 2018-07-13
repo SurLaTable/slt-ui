@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-import { info } from './modules/print.js';
+import { data, info } from './modules/print.js';
 import webpackConfig from './config/build.webpack.config.js';
 
 export async function buildComponents() {

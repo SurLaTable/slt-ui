@@ -36,7 +36,8 @@ const badgeStyles = {
 };
 
 const tableCellStyles = {
-	border: '1px solid #cccccc'
+	border: '1px solid #cccccc',
+	maxWidth: `${global.innerWidth * 0.25}px`
 };
 
 const tableModels = {
@@ -179,14 +180,13 @@ class ComparisonTable extends React.Component {
 					</Typography>
 
 					<Dialog
-						fullScreen
 						open={this.state.open}
 						onClose={this.handleClose.bind(this)}
 						TransitionComponent={Transition}
 						transitionDuration={600}
 					>
 						<Table>
-							<TableHead>
+							<TableHead style={{ position: 'sticky', top: 0 }}>
 								<TableRow
 									style={{
 										backgroundColor: '#E4E4E4'

@@ -18,9 +18,6 @@ export default (name, config) => {
 			mode: process.env.NODE_ENV,
 			stats: 'verbose',
 			devtool: false,
-			// node: {
-			// 	fs: 'empty'
-			// },
 			target: 'web',
 			optimization: {
 				minimize: process.env.NODE_ENV === 'production',
