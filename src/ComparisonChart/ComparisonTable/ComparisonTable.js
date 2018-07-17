@@ -26,6 +26,7 @@ import { Cancel as CancelIcon, PlayForWork as PlayForWorkIcon } from '../icons';
 const theme = createMuiTheme({
 	typography: {
 		fontSize: 20,
+		fontFamily: "'MrEavesModern', Verdana, Arial, Helvetica, sans-serif",
 	},
 });
 

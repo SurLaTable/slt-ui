@@ -11,6 +11,7 @@ import { actionToggleProductSelection } from '../actions/productComparisonAction
 const theme = createMuiTheme({
 	typography: {
 		fontSize: 20,
+		fontFamily: "'MrEavesModern', Verdana, Arial, Helvetica, sans-serif",
 	},
 });
 
