@@ -42,12 +42,6 @@ const tableCellStyles = {
 	width: `${global.innerWidth / 5}px`,
 };
 
-const tableTopCellStyles = {
-	border: '1px solid #cccccc',
-	width: `${global.innerWidth / 5.3}px`,
-	paddingRight: '15px',
-};
-
 const tableModels = {
 	cutlery: {
 		DIMENSIONS: ['Blade Length', 'Total Length', 'Tang Type'],
@@ -186,15 +180,10 @@ class ComparisonTable extends React.Component {
 					<Dialog
 						PaperProps={{
 							style: {
-								// height: `${window.innerHeight}px`,
-								// maxHeight: `${window.innerHeight}px`,
-								// maxWidth: `${window.innerWidth * 0.95}px`,
 								padding: 0,
-								// width: `${window.innerWidth * 0.95}px`
-								// overflowX: 'hidden'
 							},
 						}}
-						style={{ padding: 0 }}
+						style={{ overflow: 'overlay', padding: 0 }}
 						maxWidth={false}
 						fullWidth={true}
 						open={this.state.open}
@@ -203,22 +192,19 @@ class ComparisonTable extends React.Component {
 						TransitionComponent={Transition}
 						transitionDuration={600}
 					>
-						<DialogTitle style={{ padding: 0 }}>
-							<Table style={{ boxSizing: 'border-box' }}>
+						<DialogTitle style={{ overflow: 'overlay', padding: 0 }}>
+							<Table>
 								<TableHead>
 									<TableRow
 										style={{
 											backgroundColor: '#E4E4E4',
 										}}
 									>
-										<TableCell
-											padding="dense"
-											style={Object.assign({}, tableTopCellStyles, {
-												// width: `${global.innerWidth / 5.15}px`,
-												// paddingRight: '15px',
-											})}
-										>
-											<Button onClick={this.handleClose.bind(this)}>
+										<TableCell padding="dense" style={tableCellStyles}>
+											<Button
+												style={{ padding: 0 }}
+												onClick={this.handleClose.bind(this)}
+											>
 												<PlayForWorkIcon />Hide chart
 											</Button>
 										</TableCell>
@@ -228,7 +214,7 @@ class ComparisonTable extends React.Component {
 												<TableCell
 													padding="dense"
 													key={index}
-													style={tableTopCellStyles}
+													style={tableCellStyles}
 												>
 													<Badge
 														data-product-id={product.id}
@@ -260,7 +246,7 @@ class ComparisonTable extends React.Component {
 								</TableHead>
 							</Table>
 						</DialogTitle>
-						<DialogContent style={{ padding: 0 }}>
+						<DialogContent style={{ overflow: 'overlay', padding: 0 }}>
 							<Table>
 								{sections.map((section, index) => {
 									return (
