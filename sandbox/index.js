@@ -1,11 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import {
-	StoreProvider,
-	ComparisonBar,
-	ComparisonCheckbox
-} from '@sur-la-table/slt-ui';
+import { StoreProvider, ComparisonBar, ComparisonCheckbox } from '@sur-la-table/slt-ui';
 
 const app = (
 	<StoreProvider>

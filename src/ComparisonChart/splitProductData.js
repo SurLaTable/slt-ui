@@ -5,6 +5,6 @@ Object.keys(data).forEach(function(product) {
 	fs.writeFileSync(
 		__dirname + '/productData/' + product + '.json',
 		JSON.stringify(data[product]),
-		'utf-8'
+		'utf-8',
 	);
 });

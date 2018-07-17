@@ -13,8 +13,8 @@ export default function() {
 			// 	? global.__REDUX_DEVTOOLS_EXTENSION__()
 			// 	: (x) => x
 			// redux-localstorage:
-			persistState()
-		)
+			persistState(),
+		),
 	);
 	return store;
 }

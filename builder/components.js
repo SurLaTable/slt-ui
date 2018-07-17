@@ -7,11 +7,11 @@ export async function buildComponents() {
 	info('BUILD COMPONENTS STARTED');
 	var finalConfig = webpackConfig('Sync', {
 		entry: {
-			index: './src/index.js'
+			index: './src/index.js',
 		},
 		output: {
-			path: path.resolve('./build/sync')
-		}
+			path: path.resolve('./build/sync'),
+		},
 	});
 
 	return new Promise((resolve, reject) => {
@@ -19,8 +19,8 @@ export async function buildComponents() {
 			data(
 				stats.toString({
 					// Shows colors in the console:
-					colors: true
-				})
+					colors: true,
+				}),
 			);
 			info('BUILD COMPONENTS ENDED');
 			if (err || stats.hasErrors()) {

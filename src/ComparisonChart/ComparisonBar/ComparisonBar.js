@@ -28,10 +28,7 @@ class ComparisonBar extends React.Component {
 		// React Habitat's `data-prop` vs `data-n-prop`.
 		const selection = Array(Number(props.numberOfItems))
 			.fill()
-			.map(
-				(ignore, index) =>
-					(props.selection && props.selection[index]) || index
-			);
+			.map((ignore, index) => (props.selection && props.selection[index]) || index);
 
 		return (
 			<MuiThemeProvider theme={theme}>
@@ -50,20 +47,18 @@ class ComparisonBar extends React.Component {
 						style={{
 							backgroundColor: '#E4E4E4',
 							bottom: 0,
-							marginLeft: `${(global.innerWidth -
-								global.innerWidth * 0.9) /
-								2}px`,
+							marginLeft: `${(global.innerWidth - global.innerWidth * 0.9) / 2}px`,
 							paddingBottom: '48px',
 							position: 'fixed',
 							width: '90%',
-							zIndex: 1300
+							zIndex: 1300,
 						}}
 					>
 						<BottomNavigation
 							showLabels
 							style={{
 								backgroundColor: '#E4E4E4',
-								marginTop: '10px'
+								marginTop: '10px',
 							}}
 						>
 							<ComparisonTable type="cutlery" />
@@ -84,11 +79,7 @@ class ComparisonBar extends React.Component {
 											key={index}
 											label={
 												productData
-													? `${
-															productData[
-																'Web Brand'
-															]
-													  } ${
+													? `${productData['Web Brand']} ${
 															productData.Collection
 													  }`
 													: `Item #${index + 1}`
@@ -99,46 +90,30 @@ class ComparisonBar extends React.Component {
 												<React.Fragment>
 													{productId.length ? (
 														<Badge
-															data-product-id={
-																productId
-															}
-															badgeContent={
-																<CancelIcon />
-															}
-															onClick={(
-																event,
-																checked
-															) => {
+															data-product-id={productId}
+															badgeContent={<CancelIcon />}
+															onClick={(event, checked) => {
 																props.dispatch(
-																	actionRemoveProduct(
-																		productId
-																	)
+																	actionRemoveProduct(productId),
 																);
 															}}
 														>
 															<img
-																alt={`${
-																	productData[
-																		'Web Brand'
-																	]
-																} ${
+																alt={`${productData['Web Brand']} ${
 																	productData.Collection
 																}`}
 																src={`https://www.surlatable.com/images/customers/c1079/${productId}/generated/${productId}_Default_1_200x200.jpg`}
 																style={{
-																	border:
-																		'1px solid black',
-																	height:
-																		'50px',
-																	width:
-																		'50px'
+																	border: '1px solid black',
+																	height: '50px',
+																	width: '50px',
 																}}
 															/>
 														</Badge>
 													) : (
 														<AddBoxIcon
 															style={{
-																fontSize: 50
+																fontSize: 50,
 															}}
 														/>
 													)}
@@ -156,19 +131,19 @@ class ComparisonBar extends React.Component {
 }
 
 ComparisonBar.defaultProps = {
-	numberOfItems: 3
+	numberOfItems: 3,
 };
 
 ComparisonBar = connect((state, props) => {
 	if (state.productComparisonReducer) {
 		return {
 			...props,
-			selection: state.productComparisonReducer.selection
+			selection: state.productComparisonReducer.selection,
 		};
 	} else {
 		return {
 			selection: [],
-			...props
+			...props,
 		};
 	}
 })(ComparisonBar);

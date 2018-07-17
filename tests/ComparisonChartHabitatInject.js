@@ -586,13 +586,10 @@ $(document).ready(function() {
 		'PRO-3902814',
 		'PRO-3902822',
 		'PRO-3982113',
-		'PRO-3987872'
+		'PRO-3987872',
 	];
 
-	$('.item.ec_listing .quickviewlink input[value]').each(function(
-		ignore,
-		item
-	) {
+	$('.item.ec_listing .quickviewlink input[value]').each(function(ignore, item) {
 		if (productIds.indexOf(item.value) !== -1) {
 			$(item)
 				.closest('dt')
@@ -604,7 +601,7 @@ $(document).ready(function() {
 						item.value +
 						'">\
 						</div>\
-					</div>'
+					</div>',
 				);
 		}
 	});
@@ -612,7 +609,7 @@ $(document).ready(function() {
 	$('body').append(
 		'<div data-component="StoreProvider">\
 			<div data-component="ComparisonBar" data-n-prop-number-of-items="3"></div>\
-		</div>'
+		</div>',
 	);
 
 	$(
@@ -625,7 +622,7 @@ $(document).ready(function() {
 				background-color: rgba(0, 0, 0, 0.2) !important;\
 			}\
 		</style>\
-		'
+		',
 	).appendTo('body');
 
 	$('.pagination').hide();
@@ -660,21 +657,16 @@ $(document).ready(function() {
 				// Could be due to the nature of JSS.
 				// $('table[class*=jss]').floatThead();
 
-				$('table[class*=jss] > thead > tr:eq(0) > th').each(function(
-					index,
-					header
-				) {
+				$('table[class*=jss] > thead > tr:eq(0) > th').each(function(index, header) {
 					if (index > 0) {
 						var adjustedIndex = index - 1;
 						$(header).wrapInner(
-							'<div style="clear: both; float: left; margin-right: 20px;"></div>'
+							'<div style="clear: both; float: left; margin-right: 20px;"></div>',
 						);
 						if (priceObj[Object.keys(priceObj)[adjustedIndex]]) {
 							$(header).append(
 								'<div style="float: left; margin-top: 10px;">' +
-									priceObj[
-										Object.keys(priceObj)[adjustedIndex]
-									] +
+									priceObj[Object.keys(priceObj)[adjustedIndex]] +
 									'\
 									<a \
 										class="product-addToCart comparison-chart-add-to-cart"\
@@ -712,7 +704,7 @@ $(document).ready(function() {
 									ADD TO CART\
 									</a>\
 									' +
-									'</div>'
+									'</div>',
 							);
 						}
 					}
@@ -722,15 +714,13 @@ $(document).ready(function() {
 			// Add to cart action:
 
 			// Use event delegation to catch any 'ADD TO CART' click.
-			$(document).on('click', '.comparison-chart-add-to-cart', function(
-				event
-			) {
+			$(document).on('click', '.comparison-chart-add-to-cart', function(event) {
 				var productId = event.target.dataset.productId;
 				// Establish our 'bonus' item (gift with purchase):
 				var giftWithPurchaseItem = {
 					sku: productId.slice(4),
 					productId: productId,
-					quantity: 1
+					quantity: 1,
 				};
 
 				// Set a sku on the main product that is eligible
@@ -749,23 +739,23 @@ $(document).ready(function() {
 						target: 'cart',
 						timeStamp: new Date(),
 						processed: {
-							adobeAnalytics: false
-						}
+							adobeAnalytics: false,
+						},
 					},
 					product: [
 						{
 							productInfo: {
 								productID: giftWithPurchaseItem.productId,
-								sku: giftWithPurchaseItem.sku
+								sku: giftWithPurchaseItem.sku,
 							},
 							category: {
 								productType: '',
 								size: '',
-								color: ''
+								color: '',
 							},
-							quantity: giftWithPurchaseItem.quantity
-						}
-					]
+							quantity: giftWithPurchaseItem.quantity,
+						},
+					],
 				};
 
 				// Check if the sku matches our eligible item, or
@@ -778,24 +768,17 @@ $(document).ready(function() {
 				) {
 					// Fill add to cart form:
 					var $form = $('#addItemToCartForm');
-					$form
-						.find('.commerceItemTypeToSubmit')
-						.val('storeCommerceItem');
-					$form
-						.find('.productToSubmit')
-						.val(giftWithPurchaseItem.productId);
+					$form.find('.commerceItemTypeToSubmit').val('storeCommerceItem');
+					$form.find('.productToSubmit').val(giftWithPurchaseItem.productId);
 					$form.find('.skuToSubmit').val(giftWithPurchaseItem.sku);
-					$form
-						.find('.qtyToSubmit')
-						.val(giftWithPurchaseItem.quantity);
+					$form.find('.qtyToSubmit').val(giftWithPurchaseItem.quantity);
 					$form.find('.addCulinaryToOrder').attr('disabled', 'true');
 
 					// Submit the cart form so that our bonus item is added to cart.
 					$form.ajaxSubmit().done(function() {
 						// Push it onto the event array on the digitalData object.
 						window.digitalData = window.digitalData || {};
-						window.digitalData.event =
-							window.digitalData.event || [];
+						window.digitalData.event = window.digitalData.event || [];
 						window.digitalData.event.push(ddPersistedListAddEvent);
 
 						// Create and dispatch an event trigger (using predefined sendCustomEvent function).

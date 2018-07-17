@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
 	actionRemoveAll,
 	actionRemoveProduct,
-	actionSetProducts
+	actionSetProducts,
 } from '../actions/productComparisonActions';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
@@ -11,6 +11,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Table from '@material-ui/core/Table';
@@ -27,18 +28,18 @@ const theme = createMuiTheme({});
 const imageStyles = {
 	border: '1px solid black',
 	display: 'block',
-	width: '90px'
+	width: '90px',
 };
 
 const badgeStyles = {
 	display: 'block',
 	marginTop: '10px',
-	width: '90px'
+	width: '90px',
 };
 
 const tableCellStyles = {
 	border: '1px solid #cccccc',
-	maxWidth: `${global.innerWidth * 0.1}px`
+	// maxWidth: `${global.innerWidth * 0.1}px`
 };
 
 const tableModels = {
@@ -55,21 +56,21 @@ const tableModels = {
 			'Country of Origin',
 			'Warranty',
 			{ name: 'Care & Usage', format: 'html' },
-			{ name: "What's in the Box", format: 'html' }
-		]
+			{ name: "What's in the Box", format: 'html' },
+		],
 		// SHIPPING: ['Drop Ship Ind'],
 	},
 	// This is just an example of another possible type:
 	appliance: {
-		Features: ['Blends', 'Blade type']
-	}
+		Features: ['Blends', 'Blade type'],
+	},
 };
 
 const Transition = (props) => <Slide direction="up" {...props} />;
 
 class ComparisonTable extends React.Component {
 	state = {
-		open: false
+		open: false,
 	};
 
 	constructor() {
@@ -89,10 +90,7 @@ class ComparisonTable extends React.Component {
 			if (state == null) {
 				// CLOSE COMPARISON TABLE:
 				this.setState({ open: false });
-			} else if (
-				state.type === 'OPEN_COMPARISON_TABLE' &&
-				!this.state.open
-			) {
+			} else if (state.type === 'OPEN_COMPARISON_TABLE' && !this.state.open) {
 				this.props.dispatch(actionSetProducts(state.selection));
 				this.setState({ open: true });
 				global.history.replaceState(state, 'ComparisonTable');
@@ -105,9 +103,9 @@ class ComparisonTable extends React.Component {
 			global.history.pushState(
 				{
 					type: 'OPEN_COMPARISON_TABLE',
-					selection: this.props.selection
+					selection: this.props.selection,
 				},
-				'ComparisonTable'
+				'ComparisonTable',
 			);
 		}
 		this.setState({ open: true });
@@ -154,7 +152,7 @@ class ComparisonTable extends React.Component {
 							display: 'inline-block',
 							height: '20%',
 							marginLeft: '10px',
-							marginTop: '-40px'
+							marginTop: '-40px',
 						}}
 					>
 						COMPARE
@@ -164,11 +162,10 @@ class ComparisonTable extends React.Component {
 							display: 'inline-block',
 							margin: '10px 30px',
 							width: '250px',
-							textAlign: 'left'
+							textAlign: 'left',
 						}}
 					>
-						Select up to 3 products to compare and find the best one
-						for you.
+						Select up to 3 products to compare and find the best one for you.
 						<br />
 						<Button
 							onClick={(event, checked) => {
@@ -183,180 +180,136 @@ class ComparisonTable extends React.Component {
 					<Dialog
 						PaperProps={{
 							style: {
-								height: `${window.innerHeight}px`,
-								maxHeight: `${window.innerHeight}px`,
-								maxWidth: `${window.innerWidth * 0.95}px`,
-								width: `${window.innerWidth * 0.95}px`
+								// height: `${window.innerHeight}px`,
+								// maxHeight: `${window.innerHeight}px`,
+								// maxWidth: `${window.innerWidth * 0.95}px`,
+								padding: 0,
+								// width: `${window.innerWidth * 0.95}px`
 								// overflowX: 'hidden'
-							}
+							},
 						}}
+						style={{ padding: 0 }}
 						maxWidth={false}
 						fullWidth={true}
 						open={this.state.open}
 						onClose={this.handleClose.bind(this)}
+						scroll="paper"
 						TransitionComponent={Transition}
 						transitionDuration={600}
 					>
-						<Table>
-							<DialogTitle>
+						<DialogTitle style={{ padding: 0 }}>
+							<Table>
 								<TableHead>
 									<TableRow
 										style={{
-											backgroundColor: '#E4E4E4'
+											backgroundColor: '#E4E4E4',
 										}}
 									>
 										<TableCell style={tableCellStyles}>
-											<Button
-												onClick={this.handleClose.bind(
-													this
-												)}
-											>
+											<Button onClick={this.handleClose.bind(this)}>
 												<PlayForWorkIcon />Hide chart
 											</Button>
 										</TableCell>
-										{props.selection.map(
-											(product, index) => {
-												const first =
-													product[
-														Object.keys(product)[0]
-													];
-												return first ? (
-													<TableCell
-														key={index}
-														style={tableCellStyles}
+										{props.selection.map((product, index) => {
+											const first = product[Object.keys(product)[0]];
+											return first ? (
+												<TableCell key={index} style={tableCellStyles}>
+													<Badge
+														data-product-id={product.id}
+														badgeContent={<CancelIcon />}
+														style={badgeStyles}
+														onClick={(event, checked) => {
+															props.dispatch(
+																actionRemoveProduct(product.id),
+															);
+														}}
 													>
-														<Badge
-															data-product-id={
+														<img
+															alt={`${first['Web Brand']} ${
+																first.Collection
+															}`}
+															style={imageStyles}
+															src={`https://www.surlatable.com/images/customers/c1079/${
 																product.id
-															}
-															badgeContent={
-																<CancelIcon />
-															}
-															style={badgeStyles}
-															onClick={(
-																event,
-																checked
-															) => {
-																props.dispatch(
-																	actionRemoveProduct(
-																		product.id
-																	)
-																);
-															}}
-														>
-															<img
-																alt={`${
-																	first[
-																		'Web Brand'
-																	]
-																} ${
-																	first.Collection
-																}`}
-																style={
-																	imageStyles
-																}
-																src={`https://www.surlatable.com/images/customers/c1079/${
-																	product.id
-																}/generated/${
-																	product.id
-																}_Default_1_200x200.jpg`}
-															/>
-														</Badge>
-														{`${
-															first['Web Brand']
-														} ${first.Collection}`}
-													</TableCell>
-												) : null;
-											}
-										)}
+															}/generated/${
+																product.id
+															}_Default_1_200x200.jpg`}
+														/>
+													</Badge>
+													{`${first['Web Brand']} ${first.Collection}`}
+												</TableCell>
+											) : null;
+										})}
 									</TableRow>
 								</TableHead>
-							</DialogTitle>
-						</Table>
-						<Table>
-							<TableBody
-								style={{
-									width: `${window.innerWidth * 0.93}px`,
-									height: `${window.innerHeight}px`,
-									overflowY: 'scroll'
-								}}
-							>
-								{sections.map((section, index) => {
-									return (
-										<React.Fragment key={index}>
-											<TableHead>
-												<TableRow
-													style={{
-														backgroundColor:
-															'#111111',
-														height: '36px'
-													}}
-												>
-													{
-														// This Array().fill() has to exist to allow the column to
-														// extend one beyond the selection length (for the sake of
-														// the first column).
-													}
-													{props.selection &&
-														Array(
-															props.selection
-																.length + 1
-														)
-															.fill()
-															.map(
-																(
-																	ignore,
-																	index
-																) =>
-																	index ? (
-																		<TableCell
-																			key={
-																				index
-																			}
-																			style={
-																				tableCellStyles
-																			}
-																		/>
-																	) : (
-																		<TableCell
-																			key={
-																				index
-																			}
-																			style={
-																				// Extend an empty object with our default styles:
-																				Object.assign(
-																					{},
-																					tableCellStyles,
-																					{
-																						color:
-																							'#ffffff',
-																						fontWeight: 900
-																					}
-																				)
-																			}
-																		>
-																			{
-																				section
-																			}
-																		</TableCell>
-																	)
-															)}
-												</TableRow>
-											</TableHead>
-											<TableBody>
-												{attributes[section].map(
-													(attribute, index) => {
+							</Table>
+						</DialogTitle>
+						<DialogContent style={{ padding: 0 }}>
+							<Table>
+								<TableBody
+								// style={{
+								// 	width: `${window.innerWidth * 0.93}px`,
+								// 	height: `${window.innerHeight}px`,
+								// 	overflowY: 'scroll'
+								// }}
+								>
+									{sections.map((section, index) => {
+										return (
+											<React.Fragment key={index}>
+												<TableHead>
+													<TableRow
+														style={{
+															backgroundColor: '#111111',
+															height: '36px',
+														}}
+													>
+														{
+															// This Array().fill() has to exist to allow the column to
+															// extend one beyond the selection length (for the sake of
+															// the first column).
+														}
+														{props.selection &&
+															Array(props.selection.length + 1)
+																.fill()
+																.map(
+																	(ignore, index) =>
+																		index ? (
+																			<TableCell
+																				key={index}
+																				style={
+																					tableCellStyles
+																				}
+																			/>
+																		) : (
+																			<TableCell
+																				key={index}
+																				style={
+																					// Extend an empty object with our default styles:
+																					Object.assign(
+																						{},
+																						tableCellStyles,
+																						{
+																							color:
+																								'#ffffff',
+																							fontWeight: 900,
+																						},
+																					)
+																				}
+																			>
+																				{section}
+																			</TableCell>
+																		),
+																)}
+													</TableRow>
+												</TableHead>
+												<TableBody>
+													{attributes[section].map((attribute, index) => {
 														let format = 'default';
 														// Determine if the property is an object or a string.
 														// We don't need to use strings for our later processing.
-														if (
-															typeof attribute !==
-															'string'
-														) {
-															format =
-																attribute.format;
-															attribute =
-																attribute.name;
+														if (typeof attribute !== 'string') {
+															format = attribute.format;
+															attribute = attribute.name;
 														}
 														return (
 															<TableRow
@@ -364,12 +317,9 @@ class ComparisonTable extends React.Component {
 																style={{
 																	// This alternates the color of every other row:
 																	backgroundColor:
-																		(index ===
-																			1 ||
-																			index %
-																				2 !==
-																				0) &&
-																		'#eeeeee'
+																		(index === 1 ||
+																			index % 2 !== 0) &&
+																		'#eeeeee',
 																}}
 															>
 																<TableCell
@@ -378,17 +328,14 @@ class ComparisonTable extends React.Component {
 																		{},
 																		tableCellStyles,
 																		{
-																			fontWeight: 900
-																		}
+																			fontWeight: 900,
+																		},
 																	)}
 																>
 																	{attribute}
 																</TableCell>
 																{props.selection.map(
-																	(
-																		product,
-																		index
-																	) => {
+																	(product, index) => {
 																		let cellData = [];
 
 																		// At the end of processing the loop,
@@ -397,12 +344,9 @@ class ComparisonTable extends React.Component {
 																		let lastValue;
 																		for (let sku in product) {
 																			if (
-																				product[
-																					sku
-																				][
+																				product[sku][
 																					attribute
-																				] !==
-																				lastValue
+																				] !== lastValue
 																			) {
 																				if (
 																					format ===
@@ -415,8 +359,8 @@ class ComparisonTable extends React.Component {
 																							][
 																								attribute
 																							],
-																							format
-																						)
+																							format,
+																						),
 																					);
 																				} else if (
 																					cellData.indexOf(
@@ -424,9 +368,8 @@ class ComparisonTable extends React.Component {
 																							sku
 																						][
 																							attribute
-																						]
-																					) ===
-																					-1
+																						],
+																					) === -1
 																				) {
 																					cellData.push(
 																						this.handleFormat(
@@ -435,27 +378,21 @@ class ComparisonTable extends React.Component {
 																							][
 																								attribute
 																							],
-																							format
-																						)
+																							format,
+																						),
 																					);
 																				}
 																			}
 
 																			lastValue =
-																				product[
-																					sku
-																				][
+																				product[sku][
 																					attribute
 																				];
 																		}
-																		if (
-																			format ===
-																			'default'
-																		) {
-																			const delimiter =
-																				', ';
+																		if (format === 'default') {
+																			const delimiter = ', ';
 																			cellData = cellData.join(
-																				delimiter
+																				delimiter,
 																			);
 																			// Since there will always be
 																			// an extraneous comma and
@@ -463,47 +400,42 @@ class ComparisonTable extends React.Component {
 																			// processing, we cut it off here.
 																			if (
 																				cellData.slice(
-																					-2
-																				) ===
-																				delimiter
+																					-2,
+																				) === delimiter
 																			) {
 																				cellData = cellData.slice(
 																					0,
-																					-2
+																					-2,
 																				);
 																			}
 																		}
 																		return (
 																			<TableCell
-																				key={
-																					index
-																				}
+																				key={index}
 																				style={Object.assign(
 																					{},
 																					tableCellStyles,
 																					{
 																						textAlign:
-																							'center'
-																					}
+																							'center',
+																					},
 																				)}
 																			>
-																				{
-																					cellData
-																				}
+																				{cellData}
 																			</TableCell>
 																		);
-																	}
+																	},
 																)}
 															</TableRow>
 														);
-													}
-												)}
-											</TableBody>
-										</React.Fragment>
-									);
-								})}
-							</TableBody>
-						</Table>
+													})}
+												</TableBody>
+											</React.Fragment>
+										);
+									})}
+								</TableBody>
+							</Table>
+						</DialogContent>
 					</Dialog>
 				</div>
 			</MuiThemeProvider>
@@ -515,12 +447,12 @@ ComparisonTable = connect((state, props) => {
 	if (state.productComparisonReducer) {
 		return {
 			...props,
-			selection: state.productComparisonReducer.selection
+			selection: state.productComparisonReducer.selection,
 		};
 	} else {
 		return {
 			...props,
-			selection: []
+			selection: [],
 		};
 	}
 })(ComparisonTable);

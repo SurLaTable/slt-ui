@@ -19,14 +19,11 @@ let ComparisonCheckbox = (props) => {
 						<Checkbox
 							onChange={(event, checked) => {
 								props.dispatch(
-									actionToggleProductSelection(
-										props.product,
-										checked
-									)
+									actionToggleProductSelection(props.product, checked),
 								);
 							}}
 							style={{
-								color: '#333333'
+								color: '#333333',
 							}}
 							disabled={props.disabled}
 							checked={props.checked}
@@ -41,9 +38,7 @@ let ComparisonCheckbox = (props) => {
 };
 
 ComparisonCheckbox = connect((state, props) => {
-	let selection = state.productComparisonReducer
-		? state.productComparisonReducer.selection
-		: [];
+	let selection = state.productComparisonReducer ? state.productComparisonReducer.selection : [];
 	let checked = false;
 
 	// TODO: Figure out why `selection` is populated with `undefined`.
@@ -60,7 +55,7 @@ ComparisonCheckbox = connect((state, props) => {
 	return {
 		...props,
 		checked,
-		disabled
+		disabled,
 	};
 })(ComparisonCheckbox);
 

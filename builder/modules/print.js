@@ -17,9 +17,7 @@ export function dateTime() {
 	return `[${d
 		.toDateString()
 		.split(' ')
-		.join(
-			'-'
-		)}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}]`;
+		.join('-')}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}]`;
 }
 
 export function info(...args) {

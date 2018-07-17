@@ -33,14 +33,11 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		super();
 
 		var app = this;
-		var ComponentManifest = (global.ComponentManifest = Object.assign(
-			new PubSub(),
-			{
-				React: React,
-				ReactDom: ReactDom,
-				updateHabitat: this.update.bind(this)
-			}
-		));
+		var ComponentManifest = (global.ComponentManifest = Object.assign(new PubSub(), {
+			React: React,
+			ReactDom: ReactDom,
+			updateHabitat: this.update.bind(this),
+		}));
 
 		// Create a new container:
 		const containerBuilder = new ReactHabitat.ContainerBuilder();
@@ -49,11 +46,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 			// Ignore elements that have already been connected:
 			if (ele.nodeType == 3) {
 				// The element is text.
-				return React.createElement(
-					React.Fragment,
-					null,
-					ele.textContent
-				);
+				return React.createElement(React.Fragment, null, ele.textContent);
 			} else if (ele.nodeType == 8) {
 				// The element is a comment.
 				return null;
@@ -67,11 +60,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 
 			var registration = app.__container__._registrations[componentName];
 
-			for (
-				var i = 0, componentCount = 0, child;
-				i < ele.childNodes.length;
-				i++
-			) {
+			for (var i = 0, componentCount = 0, child; i < ele.childNodes.length; i++) {
 				child = nodeToReact(ele.childNodes[i], function() {
 					return componentCount++;
 				});
@@ -91,27 +80,23 @@ class Manifest extends ReactHabitat.Bootstrapper {
 				}
 				//TODO create unique ID HERE
 				if (registration.meta.defaultProps) {
-					props = Object.assign(
-						{},
-						registration.meta.defaultProps,
-						props
-					);
+					props = Object.assign({}, registration.meta.defaultProps, props);
 				}
 
 				// Had to create a direct reference to the component with the registry.
 				// This is only necessary because we are using the
 				// async react element library.
 				var Component = asyncComponent({
-					resolve: () => registration._operator()
+					resolve: () => registration._operator(),
 				});
 				var key = `${componentName}-${incrementID()}`;
 				reEl = React.createElement(
 					ele.nodeName.toLowerCase(),
 					{
 						key: key,
-						'data-component-id': key
+						'data-component-id': key,
 					},
-					React.createElement(Component, props, children)
+					React.createElement(Component, props, children),
 				);
 			} else {
 				// Regular element:
@@ -119,19 +104,16 @@ class Manifest extends ReactHabitat.Bootstrapper {
 					ele.nodeName.toLowerCase(),
 					{
 						key: `${componentName}-${incrementID()}`,
-						...getProps(ele)
+						...getProps(ele),
 					},
-					children
+					children,
 				);
 			}
 			return reEl;
 		}
 
 		// Set the container to use the React Habitat SltDom factory:
-		containerBuilder.factory = new SLTDomFactory(
-			app.componentSelector,
-			nodeToReact
-		);
+		containerBuilder.factory = new SLTDomFactory(app.componentSelector, nodeToReact);
 
 		// Webpack specific build code:
 		for (let comp in sltUi) {
@@ -144,7 +126,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		ComponentManifest.register = (name, component) => {
 			if (name == null) {
 				console.error(
-					'registering a component requires a name and the constructor for that component'
+					'registering a component requires a name and the constructor for that component',
 				);
 			}
 			if (typeof name != 'string') {
