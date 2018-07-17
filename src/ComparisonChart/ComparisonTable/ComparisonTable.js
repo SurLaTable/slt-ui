@@ -23,7 +23,11 @@ import Typography from '@material-ui/core/Typography';
 
 import { Cancel as CancelIcon, PlayForWork as PlayForWorkIcon } from '../icons';
 
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+	typography: {
+		fontSize: 20,
+	},
+});
 
 const imageStyles = {
 	border: '1px solid black',

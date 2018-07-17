@@ -8,7 +8,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { actionToggleProductSelection } from '../actions/productComparisonActions';
 
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+	typography: {
+		fontSize: 20,
+	},
+});
 
 let ComparisonCheckbox = (props) => {
 	return (
