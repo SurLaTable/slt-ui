@@ -39,7 +39,9 @@ const badgeStyles = {
 
 const tableCellStyles = {
 	border: '1px solid #cccccc',
+	maxWidth: `${global.innerWidth / 5}px`,
 	width: `${global.innerWidth / 5}px`,
+	padding: '10px',
 };
 
 const tableModels = {
