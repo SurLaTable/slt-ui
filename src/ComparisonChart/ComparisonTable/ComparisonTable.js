@@ -246,194 +246,176 @@ class ComparisonTable extends React.Component {
 						</DialogTitle>
 						<DialogContent style={{ padding: 0 }}>
 							<Table>
-								<TableBody
-								// style={{
-								// 	width: `${window.innerWidth * 0.93}px`,
-								// 	height: `${window.innerHeight}px`,
-								// 	overflowY: 'scroll'
-								// }}
-								>
-									{sections.map((section, index) => {
-										return (
-											<React.Fragment key={index}>
-												<TableHead>
-													<TableRow
-														style={{
-															backgroundColor: '#111111',
-															height: '36px',
-														}}
-													>
-														{
-															// This Array().fill() has to exist to allow the column to
-															// extend one beyond the selection length (for the sake of
-															// the first column).
-														}
-														{props.selection &&
-															Array(props.selection.length + 1)
-																.fill()
-																.map(
-																	(ignore, index) =>
-																		index ? (
-																			<TableCell
-																				key={index}
-																				style={
-																					tableCellStyles
-																				}
-																			/>
-																		) : (
-																			<TableCell
-																				key={index}
-																				style={
-																					// Extend an empty object with our default styles:
-																					Object.assign(
-																						{},
-																						tableCellStyles,
-																						{
-																							color:
-																								'#ffffff',
-																							fontWeight: 900,
-																						},
-																					)
-																				}
-																			>
-																				{section}
-																			</TableCell>
-																		),
-																)}
-													</TableRow>
-												</TableHead>
-												<TableBody>
-													{attributes[section].map((attribute, index) => {
-														let format = 'default';
-														// Determine if the property is an object or a string.
-														// We don't need to use strings for our later processing.
-														if (typeof attribute !== 'string') {
-															format = attribute.format;
-															attribute = attribute.name;
-														}
-														return (
-															<TableRow
+								{sections.map((section, index) => {
+									return (
+										<React.Fragment key={index}>
+											<TableBody>
+												<TableRow
+													style={{
+														backgroundColor: '#111111',
+														height: '36px',
+													}}
+												>
+													{
+														// This Array().fill() has to exist to allow the column to
+														// extend one beyond the selection length (for the sake of
+														// the first column).
+													}
+													{props.selection &&
+														Array(props.selection.length + 1)
+															.fill()
+															.map(
+																(ignore, index) =>
+																	index ? (
+																		<TableCell
+																			key={index}
+																			style={tableCellStyles}
+																		/>
+																	) : (
+																		<TableCell
+																			key={index}
+																			style={
+																				// Extend an empty object with our default styles:
+																				Object.assign(
+																					{},
+																					tableCellStyles,
+																					{
+																						color:
+																							'#ffffff',
+																						fontWeight: 900,
+																					},
+																				)
+																			}
+																		>
+																			{section}
+																		</TableCell>
+																	),
+															)}
+												</TableRow>
+											</TableBody>
+											<TableBody>
+												{attributes[section].map((attribute, index) => {
+													let format = 'default';
+													// Determine if the property is an object or a string.
+													// We don't need to use strings for our later processing.
+													if (typeof attribute !== 'string') {
+														format = attribute.format;
+														attribute = attribute.name;
+													}
+													return (
+														<TableRow
+															key={index}
+															style={{
+																// This alternates the color of every other row:
+																backgroundColor:
+																	(index === 1 ||
+																		index % 2 !== 0) &&
+																	'#eeeeee',
+															}}
+														>
+															<TableCell
 																key={index}
-																style={{
-																	// This alternates the color of every other row:
-																	backgroundColor:
-																		(index === 1 ||
-																			index % 2 !== 0) &&
-																		'#eeeeee',
-																}}
+																style={Object.assign(
+																	{},
+																	tableCellStyles,
+																	{
+																		fontWeight: 900,
+																	},
+																)}
 															>
-																<TableCell
-																	key={index}
-																	style={Object.assign(
-																		{},
-																		tableCellStyles,
-																		{
-																			fontWeight: 900,
-																		},
-																	)}
-																>
-																	{attribute}
-																</TableCell>
-																{props.selection.map(
-																	(product, index) => {
-																		let cellData = [];
+																{attribute}
+															</TableCell>
+															{props.selection.map(
+																(product, index) => {
+																	let cellData = [];
 
-																		// At the end of processing the loop,
-																		// we store the last value, that
-																		// way we can check for duplicates.
-																		let lastValue;
-																		for (let sku in product) {
-																			if (
-																				product[sku][
-																					attribute
-																				] !== lastValue
-																			) {
-																				if (
-																					format ===
-																					'html'
-																				) {
-																					cellData.push(
-																						this.handleFormat(
-																							product[
-																								sku
-																							][
-																								attribute
-																							],
-																							format,
-																						),
-																					);
-																				} else if (
-																					cellData.indexOf(
+																	// At the end of processing the loop,
+																	// we store the last value, that
+																	// way we can check for duplicates.
+																	let lastValue;
+																	for (let sku in product) {
+																		if (
+																			product[sku][
+																				attribute
+																			] !== lastValue
+																		) {
+																			if (format === 'html') {
+																				cellData.push(
+																					this.handleFormat(
 																						product[
 																							sku
 																						][
 																							attribute
 																						],
-																					) === -1
-																				) {
-																					cellData.push(
-																						this.handleFormat(
-																							product[
-																								sku
-																							][
-																								attribute
-																							],
-																							format,
-																						),
-																					);
-																				}
-																			}
-
-																			lastValue =
-																				product[sku][
-																					attribute
-																				];
-																		}
-																		if (format === 'default') {
-																			const delimiter = ', ';
-																			cellData = cellData.join(
-																				delimiter,
-																			);
-																			// Since there will always be
-																			// an extraneous comma and
-																			// space at the end after this
-																			// processing, we cut it off here.
-																			if (
-																				cellData.slice(
-																					-2,
-																				) === delimiter
+																						format,
+																					),
+																				);
+																			} else if (
+																				cellData.indexOf(
+																					product[sku][
+																						attribute
+																					],
+																				) === -1
 																			) {
-																				cellData = cellData.slice(
-																					0,
-																					-2,
+																				cellData.push(
+																					this.handleFormat(
+																						product[
+																							sku
+																						][
+																							attribute
+																						],
+																						format,
+																					),
 																				);
 																			}
 																		}
-																		return (
-																			<TableCell
-																				key={index}
-																				style={Object.assign(
-																					{},
-																					tableCellStyles,
-																					{
-																						textAlign:
-																							'center',
-																					},
-																				)}
-																			>
-																				{cellData}
-																			</TableCell>
+
+																		lastValue =
+																			product[sku][attribute];
+																	}
+																	if (format === 'default') {
+																		const delimiter = ', ';
+																		cellData = cellData.join(
+																			delimiter,
 																		);
-																	},
-																)}
-															</TableRow>
-														);
-													})}
-												</TableBody>
-											</React.Fragment>
-										);
-									})}
-								</TableBody>
+																		// Since there will always be
+																		// an extraneous comma and
+																		// space at the end after this
+																		// processing, we cut it off here.
+																		if (
+																			cellData.slice(-2) ===
+																			delimiter
+																		) {
+																			cellData = cellData.slice(
+																				0,
+																				-2,
+																			);
+																		}
+																	}
+																	return (
+																		<TableCell
+																			key={index}
+																			style={Object.assign(
+																				{},
+																				tableCellStyles,
+																				{
+																					textAlign:
+																						'center',
+																				},
+																			)}
+																		>
+																			{cellData}
+																		</TableCell>
+																	);
+																},
+															)}
+														</TableRow>
+													);
+												})}
+											</TableBody>
+										</React.Fragment>
+									);
+								})}
 							</Table>
 						</DialogContent>
 					</Dialog>
