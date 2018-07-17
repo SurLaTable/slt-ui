@@ -39,7 +39,13 @@ const badgeStyles = {
 
 const tableCellStyles = {
 	border: '1px solid #cccccc',
-	// maxWidth: `${global.innerWidth * 0.1}px`
+	width: `${global.innerWidth / 5}px`,
+};
+
+const tableTopCellStyles = {
+	border: '1px solid #cccccc',
+	width: `${global.innerWidth / 5.3}px`,
+	paddingRight: '15px',
 };
 
 const tableModels = {
@@ -198,14 +204,20 @@ class ComparisonTable extends React.Component {
 						transitionDuration={600}
 					>
 						<DialogTitle style={{ padding: 0 }}>
-							<Table>
+							<Table style={{ boxSizing: 'border-box' }}>
 								<TableHead>
 									<TableRow
 										style={{
 											backgroundColor: '#E4E4E4',
 										}}
 									>
-										<TableCell style={tableCellStyles}>
+										<TableCell
+											padding="dense"
+											style={Object.assign({}, tableTopCellStyles, {
+												// width: `${global.innerWidth / 5.15}px`,
+												// paddingRight: '15px',
+											})}
+										>
 											<Button onClick={this.handleClose.bind(this)}>
 												<PlayForWorkIcon />Hide chart
 											</Button>
@@ -213,7 +225,11 @@ class ComparisonTable extends React.Component {
 										{props.selection.map((product, index) => {
 											const first = product[Object.keys(product)[0]];
 											return first ? (
-												<TableCell key={index} style={tableCellStyles}>
+												<TableCell
+													padding="dense"
+													key={index}
+													style={tableTopCellStyles}
+												>
 													<Badge
 														data-product-id={product.id}
 														badgeContent={<CancelIcon />}
@@ -268,11 +284,13 @@ class ComparisonTable extends React.Component {
 																(ignore, index) =>
 																	index ? (
 																		<TableCell
+																			padding="dense"
 																			key={index}
 																			style={tableCellStyles}
 																		/>
 																	) : (
 																		<TableCell
+																			padding="dense"
 																			key={index}
 																			style={
 																				// Extend an empty object with our default styles:
@@ -314,6 +332,7 @@ class ComparisonTable extends React.Component {
 															}}
 														>
 															<TableCell
+																padding="dense"
 																key={index}
 																style={Object.assign(
 																	{},
@@ -394,6 +413,7 @@ class ComparisonTable extends React.Component {
 																	}
 																	return (
 																		<TableCell
+																			padding="dense"
 																			key={index}
 																			style={Object.assign(
 																				{},
