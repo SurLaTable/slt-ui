@@ -1,0 +1,32 @@
+{
+	"1921659": {
+		"id": 1921659,
+		"description": "KN SET 3PC  CHEF STKU PAR",
+		"name": "1921659 KN SET 3PC  CHEF STKU PAR",
+		"parentID": "PRO-1921659",
+		"type": "SKU",
+		"Drop Ship Ind": "No",
+		"Web Active Ind": "Yes",
+		"Bevel": "",
+		"Bevel Angle": "",
+		"Blade Edge": "",
+		"Blade Length": "",
+		"Blade Material": "CROMOVA 18 Stainless Steel",
+		"Total Length": "",
+		"Core Material": "CROMOVA 18 Stainless Steel",
+		"Handle Material": "Sand filled Stainless Steel",
+		"Layers in the Blade": 1,
+		"Rockwell": "56-58",
+		"Stamped or Forged": "Forged",
+		"Tang Type": "n/a",
+		"Collection": "Classic",
+		"Country of Origin": "Japan",
+		"Warranty": "Limited Lifetime Warranty",
+		"Web Brand": "Global",
+		"Care & Usage": "",
+		"What's in the Box":
+			"<ul>\n<li>3.5&#34; paring knife</li>\n<li>5&#34; hollow-edge santoku</li>\n<li>7&#34; hollow-edge cook&#8217;s knife</li>\n</ul>"
+	},
+	"length": 1,
+	"id": "PRO-1921659"
+}

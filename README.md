@@ -2,6 +2,8 @@
 
 [![Travis build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui)
 
+# :warning: Our build requires Node 10.x or greater.
+
 ## Getting started:
 
 If you just want to hack on components, you can run:
@@ -14,6 +16,7 @@ yarn sandbox
 More details on the sandbox functionality can be found [here](sandbox/README.md).
 
 Conversely, you can also hack on components using CodeSandbox:
+
 [![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/master/)
 
 ## Building:
@@ -55,9 +58,19 @@ yarn add @sur-la-table/slt-ui
 
 Then you can grab any component using:
 
-```
+```js
 import { Button } from '@sur-la-table/slt-ui';
 ```
+
+For injecting into a legacy system, use [React Habitat](https://github.com/DeloitteDigitalAPAC/react-habitat)'s syntax:
+
+```html
+<div data-component="Card">
+    <div data-component="Button">Yo</div>
+</div>
+```
+
+Note that unlike vanilla React Habitat _you can have nested components_.
 
 For more details, head [here](build/README.md).
 

@@ -6,10 +6,7 @@ import { generateAsync, buildManifest } from './async.js';
 
 clean()
 	.then(() => {
-		return Promise.all([
-			generateAsync().then(buildManifest),
-			buildComponents()
-		]).then(done);
+		return Promise.all([generateAsync().then(buildManifest), buildComponents()]).then(done);
 	})
 	.catch((err) => {
 		if (err) {

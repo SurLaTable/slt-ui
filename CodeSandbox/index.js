@@ -8,5 +8,5 @@ render(
 			<ComparisonCheckbox product="PRO-2403251" />
 		</StoreProvider>
 	</React.Fragment>,
-	document.querySelector('#root')
+	document.querySelector('#root'),
 );
