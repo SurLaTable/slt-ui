@@ -6,6 +6,6 @@ export { destinationDirectory };
 export let componentPaths = {
 	src: './src/',
 	dest: {
-		js: destinationDirectory
-	}
+		js: destinationDirectory,
+	},
 };

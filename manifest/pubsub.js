@@ -30,5 +30,5 @@ PubSub.prototype = {
 		for (i = 0; i < len; i++) {
 			l[i].call(this, message); //pass deep copy
 		}
-	}
+	},
 };

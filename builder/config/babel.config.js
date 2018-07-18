@@ -4,13 +4,14 @@ module.exports = {
 			'@babel/preset-env',
 			{
 				targets: {
-					browsers: ['last 2 versions', 'ie >= 11']
+					browsers: ['last 2 versions', 'ie >= 11'],
+					node: 10,
 				},
 				useBuiltIns: 'usage',
-				loose: true
-			}
+				loose: true,
+			},
 		],
-		'@babel/preset-react'
+		'@babel/preset-react',
 	],
 	// Plugin order matters:
 	plugins: [
@@ -22,13 +23,14 @@ module.exports = {
 				regenerator: true,
 				moduleName: '@babel/runtime',
 				useBuiltIns: true,
-				useESModules: true
-			}
+				useESModules: true,
+			},
 		],
 		'@babel/plugin-syntax-dynamic-import',
 		'@babel/plugin-proposal-class-properties',
 		'@babel/plugin-proposal-export-default-from',
 		'@babel/plugin-proposal-object-rest-spread',
-		'@babel/plugin-transform-classes'
-	]
+		'@babel/plugin-transform-classes',
+		'react-hot-loader/babel',
+	],
 };

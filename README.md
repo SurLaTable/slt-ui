@@ -58,9 +58,19 @@ yarn add @sur-la-table/slt-ui
 
 Then you can grab any component using:
 
-```
+```js
 import { Button } from '@sur-la-table/slt-ui';
 ```
+
+For injecting into a legacy system, use [React Habitat](https://github.com/DeloitteDigitalAPAC/react-habitat)'s syntax:
+
+```html
+<div data-component="Card">
+    <div data-component="Button">Yo</div>
+</div>
+```
+
+Note that unlike vanilla React Habitat _you can have nested components_.
 
 For more details, head [here](build/README.md).
 
