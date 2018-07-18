@@ -15,8 +15,8 @@ import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
 const theme = createMuiTheme({
 	typography: {
-		fontSize: 20,
-		fontFamily: "'MrEavesModern', Verdana, Arial, Helvetica, sans-serif",
+		fontSize: 22,
+		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif",
 	},
 });
 

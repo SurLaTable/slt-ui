@@ -37,7 +37,6 @@ export default (name, config) => {
 				'react-dom': 'ReactDom',
 				'react-redux': 'ReactRedux',
 				redux: 'Redux',
-				// fs: 'commonjs fs'
 			},
 			output: {
 				filename: '[name].min.js',

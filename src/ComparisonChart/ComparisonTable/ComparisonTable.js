@@ -25,8 +25,8 @@ import { Cancel as CancelIcon, PlayForWork as PlayForWorkIcon } from '../icons';
 
 const theme = createMuiTheme({
 	typography: {
-		fontSize: 20,
-		fontFamily: "'MrEavesModern', Verdana, Arial, Helvetica, sans-serif",
+		fontSize: 22,
+		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif",
 	},
 });
 
@@ -158,7 +158,7 @@ class ComparisonTable extends React.Component {
 							color: '#ffffff',
 							display: 'inline-block',
 							height: '20%',
-							marginLeft: '10px',
+							marginLeft: '20px',
 							marginTop: '-40px',
 						}}
 					>
