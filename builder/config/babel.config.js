@@ -31,5 +31,6 @@ module.exports = {
 		'@babel/plugin-proposal-export-default-from',
 		'@babel/plugin-proposal-object-rest-spread',
 		'@babel/plugin-transform-classes',
+		'react-hot-loader/babel',
 	],
 };

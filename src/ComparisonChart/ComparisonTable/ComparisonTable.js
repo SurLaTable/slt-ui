@@ -156,10 +156,11 @@ class ComparisonTable extends React.Component {
 						style={{
 							backgroundColor: '#6d8b19',
 							color: '#ffffff',
-							display: 'inline-block',
+							display: 'block',
+							float: 'left',
 							height: '20%',
 							marginLeft: '20px',
-							marginTop: '-40px',
+							marginTop: '40px',
 						}}
 					>
 						COMPARE
