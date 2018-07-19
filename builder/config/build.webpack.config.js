@@ -17,30 +17,31 @@ export default (name, config) => {
 			mode: process.env.NODE_ENV,
 			stats: 'verbose',
 			devtool: false,
+			target: 'web',
 			optimization: {
 				minimize: process.env.NODE_ENV === 'production',
 				namedChunks: true,
 				namedModules: true,
-				splitChunks: {}
+				splitChunks: {},
 			},
 			resolveLoader: {
 				alias: {
-					//needed to support requirejs module
-					text: 'text-loader'
-				}
+					// This is needed for the requirejs module.
+					text: 'text-loader',
+				},
 			},
 			externals: {
 				jquery: 'jQuery',
 				react: 'React',
 				'react-dom': 'ReactDom',
 				'react-redux': 'ReactRedux',
-				redux: 'Redux'
+				redux: 'Redux',
 			},
 			output: {
 				filename: '[name].min.js',
 				chunkFilename: '[name].js',
 				jsonpFunction: 'webpackJsonp',
-				publicPath: ''
+				publicPath: '',
 			},
 			module: {
 				rules: [
@@ -48,19 +49,19 @@ export default (name, config) => {
 						test: /(\.js|\.jsx)$/,
 						use: {
 							loader: 'babel-loader',
-							options: babelConfig
+							options: babelConfig,
 						},
-						exclude: /(node_modules)/
-					}
-				]
+						exclude: /(node_modules)/,
+					},
+				],
 			},
 			plugins: [
 				new webpack.DefinePlugin({
-					'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-				})
-			]
+					'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+				}),
+			],
 		},
-		config
+		config,
 	);
 
 	if (args.report == true) {
@@ -69,10 +70,10 @@ export default (name, config) => {
 				analyzerMode: 'static',
 				reportFilename: path.resolve(
 					`./reports/${title(name)}${title(
-						process.env.NODE_ENV
-					)}Report${logDateTime()}.html`
-				)
-			})
+						process.env.NODE_ENV,
+					)}Report${logDateTime()}.html`,
+				),
+			}),
 		);
 	}
 

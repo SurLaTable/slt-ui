@@ -37,14 +37,9 @@ export default function DomToHabitatBuilder(bootstrapper) {
 		var componentName = ele.getAttribute(bootstrapper.componentSelector);
 
 		//possible location of failure for dynamic registration
-		var registration =
-			bootstrapper.__container__._registrations[componentName];
+		var registration = bootstrapper.__container__._registrations[componentName];
 
-		for (
-			var i = 0, componentCount = 0, child;
-			i < ele.childNodes.length;
-			i++
-		) {
+		for (var i = 0, componentCount = 0, child; i < ele.childNodes.length; i++) {
 			child = domToHabitat(ele.childNodes[i], function() {
 				return componentCount++;
 			});
@@ -64,15 +59,11 @@ export default function DomToHabitatBuilder(bootstrapper) {
 			}
 			//TODO create unique ID HERE
 			if (registration.meta.defaultProps) {
-				props = Object.assign(
-					{},
-					registration.meta.defaultProps,
-					props
-				);
+				props = Object.assign({}, registration.meta.defaultProps, props);
 			}
 
 			let Component = asyncComponent({
-				resolve: () => registration._operator()
+				resolve: () => registration._operator(),
 			});
 			let key = `${componentName}-${incrementID()}`;
 
@@ -80,9 +71,9 @@ export default function DomToHabitatBuilder(bootstrapper) {
 				ele.nodeName.toLowerCase(),
 				{
 					key: key,
-					'data-component-id': key
+					'data-component-id': key,
 				},
-				React.createElement(Component, props, children)
+				React.createElement(Component, props, children),
 			);
 		} else {
 			// Regular element:
@@ -92,9 +83,9 @@ export default function DomToHabitatBuilder(bootstrapper) {
 				{
 					key: key,
 					'data-component-id': key,
-					...getProps(ele)
+					...getProps(ele),
 				},
-				children
+				children,
 			);
 		}
 		return reEl;

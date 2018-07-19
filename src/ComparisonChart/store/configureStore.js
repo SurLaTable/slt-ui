@@ -1,16 +1,20 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import sltReducers from '../reducers/sltReducers';
 import thunk from 'redux-thunk';
+import persistState from 'redux-localstorage';
 
 export default function() {
-	return createStore(
+	const store = createStore(
 		sltReducers,
 		compose(
 			applyMiddleware(thunk),
-			// Enable DevTools, switch to localStorage on Prod:
-			global.__REDUX_DEVTOOLS_EXTENSION__
-				? global.__REDUX_DEVTOOLS_EXTENSION__()
-				: (f) => f
-		)
+			// Enable DevTools, switch to redux-localstorage for Production:
+			// global.__REDUX_DEVTOOLS_EXTENSION__
+			// 	? global.__REDUX_DEVTOOLS_EXTENSION__()
+			// 	: (x) => x
+			// redux-localstorage:
+			persistState(),
+		),
 	);
+	return store;
 }

@@ -34,10 +34,9 @@ switch (args._[0]) {
 		}
 		clean()
 			.then(() => {
-				return Promise.all([
-					generateAsync().then(buildManifest),
-					buildComponents()
-				]).then(done);
+				return Promise.all([generateAsync().then(buildManifest), buildComponents()]).then(
+					done,
+				);
 			})
 			.catch(handleError);
 		break;

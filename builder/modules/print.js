@@ -18,9 +18,7 @@ export function dateTime() {
 	return `[${d
 		.toDateString()
 		.split(' ')
-		.join(
-			'-'
-		)}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}]`;
+		.join('-')}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}]`;
 }
 
 export function warn(...args) {
@@ -39,8 +37,8 @@ export function general(...args) {
 	return console.log([time(), ...args].join(' ').grey);
 }
 
-export function assert(assertion, ...args){
-	if(!assertion){
+export function assert(assertion, ...args) {
+	if (!assertion) {
 		throw new Error(`Assertion Failed: ${args.join(' ')}`);
 	}
 }

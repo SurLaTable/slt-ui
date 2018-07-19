@@ -8,11 +8,11 @@ export function customArgs(options) {
 			{
 				boolean: ['dev', 'report'],
 				default: {
-					report: false
-				}
+					report: false,
+				},
 			},
-			options
-		)
+			options,
+		),
 	);
 }
 

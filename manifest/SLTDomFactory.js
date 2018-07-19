@@ -24,26 +24,16 @@ export default class SLTDomFactory {
 	inject(module, props = {}, target) {
 		if (target) {
 			var children = [];
-			for (
-				var i = 0, componentCount = 0, child;
-				i < props.proxy.childNodes.length;
-				i++
-			) {
+			for (var i = 0, componentCount = 0, child; i < props.proxy.childNodes.length; i++) {
 				try {
-					child = this.domToHabitat(
-						props.proxy.childNodes[i],
-						function() {
-							return componentCount++;
-						}
-					);
+					child = this.domToHabitat(props.proxy.childNodes[i], function() {
+						return componentCount++;
+					});
 					if (child) {
 						children.push(child);
 					}
 				} catch (e) {
-					console.error(
-						'ReactHabitat failed constructing children: ',
-						e
-					);
+					console.error('ReactHabitat failed constructing children: ', e);
 				}
 			}
 
@@ -52,19 +42,15 @@ export default class SLTDomFactory {
 				{
 					'data-component-id':
 						props.proxy.getAttribute('data-component-id') ||
-						props.proxy.getAttribute(this.componentSelector) +
-							`-${this.componentId++}`
+						props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`,
 				},
-				React.createElement(module, props, children)
+				React.createElement(module, props, children),
 			);
 
 			// ReactDom.render(wrapper, target);
 			// ReactDom.render(React.createElement(Provider, { store: this.store },wrapper), target);
 			if (wrapper) {
-				ReactDom.render(
-					React.createElement(StoreProvider, props, wrapper),
-					target
-				);
+				ReactDom.render(React.createElement(StoreProvider, props, wrapper), target);
 			}
 		}
 	}

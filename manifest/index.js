@@ -15,14 +15,11 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		super();
 
 		var bootstrapper = this;
-		var ComponentManifest = (global.ComponentManifest = Object.assign(
-			new PubSub(),
-			{
-				React: React,
-				ReactDom: ReactDom,
-				bootstrapper: bootstrapper
-			}
-		));
+		var ComponentManifest = (global.ComponentManifest = Object.assign(new PubSub(), {
+			React: React,
+			ReactDom: ReactDom,
+			bootstrapper: bootstrapper,
+		}));
 
 		// Create a new container:
 		const containerBuilder = new ReactHabitat.ContainerBuilder();
@@ -30,7 +27,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		// Set the container to use the React Habitat SltDom factory:
 		containerBuilder.factory = new SLTDomFactory(
 			bootstrapper.componentSelector,
-			DomToHabitatBuilder(this)
+			DomToHabitatBuilder(this),
 		);
 
 		// Webpack specific build code:
@@ -41,10 +38,10 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		// Set the DOM container:
 		this.setContainer(containerBuilder.build());
 
-		ComponentManifest.rebuild = (callback) =>{
+		ComponentManifest.rebuild = (callback) => {
 			bootstrapper.dispose(() => {
 				bootstrapper.setContainer(containerBuilder.build());
-				if(typeof(callback) == "function"){
+				if (typeof callback == 'function') {
 					callback();
 				}
 			});
@@ -53,7 +50,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		ComponentManifest.register = (name, component) => {
 			if (name == null) {
 				throw new Error(
-					'registering a component requires a name and the constructor for that component'
+					'registering a component requires a name and the constructor for that component',
 				);
 			}
 			if (typeof name != 'string') {
@@ -63,18 +60,17 @@ class Manifest extends ReactHabitat.Bootstrapper {
 			} else {
 				containerBuilder.register(component).as(name);
 			}
-
 		};
 
-		ComponentManifest.unregister = (name)=>{
-			for(let i = containerBuilder._registrations.length-1; i >= 0 ; i--){
-				if(containerBuilder._registrations[i].key == name){
-					containerBuilder._registrations.splice(i,1);
+		ComponentManifest.unregister = (name) => {
+			for (let i = containerBuilder._registrations.length - 1; i >= 0; i--) {
+				if (containerBuilder._registrations[i].key == name) {
+					containerBuilder._registrations.splice(i, 1);
 					return true;
 				}
 			}
 			return false;
-		}
+		};
 	}
 }
 
