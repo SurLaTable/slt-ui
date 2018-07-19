@@ -1,16 +1,15 @@
 import webpack from 'webpack';
 import path from 'path';
 import babelConfig from './babel.config.js';
-import { logDateTime } from '../modules/print.js';
+import { dateTime as logDateTime } from '../modules/print.js';
+import args from '../modules/args.js';
 
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import merge from 'webpack-merge';
 
 function title(str) {
-	return str.replace(/(^[a-z]|\s[a-z])/g, ($1) => $1.toUpperCase());
+	return str.replace(/(^[a-z]|[\s-][a-z])|/g, ($1) => $1.toUpperCase());
 }
-
-let args = global.args || {};
 
 export default (name, config) => {
 	let finalConfig = merge(
@@ -64,7 +63,7 @@ export default (name, config) => {
 		config
 	);
 
-	if (!!args.report == true) {
+	if (args.report == true) {
 		finalConfig.plugins.push(
 			new BundleAnalyzerPlugin({
 				analyzerMode: 'static',

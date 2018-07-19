@@ -2,14 +2,14 @@ import 'colors';
 import rimraf from 'rimraf';
 import path from 'path';
 import fs from 'fs';
-import { logInfo, logWarn } from './print.js';
+import log from './print.js';
 import args from './args.js';
 
 if (args.dev) {
-	logWarn('DEVELOPMENT ENVIRONMENT');
+	log.warn('DEVELOPMENT ENVIRONMENT');
 	process.env.NODE_ENV = 'development';
 } else {
-	logInfo('PRODUCTION ENVIRONMENT');
+	log.info('PRODUCTION ENVIRONMENT');
 	process.env.NODE_ENV = 'production';
 }
 
@@ -38,9 +38,9 @@ export async function clean() {
 }
 export async function done() {
 	if (args.dev) {
-		logWarn('DEVELOPMENT ENVIRONMENT');
+		log.warn('DEVELOPMENT ENVIRONMENT');
 	} else {
-		logInfo('PRODUCTION ENVIRONMENT');
+		log.info('PRODUCTION ENVIRONMENT');
 		await remove(path.resolve('./builder/temp/'));
 	}
 }

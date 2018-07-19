@@ -1,18 +1,19 @@
+/*eslint no-console: off */
 import 'colors';
 
-export function logDate() {
+export function date() {
 	let d = new Date();
 	return `[${d
 		.toDateString()
 		.split(' ')
 		.join('')}]`;
 }
-export function logTime() {
+export function time() {
 	let d = new Date();
 	return `[${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}:${d.getMilliseconds()}]`;
 }
 
-export function logDateTime() {
+export function dateTime() {
 	let d = new Date();
 	return `[${d
 		.toDateString()
@@ -22,18 +23,35 @@ export function logDateTime() {
 		)}_${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}]`;
 }
 
-export function logInfo(...args) {
-	return console.info([logTime(), ...args].join(' ').cyan);
+export function warn(...args) {
+	return console.warn([time(), ...args].join(' ').yellow);
 }
 
-export function logWarn(...args) {
-	return console.warn([logTime(), ...args].join(' ').yellow);
+export function error(...args) {
+	return console.error([time(), ...args].join(' ').bgRed.white);
 }
 
-export function logError(...args) {
-	return console.error([logTime(), ...args].join(' ').bgRed.white);
+export function info(...args) {
+	return console.info([time(), ...args].join(' ').cyan);
 }
 
-export function logData(...args) {
-	return console.log([logTime(), ...args].join(' ').grey);
+export function general(...args) {
+	return console.log([time(), ...args].join(' ').grey);
 }
+
+export function assert(assertion, ...args){
+	if(!assertion){
+		throw new Error(`Assertion Failed: ${args.join(' ')}`);
+	}
+}
+
+export default {
+	date,
+	time,
+	dateTime,
+	warn,
+	error,
+	info,
+	general,
+	assert,
+};

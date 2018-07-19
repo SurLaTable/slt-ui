@@ -8,9 +8,9 @@ import StoreProvider from '../src/ComparisonChart/StoreProvider.js';
  */
 
 export default class SLTDomFactory {
-	constructor(componentSelector, nodeToReact) {
+	constructor(componentSelector, domToHabitat) {
 		this.componentSelector = componentSelector;
-		this.nodeToReact = nodeToReact;
+		this.domToHabitat = domToHabitat;
 		this.componentId = 0;
 		// this.store = createStore(function(){});
 	}
@@ -30,7 +30,7 @@ export default class SLTDomFactory {
 				i++
 			) {
 				try {
-					child = this.nodeToReact(
+					child = this.domToHabitat(
 						props.proxy.childNodes[i],
 						function() {
 							return componentCount++;

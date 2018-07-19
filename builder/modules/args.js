@@ -1,4 +1,19 @@
 import parseArgs from 'minimist';
-export default parseArgs(process.argv.slice(2),{
-  boolean:["dev"]
-});
+import merge from 'merge';
+
+export function customArgs(options) {
+	return parseArgs(
+		process.argv.slice(2),
+		merge(
+			{
+				boolean: ['dev', 'report'],
+				default: {
+					report: false
+				}
+			},
+			options
+		)
+	);
+}
+
+export default customArgs();

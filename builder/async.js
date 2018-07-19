@@ -3,11 +3,8 @@ import path from 'path';
 import mkdirp from 'mkdirp';
 import glob from 'glob';
 import webpack from 'webpack';
-import { logData, logInfo, logError } from './modules/print';
+import log from './modules/print';
 import webpackConfig from './config/build.webpack.config.js';
-
-import * as sltUI from '../src/index.js';
-import * as material from '@material-ui/core';
 
 function write(filePath, code) {
 	mkdirp.sync(path.dirname(filePath));
@@ -40,7 +37,7 @@ function generateSLTUIAsync(promises) {
 			},
 			async function(err, files) {
 				if (err) {
-					logError(err);
+					log.error(err);
 					reject(err);
 				}
 
@@ -56,7 +53,7 @@ function generateSLTUIAsync(promises) {
 					let folderName = path.posix.basename(
 						path.posix.dirname(file)
 					);
-					logInfo(file);
+					log.info(file);
 					var module = require(file);
 					let indexCode = `
           import {asyncComponent} from 'react-async-component';
@@ -73,7 +70,7 @@ function generateSLTUIAsync(promises) {
 							component = folderName;
 							exportName = `{default}`;
 						}
-						logData('ASYNC SLT-UI:', file, ' - ', component);
+						log.general('ASYNC SLT-UI:', file, ' - ', component);
 
 						indexCode += `
             export const ${component} = asyncComponent({
@@ -116,7 +113,7 @@ function generateMaterialAsync(promises) {
 			},
 			async function(err, files) {
 				if (err) {
-					logError(err);
+					log.error(err);
 					reject(err);
 				}
 
@@ -126,7 +123,7 @@ function generateMaterialAsync(promises) {
 					let folderName = path.posix.basename(
 						path.posix.dirname(file)
 					);
-					logInfo(file);
+					log.info(file);
 					var module = require(file);
 					let indexCode = `
           import {asyncComponent} from 'react-async-component';
@@ -143,7 +140,7 @@ function generateMaterialAsync(promises) {
 							component = folderName;
 							exportName = `{default}`;
 						}
-						logData('ASYNC MATERIAL:', file, ' - ', component);
+						log.general('ASYNC MATERIAL:', file, ' - ', component);
 						indexCode += `
             export const ${component} = asyncComponent({
               resolve: ()=>import('${path.posix.relative(
@@ -192,7 +189,7 @@ generateAsync.description =
 	'wrap material and slt-ui components in asyncComponent';
 
 export async function buildManifest() {
-	logInfo('BUILD MANIFEST STARTED');
+	log.info('BUILD MANIFEST STARTED');
 	var finalConfig = webpackConfig('Async', {
 		entry: {
 			index: './manifest/index.js'
@@ -216,7 +213,7 @@ export async function buildManifest() {
 					colors: true
 				})
 			);
-			logInfo('BUILD MANIFEST ENDED');
+			log.info('BUILD MANIFEST ENDED');
 			if (err || stats.hasErrors()) {
 				reject(err);
 			} else {
