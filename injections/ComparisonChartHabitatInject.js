@@ -586,7 +586,7 @@ $(document).ready(function() {
 		'PRO-3902814',
 		'PRO-3902822',
 		'PRO-3982113',
-		'PRO-3987872',
+		'PRO-3987872'
 	];
 
 	$('.item.ec_listing .quickviewlink input[value]').each(function(ignore, item) {
@@ -601,7 +601,7 @@ $(document).ready(function() {
 						item.value +
 						'">\
 						</div>\
-					</div>',
+					</div>'
 				);
 		}
 	});
@@ -609,69 +609,112 @@ $(document).ready(function() {
 	$('body').append(
 		'<div data-component="StoreProvider">\
 			<div data-component="ComparisonBar" data-n-prop-number-of-items="3"></div>\
-		</div>',
+		</div>'
 	);
 
 	$(
 		'\
 		<style>\
-			.comparison-checkbox, .comparison-checkbox svg {\
-				color: #333333;\
-			}\
 			.comparison-table button[disabled] {\
 				background-color: rgba(0, 0, 0, 0.2) !important;\
 			}\
 		</style>\
-		',
+		'
 	).appendTo('body');
 
 	$('.pagination').hide();
 
 	if (ComponentManifest) {
 		ComponentManifest.updateHabitat();
-		var priceObj = {};
+
+		var localProductData = JSON.parse(localStorage.getItem('comparisonChartLocalData')) || {};
+
 		$(document).on('click', '.comparison-checkbox', function(event) {
 			var self = event.target;
 			var $self = $(self);
 			var productId = $self.closest('[data-product]').data('product');
 
 			if (self.checked) {
-				priceObj[productId] = $self
+				localProductData[productId] = {};
+				localProductData[productId].markup = $self
 					.closest('[data-habitat]')
 					.siblings('.priceblock')
 					.html();
+				localProductData[productId].image = $self
+					.closest('.productinfo')
+					.siblings('dt')
+					.find('img')
+					.attr('src');
+				localStorage.setItem('comparisonChartLocalData', JSON.stringify(localProductData));
 			} else {
-				delete priceObj[productId];
+				delete localProductData[productId];
 			}
+			$('.comparison-bar img').each(function(ignore, item) {
+				if (new RegExp(productId).test(item.src)) {
+					$(item).attr('src', localProductData[productId].image);
+				}
+			});
 
 			window.setTimeout(function() {
-				$('.comparison-checkbox input[type=checkbox][disabled]')
+				$('.comparison-bar img').each(function(ignore, item) {
+					if (new RegExp(productId).test(item.src)) {
+						$(item).attr('src', localProductData[productId].image);
+					}
+				});
+
+				$('.comparison-checkbox input[type=checkbox]')
 					.siblings('svg')
 					.css('color', 'unset');
+				$('.comparison-checkbox input[type=checkbox][disabled]')
+					.siblings('svg')
+					.css('color', 'rgba(0, 0, 0, 0.26)');
+				window.setTimeout(function() {
+					$('.comparison-bar img').each(function(ignore, item) {
+						if (new RegExp(productId).test(item.src)) {
+							$(item).attr('src', localProductData[productId].image);
+						}
+					});
+					window.setTimeout(function() {
+						$('.comparison-bar img').each(function(ignore, item) {
+							if (new RegExp(productId).test(item.src)) {
+								$(item).attr('src', localProductData[productId].image);
+							}
+						});
+
+						$('.comparison-checkbox input[type=checkbox]')
+							.siblings('svg')
+							.css('color', 'unset');
+						$('.comparison-checkbox input[type=checkbox][disabled]')
+							.siblings('svg')
+							.css('color', 'rgba(0, 0, 0, 0.26)');
+					}, 200);
+				}, 100);
 			}, 0);
 		});
 		$(document).on('click', '.comparison-table > button', function(event) {
 			window.setTimeout(function() {
-				// I have tried the floatThead plugin and stickyTableHeaders,
-				// neither seem to work for this chart.
-				// Could be due to the nature of JSS.
-				// $('table[class*=jss]').floatThead();
-
 				$('table[class*=jss] > thead > tr:eq(0) > th').each(function(index, header) {
 					if (index > 0) {
 						var adjustedIndex = index - 1;
+						$(header)
+							.find('img')
+							.attr(
+								'src',
+								localProductData[Object.keys(localProductData)[adjustedIndex]].image
+							);
 						$(header).wrapInner(
-							'<div style="clear: both; float: left; margin-right: 20px;"></div>',
+							'<div style="clear: both; float: left; margin-right: 20px; max-width: 40%;"></div>'
 						);
-						if (priceObj[Object.keys(priceObj)[adjustedIndex]]) {
+						if (localProductData[Object.keys(localProductData)[adjustedIndex]]) {
 							$(header).append(
-								'<div style="float: left; margin-top: 10px;">' +
-									priceObj[Object.keys(priceObj)[adjustedIndex]] +
+								'<div style="float: left; margin-top: 10px; max-width: 40%;">' +
+									localProductData[Object.keys(localProductData)[adjustedIndex]]
+										.markup +
 									'\
 									<a \
 										class="product-addToCart comparison-chart-add-to-cart"\
 										data-product-id="' +
-									Object.keys(priceObj)[adjustedIndex] +
+									Object.keys(localProductData)[adjustedIndex] +
 									'"\
 										onMouseOver="this.style.textDecoration = \'underline\';"\
 										onMouseOut="this.style.textDecoration = \'none\';"\
@@ -704,7 +747,7 @@ $(document).ready(function() {
 									ADD TO CART\
 									</a>\
 									' +
-									'</div>',
+									'</div>'
 							);
 						}
 					}
@@ -720,7 +763,7 @@ $(document).ready(function() {
 				var giftWithPurchaseItem = {
 					sku: productId.slice(4),
 					productId: productId,
-					quantity: 1,
+					quantity: 1
 				};
 
 				// Set a sku on the main product that is eligible
@@ -739,23 +782,23 @@ $(document).ready(function() {
 						target: 'cart',
 						timeStamp: new Date(),
 						processed: {
-							adobeAnalytics: false,
-						},
+							adobeAnalytics: false
+						}
 					},
 					product: [
 						{
 							productInfo: {
 								productID: giftWithPurchaseItem.productId,
-								sku: giftWithPurchaseItem.sku,
+								sku: giftWithPurchaseItem.sku
 							},
 							category: {
 								productType: '',
 								size: '',
-								color: '',
+								color: ''
 							},
-							quantity: giftWithPurchaseItem.quantity,
-						},
-					],
+							quantity: giftWithPurchaseItem.quantity
+						}
+					]
 				};
 
 				// Check if the sku matches our eligible item, or

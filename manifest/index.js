@@ -36,7 +36,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		var ComponentManifest = (global.ComponentManifest = Object.assign(new PubSub(), {
 			React: React,
 			ReactDom: ReactDom,
-			updateHabitat: this.update.bind(this),
+			updateHabitat: this.update.bind(this)
 		}));
 
 		// Create a new container:
@@ -87,16 +87,16 @@ class Manifest extends ReactHabitat.Bootstrapper {
 				// This is only necessary because we are using the
 				// async react element library.
 				var Component = asyncComponent({
-					resolve: () => registration._operator(),
+					resolve: () => registration._operator()
 				});
 				var key = `${componentName}-${incrementID()}`;
 				reEl = React.createElement(
 					ele.nodeName.toLowerCase(),
 					{
 						key: key,
-						'data-component-id': key,
+						'data-component-id': key
 					},
-					React.createElement(Component, props, children),
+					React.createElement(Component, props, children)
 				);
 			} else {
 				// Regular element:
@@ -104,9 +104,9 @@ class Manifest extends ReactHabitat.Bootstrapper {
 					ele.nodeName.toLowerCase(),
 					{
 						key: `${componentName}-${incrementID()}`,
-						...getProps(ele),
+						...getProps(ele)
 					},
-					children,
+					children
 				);
 			}
 			return reEl;
@@ -126,7 +126,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		ComponentManifest.register = (name, component) => {
 			if (name == null) {
 				console.error(
-					'registering a component requires a name and the constructor for that component',
+					'registering a component requires a name and the constructor for that component'
 				);
 			}
 			if (typeof name != 'string') {

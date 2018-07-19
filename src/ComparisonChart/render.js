@@ -10,12 +10,12 @@ import sltReducers from './reducers/sltReducers';
 const sltStore = createStore(
 	sltReducers,
 	// Enable DevTools, switch to localStorage on Prod:
-	global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__(),
+	global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const styles = {
 	fontFamily: 'sans-serif',
-	textAlign: 'center',
+	textAlign: 'center'
 };
 
 const App = () => (
