@@ -649,47 +649,49 @@ $(document).ready(function() {
 			} else {
 				delete localProductData[productId];
 			}
-			$('.comparison-bar img').each(function(ignore, item) {
-				if (new RegExp(productId).test(item.src)) {
-					$(item).attr('src', localProductData[productId].image);
-				}
-			});
-
-			window.setTimeout(function() {
+			if (localProductData[productId]) {
 				$('.comparison-bar img').each(function(ignore, item) {
 					if (new RegExp(productId).test(item.src)) {
 						$(item).attr('src', localProductData[productId].image);
 					}
 				});
 
-				$('.comparison-checkbox input[type=checkbox]')
-					.siblings('svg')
-					.css('color', 'unset');
-				$('.comparison-checkbox input[type=checkbox][disabled]')
-					.siblings('svg')
-					.css('color', 'rgba(0, 0, 0, 0.26)');
 				window.setTimeout(function() {
 					$('.comparison-bar img').each(function(ignore, item) {
 						if (new RegExp(productId).test(item.src)) {
 							$(item).attr('src', localProductData[productId].image);
 						}
 					});
+
+					$('.comparison-checkbox input[type=checkbox]')
+						.siblings('svg')
+						.css('color', 'unset');
+					$('.comparison-checkbox input[type=checkbox][disabled]')
+						.siblings('svg')
+						.css('color', 'rgba(0, 0, 0, 0.26)');
 					window.setTimeout(function() {
 						$('.comparison-bar img').each(function(ignore, item) {
 							if (new RegExp(productId).test(item.src)) {
 								$(item).attr('src', localProductData[productId].image);
 							}
 						});
+						window.setTimeout(function() {
+							$('.comparison-bar img').each(function(ignore, item) {
+								if (new RegExp(productId).test(item.src)) {
+									$(item).attr('src', localProductData[productId].image);
+								}
+							});
 
-						$('.comparison-checkbox input[type=checkbox]')
-							.siblings('svg')
-							.css('color', 'unset');
-						$('.comparison-checkbox input[type=checkbox][disabled]')
-							.siblings('svg')
-							.css('color', 'rgba(0, 0, 0, 0.26)');
-					}, 200);
-				}, 100);
-			}, 0);
+							$('.comparison-checkbox input[type=checkbox]')
+								.siblings('svg')
+								.css('color', 'unset');
+							$('.comparison-checkbox input[type=checkbox][disabled]')
+								.siblings('svg')
+								.css('color', 'rgba(0, 0, 0, 0.26)');
+						}, 200);
+					}, 100);
+				}, 0);
+			}
 		});
 		$(document).on('click', '.comparison-table > button', function(event) {
 			window.setTimeout(function() {
