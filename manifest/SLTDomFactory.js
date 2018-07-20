@@ -42,9 +42,9 @@ export default class SLTDomFactory {
 				{
 					'data-component-id':
 						props.proxy.getAttribute('data-component-id') ||
-						props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`,
+						props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`
 				},
-				React.createElement(module, props, children),
+				React.createElement(module, props, children)
 			);
 
 			// ReactDom.render(wrapper, target);
