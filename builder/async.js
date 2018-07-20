@@ -188,7 +188,7 @@ export async function buildManifest() {
 
 	return new Promise((resolve, reject) => {
 		webpack(finalConfig, (err, stats) => {
-			data(
+			log.general(
 				stats.toString({
 					// Shows colors in the console:
 					colors: true,

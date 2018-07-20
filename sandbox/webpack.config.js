@@ -7,7 +7,8 @@ export default config('Sandbox', {
 	resolve: {
 		alias: {
 			//This will probably change
-			'@sur-la-table/slt-ui': path.resolve('./src/index.js'),
+			'@sur-la-table/slt-ui': path.resolve('./src/'),
+			'@sur-la-table/slt-ui-async': path.resolve('./manifest/index.js'),
 		},
 	},
 	externals: {
