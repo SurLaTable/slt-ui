@@ -18,7 +18,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		var ComponentManifest = (global.ComponentManifest = Object.assign(new PubSub(), {
 			React: React,
 			ReactDom: ReactDom,
-			bootstrapper: bootstrapper,
+			bootstrapper: bootstrapper
 		}));
 
 		// Create a new container:
@@ -27,7 +27,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		// Set the container to use the React Habitat SltDom factory:
 		containerBuilder.factory = new SLTDomFactory(
 			bootstrapper.componentSelector,
-			DomToHabitatBuilder(this),
+			DomToHabitatBuilder(this)
 		);
 
 		// Webpack specific build code:
@@ -50,7 +50,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		ComponentManifest.register = (name, component) => {
 			if (name == null) {
 				throw new Error(
-					'registering a component requires a name and the constructor for that component',
+					'registering a component requires a name and the constructor for that component'
 				);
 			}
 			if (typeof name != 'string') {

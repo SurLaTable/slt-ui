@@ -16,8 +16,8 @@ export default function buildDynamicRegistration() {
 	let args = customArgs({
 		string: ['library'],
 		default: {
-			library: 'slt_dynamic_registration',
-		},
+			library: 'slt_dynamic_registration'
+		}
 	});
 	let entry = args._[1];
 	return new Promise((resolve, reject) => {
@@ -27,16 +27,16 @@ export default function buildDynamicRegistration() {
 			entry: entry,
 			output: {
 				library: args.library,
-				path: path.resolve('./build/dynamic-registration'),
-			},
+				path: path.resolve('./build/dynamic-registration')
+			}
 		});
 		log.info('DYNAMIC REGISTRATION BUILD STARTED');
 		webpack(config, (err, stats) => {
 			console.log(
 				stats.toString({
 					// Shows colors in the console
-					colors: true,
-				}),
+					colors: true
+				})
 			);
 			log.info('DYNAMIC REGISTRATION BUILD ENDED');
 			if (err || stats.hasErrors()) {

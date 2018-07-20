@@ -51,5 +51,5 @@ export default {
 	error,
 	info,
 	general,
-	assert,
+	assert
 };

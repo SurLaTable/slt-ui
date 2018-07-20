@@ -33,7 +33,7 @@ function generateSLTUIAsync(promises) {
 		glob(
 			'../src/[A-Z]*/index.js',
 			{
-				cwd: __dirname,
+				cwd: __dirname
 			},
 			async function(err, files) {
 				if (err) {
@@ -74,13 +74,13 @@ function generateSLTUIAsync(promises) {
 							export const ${component} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									`./builder/temp/slt/${folderName}`,
-									path.posix.resolve(file),
+									path.posix.resolve(file)
 								)}' /*webpackChunkName: '${component}'*/).then((module) => module['${component}'])
 							});
           	`;
 					}
 					promises.push(
-						write(path.resolve(`./builder/temp/slt/${folderName}/index.js`), indexCode),
+						write(path.resolve(`./builder/temp/slt/${folderName}/index.js`), indexCode)
 					);
 
 					code += `
@@ -90,7 +90,7 @@ function generateSLTUIAsync(promises) {
 
 				promises.push(write(path.resolve('./builder/temp/slt/index.js'), code));
 				resolve();
-			},
+			}
 		);
 	});
 }
@@ -100,7 +100,7 @@ function generateMaterialAsync(promises) {
 		glob(
 			'../node_modules/\\@material-ui/core/[A-Z]*/index.js',
 			{
-				cwd: __dirname,
+				cwd: __dirname
 			},
 			async function(err, files) {
 				if (err) {
@@ -134,7 +134,7 @@ function generateMaterialAsync(promises) {
 							export const ${component} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									`./builder/temp/material/${folderName}`,
-									path.posix.resolve(file),
+									path.posix.resolve(file)
 								)}' /*webpackChunkName: '${component}'*/).then((module) => module['${component}'])
 							});
 						`;
@@ -143,8 +143,8 @@ function generateMaterialAsync(promises) {
 					promises.push(
 						write(
 							path.resolve(`./builder/temp/material/${folderName}/index.js`),
-							indexCode,
-						),
+							indexCode
+						)
 					);
 
 					code += `
@@ -154,7 +154,7 @@ function generateMaterialAsync(promises) {
 
 				promises.push(write(path.resolve('./builder/temp/material/index.js'), code));
 				resolve();
-			},
+			}
 		);
 	});
 }
@@ -173,12 +173,12 @@ export async function buildManifest() {
 	log.info('BUILD MANIFEST STARTED');
 	var finalConfig = webpackConfig('Async', {
 		entry: {
-			index: './manifest/index.js',
+			index: './manifest/index.js'
 		},
 		output: {
 			path: path.resolve('./build/async'),
-			publicPath: '/scripts/manifest/',
-		},
+			publicPath: '/scripts/manifest/'
+		}
 		/*  resolve:{
       alias:{
         "@material-ui/core$":path.resolve("./builder/temp/material"),
@@ -191,8 +191,8 @@ export async function buildManifest() {
 			log.general(
 				stats.toString({
 					// Shows colors in the console:
-					colors: true,
-				}),
+					colors: true
+				})
 			);
 			log.info('BUILD MANIFEST ENDED');
 			if (err || stats.hasErrors()) {

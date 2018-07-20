@@ -8,21 +8,21 @@ export default config('Sandbox', {
 		alias: {
 			//This will probably change
 			'@sur-la-table/slt-ui': path.resolve('./src/'),
-			'@sur-la-table/slt-ui-async': path.resolve('./manifest/index.js'),
-		},
+			'@sur-la-table/slt-ui-async': path.resolve('./manifest/index.js')
+		}
 	},
 	externals: {
 		react: false,
 		'react-dom': false,
 		'react-redux': false,
-		redux: false,
+		redux: false
 	},
 	entry: {
-		index: path.resolve(__dirname, 'index.js'),
+		index: path.resolve(__dirname, 'index.js')
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, 'index.html'),
-		}),
-	],
+			template: path.resolve(__dirname, 'index.html')
+		})
+	]
 });

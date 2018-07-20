@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
 	actionRemoveAll,
 	actionRemoveProduct,
-	actionSetProducts,
+	actionSetProducts
 } from '../actions/productComparisonActions';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
@@ -26,27 +26,27 @@ import { Cancel as CancelIcon, PlayForWork as PlayForWorkIcon } from '../icons';
 const theme = createMuiTheme({
 	typography: {
 		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif",
-	},
+		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
+	}
 });
 
 const imageStyles = {
 	border: '1px solid black',
 	display: 'block',
-	width: '90px',
+	width: '90px'
 };
 
 const badgeStyles = {
 	display: 'block',
 	marginTop: '10px',
-	width: '90px',
+	width: '90px'
 };
 
 const tableCellStyles = {
 	border: '1px solid #cccccc',
 	maxWidth: `${global.innerWidth / 5}px`,
 	width: `${global.innerWidth / 5}px`,
-	padding: '10px',
+	padding: '10px'
 };
 
 const tableModels = {
@@ -63,21 +63,21 @@ const tableModels = {
 			'Country of Origin',
 			'Warranty',
 			{ name: 'Care & Usage', format: 'html' },
-			{ name: "What's in the Box", format: 'html' },
-		],
+			{ name: "What's in the Box", format: 'html' }
+		]
 		// SHIPPING: ['Drop Ship Ind'],
 	},
 	// This is just an example of another possible type:
 	appliance: {
-		Features: ['Blends', 'Blade type'],
-	},
+		Features: ['Blends', 'Blade type']
+	}
 };
 
 const Transition = (props) => <Slide direction="up" {...props} />;
 
 class ComparisonTable extends React.Component {
 	state = {
-		open: false,
+		open: false
 	};
 
 	constructor() {
@@ -110,9 +110,9 @@ class ComparisonTable extends React.Component {
 			global.history.pushState(
 				{
 					type: 'OPEN_COMPARISON_TABLE',
-					selection: this.props.selection,
+					selection: this.props.selection
 				},
-				'ComparisonTable',
+				'ComparisonTable'
 			);
 		}
 		this.setState({ open: true });
@@ -160,7 +160,7 @@ class ComparisonTable extends React.Component {
 							float: 'left',
 							height: '20%',
 							marginLeft: '20px',
-							marginTop: '40px',
+							marginTop: '40px'
 						}}
 					>
 						COMPARE
@@ -170,7 +170,7 @@ class ComparisonTable extends React.Component {
 							display: 'inline-block',
 							margin: '10px 30px',
 							width: '250px',
-							textAlign: 'left',
+							textAlign: 'left'
 						}}
 					>
 						Select up to 3 products to compare and find the best one for you.
@@ -188,8 +188,8 @@ class ComparisonTable extends React.Component {
 					<Dialog
 						PaperProps={{
 							style: {
-								padding: 0,
-							},
+								padding: 0
+							}
 						}}
 						style={{ overflow: 'overlay', padding: 0 }}
 						maxWidth={false}
@@ -205,7 +205,7 @@ class ComparisonTable extends React.Component {
 								<TableHead>
 									<TableRow
 										style={{
-											backgroundColor: '#E4E4E4',
+											backgroundColor: '#E4E4E4'
 										}}
 									>
 										<TableCell padding="dense" style={tableCellStyles}>
@@ -230,7 +230,7 @@ class ComparisonTable extends React.Component {
 														style={badgeStyles}
 														onClick={(event, checked) => {
 															props.dispatch(
-																actionRemoveProduct(product.id),
+																actionRemoveProduct(product.id)
 															);
 														}}
 													>
@@ -263,7 +263,7 @@ class ComparisonTable extends React.Component {
 												<TableRow
 													style={{
 														backgroundColor: '#111111',
-														height: '36px',
+														height: '36px'
 													}}
 												>
 													{
@@ -294,14 +294,14 @@ class ComparisonTable extends React.Component {
 																					{
 																						color:
 																							'#ffffff',
-																						fontWeight: 900,
-																					},
+																						fontWeight: 900
+																					}
 																				)
 																			}
 																		>
 																			{section}
 																		</TableCell>
-																	),
+																	)
 															)}
 												</TableRow>
 											</TableBody>
@@ -322,7 +322,7 @@ class ComparisonTable extends React.Component {
 																backgroundColor:
 																	(index === 1 ||
 																		index % 2 !== 0) &&
-																	'#eeeeee',
+																	'#eeeeee'
 															}}
 														>
 															<TableCell
@@ -332,8 +332,8 @@ class ComparisonTable extends React.Component {
 																	{},
 																	tableCellStyles,
 																	{
-																		fontWeight: 900,
-																	},
+																		fontWeight: 900
+																	}
 																)}
 															>
 																{attribute}
@@ -360,14 +360,14 @@ class ComparisonTable extends React.Component {
 																						][
 																							attribute
 																						],
-																						format,
-																					),
+																						format
+																					)
 																				);
 																			} else if (
 																				cellData.indexOf(
 																					product[sku][
 																						attribute
-																					],
+																					]
 																				) === -1
 																			) {
 																				cellData.push(
@@ -377,8 +377,8 @@ class ComparisonTable extends React.Component {
 																						][
 																							attribute
 																						],
-																						format,
-																					),
+																						format
+																					)
 																				);
 																			}
 																		}
@@ -389,7 +389,7 @@ class ComparisonTable extends React.Component {
 																	if (format === 'default') {
 																		const delimiter = ', ';
 																		cellData = cellData.join(
-																			delimiter,
+																			delimiter
 																		);
 																		// Since there will always be
 																		// an extraneous comma and
@@ -401,7 +401,7 @@ class ComparisonTable extends React.Component {
 																		) {
 																			cellData = cellData.slice(
 																				0,
-																				-2,
+																				-2
 																			);
 																		}
 																	}
@@ -414,14 +414,14 @@ class ComparisonTable extends React.Component {
 																				tableCellStyles,
 																				{
 																					textAlign:
-																						'center',
-																				},
+																						'center'
+																				}
 																			)}
 																		>
 																			{cellData}
 																		</TableCell>
 																	);
-																},
+																}
 															)}
 														</TableRow>
 													);
@@ -443,12 +443,12 @@ ComparisonTable = connect((state, props) => {
 	if (state.productComparisonReducer) {
 		return {
 			...props,
-			selection: state.productComparisonReducer.selection,
+			selection: state.productComparisonReducer.selection
 		};
 	} else {
 		return {
 			...props,
-			selection: [],
+			selection: []
 		};
 	}
 })(ComparisonTable);

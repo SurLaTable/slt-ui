@@ -33,7 +33,7 @@ export async function clean() {
 	await Promise.all([
 		remove(path.resolve('./build/async')),
 		remove(path.resolve('./build/sync')),
-		remove(path.resolve('./builder/temp/')),
+		remove(path.resolve('./builder/temp/'))
 	]);
 }
 export async function done() {

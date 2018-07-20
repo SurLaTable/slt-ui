@@ -63,7 +63,7 @@ export default function DomToHabitatBuilder(bootstrapper) {
 			}
 
 			let Component = asyncComponent({
-				resolve: () => registration._operator(),
+				resolve: () => registration._operator()
 			});
 			let key = `${componentName}-${incrementID()}`;
 
@@ -71,9 +71,9 @@ export default function DomToHabitatBuilder(bootstrapper) {
 				ele.nodeName.toLowerCase(),
 				{
 					key: key,
-					'data-component-id': key,
+					'data-component-id': key
 				},
-				React.createElement(Component, props, children),
+				React.createElement(Component, props, children)
 			);
 		} else {
 			// Regular element:
@@ -83,9 +83,9 @@ export default function DomToHabitatBuilder(bootstrapper) {
 				{
 					key: key,
 					'data-component-id': key,
-					...getProps(ele),
+					...getProps(ele)
 				},
-				children,
+				children
 			);
 		}
 		return reEl;
