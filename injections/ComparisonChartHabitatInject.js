@@ -695,6 +695,11 @@ $(document).ready(function() {
 		});
 		$(document).on('click', '.comparison-table > button', function(event) {
 			window.setTimeout(function() {
+				$('.comparison-bar img').each(function(ignore, item) {
+					if (new RegExp(productId).test(item.src)) {
+						$(item).attr('src', localProductData[productId].image);
+					}
+				});
 				$('table[class*=jss] > thead > tr:eq(0) > th').each(function(index, header) {
 					if (index > 0) {
 						var adjustedIndex = index - 1;
