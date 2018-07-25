@@ -5,4 +5,4 @@ node_js:
 install:
     - yarn install
 script:
-    - yarn test
+    - tree && yarn test
