@@ -2,9 +2,9 @@ import path from 'path';
 import webpack from 'webpack';
 import log from './modules/print.js';
 import webpackConfig from './config/build.webpack.config.js';
+import tasks from './modules/tasks.js';
 
 export default async function buildComponents() {
-	log.info('BUILD COMPONENTS STARTED');
 	var finalConfig = webpackConfig('Sync', {
 		entry: {
 			index: './src/index.js'
@@ -22,7 +22,6 @@ export default async function buildComponents() {
 					colors: true
 				})
 			);
-			log.info('BUILD COMPONENTS ENDED');
 			if (err || stats.hasErrors()) {
 				reject(err);
 			} else {
@@ -32,5 +31,7 @@ export default async function buildComponents() {
 	});
 }
 
-buildComponents.displayName = 'components';
-buildComponents.description = 'components';
+buildComponents.displayName = 'build-components';
+buildComponents.description = 'build a single file bundle with all components.';
+
+tasks.add(tasks.timed(buildComponents));

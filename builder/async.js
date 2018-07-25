@@ -5,6 +5,7 @@ import glob from 'glob';
 import webpack from 'webpack';
 import log from './modules/print';
 import webpackConfig from './config/build.webpack.config.js';
+import tasks from './modules/tasks.js';
 
 function write(filePath, code) {
 	mkdirp.sync(path.dirname(filePath));
@@ -63,19 +64,18 @@ function generateSLTUIAsync(promises) {
 						) {
 							continue;
 						}
-						let exportName = `{${component} as default}`;
+						let exportName = component;
 						if (component == 'default') {
-							component = folderName;
-							exportName = `{default}`;
+							exportName = folderName;
 						}
 						log.general('ASYNC SLT-UI:', file, ' - ', component);
 
 						indexCode += `
-							export const ${component} = asyncComponent({
+							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									`./builder/temp/slt/${folderName}`,
 									path.posix.resolve(file)
-								)}' /*webpackChunkName: '${component}'*/).then((module) => module['${component}'])
+								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
           	`;
 					}
@@ -124,18 +124,17 @@ function generateMaterialAsync(promises) {
 						) {
 							continue;
 						}
-						let exportName = `{${component} as default}`;
+						let exportName = component;
 						if (component == 'default') {
-							component = folderName;
-							exportName = `{default}`;
+							exportName = folderName;
 						}
 						log.general('ASYNC MATERIAL:', file, ' - ', component);
 						indexCode += `
-							export const ${component} = asyncComponent({
+							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									`./builder/temp/material/${folderName}`,
 									path.posix.resolve(file)
-								)}' /*webpackChunkName: '${component}'*/).then((module) => module['${component}'])
+								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
 						`;
 					}
@@ -168,9 +167,9 @@ export async function generateAsync() {
 }
 generateAsync.displayName = 'generate-async';
 generateAsync.description = 'Wrap material and slt-ui components in asyncComponent.';
+tasks.add(tasks.timed(generateAsync));
 
 export async function buildManifest() {
-	log.info('BUILD MANIFEST STARTED');
 	var finalConfig = webpackConfig('Async', {
 		entry: {
 			index: './manifest/index.js'
@@ -194,7 +193,6 @@ export async function buildManifest() {
 					colors: true
 				})
 			);
-			log.info('BUILD MANIFEST ENDED');
 			if (err || stats.hasErrors()) {
 				reject(err);
 			} else {
@@ -203,6 +201,8 @@ export async function buildManifest() {
 		});
 	});
 }
-
-buildManifest.displayName = 'manifest';
-buildManifest.description = 'manifest';
+buildManifest.displayName = 'build-manifest';
+buildManifest.description = 'Compile the manifest to be used on legacy sites.';
+tasks.add(()=>{
+	return tasks.run('generate-async').then(tasks.timed(buildManifest))
+},buildManifest.displayName,buildManifest.description);

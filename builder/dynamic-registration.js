@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import log from './modules/print.js';
 import webpackConfig from './config/build.webpack.config.js';
 import { customArgs } from './modules/args.js';
+import tasks from './modules/tasks.js';
 
 /*
 - need to create config with public path
@@ -28,9 +29,14 @@ export default function buildDynamicRegistration() {
 			output: {
 				library: args.library,
 				path: path.resolve('./build/dynamic-registration')
-			}
+			},
+			plugins:[
+				new webpack.optimize.LimitChunkCountPlugin({
+					maxChunks: 1
+				})
+			]
 		});
-		log.info('DYNAMIC REGISTRATION BUILD STARTED');
+
 		webpack(config, (err, stats) => {
 			console.log(
 				stats.toString({
@@ -38,7 +44,7 @@ export default function buildDynamicRegistration() {
 					colors: true
 				})
 			);
-			log.info('DYNAMIC REGISTRATION BUILD ENDED');
+
 			if (err || stats.hasErrors()) {
 				reject(err);
 			} else {
@@ -47,3 +53,6 @@ export default function buildDynamicRegistration() {
 		});
 	});
 }
+buildDynamicRegistration.displayName = "dynamic-registration";
+buildDynamicRegistration.description = "build a single bundle ready to be used with ComponentManifest.register().";
+tasks.add(tasks.timed(buildDynamicRegistration));

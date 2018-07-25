@@ -3,7 +3,6 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default config('Sandbox', {
-	mode: 'development',
 	resolve: {
 		alias: {
 			//This will probably change
@@ -19,6 +18,9 @@ export default config('Sandbox', {
 	},
 	entry: {
 		index: path.resolve(__dirname, 'index.js')
+	},
+	output:{
+		publicPath: '/',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

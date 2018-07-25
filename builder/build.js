@@ -1,15 +1,19 @@
-import 'colors';
-import { done, clean } from './modules/setup.js';
 import log from './modules/print.js';
-import { generateAsync, buildManifest } from './async.js';
-import buildComponents from './components.js';
-import buildDynamicRegistration from './dynamic-registration.js';
+import tasks from './modules/tasks.js';
+import {customArgs} from './modules/args.js';
 
-import args from './modules/args.js';
+let args = customArgs({
+	boolean:['tasks'],
+	default:{
+		tasks:false
+	}
+});
 
-if (args._[0]) {
-	log.info(`running task ${args._[0]}`);
-}
+//tasks
+import './modules/setup.js';
+import './async.js';
+import './components.js';
+import './dynamic-registration.js';
 
 function handleError(err) {
 	if (err) {
@@ -17,27 +21,19 @@ function handleError(err) {
 	}
 }
 
-switch (args._[0]) {
-	case 'clean':
-		clean()
-			.then(done)
-			.catch(handleError);
-		break;
-	case 'dynamic-registration':
-		buildDynamicRegistration()
-			.then(done)
-			.catch(handleError);
-		break;
-	default:
-		if (args._[0]) {
-			log.warn(`task "${args._[0]}" not found, running default task`);
-		}
-		clean()
-			.then(() => {
-				return Promise.all([generateAsync().then(buildManifest), buildComponents()]).then(
-					done
-				);
-			})
-			.catch(handleError);
-		break;
+let task = args._[0] || "default";
+
+tasks.add(tasks.timed(()=>{
+	return tasks.run('clean').then(()=>{
+		//run these in parallel
+		return Promise.all([tasks.run('build-manifest'),tasks.run('build-components')]);
+	});
+}),'default','The default task.');
+
+if(require.main === module){
+	if(args.tasks){
+		console.log(tasks.list());
+	}else{
+		tasks.run(task).catch(handleError).finally(tasks.get('done'));
+	}
 }

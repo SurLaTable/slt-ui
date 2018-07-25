@@ -5,12 +5,12 @@ import fs from 'fs';
 import log from './print.js';
 import args from './args.js';
 
+import tasks from './tasks.js';
+
 if (args.dev) {
 	log.warn('DEVELOPMENT ENVIRONMENT');
-	process.env.NODE_ENV = 'development';
 } else {
 	log.info('PRODUCTION ENVIRONMENT');
-	process.env.NODE_ENV = 'production';
 }
 
 export function remove(filename) {
@@ -36,6 +36,8 @@ export async function clean() {
 		remove(path.resolve('./builder/temp/'))
 	]);
 }
+clean.description = "Removes folders that were used for building."
+tasks.add(tasks.timed(clean));
 export async function done() {
 	if (args.dev) {
 		log.warn('DEVELOPMENT ENVIRONMENT');
@@ -44,3 +46,5 @@ export async function done() {
 		await remove(path.resolve('./builder/temp/'));
 	}
 }
+done.hiddenTask = true;
+tasks.add(done);
