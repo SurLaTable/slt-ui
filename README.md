@@ -33,6 +33,22 @@ yarn build
 | Build the development version.                 | `--dev`    |
 | Open the webpack bundle report after building. | `--report` |
 
+### Dynamically registering components:
+
+First build the component:
+
+```sh
+yarn build dynamic-registration ./src/--REPLACE_WITH_COMPONENT_DIRECTORY--/index.js
+```
+
+Then in your frontend environment:
+
+```js
+var slt_dynamic_registration = function(e){var t={};function n(r) ...
+$('<div data-component="TestButton">This is a test button</div>').prependTo('body');
+ComponentManifest.register(slt_dynamic_registration);
+```
+
 ## What is this?
 
 `slt-ui` allows you to use modern components on legacy systems. Single page apps are great, but some of us still need to deal with a legacy CMS or other systems. That doesn't mean we want to write legacy code though! Imagine using [Material UI](https://material-ui.com/) to build high level components and dropping them in any ancient CMS (WordPress, ATG, Sitecore, Drupal, Adobe Experience Manager, et cetera). Now you can!

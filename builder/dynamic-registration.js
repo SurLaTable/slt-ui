@@ -20,7 +20,7 @@ export default function buildDynamicRegistration() {
 			library: 'slt_dynamic_registration'
 		}
 	});
-	
+
 	let entry = path.resolve(args._[1]);
 	return new Promise((resolve, reject) => {
 		log.assert(entry, 'Dynamic Registration needs an entry');
@@ -31,7 +31,7 @@ export default function buildDynamicRegistration() {
 				library: args.library,
 				path: path.resolve('./build/dynamic-registration')
 			},
-			plugins:[
+			plugins: [
 				new webpack.optimize.LimitChunkCountPlugin({
 					maxChunks: 1
 				})
@@ -54,6 +54,7 @@ export default function buildDynamicRegistration() {
 		});
 	});
 }
-buildDynamicRegistration.displayName = "dynamic-registration";
-buildDynamicRegistration.description = "build a single bundle ready to be used with ComponentManifest.register().";
+buildDynamicRegistration.displayName = 'dynamic-registration';
+buildDynamicRegistration.description =
+	'build a single bundle ready to be used with ComponentManifest.register().';
 tasks.add(tasks.timed(buildDynamicRegistration));

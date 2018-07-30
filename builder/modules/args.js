@@ -7,19 +7,16 @@ export function customArgs(options = {}) {
 			boolean: ['dev', 'report'],
 			default: {
 				report: false,
-				dev:process.env.NODE_ENV == 'development'
+				dev: process.env.NODE_ENV == 'development'
 			}
 		},
 		options
 	);
-	
-	let args = parseArgs(
-		process.argv.slice(2),
-		options
-	);
-	if(args.dev){
+
+	let args = parseArgs(process.argv.slice(2), options);
+	if (args.dev) {
 		process.env.NODE_ENV = 'development';
-	}else{
+	} else {
 		process.env.NODE_ENV = 'production';
 	}
 	return args;

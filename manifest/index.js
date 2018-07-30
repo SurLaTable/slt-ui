@@ -37,12 +37,12 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		}
 
 		// Set the DOM container:
-		var container = containerBuilder.build()
+		var container = containerBuilder.build();
 		this.setContainer(container);
 
 		ComponentManifest.rebuild = (callback) => {
 			//Disabled for production at the moment.
-			if(process.env.NODE_ENV == 'development'){
+			if (process.env.NODE_ENV == 'development') {
 				bootstrapper.dispose(() => {
 					bootstrapper.setContainer(containerBuilder.build());
 					if (typeof callback == 'function') {
@@ -60,17 +60,19 @@ class Manifest extends ReactHabitat.Bootstrapper {
 			}
 			if (typeof name != 'string') {
 				for (let i in name) {
-					if(name[i] == "__esModule"){
+					if (name[i] == '__esModule') {
 						continue;
 					}
 					containerBuilder.register(name[i]).as(i);
-					container._registrations[i] = containerBuilder._registrations[containerBuilder._registrations.length-1];
+					container._registrations[i] =
+						containerBuilder._registrations[containerBuilder._registrations.length - 1];
 				}
 			} else {
 				containerBuilder.register(component).as(name);
-				container._registrations[name] = containerBuilder._registrations[containerBuilder._registrations.length-1];
+				container._registrations[name] =
+					containerBuilder._registrations[containerBuilder._registrations.length - 1];
 			}
-			bootstrapper.update()
+			bootstrapper.update();
 		};
 
 		ComponentManifest.unregister = (name) => {

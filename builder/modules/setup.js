@@ -36,7 +36,7 @@ export async function clean() {
 		remove(path.resolve('./builder/temp/'))
 	]);
 }
-clean.description = "Removes folders that were used for building."
+clean.description = 'Removes folders that were used for building.';
 tasks.add(tasks.timed(clean));
 export async function done() {
 	if (args.dev) {
