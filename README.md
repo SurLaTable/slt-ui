@@ -108,7 +108,7 @@ After [building](https://github.com/SurLaTable/slt-ui#building) the repo, do:
 
 ```
 cd build
-yarn login
+npm login
 yarn publish
 ```
 
@@ -116,6 +116,6 @@ To publish the `beta` tag to `npm` (for development environments), just add a `-
 
 ```
 cd build
-yarn login
+npm login
 yarn publish --tag beta
 ```
