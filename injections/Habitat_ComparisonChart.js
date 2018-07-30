@@ -695,33 +695,34 @@ $(document).ready(function() {
 		});
 		$(document).on('click', '.comparison-table > button', function(event) {
 			window.setTimeout(function() {
-				$('.comparison-bar img').each(function(ignore, item) {
-					if (new RegExp(productId).test(item.src)) {
-						$(item).attr('src', localProductData[productId].image);
-					}
-				});
 				$('table[class*=jss] > thead > tr:eq(0) > th').each(function(index, header) {
 					if (index > 0) {
 						var adjustedIndex = index - 1;
+						var productId = $(header)
+							.find('[data-product-id]')
+							.data('product-id');
+
+						$('.comparison-bar img').each(function(ignore, item) {
+							if (new RegExp(productId).test(item.src)) {
+								$(item).attr('src', localProductData[productId].image);
+							}
+						});
+
 						$(header)
 							.find('img')
-							.attr(
-								'src',
-								localProductData[Object.keys(localProductData)[adjustedIndex]].image
-							);
+							.attr('src', localProductData[productId].image);
 						$(header).wrapInner(
 							'<div style="clear: both; float: left; margin-right: 20px; max-width: 40%;"></div>'
 						);
-						if (localProductData[Object.keys(localProductData)[adjustedIndex]]) {
+						if (localProductData[productId]) {
 							$(header).append(
 								'<div style="float: left; margin-top: 10px; max-width: 40%;">' +
-									localProductData[Object.keys(localProductData)[adjustedIndex]]
-										.markup +
+									localProductData[productId].markup +
 									'\
 									<a \
 										class="product-addToCart comparison-chart-add-to-cart"\
 										data-product-id="' +
-									Object.keys(localProductData)[adjustedIndex] +
+									productId +
 									'"\
 										onMouseOver="this.style.textDecoration = \'underline\';"\
 										onMouseOut="this.style.textDecoration = \'none\';"\
