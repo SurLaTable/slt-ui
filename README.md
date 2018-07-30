@@ -17,7 +17,7 @@ More details on the sandbox functionality can be found [here](sandbox/README.md)
 
 Conversely, you can also hack on components using CodeSandbox:
 
-[![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/v1.0.0/)
+[![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/0b63e06d14b42cc5f91739dff90a09ed747b1e93)
 
 ## Building:
 
