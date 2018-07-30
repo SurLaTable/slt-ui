@@ -19,8 +19,8 @@ export default config('Sandbox', {
 	entry: {
 		index: path.resolve(__dirname, 'index.js')
 	},
-	output:{
-		publicPath: '/',
+	output: {
+		publicPath: '/'
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

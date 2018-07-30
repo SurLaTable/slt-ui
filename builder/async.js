@@ -118,7 +118,7 @@ function generateMaterialAsync(promises) {
           import {asyncComponent} from 'react-async-component';
         `;
 					for (let component in module) {
-						console.log(component)
+						console.log(component);
 						if (
 							module.hasOwnProperty(component) === false ||
 							/(^[A-Z]|default)/.test(component) == false
@@ -204,6 +204,10 @@ export async function buildManifest() {
 }
 buildManifest.displayName = 'build-manifest';
 buildManifest.description = 'Compile the manifest to be used on legacy sites.';
-tasks.add(()=>{
-	return tasks.run('generate-async').then(tasks.timed(buildManifest))
-},buildManifest.displayName,buildManifest.description);
+tasks.add(
+	() => {
+		return tasks.run('generate-async').then(tasks.timed(buildManifest));
+	},
+	buildManifest.displayName,
+	buildManifest.description
+);

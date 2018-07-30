@@ -27,3 +27,19 @@ For injecting into a legacy system, use [React Habitat](https://github.com/Deloi
 ```
 
 Note that unlike vanilla React Habitat _you can have nested components_.
+
+### Dynamically registering components:
+
+First build the component:
+
+```sh
+yarn build dynamic-registration ./src/--REPLACE_WITH_COMPONENT_DIRECTORY--/index.js
+```
+
+Then in your frontend environment:
+
+```js
+var slt_dynamic_registration = function(e){var t={};function n(r) ...
+$('<div data-component="TestButton">This is a test button</div>').prependTo('body');
+ComponentManifest.register(slt_dynamic_registration);
+```

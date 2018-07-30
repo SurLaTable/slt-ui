@@ -23,7 +23,11 @@ export default function DomToHabitatBuilder(bootstrapper) {
 	return function domToHabitat(ele, incrementID) {
 		if (ele.nodeType == 3) {
 			// The element is text.
-			return React.createElement(React.Fragment, {key:`text-${incrementID()}`}, ele.textContent);
+			return React.createElement(
+				React.Fragment,
+				{ key: `text-${incrementID()}` },
+				ele.textContent
+			);
 		} else if (ele.nodeType == 8) {
 			// The element is a comment.
 			return null;
