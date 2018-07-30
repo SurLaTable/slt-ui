@@ -3,11 +3,11 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default config('Sandbox', {
-	mode: 'development',
 	resolve: {
 		alias: {
 			//This will probably change
-			'@sur-la-table/slt-ui': path.resolve('./src/index.js')
+			'@sur-la-table/slt-ui': path.resolve('./src/'),
+			'@sur-la-table/slt-ui-async': path.resolve('./manifest/index.js')
 		}
 	},
 	externals: {
@@ -18,6 +18,9 @@ export default config('Sandbox', {
 	},
 	entry: {
 		index: path.resolve(__dirname, 'index.js')
+	},
+	output:{
+		publicPath: '/',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
