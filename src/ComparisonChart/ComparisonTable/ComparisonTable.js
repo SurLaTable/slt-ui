@@ -154,7 +154,7 @@ class ComparisonTable extends React.Component {
 						color="primary"
 						disabled={props.selection.length < 2}
 						style={{
-							backgroundColor: '#77216f',
+							backgroundColor: '#6d8b19',
 							color: '#ffffff',
 							display: 'block',
 							float: 'left',
