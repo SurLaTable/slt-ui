@@ -20,7 +20,8 @@ export default function buildDynamicRegistration() {
 			library: 'slt_dynamic_registration'
 		}
 	});
-	let entry = args._[1];
+	
+	let entry = path.resolve(args._[1]);
 	return new Promise((resolve, reject) => {
 		log.assert(entry, 'Dynamic Registration needs an entry');
 

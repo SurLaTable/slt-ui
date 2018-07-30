@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import ReactHabitat from 'react-habitat';
+import Registration from 'react-habitat/lib/Registration';
 
 import SLTDomFactory from './SLTDomFactory';
 import PubSub from './pubsub';
@@ -36,15 +37,19 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		}
 
 		// Set the DOM container:
-		this.setContainer(containerBuilder.build());
+		var container = containerBuilder.build()
+		this.setContainer(container);
 
 		ComponentManifest.rebuild = (callback) => {
-			bootstrapper.dispose(() => {
-				bootstrapper.setContainer(containerBuilder.build());
-				if (typeof callback == 'function') {
-					callback();
-				}
-			});
+			//Disabled for production at the moment.
+			if(process.env.NODE_ENV == 'development'){
+				bootstrapper.dispose(() => {
+					bootstrapper.setContainer(containerBuilder.build());
+					if (typeof callback == 'function') {
+						callback();
+					}
+				});
+			}
 		};
 
 		ComponentManifest.register = (name, component) => {
@@ -55,21 +60,26 @@ class Manifest extends ReactHabitat.Bootstrapper {
 			}
 			if (typeof name != 'string') {
 				for (let i in name) {
+					if(name[i] == "__esModule"){
+						continue;
+					}
 					containerBuilder.register(name[i]).as(i);
+					container._registrations[i] = containerBuilder._registrations[containerBuilder._registrations.length-1];
 				}
 			} else {
 				containerBuilder.register(component).as(name);
+				container._registrations[name] = containerBuilder._registrations[containerBuilder._registrations.length-1];
 			}
+			bootstrapper.update()
 		};
 
 		ComponentManifest.unregister = (name) => {
 			for (let i = containerBuilder._registrations.length - 1; i >= 0; i--) {
 				if (containerBuilder._registrations[i].key == name) {
 					containerBuilder._registrations.splice(i, 1);
-					return true;
 				}
 			}
-			return false;
+			return delete container._registrations[name];
 		};
 	}
 }

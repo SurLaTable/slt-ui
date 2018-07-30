@@ -60,7 +60,7 @@ function generateSLTUIAsync(promises) {
 					for (let component in module) {
 						if (
 							module.hasOwnProperty(component) === false ||
-							component == '__esModule'
+							/(^[A-Z]|default)/.test(component) == false
 						) {
 							continue;
 						}
@@ -118,9 +118,10 @@ function generateMaterialAsync(promises) {
           import {asyncComponent} from 'react-async-component';
         `;
 					for (let component in module) {
+						console.log(component)
 						if (
 							module.hasOwnProperty(component) === false ||
-							component == '__esModule'
+							/(^[A-Z]|default)/.test(component) == false
 						) {
 							continue;
 						}
@@ -163,7 +164,7 @@ export async function generateAsync() {
 	await generateMaterialAsync(promises);
 	await generateSLTUIAsync(promises);
 
-	await Promise.all(promises);
+	return Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';
 generateAsync.description = 'Wrap material and slt-ui components in asyncComponent.';

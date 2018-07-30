@@ -61,6 +61,7 @@ export default class SLTDomFactory {
 	 */
 	dispose(target) {
 		if (target) {
+			//console.log(target)
 			ReactDom.unmountComponentAtNode(target);
 		}
 	}
