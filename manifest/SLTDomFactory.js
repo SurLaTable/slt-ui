@@ -8,9 +8,9 @@ import StoreProvider from '../src/ComparisonChart/StoreProvider.js';
  */
 
 export default class SLTDomFactory {
-	constructor(componentSelector, nodeToReact) {
+	constructor(componentSelector, domToHabitat) {
 		this.componentSelector = componentSelector;
-		this.nodeToReact = nodeToReact;
+		this.domToHabitat = domToHabitat;
 		this.componentId = 0;
 		// this.store = createStore(function(){});
 	}
@@ -26,7 +26,7 @@ export default class SLTDomFactory {
 			var children = [];
 			for (var i = 0, componentCount = 0, child; i < props.proxy.childNodes.length; i++) {
 				try {
-					child = this.nodeToReact(props.proxy.childNodes[i], function() {
+					child = this.domToHabitat(props.proxy.childNodes[i], function() {
 						return componentCount++;
 					});
 					if (child) {
@@ -42,9 +42,9 @@ export default class SLTDomFactory {
 				{
 					'data-component-id':
 						props.proxy.getAttribute('data-component-id') ||
-						props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`,
+						props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`
 				},
-				React.createElement(module, props, children),
+				React.createElement(module, props, children)
 			);
 
 			// ReactDom.render(wrapper, target);
@@ -61,6 +61,7 @@ export default class SLTDomFactory {
 	 */
 	dispose(target) {
 		if (target) {
+			//console.log(target)
 			ReactDom.unmountComponentAtNode(target);
 		}
 	}

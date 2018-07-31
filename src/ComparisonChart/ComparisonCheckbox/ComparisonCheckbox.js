@@ -11,8 +11,8 @@ import { actionToggleProductSelection } from '../actions/productComparisonAction
 const theme = createMuiTheme({
 	typography: {
 		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif",
-	},
+		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
+	}
 });
 
 let ComparisonCheckbox = (props) => {
@@ -24,11 +24,11 @@ let ComparisonCheckbox = (props) => {
 						<Checkbox
 							onChange={(event, checked) => {
 								props.dispatch(
-									actionToggleProductSelection(props.product, checked),
+									actionToggleProductSelection(props.product, checked)
 								);
 							}}
 							style={{
-								color: '#333333',
+								color: '#333333'
 							}}
 							disabled={props.disabled}
 							checked={props.checked}
@@ -60,7 +60,7 @@ ComparisonCheckbox = connect((state, props) => {
 	return {
 		...props,
 		checked,
-		disabled,
+		disabled
 	};
 })(ComparisonCheckbox);
 

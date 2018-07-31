@@ -16,8 +16,8 @@ import ComparisonTable from '../ComparisonTable/ComparisonTable';
 const theme = createMuiTheme({
 	typography: {
 		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif",
-	},
+		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
+	}
 });
 
 class ComparisonBar extends React.Component {
@@ -56,14 +56,14 @@ class ComparisonBar extends React.Component {
 							paddingBottom: '48px',
 							position: 'fixed',
 							width: '90%',
-							zIndex: 1300,
+							zIndex: 1300
 						}}
 					>
 						<BottomNavigation
 							showLabels
 							style={{
 								backgroundColor: '#E4E4E4',
-								marginTop: '10px',
+								marginTop: '10px'
 							}}
 						>
 							<ComparisonTable type="cutlery" />
@@ -99,7 +99,7 @@ class ComparisonBar extends React.Component {
 															badgeContent={<CancelIcon />}
 															onClick={(event, checked) => {
 																props.dispatch(
-																	actionRemoveProduct(productId),
+																	actionRemoveProduct(productId)
 																);
 															}}
 														>
@@ -111,14 +111,14 @@ class ComparisonBar extends React.Component {
 																style={{
 																	border: '1px solid black',
 																	height: '50px',
-																	width: '50px',
+																	width: '50px'
 																}}
 															/>
 														</Badge>
 													) : (
 														<AddBoxIcon
 															style={{
-																fontSize: 50,
+																fontSize: 50
 															}}
 														/>
 													)}
@@ -136,19 +136,19 @@ class ComparisonBar extends React.Component {
 }
 
 ComparisonBar.defaultProps = {
-	numberOfItems: 3,
+	numberOfItems: 3
 };
 
 ComparisonBar = connect((state, props) => {
 	if (state.productComparisonReducer) {
 		return {
 			...props,
-			selection: state.productComparisonReducer.selection,
+			selection: state.productComparisonReducer.selection
 		};
 	} else {
 		return {
 			selection: [],
-			...props,
+			...props
 		};
 	}
 })(ComparisonBar);

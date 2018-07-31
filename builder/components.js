@@ -1,28 +1,27 @@
 import path from 'path';
 import webpack from 'webpack';
-import { data, info } from './modules/print.js';
+import log from './modules/print.js';
 import webpackConfig from './config/build.webpack.config.js';
+import tasks from './modules/tasks.js';
 
-export async function buildComponents() {
-	info('BUILD COMPONENTS STARTED');
+export default async function buildComponents() {
 	var finalConfig = webpackConfig('Sync', {
 		entry: {
-			index: './src/index.js',
+			index: './src/index.js'
 		},
 		output: {
-			path: path.resolve('./build/sync'),
-		},
+			path: path.resolve('./build/sync')
+		}
 	});
 
 	return new Promise((resolve, reject) => {
 		webpack(finalConfig, (err, stats) => {
-			data(
+			log.general(
 				stats.toString({
 					// Shows colors in the console:
-					colors: true,
-				}),
+					colors: true
+				})
 			);
-			info('BUILD COMPONENTS ENDED');
 			if (err || stats.hasErrors()) {
 				reject(err);
 			} else {
@@ -32,5 +31,7 @@ export async function buildComponents() {
 	});
 }
 
-buildComponents.displayName = 'components';
-buildComponents.description = 'components';
+buildComponents.displayName = 'build-components';
+buildComponents.description = 'build a single file bundle with all components.';
+
+tasks.add(tasks.timed(buildComponents));

@@ -17,7 +17,7 @@ More details on the sandbox functionality can be found [here](sandbox/README.md)
 
 Conversely, you can also hack on components using CodeSandbox:
 
-[![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/master/)
+[![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/0b63e06d14b42cc5f91739dff90a09ed747b1e93)
 
 ## Building:
 
@@ -32,6 +32,22 @@ yarn build
 | ---------------------------------------------- | ---------- |
 | Build the development version.                 | `--dev`    |
 | Open the webpack bundle report after building. | `--report` |
+
+### Dynamically registering components:
+
+First build the component:
+
+```sh
+yarn build dynamic-registration ./src/--REPLACE_WITH_COMPONENT_DIRECTORY--/index.js
+```
+
+Then in your frontend environment:
+
+```js
+var slt_dynamic_registration = function(e){var t={};function n(r) ...
+$('<div data-component="TestButton">This is a test button</div>').prependTo('body');
+ComponentManifest.register(slt_dynamic_registration);
+```
 
 ## What is this?
 
@@ -92,7 +108,7 @@ After [building](https://github.com/SurLaTable/slt-ui#building) the repo, do:
 
 ```
 cd build
-yarn login
+npm login
 yarn publish
 ```
 
@@ -100,6 +116,6 @@ To publish the `beta` tag to `npm` (for development environments), just add a `-
 
 ```
 cd build
-yarn login
+npm login
 yarn publish --tag beta
 ```

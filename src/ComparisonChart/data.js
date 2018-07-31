@@ -26,7 +26,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash with warm water and a little detergent, then rinse carefully and dry with a towel</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'13622': {
 			id: 13622,
@@ -54,7 +54,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash with warm water and a little detergent, then rinse carefully and dry with a towel</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'13624': {
 			id: 13624,
@@ -82,7 +82,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash with warm water and a little detergent, then rinse carefully and dry with a towel</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'327247': {
 			id: 327247,
@@ -110,10 +110,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash with warm water and a little detergent, then rinse carefully and dry with a towel</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 4,
-		id: 'PRO-13603',
+		id: 'PRO-13603'
 	},
 	'PRO-13604': {
 		'13604': {
@@ -141,10 +141,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-13604',
+		id: 'PRO-13604'
 	},
 	'PRO-13606': {
 		'13606': {
@@ -172,10 +172,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-13606',
+		id: 'PRO-13606'
 	},
 	'PRO-216616': {
 		'13608': {
@@ -203,10 +203,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-216616',
+		id: 'PRO-216616'
 	},
 	'PRO-13610': {
 		'13610': {
@@ -235,10 +235,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-13610',
+		id: 'PRO-13610'
 	},
 	'PRO-13614': {
 		'13614': {
@@ -267,7 +267,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'18588': {
 			id: 18588,
@@ -295,10 +295,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-13614',
+		id: 'PRO-13614'
 	},
 	'PRO-13626': {
 		'13626': {
@@ -327,10 +327,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent; rinse carefully and dry</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-13626',
+		id: 'PRO-13626'
 	},
 	'PRO-13636': {
 		'13636': {
@@ -359,10 +359,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knife with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-13636',
+		id: 'PRO-13636'
 	},
 	'PRO-15056': {
 		'15056': {
@@ -390,10 +390,10 @@ const data = {
 			Warranty: 'LIMITED LIFETIME WARRANTY',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-15056',
+		id: 'PRO-15056'
 	},
 	'PRO-17694': {
 		'17694': {
@@ -421,10 +421,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-17694',
+		id: 'PRO-17694'
 	},
 	'PRO-18806': {
 		'18806': {
@@ -452,7 +452,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3493376': {
 			id: 3493376,
@@ -479,7 +479,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3493400': {
 			id: 3493400,
@@ -506,10 +506,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-18806',
+		id: 'PRO-18806'
 	},
 	'PRO-19376': {
 		'19376': {
@@ -538,10 +538,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knife with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-19376',
+		id: 'PRO-19376'
 	},
 	'PRO-19594': {
 		'19594': {
@@ -569,7 +569,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'683433': {
 			id: 683433,
@@ -596,10 +596,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-19594',
+		id: 'PRO-19594'
 	},
 	'PRO-19786': {
 		'19786': {
@@ -627,7 +627,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'21501': {
 			id: 21501,
@@ -654,7 +654,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'1921642': {
 			id: 1921642,
@@ -681,7 +681,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'1963834': {
 			id: 1963834,
@@ -708,7 +708,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3489424': {
 			id: 3489424,
@@ -735,10 +735,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 5,
-		id: 'PRO-19786',
+		id: 'PRO-19786'
 	},
 	'PRO-19787': {
 		'19787': {
@@ -766,10 +766,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-19787',
+		id: 'PRO-19787'
 	},
 	'PRO-20137': {
 		'20137': {
@@ -797,10 +797,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-20137',
+		id: 'PRO-20137'
 	},
 	'PRO-20139': {
 		'20139': {
@@ -828,10 +828,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-20139',
+		id: 'PRO-20139'
 	},
 	'PRO-20276': {
 		'20276': {
@@ -860,10 +860,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knife with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-20276',
+		id: 'PRO-20276'
 	},
 	'PRO-21278': {
 		'21278': {
@@ -892,10 +892,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knife with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-21278',
+		id: 'PRO-21278'
 	},
 	'PRO-21504': {
 		'21504': {
@@ -923,7 +923,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3489309': {
 			id: 3489309,
@@ -950,7 +950,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3489374': {
 			id: 3489374,
@@ -977,10 +977,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-21504',
+		id: 'PRO-21504'
 	},
 	'PRO-21897': {
 		'21897': {
@@ -1008,10 +1008,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-21897',
+		id: 'PRO-21897'
 	},
 	'PRO-227496': {
 		'24535': {
@@ -1039,7 +1039,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'227496': {
 			id: 227496,
@@ -1066,10 +1066,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-227496',
+		id: 'PRO-227496'
 	},
 	'PRO-151761': {
 		'30544': {
@@ -1098,10 +1098,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-151761',
+		id: 'PRO-151761'
 	},
 	'PRO-112870': {
 		'112870': {
@@ -1129,10 +1129,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Santoro',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-112870',
+		id: 'PRO-112870'
 	},
 	'PRO-127456': {
 		'127456': {
@@ -1160,10 +1160,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-127456',
+		id: 'PRO-127456'
 	},
 	'PRO-151753': {
 		'151753': {
@@ -1191,10 +1191,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-151753',
+		id: 'PRO-151753'
 	},
 	'PRO-268888': {
 		'268888': {
@@ -1222,10 +1222,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-268888',
+		id: 'PRO-268888'
 	},
 	'PRO-268896': {
 		'268896': {
@@ -1253,10 +1253,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-268896',
+		id: 'PRO-268896'
 	},
 	'PRO-268912': {
 		'268912': {
@@ -1284,7 +1284,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'282947': {
 			id: 282947,
@@ -1311,7 +1311,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'476150': {
 			id: 476150,
@@ -1338,10 +1338,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-268912',
+		id: 'PRO-268912'
 	},
 	'PRO-268946': {
 		'268946': {
@@ -1369,10 +1369,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-268946',
+		id: 'PRO-268946'
 	},
 	'PRO-307553': {
 		'307553': {
@@ -1400,10 +1400,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-307553',
+		id: 'PRO-307553'
 	},
 	'PRO-328500': {
 		'328500': {
@@ -1431,10 +1431,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-328500',
+		id: 'PRO-328500'
 	},
 	'PRO-328518': {
 		'328518': {
@@ -1462,10 +1462,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-328518',
+		id: 'PRO-328518'
 	},
 	'PRO-328526': {
 		'328526': {
@@ -1493,10 +1493,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-328526',
+		id: 'PRO-328526'
 	},
 	'PRO-328534': {
 		'328534': {
@@ -1524,10 +1524,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-328534',
+		id: 'PRO-328534'
 	},
 	'PRO-520288': {
 		'328542': {
@@ -1555,10 +1555,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-520288',
+		id: 'PRO-520288'
 	},
 	'PRO-380923': {
 		'380923': {
@@ -1587,10 +1587,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4 steak knives</li>\n<li>Beautiful storage box</li>\n</ul>',
+				'<ul>\n<li>4 steak knives</li>\n<li>Beautiful storage box</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-380923',
+		id: 'PRO-380923'
 	},
 	'PRO-381178': {
 		'381178': {
@@ -1619,7 +1619,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'789339': {
 			id: 789339,
@@ -1647,10 +1647,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-381178',
+		id: 'PRO-381178'
 	},
 	'PRO-381905': {
 		'381905': {
@@ -1678,10 +1678,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-381905',
+		id: 'PRO-381905'
 	},
 	'PRO-406538': {
 		'406538': {
@@ -1709,10 +1709,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-406538',
+		id: 'PRO-406538'
 	},
 	'PRO-443341': {
 		'443341': {
@@ -1741,10 +1741,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry with a towel</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-443341',
+		id: 'PRO-443341'
 	},
 	'PRO-446260': {
 		'446260': {
@@ -1772,10 +1772,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-446260',
+		id: 'PRO-446260'
 	},
 	'PRO-446278': {
 		'446278': {
@@ -1803,10 +1803,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-446278',
+		id: 'PRO-446278'
 	},
 	'PRO-447409': {
 		'447409': {
@@ -1834,10 +1834,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-447409',
+		id: 'PRO-447409'
 	},
 	'PRO-453381': {
 		'453381': {
@@ -1865,10 +1865,10 @@ const data = {
 			Warranty: 'LIMITED LIFETIME WARRANTY',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-453381',
+		id: 'PRO-453381'
 	},
 	'PRO-462606': {
 		'462606': {
@@ -1897,10 +1897,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry with a towel</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-462606',
+		id: 'PRO-462606'
 	},
 	'PRO-496380': {
 		'496398': {
@@ -1928,10 +1928,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-496380',
+		id: 'PRO-496380'
 	},
 	'PRO-517425': {
 		'517425': {
@@ -1959,7 +1959,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3493491': {
 			id: 3493491,
@@ -1986,7 +1986,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3493715': {
 			id: 3493715,
@@ -2013,10 +2013,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-517425',
+		id: 'PRO-517425'
 	},
 	'PRO-518191': {
 		'518191': {
@@ -2044,10 +2044,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-518191',
+		id: 'PRO-518191'
 	},
 	'PRO-524736': {
 		'524736': {
@@ -2075,10 +2075,10 @@ const data = {
 			Warranty: 'LIMITED LIFETIME WARRANTY',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-524736',
+		id: 'PRO-524736'
 	},
 	'PRO-527069': {
 		'527069': {
@@ -2106,10 +2106,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-527069',
+		id: 'PRO-527069'
 	},
 	'PRO-527226': {
 		'527226': {
@@ -2137,10 +2137,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-527226',
+		id: 'PRO-527226'
 	},
 	'PRO-527234': {
 		'527234': {
@@ -2168,10 +2168,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-527234',
+		id: 'PRO-527234'
 	},
 	'PRO-527242': {
 		'527242': {
@@ -2199,10 +2199,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-527242',
+		id: 'PRO-527242'
 	},
 	'PRO-527259': {
 		'527259': {
@@ -2230,10 +2230,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-527259',
+		id: 'PRO-527259'
 	},
 	'PRO-534149': {
 		'534149': {
@@ -2263,10 +2263,10 @@ const data = {
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>6 (4.5&#34;) steak knives</li>\n<li>Wood storage block</li>\n</ul>',
+				'<ul>\n<li>6 (4.5&#34;) steak knives</li>\n<li>Wood storage block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-534149',
+		id: 'PRO-534149'
 	},
 	'PRO-543041': {
 		'543041': {
@@ -2294,10 +2294,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-543041',
+		id: 'PRO-543041'
 	},
 	'PRO-604728': {
 		'564740': {
@@ -2325,7 +2325,7 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'604710': {
 			id: 604710,
@@ -2352,7 +2352,7 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'604728': {
 			id: 604728,
@@ -2379,10 +2379,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-604728',
+		id: 'PRO-604728'
 	},
 	'PRO-564757': {
 		'564757': {
@@ -2410,10 +2410,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-564757',
+		id: 'PRO-564757'
 	},
 	'PRO-564765': {
 		'564765': {
@@ -2441,10 +2441,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-564765',
+		id: 'PRO-564765'
 	},
 	'PRO-567354': {
 		'567354': {
@@ -2472,10 +2472,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567354',
+		id: 'PRO-567354'
 	},
 	'PRO-567362': {
 		'567362': {
@@ -2503,10 +2503,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567362',
+		id: 'PRO-567362'
 	},
 	'PRO-567370': {
 		'567370': {
@@ -2534,10 +2534,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567370',
+		id: 'PRO-567370'
 	},
 	'PRO-567388': {
 		'567388': {
@@ -2565,10 +2565,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567388',
+		id: 'PRO-567388'
 	},
 	'PRO-567446': {
 		'567446': {
@@ -2596,10 +2596,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567446',
+		id: 'PRO-567446'
 	},
 	'PRO-567479': {
 		'567479': {
@@ -2627,7 +2627,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'567487': {
 			id: 567487,
@@ -2654,7 +2654,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'567495': {
 			id: 567495,
@@ -2681,7 +2681,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'2303964': {
 			id: 2303964,
@@ -2708,10 +2708,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 4,
-		id: 'PRO-567479',
+		id: 'PRO-567479'
 	},
 	'PRO-567503': {
 		'567503': {
@@ -2739,10 +2739,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567503',
+		id: 'PRO-567503'
 	},
 	'PRO-567511': {
 		'567511': {
@@ -2770,7 +2770,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'567529': {
 			id: 567529,
@@ -2797,10 +2797,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-567511',
+		id: 'PRO-567511'
 	},
 	'PRO-567537': {
 		'567537': {
@@ -2828,10 +2828,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567537',
+		id: 'PRO-567537'
 	},
 	'PRO-567545': {
 		'567545': {
@@ -2859,10 +2859,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-567545',
+		id: 'PRO-567545'
 	},
 	'PRO-568568': {
 		'568568': {
@@ -2890,10 +2890,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-568568',
+		id: 'PRO-568568'
 	},
 	'PRO-568766': {
 		'568766': {
@@ -2922,10 +2922,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>We recommend washing your knives with warm, soapy water after each use</li>\n<li>Rinse carefully and dry with a towel</li>\n<li>Precious knives should not be cleaned in a dishwasher</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-568766',
+		id: 'PRO-568766'
 	},
 	'PRO-583377': {
 		'583377': {
@@ -2953,10 +2953,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-583377',
+		id: 'PRO-583377'
 	},
 	'PRO-583385': {
 		'583385': {
@@ -2984,10 +2984,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-583385',
+		id: 'PRO-583385'
 	},
 	'PRO-583427': {
 		'583427': {
@@ -3015,10 +3015,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-583427',
+		id: 'PRO-583427'
 	},
 	'PRO-583435': {
 		'583435': {
@@ -3046,10 +3046,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-583435',
+		id: 'PRO-583435'
 	},
 	'PRO-583450': {
 		'583450': {
@@ -3077,10 +3077,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-583450',
+		id: 'PRO-583450'
 	},
 	'PRO-591578': {
 		'591578': {
@@ -3109,10 +3109,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-591578',
+		id: 'PRO-591578'
 	},
 	'PRO-592873': {
 		'592873': {
@@ -3141,10 +3141,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-592873',
+		id: 'PRO-592873'
 	},
 	'PRO-592881': {
 		'592881': {
@@ -3173,10 +3173,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-592881',
+		id: 'PRO-592881'
 	},
 	'PRO-592899': {
 		'592899': {
@@ -3205,10 +3205,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-592899',
+		id: 'PRO-592899'
 	},
 	'PRO-592907': {
 		'592907': {
@@ -3237,7 +3237,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1822097': {
 			id: 1822097,
@@ -3265,10 +3265,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-592907',
+		id: 'PRO-592907'
 	},
 	'PRO-592915': {
 		'592915': {
@@ -3297,10 +3297,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-592915',
+		id: 'PRO-592915'
 	},
 	'PRO-592923': {
 		'592923': {
@@ -3329,7 +3329,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'592931': {
 			id: 592931,
@@ -3357,10 +3357,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-592923',
+		id: 'PRO-592923'
 	},
 	'PRO-16602': {
 		'595397': {
@@ -3389,7 +3389,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'836189': {
 			id: 836189,
@@ -3417,10 +3417,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knives with warm water and a little detergent, rinse carefully and dry</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-16602',
+		id: 'PRO-16602'
 	},
 	'PRO-595405': {
 		'595405': {
@@ -3449,10 +3449,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Wash knife with warm water and a little detergent, rinse carefully and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-595405',
+		id: 'PRO-595405'
 	},
 	'PRO-595462': {
 		'595462': {
@@ -3480,10 +3480,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-595462',
+		id: 'PRO-595462'
 	},
 	'PRO-595496': {
 		'595496': {
@@ -3511,10 +3511,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-595496',
+		id: 'PRO-595496'
 	},
 	'PRO-597070': {
 		'597070': {
@@ -3542,10 +3542,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Leather pouch</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Leather pouch</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-597070',
+		id: 'PRO-597070'
 	},
 	'PRO-597179': {
 		'597179': {
@@ -3574,10 +3574,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Chef&#8217;s, santoku, bread, carving and paring knives, honing steel and walnut block</li>\n</ul>',
+				'<ul>\n<li>Chef&#8217;s, santoku, bread, carving and paring knives, honing steel and walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-597179',
+		id: 'PRO-597179'
 	},
 	'PRO-235813': {
 		'604702': {
@@ -3605,10 +3605,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-235813',
+		id: 'PRO-235813'
 	},
 	'PRO-136107': {
 		'636084': {
@@ -3636,10 +3636,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Swissmar',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-136107',
+		id: 'PRO-136107'
 	},
 	'PRO-637579': {
 		'637579': {
@@ -3667,10 +3667,10 @@ const data = {
 			Warranty: 'LIFETIME WARRANTY',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-637579',
+		id: 'PRO-637579'
 	},
 	'PRO-638049': {
 		'638049': {
@@ -3698,10 +3698,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n<li>Kitchen shears </li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n<li>Kitchen shears </li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-638049',
+		id: 'PRO-638049'
 	},
 	'PRO-136109': {
 		'661850': {
@@ -3729,10 +3729,10 @@ const data = {
 			Warranty: 'Fully guaranteed against defects in material and craftsmanship ',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-136109',
+		id: 'PRO-136109'
 	},
 	'PRO-663054': {
 		'663054': {
@@ -3760,10 +3760,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash<li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-663054',
+		id: 'PRO-663054'
 	},
 	'PRO-673855': {
 		'673855': {
@@ -3791,10 +3791,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash<li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-673855',
+		id: 'PRO-673855'
 	},
 	'PRO-673863': {
 		'673863': {
@@ -3822,7 +3822,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash<li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'751719': {
 			id: 751719,
@@ -3849,10 +3849,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash<li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-673863',
+		id: 'PRO-673863'
 	},
 	'PRO-673871': {
 		'673871': {
@@ -3880,10 +3880,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash<li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-673871',
+		id: 'PRO-673871'
 	},
 	'PRO-673889': {
 		'673889': {
@@ -3911,10 +3911,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-673889',
+		id: 'PRO-673889'
 	},
 	'PRO-673897': {
 		'673897': {
@@ -3942,7 +3942,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'687012': {
 			id: 687012,
@@ -3969,7 +3969,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'751701': {
 			id: 751701,
@@ -3996,10 +3996,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-673897',
+		id: 'PRO-673897'
 	},
 	'PRO-673905': {
 		'673905': {
@@ -4027,10 +4027,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash<li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-673905',
+		id: 'PRO-673905'
 	},
 	'PRO-683367': {
 		'683367': {
@@ -4058,7 +4058,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Slicer</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Slicer</li>\n</ul>'
 		},
 		'3488525': {
 			id: 3488525,
@@ -4085,7 +4085,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Slicer</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Slicer</li>\n</ul>'
 		},
 		'3489101': {
 			id: 3489101,
@@ -4112,10 +4112,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Slicer</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Slicer</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-683367',
+		id: 'PRO-683367'
 	},
 	'PRO-683425': {
 		'683425': {
@@ -4143,10 +4143,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-683425',
+		id: 'PRO-683425'
 	},
 	'PRO-683466': {
 		'683466': {
@@ -4175,10 +4175,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>8&#34; chef&#8217;s knife</li>\n<li>5.25&#34; utility knife</li>\n<li>3.5&#34; paring knife</li>\n</ul>',
+				'<ul>\n<li>8&#34; chef&#8217;s knife</li>\n<li>5.25&#34; utility knife</li>\n<li>3.5&#34; paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-683466',
+		id: 'PRO-683466'
 	},
 	'PRO-685289': {
 		'685289': {
@@ -4207,10 +4207,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#189;&#34; paring</li>\n<li>6&#34; utility</li>\n<li>5&#189;&#34; hollow&#8211;edge <i>Santoku</i></li>\n<li>9&#34; hollow ground slicing</li>\n<li>9&#34; bread</li>\n<li>8&#34; chef&#8217;s</li>\n<li>6&#34; U2 ultimate utility</li>\n<li>kitchen shears</li>\n<li>Sharpening steel</li>\n<li>11&#8211;slot bamboo storage block</li>\n</ul>',
+				'<ul>\n<li>3&#189;&#34; paring</li>\n<li>6&#34; utility</li>\n<li>5&#189;&#34; hollow&#8211;edge <i>Santoku</i></li>\n<li>9&#34; hollow ground slicing</li>\n<li>9&#34; bread</li>\n<li>8&#34; chef&#8217;s</li>\n<li>6&#34; U2 ultimate utility</li>\n<li>kitchen shears</li>\n<li>Sharpening steel</li>\n<li>11&#8211;slot bamboo storage block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-685289',
+		id: 'PRO-685289'
 	},
 	'PRO-686980': {
 		'686980': {
@@ -4238,10 +4238,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-686980',
+		id: 'PRO-686980'
 	},
 	'PRO-687004': {
 		'687004': {
@@ -4269,10 +4269,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-687004',
+		id: 'PRO-687004'
 	},
 	'PRO-688374': {
 		'688374': {
@@ -4300,10 +4300,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-688374',
+		id: 'PRO-688374'
 	},
 	'PRO-693317': {
 		'693317': {
@@ -4331,10 +4331,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-693317',
+		id: 'PRO-693317'
 	},
 	'PRO-693333': {
 		'693333': {
@@ -4362,10 +4362,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-693333',
+		id: 'PRO-693333'
 	},
 	'PRO-693341': {
 		'693341': {
@@ -4394,10 +4394,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-693341',
+		id: 'PRO-693341'
 	},
 	'PRO-695890': {
 		'695890': {
@@ -4425,10 +4425,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-695890',
+		id: 'PRO-695890'
 	},
 	'PRO-705863': {
 		'695908': {
@@ -4456,7 +4456,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'705863': {
 			id: 705863,
@@ -4483,10 +4483,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-705863',
+		id: 'PRO-705863'
 	},
 	'PRO-695916': {
 		'695916': {
@@ -4514,7 +4514,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'695924': {
 			id: 695924,
@@ -4541,7 +4541,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'695932': {
 			id: 695932,
@@ -4568,10 +4568,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-695916',
+		id: 'PRO-695916'
 	},
 	'PRO-695940': {
 		'695940': {
@@ -4599,10 +4599,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-695940',
+		id: 'PRO-695940'
 	},
 	'PRO-695965': {
 		'695965': {
@@ -4631,10 +4631,10 @@ const data = {
 			'Web Brand': 'Miyabi',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash and dry immediately</li>\n<li>Sharpen with Miyabi sharpening stones</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-695965',
+		id: 'PRO-695965'
 	},
 	'PRO-700732': {
 		'700732': {
@@ -4662,10 +4662,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Orka',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-700732',
+		id: 'PRO-700732'
 	},
 	'PRO-16209': {
 		'741165': {
@@ -4694,10 +4694,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-16209',
+		id: 'PRO-16209'
 	},
 	'PRO-180373': {
 		'789685': {
@@ -4726,10 +4726,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-180373',
+		id: 'PRO-180373'
 	},
 	'PRO-180374': {
 		'789693': {
@@ -4758,10 +4758,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-180374',
+		id: 'PRO-180374'
 	},
 	'PRO-180375': {
 		'789701': {
@@ -4790,10 +4790,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-180375',
+		id: 'PRO-180375'
 	},
 	'PRO-180376': {
 		'789719': {
@@ -4822,10 +4822,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-180376',
+		id: 'PRO-180376'
 	},
 	'PRO-180384': {
 		'789727': {
@@ -4854,10 +4854,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-180384',
+		id: 'PRO-180384'
 	},
 	'PRO-180385': {
 		'789735': {
@@ -4886,10 +4886,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-180385',
+		id: 'PRO-180385'
 	},
 	'PRO-180386': {
 		'789743': {
@@ -4918,10 +4918,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-180386',
+		id: 'PRO-180386'
 	},
 	'PRO-184886': {
 		'806638': {
@@ -4949,10 +4949,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-184886',
+		id: 'PRO-184886'
 	},
 	'PRO-184887': {
 		'806646': {
@@ -4980,10 +4980,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-184887',
+		id: 'PRO-184887'
 	},
 	'PRO-806653': {
 		'806653': {
@@ -5011,10 +5011,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-806653',
+		id: 'PRO-806653'
 	},
 	'PRO-184889': {
 		'806661': {
@@ -5042,10 +5042,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-184889',
+		id: 'PRO-184889'
 	},
 	'PRO-184891': {
 		'806679': {
@@ -5073,7 +5073,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'806802': {
 			id: 806802,
@@ -5100,10 +5100,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-184891',
+		id: 'PRO-184891'
 	},
 	'PRO-184892': {
 		'806745': {
@@ -5131,10 +5131,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-184892',
+		id: 'PRO-184892'
 	},
 	'PRO-184893': {
 		'806778': {
@@ -5162,7 +5162,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'806786': {
 			id: 806786,
@@ -5189,10 +5189,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-184893',
+		id: 'PRO-184893'
 	},
 	'PRO-191993': {
 		'836114': {
@@ -5220,10 +5220,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-191993',
+		id: 'PRO-191993'
 	},
 	'PRO-191994': {
 		'836122': {
@@ -5251,10 +5251,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-191994',
+		id: 'PRO-191994'
 	},
 	'PRO-895128': {
 		'895128': {
@@ -5283,10 +5283,10 @@ const data = {
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; serrated paring</li>\n<li>3&#34; spear-point paring</li>\n<li>3&#34; serrated flat paring</li>\n</ul>',
+				'<ul>\n<li>4&#34; serrated paring</li>\n<li>3&#34; spear-point paring</li>\n<li>3&#34; serrated flat paring</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-895128',
+		id: 'PRO-895128'
 	},
 	'PRO-903930': {
 		'903930': {
@@ -5315,10 +5315,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash; please do not clean with bleach or chlorine</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-903930',
+		id: 'PRO-903930'
 	},
 	'PRO-903948': {
 		'903948': {
@@ -5346,10 +5346,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-903948',
+		id: 'PRO-903948'
 	},
 	'PRO-907592': {
 		'907592': {
@@ -5377,10 +5377,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-907592',
+		id: 'PRO-907592'
 	},
 	'PRO-907600': {
 		'907600': {
@@ -5408,10 +5408,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-907600',
+		id: 'PRO-907600'
 	},
 	'PRO-918227': {
 		'918227': {
@@ -5439,10 +5439,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-918227',
+		id: 'PRO-918227'
 	},
 	'PRO-918235': {
 		'918235': {
@@ -5470,10 +5470,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-918235',
+		id: 'PRO-918235'
 	},
 	'PRO-918243': {
 		'918243': {
@@ -5501,7 +5501,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1021807': {
 			id: 1021807,
@@ -5528,7 +5528,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1021815': {
 			id: 1021815,
@@ -5555,10 +5555,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-918243',
+		id: 'PRO-918243'
 	},
 	'PRO-918250': {
 		'918250': {
@@ -5586,10 +5586,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-918250',
+		id: 'PRO-918250'
 	},
 	'PRO-918268': {
 		'918268': {
@@ -5617,10 +5617,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-918268',
+		id: 'PRO-918268'
 	},
 	'PRO-918284': {
 		'918276': {
@@ -5648,7 +5648,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'918284': {
 			id: 918284,
@@ -5675,7 +5675,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'982942': {
 			id: 982942,
@@ -5702,7 +5702,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3842093': {
 			id: 3842093,
@@ -5729,10 +5729,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 4,
-		id: 'PRO-918284',
+		id: 'PRO-918284'
 	},
 	'PRO-918292': {
 		'918292': {
@@ -5760,10 +5760,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-918292',
+		id: 'PRO-918292'
 	},
 	'PRO-918631': {
 		'918631': {
@@ -5791,10 +5791,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-918631',
+		id: 'PRO-918631'
 	},
 	'PRO-918664': {
 		'918664': {
@@ -5822,10 +5822,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>8 steak knives</li>\n<li>Presentation box</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>8 steak knives</li>\n<li>Presentation box</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-918664',
+		id: 'PRO-918664'
 	},
 	'PRO-918672': {
 		'918672': {
@@ -5854,10 +5854,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Cheese plane</li>\n<li>Cheese knife</li>\n<li>Corkscrew</li>\n<li>Bamboo board</li>\n</ul>',
+				'<ul>\n<li>Cheese plane</li>\n<li>Cheese knife</li>\n<li>Corkscrew</li>\n<li>Bamboo board</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-918672',
+		id: 'PRO-918672'
 	},
 	'PRO-923144': {
 		'923144': {
@@ -5885,10 +5885,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-923144',
+		id: 'PRO-923144'
 	},
 	'PRO-923151': {
 		'923151': {
@@ -5916,10 +5916,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-923151',
+		id: 'PRO-923151'
 	},
 	'PRO-923193': {
 		'923193': {
@@ -5947,7 +5947,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1824937': {
 			id: 1824937,
@@ -5974,10 +5974,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-923193',
+		id: 'PRO-923193'
 	},
 	'PRO-923268': {
 		'923268': {
@@ -6005,10 +6005,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-923268',
+		id: 'PRO-923268'
 	},
 	'PRO-932509': {
 		'932509': {
@@ -6037,10 +6037,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash with warm water and a little detergent; rinse careful and dry with a towel</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-932509',
+		id: 'PRO-932509'
 	},
 	'PRO-1006931': {
 		'1006931': {
@@ -6068,10 +6068,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1006931',
+		id: 'PRO-1006931'
 	},
 	'PRO-1006980': {
 		'1006980': {
@@ -6099,10 +6099,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1006980',
+		id: 'PRO-1006980'
 	},
 	'PRO-1006998': {
 		'1006998': {
@@ -6130,10 +6130,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1006998',
+		id: 'PRO-1006998'
 	},
 	'PRO-1007491': {
 		'1007491': {
@@ -6161,10 +6161,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1007491',
+		id: 'PRO-1007491'
 	},
 	'PRO-1021567': {
 		'1021567': {
@@ -6192,10 +6192,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1021567',
+		id: 'PRO-1021567'
 	},
 	'PRO-1021773': {
 		'1021773': {
@@ -6224,10 +6224,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1021773',
+		id: 'PRO-1021773'
 	},
 	'PRO-1021781': {
 		'1021781': {
@@ -6256,10 +6256,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Slicing knife</li>\n<li>Meat fork</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Slicing knife</li>\n<li>Meat fork</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1021781',
+		id: 'PRO-1021781'
 	},
 	'PRO-1021799': {
 		'1021799': {
@@ -6288,10 +6288,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1021799',
+		id: 'PRO-1021799'
 	},
 	'PRO-1022110': {
 		'1022110': {
@@ -6319,10 +6319,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022110',
+		id: 'PRO-1022110'
 	},
 	'PRO-1022128': {
 		'1022128': {
@@ -6350,10 +6350,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022128',
+		id: 'PRO-1022128'
 	},
 	'PRO-1022136': {
 		'1022136': {
@@ -6381,10 +6381,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022136',
+		id: 'PRO-1022136'
 	},
 	'PRO-1022144': {
 		'1022144': {
@@ -6412,10 +6412,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022144',
+		id: 'PRO-1022144'
 	},
 	'PRO-1022151': {
 		'1022151': {
@@ -6443,10 +6443,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022151',
+		id: 'PRO-1022151'
 	},
 	'PRO-1022169': {
 		'1022169': {
@@ -6474,10 +6474,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022169',
+		id: 'PRO-1022169'
 	},
 	'PRO-1022177': {
 		'1022177': {
@@ -6505,10 +6505,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022177',
+		id: 'PRO-1022177'
 	},
 	'PRO-1022185': {
 		'1022185': {
@@ -6536,10 +6536,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022185',
+		id: 'PRO-1022185'
 	},
 	'PRO-1022193': {
 		'1022193': {
@@ -6567,10 +6567,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022193',
+		id: 'PRO-1022193'
 	},
 	'PRO-1022201': {
 		'1022201': {
@@ -6598,10 +6598,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022201',
+		id: 'PRO-1022201'
 	},
 	'PRO-1022227': {
 		'1022227': {
@@ -6629,10 +6629,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022227',
+		id: 'PRO-1022227'
 	},
 	'PRO-1022235': {
 		'1022235': {
@@ -6660,10 +6660,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022235',
+		id: 'PRO-1022235'
 	},
 	'PRO-1022243': {
 		'1022243': {
@@ -6691,10 +6691,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022243',
+		id: 'PRO-1022243'
 	},
 	'PRO-1022250': {
 		'1022250': {
@@ -6722,10 +6722,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022250',
+		id: 'PRO-1022250'
 	},
 	'PRO-1022268': {
 		'1022268': {
@@ -6753,10 +6753,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1022268',
+		id: 'PRO-1022268'
 	},
 	'PRO-1036201': {
 		'1036201': {
@@ -6784,10 +6784,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1036201',
+		id: 'PRO-1036201'
 	},
 	'PRO-1038504': {
 		'1038504': {
@@ -6816,10 +6816,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1038504',
+		id: 'PRO-1038504'
 	},
 	'PRO-1038512': {
 		'1038512': {
@@ -6847,10 +6847,10 @@ const data = {
 			Warranty: 'limited lifetime',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1038512',
+		id: 'PRO-1038512'
 	},
 	'PRO-1039148': {
 		'1039148': {
@@ -6878,10 +6878,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>3&#189;&#34; paring</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>3&#189;&#34; paring</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1039148',
+		id: 'PRO-1039148'
 	},
 	'PRO-1039155': {
 		'1039155': {
@@ -6909,10 +6909,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>5#34; utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>5#34; utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1039155',
+		id: 'PRO-1039155'
 	},
 	'PRO-1039163': {
 		'1039163': {
@@ -6940,10 +6940,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#189;&#34; slicing knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#189;&#34; slicing knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1039163',
+		id: 'PRO-1039163'
 	},
 	'PRO-1039171': {
 		'1039171': {
@@ -6971,10 +6971,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6&#34; chef&#8217;s</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6&#34; chef&#8217;s</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1039171',
+		id: 'PRO-1039171'
 	},
 	'PRO-1039189': {
 		'1039189': {
@@ -7002,10 +7002,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1039189',
+		id: 'PRO-1039189'
 	},
 	'PRO-1039197': {
 		'1039197': {
@@ -7033,10 +7033,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#189;&#34; chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#189;&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1039197',
+		id: 'PRO-1039197'
 	},
 	'PRO-1039205': {
 		'1039205': {
@@ -7064,10 +7064,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#189;&#34; bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#189;&#34; bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1039205',
+		id: 'PRO-1039205'
 	},
 	'PRO-1039221': {
 		'1039221': {
@@ -7095,7 +7095,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul> ',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1594894': {
 			id: 1594894,
@@ -7122,10 +7122,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul> ',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-1039221',
+		id: 'PRO-1039221'
 	},
 	'PRO-1039239': {
 		'1039239': {
@@ -7153,10 +7153,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1039239',
+		id: 'PRO-1039239'
 	},
 	'PRO-1039247': {
 		'1039247': {
@@ -7184,10 +7184,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1039247',
+		id: 'PRO-1039247'
 	},
 	'PRO-1040237': {
 		'1040237': {
@@ -7216,10 +7216,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#189;&#34; paring knife, 5&#34; utility knife, 8&#34; chef&#8217;s knife, 10&#34; bread knife, 9&#34; slicer, Kramer&#8217;s double-cut sharpening steel and dark-walnut storage block</li>\n</ul>',
+				'<ul>\n<li>3&#189;&#34; paring knife, 5&#34; utility knife, 8&#34; chef&#8217;s knife, 10&#34; bread knife, 9&#34; slicer, Kramer&#8217;s double-cut sharpening steel and dark-walnut storage block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1040237',
+		id: 'PRO-1040237'
 	},
 	'PRO-1055631': {
 		'1055631': {
@@ -7247,10 +7247,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1055631',
+		id: 'PRO-1055631'
 	},
 	'PRO-1074103': {
 		'1074103': {
@@ -7278,10 +7278,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1074103',
+		id: 'PRO-1074103'
 	},
 	'PRO-1074137': {
 		'1074137': {
@@ -7309,10 +7309,10 @@ const data = {
 			Warranty: 'limited lifetime warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1074137',
+		id: 'PRO-1074137'
 	},
 	'PRO-1104504': {
 		'1104504': {
@@ -7340,10 +7340,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Swissmar',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1104504',
+		id: 'PRO-1104504'
 	},
 	'PRO-1121912': {
 		'1121912': {
@@ -7372,10 +7372,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1121912',
+		id: 'PRO-1121912'
 	},
 	'PRO-1121920': {
 		'1121920': {
@@ -7403,10 +7403,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1121920',
+		id: 'PRO-1121920'
 	},
 	'PRO-1121938': {
 		'1121938': {
@@ -7434,10 +7434,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1121938',
+		id: 'PRO-1121938'
 	},
 	'PRO-1149921': {
 		'1149921': {
@@ -7466,10 +7466,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>8 steak knives (4&#34; blade, 9&#34; overall length)</li>\n<li>Carving knife (7&#34; blade, 12&#34; overall length)</li>\n<li>Carving fork (10&#34; overall length)</li>\n<li>Storage box</li>\n</ul>',
+				'<ul>\n<li>8 steak knives (4&#34; blade, 9&#34; overall length)</li>\n<li>Carving knife (7&#34; blade, 12&#34; overall length)</li>\n<li>Carving fork (10&#34; overall length)</li>\n<li>Storage box</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1149921',
+		id: 'PRO-1149921'
 	},
 	'PRO-1157817': {
 		'1157817': {
@@ -7498,10 +7498,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>8&#34; chef&#8217;s knife</li> \n<li>5&#189;&#34; nakiri vegetable knife</li>\n<li>4&#188;&#34; utility knife</li>\n<li>6&#34; serrated utility knife</li>\n<li>3&#34; paring knife</li>\n<li>Bamboo and stainless-steel block</li>\n</ul>',
+				'<ul>\n<li>8&#34; chef&#8217;s knife</li> \n<li>5&#189;&#34; nakiri vegetable knife</li>\n<li>4&#188;&#34; utility knife</li>\n<li>6&#34; serrated utility knife</li>\n<li>3&#34; paring knife</li>\n<li>Bamboo and stainless-steel block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1157817',
+		id: 'PRO-1157817'
 	},
 	'PRO-1204262': {
 		'1204262': {
@@ -7529,10 +7529,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe but hand-washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204262',
+		id: 'PRO-1204262'
 	},
 	'PRO-1204270': {
 		'1204270': {
@@ -7560,10 +7560,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe but hand washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204270',
+		id: 'PRO-1204270'
 	},
 	'PRO-1204304': {
 		'1204304': {
@@ -7591,10 +7591,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe but hand washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204304',
+		id: 'PRO-1204304'
 	},
 	'PRO-1204312': {
 		'1204312': {
@@ -7622,10 +7622,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe but hand washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204312',
+		id: 'PRO-1204312'
 	},
 	'PRO-1204338': {
 		'1204338': {
@@ -7653,10 +7653,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe but hand washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204338',
+		id: 'PRO-1204338'
 	},
 	'PRO-1204353': {
 		'1204353': {
@@ -7684,10 +7684,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe but hand washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204353',
+		id: 'PRO-1204353'
 	},
 	'PRO-1204361': {
 		'1204361': {
@@ -7715,10 +7715,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe but hand washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204361',
+		id: 'PRO-1204361'
 	},
 	'PRO-1204379': {
 		'1204379': {
@@ -7746,10 +7746,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe, but hand-washing recommended</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1204379',
+		id: 'PRO-1204379'
 	},
 	'PRO-1207109': {
 		'1207109': {
@@ -7777,10 +7777,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n<li>For right-handed use only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1207109',
+		id: 'PRO-1207109'
 	},
 	'PRO-1207117': {
 		'1207117': {
@@ -7808,10 +7808,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</li>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1207117',
+		id: 'PRO-1207117'
 	},
 	'PRO-1207125': {
 		'1207125': {
@@ -7839,10 +7839,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1207125',
+		id: 'PRO-1207125'
 	},
 	'PRO-1207133': {
 		'1207133': {
@@ -7870,10 +7870,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1207133',
+		id: 'PRO-1207133'
 	},
 	'PRO-1215193': {
 		'1215193': {
@@ -7902,10 +7902,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash knife and dry immediately, rinse and drip dry sharpener</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1215193',
+		id: 'PRO-1215193'
 	},
 	'PRO-1219450': {
 		'1219450': {
@@ -7934,10 +7934,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>8&#34; chef&#8217;s knife</li> \n<li>5&#188;&#34; chef&#8217;s knife</li>  \n<li>7&#34; santoku</li>\n<li>6&#34; serrated utility knife</li>\n<li>8&#190;&#34; bread knife</li>\n<li>4&#34; paring knife</li>\n<li>3&#189;&#34; paring knife</li>\n<li>8&#188;&#34; carving knife</li>\n<li>10&#34; honing steel</li>\n<li>Stainless-steel block</li>\n</ul>',
+				'<ul>\n<li>8&#34; chef&#8217;s knife</li> \n<li>5&#188;&#34; chef&#8217;s knife</li>  \n<li>7&#34; santoku</li>\n<li>6&#34; serrated utility knife</li>\n<li>8&#190;&#34; bread knife</li>\n<li>4&#34; paring knife</li>\n<li>3&#189;&#34; paring knife</li>\n<li>8&#188;&#34; carving knife</li>\n<li>10&#34; honing steel</li>\n<li>Stainless-steel block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1219450',
+		id: 'PRO-1219450'
 	},
 	'PRO-1233253': {
 		'1233253': {
@@ -7965,10 +7965,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1233253',
+		id: 'PRO-1233253'
 	},
 	'PRO-1233311': {
 		'1233311': {
@@ -7996,10 +7996,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1233311',
+		id: 'PRO-1233311'
 	},
 	'PRO-1236785': {
 		'1236785': {
@@ -8027,10 +8027,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1236785',
+		id: 'PRO-1236785'
 	},
 	'PRO-1236876': {
 		'1236876': {
@@ -8058,10 +8058,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1236876',
+		id: 'PRO-1236876'
 	},
 	'PRO-1251164': {
 		'1251164': {
@@ -8089,10 +8089,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1251164',
+		id: 'PRO-1251164'
 	},
 	'PRO-1251172': {
 		'1251172': {
@@ -8120,10 +8120,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1251172',
+		id: 'PRO-1251172'
 	},
 	'PRO-1251180': {
 		'1251180': {
@@ -8151,7 +8151,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1251230': {
 			id: 1251230,
@@ -8178,7 +8178,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1251248': {
 			id: 1251248,
@@ -8205,10 +8205,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-1251180',
+		id: 'PRO-1251180'
 	},
 	'PRO-1251255': {
 		'1251255': {
@@ -8236,10 +8236,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1251255',
+		id: 'PRO-1251255'
 	},
 	'PRO-1251263': {
 		'1251263': {
@@ -8267,10 +8267,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1251263',
+		id: 'PRO-1251263'
 	},
 	'PRO-1251271': {
 		'1251271': {
@@ -8298,7 +8298,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1251289': {
 			id: 1251289,
@@ -8325,10 +8325,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-1251271',
+		id: 'PRO-1251271'
 	},
 	'PRO-1251297': {
 		'1251297': {
@@ -8356,10 +8356,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1251297',
+		id: 'PRO-1251297'
 	},
 	'PRO-1256247': {
 		'1256247': {
@@ -8387,10 +8387,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1256247',
+		id: 'PRO-1256247'
 	},
 	'PRO-1262286': {
 		'1262286': {
@@ -8418,10 +8418,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1262286',
+		id: 'PRO-1262286'
 	},
 	'PRO-1279181': {
 		'1279181': {
@@ -8449,10 +8449,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1279181',
+		id: 'PRO-1279181'
 	},
 	'PRO-1291889': {
 		'1291889': {
@@ -8480,10 +8480,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1291889',
+		id: 'PRO-1291889'
 	},
 	'PRO-1351758': {
 		'1351758': {
@@ -8512,10 +8512,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Hollow-edge carving knife</li>\n<li>Carving fork</li>\n</ul>',
+				'<ul>\n<li>Hollow-edge carving knife</li>\n<li>Carving fork</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1351758',
+		id: 'PRO-1351758'
 	},
 	'PRO-1356393': {
 		'1356393': {
@@ -8543,10 +8543,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1356393',
+		id: 'PRO-1356393'
 	},
 	'PRO-1356427': {
 		'1356427': {
@@ -8574,10 +8574,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1356427',
+		id: 'PRO-1356427'
 	},
 	'PRO-1356476': {
 		'1356484': {
@@ -8605,10 +8605,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1356476',
+		id: 'PRO-1356476'
 	},
 	'PRO-1356526': {
 		'1356526': {
@@ -8636,10 +8636,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1356526',
+		id: 'PRO-1356526'
 	},
 	'PRO-1372465': {
 		'1372465': {
@@ -8668,7 +8668,7 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only. Wash only with mild soaps</li>\n<li>Make sure knives are completely dry before storing. In coastal areas or in other environments in which knives will be regularly exposed to salt air, coat blades with a light coat of food-grade mineral oil to prevent rusting</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>'
 		},
 		'1761188': {
 			id: 1761188,
@@ -8696,10 +8696,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only. Wash only with mild soaps</li>\n<li>Make sure knives are completely dry before storing. In coastal areas or in other environments in which knives will be regularly exposed to salt air, coat blades with a light coat of food-grade mineral oil to prevent rusting</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-1372465',
+		id: 'PRO-1372465'
 	},
 	'PRO-1372481': {
 		'1372481': {
@@ -8728,10 +8728,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only. Wash only with mild soaps</li>\n<li>Make sure knives are completely dry before storing. In coastal areas or in other environments in which knives will be regularly exposed to salt air, coat blades with a light coat of food-grade mineral oil to prevent rusting</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1372481',
+		id: 'PRO-1372481'
 	},
 	'PRO-1372499': {
 		'1372499': {
@@ -8760,10 +8760,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only. Wash only with mild soaps</li>\n<li>Make sure knives are completely dry before storing. In coastal areas or in other environments in which knives will be regularly exposed to salt air, coat blades with a light coat of food-grade mineral oil to prevent rusting</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1372499',
+		id: 'PRO-1372499'
 	},
 	'PRO-1378538': {
 		'1378538': {
@@ -8791,10 +8791,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1378538',
+		id: 'PRO-1378538'
 	},
 	'PRO-1378546': {
 		'1378546': {
@@ -8822,10 +8822,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1378546',
+		id: 'PRO-1378546'
 	},
 	'PRO-1378553': {
 		'1378553': {
@@ -8853,10 +8853,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1378553',
+		id: 'PRO-1378553'
 	},
 	'PRO-1379528': {
 		'1379528': {
@@ -8884,10 +8884,10 @@ const data = {
 			Warranty: 'lifetime',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1379528',
+		id: 'PRO-1379528'
 	},
 	'PRO-1379536': {
 		'1379536': {
@@ -8915,10 +8915,10 @@ const data = {
 			Warranty: 'lifetime',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1379536',
+		id: 'PRO-1379536'
 	},
 	'PRO-1388552': {
 		'1388552': {
@@ -8947,10 +8947,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2&#188;&#34; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190;&#34; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife</li>\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>',
+				'<ul>\n<li>2&#188;&#34; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190;&#34; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife</li>\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1388552',
+		id: 'PRO-1388552'
 	},
 	'PRO-1396316': {
 		'1396316': {
@@ -8978,10 +8978,10 @@ const data = {
 			Warranty: '10yr Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1396316',
+		id: 'PRO-1396316'
 	},
 	'PRO-1396324': {
 		'1396324': {
@@ -9009,10 +9009,10 @@ const data = {
 			Warranty: '10yr Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1396324',
+		id: 'PRO-1396324'
 	},
 	'PRO-1396332': {
 		'1396332': {
@@ -9040,10 +9040,10 @@ const data = {
 			Warranty: '10yr Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1396332',
+		id: 'PRO-1396332'
 	},
 	'PRO-1396340': {
 		'1396340': {
@@ -9071,7 +9071,7 @@ const data = {
 			Warranty: '10yr Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>'
 		},
 		'1396365': {
 			id: 1396365,
@@ -9098,10 +9098,10 @@ const data = {
 			Warranty: '10yr Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-1396340',
+		id: 'PRO-1396340'
 	},
 	'PRO-1396357': {
 		'1396357': {
@@ -9129,10 +9129,10 @@ const data = {
 			Warranty: '10yr Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1396357',
+		id: 'PRO-1396357'
 	},
 	'PRO-1396381': {
 		'1396381': {
@@ -9162,10 +9162,10 @@ const data = {
 			'Care & Usage':
 				'<ul>\n<li>Hand wash knives</li>\n<li>Wipe block clean with a damp cloth</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5-inch paring knife</li>\n<li>6-inch utility knife</li>\n<li>8-inch chef&#8217;s knife</li>\n<li>9-inch combination sharpening steel</li>\n<li>Herb shears</li>\n<li>13-slot bamboo knife block </li>\n</ul>',
+				'<ul>\n<li>3.5-inch paring knife</li>\n<li>6-inch utility knife</li>\n<li>8-inch chef&#8217;s knife</li>\n<li>9-inch combination sharpening steel</li>\n<li>Herb shears</li>\n<li>13-slot bamboo knife block </li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1396381',
+		id: 'PRO-1396381'
 	},
 	'PRO-1398163': {
 		'1398163': {
@@ -9193,10 +9193,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1398163',
+		id: 'PRO-1398163'
 	},
 	'PRO-1489970': {
 		'1489970': {
@@ -9224,10 +9224,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1489970',
+		id: 'PRO-1489970'
 	},
 	'PRO-1497734': {
 		'1497734': {
@@ -9255,10 +9255,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1497734',
+		id: 'PRO-1497734'
 	},
 	'PRO-1503531': {
 		'1503531': {
@@ -9287,7 +9287,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>',
+				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>'
 		},
 		'1526359': {
 			id: 1526359,
@@ -9315,7 +9315,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>',
+				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>'
 		},
 		'1526367': {
 			id: 1526367,
@@ -9343,7 +9343,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>',
+				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>'
 		},
 		'1526375': {
 			id: 1526375,
@@ -9371,7 +9371,7 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>',
+				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>'
 		},
 		'1526383': {
 			id: 1526383,
@@ -9399,10 +9399,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>',
+				'<ul>\n<li>2&#188; peeling knife</li>\n<li>2&#189;&#34; paring knife</li>\n<li>2&#190; trimming knife</li>\n<li>3&#34; spear-point paring knife</li>\n<li>4&#189;&#34; utility knife</li>\n<li>Six 4&#189;&#34; steak knives</li>\n<li>5&#34; spreader</li>\n<li>5&#34; santoku knife\n<li>8&#34; serrated bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>Kitchen shears</li>\n<li>17-slot wooden block</li>\n</ul>'
 		},
 		length: 5,
-		id: 'PRO-1503531',
+		id: 'PRO-1503531'
 	},
 	'PRO-1527720': {
 		'1527720': {
@@ -9430,10 +9430,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand-wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1527720',
+		id: 'PRO-1527720'
 	},
 	'PRO-1534262': {
 		'1534262': {
@@ -9461,10 +9461,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1534262',
+		id: 'PRO-1534262'
 	},
 	'PRO-1551548': {
 		'1551548': {
@@ -9492,10 +9492,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1551548',
+		id: 'PRO-1551548'
 	},
 	'PRO-1551555': {
 		'1551555': {
@@ -9523,10 +9523,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1551555',
+		id: 'PRO-1551555'
 	},
 	'PRO-1551563': {
 		'1551563': {
@@ -9554,7 +9554,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1551571': {
 			id: 1551571,
@@ -9581,7 +9581,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1551589': {
 			id: 1551589,
@@ -9608,10 +9608,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-1551563',
+		id: 'PRO-1551563'
 	},
 	'PRO-1551597': {
 		'1551597': {
@@ -9639,10 +9639,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1551597',
+		id: 'PRO-1551597'
 	},
 	'PRO-1551605': {
 		'1551605': {
@@ -9670,10 +9670,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1551605',
+		id: 'PRO-1551605'
 	},
 	'PRO-1551613': {
 		'1551613': {
@@ -9701,10 +9701,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1551613',
+		id: 'PRO-1551613'
 	},
 	'PRO-1568328': {
 		'1568328': {
@@ -9732,10 +9732,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1568328',
+		id: 'PRO-1568328'
 	},
 	'PRO-1669027': {
 		'1669027': {
@@ -9763,10 +9763,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1669027',
+		id: 'PRO-1669027'
 	},
 	'PRO-1669035': {
 		'1669035': {
@@ -9794,10 +9794,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1669035',
+		id: 'PRO-1669035'
 	},
 	'PRO-1669043': {
 		'1669043': {
@@ -9825,10 +9825,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1669043',
+		id: 'PRO-1669043'
 	},
 	'PRO-1691641': {
 		'1691641': {
@@ -9856,10 +9856,10 @@ const data = {
 			Warranty: 'lifetime',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>8 knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>8 knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1691641',
+		id: 'PRO-1691641'
 	},
 	'PRO-1706431': {
 		'1706431': {
@@ -9887,10 +9887,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1706431',
+		id: 'PRO-1706431'
 	},
 	'PRO-1749308': {
 		'1749308': {
@@ -9919,10 +9919,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>6&#34; chef&#8217;s knife</li>\n<li>3&#34; paring knife</li>\n</ul>',
+				'<ul>\n<li>6&#34; chef&#8217;s knife</li>\n<li>3&#34; paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1749308',
+		id: 'PRO-1749308'
 	},
 	'PRO-1761170': {
 		'1761170': {
@@ -9951,10 +9951,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only with mild soap and hot water. Do not use harsh detergents or abrasives</li>\n<li>Make sure knives are completely dry before storing. In coastal areas or in other environments in which knives receive regular exposure to salt air, oil blades with a light coating of food-grade mineral oil to prevent corrosion</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Wooden sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Wooden sheath</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1761170',
+		id: 'PRO-1761170'
 	},
 	'PRO-1761196': {
 		'1761196': {
@@ -9983,10 +9983,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only with mild soap</li>\n<li>Dry knife completely before storing. In coastal areas or in other areas in which knife will be exposed to salt air, oil blade lightly with food-grade mineral oil to prevent rusting</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1761196',
+		id: 'PRO-1761196'
 	},
 	'PRO-1761204': {
 		'1761204': {
@@ -10014,10 +10014,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1761204',
+		id: 'PRO-1761204'
 	},
 	'PRO-1761212': {
 		'1761212': {
@@ -10045,10 +10045,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1761212',
+		id: 'PRO-1761212'
 	},
 	'PRO-1761220': {
 		'1761220': {
@@ -10076,10 +10076,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1761220',
+		id: 'PRO-1761220'
 	},
 	'PRO-1761261': {
 		'1761261': {
@@ -10107,10 +10107,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1761261',
+		id: 'PRO-1761261'
 	},
 	'PRO-1773381': {
 		'1773381': {
@@ -10138,10 +10138,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1773381',
+		id: 'PRO-1773381'
 	},
 	'PRO-1790294': {
 		'1790294': {
@@ -10170,10 +10170,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5&#189;&#34; hollow-edge santoku</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#188;&#34; kitchen shears</li>\n<li>9&#34; honing steel</li>\n<li>16-slot hardwood knife block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5&#189;&#34; hollow-edge santoku</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#188;&#34; kitchen shears</li>\n<li>9&#34; honing steel</li>\n<li>16-slot hardwood knife block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1790294',
+		id: 'PRO-1790294'
 	},
 	'PRO-275270': {
 		'1821990': {
@@ -10201,10 +10201,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-275270',
+		id: 'PRO-275270'
 	},
 	'PRO-1822006': {
 		'1822006': {
@@ -10232,10 +10232,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Sheath</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1822006',
+		id: 'PRO-1822006'
 	},
 	'PRO-1822014': {
 		'1822014': {
@@ -10263,10 +10263,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1822014',
+		id: 'PRO-1822014'
 	},
 	'PRO-1822022': {
 		'1822022': {
@@ -10294,10 +10294,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Carving knife</li>\n<li>Carving fork</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Carving knife</li>\n<li>Carving fork</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1822022',
+		id: 'PRO-1822022'
 	},
 	'PRO-1822030': {
 		'1822030': {
@@ -10325,10 +10325,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1822030',
+		id: 'PRO-1822030'
 	},
 	'PRO-1822048': {
 		'1822048': {
@@ -10357,10 +10357,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Soft cheese knife</li>\n<li>Hard cheese knife</li>\n<li>Parmesan knife</li>\n<li>Case</li>\n</ul>',
+				'<ul>\n<li>Soft cheese knife</li>\n<li>Hard cheese knife</li>\n<li>Parmesan knife</li>\n<li>Case</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1822048',
+		id: 'PRO-1822048'
 	},
 	'PRO-1822105': {
 		'1822105': {
@@ -10388,10 +10388,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Blade</li>\n<li>Sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Blade</li>\n<li>Sheath</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1822105',
+		id: 'PRO-1822105'
 	},
 	'PRO-1822212': {
 		'1822212': {
@@ -10420,10 +10420,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul> ',
 			"What's in the Box":
-				'<ul>\n<li>Carving knife</li>\n<li>Carving fork</li>\n<li>Walnut chest</li>\n</ul>',
+				'<ul>\n<li>Carving knife</li>\n<li>Carving fork</li>\n<li>Walnut chest</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1822212',
+		id: 'PRO-1822212'
 	},
 	'PRO-1822592': {
 		'1822592': {
@@ -10451,10 +10451,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1822592',
+		id: 'PRO-1822592'
 	},
 	'PRO-1824275': {
 		'1824275': {
@@ -10482,10 +10482,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1824275',
+		id: 'PRO-1824275'
 	},
 	'PRO-1852037': {
 		'1852037': {
@@ -10513,10 +10513,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1852037',
+		id: 'PRO-1852037'
 	},
 	'PRO-1856434': {
 		'1856434': {
@@ -10544,10 +10544,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1856434',
+		id: 'PRO-1856434'
 	},
 	'PRO-1856558': {
 		'1856558': {
@@ -10575,10 +10575,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1856558',
+		id: 'PRO-1856558'
 	},
 	'PRO-1857135': {
 		'1857135': {
@@ -10606,10 +10606,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1857135',
+		id: 'PRO-1857135'
 	},
 	'PRO-1857440': {
 		'1857440': {
@@ -10637,10 +10637,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1857440',
+		id: 'PRO-1857440'
 	},
 	'PRO-1904374': {
 		'1904374': {
@@ -10668,10 +10668,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1904374',
+		id: 'PRO-1904374'
 	},
 	'PRO-1904390': {
 		'1904390': {
@@ -10699,10 +10699,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1904390',
+		id: 'PRO-1904390'
 	},
 	'PRO-1904408': {
 		'1904408': {
@@ -10730,10 +10730,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1904408',
+		id: 'PRO-1904408'
 	},
 	'PRO-1904432': {
 		'1904432': {
@@ -10761,10 +10761,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Fork</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n<li>Fork</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1904432',
+		id: 'PRO-1904432'
 	},
 	'PRO-1904440': {
 		'1904440': {
@@ -10792,10 +10792,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1904440',
+		id: 'PRO-1904440'
 	},
 	'PRO-1904457': {
 		'1904457': {
@@ -10823,10 +10823,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1904457',
+		id: 'PRO-1904457'
 	},
 	'PRO-1904465': {
 		'1904465': {
@@ -10854,10 +10854,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1904465',
+		id: 'PRO-1904465'
 	},
 	'PRO-1909159': {
 		'1909159': {
@@ -10885,7 +10885,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1909167': {
 			id: 1909167,
@@ -10912,7 +10912,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'1909175': {
 			id: 1909175,
@@ -10939,10 +10939,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-1909159',
+		id: 'PRO-1909159'
 	},
 	'PRO-1909183': {
 		'1909183': {
@@ -10970,10 +10970,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909183',
+		id: 'PRO-1909183'
 	},
 	'PRO-1909191': {
 		'1909191': {
@@ -11001,10 +11001,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909191',
+		id: 'PRO-1909191'
 	},
 	'PRO-1909209': {
 		'1909209': {
@@ -11032,10 +11032,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909209',
+		id: 'PRO-1909209'
 	},
 	'PRO-1909217': {
 		'1909217': {
@@ -11063,10 +11063,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909217',
+		id: 'PRO-1909217'
 	},
 	'PRO-1909225': {
 		'1909225': {
@@ -11094,10 +11094,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909225',
+		id: 'PRO-1909225'
 	},
 	'PRO-1909233': {
 		'1909233': {
@@ -11125,10 +11125,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909233',
+		id: 'PRO-1909233'
 	},
 	'PRO-1909258': {
 		'1909258': {
@@ -11156,10 +11156,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909258',
+		id: 'PRO-1909258'
 	},
 	'PRO-1909266': {
 		'1909266': {
@@ -11188,10 +11188,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Care: Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>4.5&#34; utility knife</li>\n<li>6.25&#34; Asian chef&#8217;s knife</li>\n<li>8&#34; Asian chef&#8217;s knife</li>\n<li>9.25&#34; bread knife\n<li>Knife block (6&#34; x 8.5&#34; x 9&#34;)</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>4.5&#34; utility knife</li>\n<li>6.25&#34; Asian chef&#8217;s knife</li>\n<li>8&#34; Asian chef&#8217;s knife</li>\n<li>9.25&#34; bread knife\n<li>Knife block (6&#34; x 8.5&#34; x 9&#34;)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1909266',
+		id: 'PRO-1909266'
 	},
 	'PRO-1909738': {
 		'1909738': {
@@ -11219,10 +11219,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1909738',
+		id: 'PRO-1909738'
 	},
 	'PRO-1921568': {
 		'1921568': {
@@ -11250,7 +11250,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3842085': {
 			id: 3842085,
@@ -11277,10 +11277,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-1921568',
+		id: 'PRO-1921568'
 	},
 	'PRO-3555844': {
 		'1921576': {
@@ -11308,7 +11308,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3555844': {
 			id: 3555844,
@@ -11335,7 +11335,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3842101': {
 			id: 3842101,
@@ -11362,7 +11362,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3842119': {
 			id: 3842119,
@@ -11389,10 +11389,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 4,
-		id: 'PRO-3555844',
+		id: 'PRO-3555844'
 	},
 	'PRO-1921592': {
 		'1921592': {
@@ -11421,10 +11421,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>8.25&#34; carving knife</li>\n<li>6.5&#34; carving fork</li>\n</ul>',
+				'<ul>\n<li>8.25&#34; carving knife</li>\n<li>6.5&#34; carving fork</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1921592',
+		id: 'PRO-1921592'
 	},
 	'PRO-1921600': {
 		'1921600': {
@@ -11452,10 +11452,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1921600',
+		id: 'PRO-1921600'
 	},
 	'PRO-1921659': {
 		'1921659': {
@@ -11484,10 +11484,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5&#34; hollow-edge santoku</li>\n<li>7&#34; hollow-edge cook&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5&#34; hollow-edge santoku</li>\n<li>7&#34; hollow-edge cook&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1921659',
+		id: 'PRO-1921659'
 	},
 	'PRO-1921667': {
 		'1921667': {
@@ -11516,10 +11516,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; spear-point paring knife</li>\n<li>5&#34; cook&#8217;s knife</li>\n<li>7&#34; cook&#8217;s knife</li>\n<li>8.25&#34; carving knife</li>\n<li>8.5&#34; bread knife</li>\n<li>11-slot knife block (10&#34; x 5.25&#34; x 11&#34;)</li>\n</ul>',
+				'<ul>\n<li>4&#34; spear-point paring knife</li>\n<li>5&#34; cook&#8217;s knife</li>\n<li>7&#34; cook&#8217;s knife</li>\n<li>8.25&#34; carving knife</li>\n<li>8.5&#34; bread knife</li>\n<li>11-slot knife block (10&#34; x 5.25&#34; x 11&#34;)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1921667',
+		id: 'PRO-1921667'
 	},
 	'PRO-1921683': {
 		'1921683': {
@@ -11547,10 +11547,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1921683',
+		id: 'PRO-1921683'
 	},
 	'PRO-1921691': {
 		'1921691': {
@@ -11578,10 +11578,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1921691',
+		id: 'PRO-1921691'
 	},
 	'PRO-1951698': {
 		'1951698': {
@@ -11609,10 +11609,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1951698',
+		id: 'PRO-1951698'
 	},
 	'PRO-1951979': {
 		'1951979': {
@@ -11641,10 +11641,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; peeler</li>\n<li>4&#34; paring knife</li>\n<li>4.25&#34; utility knife</li>\n<li>5.5&#34; vegetable knife</li>\n<li>6.25&#34; flexible boning knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8.5&#34; bread knife</li>\n<li>8.25&#34; kitchen shears</li>\n<li>Ceramic sharpener</li>\n<li>Knife block (10.25&#34; x 4.5&#34; x 9&#34;) </li>\n</ul>',
+				'<ul>\n<li>3&#34; peeler</li>\n<li>4&#34; paring knife</li>\n<li>4.25&#34; utility knife</li>\n<li>5.5&#34; vegetable knife</li>\n<li>6.25&#34; flexible boning knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8.5&#34; bread knife</li>\n<li>8.25&#34; kitchen shears</li>\n<li>Ceramic sharpener</li>\n<li>Knife block (10.25&#34; x 4.5&#34; x 9&#34;) </li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1951979',
+		id: 'PRO-1951979'
 	},
 	'PRO-20138': {
 		'1963750': {
@@ -11672,10 +11672,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-20138',
+		id: 'PRO-20138'
 	},
 	'PRO-21935': {
 		'1963776': {
@@ -11703,10 +11703,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-21935',
+		id: 'PRO-21935'
 	},
 	'PRO-21936': {
 		'1963792': {
@@ -11734,7 +11734,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Cheese knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Cheese knife</li>\n</ul>'
 		},
 		'3295177': {
 			id: 3295177,
@@ -11761,10 +11761,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Cheese knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Cheese knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-21936',
+		id: 'PRO-21936'
 	},
 	'PRO-658161': {
 		'1963818': {
@@ -11792,10 +11792,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-658161',
+		id: 'PRO-658161'
 	},
 	'PRO-1963842': {
 		'1963842': {
@@ -11823,10 +11823,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1963842',
+		id: 'PRO-1963842'
 	},
 	'PRO-1963859': {
 		'1963867': {
@@ -11854,10 +11854,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1963859',
+		id: 'PRO-1963859'
 	},
 	'PRO-1963883': {
 		'1963883': {
@@ -11885,10 +11885,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1963883',
+		id: 'PRO-1963883'
 	},
 	'PRO-1963909': {
 		'1963909': {
@@ -11916,10 +11916,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1963909',
+		id: 'PRO-1963909'
 	},
 	'PRO-1993716': {
 		'1993716': {
@@ -11947,10 +11947,10 @@ const data = {
 			Warranty: 'lifetime',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1993716',
+		id: 'PRO-1993716'
 	},
 	'PRO-2028132': {
 		'2028132': {
@@ -11978,10 +11978,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2028132',
+		id: 'PRO-2028132'
 	},
 	'PRO-2040251': {
 		'2040251': {
@@ -12009,10 +12009,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wolf Gourmet',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2040251',
+		id: 'PRO-2040251'
 	},
 	'PRO-2040269': {
 		'2040269': {
@@ -12040,10 +12040,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wolf Gourmet',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2040269',
+		id: 'PRO-2040269'
 	},
 	'PRO-2040277': {
 		'2040277': {
@@ -12071,10 +12071,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wolf Gourmet',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2040277',
+		id: 'PRO-2040277'
 	},
 	'PRO-2040335': {
 		'2040335': {
@@ -12102,10 +12102,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wolf Gourmet',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2040335',
+		id: 'PRO-2040335'
 	},
 	'PRO-2046373': {
 		'2046373': {
@@ -12133,10 +12133,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2046373',
+		id: 'PRO-2046373'
 	},
 	'PRO-2087823': {
 		'2087823': {
@@ -12164,10 +12164,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wolf Gourmet',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2087823',
+		id: 'PRO-2087823'
 	},
 	'PRO-2088698': {
 		'2088698': {
@@ -12195,10 +12195,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wolf Gourmet',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2088698',
+		id: 'PRO-2088698'
 	},
 	'PRO-2131274': {
 		'2131274': {
@@ -12226,10 +12226,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Herb scissors</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Herb scissors</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2131274',
+		id: 'PRO-2131274'
 	},
 	'PRO-2138790': {
 		'2138790': {
@@ -12258,10 +12258,10 @@ const data = {
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; slicing knife</li>\n<li>10&#34; bread knife</li>\n<li>Honing steel</li>\n<li>8-slot knife block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; slicing knife</li>\n<li>10&#34; bread knife</li>\n<li>Honing steel</li>\n<li>8-slot knife block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2138790',
+		id: 'PRO-2138790'
 	},
 	'PRO-2138808': {
 		'2138808': {
@@ -12289,7 +12289,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'2138816': {
 			id: 2138816,
@@ -12316,7 +12316,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'2138832': {
 			id: 2138832,
@@ -12343,10 +12343,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-2138808',
+		id: 'PRO-2138808'
 	},
 	'PRO-2138840': {
 		'2138840': {
@@ -12374,10 +12374,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2138840',
+		id: 'PRO-2138840'
 	},
 	'PRO-2138857': {
 		'2138857': {
@@ -12405,10 +12405,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2138857',
+		id: 'PRO-2138857'
 	},
 	'PRO-2138865': {
 		'2138865': {
@@ -12436,10 +12436,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2138865',
+		id: 'PRO-2138865'
 	},
 	'PRO-2138873': {
 		'2138873': {
@@ -12467,10 +12467,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2138873',
+		id: 'PRO-2138873'
 	},
 	'PRO-2138881': {
 		'2138881': {
@@ -12498,10 +12498,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2138881',
+		id: 'PRO-2138881'
 	},
 	'PRO-2158178': {
 		'2158178': {
@@ -12530,10 +12530,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>8&#34; Asian chef&#8217;s knife</li>\n<li>6&#34; vegetable knife</li>\n<li>3.5&#34; paring knife</li>\n</ul>',
+				'<ul>\n<li>8&#34; Asian chef&#8217;s knife</li>\n<li>6&#34; vegetable knife</li>\n<li>3.5&#34; paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2158178',
+		id: 'PRO-2158178'
 	},
 	'PRO-2158186': {
 		'2158186': {
@@ -12561,10 +12561,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2158186',
+		id: 'PRO-2158186'
 	},
 	'PRO-2163749': {
 		'2163749': {
@@ -12592,10 +12592,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>3.5&#34; clip-point paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>3.5&#34; clip-point paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2163749',
+		id: 'PRO-2163749'
 	},
 	'PRO-2192573': {
 		'2192573': {
@@ -12623,10 +12623,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2192573',
+		id: 'PRO-2192573'
 	},
 	'PRO-2192755': {
 		'2192755': {
@@ -12655,10 +12655,10 @@ const data = {
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; chef&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2192755',
+		id: 'PRO-2192755'
 	},
 	'PRO-2192763': {
 		'2192763': {
@@ -12687,10 +12687,10 @@ const data = {
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5&#34; utility knife</li>\n<li>6&#34; chef&#8217;s knife</li>\n<li>7&#34; hollow-edge santoku</li> \n<li>8&#34; chef&#8217;s knife</li> \n<li>9&#34; sharpening steel</li> \n<li>9.5&#34; slicer</li> \n<li>9.5&#34; bread knife</li> \n<li>Kitchen shears</li>\n<li>Magnetic knife block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5&#34; utility knife</li>\n<li>6&#34; chef&#8217;s knife</li>\n<li>7&#34; hollow-edge santoku</li> \n<li>8&#34; chef&#8217;s knife</li> \n<li>9&#34; sharpening steel</li> \n<li>9.5&#34; slicer</li> \n<li>9.5&#34; bread knife</li> \n<li>Kitchen shears</li>\n<li>Magnetic knife block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2192763',
+		id: 'PRO-2192763'
 	},
 	'PRO-2192771': {
 		'2192771': {
@@ -12719,10 +12719,10 @@ const data = {
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li> \n<li>6&#34; chef&#8217;s knife</li> \n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li> \n<li>6&#34; chef&#8217;s knife</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2192771',
+		id: 'PRO-2192771'
 	},
 	'PRO-2192789': {
 		'2192789': {
@@ -12751,10 +12751,10 @@ const data = {
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li> \n<li>5.5&#34; utility knife</li> \n<li>6&#34; chef&#8217;s knife</li> \n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; sharpening steel</li>\n<li>9.5&#34; slicer</li>\n<li>9.5&#34; bread knife</li>\n<li>Kitchen shears</li>\n<li>Magnetic knife block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li> \n<li>5.5&#34; utility knife</li> \n<li>6&#34; chef&#8217;s knife</li> \n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; sharpening steel</li>\n<li>9.5&#34; slicer</li>\n<li>9.5&#34; bread knife</li>\n<li>Kitchen shears</li>\n<li>Magnetic knife block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2192789',
+		id: 'PRO-2192789'
 	},
 	'PRO-2192797': {
 		'2192797': {
@@ -12782,10 +12782,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n<li>Presentation box</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n<li>Presentation box</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2192797',
+		id: 'PRO-2192797'
 	},
 	'PRO-2193712': {
 		'2193712': {
@@ -12814,10 +12814,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>8&#34; cook&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>8&#34; cook&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2193712',
+		id: 'PRO-2193712'
 	},
 	'PRO-2224285': {
 		'2224285': {
@@ -12845,10 +12845,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>5&#34; utility knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>5&#34; utility knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2224285',
+		id: 'PRO-2224285'
 	},
 	'PRO-2224293': {
 		'2224293': {
@@ -12876,10 +12876,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#34; slicer (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#34; slicer (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2224293',
+		id: 'PRO-2224293'
 	},
 	'PRO-2224301': {
 		'2224301': {
@@ -12907,10 +12907,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#34; bread knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#34; bread knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2224301',
+		id: 'PRO-2224301'
 	},
 	'PRO-2224319': {
 		'2224319': {
@@ -12938,10 +12938,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2224319',
+		id: 'PRO-2224319'
 	},
 	'PRO-2224327': {
 		'2224327': {
@@ -12969,10 +12969,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4.5&#34; utility knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4.5&#34; utility knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2224327',
+		id: 'PRO-2224327'
 	},
 	'PRO-2224335': {
 		'2224335': {
@@ -13000,7 +13000,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>'
 		},
 		'2224343': {
 			id: 2224343,
@@ -13027,7 +13027,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>'
 		},
 		'2224350': {
 			id: 2224350,
@@ -13054,10 +13054,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-2224335',
+		id: 'PRO-2224335'
 	},
 	'PRO-2225001': {
 		'2225001': {
@@ -13085,10 +13085,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>7&#34; santoku (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>7&#34; santoku (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2225001',
+		id: 'PRO-2225001'
 	},
 	'PRO-2231041': {
 		'2231041': {
@@ -13116,10 +13116,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Four 4.5&#34; steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Four 4.5&#34; steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2231041',
+		id: 'PRO-2231041'
 	},
 	'PRO-2231058': {
 		'2231058': {
@@ -13148,10 +13148,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; double-serrated bread knife</li>\n<li>9&#34; sharpening steel</li>\n<li>Come-apart kitchen shears</li>\n<li>17-slot knife block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; double-serrated bread knife</li>\n<li>9&#34; sharpening steel</li>\n<li>Come-apart kitchen shears</li>\n<li>17-slot knife block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2231058',
+		id: 'PRO-2231058'
 	},
 	'PRO-2293173': {
 		'2293173': {
@@ -13179,10 +13179,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Carving knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Carving knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293173',
+		id: 'PRO-2293173'
 	},
 	'PRO-2293199': {
 		'2293199': {
@@ -13210,10 +13210,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Vegetable paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Vegetable paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293199',
+		id: 'PRO-2293199'
 	},
 	'PRO-2293207': {
 		'2293207': {
@@ -13241,10 +13241,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bird&#8217;s beak paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bird&#8217;s beak paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293207',
+		id: 'PRO-2293207'
 	},
 	'PRO-2293223': {
 		'2293223': {
@@ -13272,10 +13272,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Rocking santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Rocking santoku knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293223',
+		id: 'PRO-2293223'
 	},
 	'PRO-2293231': {
 		'2293231': {
@@ -13303,10 +13303,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Flexible slicer</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Flexible slicer</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293231',
+		id: 'PRO-2293231'
 	},
 	'PRO-2293249': {
 		'2293249': {
@@ -13334,10 +13334,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293249',
+		id: 'PRO-2293249'
 	},
 	'PRO-2293256': {
 		'2293256': {
@@ -13365,10 +13365,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Kiritsuke</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Kiritsuke</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293256',
+		id: 'PRO-2293256'
 	},
 	'PRO-2293264': {
 		'2293264': {
@@ -13397,10 +13397,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Paring knife</li>\n<li>Utility knife</li>\n<li>Chef&#8217;s knife</li>\n<li>8-slot knife roll</li>\n</ul>',
+				'<ul>\n<li>Paring knife</li>\n<li>Utility knife</li>\n<li>Chef&#8217;s knife</li>\n<li>8-slot knife roll</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293264',
+		id: 'PRO-2293264'
 	},
 	'PRO-2293272': {
 		'2293272': {
@@ -13429,10 +13429,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Paring knife</li>\n<li>Utility knife</li>\n<li>Boning/filet knife</li>\n<li>Chef&#8217;s knife</li>\n<li>Slicing knife</li>\n<li>Bread knife</li>\n<li>Honing steel</li>\n<li>8-slot knife roll</li>\n</ul>',
+				'<ul>\n<li>Paring knife</li>\n<li>Utility knife</li>\n<li>Boning/filet knife</li>\n<li>Chef&#8217;s knife</li>\n<li>Slicing knife</li>\n<li>Bread knife</li>\n<li>Honing steel</li>\n<li>8-slot knife roll</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2293272',
+		id: 'PRO-2293272'
 	},
 	'PRO-2293280': {
 		'2293280': {
@@ -13461,10 +13461,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>7&#34; hollow-ground santoku</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8.25&#34; offset bread knife</li>\n<li>Herb shears</li>\n<li>Honing steel</li>\n<li>11-slot knife block</li>\n</ul> ',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>7&#34; hollow-ground santoku</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8.25&#34; offset bread knife</li>\n<li>Herb shears</li>\n<li>Honing steel</li>\n<li>11-slot knife block</li>\n</ul> '
 		},
 		length: 1,
-		id: 'PRO-2293280',
+		id: 'PRO-2293280'
 	},
 	'PRO-2341493': {
 		'2341493': {
@@ -13492,10 +13492,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Shellfish shears (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Shellfish shears (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2341493',
+		id: 'PRO-2341493'
 	},
 	'PRO-2403251': {
 		'2403251': {
@@ -13523,7 +13523,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>'
 		},
 		'2403269': {
 			id: 2403269,
@@ -13550,7 +13550,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>'
 		},
 		'2403277': {
 			id: 2403277,
@@ -13577,10 +13577,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife (sold individually)</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-2403251',
+		id: 'PRO-2403251'
 	},
 	'PRO-2403285': {
 		'2403285': {
@@ -13608,10 +13608,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Santoku (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Santoku (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2403285',
+		id: 'PRO-2403285'
 	},
 	'PRO-2403350': {
 		'2403350': {
@@ -13639,10 +13639,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Slicer (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Slicer (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2403350',
+		id: 'PRO-2403350'
 	},
 	'PRO-2403368': {
 		'2403368': {
@@ -13670,10 +13670,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Prep knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Prep knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2403368',
+		id: 'PRO-2403368'
 	},
 	'PRO-2403376': {
 		'2403376': {
@@ -13701,10 +13701,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2403376',
+		id: 'PRO-2403376'
 	},
 	'PRO-2403467': {
 		'2403467': {
@@ -13732,10 +13732,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bread knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bread knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2403467',
+		id: 'PRO-2403467'
 	},
 	'PRO-2403475': {
 		'2403475': {
@@ -13764,10 +13764,10 @@ const data = {
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>4.5&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9.5&#34; bread knife</li>\n<li>9&#34; sharpening steel</li>\n<li>Kitchen shears</li>\n<li>Bamboo knife block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>4.5&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9.5&#34; bread knife</li>\n<li>9&#34; sharpening steel</li>\n<li>Kitchen shears</li>\n<li>Bamboo knife block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2403475',
+		id: 'PRO-2403475'
 	},
 	'PRO-2421212': {
 		'2421212': {
@@ -13795,10 +13795,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Utility knife (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Utility knife (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2421212',
+		id: 'PRO-2421212'
 	},
 	'PRO-2472827': {
 		'2472827': {
@@ -13826,10 +13826,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>5&#34; rocking santoku</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>5&#34; rocking santoku</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2472827',
+		id: 'PRO-2472827'
 	},
 	'PRO-2563021': {
 		'2563021': {
@@ -13858,10 +13858,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Hollow-edge santoku</li>\n<li>Flat-cut paring knife</li>\n</ul>',
+				'<ul>\n<li>Hollow-edge santoku</li>\n<li>Flat-cut paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2563021',
+		id: 'PRO-2563021'
 	},
 	'PRO-2563039': {
 		'2563039': {
@@ -13890,10 +13890,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Hollow-edge santoku</li>\n<li>Flat-cut paring knife</li>\n</ul>',
+				'<ul>\n<li>Hollow-edge santoku</li>\n<li>Flat-cut paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2563039',
+		id: 'PRO-2563039'
 	},
 	'PRO-2563054': {
 		'2563054': {
@@ -13921,10 +13921,10 @@ const data = {
 			Warranty: 'lifetime',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2563054',
+		id: 'PRO-2563054'
 	},
 	'PRO-2563062': {
 		'2563062': {
@@ -13952,10 +13952,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chai Dao (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chai Dao (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2563062',
+		id: 'PRO-2563062'
 	},
 	'PRO-2563070': {
 		'2563070': {
@@ -13983,10 +13983,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Kiritsuke (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Kiritsuke (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2563070',
+		id: 'PRO-2563070'
 	},
 	'PRO-2563088': {
 		'2563088': {
@@ -14014,10 +14014,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Spreader</li>\n<li>Shears</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Spreader</li>\n<li>Shears</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2563088',
+		id: 'PRO-2563088'
 	},
 	'PRO-2563096': {
 		'2563096': {
@@ -14045,10 +14045,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>8&#34; vegetable knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>8&#34; vegetable knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2563096',
+		id: 'PRO-2563096'
 	},
 	'PRO-2580819': {
 		'2580819': {
@@ -14076,10 +14076,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Kiritsuke (sold individually)</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Kiritsuke (sold individually)</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2580819',
+		id: 'PRO-2580819'
 	},
 	'PRO-2654374': {
 		'2654374': {
@@ -14107,10 +14107,10 @@ const data = {
 			Warranty: 'lifetime',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Eight steak knives</li>\n<li>Storage chest</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Eight steak knives</li>\n<li>Storage chest</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2654374',
+		id: 'PRO-2654374'
 	},
 	'PRO-2816411': {
 		'2816411': {
@@ -14139,10 +14139,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage':
 				'<ul>\n<li>Dishwasher safe, but hand washing is recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#34; bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#34; bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2816411',
+		id: 'PRO-2816411'
 	},
 	'PRO-3016847': {
 		'3016821': {
@@ -14170,7 +14170,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3016839': {
 			id: 3016839,
@@ -14197,7 +14197,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3016847': {
 			id: 3016847,
@@ -14224,10 +14224,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-3016847',
+		id: 'PRO-3016847'
 	},
 	'PRO-3016862': {
 		'3016854': {
@@ -14255,7 +14255,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>'
 		},
 		'3016862': {
 			id: 3016862,
@@ -14282,10 +14282,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3016862',
+		id: 'PRO-3016862'
 	},
 	'PRO-3016870': {
 		'3016870': {
@@ -14313,10 +14313,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9.5&#34; slicer</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9.5&#34; slicer</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3016870',
+		id: 'PRO-3016870'
 	},
 	'PRO-3016888': {
 		'3016888': {
@@ -14344,10 +14344,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>5.5&#34; prep knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>5.5&#34; prep knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3016888',
+		id: 'PRO-3016888'
 	},
 	'PRO-3016896': {
 		'3016896': {
@@ -14375,10 +14375,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3016896',
+		id: 'PRO-3016896'
 	},
 	'PRO-3016904': {
 		'3016904': {
@@ -14406,10 +14406,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6.5&#34; Nakiri</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6.5&#34; Nakiri</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3016904',
+		id: 'PRO-3016904'
 	},
 	'PRO-3016912': {
 		'3016912': {
@@ -14437,10 +14437,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#34; bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#34; bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3016912',
+		id: 'PRO-3016912'
 	},
 	'PRO-3016920': {
 		'3016920': {
@@ -14470,10 +14470,10 @@ const data = {
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only</li>\n<li>Hand sharpening recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5.5&#34; santoku knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; bread knife</li>\n<li>Kitchen shears</li>\n<li>9&#34; sharpening steel</li>\n<li>Bamboo block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5.5&#34; santoku knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; bread knife</li>\n<li>Kitchen shears</li>\n<li>9&#34; sharpening steel</li>\n<li>Bamboo block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3016920',
+		id: 'PRO-3016920'
 	},
 	'PRO-3016938': {
 		'3016938': {
@@ -14503,10 +14503,10 @@ const data = {
 			'Care & Usage':
 				'<ul>\n<li>Hand wash only</li>\n<li>Hand sharpening recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>6&#34; chef&#8217;s knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; bread knife</li>\n<li>9.5&#34; slicing knife</li>\n<li>Kitchen shears</li>\n<li>9&#34; sharpening steel</li>\n<li>Bamboo block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>6&#34; chef&#8217;s knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9&#34; bread knife</li>\n<li>9.5&#34; slicing knife</li>\n<li>Kitchen shears</li>\n<li>9&#34; sharpening steel</li>\n<li>Bamboo block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3016938',
+		id: 'PRO-3016938'
 	},
 	'PRO-3084720': {
 		'3084720': {
@@ -14535,10 +14535,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage':
 				'<ul>\n<li>Had wash knives with warm water and a little detergent, rinse carefully and dry</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3084720',
+		id: 'PRO-3084720'
 	},
 	'PRO-3084738': {
 		'3084738': {
@@ -14566,10 +14566,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Nakiri</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Nakiri</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3084738',
+		id: 'PRO-3084738'
 	},
 	'PRO-3324951': {
 		'3324951': {
@@ -14597,10 +14597,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>3.5&#34; paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3324951',
+		id: 'PRO-3324951'
 	},
 	'PRO-3324969': {
 		'3324969': {
@@ -14628,10 +14628,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6&#34; utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6&#34; utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3324969',
+		id: 'PRO-3324969'
 	},
 	'PRO-3324977': {
 		'3324977': {
@@ -14659,10 +14659,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6&#34; boning knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6&#34; boning knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3324977',
+		id: 'PRO-3324977'
 	},
 	'PRO-3324985': {
 		'3324985': {
@@ -14690,7 +14690,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3325040': {
 			id: 3325040,
@@ -14717,10 +14717,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3324985',
+		id: 'PRO-3324985'
 	},
 	'PRO-3324993': {
 		'3324993': {
@@ -14748,10 +14748,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#34; bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#34; bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3324993',
+		id: 'PRO-3324993'
 	},
 	'PRO-3325008': {
 		'3325008': {
@@ -14779,10 +14779,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>7&#34; fillet knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>7&#34; fillet knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3325008',
+		id: 'PRO-3325008'
 	},
 	'PRO-3325016': {
 		'3325016': {
@@ -14810,10 +14810,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>7&#34; santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>7&#34; santoku knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3325016',
+		id: 'PRO-3325016'
 	},
 	'PRO-3325024': {
 		'3325024': {
@@ -14841,10 +14841,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9&#34; offset bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9&#34; offset bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3325024',
+		id: 'PRO-3325024'
 	},
 	'PRO-3325065': {
 		'3325065': {
@@ -14872,10 +14872,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Hollow-edge wide slicing knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Hollow-edge wide slicing knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3325065',
+		id: 'PRO-3325065'
 	},
 	'PRO-3325073': {
 		'3325073': {
@@ -14904,10 +14904,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>9&#34; bread knife</li>\n<li>10&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>8-pocket Cordura knife roll</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>9&#34; bread knife</li>\n<li>10&#34; chef&#8217;s knife</li>\n<li>9&#34; honing steel</li>\n<li>8-pocket Cordura knife roll</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3325073',
+		id: 'PRO-3325073'
 	},
 	'PRO-3325081': {
 		'3325081': {
@@ -14936,10 +14936,10 @@ const data = {
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4.5&#34; utility knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>4.5&#34; utility knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3325081',
+		id: 'PRO-3325081'
 	},
 	'PRO-3434842': {
 		'3434842': {
@@ -14968,10 +14968,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; rocking santoku</li>\n</ul>',
+				'<ul>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; rocking santoku</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3434842',
+		id: 'PRO-3434842'
 	},
 	'PRO-3434859': {
 		'3434859': {
@@ -15000,10 +15000,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3434859',
+		id: 'PRO-3434859'
 	},
 	'PRO-3436623': {
 		'3436623': {
@@ -15031,7 +15031,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3436631': {
 			id: 3436631,
@@ -15058,7 +15058,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3436649': {
 			id: 3436649,
@@ -15085,7 +15085,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3562519': {
 			id: 3562519,
@@ -15112,7 +15112,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3562535': {
 			id: 3562535,
@@ -15139,7 +15139,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3562543': {
 			id: 3562543,
@@ -15166,7 +15166,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3562568': {
 			id: 3562568,
@@ -15193,7 +15193,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3562576': {
 			id: 3562576,
@@ -15220,7 +15220,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3562584': {
 			id: 3562584,
@@ -15247,7 +15247,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3562592': {
 			id: 3562592,
@@ -15274,10 +15274,10 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		length: 10,
-		id: 'PRO-3436623',
+		id: 'PRO-3436623'
 	},
 	'PRO-3562386': {
 		'3436672': {
@@ -15305,7 +15305,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Serrated paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Serrated paring knife</li>\n</ul>'
 		},
 		'3562378': {
 			id: 3562378,
@@ -15332,7 +15332,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Serrated paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Serrated paring knife</li>\n</ul>'
 		},
 		'3562386': {
 			id: 3562386,
@@ -15359,10 +15359,10 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Serrated paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Serrated paring knife</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-3562386',
+		id: 'PRO-3562386'
 	},
 	'PRO-3436722': {
 		'3436722': {
@@ -15391,10 +15391,10 @@ const data = {
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>5&#34; serrated utility knife with sheath</li>\n<li>3.5&#34; paring knife with sheath</li>\n<li>3.5&#34; serrated paring knife with sheath</li>\n</ul>',
+				'<ul>\n<li>5&#34; serrated utility knife with sheath</li>\n<li>3.5&#34; paring knife with sheath</li>\n<li>3.5&#34; serrated paring knife with sheath</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3436722',
+		id: 'PRO-3436722'
 	},
 	'PRO-3436730': {
 		'3436730': {
@@ -15423,10 +15423,10 @@ const data = {
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>5&#34; serrated utility knife with sheath</li>\n<li>3.5&#34; paring knife with sheath</li>\n<li>Serrated peeler</li>\n</ul>',
+				'<ul>\n<li>5&#34; serrated utility knife with sheath</li>\n<li>3.5&#34; paring knife with sheath</li>\n<li>Serrated peeler</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3436730',
+		id: 'PRO-3436730'
 	},
 	'PRO-3488731': {
 		'3488731': {
@@ -15454,7 +15454,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Deba knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Deba knife</li>\n</ul>'
 		},
 		'3488814': {
 			id: 3488814,
@@ -15481,10 +15481,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Deba knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Deba knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3488731',
+		id: 'PRO-3488731'
 	},
 	'PRO-3489341': {
 		'3489341': {
@@ -15512,10 +15512,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Carving fork</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Carving fork</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3489341',
+		id: 'PRO-3489341'
 	},
 	'PRO-3489408': {
 		'3489408': {
@@ -15544,10 +15544,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash and dry immediately</li>\n<li>Since only the right side of blade is sharpened, knife isn&#8217;t suitable for left-handed cooks</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Sashimi knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Sashimi knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3489408',
+		id: 'PRO-3489408'
 	},
 	'PRO-3489499': {
 		'3489499': {
@@ -15575,7 +15575,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Flexible fillet knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Flexible fillet knife</li>\n</ul>'
 		},
 		'3489705': {
 			id: 3489705,
@@ -15602,7 +15602,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Flexible fillet knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Flexible fillet knife</li>\n</ul>'
 		},
 		'3489804': {
 			id: 3489804,
@@ -15629,10 +15629,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Flexible fillet knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Flexible fillet knife</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-3489499',
+		id: 'PRO-3489499'
 	},
 	'PRO-3489911': {
 		'3489911': {
@@ -15660,7 +15660,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3493681': {
 			id: 3493681,
@@ -15687,10 +15687,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3489911',
+		id: 'PRO-3489911'
 	},
 	'PRO-3491669': {
 		'3491669': {
@@ -15718,10 +15718,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Swedish fillet knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Swedish fillet knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3491669',
+		id: 'PRO-3491669'
 	},
 	'PRO-3493061': {
 		'3493061': {
@@ -15750,10 +15750,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage':
 				'<ul>\n<li>Hand wash and dry immediately</li>\n<li>Double-beveled blade accommodates both right- and left-handed cooks</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Sashimi knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Sashimi knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493061',
+		id: 'PRO-3493061'
 	},
 	'PRO-3493137': {
 		'3493095': {
@@ -15781,7 +15781,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3493137': {
 			id: 3493137,
@@ -15808,10 +15808,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3493137',
+		id: 'PRO-3493137'
 	},
 	'PRO-3493186': {
 		'3493186': {
@@ -15839,10 +15839,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": 'What&#8217;s in the Box?\n<ul>\n<li>Carving knife</li>\n</ul>',
+			"What's in the Box": 'What&#8217;s in the Box?\n<ul>\n<li>Carving knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493186',
+		id: 'PRO-3493186'
 	},
 	'PRO-3493319': {
 		'3493319': {
@@ -15870,10 +15870,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Classic boning knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Classic boning knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493319',
+		id: 'PRO-3493319'
 	},
 	'PRO-3493467': {
 		'3493467': {
@@ -15901,10 +15901,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Carving knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Carving knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493467',
+		id: 'PRO-3493467'
 	},
 	'PRO-18808': {
 		'3493517': {
@@ -15932,7 +15932,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3493889': {
 			id: 3493889,
@@ -15959,7 +15959,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3493905': {
 			id: 3493905,
@@ -15986,10 +15986,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-18808',
+		id: 'PRO-18808'
 	},
 	'PRO-3493525': {
 		'3493525': {
@@ -16017,10 +16017,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Deba knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Deba knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493525',
+		id: 'PRO-3493525'
 	},
 	'PRO-3493673': {
 		'3493673': {
@@ -16048,10 +16048,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493673',
+		id: 'PRO-3493673'
 	},
 	'PRO-1921618': {
 		'3493699': {
@@ -16079,10 +16079,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1921618',
+		id: 'PRO-1921618'
 	},
 	'PRO-3493707': {
 		'3493707': {
@@ -16110,10 +16110,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Vegetable knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Vegetable knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493707',
+		id: 'PRO-3493707'
 	},
 	'PRO-3493723': {
 		'3493723': {
@@ -16141,10 +16141,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Sandwich knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Sandwich knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493723',
+		id: 'PRO-3493723'
 	},
 	'PRO-3493731': {
 		'3493731': {
@@ -16172,10 +16172,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Peeling knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Peeling knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493731',
+		id: 'PRO-3493731'
 	},
 	'PRO-3493749': {
 		'3493749': {
@@ -16203,10 +16203,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bird&#8217;s beak peeler</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bird&#8217;s beak peeler</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493749',
+		id: 'PRO-3493749'
 	},
 	'PRO-3493897': {
 		'3493897': {
@@ -16234,10 +16234,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Universal knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Universal knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493897',
+		id: 'PRO-3493897'
 	},
 	'PRO-3493954': {
 		'3493954': {
@@ -16265,11 +16265,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box":
-				'<ul>\n<li>Chef&#8217;s knife</li>\n<li>Kitchen shears</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n<li>Kitchen shears</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493954',
+		id: 'PRO-3493954'
 	},
 	'PRO-3493962': {
 		'3493962': {
@@ -16298,10 +16297,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Chef&#8217;s knife</li>\n<li>Vegetable knife</li>\n<li>Paring knife</li>\n</ul>',
+				'<ul>\n<li>Chef&#8217;s knife</li>\n<li>Vegetable knife</li>\n<li>Paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493962',
+		id: 'PRO-3493962'
 	},
 	'PRO-3493988': {
 		'3493988': {
@@ -16329,10 +16328,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493988',
+		id: 'PRO-3493988'
 	},
 	'PRO-3493996': {
 		'3493996': {
@@ -16360,10 +16359,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul>\n<li>Hand wash and dry immediately</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6 steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6 steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3493996',
+		id: 'PRO-3493996'
 	},
 	'PRO-3494457': {
 		'3494382': {
@@ -16391,7 +16390,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Chef&#8217;s knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Chef&#8217;s knife</li> \n</ul>'
 		},
 		'3494440': {
 			id: 3494440,
@@ -16418,7 +16417,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Chef&#8217;s knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Chef&#8217;s knife</li> \n</ul>'
 		},
 		'3494457': {
 			id: 3494457,
@@ -16445,10 +16444,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Chef&#8217;s knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Chef&#8217;s knife</li> \n</ul>'
 		},
 		length: 3,
-		id: 'PRO-3494457',
+		id: 'PRO-3494457'
 	},
 	'PRO-3494408': {
 		'3494408': {
@@ -16476,10 +16475,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3494408',
+		id: 'PRO-3494408'
 	},
 	'PRO-3494416': {
 		'3494416': {
@@ -16507,7 +16506,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Santoku knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Santoku knife</li> \n</ul>'
 		},
 		'3494473': {
 			id: 3494473,
@@ -16534,10 +16533,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Santoku knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Santoku knife</li> \n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3494416',
+		id: 'PRO-3494416'
 	},
 	'PRO-3494424': {
 		'3494424': {
@@ -16565,7 +16564,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Vegetable knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Vegetable knife</li> \n</ul>'
 		},
 		'3494499': {
 			id: 3494499,
@@ -16592,10 +16591,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Vegetable knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Vegetable knife</li> \n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3494424',
+		id: 'PRO-3494424'
 	},
 	'PRO-3494432': {
 		'3494432': {
@@ -16623,7 +16622,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Bread knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Bread knife</li> \n</ul>'
 		},
 		'3494481': {
 			id: 3494481,
@@ -16650,10 +16649,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Bread knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Bread knife</li> \n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3494432',
+		id: 'PRO-3494432'
 	},
 	'PRO-3494465': {
 		'3494465': {
@@ -16681,10 +16680,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Utility knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Utility knife</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3494465',
+		id: 'PRO-3494465'
 	},
 	'PRO-3494515': {
 		'3494507': {
@@ -16712,7 +16711,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Paring knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Paring knife</li> \n</ul>'
 		},
 		'3494515': {
 			id: 3494515,
@@ -16739,10 +16738,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Paring knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Paring knife</li> \n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3494515',
+		id: 'PRO-3494515'
 	},
 	'PRO-3494523': {
 		'3494523': {
@@ -16770,10 +16769,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Paring knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Paring knife</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3494523',
+		id: 'PRO-3494523'
 	},
 	'PRO-3494531': {
 		'3494531': {
@@ -16801,10 +16800,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Peeler</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Peeler</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3494531',
+		id: 'PRO-3494531'
 	},
 	'PRO-3494549': {
 		'3494549': {
@@ -16832,10 +16831,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Steak knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Steak knife</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3494549',
+		id: 'PRO-3494549'
 	},
 	'PRO-3494556': {
 		'3494556': {
@@ -16863,10 +16862,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3494556',
+		id: 'PRO-3494556'
 	},
 	'PRO-3494564': {
 		'3494564': {
@@ -16894,10 +16893,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
-			"What's in the Box": '<ul> \n<li>Utility knife</li> \n</ul>',
+			"What's in the Box": '<ul> \n<li>Utility knife</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3494564',
+		id: 'PRO-3494564'
 	},
 	'PRO-3494572': {
 		'3494572': {
@@ -16926,10 +16925,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>Chef&#8217;s knife</li> \n<li>Santoku knife</li>\n<li>Utility knife</li> \n</ul>',
+				'<ul> \n<li>Chef&#8217;s knife</li> \n<li>Santoku knife</li>\n<li>Utility knife</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3494572',
+		id: 'PRO-3494572'
 	},
 	'PRO-3494580': {
 		'3494580': {
@@ -16958,10 +16957,10 @@ const data = {
 			'Web Brand': 'Global',
 			'Care & Usage': '<ul> \n<li>Hand wash and dry immediately</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>Chef&#8217;s knife</li> \n<li>Utility knife</li>\n<li>Serrated utility knife</li> \n<li>Paring knife</li>\n<li>Knife block</li>\n</ul>',
+				'<ul> \n<li>Chef&#8217;s knife</li> \n<li>Utility knife</li>\n<li>Serrated utility knife</li> \n<li>Paring knife</li>\n<li>Knife block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3494580',
+		id: 'PRO-3494580'
 	},
 	'PRO-3499373': {
 		'3499373': {
@@ -16989,10 +16988,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Nakiri knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Nakiri knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3499373',
+		id: 'PRO-3499373'
 	},
 	'PRO-3499381': {
 		'3499381': {
@@ -17020,10 +17019,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Nakiri knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Nakiri knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3499381',
+		id: 'PRO-3499381'
 	},
 	'PRO-3499399': {
 		'3499399': {
@@ -17051,10 +17050,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Nakiri knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Nakiri knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3499399',
+		id: 'PRO-3499399'
 	},
 	'PRO-3501145': {
 		'3501145': {
@@ -17083,10 +17082,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>Soft cheese knife</li>\n<li>Medium-hard cheese knife</li>\n<li>Hard cheese knife</li>\n</ul>',
+				'<ul>\n<li>Soft cheese knife</li>\n<li>Medium-hard cheese knife</li>\n<li>Hard cheese knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3501145',
+		id: 'PRO-3501145'
 	},
 	'PRO-1074491': {
 		'3553922': {
@@ -17114,7 +17113,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3620432': {
 			id: 3620432,
@@ -17141,10 +17140,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-1074491',
+		id: 'PRO-1074491'
 	},
 	'PRO-1074483': {
 		'3553930': {
@@ -17172,7 +17171,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3554045': {
 			id: 3554045,
@@ -17199,7 +17198,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3620333': {
 			id: 3620333,
@@ -17226,7 +17225,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3620390': {
 			id: 3620390,
@@ -17253,10 +17252,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 4,
-		id: 'PRO-1074483',
+		id: 'PRO-1074483'
 	},
 	'PRO-2391332': {
 		'3553955': {
@@ -17284,7 +17283,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3555703': {
 			id: 3555703,
@@ -17311,10 +17310,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-2391332',
+		id: 'PRO-2391332'
 	},
 	'PRO-2391308': {
 		'3554029': {
@@ -17342,10 +17341,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-2391308',
+		id: 'PRO-2391308'
 	},
 	'PRO-3554136': {
 		'3554136': {
@@ -17373,10 +17372,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3554136',
+		id: 'PRO-3554136'
 	},
 	'PRO-3554151': {
 		'3554151': {
@@ -17404,10 +17403,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Asian utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Asian utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3554151',
+		id: 'PRO-3554151'
 	},
 	'PRO-2472819': {
 		'3555695': {
@@ -17435,10 +17434,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>5.5&#34; prep knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>5.5&#34; prep knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-2472819',
+		id: 'PRO-2472819'
 	},
 	'PRO-1074442': {
 		'3555711': {
@@ -17466,10 +17465,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1074442',
+		id: 'PRO-1074442'
 	},
 	'PRO-3555729': {
 		'3555729': {
@@ -17497,10 +17496,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Meat cleaver</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Meat cleaver</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3555729',
+		id: 'PRO-3555729'
 	},
 	'PRO-3555737': {
 		'3555737': {
@@ -17528,10 +17527,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Boning knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Boning knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3555737',
+		id: 'PRO-3555737'
 	},
 	'PRO-3555810': {
 		'3555810': {
@@ -17559,10 +17558,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3555810',
+		id: 'PRO-3555810'
 	},
 	'PRO-3555885': {
 		'3555885': {
@@ -17591,10 +17590,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; Bird&#8217;s Beak Knife</li>\n<li>3&#34; Paring Knife</li>\n<li>4&#34; Paring Knife</li>\n<li>5&#34; Serrated Utility Knife</li>\n<li>5&#34; Santoku Knife</li>\n<li>7&#34; Santoku Knife</li>\n<li>8&#34; Chef&#8217;s Knife</li>\n<li>8&#34; Bread Knife</li>\n<li>Six 4.5&#34; Steak Knives</li>\n<li>Kitchen Shears</li>\n<li>Sharpening Steel</li>\n<li>Hardwood Block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; Bird&#8217;s Beak Knife</li>\n<li>3&#34; Paring Knife</li>\n<li>4&#34; Paring Knife</li>\n<li>5&#34; Serrated Utility Knife</li>\n<li>5&#34; Santoku Knife</li>\n<li>7&#34; Santoku Knife</li>\n<li>8&#34; Chef&#8217;s Knife</li>\n<li>8&#34; Bread Knife</li>\n<li>Six 4.5&#34; Steak Knives</li>\n<li>Kitchen Shears</li>\n<li>Sharpening Steel</li>\n<li>Hardwood Block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3555885',
+		id: 'PRO-3555885'
 	},
 	'PRO-3558608': {
 		'3558608': {
@@ -17622,10 +17621,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3558608',
+		id: 'PRO-3558608'
 	},
 	'PRO-3562667': {
 		'3562634': {
@@ -17653,7 +17652,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Serrated utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Serrated utility knife</li>\n</ul>'
 		},
 		'3562642': {
 			id: 3562642,
@@ -17680,7 +17679,7 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Serrated utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Serrated utility knife</li>\n</ul>'
 		},
 		'3562667': {
 			id: 3562667,
@@ -17707,10 +17706,10 @@ const data = {
 			Warranty: 'no warranty',
 			'Web Brand': 'Sur La Table',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand washing recommended</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Serrated utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Serrated utility knife</li>\n</ul>'
 		},
 		length: 3,
-		id: 'PRO-3562667',
+		id: 'PRO-3562667'
 	},
 	'PRO-3575206': {
 		'3575206': {
@@ -17739,10 +17738,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3575206',
+		id: 'PRO-3575206'
 	},
 	'PRO-3575271': {
 		'3575271': {
@@ -17771,10 +17770,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3575271',
+		id: 'PRO-3575271'
 	},
 	'PRO-3575289': {
 		'3575289': {
@@ -17803,10 +17802,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>Six serrated steak knives</li>\n<li>15-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>Six serrated steak knives</li>\n<li>15-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3575289',
+		id: 'PRO-3575289'
 	},
 	'PRO-3575297': {
 		'3575297': {
@@ -17835,10 +17834,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3575297',
+		id: 'PRO-3575297'
 	},
 	'PRO-3575305': {
 		'3575305': {
@@ -17867,10 +17866,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3575305',
+		id: 'PRO-3575305'
 	},
 	'PRO-3575313': {
 		'3575313': {
@@ -17899,10 +17898,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>Six serrated steak knives</li>\n<li>15-slot maple block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>Six serrated steak knives</li>\n<li>15-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3575313',
+		id: 'PRO-3575313'
 	},
 	'PRO-3575321': {
 		'3575321': {
@@ -17931,10 +17930,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>3.5&#34; paring knife</li> \n<li>6&#34; utility knife</li> \n<li>8&#34; chef&#8217;s knife</li>\n</ul> ',
+				'<ul> \n<li>3.5&#34; paring knife</li> \n<li>6&#34; utility knife</li> \n<li>8&#34; chef&#8217;s knife</li>\n</ul> '
 		},
 		length: 1,
-		id: 'PRO-3575321',
+		id: 'PRO-3575321'
 	},
 	'PRO-3575339': {
 		'3575339': {
@@ -17963,10 +17962,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li> \n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li> \n</ul> ',
+				'<ul> \n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li> \n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li> \n</ul> '
 		},
 		length: 1,
-		id: 'PRO-3575339',
+		id: 'PRO-3575339'
 	},
 	'PRO-3575347': {
 		'3575347': {
@@ -17994,10 +17993,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li>\n</ul> ',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li> \n</ul> ',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li> \n</ul> '
 		},
 		length: 1,
-		id: 'PRO-3575347',
+		id: 'PRO-3575347'
 	},
 	'PRO-3575354': {
 		'3575354': {
@@ -18026,10 +18025,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>10&#34; slicer</li>\n<li>12&#34; carving fork</li> \n</ul> ',
+				'<ul> \n<li>10&#34; slicer</li>\n<li>12&#34; carving fork</li> \n</ul> '
 		},
 		length: 1,
-		id: 'PRO-3575354',
+		id: 'PRO-3575354'
 	},
 	'PRO-3575362': {
 		'3575362': {
@@ -18058,10 +18057,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li>\n</ul> ',
+				'<ul>\n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li>\n</ul> '
 		},
 		length: 1,
-		id: 'PRO-3575362',
+		id: 'PRO-3575362'
 	},
 	'PRO-1074418': {
 		'3620325': {
@@ -18089,10 +18088,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1074418',
+		id: 'PRO-1074418'
 	},
 	'PRO-1074517': {
 		'3620424': {
@@ -18120,10 +18119,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-1074517',
+		id: 'PRO-1074517'
 	},
 	'PRO-1074459': {
 		'3620465': {
@@ -18151,10 +18150,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-1074459',
+		id: 'PRO-1074459'
 	},
 	'PRO-3621448': {
 		'3621448': {
@@ -18182,10 +18181,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621448',
+		id: 'PRO-3621448'
 	},
 	'PRO-3621455': {
 		'3621455': {
@@ -18213,10 +18212,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621455',
+		id: 'PRO-3621455'
 	},
 	'PRO-3621463': {
 		'3621463': {
@@ -18244,7 +18243,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>'
 		},
 		'3621489': {
 			id: 3621489,
@@ -18271,10 +18270,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3621463',
+		id: 'PRO-3621463'
 	},
 	'PRO-3621471': {
 		'3621471': {
@@ -18302,10 +18301,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621471',
+		id: 'PRO-3621471'
 	},
 	'PRO-3621497': {
 		'3621497': {
@@ -18333,10 +18332,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Wide chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Wide chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621497',
+		id: 'PRO-3621497'
 	},
 	'PRO-3621505': {
 		'3621505': {
@@ -18364,10 +18363,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Rocking santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Rocking santoku knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621505',
+		id: 'PRO-3621505'
 	},
 	'PRO-3621521': {
 		'3621521': {
@@ -18395,7 +18394,7 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		'3621539': {
 			id: 3621539,
@@ -18422,10 +18421,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3621521',
+		id: 'PRO-3621521'
 	},
 	'PRO-3621547': {
 		'3621547': {
@@ -18453,10 +18452,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9.5&#34; bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9.5&#34; bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621547',
+		id: 'PRO-3621547'
 	},
 	'PRO-3621554': {
 		'3621554': {
@@ -18484,10 +18483,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>9.5&#34; slicing knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>9.5&#34; slicing knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621554',
+		id: 'PRO-3621554'
 	},
 	'PRO-3621562': {
 		'3621562': {
@@ -18516,10 +18515,10 @@ const data = {
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5.25&#34; prep knife</li>\n<li>5.5&#34; santoku knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9.5&#34; bread knife</li>\n<li>10&#34; sharpening steel</li>\n<li>Kitchen shears</li>\n<li>Magnetic easel</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>5.25&#34; prep knife</li>\n<li>5.5&#34; santoku knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>9.5&#34; bread knife</li>\n<li>10&#34; sharpening steel</li>\n<li>Kitchen shears</li>\n<li>Magnetic easel</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3621562',
+		id: 'PRO-3621562'
 	},
 	'PRO-3623584': {
 		'3623584': {
@@ -18547,7 +18546,7 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3623592': {
 			id: 3623592,
@@ -18574,10 +18573,10 @@ const data = {
 			Warranty: '5yr Warranty',
 			'Web Brand': 'Kyocera',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 2,
-		id: 'PRO-3623584',
+		id: 'PRO-3623584'
 	},
 	'PRO-3660420': {
 		'3660420': {
@@ -18606,7 +18605,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3660438': {
 			id: 3660438,
@@ -18634,7 +18633,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661626': {
 			id: 3661626,
@@ -18662,7 +18661,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661634': {
 			id: 3661634,
@@ -18690,7 +18689,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661642': {
 			id: 3661642,
@@ -18718,7 +18717,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661659': {
 			id: 3661659,
@@ -18746,7 +18745,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661667': {
 			id: 3661667,
@@ -18774,10 +18773,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		length: 7,
-		id: 'PRO-3660420',
+		id: 'PRO-3660420'
 	},
 	'PRO-3661279': {
 		'3661279': {
@@ -18806,10 +18805,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661279',
+		id: 'PRO-3661279'
 	},
 	'PRO-3661287': {
 		'3661287': {
@@ -18838,10 +18837,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661287',
+		id: 'PRO-3661287'
 	},
 	'PRO-3661295': {
 		'3661295': {
@@ -18870,10 +18869,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661295',
+		id: 'PRO-3661295'
 	},
 	'PRO-3661303': {
 		'3661303': {
@@ -18902,10 +18901,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661303',
+		id: 'PRO-3661303'
 	},
 	'PRO-3661311': {
 		'3661311': {
@@ -18934,10 +18933,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661311',
+		id: 'PRO-3661311'
 	},
 	'PRO-3661329': {
 		'3661329': {
@@ -18966,10 +18965,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot maple block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661329',
+		id: 'PRO-3661329'
 	},
 	'PRO-3661337': {
 		'3661337': {
@@ -18998,10 +18997,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661337',
+		id: 'PRO-3661337'
 	},
 	'PRO-3661345': {
 		'3661345': {
@@ -19030,10 +19029,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661345',
+		id: 'PRO-3661345'
 	},
 	'PRO-3661352': {
 		'3661352': {
@@ -19061,10 +19060,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661352',
+		id: 'PRO-3661352'
 	},
 	'PRO-3661360': {
 		'3661360': {
@@ -19093,10 +19092,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>10&#34; slicer</li> \n<li>12&#34; carving fork</li> \n</ul>',
+				'<ul> \n<li>10&#34; slicer</li> \n<li>12&#34; carving fork</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661360',
+		id: 'PRO-3661360'
 	},
 	'PRO-3661378': {
 		'3661378': {
@@ -19125,10 +19124,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li> \n</ul>',
+				'<ul> \n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661378',
+		id: 'PRO-3661378'
 	},
 	'PRO-3661402': {
 		'3661402': {
@@ -19157,10 +19156,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661402',
+		id: 'PRO-3661402'
 	},
 	'PRO-3661410': {
 		'3661410': {
@@ -19189,10 +19188,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661410',
+		id: 'PRO-3661410'
 	},
 	'PRO-3661428': {
 		'3661428': {
@@ -19221,10 +19220,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661428',
+		id: 'PRO-3661428'
 	},
 	'PRO-3661436': {
 		'3661436': {
@@ -19253,10 +19252,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661436',
+		id: 'PRO-3661436'
 	},
 	'PRO-3661444': {
 		'3661444': {
@@ -19285,10 +19284,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661444',
+		id: 'PRO-3661444'
 	},
 	'PRO-3661451': {
 		'3661451': {
@@ -19317,10 +19316,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot maple block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661451',
+		id: 'PRO-3661451'
 	},
 	'PRO-3661469': {
 		'3661469': {
@@ -19349,10 +19348,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661469',
+		id: 'PRO-3661469'
 	},
 	'PRO-3661477': {
 		'3661477': {
@@ -19381,10 +19380,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661477',
+		id: 'PRO-3661477'
 	},
 	'PRO-3661485': {
 		'3661485': {
@@ -19412,10 +19411,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661485',
+		id: 'PRO-3661485'
 	},
 	'PRO-3661493': {
 		'3661493': {
@@ -19444,10 +19443,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>10&#34; slicer</li> \n<li>12&#34; carving fork</li> \n</ul>',
+				'<ul> \n<li>10&#34; slicer</li> \n<li>12&#34; carving fork</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661493',
+		id: 'PRO-3661493'
 	},
 	'PRO-3661501': {
 		'3661501': {
@@ -19476,10 +19475,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li> \n</ul>',
+				'<ul> \n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661501',
+		id: 'PRO-3661501'
 	},
 	'PRO-3661519': {
 		'3661519': {
@@ -19508,10 +19507,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661519',
+		id: 'PRO-3661519'
 	},
 	'PRO-3661527': {
 		'3661527': {
@@ -19540,10 +19539,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661527',
+		id: 'PRO-3661527'
 	},
 	'PRO-3661535': {
 		'3661535': {
@@ -19572,10 +19571,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot walnut block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot walnut block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661535',
+		id: 'PRO-3661535'
 	},
 	'PRO-3661543': {
 		'3661543': {
@@ -19604,10 +19603,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>8&#34; carving knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661543',
+		id: 'PRO-3661543'
 	},
 	'PRO-3661550': {
 		'3661550': {
@@ -19636,10 +19635,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>10&#34; honing steel</li>\n<li>9-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661550',
+		id: 'PRO-3661550'
 	},
 	'PRO-3661568': {
 		'3661568': {
@@ -19668,10 +19667,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot maple block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; trimming/paring knife</li>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>6&#34; fillet/boning knife</li>\n<li>7&#34; santoku knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>10&#34; slicer</li>\n<li>Six serrated steak knives</li>\n<li>10&#34; honing steel</li>\n<li>15-slot maple block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661568',
+		id: 'PRO-3661568'
 	},
 	'PRO-3661576': {
 		'3661576': {
@@ -19700,10 +19699,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661576',
+		id: 'PRO-3661576'
 	},
 	'PRO-3661584': {
 		'3661584': {
@@ -19732,10 +19731,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li>\n</ul>',
+				'<ul>\n<li>3.5&#34; paring knife</li>\n<li>6&#34; utility knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>8&#34; carving knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661584',
+		id: 'PRO-3661584'
 	},
 	'PRO-3661592': {
 		'3661592': {
@@ -19763,10 +19762,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>4 steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661592',
+		id: 'PRO-3661592'
 	},
 	'PRO-3661600': {
 		'3661600': {
@@ -19795,10 +19794,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>10&#34; slicer</li> \n<li>12&#34; carving fork</li> \n</ul>',
+				'<ul> \n<li>10&#34; slicer</li> \n<li>12&#34; carving fork</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661600',
+		id: 'PRO-3661600'
 	},
 	'PRO-3661618': {
 		'3661618': {
@@ -19827,10 +19826,10 @@ const data = {
 			'Web Brand': 'Lamson',
 			'Care & Usage': '<ul> \n<li>Hand wash</li> \n</ul> ',
 			"What's in the Box":
-				'<ul> \n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li> \n</ul>',
+				'<ul> \n<li>10&#34; hollow-edge roast slicer</li> \n<li>12&#34; carving fork</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661618',
+		id: 'PRO-3661618'
 	},
 	'PRO-3661675': {
 		'3661675': {
@@ -19859,10 +19858,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>In-drawer storage block</li>\n</ul>',
+				'<ul>\n<li>4&#34; paring knife</li>\n<li>5.5&#34; prep knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>In-drawer storage block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661675',
+		id: 'PRO-3661675'
 	},
 	'PRO-3661691': {
 		'3661691': {
@@ -19891,7 +19890,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661709': {
 			id: 3661709,
@@ -19919,7 +19918,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661717': {
 			id: 3661717,
@@ -19947,7 +19946,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661725': {
 			id: 3661725,
@@ -19975,7 +19974,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661733': {
 			id: 3661733,
@@ -20003,7 +20002,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661741': {
 			id: 3661741,
@@ -20031,7 +20030,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661758': {
 			id: 3661758,
@@ -20059,10 +20058,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		length: 7,
-		id: 'PRO-3661691',
+		id: 'PRO-3661691'
 	},
 	'PRO-3661766': {
 		'3661774': {
@@ -20091,10 +20090,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>In-drawer storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>In-drawer storage block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3661766',
+		id: 'PRO-3661766'
 	},
 	'PRO-3661956': {
 		'3661956': {
@@ -20123,7 +20122,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661964': {
 			id: 3661964,
@@ -20151,7 +20150,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661972': {
 			id: 3661972,
@@ -20179,7 +20178,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661980': {
 			id: 3661980,
@@ -20207,7 +20206,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3661998': {
 			id: 3661998,
@@ -20235,7 +20234,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3662012': {
 			id: 3662012,
@@ -20263,7 +20262,7 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		'3662038': {
 			id: 3662038,
@@ -20291,10 +20290,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>16-slot storage block</li>\n</ul>'
 		},
 		length: 7,
-		id: 'PRO-3661956',
+		id: 'PRO-3661956'
 	},
 	'PRO-3662046': {
 		'3662061': {
@@ -20323,10 +20322,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Dishwasher safe; hand-washing recommended</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>In-drawer storage block</li>\n</ul>',
+				'<ul>\n<li>3&#34; paring knife</li>\n<li>4&#34; paring knife</li>\n<li>5&#34; serrated utility knife</li>\n<li>5.5&#34; prep knife</li>\n<li>7&#34; hollow-edge santoku</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Six fine-edge steak knives</li>\n<li>XL shears</li>\n<li>9&#34; sharpening steel</li>\n<li>In-drawer storage block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3662046',
+		id: 'PRO-3662046'
 	},
 	'PRO-3662400': {
 		'3662400': {
@@ -20354,10 +20353,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Fillet knife</li>\n<li>Leather sheaf</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Fillet knife</li>\n<li>Leather sheaf</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3662400',
+		id: 'PRO-3662400'
 	},
 	'PRO-3662418': {
 		'3662418': {
@@ -20386,10 +20385,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>5.5&#34; fine-edge prep knife</li>\n<li>5.5&#34; serrated prep knife</li>\n</ul>',
+				'<ul>\n<li>5.5&#34; fine-edge prep knife</li>\n<li>5.5&#34; serrated prep knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3662418',
+		id: 'PRO-3662418'
 	},
 	'PRO-3823820': {
 		'3823820': {
@@ -20418,10 +20417,10 @@ const data = {
 			'Web Brand': 'J.A. Henckels International',
 			'Care & Usage': '',
 			"What's in the Box":
-				'<ul> \n<li>4&#34; paring knife</li> \n<li>5.5&#34; serrated prep knife</li> \n<li>7&#34; chef&#8217;s knife</li> \n</ul>',
+				'<ul> \n<li>4&#34; paring knife</li> \n<li>5.5&#34; serrated prep knife</li> \n<li>7&#34; chef&#8217;s knife</li> \n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3823820',
+		id: 'PRO-3823820'
 	},
 	'PRO-3830361': {
 		'3830361': {
@@ -20449,10 +20448,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Wusthof',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3830361',
+		id: 'PRO-3830361'
 	},
 	'PRO-3830379': {
 		'3830379': {
@@ -20480,7 +20479,7 @@ const data = {
 			Warranty: 'limited lifetime',
 			'Web Brand': '',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3830387': {
 			id: 3830387,
@@ -20507,7 +20506,7 @@ const data = {
 			Warranty: 'limited lifetime',
 			'Web Brand': '',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		'3830395': {
 			id: 3830395,
@@ -20534,10 +20533,10 @@ const data = {
 			Warranty: 'limited lifetime',
 			'Web Brand': '',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 3,
-		id: 'PRO-3830379',
+		id: 'PRO-3830379'
 	},
 	'PRO-3830429': {
 		'3830429': {
@@ -20565,10 +20564,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3830429',
+		id: 'PRO-3830429'
 	},
 	'PRO-3830619': {
 		'3830619': {
@@ -20596,10 +20595,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6&#34; utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6&#34; utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3830619',
+		id: 'PRO-3830619'
 	},
 	'PRO-3830692': {
 		'3830692': {
@@ -20627,10 +20626,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>8&#34; chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3830692',
+		id: 'PRO-3830692'
 	},
 	'PRO-3830718': {
 		'3830718': {
@@ -20658,10 +20657,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>7&#34; hollow-edge santoku</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>7&#34; hollow-edge santoku</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3830718',
+		id: 'PRO-3830718'
 	},
 	'PRO-3830726': {
 		'3830726': {
@@ -20689,10 +20688,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>5.5&#34; hollow-edge santoku</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>5.5&#34; hollow-edge santoku</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3830726',
+		id: 'PRO-3830726'
 	},
 	'PRO-3830734': {
 		'3830734': {
@@ -20720,10 +20719,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6.5&#34; hollow-edge nakiri</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6.5&#34; hollow-edge nakiri</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3830734',
+		id: 'PRO-3830734'
 	},
 	'PRO-3830742': {
 		'3830742': {
@@ -20751,10 +20750,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>5&#34; honesuki</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>5&#34; honesuki</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3830742',
+		id: 'PRO-3830742'
 	},
 	'PRO-3830759': {
 		'3830759': {
@@ -20782,10 +20781,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>6.5&#34; gokujo knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>6.5&#34; gokujo knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3830759',
+		id: 'PRO-3830759'
 	},
 	'PRO-3841962': {
 		'3841962': {
@@ -20813,10 +20812,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>7&#34; Asian utility knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>7&#34; Asian utility knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3841962',
+		id: 'PRO-3841962'
 	},
 	'PRO-3841970': {
 		'3841970': {
@@ -20844,10 +20843,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>12&#34; slicer</li>\n<li>Beechwood sheath</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>12&#34; slicer</li>\n<li>Beechwood sheath</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3841970',
+		id: 'PRO-3841970'
 	},
 	'PRO-3842002': {
 		'3842002': {
@@ -20876,10 +20875,10 @@ const data = {
 			'Web Brand': 'Shun',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>8&#34; chef&#8217;s knife</li>\n<li>6&#34; utility knife</li>\n<li>5.5&#34; hollow-edge santoku</li>\n<li>3.5&#34; paring knife</li>\n<li> Honing steel</li>\n<li> Tagayason wood storage block</li>\n</ul>',
+				'<ul>\n<li>8&#34; chef&#8217;s knife</li>\n<li>6&#34; utility knife</li>\n<li>5.5&#34; hollow-edge santoku</li>\n<li>3.5&#34; paring knife</li>\n<li> Honing steel</li>\n<li> Tagayason wood storage block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3842002',
+		id: 'PRO-3842002'
 	},
 	'PRO-3842044': {
 		'3842044': {
@@ -20907,10 +20906,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3842044',
+		id: 'PRO-3842044'
 	},
 	'PRO-3842051': {
 		'3842051': {
@@ -20938,10 +20937,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3842051',
+		id: 'PRO-3842051'
 	},
 	'PRO-3842069': {
 		'3842069': {
@@ -20969,10 +20968,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3842069',
+		id: 'PRO-3842069'
 	},
 	'PRO-3842077': {
 		'3842077': {
@@ -21000,10 +20999,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Kramer by Zwilling JA Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3842077',
+		id: 'PRO-3842077'
 	},
 	'PRO-3842127': {
 		'3842127': {
@@ -21031,10 +21030,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3842127',
+		id: 'PRO-3842127'
 	},
 	'PRO-3842143': {
 		'3842143': {
@@ -21062,10 +21061,10 @@ const data = {
 			Warranty: '',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3842143',
+		id: 'PRO-3842143'
 	},
 	'PRO-3897550': {
 		'3897550': {
@@ -21093,10 +21092,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Steak knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Steak knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897550',
+		id: 'PRO-3897550'
 	},
 	'PRO-3897568': {
 		'3897568': {
@@ -21124,7 +21123,7 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		'3897576': {
 			id: 3897576,
@@ -21151,10 +21150,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Paring knife</li>\n</ul>'
 		},
 		length: 2,
-		id: 'PRO-3897568',
+		id: 'PRO-3897568'
 	},
 	'PRO-3897584': {
 		'3897584': {
@@ -21182,10 +21181,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Steak knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Steak knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897584',
+		id: 'PRO-3897584'
 	},
 	'PRO-3897592': {
 		'3897592': {
@@ -21213,10 +21212,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897592',
+		id: 'PRO-3897592'
 	},
 	'PRO-3897600': {
 		'3897600': {
@@ -21244,10 +21243,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Prep knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897600',
+		id: 'PRO-3897600'
 	},
 	'PRO-3897618': {
 		'3897618': {
@@ -21275,10 +21274,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897618',
+		id: 'PRO-3897618'
 	},
 	'PRO-3897626': {
 		'3897626': {
@@ -21306,10 +21305,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Slicing knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Slicing knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897626',
+		id: 'PRO-3897626'
 	},
 	'PRO-3897634': {
 		'3897634': {
@@ -21337,10 +21336,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Bread knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897634',
+		id: 'PRO-3897634'
 	},
 	'PRO-3897642': {
 		'3897642': {
@@ -21368,10 +21367,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897642',
+		id: 'PRO-3897642'
 	},
 	'PRO-3897659': {
 		'3897659': {
@@ -21399,10 +21398,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Santoku knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897659',
+		id: 'PRO-3897659'
 	},
 	'PRO-3897667': {
 		'3897667': {
@@ -21430,10 +21429,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897667',
+		id: 'PRO-3897667'
 	},
 	'PRO-3897675': {
 		'3897675': {
@@ -21461,10 +21460,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Cleaver</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897675',
+		id: 'PRO-3897675'
 	},
 	'PRO-3897683': {
 		'3897683': {
@@ -21492,10 +21491,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n<li>Paring knife</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Chef&#8217;s knife</li>\n<li>Paring knife</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897683',
+		id: 'PRO-3897683'
 	},
 	'PRO-3897691': {
 		'3897691': {
@@ -21523,10 +21522,10 @@ const data = {
 			Warranty: "Lifetime Warranty against Manufacturer's Defects ",
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
-			"What's in the Box": '<ul>\n<li>Four steak knives</li>\n</ul>',
+			"What's in the Box": '<ul>\n<li>Four steak knives</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897691',
+		id: 'PRO-3897691'
 	},
 	'PRO-3897709': {
 		'3897709': {
@@ -21555,10 +21554,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>3&#34; vegetable knife</li>\n<li>4&#34; Paring knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Shears</li>\n<li>9&#34; steel sharpener</li>\n<li>Rubberwood block</li>\n</ul>',
+				'<ul>\n<li>3&#34; vegetable knife</li>\n<li>4&#34; Paring knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Shears</li>\n<li>9&#34; steel sharpener</li>\n<li>Rubberwood block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897709',
+		id: 'PRO-3897709'
 	},
 	'PRO-3897717': {
 		'3897717': {
@@ -21587,10 +21586,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; peeling knife</li>\n<li>3&#34; vegetable knife</li>\n<li>4&#34; Paring knife</li>\n<li>5&#34; serrated utility knife </li>\n<li>6&#34; slicing knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Shears</li>\n<li>9&#34; steel sharpener</li>\n<li>Rubberwood block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; peeling knife</li>\n<li>3&#34; vegetable knife</li>\n<li>4&#34; Paring knife</li>\n<li>5&#34; serrated utility knife </li>\n<li>6&#34; slicing knife</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Shears</li>\n<li>9&#34; steel sharpener</li>\n<li>Rubberwood block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897717',
+		id: 'PRO-3897717'
 	},
 	'PRO-3897725': {
 		'3897725': {
@@ -21619,10 +21618,10 @@ const data = {
 			'Web Brand': 'Zwilling J.A. Henckels',
 			'Care & Usage': '<ul>\n<li>Hand wash only</li>\n</ul>',
 			"What's in the Box":
-				'<ul>\n<li>2.75&#34; peeling knife</li>\n<li>3&#34; vegetable knife</li>\n<li>4&#34; Paring knife</li>\n<li>5&#34; serrated utility knife </li>\n<li>6&#34; slicing knife</li>\n<li>Four steak knives</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Shears</li>\n<li>9&#34; steel sharpener</li>\n<li>Rubberwood block</li>\n</ul>',
+				'<ul>\n<li>2.75&#34; peeling knife</li>\n<li>3&#34; vegetable knife</li>\n<li>4&#34; Paring knife</li>\n<li>5&#34; serrated utility knife </li>\n<li>6&#34; slicing knife</li>\n<li>Four steak knives</li>\n<li>8&#34; bread knife</li>\n<li>8&#34; chef&#8217;s knife</li>\n<li>Shears</li>\n<li>9&#34; steel sharpener</li>\n<li>Rubberwood block</li>\n</ul>'
 		},
 		length: 1,
-		id: 'PRO-3897725',
+		id: 'PRO-3897725'
 	},
 	'PRO-3899127': {
 		'3899127': {
@@ -21650,10 +21649,10 @@ const data = {
 			Warranty: 'limited lifetime',
 			'Web Brand': 'J.A. Henckels International',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3899127',
+		id: 'PRO-3899127'
 	},
 	'PRO-3899135': {
 		'3899135': {
@@ -21681,10 +21680,10 @@ const data = {
 			Warranty: 'limited lifetime',
 			'Web Brand': 'J.A. Henckels International',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3899135',
+		id: 'PRO-3899135'
 	},
 	'PRO-3899143': {
 		'3899143': {
@@ -21712,10 +21711,10 @@ const data = {
 			Warranty: 'limited lifetime',
 			'Web Brand': 'J.A. Henckels International',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3899143',
+		id: 'PRO-3899143'
 	},
 	'PRO-3902814': {
 		'3902814': {
@@ -21743,10 +21742,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Victorinox Swiss Army',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3902814',
+		id: 'PRO-3902814'
 	},
 	'PRO-3902822': {
 		'3902822': {
@@ -21774,10 +21773,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3902822',
+		id: 'PRO-3902822'
 	},
 	'PRO-3982113': {
 		'3982113': {
@@ -21805,10 +21804,10 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Miyabi',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3982113',
+		id: 'PRO-3982113'
 	},
 	'PRO-3987872': {
 		'3987872': {
@@ -21836,11 +21835,11 @@ const data = {
 			Warranty: 'Limited Lifetime Warranty',
 			'Web Brand': 'Global',
 			'Care & Usage': '',
-			"What's in the Box": '',
+			"What's in the Box": ''
 		},
 		length: 1,
-		id: 'PRO-3987872',
-	},
+		id: 'PRO-3987872'
+	}
 };
 
 export default data;
