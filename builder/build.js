@@ -1,15 +1,46 @@
-import 'colors';
-import { done, clean } from './setup.js';
-import { error } from './modules/print';
-import { buildComponents } from './components.js';
-import { generateAsync, buildManifest } from './async.js';
+import log from './modules/print.js';
+import tasks from './modules/tasks.js';
+import { customArgs } from './modules/args.js';
 
-clean()
-	.then(() => {
-		return Promise.all([generateAsync().then(buildManifest), buildComponents()]).then(done);
-	})
-	.catch((err) => {
-		if (err) {
-			error(err.stack);
-		}
-	});
+let args = customArgs({
+	boolean: ['tasks'],
+	default: {
+		tasks: false
+	}
+});
+
+//tasks
+import './modules/setup.js';
+import './async.js';
+import './components.js';
+import './dynamic-registration.js';
+
+function handleError(err) {
+	if (err) {
+		log.error(err.stack);
+	}
+}
+
+let task = args._[0] || 'default';
+
+tasks.add(
+	tasks.timed(() => {
+		return tasks.run('clean').then(() => {
+			//run these in parallel
+			return Promise.all([tasks.run('build-manifest'), tasks.run('build-components')]);
+		});
+	}),
+	'default',
+	'The default task.'
+);
+
+if (require.main === module) {
+	if (args.tasks) {
+		console.log(tasks.list());
+	} else {
+		tasks
+			.run(task)
+			.catch(handleError)
+			.finally(tasks.get('done'));
+	}
+}

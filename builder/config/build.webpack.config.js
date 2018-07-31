@@ -1,16 +1,15 @@
 import webpack from 'webpack';
 import path from 'path';
 import babelConfig from './babel.config.js';
-import { dateTime } from '../modules/print.js';
+import { dateTime as logDateTime } from '../modules/print.js';
+import args from '../modules/args.js';
 
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import merge from 'webpack-merge';
 
 function title(str) {
-	return str.replace(/(^[a-z]|\s[a-z])/g, ($1) => $1.toUpperCase());
+	return str.replace(/(^[a-z]|[\s-][a-z])|/g, ($1) => $1.toUpperCase());
 }
-
-let args = global.args || {};
 
 export default (name, config) => {
 	let finalConfig = merge(
@@ -23,26 +22,26 @@ export default (name, config) => {
 				minimize: process.env.NODE_ENV === 'production',
 				namedChunks: true,
 				namedModules: true,
-				splitChunks: {},
+				splitChunks: {}
 			},
 			resolveLoader: {
 				alias: {
 					// This is needed for the requirejs module.
-					text: 'text-loader',
-				},
+					text: 'text-loader'
+				}
 			},
 			externals: {
 				jquery: 'jQuery',
 				react: 'React',
 				'react-dom': 'ReactDom',
 				'react-redux': 'ReactRedux',
-				redux: 'Redux',
+				redux: 'Redux'
 			},
 			output: {
 				filename: '[name].min.js',
 				chunkFilename: '[name].js',
 				jsonpFunction: 'webpackJsonp',
-				publicPath: '',
+				publicPath: ''
 			},
 			module: {
 				rules: [
@@ -50,31 +49,31 @@ export default (name, config) => {
 						test: /(\.js|\.jsx)$/,
 						use: {
 							loader: 'babel-loader',
-							options: babelConfig,
+							options: babelConfig
 						},
-						exclude: /(node_modules)/,
-					},
-				],
+						exclude: /(node_modules)/
+					}
+				]
 			},
 			plugins: [
 				new webpack.DefinePlugin({
-					'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-				}),
-			],
+					'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+				})
+			]
 		},
-		config,
+		config
 	);
 
-	if (!!args.report == true) {
+	if (args.report == true) {
 		finalConfig.plugins.push(
 			new BundleAnalyzerPlugin({
 				analyzerMode: 'static',
 				reportFilename: path.resolve(
 					`./reports/${title(name)}${title(
-						process.env.NODE_ENV,
-					)}Report${dateTime()}.html`,
-				),
-			}),
+						process.env.NODE_ENV
+					)}Report${logDateTime()}.html`
+				)
+			})
 		);
 	}
 
