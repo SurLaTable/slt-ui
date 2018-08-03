@@ -26,6 +26,14 @@ For injecting into a legacy system, use [React Habitat](https://github.com/Deloi
 </div>
 ```
 
+To register these components with Habitat, run:
+
+```js
+ComponentManifest.bootstrapper.update();
+```
+
+Note that this differs from React Habitat's method (`window.updateHabitat();`). Both are functionally the same, but we expose the low level `bootstrapper` to have access to more of Habitat's internal methods.
+
 Note that unlike vanilla React Habitat _you can have nested components_.
 
 ### Dynamically registering components:
