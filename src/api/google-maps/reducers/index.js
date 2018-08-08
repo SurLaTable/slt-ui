@@ -9,7 +9,7 @@ const actionHandlers = {
 	}
 };
 const initialState = {
-	locationData:null
+	locationData: null
 };
 
 export default {

@@ -213,7 +213,8 @@ class ComparisonTable extends React.Component {
 												style={{ padding: 0 }}
 												onClick={this.handleClose.bind(this)}
 											>
-												<PlayForWorkIcon />Hide chart
+												<PlayForWorkIcon />
+												Hide chart
 											</Button>
 										</TableCell>
 										{props.selection.map((product, index) => {

@@ -21,8 +21,7 @@ export default (name, config) => {
 			optimization: {
 				minimize: process.env.NODE_ENV === 'production',
 				namedChunks: true,
-				namedModules: true,
-				splitChunks: {}
+				namedModules: true
 			},
 			resolveLoader: {
 				alias: {

@@ -9,7 +9,7 @@ const actionHandlers = {
 		};
 	},
 	GET_CLOSEST_STORES: (state, action) => {
-    //once I add filtering for different props, we can filter the stores before running haversineSort
+		//once I add filtering for different props, we can filter the stores before running haversineSort
 		let res = utils.haversineSort(state.storeData, action.latlng);
 		return {
 			...state,
@@ -18,7 +18,7 @@ const actionHandlers = {
 					storeId: val.storeId,
 					distance: res.distances[val.storeId]
 				});
-        return reducer;
+				return reducer;
 			}, [])
 		};
 	}
