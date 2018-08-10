@@ -2,7 +2,7 @@
 
 Components should be in a folder with the name of the component matching and match `/[A-Z]*/`
 
-Components should have an index.js that exports the Component  
+Components should have an index.js that exports the Component
 **src/Component/index.js**
 
 ```js
@@ -12,7 +12,7 @@ export * from './Component.js';
 export { default as Component } from './Component.js';
 ```
 
-If your component is going to have sub components, they should each be in their own folder to allow documentation `MainComponent/SubComponent` and example would be the **ComparisonChart**, it's what we'd call an app component, it is made up only of it's sub components, each in thier own sub folders.
+If your component is going to have sub components, they should each be in their own folder to allow documentation `MainComponent/SubComponent` and example would be the **ComparisonChart**, it's what we'd call an app component, it is made up only of it's sub components, each in their own sub folders.
 
 To document a component add a **README&period;md** next to the **Component.js**.
 Also use `Component.propTypes` and `Component.defaultProps` in your component file.

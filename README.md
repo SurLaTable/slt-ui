@@ -6,7 +6,7 @@
 
 ## Getting started:
 
-If you just want to hack on components and view thier documentation you can run:
+If you just want to hack on components and view their documentation you can run:
 
 ```
 yarn install
