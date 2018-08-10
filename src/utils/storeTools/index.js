@@ -2,14 +2,14 @@ import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import persistState from 'redux-localstorage';
 
-const composeEnhancers =
-	(process.env.NODE_ENV === 'development' && global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-	compose;
+const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const persist = global.localStore ? persistState() : (state) => state;
 
 let middlware = composeEnhancers(
 	applyMiddleware(thunk),
 	// redux-localstorage:
-	persistState()
+	persist
 );
 
 export default function configureStore(initialState, initialReducers) {
@@ -37,10 +37,12 @@ export function createReducer(initialState, actionHandlers) {
 }
 
 export function addAsyncReducers(store, asyncReducers = {}) {
+	console.log(store.asyncReducers, asyncReducers);
 	store.asyncReducers = {
 		...store.asyncReducers,
 		...asyncReducers
 	};
+
 	store.replaceReducer(combineReducers(store.asyncReducers));
 }
 

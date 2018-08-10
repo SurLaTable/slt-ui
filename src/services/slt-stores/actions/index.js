@@ -1,9 +1,9 @@
-import { SLT_STORE_ENDPOINT } from '../../api.config.js';
+import { SLT_STORE_ENDPOINT } from '../../services.config.js';
 import axios from 'axios';
 import store from 'store2';
 //we'll store all the stores in memory here
 
-var apiStorage = store.namespace('stores-api');
+var apiStorage = store.namespace('stores-service');
 
 export const getStoreData = (force = false) => {
 	//regular endpoint with no params

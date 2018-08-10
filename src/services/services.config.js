@@ -18,7 +18,4 @@ export const SLT_STORE_ENDPOINT = wrapEndpoint(
 	SLT_APIKEY
 );
 
-// @google/maps api key
-export const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || global.GOOGLE_MAPS_API_KEY;
-
-export default { SLT_APIKEY, SLT_STORE_ENDPOINT, GOOGLE_MAPS_API_KEY };
+export default { SLT_APIKEY, SLT_STORE_ENDPOINT };

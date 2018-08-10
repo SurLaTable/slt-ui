@@ -10,7 +10,7 @@ const productComparisonReducer = (state = {}, action) => {
 			};
 		case 'REMOVE_PRODUCT':
 			for (let i = selection.length - 1; i >= 0; i--) {
-				if (selection[i].id === action.productId) {
+				if (selection[i].id === action.id) {
 					selection.splice(i, 1);
 					break;
 				}
@@ -25,8 +25,8 @@ const productComparisonReducer = (state = {}, action) => {
 			return {
 				...state,
 				selection: action.checked
-					? [...selection, data[action.productId]]
-					: selection.filter((product) => product.id !== action.productId)
+					? [...selection, data[action.id]]
+					: selection.filter((product) => product.id !== action.id)
 			};
 
 		case 'SET_PRODUCTS':
@@ -38,7 +38,10 @@ const productComparisonReducer = (state = {}, action) => {
 		case 'PRODUCT_DATA_SUCCESS':
 			return {
 				...state,
-				productData: action.data
+				productData: {
+					...data,
+					...action.data
+				}
 			};
 
 		default:

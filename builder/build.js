@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import log from './modules/print.js';
 import tasks from './modules/tasks.js';
 import { customArgs } from './modules/args.js';

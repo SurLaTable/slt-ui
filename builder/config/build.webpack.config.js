@@ -11,7 +11,7 @@ function title(str) {
 	return str.replace(/(^[a-z]|[\s-][a-z])|/g, ($1) => $1.toUpperCase());
 }
 
-export default (name, config) => {
+export default (name, ...configs) => {
 	let finalConfig = merge(
 		{
 			mode: process.env.NODE_ENV,
@@ -60,7 +60,7 @@ export default (name, config) => {
 				})
 			]
 		},
-		config
+		...configs
 	);
 
 	if (args.report == true) {

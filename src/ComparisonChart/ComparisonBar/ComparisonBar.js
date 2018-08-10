@@ -1,5 +1,6 @@
 import React from 'react';
-import { actionRemoveProduct } from '../actions/productComparisonActions';
+import PropTypes from 'prop-types';
+import { actionRemoveProduct } from '../api';
 import { connect } from 'react-redux';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
@@ -135,11 +136,15 @@ class ComparisonBar extends React.Component {
 	}
 }
 
+ComparisonBar.propTypes = {
+	numberOfItems: PropTypes.number
+};
+
 ComparisonBar.defaultProps = {
 	numberOfItems: 3
 };
 
-ComparisonBar = connect((state, props) => {
+export default connect((state, props) => {
 	if (state.productComparisonReducer) {
 		return {
 			...props,
@@ -152,5 +157,3 @@ ComparisonBar = connect((state, props) => {
 		};
 	}
 })(ComparisonBar);
-
-export default ComparisonBar;
