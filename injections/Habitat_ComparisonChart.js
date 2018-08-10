@@ -625,7 +625,7 @@ $(document).ready(function() {
 	$('.pagination').hide();
 
 	if (ComponentManifest) {
-		ComponentManifest.updateHabitat();
+		ComponentManifest.bootstrapper.update();
 
 		var localProductData = JSON.parse(localStorage.getItem('comparisonChartLocalData')) || {};
 
