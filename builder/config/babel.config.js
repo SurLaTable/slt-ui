@@ -20,7 +20,6 @@ module.exports = {
 			{
 				helpers: false,
 				regenerator: true,
-				moduleName: '@babel/runtime',
 				useESModules: true
 			}
 		],
