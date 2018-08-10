@@ -15,7 +15,7 @@ export { default as Component } from './Component.js';
 If your component is going to have sub components, they should each be in their own folder to allow documentation `MainComponent/SubComponent` and example would be the **ComparisonChart**, it's what we'd call an app component, it is made up only of it's sub components, each in thier own sub folders.
 
 To document a component add a **README&period;md** next to the **Component.js**.
-Also use `Component.propTypes` and `Component.defaultProps` in your component file.  
+Also use `Component.propTypes` and `Component.defaultProps` in your component file.
 Check [react-styleguidist](https://github.com/styleguidist/react-styleguidist/) for more details.
 
 # Services
@@ -24,7 +24,7 @@ Services are things that allow an api to communicate with redux, which in turn g
 
 **Api keys** should only be retrieved from `process.env` or from `global` keys should not be written into source code. You can create a `.env` file in the base directory and put your keys in there for testing in the docs
 
-Typically this is what a service should look like  
+Typically this is what a service should look like
 **services/service-name/index.js**
 
 ```js
