@@ -19,7 +19,6 @@ module.exports = {
 			'@babel/plugin-transform-runtime',
 			{
 				helpers: false,
-				polyfill: false,
 				regenerator: true,
 				moduleName: '@babel/runtime',
 				useESModules: true
