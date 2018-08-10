@@ -32,7 +32,7 @@ export default (name, ...configs) => {
 			externals: {
 				jquery: 'jQuery',
 				react: 'React',
-				'react-dom': 'ReactDom',
+				'react-dom': 'ReactDOM',
 				'react-redux': 'ReactRedux',
 				redux: 'Redux'
 			},

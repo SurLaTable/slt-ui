@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 // import { Provider }		from 'react-redux';
 // import { createStore } from "redux";
 import StoreProvider from '../src/StoreProvider';
@@ -47,10 +47,10 @@ export default class SLTDomFactory {
 				React.createElement(module, props, children)
 			);
 
-			// ReactDom.render(wrapper, target);
-			// ReactDom.render(React.createElement(Provider, { store: this.store },wrapper), target);
+			// ReactDOM.render(wrapper, target);
+			// ReactDOM.render(React.createElement(Provider, { store: this.store },wrapper), target);
 			if (wrapper) {
-				ReactDom.render(React.createElement(StoreProvider, props, wrapper), target);
+				ReactDOM.render(React.createElement(StoreProvider, props, wrapper), target);
 			}
 		}
 	}
@@ -62,7 +62,7 @@ export default class SLTDomFactory {
 	dispose(target) {
 		if (target) {
 			//console.log(target)
-			ReactDom.unmountComponentAtNode(target);
+			ReactDOM.unmountComponentAtNode(target);
 		}
 	}
 }
