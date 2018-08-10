@@ -22,7 +22,6 @@ module.exports = {
 				polyfill: false,
 				regenerator: true,
 				moduleName: '@babel/runtime',
-				useBuiltIns: true,
 				useESModules: true
 			}
 		],
