@@ -34,6 +34,7 @@ export default config('Sandbox', styleguidistConfig, {
 	output: {
 		publicPath: '/'
 	},
-	//DotEnv includes the .env environment variables in this bundle so you can actually use them
+	// DotEnv includes the .env environment variables
+	// in this bundle so you can actually use them:
 	plugins: [new DotEnv()]
 });
