@@ -6,11 +6,11 @@ import { customArgs } from './modules/args.js';
 import tasks from './modules/tasks.js';
 
 /*
-- need to create config with public path
-- need to give it a library config with a good name
-- maybe a wrapper for auto registering to react-habitat
-- need to pass a script to this to build from
-- maybe also an output directory (with a defualt)
+- Need to create config with public path
+- Need to give it a library config with a good name
+- Maybe a wrapper for auto registering to react-habitat
+- Need to pass a script to this to build from
+- Maybe also an output directory (with a default)
 */
 
 export default function buildDynamicRegistration() {
