@@ -21,7 +21,7 @@ var serverConfig = {
 		since the public path for the async components is /scripts/manifest
 		*/
 		// app.use(mount('/scripts/manifest', serve(path.resolve('./build/async'))));
-		app.use(mount('', serve(path.resolve('./build/async'))));
+		// app.use(mount('', serve(path.resolve('./build/async'))));
 	}
 };
 
