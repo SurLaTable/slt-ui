@@ -15,7 +15,7 @@ var serverConfig = {
 	add: (app, middleware, options) => {
 		middleware.webpack();
 		middleware.content();
-		app.use(mount('/scripts/manifest', serve(path.resolve('./build/async'))));
+		// app.use(mount('/scripts/manifest', serve(path.resolve('./build/async'))));
 	}
 };
 

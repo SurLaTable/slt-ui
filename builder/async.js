@@ -77,7 +77,7 @@ function generateSLTUIAsync(promises) {
 									path.posix.resolve(file)
 								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
-          	`;
+						`;
 					}
 					promises.push(
 						write(path.resolve(`./builder/temp/slt/${folderName}/index.js`), indexCode)
@@ -115,8 +115,8 @@ function generateMaterialAsync(promises) {
 					log.info(file);
 					var module = require(file);
 					let indexCode = `
-          import {asyncComponent} from 'react-async-component';
-        `;
+						import {asyncComponent} from 'react-async-component';
+					`;
 					for (let component in module) {
 						console.log(component);
 						if (
@@ -176,14 +176,16 @@ export async function buildManifest() {
 			index: './manifest/index.js'
 		},
 		output: {
-			path: path.resolve('./build/async'),
-			publicPath: '/scripts/manifest/'
+			path: path.resolve('./build/async')
+			// publicPath: '/scripts/manifest/'
 		}
-		/*  resolve:{
-      alias:{
-        "@material-ui/core$":path.resolve("./builder/temp/material"),
-      }
-    }*/
+		/*
+		resolve:{
+			alias:{
+				"@material-ui/core$":path.resolve("./builder/temp/material"),
+			}
+		}
+		*/
 	});
 
 	return new Promise((resolve, reject) => {

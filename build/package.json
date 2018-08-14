@@ -3,6 +3,7 @@
 	"version": "1.2.1",
 	"description": "Sur La Table UI Library",
 	"main": "./sync/index.min.js",
+	"jsdelivr": "./async/index.min.js",
 	"scripts": {},
 	"repository": {
 		"type": "git",

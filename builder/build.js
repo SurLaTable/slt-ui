@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import log from './modules/print.js';
 import tasks from './modules/tasks.js';
 import { customArgs } from './modules/args.js';
@@ -26,7 +27,7 @@ let task = args._[0] || 'default';
 tasks.add(
 	tasks.timed(() => {
 		return tasks.run('clean').then(() => {
-			//run these in parallel
+			// Run these in parallel:
 			return Promise.all([tasks.run('build-manifest'), tasks.run('build-components')]);
 		});
 	}),

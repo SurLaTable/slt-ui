@@ -5,3 +5,4 @@ build/async
 build/sync
 build/dynamic-registration
 builder/temp/
+.env

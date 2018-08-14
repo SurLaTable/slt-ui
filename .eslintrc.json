@@ -1,12 +1,12 @@
 {
-	"extends": "eslint:recommended",
+	"parser": "babel-eslint",
+	"extends": ["eslint:recommended", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
 	"env": {
 		"browser": true,
 		"node": true,
 		"es6": true
 	},
 	"parserOptions": {
-		"newline-per-chained-call": ["error"],
 		"ecmaVersion": 2018,
 		"sourceType": "module",
 		"ecmaFeatures": {
@@ -14,7 +14,17 @@
 		}
 	},
 	"rules": {
+		"newline-per-chained-call": ["error"],
 		"no-undef": "off",
-		"no-console": ["warn", { "allow": ["warn", "error"] }]
-	}
+		"no-unused-vars": "warn",
+		"no-console": ["warn", { "allow": ["warn", "error"] }],
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"react/jsx-indent-props": ["error", "tab"],
+		"react/jsx-indent": ["error", "tab"],
+		"react/jsx-closing-bracket-location": ["error", "line-aligned"],
+		"react/jsx-max-props-per-line": ["error", { "maximum": 1 }],
+		"react/jsx-first-prop-new-line": ["error", "multiline-multiprop"]
+	},
+	"plugins": ["react", "jsx-a11y", "markdown"]
 }

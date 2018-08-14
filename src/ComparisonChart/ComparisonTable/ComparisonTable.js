@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-	actionRemoveAll,
-	actionRemoveProduct,
-	actionSetProducts
-} from '../actions/productComparisonActions';
+import { actionRemoveAll, actionRemoveProduct, actionSetProducts } from '../api';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
@@ -73,13 +69,18 @@ const tableModels = {
 	}
 };
 
-const Transition = (props) => <Slide direction="up" {...props} />;
+const Transition = (props) => <Slide
+	direction="up"
+	{...props}
+/>;
 
 class ComparisonTable extends React.Component {
 	state = {
 		open: false
 	};
-
+	/**
+	 * The table used to display product information.
+	 */
 	constructor() {
 		super();
 		if (
@@ -208,12 +209,16 @@ class ComparisonTable extends React.Component {
 											backgroundColor: '#E4E4E4'
 										}}
 									>
-										<TableCell padding="dense" style={tableCellStyles}>
+										<TableCell
+											padding="dense"
+											style={tableCellStyles}
+										>
 											<Button
 												style={{ padding: 0 }}
 												onClick={this.handleClose.bind(this)}
 											>
-												<PlayForWorkIcon />Hide chart
+												<PlayForWorkIcon />
+												Hide chart
 											</Button>
 										</TableCell>
 										{props.selection.map((product, index) => {

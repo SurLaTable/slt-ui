@@ -1,6 +1,6 @@
 /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import ReactHabitat from 'react-habitat';
 import Registration from 'react-habitat/lib/Registration';
 
@@ -18,7 +18,7 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		var bootstrapper = this;
 		var ComponentManifest = (global.ComponentManifest = Object.assign(new PubSub(), {
 			React: React,
-			ReactDom: ReactDom,
+			ReactDOM: ReactDOM,
 			bootstrapper: bootstrapper
 		}));
 
