@@ -3,6 +3,7 @@
 	"version": "2018.08.10-beta.2",
 	"description": "Sur La Table UI Library",
 	"main": "./sync/index.min.js",
+	"jsdelivr": "./async/index.min.js",
 	"scripts": {},
 	"repository": {
 		"type": "git",

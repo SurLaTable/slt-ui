@@ -6,19 +6,25 @@
 
 ## Getting started:
 
-If you just want to hack on components and view their documentation you can run:
+If you just want to hack on components, you can run:
+
+```
+yarn install
+yarn sandbox
+```
+
+Conversely, you can also use CodeSandbox, although the version there is out-of-date at the moment:
+
+[![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/0b63e06d14b42cc5f91739dff90a09ed747b1e93)
+
+If you want to view component documentation, you can run:
 
 ```
 yarn install
 yarn docs
 ```
 
-_using [react-styleguidist](https://github.com/styleguidist/react-styleguidist/)_
-
-<!-- NOTE: I'd say this probably isn't ready
-Conversely, you can also hack on components using CodeSandbox:
-
-[![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/0b63e06d14b42cc5f91739dff90a09ed747b1e93)-->
+We use React Styleguidist for documentation, usage details can be found [here](https://react-styleguidist.js.org/docs/getting-started.html).
 
 ## Building:
 
