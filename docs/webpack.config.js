@@ -4,8 +4,18 @@ import DotEnv from 'dotenv-webpack';
 import styleguidist from 'react-styleguidist';
 
 import { resolver } from 'react-docgen';
+import fs from 'fs';
+
+function getFileSize(filename) {
+	const stats = fs.statSync(filename);
+	return stats.size / 1000.0;
+}
 
 let styleguide = styleguidist({
+	ribbon: {
+		url: 'https://github.com/SurLaTable/slt-ui',
+		text: 'Check it out on GitHub'
+	},
 	require: [],
 	template: {
 		body: {
