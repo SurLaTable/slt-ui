@@ -1,7 +1,36 @@
 import log from './print.js';
+import path from 'path';
 
 let tasks = {};
 var longestTaskNameLength = 0;
+
+function _getCallerFile() {
+		let pst = Error.prepareStackTrace;
+
+    try {
+        var err = new Error();
+        var callerfile;
+        var currentfile;
+
+				Error.prepareStackTrace = function (err, stack) { return stack; };
+
+        currentfile = err.stack.shift().getFileName();
+
+        while (err.stack.length) {
+            callerfile = err.stack.shift().getFileName();
+
+            if(currentfile !== callerfile){
+							return callerfile;
+						}
+        }
+    } catch(e) {
+			log.error(e);
+		} finally{
+			Error.prepareStackTrace = pst
+		}
+
+		return undefined;
+}
 
 export async function run(taskName) {
 	if (tasks.hasOwnProperty(taskName)) {
@@ -22,6 +51,7 @@ export function add(task, name, description) {
 	};
 	tasks[name].displayName = name;
 	tasks[name].description = description;
+	tasks[name].definition = path.relative("./",_getCallerFile());
 	tasks[name].hiddenTask = task.hiddenTask;
 
 	if (name.length > longestTaskNameLength) {
@@ -61,9 +91,9 @@ export function list() {
 		output.push(
 			`${name.cyan}${
 				task.description
-					? ' '.repeat(longestTaskNameLength - name.length) + ' - ' + task.description
+					? `${' '.repeat(longestTaskNameLength - name.length)} - ${task.description}`
 					: ''
-			}`
+			} ${('('+task.definition+')').grey}`
 		);
 	}
 	return `
