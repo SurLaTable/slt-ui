@@ -5,6 +5,7 @@
 	"main": "./CodeSandbox/index.js",
 	"scripts": {
 		"build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
+		"docs": "babel-node --config-file ./builder/config/babel.config.js ./docs/serve.config.js --dev",
 		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|node_modules)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./docs/serve.config.js --dev",
 		"test": "yarn build"
@@ -50,7 +51,6 @@
 		"react": "^16.2.0",
 		"react-async-component": "^1.0.2",
 		"react-dom": "^16.2.0",
-		"react-event-listener": "^0.6.0",
 		"react-habitat": "^1.0.1",
 		"react-habitat-redux": "^2.0.4",
 		"react-hot-loader": "^4.3.3",
@@ -96,6 +96,7 @@
 		"eslint-plugin-markdown": "^1.0.0-beta.6",
 		"eslint-plugin-react": "^7.10.0",
 		"glob": "^7.1.2",
+		"html-webpack-plugin": "^3.2.0",
 		"koa-mount": "^3.0.0",
 		"koa-router": "^7.4.0",
 		"koa-static": "^5.0.0",
