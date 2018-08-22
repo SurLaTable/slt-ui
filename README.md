@@ -119,18 +119,42 @@ Without this direct reference to a component, all of Material UI will be include
 
 ## Publishing:
 
-After [building](https://github.com/SurLaTable/slt-ui#building) the repo, do:
+After [building](https://github.com/SurLaTable/slt-ui#building) the repo, set the version number in `(package.json)[package.json]` and `(build/package.json)[build/package.json]`, then:
 
 ```
 cd build
 npm login
-yarn publish
+npm publish
 ```
 
-To publish the `beta` tag to `npm` (for development environments), just add a `--tag beta` argument to `yarn publish`, in other words:
+To publish the `beta` tag to `npm` (for development environments), just add a `--tag beta` argument to `npm publish`, in other words:
 
 ```
 cd build
 npm login
-yarn publish --tag beta
+npm publish --tag beta
+```
+
+The beta tags follow this format:
+
+```
+DATE.INCREMENTED.NUMBER-beta
+```
+
+For instance:
+
+```
+20180822.0.0-beta
+```
+
+If you published another one you would increment the numbers in the MINOR and PATCH spots, like so:
+
+```
+20180822.0.1-beta
+```
+
+So if you published 12 versions in one day, you would be on:
+
+```
+20180822.1.1-beta
 ```
