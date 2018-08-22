@@ -5,36 +5,40 @@ let tasks = {};
 var longestTaskNameLength = 0;
 
 function _getCallerFile() {
-		let pst = Error.prepareStackTrace;
+	let pst = Error.prepareStackTrace;
 
-    try {
-        var err = new Error();
-        var callerfile;
-        var currentfile;
+	try {
+		var err = new Error();
+		var callerfile;
+		var currentfile;
 
-				Error.prepareStackTrace = function (err, stack) { return stack; };
+		Error.prepareStackTrace = function(err, stack) {
+			return stack;
+		};
 
-        currentfile = err.stack.shift().getFileName();
+		currentfile = err.stack.shift().getFileName();
 
-        while (err.stack.length) {
-            callerfile = err.stack.shift().getFileName();
+		while (err.stack.length) {
+			callerfile = err.stack.shift().getFileName();
 
-            if(currentfile !== callerfile){
-							return callerfile;
-						}
-        }
-    } catch(e) {
-			log.error(e);
-		} finally{
-			Error.prepareStackTrace = pst
+			if (currentfile !== callerfile) {
+				return callerfile;
+			}
 		}
+	} catch (e) {
+		log.error(e);
+	} finally {
+		Error.prepareStackTrace = pst;
+	}
 
-		return undefined;
+	return undefined;
 }
 
-export async function run(taskName) {
+export async function run(taskName, ...args) {
 	if (tasks.hasOwnProperty(taskName)) {
-		return Promise.resolve().then(tasks[taskName]);
+		return Promise.resolve().then(() => {
+			return tasks[taskName](...args);
+		});
 	}
 	return Promise.reject(new Error(`Task "${taskName}" does not exist`));
 }
@@ -45,13 +49,13 @@ export function add(task, name, description) {
 	if (tasks.hasOwnProperty(name)) {
 		throw new Error(`Task "${name}" already exists.`);
 	}
-	tasks[name] = () => {
+	tasks[name] = (...args) => {
 		log.info(`Running task: ${name}`);
-		return task();
+		return task(...args);
 	};
 	tasks[name].displayName = name;
 	tasks[name].description = description;
-	tasks[name].definition = path.relative("./",_getCallerFile());
+	tasks[name].definition = path.relative('./', _getCallerFile());
 	tasks[name].hiddenTask = task.hiddenTask;
 
 	if (name.length > longestTaskNameLength) {
@@ -62,9 +66,9 @@ export function add(task, name, description) {
 export function timed(task, name, description) {
 	name = name || task.displayName || task.name;
 	description = description || task.description;
-	let timedTask = function() {
+	let timedTask = function(...args) {
 		let start = Date.now();
-		return task().then(() => {
+		return task(...args).then(() => {
 			log.info(`Task ${name} finished in ${((Date.now() - start) / 1000).toFixed(2)}s`);
 		});
 	};
@@ -93,7 +97,7 @@ export function list() {
 				task.description
 					? `${' '.repeat(longestTaskNameLength - name.length)} - ${task.description}`
 					: ''
-			} ${('('+task.definition+')').grey}`
+			} ${('(' + task.definition + ')').grey}`
 		);
 	}
 	return `
