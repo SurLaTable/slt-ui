@@ -2,6 +2,7 @@ import config from '../builder/config/build.webpack.config.js';
 import path from 'path';
 import DotEnv from 'dotenv-webpack';
 import styleguidist from 'react-styleguidist';
+import glob from 'glob';
 
 import { resolver } from 'react-docgen';
 import fs from 'fs';
@@ -10,8 +11,39 @@ function getFileSize(filename) {
 	const stats = fs.statSync(filename);
 	return stats.size / 1000.0;
 }
+function getDemos() {
+	let files = glob.sync('./demos/**/*.md', {
+		cwd: __dirname
+	});
+
+	let sections = [];
+	for (let i = 0; i < files.length; i++) {
+		sections.push({
+			name: path.basename(files[i], '.md'),
+			content: path.resolve(__dirname, files[i])
+		});
+	}
+	return sections;
+}
 
 let styleguide = styleguidist({
+	pagePerSection: true,
+	sections: [
+		{
+			name: 'Components',
+			sectionDepth: 0,
+			components: [
+				path.resolve(`./src/[A-Z]*/?([A-Z]*)/[A-Z]*.{js,jsx,ts,tsx}`),
+				path.resolve(`./src/[A-Z]*/[A-Z]*.{js,jsx,ts,tsx}`)
+				//path.resolve(`./src/[A-Z]*/index.js`)
+			]
+		},
+		{
+			name: 'Demos',
+			sections: getDemos(),
+			sectionDepth: 1
+		}
+	],
 	ribbon: {
 		url: 'https://github.com/SurLaTable/slt-ui',
 		text: 'Check it out on GitHub'
@@ -24,11 +56,7 @@ let styleguide = styleguidist({
 	},
 	skipComponentsWithoutExample: false,
 	resolver: resolver.findAllExportedComponentDefinitions,
-	components: [
-		path.resolve(`./src/[A-Z]*/?([A-Z]*)/[A-Z]*.{js,jsx,ts,tsx}`),
-		path.resolve(`./src/[A-Z]*/[A-Z]*.{js,jsx,ts,tsx}`)
-		//path.resolve(`./src/[A-Z]*/index.js`)
-	],
+
 	defaultExample: path.resolve(__dirname, 'DefaultExample.md')
 });
 let styleguidistConfig = styleguide.makeWebpackConfig(process.env.NODE_ENV);

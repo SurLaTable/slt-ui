@@ -5,7 +5,10 @@ import serve from 'koa-static';
 import mount from 'koa-mount';
 
 import tasks from '../builder/modules/tasks.js';
+import log from '../builder/modules/print.js';
 import '../builder/async.js';
+
+log.warn('THIS SANDBOX IS DEPRECATED: please use `docs` to document, test, and prototype. ');
 
 var serverConfig = {
 	content: [path.resolve(__dirname, 'index.js'), path.resolve('./build')],
