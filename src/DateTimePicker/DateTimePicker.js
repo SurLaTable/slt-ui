@@ -1,21 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import './DateTimePicker.css';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import Slide from '@material-ui/core/Slide';
+import Typography from '@material-ui/core/Typography';
+
+const theme = createMuiTheme({});
+
+const noBoxShadow = {
+	boxShadow: 'none'
+};
+
+const greyBorderBottom = {
+	borderBottom: '1px solid #d2d2d2'
+};
+
+const transparentBackground = {
+	backgroundColor: 'transparent'
+};
+
+const Transition = (props) => <Slide
+	direction="up"
+	{...props}
+/>;
+
+const ShadowlessExpansionPanel = (props) => (
+	<ExpansionPanel
+		className="expression-panel__bottom-border-only"
+		// style={Object.assign({}, greyBorderBottom, noBoxShadow, transparentBackground)}
+		{...props}
+	>
+		{props.children}
+	</ExpansionPanel>
+);
 
 class DateTimePicker extends React.Component {
 	state = {
+		expanded: null,
 		open: false
 	};
 	/**
@@ -29,14 +61,14 @@ class DateTimePicker extends React.Component {
 			global.history.state &&
 			global.history.state.type === 'OPEN_COMPARISON_TABLE'
 		) {
-			// We refresh with the old state.
+			// We hydrate with the old state.
 			global.history.replaceState(null, 'ComparisonTable');
 		}
 		global.addEventListener('popstate', (event) => {
 			let state = event.state;
 
 			if (state == null) {
-				// CLOSE COMPARISON TABLE:
+				// Close dialog:
 				this.setState({ open: false });
 			} else if (state.type === 'OPEN_COMPARISON_TABLE' && !this.state.open) {
 				this.props.dispatch(actionSetProducts(state.selection));
@@ -45,6 +77,12 @@ class DateTimePicker extends React.Component {
 			}
 		});
 	}
+
+	handleChange = (panel) => (event, expanded) => {
+		this.setState({
+			expanded: expanded ? panel : false
+		});
+	};
 
 	handleClickOpen() {
 		if (global && global.history) {
@@ -66,7 +104,8 @@ class DateTimePicker extends React.Component {
 		this.setState({ open: false });
 	}
 	render() {
-		let { product, checked, disabled = false, dispatch } = this.props;
+		let { dispatch } = this.props;
+		const { expanded } = this.state;
 		return (
 			<MuiThemeProvider theme={theme}>
 				<Button
@@ -77,12 +116,12 @@ class DateTimePicker extends React.Component {
 				</Button>
 				<Dialog
 					PaperProps={{
-						style: {
-							padding: 0
-						}
+						style: {}
 					}}
-					style={{ overflow: 'overlay', padding: 0 }}
-					maxWidth={false}
+					style={{
+						overflow: 'overlay'
+					}}
+					// maxWidth={false}
 					fullWidth={true}
 					open={this.state.open}
 					onClose={this.handleClose.bind(this)}
@@ -90,7 +129,52 @@ class DateTimePicker extends React.Component {
 					TransitionComponent={Transition}
 					transitionDuration={600}
 				>
-					<DialogTitle style={{ overflow: 'overlay', padding: 0 }} />
+					<DialogTitle
+						style={{
+							overflow: 'overlay'
+						}}
+					>
+						Available dates for THING
+					</DialogTitle>
+					<DialogContent>
+						<ShadowlessExpansionPanel
+							expanded={expanded === 'panel1'}
+							onChange={this.handleChange('panel1')}
+						>
+							{/* <ExpansionPanelSummary style={transparentBackground} expandIcon={<ExpandMoreIcon />}> */}
+							<ExpansionPanelSummary
+								style={transparentBackground}
+								expandIcon={'▼'}
+							>
+								<Typography>This month</Typography>
+							</ExpansionPanelSummary>
+							<ExpansionPanelDetails>
+								<Typography>
+									Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
+									feugiat. Aliquam eget maximus est, id dignissim quam.
+								</Typography>
+							</ExpansionPanelDetails>
+						</ShadowlessExpansionPanel>
+						<ShadowlessExpansionPanel
+							expanded={expanded === 'panel2'}
+							onChange={this.handleChange('panel2')}
+						>
+							{/* <ExpansionPanelSummary style={transparentBackground} expandIcon={<ExpandMoreIcon />}> */}
+							<ExpansionPanelSummary
+								style={transparentBackground}
+								expandIcon={'▼'}
+							>
+								<Typography>Next month</Typography>
+							</ExpansionPanelSummary>
+							<ExpansionPanelDetails>
+								<Typography>
+									Donec placerat, lectus sed mattis semper, neque lectus feugiat
+									lectus, varius pulvinar diam eros in elit. Pellentesque
+									convallis laoreet laoreet.
+								</Typography>
+							</ExpansionPanelDetails>
+						</ShadowlessExpansionPanel>
+					</DialogContent>
 				</Dialog>
 			</MuiThemeProvider>
 		);
@@ -98,15 +182,12 @@ class DateTimePicker extends React.Component {
 }
 
 DateTimePicker.propTypes = {
-	product: PropTypes.string,
-	checked: PropTypes.bool,
-	disabled: PropTypes.bool
+	// product: PropTypes.string,
+	// checked: PropTypes.bool,
+	// disabled: PropTypes.bool
 };
 
-DateTimePicker.defaultProps = {
-	disabled: false,
-	checked: false
-};
+DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => {
 	return {

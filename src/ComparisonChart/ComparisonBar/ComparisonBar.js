@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { actionRemoveProduct } from '../api';
+import { actionRemoveProduct } from '../services';
 import { connect } from 'react-redux';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
@@ -14,12 +14,7 @@ import Slide from '@material-ui/core/Slide';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
+const theme = createMuiTheme({});
 
 class ComparisonBar extends React.Component {
 	render() {
@@ -53,6 +48,7 @@ class ComparisonBar extends React.Component {
 						style={{
 							backgroundColor: '#E4E4E4',
 							bottom: 0,
+							left: 0,
 							marginLeft: `${(global.innerWidth - global.innerWidth * 0.9) / 2}px`,
 							paddingBottom: '48px',
 							position: 'fixed',
