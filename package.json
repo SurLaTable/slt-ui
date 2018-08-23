@@ -51,7 +51,6 @@
 		"react": "^16.2.0",
 		"react-async-component": "^1.0.2",
 		"react-dom": "^16.2.0",
-		"react-event-listener": "^0.6.0",
 		"react-habitat": "^1.0.1",
 		"react-habitat-redux": "^2.0.4",
 		"react-hot-loader": "^4.3.3",
