@@ -7,12 +7,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
+const theme = createMuiTheme({});
 
 class DateTimePicker extends React.Component {
 	state = {
