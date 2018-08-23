@@ -6,7 +6,7 @@ import styleguidist from 'react-styleguidist';
 import { resolver } from 'react-docgen';
 
 let styleguide = styleguidist({
-	require: [],
+	require: [path.join(__dirname, 'styleguidist-env.css')],
 	template: {
 		body: {
 			scripts: [{ src: '/async/index.min.js', defer: true }]
@@ -33,6 +33,14 @@ export default config('Sandbox', styleguidistConfig, {
 	},
 	output: {
 		publicPath: '/'
+	},
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader']
+			}
+		]
 	},
 	// DotEnv includes the .env environment variables
 	// in this bundle so you can actually use them:
