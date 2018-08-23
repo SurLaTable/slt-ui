@@ -24,9 +24,10 @@ var serverConfig = {
 	}
 };
 
-// This allows async components to be tested in the docs:
+
+//This allows async components to be tested in the docs
 tasks.run('build-manifest').then(() => {
-	// Start the docs server:
+	//Start the docs server
 	webpackServe(serverConfig).then((server) => {
 		server.on('build-finished', () => {
 			// Whenever a refresh or rebuild happens you can do something here.
