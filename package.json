@@ -4,7 +4,8 @@
 	"description": "Sur la table UI library",
 	"main": "./CodeSandbox/index.js",
 	"scripts": {
-		"build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
+		"build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js && yarn build:docs",
+		"build:docs": "babel-node --config-file ./builder/config/babel.config.js ./node_modules/react-styleguidist/bin/styleguidist.js --config ./styleguide.config.js",
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./docs/serve.config.js --dev",
 		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|node_modules)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",

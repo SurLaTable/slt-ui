@@ -24,7 +24,6 @@ function getDemos() {
 let styleguide = styleguidist({
 	defaultExample: path.resolve(__dirname, 'DefaultExample.md'),
 	pagePerSection: true,
-	// require: [path.join(__dirname, 'styleguidist-env.css')],
 	require: [],
 	resolver: resolver.findAllExportedComponentDefinitions,
 	ribbon: {
@@ -52,7 +51,13 @@ let styleguide = styleguidist({
 			scripts: [{ src: '/async/index.min.js', defer: true }]
 		},
 		head: {
-			links: [{ href: './styleguidist-env.css', rel: 'stylesheet', type: 'text/css' }]
+			links: [
+				{
+					href: '/styleguidist-env.css',
+					rel: 'stylesheet',
+					type: 'text/css'
+				}
+			]
 		}
 	}
 });
@@ -66,14 +71,6 @@ export default config('Sandbox', styleguidistConfig, {
 		'react-dom': false,
 		'react-redux': false,
 		redux: false
-	},
-	module: {
-		rules: [
-			{
-				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
-			}
-		]
 	},
 	output: {
 		publicPath: '/'
