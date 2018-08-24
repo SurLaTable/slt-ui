@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import './DateTimePicker.css';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
@@ -14,6 +13,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
 
@@ -21,24 +23,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const theme = createMuiTheme({});
 
-// const noBoxShadow = {
-// 	boxShadow: 'none'
-// };
-
-// const greyBorderBottom = {
-// 	borderBottom: '1px solid #d2d2d2'
-// };
-
-// const transparentBackground = {
-// 	backgroundColor: 'transparent'
-// };
-
 const panelStyles = () => ({
-	'expression-panel__bottom-border-only': {
+	root: {
 		boxShadow: 'none',
 		borderBottom: '1px solid #d2d2d2',
 		backgroundColor: 'transparent',
-		'&::after': {
+		'&::before': {
 			backgroundColor: 'transparent'
 		}
 	}
@@ -50,23 +40,14 @@ const Transition = (props) => <Slide
 />;
 
 const StyledExpansionPanel = withStyles(panelStyles)((props) => (
-	<ExpansionPanel
-		// style={Object.assign({}, greyBorderBottom, noBoxShadow, transparentBackground)}
-		{...props}
-	>
-		{props.children}
-	</ExpansionPanel>
+	<ExpansionPanel {...props}>{props.children}</ExpansionPanel>
 ));
-// const StyledExpansionPanel = withStyles(styles)(CustomExpansionPanel);
 
 class DateTimePicker extends React.Component {
 	state = {
 		expanded: null,
 		open: false
 	};
-	/**
-	 * The table used to display product information.
-	 */
 	constructor() {
 		super();
 		if (
@@ -135,7 +116,6 @@ class DateTimePicker extends React.Component {
 					style={{
 						overflow: 'overlay'
 					}}
-					// maxWidth={false}
 					fullWidth={true}
 					open={this.state.open}
 					onClose={this.handleClose.bind(this)}
@@ -159,10 +139,24 @@ class DateTimePicker extends React.Component {
 								<Typography>This month</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<Typography>
-									Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-									feugiat. Aliquam eget maximus est, id dignissim quam.
-								</Typography>
+								<RadioGroup
+									aria-label="Classes"
+									name="classes"
+									className={classes.group}
+									value={this.state.value}
+									onChange={this.handleChange}
+								>
+									<FormControlLabel
+										value="121"
+										control={<Radio />}
+										label="First class"
+									/>
+									<FormControlLabel
+										value="122"
+										control={<Radio />}
+										label="Second class"
+									/>
+								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 						<StyledExpansionPanel
