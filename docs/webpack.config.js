@@ -29,7 +29,8 @@ function getDemos() {
 let styleguide = styleguidist({
 	defaultExample: path.resolve(__dirname, 'DefaultExample.md'),
 	pagePerSection: true,
-	require: [path.join(__dirname, 'styleguidist-env.css')],
+	// require: [path.join(__dirname, 'styleguidist-env.css')],
+	require: [],
 	resolver: resolver.findAllExportedComponentDefinitions,
 	ribbon: {
 		url: 'https://github.com/SurLaTable/slt-ui',
@@ -54,10 +55,26 @@ let styleguide = styleguidist({
 	skipComponentsWithoutExample: false,
 	template: {
 		body: {
+			raw: `
+			<style>
+			@import url('https://fonts.googleapis.com/css?family=Jaldi');
+
+			/*
+				'Jaldi' is much closer to our site's
+				main font, 'MrEavesSans'.
+			*/
+			[data-preview] {
+				font-family: 'Jaldi', Arial, Helvetica, sans-serif !important;
+				min-height: 10rem !important;
+				transform: translate3d(0, 0, 0) !important;
+			}
+			</style>
+			`,
 			scripts: [{ src: '/async/index.min.js', defer: true }]
 		}
 	}
 });
+
 let styleguidistConfig = styleguide.makeWebpackConfig(process.env.NODE_ENV);
 
 export default config('Sandbox', styleguidistConfig, {
@@ -68,9 +85,6 @@ export default config('Sandbox', styleguidistConfig, {
 		'react-redux': false,
 		redux: false
 	},
-	output: {
-		publicPath: '/'
-	},
 	module: {
 		rules: [
 			{
@@ -78,6 +92,9 @@ export default config('Sandbox', styleguidistConfig, {
 				use: ['style-loader', 'css-loader']
 			}
 		]
+	},
+	output: {
+		publicPath: '/'
 	},
 	// DotEnv includes the .env environment variables
 	// in this bundle so you can actually use them:

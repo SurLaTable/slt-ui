@@ -24,7 +24,6 @@ var serverConfig = {
 	}
 };
 
-
 //This allows async components to be tested in the docs
 tasks.run('build-manifest').then(() => {
 	//Start the docs server
