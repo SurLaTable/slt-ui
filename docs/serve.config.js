@@ -18,15 +18,15 @@ var serverConfig = {
 		middleware.content();
 		/*
 		This allows the async components to actually find their chunks
-		since the public path for the async components is /scripts/manifest
+		since the public path for the async components is /scripts/manifest.
 		*/
-		// app.use(mount('/scripts/manifest', serve(path.resolve('./build/async'))));
+		app.use(mount('/scripts/manifest', serve(path.resolve('./build/async'))));
 	}
 };
 
-//This allows async components to be tested in the docs
+// This allows async components to be tested in the docs.
 tasks.run('build-manifest').then(() => {
-	//Start the docs server
+	// Start the docs server:
 	webpackServe(serverConfig).then((server) => {
 		server.on('build-finished', () => {
 			// Whenever a refresh or rebuild happens you can do something here.

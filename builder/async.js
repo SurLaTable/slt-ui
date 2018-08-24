@@ -176,16 +176,14 @@ export async function buildManifest() {
 			index: './manifest/index.js'
 		},
 		output: {
-			path: path.resolve('./build/async')
-			// publicPath: '/scripts/manifest/'
-		}
-		/*
-		resolve:{
-			alias:{
-				"@material-ui/core$":path.resolve("./builder/temp/material"),
+			path: path.resolve('./build/async'),
+			publicPath: '/scripts/manifest/'
+		},
+		resolve: {
+			alias: {
+				'@material-ui/core$': path.resolve('./builder/temp/material')
 			}
 		}
-		*/
 	});
 
 	return new Promise((resolve, reject) => {
