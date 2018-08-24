@@ -67,7 +67,7 @@ export default (name, ...configs) => {
 		finalConfig.plugins.push(
 			new BundleAnalyzerPlugin({
 				analyzerMode: 'static',
-				reportFilename: path.resolve(
+				reportFilename: path.posix.resolve(
 					`./reports/${title(name)}${title(
 						process.env.NODE_ENV
 					)}Report${logDateTime()}.html`
