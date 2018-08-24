@@ -11,7 +11,8 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Paper from '@material-ui/core/Paper';
 import Slide from '@material-ui/core/Slide';
 
-import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import CancelIcon from '@material-ui/icons/Cancel';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
 const theme = createMuiTheme({});

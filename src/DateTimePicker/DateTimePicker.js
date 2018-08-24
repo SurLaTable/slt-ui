@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import './DateTimePicker.css';
+// import './DateTimePicker.css';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { withStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,34 +17,47 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
 
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 const theme = createMuiTheme({});
 
-const noBoxShadow = {
-	boxShadow: 'none'
-};
+// const noBoxShadow = {
+// 	boxShadow: 'none'
+// };
 
-const greyBorderBottom = {
-	borderBottom: '1px solid #d2d2d2'
-};
+// const greyBorderBottom = {
+// 	borderBottom: '1px solid #d2d2d2'
+// };
 
-const transparentBackground = {
-	backgroundColor: 'transparent'
-};
+// const transparentBackground = {
+// 	backgroundColor: 'transparent'
+// };
+
+const panelStyles = () => ({
+	'expression-panel__bottom-border-only': {
+		boxShadow: 'none',
+		borderBottom: '1px solid #d2d2d2',
+		backgroundColor: 'transparent',
+		'&::after': {
+			backgroundColor: 'transparent'
+		}
+	}
+});
 
 const Transition = (props) => <Slide
 	direction="up"
 	{...props}
 />;
 
-const ShadowlessExpansionPanel = (props) => (
+const StyledExpansionPanel = withStyles(panelStyles)((props) => (
 	<ExpansionPanel
-		className="expression-panel__bottom-border-only"
 		// style={Object.assign({}, greyBorderBottom, noBoxShadow, transparentBackground)}
 		{...props}
 	>
 		{props.children}
 	</ExpansionPanel>
-);
+));
+// const StyledExpansionPanel = withStyles(styles)(CustomExpansionPanel);
 
 class DateTimePicker extends React.Component {
 	state = {
@@ -104,7 +118,7 @@ class DateTimePicker extends React.Component {
 		this.setState({ open: false });
 	}
 	render() {
-		let { dispatch } = this.props;
+		// let { dispatch } = this.props;
 		const { expanded } = this.state;
 		return (
 			<MuiThemeProvider theme={theme}>
@@ -137,15 +151,11 @@ class DateTimePicker extends React.Component {
 						Available dates for THING
 					</DialogTitle>
 					<DialogContent>
-						<ShadowlessExpansionPanel
+						<StyledExpansionPanel
 							expanded={expanded === 'panel1'}
 							onChange={this.handleChange('panel1')}
 						>
-							{/* <ExpansionPanelSummary style={transparentBackground} expandIcon={<ExpandMoreIcon />}> */}
-							<ExpansionPanelSummary
-								style={transparentBackground}
-								expandIcon={'▼'}
-							>
+							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 								<Typography>This month</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
@@ -154,16 +164,12 @@ class DateTimePicker extends React.Component {
 									feugiat. Aliquam eget maximus est, id dignissim quam.
 								</Typography>
 							</ExpansionPanelDetails>
-						</ShadowlessExpansionPanel>
-						<ShadowlessExpansionPanel
+						</StyledExpansionPanel>
+						<StyledExpansionPanel
 							expanded={expanded === 'panel2'}
 							onChange={this.handleChange('panel2')}
 						>
-							{/* <ExpansionPanelSummary style={transparentBackground} expandIcon={<ExpandMoreIcon />}> */}
-							<ExpansionPanelSummary
-								style={transparentBackground}
-								expandIcon={'▼'}
-							>
+							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 								<Typography>Next month</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
@@ -173,7 +179,7 @@ class DateTimePicker extends React.Component {
 									convallis laoreet laoreet.
 								</Typography>
 							</ExpansionPanelDetails>
-						</ShadowlessExpansionPanel>
+						</StyledExpansionPanel>
 					</DialogContent>
 				</Dialog>
 			</MuiThemeProvider>
@@ -182,9 +188,8 @@ class DateTimePicker extends React.Component {
 }
 
 DateTimePicker.propTypes = {
-	// product: PropTypes.string,
-	// checked: PropTypes.bool,
-	// disabled: PropTypes.bool
+	dispatch: PropTypes.func,
+	selection: PropTypes.bool
 };
 
 DateTimePicker.defaultProps = {};
