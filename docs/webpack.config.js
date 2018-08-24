@@ -5,12 +5,7 @@ import styleguidist from 'react-styleguidist';
 import glob from 'glob';
 
 import { resolver } from 'react-docgen';
-import fs from 'fs';
 
-function getFileSize(filename) {
-	const stats = fs.statSync(filename);
-	return stats.size / 1000.0;
-}
 function getDemos() {
 	let files = glob.sync('./demos/**/*.md', {
 		cwd: __dirname
@@ -55,22 +50,10 @@ let styleguide = styleguidist({
 	skipComponentsWithoutExample: false,
 	template: {
 		body: {
-			raw: `
-			<style>
-			@import url('https://fonts.googleapis.com/css?family=Jaldi');
-
-			/*
-				'Jaldi' is much closer to our site's
-				main font, 'MrEavesSans'.
-			*/
-			[data-preview] {
-				font-family: 'Jaldi', Arial, Helvetica, sans-serif !important;
-				min-height: 10rem !important;
-				transform: translate3d(0, 0, 0) !important;
-			}
-			</style>
-			`,
 			scripts: [{ src: '/async/index.min.js', defer: true }]
+		},
+		head: {
+			links: [{ href: './styleguidist-env.css', rel: 'stylesheet', type: 'text/css' }]
 		}
 	}
 });
