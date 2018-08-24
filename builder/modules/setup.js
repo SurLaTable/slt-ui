@@ -31,9 +31,9 @@ export function remove(filename) {
 
 export async function clean() {
 	await Promise.all([
-		remove(path.posix.resolve('./build/async')),
-		remove(path.posix.resolve('./build/sync')),
-		remove(path.posix.resolve('./builder/temp/'))
+		remove(path.resolve('./build/async')),
+		remove(path.resolve('./build/sync')),
+		remove(path.resolve('./builder/temp/'))
 	]);
 }
 clean.description = 'Removes folders that were used for building.';
@@ -43,7 +43,7 @@ export async function done() {
 		log.warn('DEVELOPMENT ENVIRONMENT');
 	} else {
 		log.info('PRODUCTION ENVIRONMENT');
-		await remove(path.posix.resolve('./builder/temp/'));
+		await remove(path.resolve('./builder/temp/'));
 	}
 }
 done.hiddenTask = true;

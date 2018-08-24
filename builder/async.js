@@ -101,7 +101,7 @@ function generateSLTUIAsync(promises) {
 function generateMaterialAsync(promises) {
 	return new Promise((resolve, reject) => {
 		glob(
-			'../node_modules/\\@material-ui/core/[A-Z]*/index.js',
+			path.posix.resolve('../node_modules/\\@material-ui/core/[A-Z]*/index.js'),
 			{
 				cwd: __dirname
 			},

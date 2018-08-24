@@ -21,7 +21,7 @@ export default function buildDynamicRegistration() {
 		}
 	});
 
-	let entry = path.posix.resolve(args._[1]);
+	let entry = path.resolve(args._[1]);
 	return new Promise((resolve, reject) => {
 		log.assert(entry, 'Dynamic Registration needs an entry');
 
@@ -29,7 +29,7 @@ export default function buildDynamicRegistration() {
 			entry: entry,
 			output: {
 				library: args.library,
-				path: path.posix.resolve('./build/dynamic-registration')
+				path: path.resolve('./build/dynamic-registration')
 			},
 			plugins: [
 				new webpack.optimize.LimitChunkCountPlugin({

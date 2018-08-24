@@ -10,7 +10,7 @@ export default async function buildComponents() {
 			index: './src/index.js'
 		},
 		output: {
-			path: path.posix.resolve('./build/sync')
+			path: path.resolve('./build/sync')
 		}
 	});
 

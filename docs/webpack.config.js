@@ -29,15 +29,15 @@ let styleguide = styleguidist({
 	resolver: resolver.findAllExportedComponentDefinitions,
 	ribbon: {
 		url: 'https://github.com/SurLaTable/slt-ui',
-		text: 'Check it out on GitHub.'
+		text: `We're on GitHub!`
 	},
 	sections: [
 		{
 			name: 'Components',
 			sectionDepth: 0,
 			components: [
-				path.posix.resolve(`./src/[A-Z]*/?([A-Z]*)/[A-Z]*.{js,jsx,ts,tsx}`),
-				path.posix.resolve(`./src/[A-Z]*/[A-Z]*.{js,jsx,ts,tsx}`)
+				path.resolve(`./src/[A-Z]*/?([A-Z]*)/[A-Z]*.{js,jsx,ts,tsx}`),
+				path.resolve(`./src/[A-Z]*/[A-Z]*.{js,jsx,ts,tsx}`)
 			]
 		},
 		{
@@ -60,7 +60,7 @@ let styleguide = styleguidist({
 let styleguidistConfig = styleguide.makeWebpackConfig(process.env.NODE_ENV);
 
 export default config('Sandbox', styleguidistConfig, {
-	entry: [path.posix.resolve(__dirname, 'globals.js')],
+	entry: [path.resolve(__dirname, 'globals.js')],
 	externals: {
 		react: false,
 		'react-dom': false,
