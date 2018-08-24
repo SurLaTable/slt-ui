@@ -118,7 +118,7 @@ function generateMaterialAsync(promises) {
 						import {asyncComponent} from 'react-async-component';
 					`;
 					for (let component in module) {
-						console.log(component);
+						log.info(component);
 						if (
 							module.hasOwnProperty(component) === false ||
 							/(^[A-Z]|default)/.test(component) == false
@@ -167,7 +167,7 @@ export async function generateAsync() {
 	return Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';
-generateAsync.description = 'Wrap material and slt-ui components in asyncComponent.';
+generateAsync.description = 'Wrap material and slt-ui components with asyncComponent.';
 tasks.add(tasks.timed(generateAsync));
 
 export async function buildManifest() {

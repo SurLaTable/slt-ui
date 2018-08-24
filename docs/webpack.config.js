@@ -29,7 +29,7 @@ let styleguide = styleguidist({
 	resolver: resolver.findAllExportedComponentDefinitions,
 	ribbon: {
 		url: 'https://github.com/SurLaTable/slt-ui',
-		text: 'Check it out on GitHub'
+		text: 'Check it out on GitHub.'
 	},
 	sections: [
 		{
@@ -38,7 +38,6 @@ let styleguide = styleguidist({
 			components: [
 				path.resolve(`./src/[A-Z]*/?([A-Z]*)/[A-Z]*.{js,jsx,ts,tsx}`),
 				path.resolve(`./src/[A-Z]*/[A-Z]*.{js,jsx,ts,tsx}`)
-				//path.resolve(`./src/[A-Z]*/index.js`)
 			]
 		},
 		{
