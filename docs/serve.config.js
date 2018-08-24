@@ -20,7 +20,7 @@ var serverConfig = {
 		This allows the async components to actually find their chunks
 		since the public path for the async components is /scripts/manifest
 		*/
-		// app.use(mount('/scripts/manifest', serve(path.resolve('./build/async'))));
+		app.use(mount('/scripts/manifest', serve(path.resolve('./build/async'))));
 	}
 };
 

@@ -37,7 +37,6 @@ export function createReducer(initialState, actionHandlers) {
 }
 
 export function addAsyncReducers(store, asyncReducers = {}) {
-	console.log(store.asyncReducers, asyncReducers);
 	store.asyncReducers = {
 		...store.asyncReducers,
 		...asyncReducers
