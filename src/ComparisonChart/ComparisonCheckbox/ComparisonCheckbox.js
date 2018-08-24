@@ -9,12 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { actionToggleProductSelection } from '../api';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
+const theme = createMuiTheme({});
 
 class ComparisonCheckbox extends React.Component {
 	render() {

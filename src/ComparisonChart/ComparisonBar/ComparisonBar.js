@@ -14,12 +14,7 @@ import Slide from '@material-ui/core/Slide';
 import { AddBox as AddBoxIcon, Cancel as CancelIcon } from '../icons';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
+const theme = createMuiTheme({});
 
 class ComparisonBar extends React.Component {
 	render() {

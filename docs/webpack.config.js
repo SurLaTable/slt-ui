@@ -27,7 +27,14 @@ function getDemos() {
 }
 
 let styleguide = styleguidist({
+	defaultExample: path.resolve(__dirname, 'DefaultExample.md'),
 	pagePerSection: true,
+	require: [path.join(__dirname, 'styleguidist-env.css')],
+	resolver: resolver.findAllExportedComponentDefinitions,
+	ribbon: {
+		url: 'https://github.com/SurLaTable/slt-ui',
+		text: 'Check it out on GitHub'
+	},
 	sections: [
 		{
 			name: 'Components',
@@ -44,20 +51,12 @@ let styleguide = styleguidist({
 			sectionDepth: 1
 		}
 	],
-	ribbon: {
-		url: 'https://github.com/SurLaTable/slt-ui',
-		text: 'Check it out on GitHub'
-	},
-	require: [],
+	skipComponentsWithoutExample: false,
 	template: {
 		body: {
 			scripts: [{ src: '/async/index.min.js', defer: true }]
 		}
-	},
-	skipComponentsWithoutExample: false,
-	resolver: resolver.findAllExportedComponentDefinitions,
-
-	defaultExample: path.resolve(__dirname, 'DefaultExample.md')
+	}
 });
 let styleguidistConfig = styleguide.makeWebpackConfig(process.env.NODE_ENV);
 
@@ -71,6 +70,14 @@ export default config('Sandbox', styleguidistConfig, {
 	},
 	output: {
 		publicPath: '/'
+	},
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader']
+			}
+		]
 	},
 	// DotEnv includes the .env environment variables
 	// in this bundle so you can actually use them:
