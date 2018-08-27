@@ -47,8 +47,9 @@ let styleguide = styleguidist({
 		}
 	],
 	skipComponentsWithoutExample: false,
-	// This is ignored:
-	styleguideDir: 'build/docs',
+	// TODO:
+	// Figure out why this is ignored.
+	styleguideDir: 'docs',
 	template: {
 		body: {
 			scripts: [{ src: '/async/index.min.js', defer: true }]

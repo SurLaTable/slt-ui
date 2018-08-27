@@ -5,8 +5,8 @@ import webpackServe from 'webpack-serve';
 import serve from 'koa-static';
 import mount from 'koa-mount';
 
-import tasks from '../builder/modules/tasks.js';
-import '../builder/async.js';
+import tasks from '../modules/tasks.js';
+import '../async.js';
 
 var serverConfig = {
 	content: [path.resolve('./build')],

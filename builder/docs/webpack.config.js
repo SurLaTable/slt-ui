@@ -1,4 +1,4 @@
-import config from '../builder/config/build.webpack.config.js';
+import config from '../config/build.webpack.config.js';
 import path from 'path';
 import DotEnv from 'dotenv-webpack';
 import styleguidist from 'react-styleguidist';
@@ -47,6 +47,9 @@ let styleguide = styleguidist({
 		}
 	],
 	skipComponentsWithoutExample: false,
+	// TODO:
+	// Figure out why this is ignored.
+	styleguideDir: 'docs',
 	template: {
 		body: {
 			scripts: [{ src: '/async/index.min.js', defer: true }]
@@ -54,7 +57,7 @@ let styleguide = styleguidist({
 		head: {
 			links: [
 				{
-					href: '/styleguidist-env.css',
+					href: '/docs/styleguidist-env.css',
 					rel: 'stylesheet',
 					type: 'text/css'
 				}
