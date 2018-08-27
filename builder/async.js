@@ -26,7 +26,7 @@ function generateSLTUIAsync(promises) {
 		glob(
 			'./src/[A-Z]*/index.js',
 			{
-				cwd: path.resolve('./')
+				cwd: path.posix.resolve('./')
 			},
 			async function(err, files) {
 				if (err) {
@@ -93,7 +93,7 @@ function generateSLTUIAsync(promises) {
 function generateMaterialAsync(promises) {
 	return new Promise((resolve, reject) => {
 		let muiCore = glob.sync('./node_modules/\\@material-ui/core/[A-Z]*/index.js', {
-			cwd: path.resolve('./')
+			cwd: path.posix.resolve('./')
 		});
 		/*let muiIcons = glob.sync('../node_modules/\\@material-ui/icons/[A-Z]*.js', {
 			cwd: __dirname

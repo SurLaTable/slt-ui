@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import StoreCard from '../StoreCard';
+import List from '@material-ui/core/List';
 
 const styles = (theme) => ({});
 
@@ -13,7 +14,7 @@ class StoreList extends React.Component {
 	render() {
 		let { limit = 10, storeData } = this.props;
 		if (storeData == null) {
-			return <div />;
+			return <List />;
 		}
 		let cards = [];
 		for (let i = 0; i < limit; i++) {
@@ -22,7 +23,7 @@ class StoreList extends React.Component {
 				storeId={storeData[i].storeId}
 			/>);
 		}
-		return <div>{cards}</div>;
+		return <List>{cards}</List>;
 	}
 }
 
@@ -37,11 +38,14 @@ StoreList.defaultProps = {
 };
 
 const mapStateToProps = (state, props) => {
-	let storeData = state?.storesApi?.storeData?.items.slice().sort(function(a, b) {
-		return a.name < b.name ? -1 : 1;
-	});
+	let storeData;
 	if (props.sortBy == 'distance') {
-		storeData = state?.storesApi?.closestStores?.items || storeData;
+		storeData = state?.storesApi?.closestStores?.items;
+	}
+	if (storeData == null && state?.storesApi?.storeData?.items) {
+		storeData = state?.storesApi?.storeData?.items.slice().sort(function(a, b) {
+			return a.name < b.name ? -1 : 1;
+		});
 	}
 
 	return {

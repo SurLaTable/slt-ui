@@ -14,8 +14,7 @@ const styles = (theme) => ({
 		display: 'flex'
 	},
 	content: {
-		flex: '1 0 auto',
-		width: '33%'
+		flex: '1'
 	},
 	secondaryHeading: {
 		fontSize: theme.typography.pxToRem(15),
@@ -77,7 +76,9 @@ class StoreCard extends React.Component {
 								className={classes.secondaryHeading}
 								style={{ textAlign: 'right' }}
 							>
-								miles
+								{typeof distance == 'number' && isNaN(distance) == false
+									? distance.toFixed(2) + 'miles'
+									: ''}
 							</Typography>
 						</CardContent>
 					</div>
