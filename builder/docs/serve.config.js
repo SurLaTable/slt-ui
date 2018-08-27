@@ -1,16 +1,28 @@
 import 'dotenv/config';
 import path from 'path';
-import config from './webpack.config.js';
+import config from '../config/build.webpack.config.js';
 import webpackServe from 'webpack-serve';
 import serve from 'koa-static';
 import mount from 'koa-mount';
+import styleguidist from 'react-styleguidist';
 
 import tasks from '../modules/tasks.js';
 import '../async.js';
 
+import styleguideConfig from './styleguide.config.js';
+import webpackConfig from './webpack.config.js';
+
+const styleguide = styleguidist(styleguideConfig);
+
+const serveConfig = config(
+	'docs-server',
+	styleguide.makeWebpackConfig(process.env.NODE_ENV),
+	webpackConfig
+);
+
 var serverConfig = {
 	content: [path.resolve('./build')],
-	config: [config],
+	config: [serveConfig],
 	port: 4000,
 	open: true,
 	add: (app, middleware, options) => {

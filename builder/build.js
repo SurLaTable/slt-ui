@@ -15,6 +15,7 @@ import './modules/setup.js';
 import './async.js';
 import './components.js';
 import './dynamic-registration.js';
+import './docs.js';
 
 function handleError(err) {
 	if (err) {
