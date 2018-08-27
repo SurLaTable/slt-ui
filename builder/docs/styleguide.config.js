@@ -19,7 +19,7 @@ function getDemos() {
 }
 
 const config = {
-	assetsDir: path.resolve('./build/'),
+	assetsDir: path.resolve('./builder/docs/assets'),
 	defaultExample: path.resolve(__dirname, 'DefaultExample.md'),
 	pagePerSection: true,
 
