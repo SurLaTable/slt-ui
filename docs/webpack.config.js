@@ -24,6 +24,7 @@ function getDemos() {
 let styleguide = styleguidist({
 	defaultExample: path.resolve(__dirname, 'DefaultExample.md'),
 	pagePerSection: true,
+
 	require: [],
 	resolver: resolver.findAllExportedComponentDefinitions,
 	ribbon: {
@@ -62,7 +63,7 @@ let styleguide = styleguidist({
 	}
 });
 
-let styleguidistConfig = styleguide.makeWebpackConfig(process.env.NODE_ENV);
+export const styleguidistConfig = styleguide.makeWebpackConfig(process.env.NODE_ENV);
 
 export default config('Sandbox', styleguidistConfig, {
 	entry: [path.resolve(__dirname, 'globals.js')],
