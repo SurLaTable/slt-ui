@@ -15,7 +15,7 @@ const actionHandlers = {
 			storeData: utils.removeInnactiveStores(action.storeData)
 		};
 	},
-	LATLNG_SORT_STORE: (state, action) => {
+	LATLNG_SORT_STORES: (state, action) => {
 		//once I add filtering for different props, we can filter the stores before running haversineSort
 		let res = utils.haversineSort(state.storeData.items, action.latlng);
 		let map = {};
@@ -25,12 +25,12 @@ const actionHandlers = {
 				distance: res.distances[val.storeId]
 			};
 			reducer.push(data);
-			map[val.storeId] = data;
+			map[val.storeId] = res.distances[val.storeId];
 			return reducer;
 		}, []);
 		return {
 			...state,
-			sortedStores: {
+			closestStores: {
 				byId: map,
 				items: items
 			}

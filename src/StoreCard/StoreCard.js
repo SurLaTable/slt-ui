@@ -14,7 +14,8 @@ const styles = (theme) => ({
 		display: 'flex'
 	},
 	content: {
-		flex: '1 0 auto'
+		flex: '1 0 auto',
+		width: '33%'
 	},
 	secondaryHeading: {
 		fontSize: theme.typography.pxToRem(15),
@@ -72,16 +73,12 @@ class StoreCard extends React.Component {
 						</CardContent>
 
 						<CardContent className={classes.content}>
-							{distance != null ? (
-								<Typography
-									className={classes.secondaryHeading}
-									style={{ textAlign: 'right' }}
-								>
-									{distance} miles
-								</Typography>
-							) : (
-								''
-							)}
+							<Typography
+								className={classes.secondaryHeading}
+								style={{ textAlign: 'right' }}
+							>
+								miles
+							</Typography>
 						</CardContent>
 					</div>
 				</div>
@@ -104,7 +101,7 @@ const mapStateToProps = (state, props) => {
 	return {
 		...props,
 		storeData: state?.storesApi?.storeData?.byId?.[props.storeId],
-		distance: state?.storesApi?.sortedStores?.byId?.[props.storeId]
+		distance: state?.storesApi?.closestStores?.byId?.[props.storeId]
 	};
 };
 

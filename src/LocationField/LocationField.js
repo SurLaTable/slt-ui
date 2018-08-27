@@ -21,15 +21,12 @@ class LocationField extends React.Component {
 	handleSubmit(event) {
 		let { dispatch } = this.props;
 		event.preventDefault();
-		console.log(this.state.value);
 		if (this.state.value) {
-			console.log('dispatch');
 			dispatch(
 				geocode({
 					address: this.state.value
 				})
 			).then(() => {
-				console.log('hey');
 				this.setState({
 					update: true
 				});
@@ -45,8 +42,10 @@ class LocationField extends React.Component {
 		}
 		var formatted_address = this.props.locationData.formatted_address;
 		if (this.state.update) {
-			console.log(formatted_address, this.state.value);
 			if (formatted_address && formatted_address !== this.state.value) {
+				if (typeof this.props.onLocated == 'function') {
+					this.props.onLocated(this.props.locationData);
+				}
 				this.setState({
 					update: false,
 					address: formatted_address,
@@ -67,8 +66,6 @@ class LocationField extends React.Component {
 	}
 
 	render() {
-		let { dispatch } = this.props;
-
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<FormControl>
@@ -90,10 +87,11 @@ class LocationField extends React.Component {
 
 LocationField.propTypes = {
 	locationData: PropTypes.object,
-	dispatch: PropTypes.func
+	dispatch: PropTypes.func,
+	onLocated: PropTypes.func
 };
 
-export default connect((state, props, c, d) => {
+export default connect((state, props) => {
 	let locationData = state.googleMapsApi.locationData
 		? state.googleMapsApi.locationData[0]
 		: null;

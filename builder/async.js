@@ -21,20 +21,12 @@ function write(filePath, code) {
 	});
 }
 
-function hasModule(filename) {
-	try {
-		return Boolean(require.resolve(filename));
-	} catch (e) {
-		return false;
-	}
-}
-
 function generateSLTUIAsync(promises) {
 	return new Promise((resolve, reject) => {
 		glob(
-			'../src/[A-Z]*/index.js',
+			'./src/[A-Z]*/index.js',
 			{
-				cwd: __dirname
+				cwd: path.resolve('./')
 			},
 			async function(err, files) {
 				if (err) {
@@ -54,7 +46,7 @@ function generateSLTUIAsync(promises) {
 					let file = files[i];
 					let folderName = path.posix.basename(path.posix.dirname(file));
 
-					var module = require(file);
+					var module = require(path.resolve(file));
 					let indexCode = `
 						import { asyncComponent } from 'react-async-component';
 					`;
@@ -74,7 +66,7 @@ function generateSLTUIAsync(promises) {
 							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									`./builder/temp/slt/${folderName}`,
-									path.posix.resolve(file)
+									file
 								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
 						`;
@@ -100,8 +92,8 @@ function generateSLTUIAsync(promises) {
 
 function generateMaterialAsync(promises) {
 	return new Promise((resolve, reject) => {
-		let muiCore = glob.sync('../node_modules/\\@material-ui/core/[A-Z]*/index.js', {
-			cwd: __dirname
+		let muiCore = glob.sync('./node_modules/\\@material-ui/core/[A-Z]*/index.js', {
+			cwd: path.resolve('./')
 		});
 		/*let muiIcons = glob.sync('../node_modules/\\@material-ui/icons/[A-Z]*.js', {
 			cwd: __dirname
@@ -116,7 +108,7 @@ function generateMaterialAsync(promises) {
 			let folderName = path.posix.basename(path.posix.dirname(file));
 			let fileName = path.posix.basename(file, '.js');
 
-			var module = require(file);
+			var module = require(path.resolve(file));
 			let indexCode = `
 						import {asyncComponent} from 'react-async-component';
 					`;
@@ -138,7 +130,7 @@ function generateMaterialAsync(promises) {
 					export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									`./builder/temp/material/${folderName}`,
-									path.posix.resolve(file)
+									file
 								)}' /*webpackChunkName: '${exportName}'*/).then(module => module['${component}'])
 							});
 				`;
