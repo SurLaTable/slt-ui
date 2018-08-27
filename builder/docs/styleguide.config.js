@@ -19,6 +19,7 @@ function getDemos() {
 }
 
 const config = {
+	assetsDir: path.resolve('./build/'),
 	defaultExample: path.resolve(__dirname, 'DefaultExample.md'),
 	pagePerSection: true,
 
@@ -52,7 +53,7 @@ const config = {
 		head: {
 			links: [
 				{
-					href: '/docs/styleguidist-env.css',
+					href: './styleguidist-env.css',
 					rel: 'stylesheet',
 					type: 'text/css'
 				}
