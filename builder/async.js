@@ -32,7 +32,7 @@ function hasModule(filename) {
 function generateSLTUIAsync(promises) {
 	return new Promise((resolve, reject) => {
 		glob(
-			'../src/[A-Z]*/index.js',
+			path.posix.resolve('../src/[A-Z]*/index.js'),
 			{
 				cwd: __dirname
 			},
@@ -73,14 +73,17 @@ function generateSLTUIAsync(promises) {
 						indexCode += `
 							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
-									`./builder/temp/slt/${folderName}`,
+									path.posix.resolve(`./builder/temp/slt/${folderName}`),
 									path.posix.resolve(file)
 								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
 						`;
 					}
 					promises.push(
-						write(path.resolve(`./builder/temp/slt/${folderName}/index.js`), indexCode)
+						write(
+							path.posix.resolve(`./builder/temp/slt/${folderName}/index.js`),
+							indexCode
+						)
 					);
 
 					code += `
@@ -88,7 +91,7 @@ function generateSLTUIAsync(promises) {
 					`;
 				}
 
-				promises.push(write(path.resolve('./builder/temp/slt/index.js'), code));
+				promises.push(write(path.posix.resolve('./builder/temp/slt/index.js'), code));
 				resolve();
 			}
 		);
@@ -98,7 +101,7 @@ function generateSLTUIAsync(promises) {
 function generateMaterialAsync(promises) {
 	return new Promise((resolve, reject) => {
 		glob(
-			'../node_modules/\\@material-ui/core/[A-Z]*/index.js',
+			path.posix.resolve('../node_modules/\\@material-ui/core/[A-Z]*/index.js'),
 			{
 				cwd: __dirname
 			},
@@ -118,7 +121,7 @@ function generateMaterialAsync(promises) {
 						import {asyncComponent} from 'react-async-component';
 					`;
 					for (let component in module) {
-						console.log(component);
+						log.info(component);
 						if (
 							module.hasOwnProperty(component) === false ||
 							/(^[A-Z]|default)/.test(component) == false
@@ -133,7 +136,7 @@ function generateMaterialAsync(promises) {
 						indexCode += `
 							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
-									`./builder/temp/material/${folderName}`,
+									path.posix.resolve(`./builder/temp/material/${folderName}`),
 									path.posix.resolve(file)
 								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
@@ -142,7 +145,7 @@ function generateMaterialAsync(promises) {
 
 					promises.push(
 						write(
-							path.resolve(`./builder/temp/material/${folderName}/index.js`),
+							path.posix.resolve(`./builder/temp/material/${folderName}/index.js`),
 							indexCode
 						)
 					);
@@ -152,7 +155,7 @@ function generateMaterialAsync(promises) {
 					`;
 				}
 
-				promises.push(write(path.resolve('./builder/temp/material/index.js'), code));
+				promises.push(write(path.posix.resolve('./builder/temp/material/index.js'), code));
 				resolve();
 			}
 		);
@@ -167,7 +170,7 @@ export async function generateAsync() {
 	return Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';
-generateAsync.description = 'Wrap material and slt-ui components in asyncComponent.';
+generateAsync.description = 'Wrap material and slt-ui components with asyncComponent.';
 tasks.add(tasks.timed(generateAsync));
 
 export async function buildManifest() {
@@ -176,16 +179,9 @@ export async function buildManifest() {
 			index: './manifest/index.js'
 		},
 		output: {
-			path: path.resolve('./build/async')
-			// publicPath: '/scripts/manifest/'
+			path: path.posix.resolve('./build/async'),
+			publicPath: '/scripts/manifest/'
 		}
-		/*
-		resolve:{
-			alias:{
-				"@material-ui/core$":path.resolve("./builder/temp/material"),
-			}
-		}
-		*/
 	});
 
 	return new Promise((resolve, reject) => {
