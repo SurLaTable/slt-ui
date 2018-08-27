@@ -48,7 +48,6 @@ class ComparisonBar extends React.Component {
 						elevation={4}
 						style={{
 							backgroundColor: '#E4E4E4',
-							left: 0,
 							bottom: 0,
 							left: 0,
 							marginLeft: `${(global.innerWidth - global.innerWidth * 0.9) / 2}px`,

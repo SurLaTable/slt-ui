@@ -54,10 +54,10 @@ class DateTimePicker extends React.Component {
 			global &&
 			global.history &&
 			global.history.state &&
-			global.history.state.type === 'OPEN_COMPARISON_TABLE'
+			global.history.state.type === 'OPEN_DATE_TIME_PICKER'
 		) {
 			// We hydrate with the old state.
-			global.history.replaceState(null, 'ComparisonTable');
+			global.history.replaceState(null, 'DateTimePicker');
 		}
 		global.addEventListener('popstate', (event) => {
 			let state = event.state;
@@ -65,10 +65,10 @@ class DateTimePicker extends React.Component {
 			if (state == null) {
 				// Close dialog:
 				this.setState({ open: false });
-			} else if (state.type === 'OPEN_COMPARISON_TABLE' && !this.state.open) {
+			} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
 				this.props.dispatch(actionSetProducts(state.selection));
 				this.setState({ open: true });
-				global.history.replaceState(state, 'ComparisonTable');
+				global.history.replaceState(state, 'DateTimePicker');
 			}
 		});
 	}
@@ -83,10 +83,10 @@ class DateTimePicker extends React.Component {
 		if (global && global.history) {
 			global.history.pushState(
 				{
-					type: 'OPEN_COMPARISON_TABLE',
+					type: 'OPEN_DATE_TIME_PICKER',
 					selection: this.props.selection
 				},
-				'ComparisonTable'
+				'DateTimePicker'
 			);
 		}
 		this.setState({ open: true });
@@ -94,7 +94,7 @@ class DateTimePicker extends React.Component {
 
 	handleClose() {
 		if (global && global.history) {
-			global.history.replaceState(null, 'ComparisonTable');
+			global.history.replaceState(null, 'DateTimePicker');
 		}
 		this.setState({ open: false });
 	}
