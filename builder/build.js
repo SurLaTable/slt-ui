@@ -29,7 +29,11 @@ tasks.add(
 	tasks.timed(() => {
 		return tasks.run('clean').then(() => {
 			// Run these in parallel:
-			return Promise.all([tasks.run('build-manifest'), tasks.run('build-components')]);
+			return Promise.all([
+				tasks.run('build-manifest'),
+				tasks.run('build-components'),
+				tasks.run('build-docs')
+			]);
 		});
 	}),
 	'default',

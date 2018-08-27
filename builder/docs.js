@@ -26,7 +26,7 @@ export function buildDocs() {
 		});
 	});
 }
-buildDocs.displayName = 'docs';
+buildDocs.displayName = 'build-docs';
 buildDocs.description = 'Build static docs using styleguidist';
 
 tasks.add(tasks.timed(buildDocs));
