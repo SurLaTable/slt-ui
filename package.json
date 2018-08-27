@@ -8,7 +8,7 @@
 		"build:docs": "babel-node --config-file ./builder/config/babel.config.js ./node_modules/react-styleguidist/bin/styleguidist.js --config ./builder/docs/styleguide.config.js build",
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./builder/docs/serve.config.js --dev",
 		"docs:build": "yarn build:docs",
-		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|node_modules|styleguid*)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
+		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|docs|node_modules|styleguid*)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
 		"test": "yarn build"
 	},
