@@ -445,7 +445,7 @@ ComparisonTable.propTypes = {
 	type: PropTypes.string.isRequired
 };
 ComparisonTable.defaultProps = {
-	type:'cutlery'
+	type: 'cutlery'
 };
 
 export default connect((state, props) => {
