@@ -1,5 +1,6 @@
 /*eslint no-console: off */
 import 'colors';
+import readline from 'readline';
 
 export function date() {
 	let d = new Date();
@@ -43,6 +44,38 @@ export function assert(assertion, ...args) {
 	}
 }
 
+let loader = {
+	message: 'Loading',
+	bar: ' '.bgGreen,
+	back: '_'.grey,
+	max: 0,
+	started: false
+};
+export function startLoader(max, message = loader.message) {
+	if (loader.started) {
+		throw new Error('End other loader with endLoader() before starting another');
+	}
+	loader.message = message;
+	loader.max = max;
+	loader.started = true;
+	var w = process.stdout.columns - ((loader.message.length + 3) % process.stdout.columns);
+	process.stdout.write(`${loader.message}: ${loader.back.repeat(w)}`);
+}
+export function setLoader(count) {
+	if (loader.started == false) {
+		throw new Error('Call startLoader() before using setLoader()');
+	}
+	var w = process.stdout.columns - ((loader.message.length + 3) % process.stdout.columns);
+	var p = parseInt((count / loader.max) * w, 10);
+	var l = w - p;
+	readline.cursorTo(process.stdout, 0);
+	process.stdout.write(`${loader.message}: ${loader.bar.repeat(p)}${loader.back.repeat(l)}`);
+}
+export function endLoader() {
+	loader.started = false;
+	process.stdout.write(`\n`.reset);
+}
+
 export default {
 	date,
 	time,
@@ -51,5 +84,10 @@ export default {
 	error,
 	info,
 	general,
-	assert
+	assert,
+	loader: {
+		start: startLoader,
+		set: setLoader,
+		end: endLoader
+	}
 };

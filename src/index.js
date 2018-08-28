@@ -1,6 +1,5 @@
 import * as utils from './utils';
 
-export * from '@material-ui/core';
 export * from './ComparisonChart';
 export * from './LocationField';
 export * from './StoreProvider';

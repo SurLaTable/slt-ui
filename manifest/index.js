@@ -11,6 +11,12 @@ import DomToHabitatBuilder from './DomToHabitat.js';
 //NOTE: This is a webpack specific loader, used to generate the async wrapper
 import * as sltUi from '../builder/temp/slt';
 
+function dig(path, obj) {
+	return path.split('.').reduce((itm, key) => {
+		return itm[key];
+	}, obj);
+}
+
 class Manifest extends ReactHabitat.Bootstrapper {
 	constructor() {
 		super();

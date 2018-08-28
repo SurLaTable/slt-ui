@@ -1,10 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import { geocode } from '../services/google-maps';
+
+const styles = (theme) => {
+	return {
+		button: {
+			borderRadius: 0,
+			minHeight: theme.typography.pxToRem(theme.typography.fontSize),
+			lineHeight: theme.typography.pxToRem(theme.typography.fontSize),
+			boxShadow: theme.shadows[0],
+			'&:active': {
+				boxShadow: theme.shadows[0]
+			}
+		}
+	};
+};
 
 class LocationField extends React.Component {
 	constructor(props) {
@@ -21,15 +37,12 @@ class LocationField extends React.Component {
 	handleSubmit(event) {
 		let { dispatch } = this.props;
 		event.preventDefault();
-		console.log(this.state.value);
 		if (this.state.value) {
-			console.log('dispatch');
 			dispatch(
 				geocode({
 					address: this.state.value
 				})
 			).then(() => {
-				console.log('hey');
 				this.setState({
 					update: true
 				});
@@ -45,8 +58,10 @@ class LocationField extends React.Component {
 		}
 		var formatted_address = this.props.locationData.formatted_address;
 		if (this.state.update) {
-			console.log(formatted_address, this.state.value);
 			if (formatted_address && formatted_address !== this.state.value) {
+				if (typeof this.props.onLocated == 'function') {
+					this.props.onLocated(this.props.locationData);
+				}
 				this.setState({
 					update: false,
 					address: formatted_address,
@@ -67,21 +82,30 @@ class LocationField extends React.Component {
 	}
 
 	render() {
-		let { dispatch } = this.props;
-
+		let { classes } = this.props;
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<FormControl>
-					<TextField
-						name="location"
-						label="City, State or Zip Code"
-						placeholder="Seattle, Wa"
-						margin="normal"
-						error={Boolean(this.state.error)}
-						onChange={this.handleChange}
-						helperText={this.state.error}
-						value={this.state.value}
-					/>
+					<div>
+						<TextField
+							name="location"
+							label="City, State or Zip Code"
+							placeholder="Seattle, Wa"
+							margin="normal"
+							error={Boolean(this.state.error)}
+							onChange={this.handleChange}
+							helperText={this.state.error}
+							value={this.state.value}
+						/>
+						<Button
+							type="submit"
+							variant="contained"
+							elevation={0}
+							className={classes.button}
+						>
+							Search
+						</Button>
+					</div>
 				</FormControl>
 			</form>
 		);
@@ -90,10 +114,11 @@ class LocationField extends React.Component {
 
 LocationField.propTypes = {
 	locationData: PropTypes.object,
-	dispatch: PropTypes.func
+	dispatch: PropTypes.func,
+	onLocated: PropTypes.func
 };
 
-export default connect((state, props, c, d) => {
+export default connect((state, props) => {
 	let locationData = state.googleMapsApi.locationData
 		? state.googleMapsApi.locationData[0]
 		: null;
@@ -101,4 +126,4 @@ export default connect((state, props, c, d) => {
 		...props,
 		locationData
 	};
-})(LocationField);
+})(withStyles(styles)(LocationField));

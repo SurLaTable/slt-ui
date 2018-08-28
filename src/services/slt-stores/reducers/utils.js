@@ -46,7 +46,8 @@ export function haversineSort(data, latlng) {
 }
 
 export function removeInnactiveStores(storeData) {
-	return storeData.filter(function(val) {
+	let byId = {};
+	let items = storeData.filter(function(val) {
 		//remove invalid data
 		if (val.location && val.location.address1 && val.location.lat && val.location.long) {
 			val.location.lat = +val.location.lat;
@@ -59,6 +60,7 @@ export function removeInnactiveStores(storeData) {
 
 			var storeId = String(val.id).padStart(3, '0');
 			val.storeId = storeId;
+			byId[val.storeId] = val;
 			val.culinary.cookingClasses = val.culinary.cookingClasses.toLowerCase() === 'yes';
 			//TODO I think the result is better than the spec for this
 			val.culinary.cookingPhoneNumber = val.culinary.phoneNumber;
@@ -66,6 +68,7 @@ export function removeInnactiveStores(storeData) {
 		}
 		return false;
 	});
+	return { items, byId };
 }
 
 export default { haversineDistance, haversineSort, removeInnactiveStores };

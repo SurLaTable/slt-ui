@@ -21,56 +21,43 @@ function write(filePath, code) {
 	});
 }
 
-function hasModule(filename) {
-	try {
-		return Boolean(require.resolve(filename));
-	} catch (e) {
-		return false;
-	}
-}
-
 function generateSLTUIAsync(promises) {
 	return new Promise((resolve, reject) => {
-		glob(
-			path.posix.resolve('../src/[A-Z]*/index.js'),
-			{
-				cwd: __dirname
-			},
-			async function(err, files) {
-				if (err) {
-					log.error(err);
-					reject(err);
-				}
+		glob(path.posix.resolve('../src/[A-Z]*/index.js'), async function(err, files) {
+			if (err) {
+				log.error(err);
+				reject(err);
+			}
 
-				let code = `
+			let code = `
 					if (process.env.NODE_ENV === 'development') {
 						console.warn('Using development version of slt-ui.');
 					}
 
 					export * from '../material/index.js';
 				`;
-				for (let i = 0; i < files.length; i++) {
-					let file = files[i];
-					let folderName = path.posix.basename(path.posix.dirname(file));
-					log.info(file);
-					var module = require(file);
-					let indexCode = `
+			log.loader.start(files.length, 'Async Slt Ui');
+			for (let i = 0; i < files.length; i++) {
+				let file = files[i];
+				let folderName = path.posix.basename(path.posix.dirname(file));
+
+				var module = require(path.posix.resolve(file));
+				let indexCode = `
 						import { asyncComponent } from 'react-async-component';
 					`;
-					for (let component in module) {
-						if (
-							module.hasOwnProperty(component) === false ||
-							/(^[A-Z]|default)/.test(component) == false
-						) {
-							continue;
-						}
-						let exportName = component;
-						if (component == 'default') {
-							exportName = folderName;
-						}
-						log.general('ASYNC SLT-UI:', file, ' - ', component);
+				for (let component in module) {
+					if (
+						module.hasOwnProperty(component) === false ||
+						/(^[A-Z]|default)/.test(component) == false
+					) {
+						continue;
+					}
+					let exportName = component;
+					if (component == 'default') {
+						exportName = folderName;
+					}
 
-						indexCode += `
+					indexCode += `
 							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									path.posix.resolve(`./builder/temp/slt/${folderName}`),
@@ -78,87 +65,85 @@ function generateSLTUIAsync(promises) {
 								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
 						`;
-					}
-					promises.push(
-						write(
-							path.posix.resolve(`./builder/temp/slt/${folderName}/index.js`),
-							indexCode
-						)
-					);
+				}
+				promises.push(
+					write(path.resolve(`./builder/temp/slt/${folderName}/index.js`), indexCode)
+				);
 
-					code += `
+				code += `
 						export * from './${folderName}';
 					`;
-				}
-
-				promises.push(write(path.posix.resolve('./builder/temp/slt/index.js'), code));
-				resolve();
+				log.loader.set(i);
 			}
-		);
+
+			log.loader.end();
+
+			promises.push(write(path.resolve('./builder/temp/slt/index.js'), code));
+			resolve();
+		});
 	});
 }
 
 function generateMaterialAsync(promises) {
 	return new Promise((resolve, reject) => {
-		glob(
-			path.posix.resolve('../node_modules/\\@material-ui/core/[A-Z]*/index.js'),
-			{
-				cwd: __dirname
-			},
-			async function(err, files) {
-				if (err) {
-					log.error(err);
-					reject(err);
-				}
+		let muiCore = glob.sync(
+			path.posix.resolve('../node_modules/\\@material-ui/core/[A-Z]*/index.js')
+		);
 
-				let code = ``;
-				for (let i = 0; i < files.length; i++) {
-					let file = files[i];
-					let folderName = path.posix.basename(path.posix.dirname(file));
-					log.info(file);
-					var module = require(file);
-					let indexCode = `
+		let files = muiCore;
+
+		let code = '';
+		log.loader.start(files.length, 'Async Material');
+		for (let i = 0; i < files.length; i++) {
+			let file = files[i];
+			let folderName = path.posix.basename(path.posix.dirname(file));
+			let fileName = path.posix.basename(file, '.js');
+
+			var module = require(path.posix.resolve(file));
+			let indexCode = `
 						import {asyncComponent} from 'react-async-component';
 					`;
-					for (let component in module) {
-						log.info(component);
-						if (
-							module.hasOwnProperty(component) === false ||
-							/(^[A-Z]|default)/.test(component) == false
-						) {
-							continue;
-						}
-						let exportName = component;
-						if (component == 'default') {
-							exportName = folderName;
-						}
-						log.general('ASYNC MATERIAL:', file, ' - ', component);
-						indexCode += `
-							export const ${exportName} = asyncComponent({
+			for (let component in module) {
+				if (
+					module.hasOwnProperty(component) === false ||
+					/(^[A-Z]|default)/.test(component) == false
+				) {
+					continue;
+				}
+				let exportName = component;
+				if (component == 'default') {
+					exportName = folderName == 'icons' ? fileName : folderName;
+				}
+				if (folderName == 'icons') {
+					exportName += 'Icon';
+				}
+				indexCode += `
+					export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
 									path.posix.resolve(`./builder/temp/material/${folderName}`),
 									path.posix.resolve(file)
-								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
+								)}' /*webpackChunkName: '${exportName}'*/).then(module => module['${component}'])
 							});
-						`;
-					}
-
-					promises.push(
-						write(
-							path.posix.resolve(`./builder/temp/material/${folderName}/index.js`),
-							indexCode
-						)
-					);
-
-					code += `
-						export * from './${folderName}';
-					`;
-				}
-
-				promises.push(write(path.posix.resolve('./builder/temp/material/index.js'), code));
-				resolve();
+				`;
 			}
-		);
+
+			promises.push(
+				write(
+					path.resolve(`./builder/temp/material/${folderName}/${fileName}.js`),
+					indexCode
+				)
+			);
+
+			code += `
+						export * from './${folderName}/${fileName}.js';
+					`;
+			log.loader.set(i);
+		}
+
+		log.loader.end();
+
+		promises.push(write(path.resolve('./builder/temp/material/index.js'), code));
+		resolve();
 	});
 }
 
@@ -179,8 +164,7 @@ export async function buildManifest() {
 			index: './manifest/index.js'
 		},
 		output: {
-			path: path.posix.resolve('./build/async'),
-			publicPath: '/scripts/manifest/'
+			path: path.resolve('./build/async')
 		}
 	});
 

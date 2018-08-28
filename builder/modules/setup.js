@@ -7,12 +7,6 @@ import args from './args.js';
 
 import tasks from './tasks.js';
 
-if (args.dev) {
-	log.warn('DEVELOPMENT ENVIRONMENT');
-} else {
-	log.info('PRODUCTION ENVIRONMENT');
-}
-
 export function remove(filename) {
 	return new Promise((resolve, reject) => {
 		if (fs.existsSync(filename)) {
@@ -38,11 +32,9 @@ export async function clean() {
 }
 clean.description = 'Removes folders that were used for building.';
 tasks.add(tasks.timed(clean));
+
 export async function done() {
-	if (args.dev) {
-		log.warn('DEVELOPMENT ENVIRONMENT');
-	} else {
-		log.info('PRODUCTION ENVIRONMENT');
+	if (args.dev == false) {
 		await remove(path.resolve('./builder/temp/'));
 	}
 }

@@ -1,5 +1,7 @@
 import parseArgs from 'minimist';
 import merge from 'deepmerge';
+import log from './print.js';
+import 'colors';
 
 export function customArgs(options = {}) {
 	options = merge(
@@ -22,4 +24,24 @@ export function customArgs(options = {}) {
 	return args;
 }
 
-export default customArgs();
+let args = customArgs();
+export default args;
+
+if (args.dev) {
+	log.warn('DEVELOPMENT ENVIRONMENT');
+} else {
+	log.info('PRODUCTION ENVIRONMENT');
+}
+
+process.on('exit', (code) => {
+	if (args.dev) {
+		log.warn(`DEVELOPMENT ENVIRONMENT exiting with code ${code}`);
+	} else {
+		log.info(`PRODUCTION ENVIRONMENT exiting with code ${code}`);
+	}
+});
+
+process.on('SIGINT', function() {
+	process.stdout.write('\n'.reset);
+	process.exit();
+});

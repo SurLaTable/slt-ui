@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { actionRemoveAll, actionRemoveProduct, actionSetProducts } from '../services';
 
@@ -139,7 +140,7 @@ class ComparisonTable extends React.Component {
 	render() {
 		const props = this.props;
 
-		const sections = Object.keys(tableModels[props.type]);
+		const sections = Object.keys(tableModels[props.type] || {});
 		const attributes = tableModels[props.type];
 
 		return (
@@ -440,7 +441,14 @@ class ComparisonTable extends React.Component {
 	}
 }
 
-ComparisonTable = connect((state, props) => {
+ComparisonTable.propTypes = {
+	type: PropTypes.string.isRequired
+};
+ComparisonTable.defaultProps = {
+	type: 'cutlery'
+};
+
+export default connect((state, props) => {
 	if (state.productComparisonReducer) {
 		return {
 			...props,
@@ -453,5 +461,3 @@ ComparisonTable = connect((state, props) => {
 		};
 	}
 })(ComparisonTable);
-
-export default ComparisonTable;
