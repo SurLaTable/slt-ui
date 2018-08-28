@@ -5,8 +5,8 @@
 	"main": "./CodeSandbox/index.js",
 	"scripts": {
 		"build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
-		"docs": "babel-node --config-file ./builder/config/babel.config.js ./docs/serve.config.js --dev",
-		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|node_modules)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
+		"docs": "babel-node --config-file ./builder/config/babel.config.js ./builder/docs/serve.config.js --dev",
+		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|docs|node_modules|styleguid*)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
 		"test": "yarn build"
 	},
