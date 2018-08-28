@@ -142,7 +142,7 @@ class DateTimePicker extends React.Component {
 								<RadioGroup
 									aria-label="Classes"
 									name="classes"
-									className={classes.group}
+									className=""
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
