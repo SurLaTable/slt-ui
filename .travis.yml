@@ -3,7 +3,6 @@ sudo: false
 node_js:
 	- '10'
 install:
-	- npm install
-	- yarn install
+	- npm install && yarn install
 script:
 	- yarn test
