@@ -28,6 +28,7 @@
 	"dependencies": {
 		"@google/maps": "^0.5.5",
 		"@material-ui/core": "^1.4.0",
+		"@material-ui/icons": "^2.0.3",
 		"@types/jss": "^9.3.0",
 		"@types/react-transition-group": "^2.0.6",
 		"axios": "^0.18.0",
