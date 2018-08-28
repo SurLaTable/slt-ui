@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Jaldi');
+
+/*
+	'Jaldi' is much closer to our site's
+	main font, 'MrEavesSans'.
+*/
+[data-preview] {
+	font-family: 'Jaldi', Arial, Helvetica, sans-serif !important;
+	min-height: 10rem !important;
+	transform: translate3d(0, 0, 0) !important;
+}

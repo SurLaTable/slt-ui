@@ -14,10 +14,10 @@ const styles = (theme) => ({
 		display: 'flex'
 	},
 	content: {
-		flex: '1'
+		flex: 1
 	},
-	secondaryHeading: {
-		fontSize: theme.typography.pxToRem(15),
+	distance: {
+		fontSize: theme.typography.pxToRem(12),
 		color: theme.palette.text.secondary
 	}
 });
@@ -27,7 +27,14 @@ class StoreCard extends React.Component {
 		super();
 	}
 	render() {
-		let { classes, storeData, distance = null } = this.props;
+		let {
+			classes,
+			storeData,
+			distance = null,
+			storeId,
+			children,
+			detailed = false
+		} = this.props;
 
 		let hours = [];
 
@@ -45,46 +52,67 @@ class StoreCard extends React.Component {
 			);
 		}
 
+		let distanceElement = null;
+		if (typeof distance == 'number' && isNaN(distance) == false) {
+			distanceElement = (
+				<span className={classes.distance}>
+					{`(${distance.toFixed(2)}`}
+					&nbsp;
+					{'mi)'}
+				</span>
+			);
+		}
+
 		return (
-			<Card className={classes.card}>
+			<Card
+				className={classes.card}
+				elevation={this.props.elevation}
+			>
 				<div>
 					<div className={classes.details}>
 						<CardContent className={classes.content}>
-							<Typography
-								variant="headline"
-								component="h2"
-							>
-								{storeData.name}
-							</Typography>
-							<Typography className={classes.secondaryHeading}>
-								{storeData.location.address1}
-								<br />
-								{storeData.location.city}
-								{', '}
-								{storeData.location.state} {storeData.location.zip}
-							</Typography>
+							<div>
+								<Typography
+									variant="headline"
+									component="h2"
+								>
+									{storeData.name}
+									&nbsp;
+									{distanceElement}
+								</Typography>
+								<Typography>
+									{storeData.location.address1}
+									<br />
+									{storeData.location.city}
+									{', '}
+									{storeData.location.state} {storeData.location.zip}
+								</Typography>
+							</div>
 						</CardContent>
 
-						<CardContent className={classes.content}>
-							<br />
-							<Typography>Store: {storeData.contact.phoneNumber}</Typography>
-							{hours}
-						</CardContent>
+						{detailed ? (
+							<CardContent className={classes.content}>
+								<div>
+									<Typography>
+										<strong>Store:</strong> {storeData.contact.phoneNumber}
+									</Typography>
+									{hours}
+								</div>
+							</CardContent>
+						) : null}
 
-						<CardContent className={classes.content}>
-							<Typography
-								className={classes.secondaryHeading}
-								style={{ textAlign: 'right' }}
+						{children ? (
+							<CardContent
+								className={classes.content}
+								style={{
+									flex: 1
+								}}
 							>
-								{typeof distance == 'number' && isNaN(distance) == false
-									? distance.toFixed(2) + 'miles'
-									: ''}
-							</Typography>
-						</CardContent>
+								{children}
+							</CardContent>
+						) : null}
 					</div>
 				</div>
-
-				<CardActions disableActionSpacing={true} />
 			</Card>
 		);
 	}
@@ -94,7 +122,6 @@ StoreCard.propTypes = {
 	classes: PropTypes.object.isRequired,
 	onChange: PropTypes.func,
 	storeId: PropTypes.string,
-	storeData: PropTypes.object,
 	distance: PropTypes.number
 };
 

@@ -4,33 +4,76 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import StoreCard from '../StoreCard';
 import List from '@material-ui/core/List';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
-const styles = (theme) => ({});
+const styles = (theme) => {
+	return {
+		button: {
+			borderRadius: 0
+		},
+		StoreList: {
+			overflow: 'auto',
+			maxHeight: '500px',
+
+			'& > :not(:last-child)': {
+				position: 'relative',
+				borderBottom: `1px solid ${theme.palette.grey[300]}`
+			}
+		}
+	};
+};
 
 class StoreList extends React.Component {
 	constructor() {
 		super();
 	}
 	render() {
-		let { limit = 10, storeData } = this.props;
+		let { limit = 10, storeData, classes } = this.props;
 		if (storeData == null) {
 			return <List />;
 		}
 		let cards = [];
-		for (let i = 0; i < limit; i++) {
-			cards.push(<StoreCard
-				key={i}
-				storeId={storeData[i].storeId}
-			/>);
+		for (let i = 0; i < Math.min(limit, storeData.length); i++) {
+			cards.push(
+				<StoreCard
+					key={i}
+					storeId={storeData[i].storeId}
+					elevation={0}
+				>
+					<div
+						style={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							height: '100%'
+						}}
+					>
+						<Button
+							variant="outlined"
+							href={`#${storeData[i].storeId}`}
+							className={classes.button}
+						>
+							Select Store
+						</Button>
+					</div>
+				</StoreCard>
+			);
 		}
-		return <List>{cards}</List>;
+		return (
+			<Paper
+				elevation={0}
+				className={classes.StoreList}
+			>
+				{cards}
+			</Paper>
+		);
 	}
 }
 
 StoreList.propTypes = {
 	sortBy: PropTypes.string,
-	limit: PropTypes.number,
-	storeData: PropTypes.array
+	limit: PropTypes.number
 };
 StoreList.defaultProps = {
 	sortBy: 'name',

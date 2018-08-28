@@ -7,14 +7,9 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-import { actionToggleProductSelection } from '../api';
+import { actionToggleProductSelection } from '../services';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
+const theme = createMuiTheme({});
 
 class ComparisonCheckbox extends React.Component {
 	render() {

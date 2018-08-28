@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actionRemoveAll, actionRemoveProduct, actionSetProducts } from '../api';
+import { actionRemoveAll, actionRemoveProduct, actionSetProducts } from '../services';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
@@ -17,14 +17,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
-import { Cancel as CancelIcon, PlayForWork as PlayForWorkIcon } from '../icons';
+import CancelIcon from '@material-ui/icons/Cancel';
+import PlayForWorkIcon from '@material-ui/icons/PlayForWork';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
+const theme = createMuiTheme({});
 
 const imageStyles = {
 	border: '1px solid black',

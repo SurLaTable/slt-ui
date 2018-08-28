@@ -24,7 +24,7 @@ function write(filePath, code) {
 function generateSLTUIAsync(promises) {
 	return new Promise((resolve, reject) => {
 		glob(
-			'./src/[A-Z]*/index.js',
+			path.posix.resolve('./src/[A-Z]*/index.js'),
 			{
 				cwd: path.posix.resolve('./')
 			},
@@ -65,14 +65,17 @@ function generateSLTUIAsync(promises) {
 						indexCode += `
 							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
-									`./builder/temp/slt/${folderName}`,
-									file
+									path.posix.resolve(`./builder/temp/slt/${folderName}`),
+									path.posix.resolve(file)
 								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
 						`;
 					}
 					promises.push(
-						write(path.resolve(`./builder/temp/slt/${folderName}/index.js`), indexCode)
+						write(
+							path.resolve(`./builder/temp/slt/${folderName}/index.js`),
+							indexCode
+						)
 					);
 
 					code += `
@@ -92,12 +95,9 @@ function generateSLTUIAsync(promises) {
 
 function generateMaterialAsync(promises) {
 	return new Promise((resolve, reject) => {
-		let muiCore = glob.sync('./node_modules/\\@material-ui/core/[A-Z]*/index.js', {
+		let muiCore = glob.sync(path.posix.resolve('./node_modules/\\@material-ui/core/[A-Z]*/index.js'), {
 			cwd: path.posix.resolve('./')
 		});
-		/*let muiIcons = glob.sync('../node_modules/\\@material-ui/icons/[A-Z]*.js', {
-			cwd: __dirname
-		});*/
 
 		let files = muiCore;
 
@@ -129,8 +129,8 @@ function generateMaterialAsync(promises) {
 				indexCode += `
 					export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
-									`./builder/temp/material/${folderName}`,
-									file
+									path.posix.resolve(`./builder/temp/material/${folderName}`),
+									path.posix.resolve(file)
 								)}' /*webpackChunkName: '${exportName}'*/).then(module => module['${component}'])
 							});
 				`;
@@ -164,7 +164,7 @@ export async function generateAsync() {
 	return Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';
-generateAsync.description = 'Wrap material and slt-ui components in asyncComponent.';
+generateAsync.description = 'Wrap material and slt-ui components with asyncComponent.';
 tasks.add(tasks.timed(generateAsync));
 
 export async function buildManifest() {
