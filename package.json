@@ -8,7 +8,7 @@
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./docs/serve.config.js --dev",
 		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|node_modules)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
-		"test": "yarn build && npm build"
+		"test": "yarn build && npm run build"
 	},
 	"repository": {
 		"type": "git",
