@@ -16,8 +16,6 @@ const styles = (theme) => {
 		},
 		StoreList: {
 			overflow: 'auto',
-			maxHeight: '500px',
-
 			'& > :not(:last-child)': {
 				position: 'relative',
 				borderBottom: `1px solid ${theme.palette.grey[300]}`
