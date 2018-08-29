@@ -30,8 +30,6 @@ class LocationField extends React.Component {
 			address: '',
 			value: ''
 		};
-		this.inputRef = React.createRef();
-		this.textFieldRef = React.createRef();
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
