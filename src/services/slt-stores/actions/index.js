@@ -5,31 +5,46 @@ import store from 'store2';
 //const SLT_APIKEY = process.env.SLT_APIKEY || global.SLT_APIKEY;
 const SLT_STORE_ENDPOINT = process.env.SLT_STORE_ENDPOINT || global.SLT_STORE_ENDPOINT;
 
-var apiStorage = store.namespace('stores-service');
+var apiStorage = store.namespace('slt-stores-service');
 
-export const getStoreData = (force = false) => {
+function removeInnactiveStores(storeData) {
+	let items = storeData.filter(function(val) {
+		//remove invalid data
+		if (val.location && val.location.address1 && val.location.lat && val.location.long) {
+			val.location.lat = +val.location.lat;
+			val.location.long = +val.location.long;
+			val.location.lng = val.location.long;
+
+			//mapping
+			//TODO I'd prefer removing the store prefix
+			val.storeName = val.name;
+
+			var storeId = String(val.id).padStart(3, '0');
+			val.storeId = storeId;
+			val.culinary.cookingClasses = val.culinary.cookingClasses.toLowerCase() === 'yes';
+			//TODO I think the result is better than the spec for this
+			val.culinary.cookingPhoneNumber = val.culinary.phoneNumber;
+			return true;
+		}
+		return false;
+	});
+	return items;
+}
+
+export const fetchStoreData = (force = false) => {
 	return (dispatch) => {
 		dispatch({ type: 'SLT_STORES_LOADING' });
-		if (apiStorage.session.has('storeData') == false || force === true) {
+		if (apiStorage.session.has('items') == false || force === true) {
 			return axios.get(SLT_STORE_ENDPOINT).then((http) => {
-				let data = JSON.parse(http.data.body).Items;
+				let data = removeInnactiveStores(JSON.parse(http.data.body).Items);
 
-				apiStorage.session.set('storeData', data);
-				return dispatch({ type: 'SET_STORE_DATA', storeData: data });
+				apiStorage.session.set('items', data);
+				return dispatch({ type: 'SET_STORE_DATA', items: data });
 			});
 		} else {
 			return Promise.resolve(
-				dispatch({ type: 'SET_STORE_DATA', storeData: apiStorage.session.get('storeData') })
+				dispatch({ type: 'SET_STORE_DATA', items: apiStorage.session.get('items') })
 			);
 		}
-	};
-};
-
-export const sortStoresByDistance = (latlng) => {
-	return (dispatch) => {
-		//this action is dependent on the data existing, so we also execute the action to set the data
-		return dispatch(getStoreData()).then(() => {
-			return Promise.resolve(dispatch({ type: 'LATLNG_SORT_STORES', latlng }));
-		});
 	};
 };

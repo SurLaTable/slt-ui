@@ -1,4 +1,7 @@
 import googleMaps from '@google/maps';
+//import store from 'store2';
+
+//var apiStorage = store.namespace('location-service');
 
 // @google/maps api key
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || global.GOOGLE_MAPS_API_KEY;
@@ -18,25 +21,20 @@ let client = googleMaps.createClient({
 export const geocode = (options) => {
 	return (dispatch) => {
 		dispatch({ type: 'GEOCODE_LOADING' });
+
 		return client
-			.geocode(options, function() {
-				console.log(arguments);
-			})
+			.geocode(options)
 			.asPromise()
 			.then((response) => {
-				console.log(response);
 				return dispatch({
 					type: 'GEOLOCATED',
-					locationData: response.json.results
+					data: response.json.results
 				});
 			})
 			.catch((err) => {
-				console.log(err);
 				return dispatch({
 					type: 'GEOLOCATED',
-					locationData: [
-						{ error: err.json ? err.json.error_message : 'Something went wrong' }
-					]
+					data: [{ error: err.json ? err.json.error_message : 'Something went wrong' }]
 				});
 			});
 	};
@@ -44,14 +42,14 @@ export const geocode = (options) => {
 
 export const reverseGeocode = (options) => {
 	return (dispatch) => {
+		dispatch({ type: 'GEOCODE_LOADING' });
 		return client
 			.reverseGeocode(options)
 			.asPromise()
 			.then((response) => {
-				console.log(response);
 				return dispatch({
 					type: 'GEOLOCATED',
-					locationData: response.json.results
+					data: response.json.results
 				});
 			});
 	};

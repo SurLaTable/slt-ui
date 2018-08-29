@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import { geocode } from '../services/google-maps';
+import { geocode, selectLocationData } from '../services/google-maps';
 
 const styles = (theme) => {
 	return {
@@ -27,10 +27,11 @@ class LocationField extends React.Component {
 		super(props);
 		this.state = {
 			error: '',
-			update: false,
-			value: '',
-			address: ''
+			address: '',
+			value: ''
 		};
+		this.inputRef = React.createRef();
+		this.textFieldRef = React.createRef();
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -42,47 +43,35 @@ class LocationField extends React.Component {
 				geocode({
 					address: this.state.value
 				})
-			).then(() => {
-				this.setState({
-					update: true
-				});
-			});
+			);
 		}
 	}
 	handleChange(event) {
-		this.setState({ error: '', value: event.target.value });
+		const { value } = event.target;
+		this.setState({ error: '', value });
 	}
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.locationData === null) {
-			return;
-		}
-		var formatted_address = this.props.locationData.formatted_address;
-		if (this.state.update) {
-			if (formatted_address && formatted_address !== this.state.value) {
-				if (typeof this.props.onLocated == 'function') {
-					this.props.onLocated(this.props.locationData);
-				}
-				this.setState({
-					update: false,
-					address: formatted_address,
-					value: formatted_address
-				});
-			}
+		let address = this.props.locationData?.formatted_address;
 
-			if (
-				this.props.locationData.error &&
-				this.state.error != this.props.locationData.error
-			) {
-				this.setState({
-					update: false,
-					error: this.props.locationData.error
-				});
+		if (address != this.state.address) {
+			if (address) {
+				this.setState({ value: address });
 			}
+			this.setState({
+				address: address
+			});
+		}
+
+		if (this.props.locationData?.error != this.state.error) {
+			this.setState({
+				error: this.props.locationData?.error
+			});
 		}
 	}
 
 	render() {
 		let { classes } = this.props;
+		let { error, address, value } = this.state;
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<FormControl>
@@ -92,10 +81,10 @@ class LocationField extends React.Component {
 							label="City, State or Zip Code"
 							placeholder="Seattle, Wa"
 							margin="normal"
-							error={Boolean(this.state.error)}
+							error={Boolean(error)}
 							onChange={this.handleChange}
-							helperText={this.state.error}
-							value={this.state.value}
+							helperText={error}
+							value={value}
 						/>
 						<Button
 							type="submit"
@@ -119,11 +108,8 @@ LocationField.propTypes = {
 };
 
 export default connect((state, props) => {
-	let locationData = state.googleMapsApi.locationData
-		? state.googleMapsApi.locationData[0]
-		: null;
 	return {
 		...props,
-		locationData
+		locationData: selectLocationData(state)?.[0]
 	};
 })(withStyles(styles)(LocationField));

@@ -49,8 +49,8 @@ class ComparisonBar extends React.Component {
 						style={{
 							backgroundColor: '#E4E4E4',
 							bottom: 0,
-							left: 0,
-							marginLeft: `${(global.innerWidth - global.innerWidth * 0.9) / 2}px`,
+							left: '5%',
+							right: '5%',
 							paddingBottom: '48px',
 							position: 'fixed',
 							width: '90%',

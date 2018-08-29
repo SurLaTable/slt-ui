@@ -5,3 +5,4 @@ import reducers from './reducers';
 addAsyncReducers(store, reducers);
 
 export * from './actions';
+export * from './selectors';

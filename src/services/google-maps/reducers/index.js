@@ -1,22 +1,25 @@
 import { createReducer } from '../../../utils/storeTools';
 
+const initialState = {
+	data: null,
+	isFetching: false
+};
+
 const actionHandlers = {
 	GEOCODE_LOADING: (state, action) => {
 		return {
 			...state,
-			loading: true
+			...initialState,
+			isFetching: true
 		};
 	},
 	GEOLOCATED: (state, action) => {
 		return {
 			...state,
-			loading: false,
-			locationData: action.locationData
+			isFetching: false,
+			data: action.data
 		};
 	}
-};
-const initialState = {
-	locationData: null
 };
 
 export default {

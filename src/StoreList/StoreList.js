@@ -7,6 +7,8 @@ import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+import { selectClosestStores, selectStoresAlphabetically } from './selectors';
+
 const styles = (theme) => {
 	return {
 		button: {
@@ -29,17 +31,24 @@ class StoreList extends React.Component {
 		super();
 	}
 	render() {
-		let { limit = 10, storeData, classes } = this.props;
+		//add filters for culinary, and a variable for displaying filters
+		let { limit = 10, storeData, classes, detailed } = this.props;
 		if (storeData == null) {
 			return <List />;
 		}
 		let cards = [];
-		for (let i = 0; i < Math.min(limit, storeData.length); i++) {
+		for (let i = 0; i < Math.min(Number(limit), storeData.length); i++) {
 			cards.push(
 				<StoreCard
 					key={i}
 					storeId={storeData[i].storeId}
+					name={storeData[i].name}
+					location={storeData[i].location}
+					contactInfo={storeData[i].contact}
+					hours={storeData[i].hours}
+					distance={storeData[i].distance}
 					elevation={0}
+					detailed={detailed}
 				>
 					<div
 						style={{
@@ -73,27 +82,22 @@ class StoreList extends React.Component {
 
 StoreList.propTypes = {
 	sortBy: PropTypes.string,
-	limit: PropTypes.number
+	limit: PropTypes.number,
+	detailed: PropTypes.bool
 };
 StoreList.defaultProps = {
 	sortBy: 'name',
-	limit: 10
+	limit: 10,
+	detailed: false
 };
 
 const mapStateToProps = (state, props) => {
-	let storeData;
-	if (props.sortBy == 'distance') {
-		storeData = state?.storesApi?.closestStores?.items;
-	}
-	if (storeData == null && state?.storesApi?.storeData?.items) {
-		storeData = state?.storesApi?.storeData?.items.slice().sort(function(a, b) {
-			return a.name < b.name ? -1 : 1;
-		});
-	}
-
 	return {
 		...props,
-		storeData
+		storeData:
+			props.sortBy == 'distance'
+				? selectClosestStores(state)
+				: selectStoresAlphabetically(state)
 	};
 };
 

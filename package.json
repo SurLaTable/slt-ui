@@ -50,6 +50,7 @@
 		"lodash": "^4.2.0",
 		"normalize-scroll-left": "^0.1.2",
 		"prop-types": "^15.6.1",
+		"re-reselect": "^2.1.0",
 		"react": "^16.2.0",
 		"react-async-component": "^1.0.2",
 		"react-dom": "^16.2.0",
@@ -66,6 +67,7 @@
 		"redux": "^3.7.2",
 		"redux-localstorage": "^0.4.1",
 		"redux-thunk": "^2.3.0",
+		"reselect": "^3.0.1",
 		"scroll": "^2.0.3",
 		"store2": "^2.7.0",
 		"warning": "^3.0.0"
