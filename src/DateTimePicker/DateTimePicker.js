@@ -21,6 +21,8 @@ import Typography from '@material-ui/core/Typography';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { actionGetClassTimes } from './actions/dateTimeActions';
+
 const theme = createMuiTheme({});
 
 const panelStyles = () => ({
@@ -98,8 +100,10 @@ class DateTimePicker extends React.Component {
 		}
 		this.setState({ open: false });
 	}
+	onEnter() {
+		this.props.dispatch(actionGetClassTimes());
+	}
 	render() {
-		// let { dispatch } = this.props;
 		const { expanded } = this.state;
 		return (
 			<MuiThemeProvider theme={theme}>
@@ -110,15 +114,16 @@ class DateTimePicker extends React.Component {
 					Change Date
 				</Button>
 				<Dialog
+					fullWidth={true}
+					open={this.state.open}
+					onClose={this.handleClose.bind(this)}
+					onEnter={this.onEnter.bind(this)}
 					PaperProps={{
 						style: {}
 					}}
 					style={{
 						overflow: 'overlay'
 					}}
-					fullWidth={true}
-					open={this.state.open}
-					onClose={this.handleClose.bind(this)}
 					scroll="paper"
 					TransitionComponent={Transition}
 					transitionDuration={600}
@@ -131,6 +136,8 @@ class DateTimePicker extends React.Component {
 						Available dates for THING
 					</DialogTitle>
 					<DialogContent>
+						Foo:
+						{this?.state?.classTimeData?.map((i) => i)}
 						<StyledExpansionPanel
 							expanded={expanded === 'panel1'}
 							onChange={this.handleChange('panel1')}
@@ -189,7 +196,15 @@ DateTimePicker.propTypes = {
 DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => {
-	return {
-		...props
-	};
+	if (state.dateTimeReducer) {
+		return {
+			...props,
+			classTimeData: state.dateTimeReducer.classTimeData
+		};
+	} else {
+		return {
+			...props,
+			classTimeData: []
+		};
+	}
 })(DateTimePicker);

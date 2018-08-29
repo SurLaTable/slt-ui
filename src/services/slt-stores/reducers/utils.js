@@ -45,7 +45,7 @@ export function haversineSort(data, latlng) {
 	};
 }
 
-export function removeInnactiveStores(storeData) {
+export function removeInactiveStores(storeData) {
 	let byId = {};
 	let items = storeData.filter(function(val) {
 		//remove invalid data
@@ -71,4 +71,4 @@ export function removeInnactiveStores(storeData) {
 	return { items, byId };
 }
 
-export default { haversineDistance, haversineSort, removeInnactiveStores };
+export default { haversineDistance, haversineSort, removeInactiveStores };

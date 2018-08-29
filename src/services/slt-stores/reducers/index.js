@@ -12,7 +12,7 @@ const actionHandlers = {
 		return {
 			...state,
 			loading: false,
-			storeData: utils.removeInnactiveStores(action.storeData)
+			storeData: utils.removeInactiveStores(action.storeData)
 		};
 	},
 	LATLNG_SORT_STORES: (state, action) => {
