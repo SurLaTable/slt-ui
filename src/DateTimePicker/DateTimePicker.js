@@ -21,7 +21,7 @@ import Typography from '@material-ui/core/Typography';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { actionGetClassTimes } from './actions/dateTimeActions';
+import { actionGetClassTimes } from '../services/slt-class-times';
 
 const theme = createMuiTheme({});
 
@@ -196,6 +196,7 @@ DateTimePicker.propTypes = {
 DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => {
+	console.log(state);
 	if (state.dateTimeReducer) {
 		return {
 			...props,
