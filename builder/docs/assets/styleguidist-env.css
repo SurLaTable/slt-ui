@@ -7,4 +7,5 @@
 [data-preview] {
 	font-family: 'Jaldi', Arial, Helvetica, sans-serif !important;
 	transform: translate3d(0, 0, 0) !important;
+	overflow: auto !important;
 }
