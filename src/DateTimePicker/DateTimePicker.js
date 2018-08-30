@@ -22,6 +22,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { actionGetClassTimes } from '../services/slt-class-times';
+// import actionGetClassTimes from '../services/slt-class-times';
+// import '../services/slt-class-times';
 
 const theme = createMuiTheme({});
 
@@ -137,7 +139,7 @@ class DateTimePicker extends React.Component {
 					</DialogTitle>
 					<DialogContent>
 						Foo:
-						{this?.state?.classTimeData?.map((i) => i)}
+						{this?.props?.classTimeData?.map((i) => i)}
 						<StyledExpansionPanel
 							expanded={expanded === 'panel1'}
 							onChange={this.handleChange('panel1')}

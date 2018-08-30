@@ -1,6 +1,7 @@
 import * as utils from './utils';
 
 export * from './ComparisonChart';
+export * from './DateTimePicker';
 export * from './LocationField';
 export * from './StoreProvider';
 export { utils };
