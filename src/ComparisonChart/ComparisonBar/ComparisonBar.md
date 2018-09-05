@@ -1,4 +1,6 @@
-```jsx
+To test this component click a [ComparisonCheckbox](#comparisoncheckbox).
+
+```jsx {"props":{"style":{"minHeight":"8rem"}}}
 <StoreProvider>
 	<ComparisonBar />
 </StoreProvider>

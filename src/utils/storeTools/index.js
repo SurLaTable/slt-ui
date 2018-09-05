@@ -14,11 +14,7 @@ let middlware = composeEnhancers(
 
 const configureStore = (initialState, initialReducers) => {
 	const store = createStore(
-		initialReducers
-			? combineReducers({
-					...initialReducers
-			  })
-			: (state) => state,
+		initialReducers ? combineReducers({ ...initialReducers }) : (state) => state,
 		initialState,
 		middlware
 	);
@@ -26,16 +22,6 @@ const configureStore = (initialState, initialReducers) => {
 	return store;
 };
 export default configureStore;
-
-export function createReducer(initialState, actionHandlers) {
-	return (state = initialState, action) => {
-		if (actionHandlers.hasOwnProperty(action.type)) {
-			return actionHandlers[action.type](state, action);
-		} else {
-			return state;
-		}
-	};
-}
 
 export function addAsyncReducers(store, asyncReducers = {}) {
 	store.asyncReducers = {

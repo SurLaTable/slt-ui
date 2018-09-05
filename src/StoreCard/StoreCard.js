@@ -7,8 +7,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-import '../services/slt-stores';
-
 const styles = (theme) => ({
 	details: {
 		display: 'flex'
@@ -29,30 +27,30 @@ class StoreCard extends React.Component {
 	render() {
 		let {
 			classes,
-			storeData,
-			distance = null,
 			storeId,
-			children,
-			detailed = false
+			name,
+			location,
+			contactInfo = null,
+			hours = null,
+			distance = null,
+			children
 		} = this.props;
 
-		let hours = [];
+		let hoursElements, distanceElement;
 
-		if (storeData == null) {
-			return <div>test</div>;
+		if (hours) {
+			hoursElements = [];
+			for (let key in hours) {
+				if (hours.hasOwnProperty(key)) {
+					hoursElements.push(
+						<Typography key={key}>
+							<b>{key}:</b> {hours[key]}
+						</Typography>
+					);
+				}
+			}
 		}
 
-		for (let key in storeData.hours) {
-			hours.push(
-				<React.Fragment key={key}>
-					<Typography>
-						<b>{key}:</b> {storeData.hours[key]}
-					</Typography>
-				</React.Fragment>
-			);
-		}
-
-		let distanceElement = null;
 		if (typeof distance == 'number' && isNaN(distance) == false) {
 			distanceElement = (
 				<span className={classes.distance}>
@@ -76,27 +74,27 @@ class StoreCard extends React.Component {
 									variant="headline"
 									component="h2"
 								>
-									{storeData.name}
+									{name}
 									&nbsp;
 									{distanceElement}
 								</Typography>
 								<Typography>
-									{storeData.location.address1}
+									{location.address1}
 									<br />
-									{storeData.location.city}
+									{location.city}
 									{', '}
-									{storeData.location.state} {storeData.location.zip}
+									{location.state} {location.zip}
 								</Typography>
 							</div>
 						</CardContent>
 
-						{detailed ? (
+						{hours || contactInfo ? (
 							<CardContent className={classes.content}>
 								<div>
 									<Typography>
-										<strong>Store:</strong> {storeData.contact.phoneNumber}
+										<strong>Store:</strong> {contactInfo.phoneNumber}
 									</Typography>
-									{hours}
+									{hoursElements}
 								</div>
 							</CardContent>
 						) : null}
@@ -119,18 +117,13 @@ class StoreCard extends React.Component {
 }
 
 StoreCard.propTypes = {
-	classes: PropTypes.object.isRequired,
 	onChange: PropTypes.func,
-	storeId: PropTypes.string,
+	storeId: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	location: PropTypes.object.isRequired,
+	contactInfo: PropTypes.object,
+	hours: PropTypes.object,
 	distance: PropTypes.number
 };
 
-const mapStateToProps = (state, props) => {
-	return {
-		...props,
-		storeData: state?.storesApi?.storeData?.byId?.[props.storeId],
-		distance: state?.storesApi?.closestStores?.byId?.[props.storeId]
-	};
-};
-
-export default connect(mapStateToProps)(withStyles(styles)(StoreCard));
+export default withStyles(styles)(StoreCard);

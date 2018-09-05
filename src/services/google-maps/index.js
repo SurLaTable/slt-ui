@@ -1,7 +1,17 @@
 import { addAsyncReducers } from '../../utils/storeTools';
+import reheat from 'redux-reheat';
 import { store } from '../../StoreProvider';
-import reducers from './reducers';
+import * as actionCreators from './actions';
 
-addAsyncReducers(store, reducers);
+const { reducer, actions, selectors } = reheat({
+	namespace: 'googleMapsApi',
+	initialState: {
+		data: [],
+		isFetching: false
+	},
+	actionCreators
+});
 
-export * from './actions';
+addAsyncReducers(store, reducer);
+
+export { actions, selectors };
