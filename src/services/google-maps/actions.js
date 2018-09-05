@@ -2,8 +2,7 @@ import googleMaps from '@google/maps';
 
 // @google/maps api key
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || global.GOOGLE_MAPS_API_KEY;
-
-let client = googleMaps.createClient({
+const client = googleMaps.createClient({
 	key: GOOGLE_MAPS_API_KEY,
 	Promise: Promise,
 	retryOptions: {
@@ -15,44 +14,37 @@ let client = googleMaps.createClient({
 	}
 });
 
-export const geocode = (options) => {
+export const fetchGeocode = (actions, options) => {
 	return (dispatch) => {
-		dispatch({ type: 'GEOCODE_LOADING' });
+		dispatch(actions.setIsFetching(true));
+
 		return client
-			.geocode(options, function() {
-				console.log(arguments);
-			})
+			.geocode(options)
 			.asPromise()
 			.then((response) => {
-				console.log(response);
-				return dispatch({
-					type: 'GEOLOCATED',
-					locationData: response.json.results
-				});
+				dispatch(actions.setIsFetching(false));
+				return dispatch(actions.setData(response.json.results));
 			})
 			.catch((err) => {
-				console.log(err);
-				return dispatch({
-					type: 'GEOLOCATED',
-					locationData: [
+				dispatch(actions.setIsFetching(false));
+				return dispatch(
+					actions.setData([
 						{ error: err.json ? err.json.error_message : 'Something went wrong' }
-					]
-				});
+					])
+				);
 			});
 	};
 };
 
-export const reverseGeocode = (options) => {
+export const fetchReverseGeocode = (actions, options) => {
 	return (dispatch) => {
+		dispatch(actions.setIsFetching(true));
 		return client
 			.reverseGeocode(options)
 			.asPromise()
 			.then((response) => {
-				console.log(response);
-				return dispatch({
-					type: 'GEOLOCATED',
-					locationData: response.json.results
-				});
+				dispatch(actions.setIsFetching(false));
+				return dispatch(actions.setData(response.json.results));
 			});
 	};
 };

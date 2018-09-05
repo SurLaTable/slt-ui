@@ -1,10 +1,21 @@
 import { addAsyncReducers } from '../../utils/storeTools';
 import { store } from '../../StoreProvider';
-import reducers from './reducers';
-import { getStoreData } from './actions';
+import reheat from 'redux-reheat';
 
-export * from './actions';
+import * as actionCreators from './actions.js';
+import * as selectorCreators from './selectors.js';
 
-addAsyncReducers(store, reducers);
+const { reducer, actions, selectors } = reheat({
+	namespace: 'storesApi',
+	initialState: {
+		items: [],
+		isFetching: false
+	},
+	actionCreators,
+	selectorCreators
+});
 
-store.dispatch(getStoreData());
+addAsyncReducers(store, reducer);
+store.dispatch(actions.fetchItems());
+
+export { actions, selectors };
