@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reverseGeocode } from '../services/google-maps';
+import * as googleMapsApi from '../services/google-maps';
 import { store } from '../StoreProvider';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -25,7 +25,7 @@ class LocationButton extends React.Component {
 	}
 	handleGeolocationPosition(position) {
 		store.dispatch(
-			reverseGeocode({
+			googleMapsApi.actions.fetchReverseGeocode({
 				latlng: [position.coords.latitude, position.coords.longitude]
 			})
 		);

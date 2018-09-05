@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-import { selectStores, selectStoresAlphabetically } from '../../services/slt-stores';
-import { selectLocationData } from '../../services/google-maps';
+import * as sltStoresApi from '../../services/slt-stores';
+import * as googleMapsApi from '../../services/google-maps';
 
 function haversineDistance(lat1, lon1, lat2, lon2, unit) {
 	var radlat1 = (Math.PI * lat1) / 180;
@@ -37,11 +37,11 @@ function haversineSort(items = [], latlng = {}) {
 		})
 		.sort((a, b) => a.distance - b.distance);
 }
-export const selectClosestStores = createSelector(
-	[selectStores, selectLocationData],
+export const getClosestStores = createSelector(
+	[sltStoresApi.selectors.getItems, googleMapsApi.selectors.getData],
 	(items = [], locationData) => {
 		return haversineSort(items, locationData?.[0]?.geometry?.location);
 	}
 );
 
-export { selectStoresAlphabetically };
+export const getItemsAlphabetically = sltStoresApi.selectors.getItemsAlphabetically;

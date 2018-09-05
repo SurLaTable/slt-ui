@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import { geocode, selectLocationData } from '../services/google-maps';
+import * as googleMapsApi from '../services/google-maps';
 
 const styles = (theme) => {
 	return {
@@ -38,7 +38,7 @@ class LocationField extends React.Component {
 		event.preventDefault();
 		if (this.state.value) {
 			dispatch(
-				geocode({
+				googleMapsApi.actions.fetchGeocode({
 					address: this.state.value
 				})
 			);
@@ -108,6 +108,6 @@ LocationField.propTypes = {
 export default connect((state, props) => {
 	return {
 		...props,
-		locationData: selectLocationData(state)?.[0]
+		locationData: googleMapsApi.selectors.getData(state)?.[0]
 	};
 })(withStyles(styles)(LocationField));

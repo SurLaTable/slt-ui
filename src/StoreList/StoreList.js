@@ -7,7 +7,7 @@ import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-import { selectClosestStores, selectStoresAlphabetically } from './selectors';
+import { getClosestStores, getItemsAlphabetically } from './selectors';
 
 const styles = (theme) => {
 	return {
@@ -93,9 +93,7 @@ const mapStateToProps = (state, props) => {
 	return {
 		...props,
 		storeData:
-			props.sortBy == 'distance'
-				? selectClosestStores(state)
-				: selectStoresAlphabetically(state)
+			props.sortBy == 'distance' ? getClosestStores(state) : getItemsAlphabetically(state)
 	};
 };
 
