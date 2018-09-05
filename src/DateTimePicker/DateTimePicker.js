@@ -22,6 +22,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { actionGetClassTimes } from '../services/slt-class-times';
+
 // import actionGetClassTimes from '../services/slt-class-times';
 // import '../services/slt-class-times';
 
@@ -54,12 +55,7 @@ class DateTimePicker extends React.Component {
 	};
 	constructor() {
 		super();
-		if (
-			global &&
-			global.history &&
-			global.history.state &&
-			global.history.state.type === 'OPEN_DATE_TIME_PICKER'
-		) {
+		if (global?.history?.state?.type === 'OPEN_DATE_TIME_PICKER') {
 			// We hydrate with the old state.
 			global.history.replaceState(null, 'DateTimePicker');
 		}
@@ -84,7 +80,7 @@ class DateTimePicker extends React.Component {
 	};
 
 	handleClickOpen() {
-		if (global && global.history) {
+		if (global?.history) {
 			global.history.pushState(
 				{
 					type: 'OPEN_DATE_TIME_PICKER',
@@ -97,7 +93,7 @@ class DateTimePicker extends React.Component {
 	}
 
 	handleClose() {
-		if (global && global.history) {
+		if (global?.history) {
 			global.history.replaceState(null, 'DateTimePicker');
 		}
 		this.setState({ open: false });
@@ -198,7 +194,7 @@ DateTimePicker.propTypes = {
 DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => {
-	console.log(state);
+	// console.log(state);
 	if (state.dateTimeReducer) {
 		return {
 			...props,
