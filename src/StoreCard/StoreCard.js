@@ -41,11 +41,13 @@ class StoreCard extends React.Component {
 		if (hours) {
 			hoursElements = [];
 			for (let key in hours) {
-				hoursElements.push(
-					<Typography key={key}>
-						<b>{key}:</b> {hours[key]}
-					</Typography>
-				);
+				if (hours.hasOwnProperty(key)) {
+					hoursElements.push(
+						<Typography key={key}>
+							<b>{key}:</b> {hours[key]}
+						</Typography>
+					);
+				}
 			}
 		}
 
