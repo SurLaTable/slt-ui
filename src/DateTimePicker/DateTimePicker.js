@@ -21,10 +21,7 @@ import Typography from '@material-ui/core/Typography';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { actionGetClassTimes } from '../services/slt-class-times';
-
-// import actionGetClassTimes from '../services/slt-class-times';
-// import '../services/slt-class-times';
+import { actions, selectors } from '../services/slt-class-times';
 
 const theme = createMuiTheme({});
 
@@ -66,7 +63,6 @@ class DateTimePicker extends React.Component {
 				// Close dialog:
 				this.setState({ open: false });
 			} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
-				this.props.dispatch(actionSetProducts(state.selection));
 				this.setState({ open: true });
 				global.history.replaceState(state, 'DateTimePicker');
 			}
@@ -99,7 +95,7 @@ class DateTimePicker extends React.Component {
 		this.setState({ open: false });
 	}
 	onEnter() {
-		this.props.dispatch(actionGetClassTimes());
+		this.props.dispatch(actions.fetchClassTimes());
 	}
 	render() {
 		const { expanded } = this.state;
@@ -135,7 +131,7 @@ class DateTimePicker extends React.Component {
 					</DialogTitle>
 					<DialogContent>
 						Foo:
-						{this?.props?.classTimeData?.map((i) => i)}
+						{this?.props?.classTimeData?.map((i) => i.city)}
 						<StyledExpansionPanel
 							expanded={expanded === 'panel1'}
 							onChange={this.handleChange('panel1')}
@@ -195,10 +191,10 @@ DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => {
 	// console.log(state);
-	if (state.dateTimeReducer) {
+	if (selectors.getClassTimeData) {
 		return {
 			...props,
-			classTimeData: state.dateTimeReducer.classTimeData
+			classTimeData: selectors.getClassTimeData(state)
 		};
 	} else {
 		return {

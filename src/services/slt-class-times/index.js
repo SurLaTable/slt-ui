@@ -1,7 +1,16 @@
 import { addAsyncReducers } from '../../utils/storeTools';
 import { store } from '../../StoreProvider';
-import reducers from './reducers';
+import * as actionCreators from './actions';
+import reheat from 'redux-reheat';
 
-addAsyncReducers(store, reducers);
+const { actions, reducer, selectors } = reheat({
+	namespace: true,
+	initialState: {
+		classTimeData: []
+	},
+	actionCreators
+});
 
-export * from './actions';
+addAsyncReducers(store, reducer);
+
+export { actions, selectors };

@@ -4,7 +4,6 @@ export const getItemsById = (selectors) =>
 	createSelector(selectors.getItems, (items = []) =>
 		items.reduce((acc, item) => {
 			acc[item.storeId] = item;
-			s;
 			return acc;
 		}, {})
 	);

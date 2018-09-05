@@ -67,7 +67,7 @@
 		"redux": "^3.7.2",
 		"redux-cornell": "^2.0.0",
 		"redux-localstorage": "^0.4.1",
-		"redux-reheat": "^0.0.2",
+		"redux-reheat": "^0.0.4",
 		"redux-thunk": "^2.3.0",
 		"reselect": "^3.0.1",
 		"scroll": "^2.0.3",
