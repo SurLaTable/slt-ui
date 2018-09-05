@@ -1,5 +1,5 @@
 import { addAsyncReducers } from '../../utils/storeTools';
-import reheat from '../../utils/reheat';
+import reheat from 'redux-reheat';
 import { store } from '../../StoreProvider';
 import * as actionCreators from './actions';
 
