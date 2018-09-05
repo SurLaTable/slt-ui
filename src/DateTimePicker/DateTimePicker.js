@@ -68,7 +68,11 @@ class DateTimePicker extends React.Component {
 			}
 		});
 	}
-
+	componentDidMount() {
+		this.setState({
+			culinaryClassName: document.querySelector('h1.name')?.textContent || 'class'
+		});
+	}
 	handleChange = (panel) => (event, expanded) => {
 		this.setState({
 			expanded: expanded ? panel : false
@@ -127,17 +131,19 @@ class DateTimePicker extends React.Component {
 							overflow: 'overlay'
 						}}
 					>
-						Available dates for THING
+						Available dates for {this.state.culinaryClassName}:
 					</DialogTitle>
 					<DialogContent>
-						Foo:
-						{this?.props?.classTimeData?.map((i) => i.city)}
 						<StyledExpansionPanel
 							expanded={expanded === 'panel1'}
 							onChange={this.handleChange('panel1')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography>This month</Typography>
+								<Typography>
+									{new Date(Date.now()).toLocaleString('en-us', {
+										month: 'long'
+									})}
+								</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<RadioGroup
@@ -147,16 +153,16 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									<FormControlLabel
-										value="121"
-										control={<Radio />}
-										label="First class"
-									/>
-									<FormControlLabel
-										value="122"
-										control={<Radio />}
-										label="Second class"
-									/>
+									{this?.props?.classTimeData?.map((culinaryClass, index) => (
+										<FormControlLabel
+											key={index}
+											value={culinaryClass.sku}
+											control={<Radio />}
+											label={new Date(
+												culinaryClass.classStartDate
+											).toDateString()}
+										/>
+									))}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -190,7 +196,6 @@ DateTimePicker.propTypes = {
 DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => {
-	// console.log(state);
 	if (selectors.getClassTimeData) {
 		return {
 			...props,

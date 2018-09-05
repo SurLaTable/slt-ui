@@ -8,8 +8,8 @@ import data from './dummyData';
 // const culinaryClassTimesEndpoint =
 // 	'https://seattle-dev2.surlatable.com/browse/include/culClassJSONData.jsp?productId=';
 
-export const fetchClassTimes = (actions /*, product, location*/) => (dispatch) =>
-	dispatch(actions.concatClassTimeData(data));
+export const fetchClassTimes = ({ actions /*, product, location*/ }) => (dispatch) =>
+	dispatch(actions.setClassTimeData(data));
 // return axios.get(`${culinaryClassTimesEndpoint}${'CFA-1018555'}`).then((http) => {
 // 	// console.log(data, apiStorage, apiStorage.local);
 // 	// For some reason `store2` is not working as

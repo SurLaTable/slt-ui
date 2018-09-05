@@ -4,7 +4,6 @@ import * as actionCreators from './actions';
 import reheat from 'redux-reheat';
 
 const { actions, reducer, selectors } = reheat({
-	namespace: true,
 	initialState: {
 		classTimeData: []
 	},
