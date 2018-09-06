@@ -31,7 +31,7 @@ function removeInnactiveStores(storeData) {
 	return items;
 }
 
-export const fetchStoreData = (actions, force = false) => {
+export const fetchStoreData = ({ actions }, force = false) => {
 	return (dispatch) => {
 		dispatch({ type: 'SLT_STORES_LOADING' });
 		if (apiStorage.session.has('items') == false || force === true) {
