@@ -5,7 +5,7 @@ import store from 'store2';
 const SLT_STORE_ENDPOINT = process.env.SLT_STORE_ENDPOINT || global.SLT_STORE_ENDPOINT;
 const apiStorage = store.namespace('slt-stores-service');
 
-function removeInnactiveStores(storeData) {
+function removeInactiveStores(storeData) {
 	let items = storeData.filter(function(val) {
 		//remove invalid data
 		if (val.location && val.location.address1 && val.location.lat && val.location.long) {
@@ -35,7 +35,7 @@ export const fetchItems = ({ actions }, force = false) => {
 		if (apiStorage.session.has('items') == false || force === true) {
 			dispatch(actions.setIsFetching(true));
 			return axios.get(SLT_STORE_ENDPOINT).then((http) => {
-				let data = removeInnactiveStores(JSON.parse(http.data.body).Items);
+				let data = removeInactiveStores(JSON.parse(http.data.body).Items);
 
 				apiStorage.session.set('items', data);
 				dispatch(actions.setIsFetching(false));
