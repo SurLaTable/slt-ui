@@ -14,6 +14,13 @@ function title(str) {
 export default (name, ...configs) => {
 	let finalConfig = merge(
 		{
+			resolve: {
+				symlinks: false
+			},
+			node: {
+				__dirname: true,
+				__filename: true
+			},
 			mode: process.env.NODE_ENV,
 			stats: 'verbose',
 			devtool: false,
@@ -50,7 +57,7 @@ export default (name, ...configs) => {
 							loader: 'babel-loader',
 							options: babelConfig
 						},
-						exclude: /(node_modules)/
+						exclude: /node_modules/
 					}
 				]
 			},

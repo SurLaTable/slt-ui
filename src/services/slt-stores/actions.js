@@ -29,7 +29,7 @@ function removeInnactiveStores(storeData) {
 	return items;
 }
 
-export const fetchItems = (actions, force = false) => {
+export const fetchItems = ({ actions }, force = false) => {
 	return (dispatch) => {
 		dispatch(actions.setIsFetching(true));
 		if (apiStorage.session.has('items') == false || force === true) {
