@@ -21,6 +21,8 @@ import Typography from '@material-ui/core/Typography';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { actions, selectors } from '../services/slt-class-times';
+
 const theme = createMuiTheme({});
 
 const panelStyles = () => ({
@@ -50,12 +52,7 @@ class DateTimePicker extends React.Component {
 	};
 	constructor() {
 		super();
-		if (
-			global &&
-			global.history &&
-			global.history.state &&
-			global.history.state.type === 'OPEN_DATE_TIME_PICKER'
-		) {
+		if (global?.history?.state?.type === 'OPEN_DATE_TIME_PICKER') {
 			// We hydrate with the old state.
 			global.history.replaceState(null, 'DateTimePicker');
 		}
@@ -66,13 +63,16 @@ class DateTimePicker extends React.Component {
 				// Close dialog:
 				this.setState({ open: false });
 			} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
-				this.props.dispatch(actionSetProducts(state.selection));
 				this.setState({ open: true });
 				global.history.replaceState(state, 'DateTimePicker');
 			}
 		});
 	}
-
+	componentDidMount() {
+		this.setState({
+			culinaryClassName: document.querySelector('h1.name')?.textContent || 'class'
+		});
+	}
 	handleChange = (panel) => (event, expanded) => {
 		this.setState({
 			expanded: expanded ? panel : false
@@ -80,7 +80,7 @@ class DateTimePicker extends React.Component {
 	};
 
 	handleClickOpen() {
-		if (global && global.history) {
+		if (global?.history) {
 			global.history.pushState(
 				{
 					type: 'OPEN_DATE_TIME_PICKER',
@@ -93,13 +93,15 @@ class DateTimePicker extends React.Component {
 	}
 
 	handleClose() {
-		if (global && global.history) {
+		if (global?.history) {
 			global.history.replaceState(null, 'DateTimePicker');
 		}
 		this.setState({ open: false });
 	}
+	onEnter() {
+		this.props.dispatch(actions.fetchClassTimes());
+	}
 	render() {
-		// let { dispatch } = this.props;
 		const { expanded } = this.state;
 		return (
 			<MuiThemeProvider theme={theme}>
@@ -110,15 +112,16 @@ class DateTimePicker extends React.Component {
 					Change Date
 				</Button>
 				<Dialog
+					fullWidth={true}
+					open={this.state.open}
+					onClose={this.handleClose.bind(this)}
+					onEnter={this.onEnter.bind(this)}
 					PaperProps={{
 						style: {}
 					}}
 					style={{
 						overflow: 'overlay'
 					}}
-					fullWidth={true}
-					open={this.state.open}
-					onClose={this.handleClose.bind(this)}
 					scroll="paper"
 					TransitionComponent={Transition}
 					transitionDuration={600}
@@ -128,7 +131,7 @@ class DateTimePicker extends React.Component {
 							overflow: 'overlay'
 						}}
 					>
-						Available dates for THING
+						Available dates for {this.state.culinaryClassName}:
 					</DialogTitle>
 					<DialogContent>
 						<StyledExpansionPanel
@@ -136,7 +139,11 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel1')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography>This month</Typography>
+								<Typography>
+									{new Date(Date.now()).toLocaleString('en-us', {
+										month: 'long'
+									})}
+								</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<RadioGroup
@@ -146,16 +153,16 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									<FormControlLabel
-										value="121"
-										control={<Radio />}
-										label="First class"
-									/>
-									<FormControlLabel
-										value="122"
-										control={<Radio />}
-										label="Second class"
-									/>
+									{this?.props?.classTimeData?.map((culinaryClass, index) => (
+										<FormControlLabel
+											key={index}
+											value={culinaryClass.sku}
+											control={<Radio />}
+											label={new Date(
+												culinaryClass.classStartDate
+											).toDateString()}
+										/>
+									))}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -189,7 +196,15 @@ DateTimePicker.propTypes = {
 DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => {
-	return {
-		...props
-	};
+	if (selectors.getClassTimeData) {
+		return {
+			...props,
+			classTimeData: selectors.getClassTimeData(state)
+		};
+	} else {
+		return {
+			...props,
+			classTimeData: []
+		};
+	}
 })(DateTimePicker);

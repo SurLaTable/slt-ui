@@ -12,7 +12,7 @@ let middlware = composeEnhancers(
 	persist
 );
 
-export default function configureStore(initialState, initialReducers) {
+const configureStore = (initialState, initialReducers) => {
 	const store = createStore(
 		initialReducers ? combineReducers({ ...initialReducers }) : (state) => state,
 		initialState,
@@ -20,7 +20,8 @@ export default function configureStore(initialState, initialReducers) {
 	);
 	store.asyncReducers = initialReducers ? { ...initialReducers } : {};
 	return store;
-}
+};
+export default configureStore;
 
 export function addAsyncReducers(store, asyncReducers = {}) {
 	store.asyncReducers = {

@@ -53,7 +53,7 @@ yarn build dynamic-registration ./src/--REPLACE_WITH_COMPONENT_DIRECTORY--/index
 Then in your frontend environment:
 
 ```js
-var slt_dynamic_registration = function(e){var t={};function n(r) ...
+var slt_dynamic_registration=function(e){var t={};function n(r) ...
 $('<div data-component="TestButton">This is a test button</div>').prependTo('body');
 ComponentManifest.register(slt_dynamic_registration);
 ```

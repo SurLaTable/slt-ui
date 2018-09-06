@@ -25,16 +25,17 @@ const toggleSuccess = (id, checked) => ({
 
 var productCache = {};
 
-export function actionToggleProductSelection(id, checked) {
+export const actionToggleProductSelection = (id, checked) => {
 	return (dispatch) => {
 		if (productCache[id]) {
 			return Promise.resolve(dispatch(toggleSuccess(id, checked)));
 		} else {
 			return import(`../productData/${id}.json`).then((data) => {
-				productCache[id] = true; //no need to store the data, just if we've got it before
+				// No need to store the data, if we already have it.
+				productCache[id] = true;
 				dispatch(productDataSuccess({ [id]: { ...data } }));
 				dispatch(toggleSuccess(id, checked));
 			});
 		}
 	};
-}
+};
