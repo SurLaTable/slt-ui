@@ -1,9 +1,11 @@
 import axios from 'axios';
 import store from 'store2';
+//we'll store all the stores in memory here
 
 //const SLT_APIKEY = process.env.SLT_APIKEY || global.SLT_APIKEY;
 const SLT_STORE_ENDPOINT = process.env.SLT_STORE_ENDPOINT || global.SLT_STORE_ENDPOINT;
-const apiStorage = store.namespace('slt-stores-service');
+
+var apiStorage = store.namespace('slt-stores-service');
 
 function removeInactiveStores(storeData) {
 	let items = storeData.filter(function(val) {
@@ -29,20 +31,20 @@ function removeInactiveStores(storeData) {
 	return items;
 }
 
-export const fetchItems = ({ actions }, force = false) => {
+export const fetchStoreData = ({ actions }, force = false) => {
 	return (dispatch) => {
-		dispatch(actions.setIsFetching(true));
+		dispatch({ type: 'SLT_STORES_LOADING' });
 		if (apiStorage.session.has('items') == false || force === true) {
-			dispatch(actions.setIsFetching(true));
 			return axios.get(SLT_STORE_ENDPOINT).then((http) => {
 				let data = removeInactiveStores(JSON.parse(http.data.body).Items);
 
 				apiStorage.session.set('items', data);
-				dispatch(actions.setIsFetching(false));
-				return dispatch(actions.setItems(data));
+				return dispatch({ type: 'SET_STORE_DATA', items: data });
 			});
 		} else {
-			return Promise.resolve(dispatch(actions.setItems(apiStorage.session.get('items'))));
+			return Promise.resolve(
+				dispatch({ type: 'SET_STORE_DATA', items: apiStorage.session.get('items') })
+			);
 		}
 	};
 };

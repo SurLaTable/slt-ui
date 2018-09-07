@@ -81,7 +81,7 @@
 		"@babel/plugin-proposal-class-properties": "7.x.x",
 		"@babel/plugin-proposal-export-default-from": "7.x.x",
 		"@babel/plugin-proposal-object-rest-spread": "7.x.x",
-		"@babel/plugin-proposal-optional-chaining": "^7.0.0-rc.2",
+		"@babel/plugin-proposal-optional-chaining": "7.x.x",
 		"@babel/plugin-syntax-dynamic-import": "7.x.x",
 		"@babel/plugin-transform-classes": "7.x.x",
 		"@babel/plugin-transform-member-expression-literals": "7.x.x",
