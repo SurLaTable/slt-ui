@@ -45,6 +45,17 @@ const StyledExpansionPanel = withStyles(panelStyles)((props) => (
 	<ExpansionPanel {...props}>{props.children}</ExpansionPanel>
 ));
 
+const nowDate = new Date(Date.now());
+const currentMonth = nowDate.toLocaleString('en-us', {
+	month: 'long'
+});
+const nextMonth = new Date(nowDate.getFullYear(), nowDate.getMonth() + 2, 1).toLocaleString(
+	'en-us',
+	{
+		month: 'long'
+	}
+);
+
 class DateTimePicker extends React.Component {
 	state = {
 		expanded: null,
@@ -103,6 +114,7 @@ class DateTimePicker extends React.Component {
 	}
 	render() {
 		const { expanded } = this.state;
+
 		return (
 			<MuiThemeProvider theme={theme}>
 				<Button
@@ -139,11 +151,7 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel1')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography>
-									{new Date(Date.now()).toLocaleString('en-us', {
-										month: 'long'
-									})}
-								</Typography>
+								<Typography>{currentMonth}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<RadioGroup
@@ -171,7 +179,7 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel2')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography>Next month</Typography>
+								<Typography>{nextMonth}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<Typography>
