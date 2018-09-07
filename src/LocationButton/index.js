@@ -1,1 +1,1 @@
-export { default as LocationButton } from './LocationButton';
+export { default } from './LocationButton';

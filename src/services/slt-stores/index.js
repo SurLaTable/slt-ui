@@ -9,7 +9,8 @@ const { reducer, actions, selectors } = reheat({
 	namespace: __dirname,
 	initialState: {
 		items: [],
-		isFetching: false
+		isFetching: false,
+		selectedItem: null
 	},
 	actionCreators,
 	selectorCreators

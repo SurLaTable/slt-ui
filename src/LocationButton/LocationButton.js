@@ -9,7 +9,17 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = (theme) => {
-	return {};
+	return {
+		button: {
+			borderRadius: 0,
+			minHeight: theme.typography.pxToRem(theme.typography.fontSize),
+			lineHeight: theme.typography.pxToRem(theme.typography.fontSize),
+			boxShadow: theme.shadows[0],
+			'&:active': {
+				boxShadow: theme.shadows[0]
+			}
+		}
+	};
 };
 
 class LocationButton extends React.Component {
@@ -51,7 +61,7 @@ class LocationButton extends React.Component {
 	}
 	render() {
 		let { locationSupported, error } = this.state;
-		let { children, disabled = locationSupported == false } = this.props;
+		let { children, disabled = locationSupported == false, classes } = this.props;
 		let message = '';
 		if (locationSupported == false) {
 			message = 'Geolocation is not available.';
@@ -61,6 +71,7 @@ class LocationButton extends React.Component {
 				<Button
 					disabled={disabled}
 					onClick={this.handleClick}
+					className={classes.button}
 				>
 					<MyLocationIcon style={{ marginRight: '4px' }} /> {children}
 				</Button>

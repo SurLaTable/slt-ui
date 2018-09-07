@@ -7,7 +7,8 @@ import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-import { getClosestStores, getItemsAlphabetically } from './selectors';
+import * as sltStoresApi from '../services/slt-stores';
+import { getClosestStores } from './selectors';
 
 const styles = (theme) => {
 	return {
@@ -30,7 +31,8 @@ class StoreList extends React.Component {
 	}
 	render() {
 		//add filters for culinary, and a variable for displaying filters
-		let { limit = 10, storeData, classes, detailed } = this.props;
+		let { limit = 10, storeData, classes, detailed, dispatch, onItemSelected } = this.props;
+
 		if (storeData == null) {
 			return <List />;
 		}
@@ -42,11 +44,10 @@ class StoreList extends React.Component {
 					storeId={storeData[i].storeId}
 					name={storeData[i].name}
 					location={storeData[i].location}
-					contactInfo={storeData[i].contact}
-					hours={storeData[i].hours}
+					contactInfo={detailed ? storeData[i].contact : null}
+					hours={detailed ? storeData[i].hours : null}
 					distance={storeData[i].distance}
 					elevation={0}
-					detailed={detailed}
 				>
 					<div
 						style={{
@@ -60,8 +61,22 @@ class StoreList extends React.Component {
 							variant="outlined"
 							href={`#${storeData[i].storeId}`}
 							className={classes.button}
+							onClick={() => {
+								if (this.props.selectedStore == storeData[i].storeId) {
+									dispatch(sltStoresApi.actions.nullifySelectedItem());
+								} else {
+									dispatch(
+										sltStoresApi.actions.setSelectedItem(storeData[i].storeId)
+									);
+									if (onItemSelected) {
+										onItemSelected(storeData[i].storeId);
+									}
+								}
+							}}
 						>
-							Select Store
+							{this.props.selectedStore == storeData[i].storeId
+								? 'Deselect Store'
+								: 'Select Store'}
 						</Button>
 					</div>
 				</StoreCard>
@@ -81,7 +96,8 @@ class StoreList extends React.Component {
 StoreList.propTypes = {
 	sortBy: PropTypes.string,
 	limit: PropTypes.number,
-	detailed: PropTypes.bool
+	detailed: PropTypes.bool,
+	onItemSelected: PropTypes.func
 };
 StoreList.defaultProps = {
 	sortBy: 'name',
@@ -90,10 +106,16 @@ StoreList.defaultProps = {
 };
 
 const mapStateToProps = (state, props) => {
+	const selectedStore = sltStoresApi.selectors.getSelectedItem(state);
+	const storeData =
+		props.sortBy == 'distance'
+			? getClosestStores(state)
+			: sltStoresApi.selectors.getItemsAlphabetically(state);
+
 	return {
 		...props,
-		storeData:
-			props.sortBy == 'distance' ? getClosestStores(state) : getItemsAlphabetically(state)
+		selectedStore,
+		storeData
 	};
 };
 

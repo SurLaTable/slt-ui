@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import * as googleMapsApi from '../services/google-maps';
 
 const styles = (theme) => {
+	console.log(theme);
 	return {
 		button: {
 			borderRadius: 0,
@@ -18,6 +19,18 @@ const styles = (theme) => {
 			'&:active': {
 				boxShadow: theme.shadows[0]
 			}
+		},
+		formControl: {
+			display: 'flex',
+			flexDirection: 'row',
+			marginLeft: '4px',
+			marginRight: '4px',
+			marginTop: '8px',
+			marginBottom: '6px'
+		},
+		input: {
+			flex: '1',
+			margin: 0
 		}
 	};
 };
@@ -72,18 +85,24 @@ class LocationField extends React.Component {
 		let { error, address, value } = this.state;
 		return (
 			<form onSubmit={this.handleSubmit}>
-				<FormControl>
-					<div>
-						<TextField
-							name="location"
-							label="City, State or Zip Code"
-							placeholder="Seattle, Wa"
-							margin="normal"
-							error={Boolean(error)}
-							onChange={this.handleChange}
-							helperText={error}
-							value={value}
-						/>
+				<FormControl className={classes.formControl}>
+					<TextField
+						name="location"
+						label="City, State or Zip Code"
+						placeholder="Seattle, Wa"
+						margin="normal"
+						error={Boolean(error)}
+						onChange={this.handleChange}
+						helperText={error}
+						value={value}
+						className={classes.input}
+					/>
+					<div
+						style={{
+							alignSelf: 'flex-end',
+							display: 'flex-inline'
+						}}
+					>
 						<Button
 							type="submit"
 							variant="contained"
