@@ -46,17 +46,41 @@ const StyledExpansionPanel = withStyles(panelStyles)((props) => (
 ));
 
 const nowDate = new Date(Date.now());
-const currentMonth = nowDate.toLocaleString('en-us', {
+const locale = 'en-us';
+const monthOnly = {
 	month: 'long'
+};
+
+const currentMonth = {
+	long: nowDate.toLocaleString(locale, monthOnly),
+	numeric: nowDate.getMonth()
+};
+
+const shootMeSomeFutureMonth = (howManyAhead) => ({
+	long: new Date(nowDate.getFullYear(), nowDate.getMonth() + howManyAhead).toLocaleString(
+		locale,
+		monthOnly
+	),
+	numeric: nowDate.getMonth() + howManyAhead
 });
 
-const shootMeSomeFutureMonth = (howManyAhead) =>
-	new Date(nowDate.getFullYear(), nowDate.getMonth() + howManyAhead).toLocaleString('en-us', {
-		month: 'long'
-	});
+const giveMeTheClassTimeNicely = (classData) => `
+	${new Date(classData.classStartDate).toLocaleString(locale, {
+		weekday: 'short',
+		month: 'numeric',
+		day: 'numeric',
+		year: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric'
+	})} - ${new Date(classData.classStopDate).toLocaleString(locale, {
+	hour: 'numeric',
+	minute: 'numeric'
+})}`;
 
 const nextMonth = shootMeSomeFutureMonth(1);
 const doubleNextMonth = shootMeSomeFutureMonth(2);
+
+const arrayifyMe = (item) => (Array.isArray(item) ? item : []);
 
 class DateTimePicker extends React.Component {
 	state = {
@@ -70,7 +94,7 @@ class DateTimePicker extends React.Component {
 			global.history.replaceState(null, 'DateTimePicker');
 		}
 		global.addEventListener('popstate', (event) => {
-			let state = event.state;
+			const state = event.state;
 
 			if (state == null) {
 				// Close dialog:
@@ -102,7 +126,16 @@ class DateTimePicker extends React.Component {
 				'DateTimePicker'
 			);
 		}
-		this.setState({ open: true });
+		this.setState({
+			culinaryClassDataByMonth: this.props.classTimeData.reduce((newObj, culinaryClass) => {
+				const monthProp = new Date(culinaryClass.classStartDate).getMonth();
+				console.log('foo');
+				newObj[monthProp] = arrayifyMe(newObj[monthProp]);
+				newObj[monthProp].push(culinaryClass);
+				return newObj;
+			}, {}),
+			open: true
+		});
 	}
 
 	handleClose() {
@@ -116,7 +149,7 @@ class DateTimePicker extends React.Component {
 	}
 	render() {
 		const { expanded } = this.state;
-
+		console.log(this.state.culinaryClassDataByMonth);
 		return (
 			<MuiThemeProvider theme={theme}>
 				<Button
@@ -138,7 +171,7 @@ class DateTimePicker extends React.Component {
 					}}
 					scroll="paper"
 					TransitionComponent={Transition}
-					transitionDuration={600}
+					transitionDuration={400}
 				>
 					<DialogTitle
 						style={{
@@ -153,7 +186,9 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel1')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography >{`${currentMonth} ${nowDate.getFullYear()}`}</Typography>
+								<Typography>{`${
+									currentMonth.long
+								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<RadioGroup
@@ -163,16 +198,18 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{this?.props?.classTimeData?.map((culinaryClass, index) => (
-										<FormControlLabel
-											key={index}
-											value={culinaryClass.sku}
-											control={<Radio />}
-											label={new Date(
-												culinaryClass.classStartDate
-											).toDateString()}
-										/>
-									))}
+									{this?.state?.culinaryClassDataByMonth &&
+										this.state.culinaryClassDataByMonth[currentMonth.numeric] &&
+										this.state.culinaryClassDataByMonth[
+											currentMonth.numeric
+										].map((culinaryClass, index) => (
+											<FormControlLabel
+												key={Date.now()}
+												value={culinaryClass.sku}
+												control={<Radio />}
+												label={giveMeTheClassTimeNicely(culinaryClass)}
+											/>
+										))}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -181,7 +218,9 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel2')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography>{`${nextMonth} ${nowDate.getFullYear()}`}</Typography>
+								<Typography>{`${
+									nextMonth.long
+								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<RadioGroup
@@ -191,16 +230,19 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{this?.props?.classTimeData?.map((culinaryClass, index) => (
-										<FormControlLabel
-											key={index}
-											value={culinaryClass.sku}
-											control={<Radio />}
-											label={new Date(
-												culinaryClass.classStartDate
-											).toDateString()}
-										/>
-									))}
+									{/* {this.props.classTimeData.filter((culinaryClass, index) => {
+										return new Date(culinaryClass.classStartDate).getMonth() ===
+											nextMonth.numeric ? (
+												<FormControlLabel
+													key={index}
+													value={culinaryClass.sku}
+													control={<Radio />}
+													label={giveMeTheClassTimeNicely(culinaryClass)}
+												/>
+										) : (
+											false
+										);
+									})} */}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -209,7 +251,9 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel3')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography >{`${doubleNextMonth} ${nowDate.getFullYear()}`}</Typography>
+								<Typography>{`${
+									doubleNextMonth.long
+								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<RadioGroup
@@ -219,16 +263,20 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{this?.props?.classTimeData?.map((culinaryClass, index) => (
-										<FormControlLabel
-											key={index}
-											value={culinaryClass.sku}
-											control={<Radio />}
-											label={new Date(
-												culinaryClass.classStartDate
-											).toDateString()}
-										/>
-									))}
+									{/* {this.props.classTimeData.filter(
+										(culinaryClass, index) =>
+											new Date(culinaryClass.classStartDate).getMonth() ===
+											doubleNextMonth.numeric ? (
+												<FormControlLabel
+													key={index}
+													value={culinaryClass.sku}
+													control={<Radio />}
+													label={giveMeTheClassTimeNicely(culinaryClass)}
+												/>
+											) : (
+												false
+											)
+									)} */}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -240,22 +288,14 @@ class DateTimePicker extends React.Component {
 }
 
 DateTimePicker.propTypes = {
+	classTimeData: PropTypes.array,
 	dispatch: PropTypes.func,
 	selection: PropTypes.bool
 };
 
 DateTimePicker.defaultProps = {};
 
-export default connect((state, props) => {
-	if (selectors.getClassTimeData) {
-		return {
-			...props,
-			classTimeData: selectors.getClassTimeData(state)
-		};
-	} else {
-		return {
-			...props,
-			classTimeData: []
-		};
-	}
-})(DateTimePicker);
+export default connect((state, props) => ({
+	...props,
+	classTimeData: selectors.getClassTimeData ? selectors.getClassTimeData(state) : []
+}))(DateTimePicker);
