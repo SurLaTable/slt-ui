@@ -61,23 +61,20 @@ class LocationField extends React.Component {
 		const { value } = event.target;
 		this.setState({ error: '', value });
 	}
-	componentDidUpdate(prevProps, prevState) {
-		let address = this.props.locationData?.formatted_address;
-
-		if (address != this.state.address) {
+	static getDerivedStateFromProps(props, state) {
+		const address = props.locationData?.formatted_address;
+		const newState = {};
+		if (address != state.address) {
 			if (address) {
-				this.setState({ value: address });
+				newState.value = address;
 			}
-			this.setState({
-				address: address
-			});
+			newState.address = address;
 		}
 
-		if (this.props.locationData?.error != this.state.error) {
-			this.setState({
-				error: this.props.locationData?.error
-			});
+		if (props.locationData?.error != state.error) {
+			newState.error = props.locationData?.error;
 		}
+		return newState;
 	}
 
 	render() {
