@@ -49,7 +49,7 @@ class StoreSelector extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			open: true,
+			open: false,
 			showMore: 1,
 			scrollTop: 0
 		};
