@@ -49,12 +49,14 @@ const nowDate = new Date(Date.now());
 const currentMonth = nowDate.toLocaleString('en-us', {
 	month: 'long'
 });
-const nextMonth = new Date(nowDate.getFullYear(), nowDate.getMonth() + 2, 1).toLocaleString(
-	'en-us',
-	{
+
+const shootMeSomeFutureMonth = (howManyAhead) =>
+	new Date(nowDate.getFullYear(), nowDate.getMonth() + howManyAhead).toLocaleString('en-us', {
 		month: 'long'
-	}
-);
+	});
+
+const nextMonth = shootMeSomeFutureMonth(1);
+const doubleNextMonth = shootMeSomeFutureMonth(2);
 
 class DateTimePicker extends React.Component {
 	state = {
@@ -151,7 +153,7 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel1')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography>{currentMonth}</Typography>
+								<Typography >{`${currentMonth} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
 								<RadioGroup
@@ -179,14 +181,55 @@ class DateTimePicker extends React.Component {
 							onChange={this.handleChange('panel2')}
 						>
 							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-								<Typography>{nextMonth}</Typography>
+								<Typography>{`${nextMonth} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<Typography>
-									Donec placerat, lectus sed mattis semper, neque lectus feugiat
-									lectus, varius pulvinar diam eros in elit. Pellentesque
-									convallis laoreet laoreet.
-								</Typography>
+								<RadioGroup
+									aria-label="Classes"
+									name="classes"
+									className=""
+									value={this.state.value}
+									onChange={this.handleChange}
+								>
+									{this?.props?.classTimeData?.map((culinaryClass, index) => (
+										<FormControlLabel
+											key={index}
+											value={culinaryClass.sku}
+											control={<Radio />}
+											label={new Date(
+												culinaryClass.classStartDate
+											).toDateString()}
+										/>
+									))}
+								</RadioGroup>
+							</ExpansionPanelDetails>
+						</StyledExpansionPanel>
+						<StyledExpansionPanel
+							expanded={expanded === 'panel3'}
+							onChange={this.handleChange('panel3')}
+						>
+							<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+								<Typography >{`${doubleNextMonth} ${nowDate.getFullYear()}`}</Typography>
+							</ExpansionPanelSummary>
+							<ExpansionPanelDetails>
+								<RadioGroup
+									aria-label="Classes"
+									name="classes"
+									className=""
+									value={this.state.value}
+									onChange={this.handleChange}
+								>
+									{this?.props?.classTimeData?.map((culinaryClass, index) => (
+										<FormControlLabel
+											key={index}
+											value={culinaryClass.sku}
+											control={<Radio />}
+											label={new Date(
+												culinaryClass.classStartDate
+											).toDateString()}
+										/>
+									))}
+								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 					</DialogContent>
