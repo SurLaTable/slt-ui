@@ -65,6 +65,7 @@ class StoreCard extends React.Component {
 			<Card
 				className={classes.card}
 				elevation={this.props.elevation}
+				onClick={this.props.onClick}
 			>
 				<div>
 					<div className={classes.details}>
@@ -117,7 +118,6 @@ class StoreCard extends React.Component {
 }
 
 StoreCard.propTypes = {
-	onChange: PropTypes.func,
 	storeId: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	location: PropTypes.object.isRequired,

@@ -1,16 +1,13 @@
 import { createSelector } from 'reselect';
+import { filterItemsById, filterItemsAlphabetically } from './filters.js';
 
-export const getItemsById = (selectors) =>
-	createSelector(selectors.getItems, (items = []) =>
-		items.reduce((acc, item) => {
-			acc[item.storeId] = item;
-			return acc;
-		}, {})
-	);
+export const getItemsById = (selectors) => createSelector(selectors.getItems, filterItemsById);
 
 export const getItemsAlphabetically = (selectors) =>
-	createSelector(selectors.getItems, (items = []) => {
-		return items.slice().sort((a, b) => {
-			return a.name < b.name ? -1 : 1;
-		});
-	});
+	createSelector(selectors.getItems, filterItemsAlphabetically);
+
+export const getSelectedItemObject = (selectors) =>
+	createSelector(
+		[getItemsById(selectors), selectors.getSelectedItem],
+		(items, selectedItem) => items[selectedItem]
+	);
