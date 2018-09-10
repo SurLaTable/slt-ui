@@ -161,7 +161,7 @@ class DateTimePicker extends React.Component {
 					onClick={this.handleClickOpen.bind(this)}
 					style={{ padding: 0, textDecoration: 'underline', textTransform: 'none' }}
 				>
-					Change Date
+					{this.props.children || 'Change Date'}
 				</Button>
 				<Dialog
 					fullWidth={true}
@@ -257,6 +257,7 @@ class DateTimePicker extends React.Component {
 }
 
 DateTimePicker.propTypes = {
+	children: PropTypes.string,
 	classTimeData: PropTypes.object,
 	dispatch: PropTypes.func,
 	selection: PropTypes.bool

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1`] = `
+<Provider
+  store={
+    Object {
+      "asyncReducers": Object {
+        "/mnt/c/Users/rmcquen/slt-ui/src/services/slt-class-times": [Function],
+      },
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <React.Fragment>
+    <Connect(DateTimePicker) />
+  </React.Fragment>
+</Provider>
+`;
