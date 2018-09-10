@@ -138,9 +138,23 @@ class DateTimePicker extends React.Component {
 	onEnter() {
 		this.props.dispatch(actions.fetchClassTimes());
 	}
+	returnMonthData(month) {
+		return this?.props?.classTimeData?.[`month_${month.numeric}`] ? (
+			this.props.classTimeData[`month_${month.numeric}`].map((culinaryClass, index) => (
+				<FormControlLabel
+					key={`${index}_${Date.now()}`}
+					value={culinaryClass.sku}
+					control={<Radio />}
+					label={giveMeTheClassTimeNicely(culinaryClass)}
+				/>
+			))
+		) : (
+			<Typography>No dates available.</Typography>
+		);
+	}
 	render() {
 		const { expanded } = this.state;
-		console.log(this.state.classTimeData);
+
 		return (
 			<MuiThemeProvider theme={theme}>
 				<Button
@@ -189,16 +203,7 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{this?.state?.classTimeData?.[
-										`month_${currentMonth.numeric}`
-									].map((culinaryClass) => (
-										<FormControlLabel
-											key={Date.now()}
-											value={culinaryClass.sku}
-											control={<Radio />}
-											label={giveMeTheClassTimeNicely(culinaryClass)}
-										/>
-									))}
+									{this.returnMonthData(currentMonth)}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -219,7 +224,7 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{' '}
+									{this.returnMonthData(nextMonth)}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -240,7 +245,7 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{' '}
+									{this.returnMonthData(doubleNextMonth)}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
