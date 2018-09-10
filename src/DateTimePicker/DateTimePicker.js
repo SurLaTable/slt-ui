@@ -80,8 +80,6 @@ const giveMeTheClassTimeNicely = (classData) => `
 const nextMonth = shootMeSomeFutureMonth(1);
 const doubleNextMonth = shootMeSomeFutureMonth(2);
 
-const arrayifyMe = (item) => (Array.isArray(item) ? item : []);
-
 class DateTimePicker extends React.Component {
 	state = {
 		expanded: null,
@@ -127,13 +125,6 @@ class DateTimePicker extends React.Component {
 			);
 		}
 		this.setState({
-			culinaryClassDataByMonth: this.props.classTimeData.reduce((newObj, culinaryClass) => {
-				const monthProp = new Date(culinaryClass.classStartDate).getMonth();
-				console.log('foo');
-				newObj[monthProp] = arrayifyMe(newObj[monthProp]);
-				newObj[monthProp].push(culinaryClass);
-				return newObj;
-			}, {}),
 			open: true
 		});
 	}
@@ -149,12 +140,12 @@ class DateTimePicker extends React.Component {
 	}
 	render() {
 		const { expanded } = this.state;
-		console.log(this.state.culinaryClassDataByMonth);
+		console.log(this.state.classTimeData);
 		return (
 			<MuiThemeProvider theme={theme}>
 				<Button
 					onClick={this.handleClickOpen.bind(this)}
-					style={{ padding: 0, textDecoration: 'underline' }}
+					style={{ padding: 0, textDecoration: 'underline', textTransform: 'none' }}
 				>
 					Change Date
 				</Button>
@@ -198,18 +189,16 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{this?.state?.culinaryClassDataByMonth &&
-										this.state.culinaryClassDataByMonth[currentMonth.numeric] &&
-										this.state.culinaryClassDataByMonth[
-											currentMonth.numeric
-										].map((culinaryClass, index) => (
-											<FormControlLabel
-												key={Date.now()}
-												value={culinaryClass.sku}
-												control={<Radio />}
-												label={giveMeTheClassTimeNicely(culinaryClass)}
-											/>
-										))}
+									{this?.state?.classTimeData?.[
+										`month_${currentMonth.numeric}`
+									].map((culinaryClass) => (
+										<FormControlLabel
+											key={Date.now()}
+											value={culinaryClass.sku}
+											control={<Radio />}
+											label={giveMeTheClassTimeNicely(culinaryClass)}
+										/>
+									))}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -230,19 +219,7 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{/* {this.props.classTimeData.filter((culinaryClass, index) => {
-										return new Date(culinaryClass.classStartDate).getMonth() ===
-											nextMonth.numeric ? (
-												<FormControlLabel
-													key={index}
-													value={culinaryClass.sku}
-													control={<Radio />}
-													label={giveMeTheClassTimeNicely(culinaryClass)}
-												/>
-										) : (
-											false
-										);
-									})} */}
+									{' '}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -263,20 +240,7 @@ class DateTimePicker extends React.Component {
 									value={this.state.value}
 									onChange={this.handleChange}
 								>
-									{/* {this.props.classTimeData.filter(
-										(culinaryClass, index) =>
-											new Date(culinaryClass.classStartDate).getMonth() ===
-											doubleNextMonth.numeric ? (
-												<FormControlLabel
-													key={index}
-													value={culinaryClass.sku}
-													control={<Radio />}
-													label={giveMeTheClassTimeNicely(culinaryClass)}
-												/>
-											) : (
-												false
-											)
-									)} */}
+									{' '}
 								</RadioGroup>
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
@@ -288,7 +252,7 @@ class DateTimePicker extends React.Component {
 }
 
 DateTimePicker.propTypes = {
-	classTimeData: PropTypes.array,
+	classTimeData: PropTypes.object,
 	dispatch: PropTypes.func,
 	selection: PropTypes.bool
 };
@@ -297,5 +261,5 @@ DateTimePicker.defaultProps = {};
 
 export default connect((state, props) => ({
 	...props,
-	classTimeData: selectors.getClassTimeData ? selectors.getClassTimeData(state) : []
+	classTimeData: selectors.getClassTimeData ? selectors.getClassTimeData(state) : {}
 }))(DateTimePicker);

@@ -6,10 +6,21 @@ import data from './dummyData';
 // const apiStorage = store.namespace('classes-service');
 //
 // const culinaryClassTimesEndpoint =
-// 	'https://seattle-dev2.surlatable.com/browse/include/culClassJSONData.jsp?productId=';
+// 	'https://www.surlatable.com/browse/include/culClassJSONData.jsp?productId=';
+
+const arrayMeIfEmpty = (item) => (Array.isArray(item) ? item : []);
 
 export const fetchClassTimes = ({ actions /*, product, location*/ }) => (dispatch) =>
-	dispatch(actions.setClassTimeData(data));
+	dispatch(
+		actions.setClassTimeData(
+			data.reduce((newObj, culinaryClass) => {
+				const monthProp = `month_${new Date(culinaryClass.classStartDate).getMonth()}`;
+				newObj[monthProp] = arrayMeIfEmpty(newObj[monthProp]);
+				newObj[monthProp].push(culinaryClass);
+				return newObj;
+			}, {})
+		)
+	);
 // return axios.get(`${culinaryClassTimesEndpoint}${'CFA-1018555'}`).then((http) => {
 // 	// console.log(data, apiStorage, apiStorage.local);
 // 	// For some reason `store2` is not working as
