@@ -139,8 +139,8 @@ class DateTimePicker extends React.Component {
 		this.props.dispatch(actions.fetchClassTimes());
 	}
 	returnMonthData(month) {
-		return this?.props?.classTimeData?.[`month_${month.numeric}`] ? (
-			this.props.classTimeData[`month_${month.numeric}`].map((culinaryClass, index) => (
+		return this?.props?.classTimeData?.[month.numeric] ? (
+			this.props.classTimeData[month.numeric].map((culinaryClass, index) => (
 				<FormControlLabel
 					key={`${index}_${Date.now()}`}
 					value={culinaryClass.sku}

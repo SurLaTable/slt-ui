@@ -10,15 +10,17 @@ import data from './dummyData';
 
 const arrayMeIfEmpty = (item) => (Array.isArray(item) ? item : []);
 
-export const fetchClassTimes = ({ actions /*, product, location*/ }) => (dispatch) =>
+export const fetchClassTimes = ({ actions, /*product,*/ location }) => (dispatch) =>
 	dispatch(
 		actions.setClassTimeData(
-			data.reduce((newObj, culinaryClass) => {
-				const monthProp = `month_${new Date(culinaryClass.classStartDate).getMonth()}`;
-				newObj[monthProp] = arrayMeIfEmpty(newObj[monthProp]);
-				newObj[monthProp].push(culinaryClass);
-				return newObj;
-			}, {})
+			data
+				.filter((culinaryClass) => culinaryClass.storeId === '004')
+				.reduce((newObj, culinaryClass) => {
+					const monthProp = new Date(culinaryClass.classStartDate).getMonth();
+					newObj[monthProp] = arrayMeIfEmpty(newObj[monthProp]);
+					newObj[monthProp].push(culinaryClass);
+					return newObj;
+				}, {})
 		)
 	);
 // return axios.get(`${culinaryClassTimesEndpoint}${'CFA-1018555'}`).then((http) => {
