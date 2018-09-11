@@ -8,7 +8,27 @@
 
 ## Getting started:
 
-If you just want to hack on components, you can run:
+If you want to view component documentation and hack on components, you can run:
+
+```
+yarn install
+yarn docs
+```
+
+We use React Styleguidist for documentation, usage details can be found [here](https://react-styleguidist.js.org/docs/getting-started.html).
+
+If you want to start a brand new component, run the following to create all boilerplate files (including documentation and unit tests):
+
+```
+yarn install
+yarn start-component FooBarScroller
+```
+
+_Psst!_ Replace `FooBarScroller` with your component's name.
+
+---
+
+Our original sandbox is available with the below command, but is deprecated as the documentation engine encourages documenting components while engineering them.
 
 ```
 yarn install
@@ -18,15 +38,6 @@ yarn sandbox
 Conversely, you can also use CodeSandbox, although the version there is out-of-date at the moment:
 
 [![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/0b63e06d14b42cc5f91739dff90a09ed747b1e93)
-
-If you want to view component documentation, you can run:
-
-```
-yarn install
-yarn docs
-```
-
-We use React Styleguidist for documentation, usage details can be found [here](https://react-styleguidist.js.org/docs/getting-started.html).
 
 ## Building:
 
