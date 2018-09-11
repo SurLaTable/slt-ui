@@ -23,8 +23,6 @@ import Typography from '@material-ui/core/Typography';
 
 const ${componentName}Styles = () => ({
 	root: {
-		'&::before': {
-		}
 	}
 });
 
@@ -36,7 +34,6 @@ class ${componentName} extends React.Component {
 		return (
 			<React.Fragment>
 				<Typography>
-					{this.props.children}
 				</Typography>
 			</React.Fragment>
 		);
@@ -44,7 +41,6 @@ class ${componentName} extends React.Component {
 }
 
 ${componentName}.propTypes = {
-	children: PropTypes.string
 };
 
 ${componentName}.defaultProps = {};
