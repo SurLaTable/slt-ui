@@ -122,7 +122,7 @@
 		"rimraf": "2.x.x",
 		"value-loader": "0.x.x",
 		"webpack": "4.x.x",
-		"webpack-bundle-analyzer": "2.x.x",
+		"webpack-bundle-analyzer": "3.x.x",
 		"webpack-cli": "3.x.x",
 		"webpack-merge": "4.x.x",
 		"webpack-serve": "1.x.x"
