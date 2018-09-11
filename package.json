@@ -6,12 +6,12 @@
 	"scripts": {
 		"build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./builder/docs/serve.config.js --dev",
-		"jest": "jest --updateSnapshot",
+		"jest": "jest --coverage --updateSnapshot",
 		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|docs|node_modules|styleguid*)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
 		"start-component": "babel-node --config-file ./builder/config/babel.config.js ./builder/start-component.js",
 		"tasks": "yarn build --tasks",
-		"test": "yarn build && npm run build && jest --updateSnapshot"
+		"test": "yarn build && npm run build && yarn jest"
 	},
 	"repository": {
 		"type": "git",
