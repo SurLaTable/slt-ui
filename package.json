@@ -6,7 +6,7 @@
 	"scripts": {
 		"build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./builder/docs/serve.config.js --dev",
-		"jest": "jest --coverage --updateSnapshot",
+		"jest": "jest --coverage --updateSnapshot && codecov",
 		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|*dist|docs|node_modules|styleguid*)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
 		"start-component": "babel-node --config-file ./builder/config/babel.config.js ./builder/start-component.js",
@@ -21,6 +21,10 @@
 		"component",
 		"library"
 	],
+	"jest": {
+		"coverageDirectory": "./coverage/",
+		"collectCoverage": true
+	},
 	"engineStrict": true,
 	"engines": {
 		"node": ">=10.0.0"
@@ -99,6 +103,7 @@
 		"babel-eslint": "9.x.x",
 		"babel-jest": "23.x.x",
 		"babel-loader": "8.x.x",
+		"codecov": "^3.1.0",
 		"colors": "1.x.x",
 		"dotenv": "6.x.x",
 		"eslint": "5.x.x",

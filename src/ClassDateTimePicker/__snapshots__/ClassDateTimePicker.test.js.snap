@@ -16,7 +16,7 @@ exports[`Render 1`] = `
   }
 >
   <React.Fragment>
-    <Connect(DateTimePicker) />
+    <Connect(ClassDateTimePicker) />
   </React.Fragment>
 </Provider>
 `;

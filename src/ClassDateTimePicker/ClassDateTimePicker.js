@@ -144,7 +144,17 @@ class ClassDateTimePicker extends React.Component {
 				<FormControlLabel
 					key={`${index}_${Date.now()}`}
 					value={culinaryClass.sku}
-					control={<Radio />}
+					control={
+						<Radio
+							style={{
+								color: '#333333'
+							}}
+							onChange={() => {
+								this.setState({ sku: culinaryClass.sku });
+								return document.location.replace(`/sku/${culinaryClass.sku}/`);
+							}}
+						/>
+					}
 					label={giveMeTheClassTimeNicely(culinaryClass)}
 				/>
 			))
@@ -200,8 +210,7 @@ class ClassDateTimePicker extends React.Component {
 									aria-label="Classes"
 									name="classes"
 									className=""
-									value={this.state.value}
-									onChange={this.handleChange}
+									value={this.state.sku}
 								>
 									{this.returnMonthData(currentMonth)}
 								</RadioGroup>
@@ -221,8 +230,7 @@ class ClassDateTimePicker extends React.Component {
 									aria-label="Classes"
 									name="classes"
 									className=""
-									value={this.state.value}
-									onChange={this.handleChange}
+									value={this.state.sku}
 								>
 									{this.returnMonthData(nextMonth)}
 								</RadioGroup>
@@ -242,8 +250,7 @@ class ClassDateTimePicker extends React.Component {
 									aria-label="Classes"
 									name="classes"
 									className=""
-									value={this.state.value}
-									onChange={this.handleChange}
+									value={this.state.sku}
 								>
 									{this.returnMonthData(doubleNextMonth)}
 								</RadioGroup>

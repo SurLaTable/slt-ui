@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1536683471924" clover="3.2.0">
-  <project timestamp="1536683471925" name="All files">
-    <metrics statements="384" coveredstatements="99" conditionals="210" coveredconditionals="17" methods="117" coveredmethods="12" elements="711" coveredelements="128" complexity="0" loc="384" ncloc="384" packages="18" files="31" classes="31">
+<coverage generated="1536771421673" clover="3.2.0">
+  <project timestamp="1536771421673" name="All files">
+    <metrics statements="386" coveredstatements="99" conditionals="210" coveredconditionals="17" methods="118" coveredmethods="12" elements="714" coveredelements="128" complexity="0" loc="386" ncloc="386" packages="18" files="31" classes="31">
+      <package name="ClassDateTimePicker">
+        <metrics statements="42" coveredstatements="14" conditionals="22" coveredconditionals="0" methods="18" coveredmethods="1"/>
+        <file name="ClassDateTimePicker.js" path="/mnt/c/Users/rmcquen/slt-ui/src/ClassDateTimePicker/ClassDateTimePicker.js">
+          <metrics statements="42" coveredstatements="14" conditionals="22" coveredconditionals="0" methods="18" coveredmethods="1"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="48" count="1" type="stmt"/>
+          <line num="49" count="1" type="stmt"/>
+          <line num="50" count="1" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="59" count="2" type="stmt"/>
+          <line num="67" count="1" type="stmt"/>
+          <line num="80" count="1" type="stmt"/>
+          <line num="81" count="1" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="92" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+          <line num="95" count="0" type="stmt"/>
+          <line num="97" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="99" count="0" type="stmt"/>
+          <line num="100" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="101" count="0" type="stmt"/>
+          <line num="102" count="0" type="stmt"/>
+          <line num="107" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="118" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="119" count="0" type="stmt"/>
+          <line num="127" count="0" type="stmt"/>
+          <line num="133" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="134" count="0" type="stmt"/>
+          <line num="136" count="0" type="stmt"/>
+          <line num="139" count="0" type="stmt"/>
+          <line num="142" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="144" count="0" type="stmt"/>
+          <line num="153" count="0" type="stmt"/>
+          <line num="154" count="0" type="stmt"/>
+          <line num="166" count="0" type="stmt"/>
+          <line num="168" count="0" type="stmt"/>
+          <line num="266" count="1" type="stmt"/>
+          <line num="273" count="1" type="stmt"/>
+          <line num="275" count="0" type="stmt"/>
+        </file>
+      </package>
       <package name="ComparisonChart.ComparisonBar">
         <metrics statements="15" coveredstatements="3" conditionals="15" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <file name="ComparisonBar.js" path="/mnt/c/Users/rmcquen/slt-ui/src/ComparisonChart/ComparisonBar/ComparisonBar.js">
@@ -165,52 +213,6 @@
           <line num="33" count="0" type="stmt"/>
           <line num="39" count="0" type="stmt"/>
           <line num="48" count="9" type="stmt"/>
-        </file>
-      </package>
-      <package name="DateTimePicker">
-        <metrics statements="40" coveredstatements="14" conditionals="22" coveredconditionals="0" methods="17" coveredmethods="1"/>
-        <file name="DateTimePicker.js" path="/mnt/c/Users/rmcquen/slt-ui/src/DateTimePicker/DateTimePicker.js">
-          <metrics statements="40" coveredstatements="14" conditionals="22" coveredconditionals="0" methods="17" coveredmethods="1"/>
-          <line num="26" count="1" type="stmt"/>
-          <line num="28" count="1" type="stmt"/>
-          <line num="39" count="1" type="stmt"/>
-          <line num="44" count="1" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
-          <line num="48" count="1" type="stmt"/>
-          <line num="49" count="1" type="stmt"/>
-          <line num="50" count="1" type="stmt"/>
-          <line num="54" count="1" type="stmt"/>
-          <line num="59" count="2" type="stmt"/>
-          <line num="67" count="1" type="stmt"/>
-          <line num="80" count="1" type="stmt"/>
-          <line num="81" count="1" type="stmt"/>
-          <line num="89" count="0" type="stmt"/>
-          <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="92" count="0" type="stmt"/>
-          <line num="94" count="0" type="stmt"/>
-          <line num="95" count="0" type="stmt"/>
-          <line num="97" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="99" count="0" type="stmt"/>
-          <line num="100" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="101" count="0" type="stmt"/>
-          <line num="102" count="0" type="stmt"/>
-          <line num="107" count="0" type="stmt"/>
-          <line num="111" count="0" type="stmt"/>
-          <line num="112" count="0" type="stmt"/>
-          <line num="118" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="119" count="0" type="stmt"/>
-          <line num="127" count="0" type="stmt"/>
-          <line num="133" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="134" count="0" type="stmt"/>
-          <line num="136" count="0" type="stmt"/>
-          <line num="139" count="0" type="stmt"/>
-          <line num="142" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="144" count="0" type="stmt"/>
-          <line num="156" count="0" type="stmt"/>
-          <line num="158" count="0" type="stmt"/>
-          <line num="259" count="1" type="stmt"/>
-          <line num="266" count="1" type="stmt"/>
-          <line num="268" count="0" type="stmt"/>
         </file>
       </package>
       <package name="LocationButton">
