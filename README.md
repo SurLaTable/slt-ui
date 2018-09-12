@@ -1,16 +1,8 @@
 # SLT's component library
 
-_*Build*_:
-
-| master                                                                                                                                | develop                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Travis 'master' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui) | [![Travis 'develop' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=develop)](https://travis-ci.org/SurLaTable/slt-ui) |
-
-_*Coverage*_:
-
-| master                                                                                                                       | develop                                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) | [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/develop/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) |
+| master                                                                                                                                                                                                                                                             | develop                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Travis 'master' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui) [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) | [![Travis 'develop' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=develop)](https://travis-ci.org/SurLaTable/slt-ui) [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/develop/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) |
 
 # :warning: Our build requires Node 10.x or greater.
 
