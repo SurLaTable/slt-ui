@@ -80,7 +80,7 @@ const giveMeTheClassTimeNicely = (classData) => `
 const nextMonth = shootMeSomeFutureMonth(1);
 const doubleNextMonth = shootMeSomeFutureMonth(2);
 
-class DateTimePicker extends React.Component {
+class ClassDateTimePicker extends React.Component {
 	state = {
 		expanded: null,
 		open: false
@@ -89,7 +89,7 @@ class DateTimePicker extends React.Component {
 		super();
 		if (global?.history?.state?.type === 'OPEN_DATE_TIME_PICKER') {
 			// We hydrate with the old state.
-			global.history.replaceState(null, 'DateTimePicker');
+			global.history.replaceState(null, 'ClassDateTimePicker');
 		}
 		global.addEventListener('popstate', (event) => {
 			const state = event.state;
@@ -99,7 +99,7 @@ class DateTimePicker extends React.Component {
 				this.setState({ open: false });
 			} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
 				this.setState({ open: true });
-				global.history.replaceState(state, 'DateTimePicker');
+				global.history.replaceState(state, 'ClassDateTimePicker');
 			}
 		});
 	}
@@ -121,7 +121,7 @@ class DateTimePicker extends React.Component {
 					type: 'OPEN_DATE_TIME_PICKER',
 					selection: this.props.selection
 				},
-				'DateTimePicker'
+				'ClassDateTimePicker'
 			);
 		}
 		this.setState({
@@ -131,7 +131,7 @@ class DateTimePicker extends React.Component {
 
 	handleClose() {
 		if (global?.history) {
-			global.history.replaceState(null, 'DateTimePicker');
+			global.history.replaceState(null, 'ClassDateTimePicker');
 		}
 		this.setState({ open: false });
 	}
@@ -256,16 +256,16 @@ class DateTimePicker extends React.Component {
 	}
 }
 
-DateTimePicker.propTypes = {
+ClassDateTimePicker.propTypes = {
 	children: PropTypes.string,
 	classTimeData: PropTypes.object,
 	dispatch: PropTypes.func,
 	selection: PropTypes.bool
 };
 
-DateTimePicker.defaultProps = {};
+ClassDateTimePicker.defaultProps = {};
 
 export default connect((state, props) => ({
 	...props,
 	classTimeData: selectors.getClassTimeData ? selectors.getClassTimeData(state) : {}
-}))(DateTimePicker);
+}))(ClassDateTimePicker);

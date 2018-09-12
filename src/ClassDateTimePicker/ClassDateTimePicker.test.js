@@ -1,13 +1,13 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import DateTimePicker from './DateTimePicker';
+import ClassDateTimePicker from './ClassDateTimePicker';
 import StoreProvider from '../StoreProvider';
 
 test('Render', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(
 		<StoreProvider>
-			<DateTimePicker />
+			<ClassDateTimePicker />
 		</StoreProvider>
 	);
 	const result = renderer.getRenderOutput();
