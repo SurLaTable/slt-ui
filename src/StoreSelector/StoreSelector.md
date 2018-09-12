@@ -1,0 +1,5 @@
+```jsx
+<StoreProvider>
+	<StoreSelector />
+</StoreProvider>
+```

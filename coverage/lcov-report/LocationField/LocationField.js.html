@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for LocationField/LocationField.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">LocationField</a> LocationField.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.41% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>2/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.41% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>2/27</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+&nbsp;
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import * as googleMapsApi from '../services/google-maps';
+&nbsp;
+const styles = <span class="fstat-no" title="function not covered" >(t</span>heme) =&gt; {
+<span class="cstat-no" title="statement not covered" >	console.log(theme);</span>
+<span class="cstat-no" title="statement not covered" >	return {</span>
+		button: {
+			borderRadius: 0,
+			minHeight: theme.typography.pxToRem(theme.typography.fontSize),
+			lineHeight: theme.typography.pxToRem(theme.typography.fontSize),
+			boxShadow: theme.shadows[0],
+			'&amp;:active': {
+				boxShadow: theme.shadows[0]
+			}
+		},
+		formControl: {
+			display: 'flex',
+			flexDirection: 'row',
+			marginLeft: '4px',
+			marginRight: '4px',
+			marginTop: '8px',
+			marginBottom: '6px'
+		},
+		input: {
+			flex: '1',
+			margin: 0
+		}
+	};
+};
+&nbsp;
+class LocationField extends React.Component {
+<span class="fstat-no" title="function not covered" >	co</span>nstructor(props) {
+<span class="cstat-no" title="statement not covered" >		super(props);</span>
+<span class="cstat-no" title="statement not covered" >		this.state = {</span>
+			error: '',
+			address: '',
+			value: ''
+		};
+<span class="cstat-no" title="statement not covered" >		this.handleSubmit = this.handleSubmit.bind(this);</span>
+<span class="cstat-no" title="statement not covered" >		this.handleChange = this.handleChange.bind(this);</span>
+	}
+<span class="fstat-no" title="function not covered" >	ha</span>ndleSubmit(event) {
+		let { dispatch } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+<span class="cstat-no" title="statement not covered" >		event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >		if (this.state.value) {</span>
+<span class="cstat-no" title="statement not covered" >			dispatch(</span>
+				googleMapsApi.actions.fetchGeocode({
+					address: this.state.value
+				})
+			);
+		}
+	}
+<span class="fstat-no" title="function not covered" >	ha</span>ndleChange(event) {
+		const { value } = <span class="cstat-no" title="statement not covered" >event.target;</span>
+<span class="cstat-no" title="statement not covered" >		this.setState({ error: '', value });</span>
+	}
+<span class="fstat-no" title="function not covered" >	st</span>atic getDerivedStateFromProps(props, state) {
+		const address = <span class="cstat-no" title="statement not covered" >props.locationData?.formatted_address;</span>
+		const newState = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >		if (address != state.address) {</span>
+<span class="cstat-no" title="statement not covered" >			if (address) {</span>
+<span class="cstat-no" title="statement not covered" >				newState.value = address;</span>
+			}
+<span class="cstat-no" title="statement not covered" >			newState.address = address;</span>
+		}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		if (props.locationData?.error != state.error) {</span>
+<span class="cstat-no" title="statement not covered" >			newState.error = props.locationData?.error;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		return newState;</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	re</span>nder() {
+		let { classes } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+		let { error, address, value } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >		return (</span>
+			&lt;form onSubmit={this.handleSubmit}&gt;
+				&lt;FormControl className={classes.formControl}&gt;
+					&lt;TextField
+						name="location"
+						label="City, State or Zip Code"
+						placeholder="Seattle, Wa"
+						margin="normal"
+						error={Boolean(error)}
+						onChange={this.handleChange}
+						helperText={error}
+						value={value}
+						className={classes.input}
+					/&gt;
+					&lt;div
+						style={{
+							alignSelf: 'flex-end',
+							display: 'flex-inline'
+						}}
+					&gt;
+						&lt;Button
+							type="submit"
+							variant="contained"
+							elevation={0}
+							className={classes.button}
+						&gt;
+							Search
+						&lt;/Button&gt;
+					&lt;/div&gt;
+				&lt;/FormControl&gt;
+			&lt;/form&gt;
+		);
+	}
+}
+&nbsp;
+LocationField.propTypes = {
+	locationData: PropTypes.object,
+	dispatch: PropTypes.func,
+	onLocated: PropTypes.func
+};
+&nbsp;
+export default connect(<span class="fstat-no" title="function not covered" >(s</span>tate, props) =&gt; {
+<span class="cstat-no" title="statement not covered" >	return {</span>
+		...props,
+		locationData: googleMapsApi.selectors.getData(state)?.[0]
+	};
+})(withStyles(styles)(LocationField));
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 12 2018 09:29:34 GMT-0800 (GMT-08:00)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

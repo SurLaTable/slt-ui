@@ -7,7 +7,7 @@ const SLT_STORE_ENDPOINT = process.env.SLT_STORE_ENDPOINT || global.SLT_STORE_EN
 
 var apiStorage = store.namespace('slt-stores-service');
 
-function removeInnactiveStores(storeData) {
+function removeInactiveStores(storeData) {
 	let items = storeData.filter(function(val) {
 		//remove invalid data
 		if (val.location && val.location.address1 && val.location.lat && val.location.long) {
@@ -31,12 +31,12 @@ function removeInnactiveStores(storeData) {
 	return items;
 }
 
-export const fetchStoreData = (actions, force = false) => {
+export const fetchStoreData = ({ actions }, force = false) => {
 	return (dispatch) => {
 		dispatch({ type: 'SLT_STORES_LOADING' });
 		if (apiStorage.session.has('items') == false || force === true) {
 			return axios.get(SLT_STORE_ENDPOINT).then((http) => {
-				let data = removeInnactiveStores(JSON.parse(http.data.body).Items);
+				let data = removeInactiveStores(JSON.parse(http.data.body).Items);
 
 				apiStorage.session.set('items', data);
 				return dispatch({ type: 'SET_STORE_DATA', items: data });

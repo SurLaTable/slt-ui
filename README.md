@@ -1,14 +1,36 @@
 # SLT's component library
 
-| master                                                                                                                                | develop                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Travis 'master' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui) | [![Travis 'develop' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=develop)](https://travis-ci.org/SurLaTable/slt-ui) |
+| master                                                                                                                                                                                                                                                             | develop                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Travis 'master' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui) [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) | [![Travis 'develop' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=develop)](https://travis-ci.org/SurLaTable/slt-ui) [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/develop/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) |
 
 # :warning: Our build requires Node 10.x or greater.
 
 ## Getting started:
 
-If you just want to hack on components, you can run:
+If you want to view component documentation and hack on components, you can run:
+
+```
+yarn install
+yarn docs
+```
+
+We use React Styleguidist for documentation, usage details can be found [here](https://react-styleguidist.js.org/docs/getting-started.html).
+
+#### Starting a new component:
+
+If you want to start a brand new component, run the following to create all boilerplate files (including documentation and unit tests):
+
+```
+yarn install
+yarn start-component FooBarScroller
+```
+
+_Psst!_ Replace `FooBarScroller` with your component's name.
+
+---
+
+Our original sandbox is available with the below command, but is deprecated as the documentation engine encourages documenting components while engineering them.
 
 ```
 yarn install
@@ -18,15 +40,6 @@ yarn sandbox
 Conversely, you can also use CodeSandbox, although the version there is out-of-date at the moment:
 
 [![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/0b63e06d14b42cc5f91739dff90a09ed747b1e93)
-
-If you want to view component documentation, you can run:
-
-```
-yarn install
-yarn docs
-```
-
-We use React Styleguidist for documentation, usage details can be found [here](https://react-styleguidist.js.org/docs/getting-started.html).
 
 ## Building:
 
@@ -53,7 +66,7 @@ yarn build dynamic-registration ./src/--REPLACE_WITH_COMPONENT_DIRECTORY--/index
 Then in your frontend environment:
 
 ```js
-var slt_dynamic_registration = function(e){var t={};function n(r) ...
+var slt_dynamic_registration=function(e){var t={};function n(r) ...
 $('<div data-component="TestButton">This is a test button</div>').prependTo('body');
 ComponentManifest.register(slt_dynamic_registration);
 ```

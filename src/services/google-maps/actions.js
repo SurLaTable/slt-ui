@@ -14,7 +14,7 @@ const client = googleMaps.createClient({
 	}
 });
 
-export const fetchGeocode = (actions, options) => {
+export const fetchGeocode = ({ actions }, options) => {
 	return (dispatch) => {
 		dispatch(actions.setIsFetching(true));
 
@@ -36,7 +36,7 @@ export const fetchGeocode = (actions, options) => {
 	};
 };
 
-export const fetchReverseGeocode = (actions, options) => {
+export const fetchReverseGeocode = ({ actions }, options) => {
 	return (dispatch) => {
 		dispatch(actions.setIsFetching(true));
 		return client

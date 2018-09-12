@@ -6,10 +6,11 @@ import * as actionCreators from './actions.js';
 import * as selectorCreators from './selectors.js';
 
 const { reducer, actions, selectors } = reheat({
-	namespace: 'storesApi',
+	namespace: __dirname,
 	initialState: {
 		items: [],
-		isFetching: false
+		isFetching: false,
+		selectedItem: null
 	},
 	actionCreators,
 	selectorCreators

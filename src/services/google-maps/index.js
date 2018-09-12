@@ -4,7 +4,7 @@ import { store } from '../../StoreProvider';
 import * as actionCreators from './actions';
 
 const { reducer, actions, selectors } = reheat({
-	namespace: 'googleMapsApi',
+	namespace: __dirname,
 	initialState: {
 		data: [],
 		isFetching: false
