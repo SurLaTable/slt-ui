@@ -1,8 +1,14 @@
 # SLT's component library
 
-| master                                                                                                                                | develop                                                                                                                                 |
+_*Build*_:
+| master | develop |
 | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | [![Travis 'master' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui) | [![Travis 'develop' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=develop)](https://travis-ci.org/SurLaTable/slt-ui) |
+
+_*Coverage*_:
+| master | develop |
+| ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) | [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/develop/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) |
 
 # :warning: Our build requires Node 10.x or greater.
 
@@ -16,6 +22,8 @@ yarn docs
 ```
 
 We use React Styleguidist for documentation, usage details can be found [here](https://react-styleguidist.js.org/docs/getting-started.html).
+
+#### Starting a new component:
 
 If you want to start a brand new component, run the following to create all boilerplate files (including documentation and unit tests):
 

@@ -11,7 +11,7 @@
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
 		"start-component": "babel-node --config-file ./builder/config/babel.config.js ./builder/start-component.js",
 		"tasks": "yarn build --tasks",
-		"test": "yarn build && npm run build && yarn jest"
+		"test": "yarn jest"
 	},
 	"repository": {
 		"type": "git",
