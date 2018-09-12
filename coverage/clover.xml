@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1536773375784" clover="3.2.0">
-  <project timestamp="1536773375784" name="All files">
+<coverage generated="1536796279131" clover="3.2.0">
+  <project timestamp="1536796279131" name="All files">
     <metrics statements="386" coveredstatements="99" conditionals="210" coveredconditionals="17" methods="118" coveredmethods="12" elements="714" coveredelements="128" complexity="0" loc="386" ncloc="386" packages="18" files="31" classes="31">
       <package name="ClassDateTimePicker">
         <metrics statements="42" coveredstatements="14" conditionals="22" coveredconditionals="0" methods="18" coveredmethods="1"/>
