@@ -1,8 +1,27 @@
 {
+	"author": "Sur La Table",
+	"description": "Sur la table UI library",
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"engineStrict": true,
+	"homepage": "https://github.com/SurLaTable/slt-ui/",
+	"jest": {
+		"coverageDirectory": "./coverage/",
+		"collectCoverage": true
+	},
+	"keywords": [
+		"component",
+		"library"
+	],
+	"license": "GPL-2.0+",
+	"main": "./CodeSandbox/index.js",
 	"name": "@sur-la-table/slt-ui-core",
 	"version": "1.2.1",
-	"description": "Sur la table UI library",
-	"main": "./CodeSandbox/index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:SurLaTable/slt-ui.git"
+	},
 	"scripts": {
 		"build": "babel-node --config-file ./builder/config/babel.config.js ./builder/build.js",
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./builder/docs/serve.config.js --dev",
@@ -13,25 +32,6 @@
 		"tasks": "yarn build --tasks",
 		"test": "yarn jest"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+ssh://git@github.com:SurLaTable/slt-ui.git"
-	},
-	"keywords": [
-		"component",
-		"library"
-	],
-	"jest": {
-		"coverageDirectory": "./coverage/",
-		"collectCoverage": true
-	},
-	"engineStrict": true,
-	"engines": {
-		"node": ">=10.0.0"
-	},
-	"author": "Sur La Table",
-	"license": "GPL-2.0+",
-	"homepage": "https://github.com/SurLaTable/slt-ui/",
 	"dependencies": {
 		"@google/maps": "0.x.x",
 		"@material-ui/core": "3.x.x",
