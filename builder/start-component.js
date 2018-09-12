@@ -19,7 +19,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
-import Typography from '@material-ui/core/Typography';
+// Always use direct references for Material UI
+// component imports. Because #perfMatters!
+// import Typography from '@material-ui/core/Typography';
 
 const ${componentName}Styles = () => ({
 	root: {
@@ -33,8 +35,6 @@ class ${componentName} extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Typography>
-				</Typography>
 			</React.Fragment>
 		);
 	}
