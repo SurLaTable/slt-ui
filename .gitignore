@@ -1,8 +1,9 @@
-node_modules
-yarn*
-package-lock.json
-build/async
-build/sync
-build/dynamic-registration
+build/async/
+build/sync/
+build/dynamic-registration/
 builder/temp/
+coverage/
 .env
+node_modules/
+package-lock.json
+yarn*
