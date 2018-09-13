@@ -39,7 +39,7 @@ export default function buildDynamicRegistration() {
 		});
 
 		webpack(config, (err, stats) => {
-			console.log(
+			log.info(
 				stats.toString({
 					// Shows colors in the console
 					colors: true
@@ -56,5 +56,5 @@ export default function buildDynamicRegistration() {
 }
 buildDynamicRegistration.displayName = 'dynamic-registration';
 buildDynamicRegistration.description =
-	'build a single bundle ready to be used with ComponentManifest.register().';
+	'Build a single bundle ready to be used with ComponentManifest.register().';
 tasks.add(tasks.timed(buildDynamicRegistration));
