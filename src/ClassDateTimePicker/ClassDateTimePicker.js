@@ -23,8 +23,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { actions, selectors } from '../services/slt-class-times';
 
-const theme = createMuiTheme({});
-
 const panelStyles = () => ({
 	root: {
 		boxShadow: 'none',
@@ -40,6 +38,8 @@ const Transition = (props) => <Slide
 	direction="up"
 	{...props}
 />;
+
+const theme = createMuiTheme({});
 
 const StyledExpansionPanel = withStyles(panelStyles)((props) => (
 	<ExpansionPanel {...props}>{props.children}</ExpansionPanel>
