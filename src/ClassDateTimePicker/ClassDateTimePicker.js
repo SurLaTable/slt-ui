@@ -140,24 +140,26 @@ class ClassDateTimePicker extends React.Component {
 	}
 	returnMonthData(month) {
 		return this?.props?.classTimeData?.[month.numeric] ? (
-			this.props.classTimeData[month.numeric].map((culinaryClass, index) => (
-				<FormControlLabel
-					key={`${index}_${Date.now()}`}
-					value={culinaryClass.sku}
-					control={
-						<Radio
-							style={{
-								color: '#333333'
-							}}
-							onChange={() => {
-								this.setState({ sku: culinaryClass.sku });
-								return document.location.replace(`/sku/${culinaryClass.sku}/`);
-							}}
-						/>
-					}
-					label={giveMeTheClassTimeNicely(culinaryClass)}
-				/>
-			))
+			<React.Fragment>
+				{this.props.classTimeData[month.numeric].map((culinaryClass, index) => (
+					<FormControlLabel
+						// key={`${index}_${Date.now()}`}
+						value={culinaryClass.sku}
+						control={
+							<Radio
+								style={{
+									color: '#333333'
+								}}
+								onChange={() => {
+									this.setState({ sku: culinaryClass.sku });
+									return document.location.replace(`/sku/${culinaryClass.sku}/`);
+								}}
+							/>
+						}
+						label={giveMeTheClassTimeNicely(culinaryClass)}
+					/>
+				))}
+			</React.Fragment>
 		) : (
 			<Typography>No dates available.</Typography>
 		);
