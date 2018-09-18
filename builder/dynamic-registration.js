@@ -21,7 +21,13 @@ export default function buildDynamicRegistration() {
 		}
 	});
 
-	let entry = path.resolve(args._[1]);
+	// Allow multiple arguments to be processed for dynamic registration.
+	// It starts at index 1 because index 0 is 'dynamic-registration'.
+	let entry = () =>
+		new Promise((resolve) =>
+			resolve(args._.slice(1).map((componentPath) => path.resolve(componentPath)))
+		);
+
 	return new Promise((resolve, reject) => {
 		log.assert(entry, 'Dynamic Registration needs an entry');
 
@@ -39,9 +45,9 @@ export default function buildDynamicRegistration() {
 		});
 
 		webpack(config, (err, stats) => {
-			console.log(
+			log.info(
 				stats.toString({
-					// Shows colors in the console
+					// Shows colors in the console:
 					colors: true
 				})
 			);
@@ -56,5 +62,5 @@ export default function buildDynamicRegistration() {
 }
 buildDynamicRegistration.displayName = 'dynamic-registration';
 buildDynamicRegistration.description =
-	'build a single bundle ready to be used with ComponentManifest.register().';
+	'Build a single bundle ready to be used with ComponentManifest.register().';
 tasks.add(tasks.timed(buildDynamicRegistration));

@@ -42,7 +42,7 @@ tasks.add(
 
 if (require.main === module) {
 	if (args.tasks) {
-		console.log(tasks.list());
+		log.info(tasks.list());
 	} else {
 		tasks
 			.run(task)
