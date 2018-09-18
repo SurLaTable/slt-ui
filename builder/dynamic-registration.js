@@ -39,7 +39,7 @@ export default function buildDynamicRegistration() {
 		});
 
 		webpack(config, (err, stats) => {
-			log.info(
+			log.general(
 				stats.toString({
 					// Shows colors in the console
 					colors: true
