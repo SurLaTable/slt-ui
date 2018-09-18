@@ -38,6 +38,10 @@ export function general(...args) {
 	return console.log([time(), ...args].join(' ').grey);
 }
 
+export function log(...args) {
+	return console.log(...args);
+}
+
 export function assert(assertion, ...args) {
 	if (!assertion) {
 		throw new Error(`Assertion Failed: ${args.join(' ')}`);
