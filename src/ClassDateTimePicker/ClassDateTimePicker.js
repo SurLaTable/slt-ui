@@ -140,10 +140,15 @@ class ClassDateTimePicker extends React.Component {
 	}
 	returnMonthData(month) {
 		return this?.props?.classTimeData?.[month.numeric] ? (
-			<React.Fragment>
+			<RadioGroup
+				aria-label="Classes"
+				name="classes"
+				className=""
+				value={this.state.sku}
+			>
 				{this.props.classTimeData[month.numeric].map((culinaryClass, index) => (
 					<FormControlLabel
-						// key={`${index}_${Date.now()}`}
+						key={`${index}_${Date.now()}`}
 						value={culinaryClass.sku}
 						control={
 							<Radio
@@ -159,7 +164,7 @@ class ClassDateTimePicker extends React.Component {
 						label={giveMeTheClassTimeNicely(culinaryClass)}
 					/>
 				))}
-			</React.Fragment>
+			</RadioGroup>
 		) : (
 			<Typography>No dates available.</Typography>
 		);
@@ -208,14 +213,7 @@ class ClassDateTimePicker extends React.Component {
 								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<RadioGroup
-									aria-label="Classes"
-									name="classes"
-									className=""
-									value={this.state.sku}
-								>
-									{this.returnMonthData(currentMonth)}
-								</RadioGroup>
+								{this.returnMonthData(currentMonth)}
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 						<StyledExpansionPanel
@@ -228,14 +226,7 @@ class ClassDateTimePicker extends React.Component {
 								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<RadioGroup
-									aria-label="Classes"
-									name="classes"
-									className=""
-									value={this.state.sku}
-								>
-									{this.returnMonthData(nextMonth)}
-								</RadioGroup>
+								{this.returnMonthData(nextMonth)}
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 						<StyledExpansionPanel
@@ -248,14 +239,7 @@ class ClassDateTimePicker extends React.Component {
 								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<RadioGroup
-									aria-label="Classes"
-									name="classes"
-									className=""
-									value={this.state.sku}
-								>
-									{this.returnMonthData(doubleNextMonth)}
-								</RadioGroup>
+								{this.returnMonthData(doubleNextMonth)}
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 					</DialogContent>
