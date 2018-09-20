@@ -9,7 +9,6 @@ import FormControl from '@material-ui/core/FormControl';
 import * as googleMapsApi from '../services/google-maps';
 
 const styles = (theme) => {
-	console.log(theme);
 	return {
 		button: {
 			borderRadius: 0,

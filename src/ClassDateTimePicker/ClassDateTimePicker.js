@@ -23,8 +23,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { actions, selectors } from '../services/slt-class-times';
 
-const theme = createMuiTheme({});
-
 const panelStyles = () => ({
 	root: {
 		boxShadow: 'none',
@@ -40,6 +38,8 @@ const Transition = (props) => <Slide
 	direction="up"
 	{...props}
 />;
+
+const theme = createMuiTheme({});
 
 const StyledExpansionPanel = withStyles(panelStyles)((props) => (
 	<ExpansionPanel {...props}>{props.children}</ExpansionPanel>
@@ -140,24 +140,31 @@ class ClassDateTimePicker extends React.Component {
 	}
 	returnMonthData(month) {
 		return this?.props?.classTimeData?.[month.numeric] ? (
-			this.props.classTimeData[month.numeric].map((culinaryClass, index) => (
-				<FormControlLabel
-					key={`${index}_${Date.now()}`}
-					value={culinaryClass.sku}
-					control={
-						<Radio
-							style={{
-								color: '#333333'
-							}}
-							onChange={() => {
-								this.setState({ sku: culinaryClass.sku });
-								return document.location.replace(`/sku/${culinaryClass.sku}/`);
-							}}
-						/>
-					}
-					label={giveMeTheClassTimeNicely(culinaryClass)}
-				/>
-			))
+			<RadioGroup
+				aria-label="Classes"
+				name="classes"
+				className=""
+				value={this.state.sku}
+			>
+				{this.props.classTimeData[month.numeric].map((culinaryClass, index) => (
+					<FormControlLabel
+						key={`${index}_${Date.now()}`}
+						value={culinaryClass.sku}
+						control={
+							<Radio
+								style={{
+									color: '#333333'
+								}}
+								onChange={() => {
+									this.setState({ sku: culinaryClass.sku });
+									return document.location.replace(`/sku/${culinaryClass.sku}/`);
+								}}
+							/>
+						}
+						label={giveMeTheClassTimeNicely(culinaryClass)}
+					/>
+				))}
+			</RadioGroup>
 		) : (
 			<Typography>No dates available.</Typography>
 		);
@@ -206,14 +213,7 @@ class ClassDateTimePicker extends React.Component {
 								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<RadioGroup
-									aria-label="Classes"
-									name="classes"
-									className=""
-									value={this.state.sku}
-								>
-									{this.returnMonthData(currentMonth)}
-								</RadioGroup>
+								{this.returnMonthData(currentMonth)}
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 						<StyledExpansionPanel
@@ -226,14 +226,7 @@ class ClassDateTimePicker extends React.Component {
 								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<RadioGroup
-									aria-label="Classes"
-									name="classes"
-									className=""
-									value={this.state.sku}
-								>
-									{this.returnMonthData(nextMonth)}
-								</RadioGroup>
+								{this.returnMonthData(nextMonth)}
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 						<StyledExpansionPanel
@@ -246,14 +239,7 @@ class ClassDateTimePicker extends React.Component {
 								} ${nowDate.getFullYear()}`}</Typography>
 							</ExpansionPanelSummary>
 							<ExpansionPanelDetails>
-								<RadioGroup
-									aria-label="Classes"
-									name="classes"
-									className=""
-									value={this.state.sku}
-								>
-									{this.returnMonthData(doubleNextMonth)}
-								</RadioGroup>
+								{this.returnMonthData(doubleNextMonth)}
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 					</DialogContent>
