@@ -4,6 +4,7 @@ material-ui/
 !material-ui/packages/material-ui-icons/src/
 transforms/
 .babelrc
+.env
 .gitignore
 .gitmodules
 .prettierrc.json
