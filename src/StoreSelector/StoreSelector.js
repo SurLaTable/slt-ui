@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -86,11 +87,12 @@ class StoreSelector extends React.Component {
 	}
 	render() {
 		let { open, showMore, scrollTop } = this.state;
-		let { selectedStore, classes } = this.props;
+		let { selectedStore, classes, width } = this.props;
 
 		const dialog = (
 			<Dialog
 				fullWidth
+				fullScreen={isWidthDown('sm', width)}
 				maxWidth={'sm'}
 				open={open}
 				onClose={this.toggleOpen}
@@ -208,4 +210,4 @@ const mapStateToProps = (state, props) => {
 	};
 };
 
-export default connect(mapStateToProps)(withStyles(style)(StoreSelector));
+export default connect(mapStateToProps)(withWidth()(withStyles(style)(StoreSelector)));

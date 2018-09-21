@@ -1,6 +1,6 @@
 ```jsx
 <StoreProvider>
-	<ClassDateTimePicker />
+	<ClassDateTimePicker productId={"CFA-4578852"} storeId={"001"}/>
 </StoreProvider>
 ```
 

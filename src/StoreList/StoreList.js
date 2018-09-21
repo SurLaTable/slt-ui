@@ -59,7 +59,6 @@ class StoreList extends React.Component {
 					>
 						<Button
 							variant="outlined"
-							href={`#${storeData[i].storeId}`}
 							className={classes.button}
 							onClick={() => {
 								if (this.props.selectedStore == storeData[i].storeId) {

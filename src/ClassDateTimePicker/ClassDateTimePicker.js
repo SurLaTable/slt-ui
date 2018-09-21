@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { withStyles } from '@material-ui/core/styles';
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -22,6 +24,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { actions, selectors } from '../services/slt-class-times';
+
+import { selectors as storeSelectors } from '../services/slt-stores';
 
 const panelStyles = () => ({
 	root: {
@@ -91,22 +95,27 @@ class ClassDateTimePicker extends React.Component {
 			// We hydrate with the old state.
 			global.history.replaceState(null, 'ClassDateTimePicker');
 		}
-		global.addEventListener('popstate', (event) => {
-			const state = event.state;
+		this.handleHistoryPopState = this.handleHistoryPopState.bind(this);
+	}
+	handleHistoryPopState(event) {
+		const state = event.state;
 
-			if (state == null) {
-				// Close dialog:
-				this.setState({ open: false });
-			} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
-				this.setState({ open: true });
-				global.history.replaceState(state, 'ClassDateTimePicker');
-			}
-		});
+		if (state == null) {
+			// Close dialog:
+			this.setState({ open: false });
+		} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
+			this.setState({ open: true });
+			global.history.replaceState(state, 'ClassDateTimePicker');
+		}
 	}
 	componentDidMount() {
 		this.setState({
 			culinaryClassName: document.querySelector('h1.name')?.textContent || 'class'
 		});
+		global.addEventListener('popstate', this.handleHistoryPopState);
+	}
+	componentWillUnMount() {
+		global.removeEventListener('popstate', this.handleHistoryPopState);
 	}
 	handleChange = (panel) => (event, expanded) => {
 		this.setState({
@@ -135,8 +144,8 @@ class ClassDateTimePicker extends React.Component {
 		}
 		this.setState({ open: false });
 	}
-	onEnter() {
-		this.props.dispatch(actions.fetchClassTimes());
+	onEnter(productId, storeId) {
+		this.props.dispatch(actions.fetchClassTimes(productId, storeId));
 	}
 	returnMonthData(month) {
 		return this?.props?.classTimeData?.[month.numeric] ? (
@@ -170,7 +179,8 @@ class ClassDateTimePicker extends React.Component {
 		);
 	}
 	render() {
-		const { expanded } = this.state;
+		let { width, productId, storeId } = this.props;
+		const { expanded, culinaryClassName, open } = this.state;
 
 		return (
 			<MuiThemeProvider theme={theme}>
@@ -182,9 +192,10 @@ class ClassDateTimePicker extends React.Component {
 				</Button>
 				<Dialog
 					fullWidth={true}
-					open={this.state.open}
+					fullScreen={isWidthDown('sm', width)}
+					open={open}
 					onClose={this.handleClose.bind(this)}
-					onEnter={this.onEnter.bind(this)}
+					onEnter={() => this.onEnter(productId, storeId)}
 					PaperProps={{
 						style: {}
 					}}
@@ -200,7 +211,7 @@ class ClassDateTimePicker extends React.Component {
 							overflow: 'overlay'
 						}}
 					>
-						Available dates for {this.state.culinaryClassName}:
+						Available dates for {culinaryClassName}:
 					</DialogTitle>
 					<DialogContent>
 						<StyledExpansionPanel
@@ -243,6 +254,14 @@ class ClassDateTimePicker extends React.Component {
 							</ExpansionPanelDetails>
 						</StyledExpansionPanel>
 					</DialogContent>
+					<DialogActions>
+						<Button
+							onClick={this.handleClose.bind(this)}
+							color="primary"
+						>
+							Close
+						</Button>
+					</DialogActions>
 				</Dialog>
 			</MuiThemeProvider>
 		);
@@ -253,12 +272,17 @@ ClassDateTimePicker.propTypes = {
 	children: PropTypes.string,
 	classTimeData: PropTypes.object,
 	dispatch: PropTypes.func,
-	selection: PropTypes.bool
+	selection: PropTypes.bool,
+	storeId: PropTypes.string,
+	ProductId: PropTypes.string
 };
 
 ClassDateTimePicker.defaultProps = {};
 
-export default connect((state, props) => ({
+const mapStateToProps = (state, props) => ({
 	...props,
-	classTimeData: selectors.getClassTimeData ? selectors.getClassTimeData(state) : {}
-}))(ClassDateTimePicker);
+	classTimeData: selectors.getClassTimeData ? selectors.getClassTimeData(state) : {},
+	storeId: storeSelectors.getSelectedItem(state)
+});
+
+export default connect(mapStateToProps)(withWidth()(ClassDateTimePicker));

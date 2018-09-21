@@ -9,9 +9,7 @@ const culinaryClassTimesEndpoint =
 
 const arrayMeIfEmpty = (item) => (Array.isArray(item) ? item : []);
 
-export const fetchClassTimes = ({ actions, product = 'CFA-4578852', location = '004' }) => (
-	dispatch
-) =>
+export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 	axios.get(`${culinaryClassTimesEndpoint}${product}`).then((http) =>
 		dispatch(
 			actions.setClassTimeData(
