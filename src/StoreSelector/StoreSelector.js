@@ -23,10 +23,12 @@ import * as sltStoresApi from '../services/slt-stores';
 const style = (theme) => {
 	return {
 		display: {
-			display: 'inline-block',
+			display: 'flex',
+			flexDirection: 'column',
 			border: `1px solid ${theme.palette.grey[400]}`,
 			borderRadius: 0,
-			padding: '5px 8px',
+			padding: '8px 8px',
+			justifyContent: 'space-evenly',
 			background: `${theme.palette.grey[100]}`
 		},
 		button: {
@@ -52,6 +54,7 @@ class StoreSelector extends React.Component {
 		this.state = {
 			open: false,
 			showMore: 1,
+			canShowMore: true,
 			scrollTop: 0
 		};
 		this.animateScrollRequest = null;
@@ -153,10 +156,15 @@ class StoreSelector extends React.Component {
 					elevation={0}
 					className={classes.display}
 				>
-					<Typography>No location selected</Typography>
+					<Typography>Class Location:</Typography>
+					<Typography>
+						<strong>Select a location</strong>
+					</Typography>
 					<Button
+						fullWidth
 						onClick={this.toggleOpen}
 						className={classes.button}
+						style={{ flex: 1 }}
 					>
 						Select Location
 					</Button>
@@ -172,28 +180,26 @@ class StoreSelector extends React.Component {
 					<Typography>Class Location:</Typography>
 					<Typography>
 						<strong>
-							{location.address1}
-							<br />
 							{location.city}
 							{', '}
-							{location.state} {location.zip}
+							{location.state}
 						</strong>
 					</Typography>
 					<Button
 						onClick={this.toggleOpen}
 						className={classes.button}
 					>
-						Change Location
+						Select Location
 					</Button>
 				</Paper>
 			);
 		}
 
 		return (
-			<div>
+			<>
 				{display}
 				{dialog}
-			</div>
+			</>
 		);
 	}
 }

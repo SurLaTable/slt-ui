@@ -1,4 +1,5 @@
 import React from 'react';
+import Habitat from 'react-habitat/lib/Habitat';
 import ReactDOM from 'react-dom';
 // import { Provider }		from 'react-redux';
 // import { createStore } from "redux";
@@ -30,6 +31,7 @@ export default class SLTDomFactory {
 						return componentCount++;
 					});
 					if (child) {
+						console.log(child);
 						children.push(child);
 					}
 				} catch (e) {
@@ -46,11 +48,11 @@ export default class SLTDomFactory {
 				},
 				React.createElement(module, props, children)
 			);
-
+			console.log('wrapper:', wrapper);
 			// ReactDOM.render(wrapper, target);
 			// ReactDOM.render(React.createElement(Provider, { store: this.store },wrapper), target);
 			if (wrapper) {
-				ReactDOM.render(React.createElement(StoreProvider, props, wrapper), target);
+				ReactDOM.render(React.createElement(StoreProvider, {}, wrapper), target);
 			}
 		}
 	}

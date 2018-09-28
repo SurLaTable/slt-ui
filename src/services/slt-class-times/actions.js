@@ -4,25 +4,36 @@ import axios from 'axios';
 
 // const apiStorage = store.namespace('classes-service');
 
-const culinaryClassTimesEndpoint =
-	'https://www.surlatable.com/browse/include/culClassJSONData.jsp?productId=';
+const options = {
+	get endpoint() {
+		return (
+			global.CULINARY_CLASS_TIMES_ENDPOINT ||
+			'https://www.surlatable.com/browse/include/culClassJSONData.jsp'
+		);
+	}
+};
 
 const arrayMeIfEmpty = (item) => (Array.isArray(item) ? item : []);
 
 export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
-	axios.get(`${culinaryClassTimesEndpoint}${product}`).then((http) =>
-		dispatch(
-			actions.setClassTimeData(
-				http.data
-					.filter((culinaryClass) => culinaryClass.storeId === location)
-					.reduce((newObj, culinaryClass) => {
-						const monthProp = new Date(culinaryClass.classStartDate).getMonth();
-						newObj[monthProp] = arrayMeIfEmpty(newObj[monthProp]);
-						newObj[monthProp].push(culinaryClass);
-						return newObj;
-					}, {})
-			)
-		)
-	);
+	axios
+		.get(`${options.endpoint}?productId=${product}`)
+		.then((http) => {
+			const data = http.data
+				.filter((culinaryClass) => culinaryClass.storeId === location)
+				.reduce((newObj, culinaryClass) => {
+					const prop = new Date(culinaryClass.classStartDate).toLocaleString('en-us', {
+						month: 'long',
+						year: 'numeric'
+					});
+					newObj[prop] = arrayMeIfEmpty(newObj[prop]);
+					newObj[prop].push(culinaryClass);
+					return newObj;
+				}, {});
+			const first = Object.keys(data)[0];
+			dispatch(actions.setClassTimeData(data));
+			dispatch(actions.setSelectedClass(first));
+		})
+		.catch((e) => console.error(e));
 
 // 	apiStorage.local && apiStorage.local({ classTimeData: http.data });

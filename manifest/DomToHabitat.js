@@ -1,4 +1,4 @@
-import Habitat from 'react-habitat/lib/Habitat';
+import Habitat, { ACTIVE_HABITAT_FLAG } from 'react-habitat/lib/Habitat';
 import { asyncComponent } from 'react-async-component';
 import React from 'react';
 
@@ -33,8 +33,13 @@ export default function DomToHabitatBuilder(bootstrapper) {
 			return null;
 		}
 		// Ignore elements that have already been connected:
-		if (Habitat.hasHabitat(ele)) {
-			return null;
+		if (ele.hasAttribute(ACTIVE_HABITAT_FLAG)) {
+			console.log('hasHabitat:', ele);
+			if (ele.getAttribute(ACTIVE_HABITAT_FLAG) === 'temp') {
+				ele.removeAttribute(ACTIVE_HABITAT_FLAG);
+			} else {
+				return null;
+			}
 		}
 
 		var children = [];
@@ -42,12 +47,14 @@ export default function DomToHabitatBuilder(bootstrapper) {
 
 		//possible location of failure for dynamic registration
 		var registration = bootstrapper.__container__._registrations[componentName];
+		console.log('registration:', ele, registration);
 
 		for (var i = 0, componentCount = 0, child; i < ele.childNodes.length; i++) {
 			child = domToHabitat(ele.childNodes[i], function() {
 				return componentCount++;
 			});
 			if (child) {
+				console.log('inner child:', child);
 				children.push(child);
 			}
 		}
@@ -55,43 +62,36 @@ export default function DomToHabitatBuilder(bootstrapper) {
 		var reEl;
 		if (registration) {
 			// This is a component.
-			var props = {};
+			let Component = asyncComponent({
+				resolve: () => registration._operator()
+			});
+			let key = `${componentName}-${incrementID()}`;
+			var props = {
+				key: key,
+				'data-component-id': key
+			};
 			try {
 				props = Object.assign(props, Habitat.parseProps(ele));
 			} catch (e) {
 				props = Object.assign(props, getProps(ele));
 			}
-			//TODO create unique ID HERE
+
 			if (registration.meta.defaultProps) {
 				props = Object.assign({}, registration.meta.defaultProps, props);
 			}
 
-			let Component = asyncComponent({
-				resolve: () => registration._operator()
-			});
-			let key = `${componentName}-${incrementID()}`;
-
-			reEl = React.createElement(
-				ele.nodeName.toLowerCase(),
-				{
-					key: key,
-					'data-component-id': key
-				},
-				React.createElement(Component, props, children)
-			);
+			return React.createElement(Component, props, children);
 		} else {
 			// Regular element:
-			let key = `${componentName}-${incrementID()}`;
-			reEl = React.createElement(
+			let key = `${ele.nodeName.toLowerCase()}-${incrementID()}`;
+			return React.createElement(
 				ele.nodeName.toLowerCase(),
 				{
 					key: key,
-					'data-component-id': key,
 					...getProps(ele)
 				},
 				children
 			);
 		}
-		return reEl;
 	};
 }

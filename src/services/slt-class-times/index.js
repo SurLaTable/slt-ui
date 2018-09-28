@@ -6,7 +6,8 @@ import reheat from 'redux-reheat';
 const { actions, reducer, selectors } = reheat({
 	namespace: __dirname.split('/').pop(),
 	initialState: {
-		classTimeData: {}
+		classTimeData: {},
+		selectedClass: null
 	},
 	actionCreators
 });

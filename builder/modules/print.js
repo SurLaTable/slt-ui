@@ -46,9 +46,10 @@ export function assert(assertion, ...args) {
 
 let loader = {
 	message: 'Loading',
-	bar: ' '.bgGreen,
-	back: '_'.grey,
+	bar: '#',
+	back: '-',
 	max: 0,
+	bminus: 0,
 	started: false
 };
 export function startLoader(max, message = loader.message) {
@@ -57,22 +58,39 @@ export function startLoader(max, message = loader.message) {
 	}
 	loader.message = message;
 	loader.max = max;
+	loader.bminus = max.toString().length * 2 + 1;
 	loader.started = true;
-	var w = process.stdout.columns - ((loader.message.length + 3) % process.stdout.columns);
-	process.stdout.write(`${loader.message}: ${loader.back.repeat(w)}`);
+
+	var stat = ('0/' + loader.max).padStart(loader.bminus);
+	var w =
+		process.stdout.columns -
+		((loader.message.length + 5 + loader.bminus) % process.stdout.columns);
+	process.stdout.write(`${loader.message} [${loader.back.repeat(w)}] ${stat}`);
 }
 export function setLoader(count) {
 	if (loader.started == false) {
 		throw new Error('Call startLoader() before using setLoader()');
 	}
-	var w = process.stdout.columns - ((loader.message.length + 3) % process.stdout.columns);
+	var w =
+		process.stdout.columns -
+		((loader.message.length + 5 + loader.bminus) % process.stdout.columns);
 	var p = parseInt((count / loader.max) * w, 10);
+	var stat = (count + '/' + loader.max).padStart(loader.bminus);
 	var l = w - p;
 	readline.cursorTo(process.stdout, 0);
-	process.stdout.write(`${loader.message}: ${loader.bar.repeat(p)}${loader.back.repeat(l)}`);
+	process.stdout.write(
+		`${loader.message} [${loader.bar.repeat(p)}${loader.back.repeat(l)}] ${stat}`
+	);
 }
 export function endLoader() {
 	loader.started = false;
+	var stat = (loader.max + '/' + loader.max).padStart(loader.bminus);
+	var w =
+		process.stdout.columns -
+		((loader.message.length + 5 + loader.bminus) % process.stdout.columns);
+
+	readline.cursorTo(process.stdout, 0);
+	process.stdout.write(`${loader.message} [${loader.bar.repeat(w)}] ${stat}`);
 	process.stdout.write(`\n`.reset);
 }
 

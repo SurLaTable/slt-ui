@@ -123,7 +123,8 @@ StoreCard.propTypes = {
 	location: PropTypes.object.isRequired,
 	contactInfo: PropTypes.object,
 	hours: PropTypes.object,
-	distance: PropTypes.number
+	distance: PropTypes.number,
+	children: PropTypes.node
 };
 
 export default withStyles(styles)(StoreCard);

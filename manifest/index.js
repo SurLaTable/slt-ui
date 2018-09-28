@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactHabitat from 'react-habitat';
-import Registration from 'react-habitat/lib/Registration';
+import { ACTIVE_HABITAT_FLAG } from 'react-habitat/lib/Habitat';
 
 import SLTDomFactory from './SLTDomFactory';
 import PubSub from './pubsub';
@@ -11,13 +11,14 @@ import DomToHabitatBuilder from './DomToHabitat.js';
 //NOTE: This is a webpack specific loader, used to generate the async wrapper
 import * as sltUi from '../builder/temp/slt';
 
-function dig(path, obj) {
-	return path.split('.').reduce((itm, key) => {
-		return itm[key];
-	}, obj);
-}
-
 class Manifest extends ReactHabitat.Bootstrapper {
+	willUpdate(target, query) {
+		query.forEach((ele) => {
+			if (ele.matches(`[${this.componentSelector}] [${this.componentSelector}]`)) {
+				ele.setAttribute(ACTIVE_HABITAT_FLAG, 'temp');
+			}
+		});
+	}
 	constructor() {
 		super();
 

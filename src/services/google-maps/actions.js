@@ -1,9 +1,9 @@
 import googleMaps from '@google/maps';
+import { likeString } from '../../utils/hacks.js';
 
 // @google/maps api key
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || global.GOOGLE_MAPS_API_KEY;
 const client = googleMaps.createClient({
-	key: GOOGLE_MAPS_API_KEY,
+	key: likeString(() => global.GOOGLE_MAPS_API_KEY || process.env.GOOGLE_MAPS_API_KEY),
 	Promise: Promise,
 	retryOptions: {
 		interval: 1000
@@ -45,6 +45,7 @@ export const fetchReverseGeocode = ({ actions }, options) => {
 			.then((response) => {
 				dispatch(actions.setIsFetching(false));
 				return dispatch(actions.setData(response.json.results));
-			});
+			})
+			.catch((e) => console.error(e));
 	};
 };

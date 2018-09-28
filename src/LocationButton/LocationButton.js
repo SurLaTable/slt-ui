@@ -84,7 +84,8 @@ LocationButton.defaultProps = {
 	disabled: false
 };
 LocationButton.propTypes = {
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
+	children: PropTypes.node
 };
 
 export default withStyles(styles)(LocationButton);
