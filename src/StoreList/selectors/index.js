@@ -1,7 +1,10 @@
 import { createSelector } from 'reselect';
 
 import * as sltStoresApi from '../../services/slt-stores';
-import { filterItemsAlphabetically } from '../../services/slt-stores/filters.js';
+import {
+	filterItemsAlphabetically,
+	filterItemsByCulinary
+} from '../../services/slt-stores/filters.js';
 import * as googleMapsApi from '../../services/google-maps';
 
 function haversineDistance(lat1, lon1, lat2, lon2, unit) {
@@ -29,8 +32,8 @@ function haversineSort(items = [], latlng = {}) {
 			return {
 				...item,
 				distance: haversineDistance(
-					latlng.lat,
-					latlng.lng,
+					typeof latlng.lat == 'function' ? latlng.lat() : latlng.lat,
+					typeof latlng.lng == 'function' ? latlng.lng() : latlng.lng,
 					item.location.lat,
 					item.location.lng
 				)
@@ -42,9 +45,12 @@ export const getClosestStores = createSelector(
 	[sltStoresApi.selectors.getItems, googleMapsApi.selectors.getData],
 	(items = [], locationData) => {
 		if (locationData?.[0]?.geometry?.location) {
-			return haversineSort(items, locationData?.[0]?.geometry?.location);
+			var sortedItems = haversineSort(items, locationData?.[0]?.geometry?.location);
+			return sortedItems;
 		} else {
 			return filterItemsAlphabetically(items);
 		}
 	}
 );
+
+export const getClosestCulinaryStores = createSelector(getClosestStores, filterItemsByCulinary);

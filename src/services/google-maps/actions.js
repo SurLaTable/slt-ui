@@ -1,50 +1,146 @@
-import googleMaps from '@google/maps';
+/*import googleMaps from '@google/maps';
 
-// @google/maps api key
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || global.GOOGLE_MAPS_API_KEY;
 const client = googleMaps.createClient({
-	key: GOOGLE_MAPS_API_KEY,
+	key: global.GOOGLE_MAPS_API_KEY || process.env.GOOGLE_MAPS_API_KEY,
 	Promise: Promise,
 	retryOptions: {
-		interval: 1000
+		interval: 200
 	},
+	timeout: 15 * 1000,
 	rate: {
 		period: 1000,
 		limit: 5
+	},
+	options: {
+		headers: {
+			'Access-Control-Allow-Credentials': true
+		}
 	}
-});
+});*/
+import $ from 'jquery';
 
-export const fetchGeocode = ({ actions }, options) => {
-	return (dispatch) => {
-		dispatch(actions.setIsFetching(true));
-
-		return client
-			.geocode(options)
-			.asPromise()
-			.then((response) => {
-				dispatch(actions.setIsFetching(false));
-				return dispatch(actions.setData(response.json.results));
-			})
-			.catch((err) => {
-				dispatch(actions.setIsFetching(false));
-				return dispatch(
-					actions.setData([
-						{ error: err.json ? err.json.error_message : 'Something went wrong' }
-					])
-				);
+const getGoogle = (function() {
+	var google = null;
+	return () => {
+		if (google) {
+			return Promise.resolve(google);
+		} else {
+			return new Promise((resolve, reject) => {
+				$.getScript(
+					`//maps.googleapis.com/maps/api/js?key=${global.GOOGLE_MAPS_API_KEY ||
+						process.env.GOOGLE_MAPS_API_KEY}`,
+					function() {
+						setTimeout(function() {
+							google = global.google;
+							resolve(global.google);
+						});
+					}
+				).fail((jqxhr, settings, exception) => reject(exception));
 			});
+		}
+	};
+})();
+
+export const fetchGeocode = ({ actions }, query) => {
+	return async (dispatch) => {
+		dispatch(actions.setIsFetching(true));
+		try {
+			const google = await getGoogle();
+			const geocoder = new google.maps.Geocoder();
+
+			geocoder.geocode(query, function(res, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(true));
+					return dispatch(actions.setData(res));
+				} else {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(false));
+					return dispatch(
+						actions.setData([{ error: res.error_message || 'Something went wrong' }])
+					);
+				}
+			});
+			/*
+			return client
+				.geocode({
+					...query
+				})
+				.asPromise()
+				.then((response) => {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(true));
+					return dispatch(actions.setData(response.json.results));
+				})
+				.catch((err) => {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(false));
+					return dispatch(
+						actions.setData([
+							{ error: err.json ? err.json.error_message : 'Something went wrong' }
+						])
+					);
+				});*/
+		} catch (err) {
+			dispatch(actions.setIsFetching(false));
+			dispatch(actions.setHasLocations(false));
+			return dispatch(
+				actions.setData([
+					{ error: typeof err == 'string' ? err : err.message || 'Something went wrong' }
+				])
+			);
+		}
 	};
 };
 
-export const fetchReverseGeocode = ({ actions }, options) => {
-	return (dispatch) => {
+export const fetchReverseGeocode = ({ actions }, query) => {
+	return async (dispatch) => {
 		dispatch(actions.setIsFetching(true));
-		return client
-			.reverseGeocode(options)
-			.asPromise()
-			.then((response) => {
-				dispatch(actions.setIsFetching(false));
-				return dispatch(actions.setData(response.json.results));
+		try {
+			const google = await getGoogle();
+			const geocoder = new google.maps.Geocoder();
+
+			geocoder.geocode(query, function(res, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(true));
+					return dispatch(actions.setData(res));
+				} else {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(false));
+					return dispatch(
+						actions.setData([{ error: res.error_message || 'Something went wrong' }])
+					);
+				}
 			});
+			/*
+			return client
+				.reverseGeocode({
+					...query
+				})
+				.asPromise()
+				.then((response) => {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(true));
+					return dispatch(actions.setData(response.json.results));
+				})
+				.catch((err) => {
+					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(false));
+					return dispatch(
+						actions.setData([
+							{ error: err.json ? err.json.error_message : 'Something went wrong' }
+						])
+					);
+				});*/
+		} catch (err) {
+			dispatch(actions.setIsFetching(false));
+			dispatch(actions.setHasLocations(false));
+			return dispatch(
+				actions.setData([
+					{ error: typeof err == 'string' ? err : err.message || 'Something went wrong' }
+				])
+			);
+		}
 	};
 };

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { actionRemoveProduct } from '../services';
 import { connect } from 'react-redux';
 
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Badge from '@material-ui/core/Badge';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -14,8 +12,6 @@ import Slide from '@material-ui/core/Slide';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import CancelIcon from '@material-ui/icons/Cancel';
 import ComparisonTable from '../ComparisonTable/ComparisonTable';
-
-const theme = createMuiTheme({});
 
 class ComparisonBar extends React.Component {
 	render() {
@@ -33,102 +29,100 @@ class ComparisonBar extends React.Component {
 			.map((ignore, index) => (props.selection && props.selection[index]) || index);
 
 		return (
-			<MuiThemeProvider theme={theme}>
-				<Slide
-					direction="up"
-					in={typeof selection[0] === 'object'}
-					mountOnEnter
-					unmountOnExit
+			<Slide
+				direction="up"
+				in={typeof selection[0] === 'object'}
+				mountOnEnter
+				unmountOnExit
+			>
+				<Paper
+					className="comparison-bar"
+					ref={(ComparisonBarContainer) =>
+						(this.ComparisonBarContainer = ComparisonBarContainer)
+					}
+					elevation={4}
+					style={{
+						backgroundColor: '#E4E4E4',
+						bottom: 0,
+						left: '5%',
+						right: '5%',
+						paddingBottom: '48px',
+						position: 'fixed',
+						width: '90%',
+						zIndex: 1300
+					}}
 				>
-					<Paper
-						className="comparison-bar"
-						ref={(ComparisonBarContainer) =>
-							(this.ComparisonBarContainer = ComparisonBarContainer)
-						}
-						elevation={4}
+					<BottomNavigation
+						showLabels
 						style={{
 							backgroundColor: '#E4E4E4',
-							bottom: 0,
-							left: '5%',
-							right: '5%',
-							paddingBottom: '48px',
-							position: 'fixed',
-							width: '90%',
-							zIndex: 1300
+							marginTop: '10px'
 						}}
 					>
-						<BottomNavigation
-							showLabels
-							style={{
-								backgroundColor: '#E4E4E4',
-								marginTop: '10px'
-							}}
-						>
-							<ComparisonTable type="cutlery" />
+						<ComparisonTable type="cutlery" />
 
-							{selection &&
-								selection.map((product, index) => {
-									// Since the product data contains multiple skus,
-									// we just grab the first one available.
-									// We may decide later to change this behavior,
-									// with some kind of user selection tool.
-									const productData = product
-										? product[Object.keys(product)[0]]
-										: index;
-									const productId = product.id || '';
+						{selection &&
+							selection.map((product, index) => {
+								// Since the product data contains multiple skus,
+								// we just grab the first one available.
+								// We may decide later to change this behavior,
+								// with some kind of user selection tool.
+								const productData = product
+									? product[Object.keys(product)[0]]
+									: index;
+								const productId = product.id || '';
 
-									return (
-										<BottomNavigationAction
-											key={index}
-											label={
-												productData
-													? `${productData['Web Brand']} ${
-															productData.Collection
-													  }`
-													: `Item #${index + 1}`
-											}
-											// Disable the ripple animation if the item box is empty:
-											disableRipple={!productId.length}
-											icon={
-												<React.Fragment>
-													{productId.length ? (
-														<Badge
-															data-product-id={productId}
-															badgeContent={<CancelIcon />}
-															onClick={(event, checked) => {
-																props.dispatch(
-																	actionRemoveProduct(productId)
-																);
-															}}
-														>
-															<img
-																alt={`${productData['Web Brand']} ${
-																	productData.Collection
-																}`}
-																src={`https://www.surlatable.com/images/customers/c1079/${productId}/generated/${productId}_Default_1_200x200.jpg`}
-																style={{
-																	border: '1px solid black',
-																	height: '50px',
-																	width: '50px'
-																}}
-															/>
-														</Badge>
-													) : (
-														<AddBoxIcon
+								return (
+									<BottomNavigationAction
+										key={index}
+										label={
+											productData
+												? `${productData['Web Brand']} ${
+														productData.Collection
+												  }`
+												: `Item #${index + 1}`
+										}
+										// Disable the ripple animation if the item box is empty:
+										disableRipple={!productId.length}
+										icon={
+											<React.Fragment>
+												{productId.length ? (
+													<Badge
+														data-product-id={productId}
+														badgeContent={<CancelIcon />}
+														onClick={(event, checked) => {
+															props.dispatch(
+																actionRemoveProduct(productId)
+															);
+														}}
+													>
+														<img
+															alt={`${productData['Web Brand']} ${
+																productData.Collection
+															}`}
+															src={`https://www.surlatable.com/images/customers/c1079/${productId}/generated/${productId}_Default_1_200x200.jpg`}
 															style={{
-																fontSize: 50
+																border: '1px solid black',
+																height: '50px',
+																width: '50px'
 															}}
 														/>
-													)}
-												</React.Fragment>
-											}
-										/>
-									);
-								})}
-						</BottomNavigation>
-					</Paper>
-				</Slide>
-			</MuiThemeProvider>
+													</Badge>
+												) : (
+													<AddBoxIcon
+														style={{
+															fontSize: 50
+														}}
+													/>
+												)}
+											</React.Fragment>
+										}
+									/>
+								);
+							})}
+					</BottomNavigation>
+				</Paper>
+			</Slide>
 		);
 	}
 }

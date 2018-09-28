@@ -19,7 +19,7 @@ import './docs.js';
 
 function handleError(err) {
 	if (err) {
-		log.error(err.stack);
+		log.error(err);
 	}
 }
 
@@ -27,14 +27,7 @@ let task = args._[0] || 'default';
 
 tasks.add(
 	tasks.timed(() => {
-		return tasks.run('clean').then(() => {
-			// Run these in parallel:
-			return Promise.all([
-				tasks.run('build-manifest'),
-				tasks.run('build-components'),
-				tasks.run('build-docs')
-			]);
-		});
+		return tasks.run('clean').then(tasks.get('build-manifest'));
 	}),
 	'default',
 	'The default task.'

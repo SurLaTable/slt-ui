@@ -5,12 +5,12 @@ import log from './modules/print';
 import webpackConfig from './config/build.webpack.config.js';
 import tasks from './modules/tasks.js';
 import { write } from './utils';
+import args from './modules/args.js';
 
 function generateSLTUIAsync(promises) {
 	return new Promise((resolve, reject) => {
 		glob(path.posix.resolve('../src/[A-Z]*/index.js'), async function(err, files) {
 			if (err) {
-				log.error(err);
 				reject(err);
 			}
 
@@ -21,15 +21,26 @@ function generateSLTUIAsync(promises) {
 
 					export * from '../material/index.js';
 				`;
-			log.loader.start(files.length, 'Async Slt Ui');
+			if (args.verbose) {
+				log.info('Async Slt Ui');
+			} else {
+				log.loader.start(files.length, 'Async Slt Ui');
+			}
 			for (let i = 0; i < files.length; i++) {
 				let file = files[i];
 				let folderName = path.posix.basename(path.posix.dirname(file));
-
-				var module = require(path.posix.resolve(file));
+				var module;
+				try {
+					module = require(path.posix.resolve(file));
+				} catch (err) {
+					reject(err);
+				}
 				let indexCode = `
 						import { asyncComponent } from 'react-async-component';
 					`;
+				if (args.verbose) {
+					log.info(`In ${file}`);
+				}
 				for (let component in module) {
 					if (
 						module.hasOwnProperty(component) === false ||
@@ -50,6 +61,10 @@ function generateSLTUIAsync(promises) {
 								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
 						`;
+
+					if (args.verbose) {
+						log.general(`${component} -> ${exportName}`);
+					}
 				}
 				promises.push(
 					write(path.resolve(`./builder/temp/slt/${folderName}/index.js`), indexCode)
@@ -58,10 +73,16 @@ function generateSLTUIAsync(promises) {
 				code += `
 						export * from './${folderName}';
 					`;
-				log.loader.set(i);
+				if (args.verbose) {
+					log.general(`writing to ./builder/temp/slt/${folderName}/index.js`);
+				} else {
+					log.loader.set(i);
+				}
 			}
 
-			log.loader.end();
+			if (!args.verbose) {
+				log.loader.end();
+			}
 
 			promises.push(write(path.resolve('./builder/temp/slt/index.js'), code));
 			resolve();
@@ -78,16 +99,28 @@ function generateMaterialAsync(promises) {
 		let files = muiCore;
 
 		let code = '';
-		log.loader.start(files.length, 'Async Material');
+		if (args.verbose) {
+			log.info('Async Material');
+		} else {
+			log.loader.start(files.length, 'Async Material');
+		}
 		for (let i = 0; i < files.length; i++) {
 			let file = files[i];
 			let folderName = path.posix.basename(path.posix.dirname(file));
 			let fileName = path.posix.basename(file, '.js');
+			var module;
+			try {
+				module = require(path.posix.resolve(file));
+			} catch (err) {
+				reject(err);
+			}
 
-			var module = require(path.posix.resolve(file));
 			let indexCode = `
 						import {asyncComponent} from 'react-async-component';
 					`;
+			if (args.verbose) {
+				log.info(`In ${file}`);
+			}
 			for (let component in module) {
 				if (
 					module.hasOwnProperty(component) === false ||
@@ -110,6 +143,9 @@ function generateMaterialAsync(promises) {
 								)}' /*webpackChunkName: '${exportName}'*/).then(module => module['${component}'])
 							});
 				`;
+				if (args.verbose) {
+					log.general(`${component} -> ${exportName}`);
+				}
 			}
 
 			promises.push(
@@ -122,10 +158,17 @@ function generateMaterialAsync(promises) {
 			code += `
 						export * from './${folderName}/${fileName}.js';
 					`;
-			log.loader.set(i);
+
+			if (args.verbose) {
+				log.general(`writing to ./builder/temp/material/${folderName}/${fileName}.js`);
+			} else {
+				log.loader.set(i);
+			}
 		}
 
-		log.loader.end();
+		if (!args.verbose) {
+			log.loader.end();
+		}
 
 		promises.push(write(path.resolve('./builder/temp/material/index.js'), code));
 		resolve();
@@ -136,7 +179,6 @@ export async function generateAsync() {
 	let promises = [];
 	await generateMaterialAsync(promises);
 	await generateSLTUIAsync(promises);
-
 	return Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';
@@ -149,17 +191,19 @@ export async function buildManifest() {
 			index: './manifest/index.js'
 		},
 		output: {
-			path: path.resolve('./build/async')
+			path: path.resolve('./build/async'),
+			publicPath: '/scripts/manifest/'
 		}
 	});
 
 	return new Promise((resolve, reject) => {
 		webpack(finalConfig, (err, stats) => {
 			log.general(
-				stats.toString({
-					// Shows colors in the console:
-					colors: true
-				})
+				stats &&
+					stats.toString({
+						// Shows colors in the console:
+						colors: true
+					})
 			);
 			if (err || stats.hasErrors()) {
 				reject(err);

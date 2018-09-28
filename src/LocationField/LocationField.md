@@ -1,11 +1,11 @@
 ```jsx
-<StoreProvider>
-	<LocationField />
-</StoreProvider>
+<ThemeProvider>
+	<StoreProvider>
+		<LocationField />
+	</StoreProvider>
+</ThemeProvider>
 ```
 
 ```html
-<div data-component="StoreProvider">
-	<div data-component="LocationField"></div>
-</div>
+<div data-component="LocationField"></div>
 ```

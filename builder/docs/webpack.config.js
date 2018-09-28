@@ -7,7 +7,8 @@ export default {
 		react: false,
 		'react-dom': false,
 		'react-redux': false,
-		redux: false
+		redux: false,
+		jquery: false
 	},
 	output: {
 		publicPath: '/'

@@ -7,18 +7,23 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-const styles = (theme) => ({
-	details: {
-		display: 'flex'
-	},
-	content: {
-		flex: 1
-	},
-	distance: {
-		fontSize: theme.typography.pxToRem(12),
-		color: theme.palette.text.secondary
-	}
-});
+const styles = (theme) => {
+	return {
+		details: {
+			display: 'flex',
+			paddingLeft: 15
+		},
+		content: {
+			paddingLeft: 0,
+			paddingRight: 0,
+			flex: 1
+		},
+		distance: {
+			fontSize: theme.typography.pxToRem(12),
+			color: theme.palette.text.secondary
+		}
+	};
+};
 
 class StoreCard extends React.Component {
 	constructor() {
@@ -123,7 +128,8 @@ StoreCard.propTypes = {
 	location: PropTypes.object.isRequired,
 	contactInfo: PropTypes.object,
 	hours: PropTypes.object,
-	distance: PropTypes.number
+	distance: PropTypes.number,
+	children: PropTypes.node
 };
 
 export default withStyles(styles)(StoreCard);

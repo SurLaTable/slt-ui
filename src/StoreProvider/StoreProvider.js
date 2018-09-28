@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import configureStore from '../utils/storeTools';
+import configureStore from '../utils/storeTools.js';
 
 export const store = configureStore();
 

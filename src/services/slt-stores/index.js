@@ -1,4 +1,4 @@
-import { addAsyncReducers } from '../../utils/storeTools';
+import { addAsyncReducers } from '../../utils/storeTools.js';
 import { store } from '../../StoreProvider';
 import reheat from 'redux-reheat';
 
@@ -10,7 +10,8 @@ const { reducer, actions, selectors } = reheat({
 	initialState: {
 		items: [],
 		isFetching: false,
-		selectedItem: null
+		selectedItem: null,
+		persist: [false, { items: true, selectedItem: true }]
 	},
 	actionCreators,
 	selectorCreators

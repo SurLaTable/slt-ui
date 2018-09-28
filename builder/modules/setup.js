@@ -1,15 +1,16 @@
-import 'colors';
+import log from './print.js';
 import rimraf from 'rimraf';
 import path from 'path';
 import fs from 'fs';
-import log from './print.js';
 import args from './args.js';
-
 import tasks from './tasks.js';
 
 export function remove(filename) {
 	return new Promise((resolve, reject) => {
 		if (fs.existsSync(filename)) {
+			if (args.verbose) {
+				log.general(`removing ${filename}`);
+			}
 			rimraf(filename, (err) => {
 				if (err) {
 					reject(err);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as googleMapsApi from '../services/google-maps';
 import { store } from '../StoreProvider';
@@ -7,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = (theme) => {
 	return {
@@ -23,11 +25,17 @@ const styles = (theme) => {
 };
 
 class LocationButton extends React.Component {
-	locationErrors = ['', 'Permission Denied', 'Internal Error', 'Timeout Exceeded'];
+	locationErrors = [
+		'',
+		'Permission Denied',
+		'Unable to get position from browser.',
+		'Timeout Exceeded'
+	];
 	constructor() {
 		super();
 		this.state = {
-			locationSupported: !!navigator?.geolocation
+			locationSupported: !!navigator?.geolocation,
+			error: ''
 		};
 		this.handleClick = this.handleClick.bind(this);
 		this.handleGeolocationError = this.handleGeolocationError.bind(this);
@@ -36,7 +44,10 @@ class LocationButton extends React.Component {
 	handleGeolocationPosition(position) {
 		store.dispatch(
 			googleMapsApi.actions.fetchReverseGeocode({
-				latlng: [position.coords.latitude, position.coords.longitude]
+				location: {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				}
 			})
 		);
 	}
@@ -47,33 +58,48 @@ class LocationButton extends React.Component {
 		//Ask for location permission
 		//geocode with google api using latlng
 		//store.dispatch(geocode())
-		this.setState({ error: null });
+		this.setState({ error: '' });
 		if (this.state.locationSupported) {
-			navigator.geolocation.getCurrentPosition(
-				this.handleGeolocationPosition,
-				this.handleGeolocationError,
-				{
-					enableHighAccuracy: false,
-					maximumAge: 1000 * 60 * 5 // five minutes
-				}
-			);
+			try {
+				navigator.geolocation.getCurrentPosition(
+					this.handleGeolocationPosition.bind(this),
+					this.handleGeolocationError.bind(this),
+					{
+						enableHighAccuracy: false,
+						maximumAge: 1000 * 60 * 5 // five minutes
+					}
+				);
+			} catch (e) {
+				this.handleGeolocationError(e);
+			}
 		}
 	}
 	render() {
 		let { locationSupported, error } = this.state;
-		let { children, disabled = locationSupported == false, classes } = this.props;
-		let message = '';
+		let { children, disabled = locationSupported == false, classes, isFetching } = this.props;
+		let message = error;
 		if (locationSupported == false) {
 			message = 'Geolocation is not available.';
 		}
 		return (
-			<Tooltip title={message}>
+			<Tooltip
+				title={message}
+				placement="top"
+			>
 				<Button
-					disabled={disabled}
+					disabled={disabled || isFetching}
 					onClick={this.handleClick}
 					className={classes.button}
 				>
-					<MyLocationIcon style={{ marginRight: '4px' }} /> {children}
+					{isFetching ? (
+						<CircularProgress
+							size={24}
+							style={{ marginRight: '4px' }}
+						/>
+					) : (
+						<MyLocationIcon style={{ marginRight: '4px' }} />
+					)}{' '}
+					{children}
 				</Button>
 			</Tooltip>
 		);
@@ -84,7 +110,14 @@ LocationButton.defaultProps = {
 	disabled: false
 };
 LocationButton.propTypes = {
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
+	children: PropTypes.node,
+	isFetching: PropTypes.bool
 };
 
-export default withStyles(styles)(LocationButton);
+export default connect((state, props) => {
+	return {
+		...props,
+		isFetching: googleMapsApi.selectors.getIsFetching(state)
+	};
+})(withStyles(styles)(LocationButton));
