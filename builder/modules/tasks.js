@@ -1,5 +1,6 @@
 import log from './print.js';
 import path from 'path';
+import cliArgs from './args.js';
 
 let tasks = {};
 var longestTaskNameLength = 0;
@@ -51,6 +52,9 @@ export function add(task, name, description) {
 	}
 	tasks[name] = (...args) => {
 		log.info(`Running task: ${name}`);
+		if (cliArgs.verbose) {
+			log.general(description);
+		}
 		return task(...args);
 	};
 	tasks[name].displayName = name;
