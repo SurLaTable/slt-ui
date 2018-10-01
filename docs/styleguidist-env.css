@@ -9,3 +9,6 @@
 	transform: translate3d(0, 0, 0) !important;
 	overflow: auto !important;
 }
+pre {
+	overflow: auto !important;
+}

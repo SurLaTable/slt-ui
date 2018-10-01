@@ -1,0 +1,14 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[310],{
+
+/***/ "./src/ComparisonChart/services/productData/PRO-328518.json":
+/*!******************************************************************!*\
+  !*** ./src/ComparisonChart/services/productData/PRO-328518.json ***!
+  \******************************************************************/
+/*! exports provided: 328518, length, id, default */
+/***/ (function(module) {
+
+eval("module.exports = {\"328518\":{\"id\":328518,\"description\":\"KN VEG CLEAVER CS\",\"name\":\"KN CLEAVER 7.75IN CS SHUN\",\"parentID\":\"PRO-328518\",\"type\":\"SKU\",\"Drop Ship Ind\":\"No\",\"Web Active Ind\":\"No\",\"Bevel\":\"Double\",\"Bevel Angle\":16,\"Blade Edge\":\"Straight\",\"Blade Length\":\"7.75\\\"\",\"Blade Material\":\"Stainless Steel\",\"Total Length\":\"\",\"Core Material\":\"VG-MAX\",\"Handle Material\":\"Ebony Pakkawood\",\"Layers in the Blade\":34,\"Rockwell\":\"61\",\"Stamped or Forged\":\"Forged\",\"Tang Type\":\"Capped\",\"Collection\":\"Classic\",\"Country of Origin\":\"Japan\",\"Warranty\":\"Limited Lifetime Warranty\",\"Web Brand\":\"Shun\",\"Care & Usage\":\"<ul>\\n<li>Hand wash only</li>\\n</ul>\",\"What's in the Box\":\"\"},\"length\":1,\"id\":\"PRO-328518\"};\n\n//# sourceURL=webpack:///./src/ComparisonChart/services/productData/PRO-328518.json?");
+
+/***/ })
+
+}]);

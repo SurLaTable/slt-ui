@@ -6,10 +6,16 @@ import 'colors';
 export function customArgs(options = {}) {
 	options = merge(
 		{
-			boolean: ['dev', 'report'],
+			boolean: ['dev', 'report', 'verbose'],
 			default: {
+				verbose: false,
 				report: false,
 				dev: process.env.NODE_ENV == 'development'
+			},
+			alias: {
+				v: 'verbose',
+				d: 'dev',
+				r: 'report'
 			}
 		},
 		options

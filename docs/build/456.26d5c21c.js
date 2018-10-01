@@ -1,0 +1,14 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[456],{
+
+/***/ "./src/ComparisonChart/services/productData/PRO-3841962.json":
+/*!*******************************************************************!*\
+  !*** ./src/ComparisonChart/services/productData/PRO-3841962.json ***!
+  \*******************************************************************/
+/*! exports provided: 3841962, length, id, default */
+/***/ (function(module) {
+
+eval("module.exports = {\"3841962\":{\"id\":3841962,\"description\":\"KN ASIAN UTILITY 7\\\" SK\",\"name\":\"3841962 KN ASIAN UTILITY 7\\\" SK\",\"parentID\":\"PRO-3841962\",\"type\":\"SKU\",\"Drop Ship Ind\":\"No\",\"Web Active Ind\":\"Yes\",\"Bevel\":\"Double\",\"Bevel Angle\":16,\"Blade Edge\":\"Straight\",\"Blade Length\":\"3.5\\\"\",\"Blade Material\":\"Japanese AUS10A Stainless Steel\",\"Total Length\":\"\",\"Core Material\":\"Japanese AUS10A Stainless Steel\",\"Handle Material\":\"Tagayasan (Wenge) Wood\",\"Layers in the Blade\":1,\"Rockwell\":60,\"Stamped or Forged\":\"Forged\",\"Tang Type\":\"Full\",\"Collection\":\"Kanso\",\"Country of Origin\":\"Japan\",\"Warranty\":\"Limited Lifetime Warranty\",\"Web Brand\":\"Shun\",\"Care & Usage\":\"<ul>\\n<li>Hand wash only</li>\\n</ul>\",\"What's in the Box\":\"<ul>\\n<li>7&#34; Asian utility knife</li>\\n</ul>\"},\"length\":1,\"id\":\"PRO-3841962\"};\n\n//# sourceURL=webpack:///./src/ComparisonChart/services/productData/PRO-3841962.json?");
+
+/***/ })
+
+}]);

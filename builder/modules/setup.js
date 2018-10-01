@@ -10,6 +10,9 @@ import tasks from './tasks.js';
 export function remove(filename) {
 	return new Promise((resolve, reject) => {
 		if (fs.existsSync(filename)) {
+			if (args.verbose) {
+				log.general(`removing ${filename}`);
+			}
 			rimraf(filename, (err) => {
 				if (err) {
 					reject(err);

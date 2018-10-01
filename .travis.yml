@@ -6,6 +6,6 @@ install:
     - npm install
     - yarn install
 script:
-    - yarn build
-    - npm run build
+    - yarn build -v
+    - npm run build -v
     - yarn test

@@ -1,0 +1,14 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
+
+/***/ "./src/ComparisonChart/services/productData/PRO-1021567.json":
+/*!*******************************************************************!*\
+  !*** ./src/ComparisonChart/services/productData/PRO-1021567.json ***!
+  \*******************************************************************/
+/*! exports provided: 1021567, length, id, default */
+/***/ (function(module) {
+
+eval("module.exports = {\"1021567\":{\"id\":1021567,\"description\":\"KN PARING 3.5IN WT EP\",\"name\":\"1021567 KN PARING 3.5IN WT EP\",\"parentID\":\"PRO-1021567\",\"type\":\"SKU\",\"Drop Ship Ind\":\"No\",\"Web Active Ind\":\"Yes\",\"Bevel\":\"Double\",\"Bevel Angle\":14,\"Blade Edge\":\"Straight\",\"Blade Length\":\"3.5\\\"\",\"Blade Material\":\"High-Carbon Stainless Steel\",\"Total Length\":\"\",\"Core Material\":\"High-Carbon Stainless Steel\",\"Handle Material\":\"Epicurean Wood Composite\",\"Layers in the Blade\":1,\"Rockwell\":\"58\",\"Stamped or Forged\":\"Forged\",\"Tang Type\":\"Full\",\"Collection\":\"Epicure\",\"Country of Origin\":\"Germany\",\"Warranty\":\"Limited Lifetime Warranty\",\"Web Brand\":\"Wusthof\",\"Care & Usage\":\"<ul>\\n<li>Hand wash</li>\\n</ul>\",\"What's in the Box\":\"\"},\"length\":1,\"id\":\"PRO-1021567\"};\n\n//# sourceURL=webpack:///./src/ComparisonChart/services/productData/PRO-1021567.json?");
+
+/***/ })
+
+}]);
