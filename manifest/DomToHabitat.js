@@ -34,7 +34,6 @@ export default function DomToHabitatBuilder(bootstrapper) {
 		}
 		// Ignore elements that have already been connected:
 		if (ele.hasAttribute(ACTIVE_HABITAT_FLAG)) {
-			console.log('hasHabitat:', ele);
 			if (ele.getAttribute(ACTIVE_HABITAT_FLAG) === 'temp') {
 				ele.removeAttribute(ACTIVE_HABITAT_FLAG);
 			} else {
@@ -47,19 +46,16 @@ export default function DomToHabitatBuilder(bootstrapper) {
 
 		//possible location of failure for dynamic registration
 		var registration = bootstrapper.__container__._registrations[componentName];
-		console.log('registration:', ele, registration);
 
 		for (var i = 0, componentCount = 0, child; i < ele.childNodes.length; i++) {
 			child = domToHabitat(ele.childNodes[i], function() {
 				return componentCount++;
 			});
 			if (child) {
-				console.log('inner child:', child);
 				children.push(child);
 			}
 		}
 
-		var reEl;
 		if (registration) {
 			// This is a component.
 			let Component = asyncComponent({

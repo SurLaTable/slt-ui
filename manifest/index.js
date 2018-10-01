@@ -12,9 +12,15 @@ import DomToHabitatBuilder from './DomToHabitat.js';
 import * as sltUi from '../builder/temp/slt';
 
 class Manifest extends ReactHabitat.Bootstrapper {
+	//before react habitat runs it's 'apply' function
 	willUpdate(target, query) {
+		// This looks for nested components and tells React habitat not to do anything with them
+		// This solves an issue where react habitat will remove nested components from their parent components
+
+		//query is a NodeList and can't be changed so we have to add a property to the elements that react-habitat is looking for
 		query.forEach((ele) => {
 			if (ele.matches(`[${this.componentSelector}] [${this.componentSelector}]`)) {
+				//set it to 'temp' so we know react habitat didn't touch it, react habitat sets it to 'true'
 				ele.setAttribute(ACTIVE_HABITAT_FLAG, 'temp');
 			}
 		});
