@@ -1,6 +1,7 @@
 ```jsx
 let Typography = require('@material-ui/core/Typography').default;
 
+<ThemeProvider>
 	<StoreCard
 		storeId="154"
 		name="Fashion Place"
@@ -23,13 +24,11 @@ let Typography = require('@material-ui/core/Typography').default;
 	>
 		<Typography> Children nodes land in this column</Typography>
 	</StoreCard>
-
+</ThemeProvider>
 ```
 
 ```html
-<div data-component="StoreProvider">
-	<div data-component="StoreCard" data-prop-store-id="001" data-prop-detailed="true">
-		<!-- Childen nodes can go in here -->
-	</div>
+<div data-component="StoreCard" data-prop-store-id="001" data-prop-detailed="true">
+	<!-- Childen nodes can go in here -->
 </div>
 ```

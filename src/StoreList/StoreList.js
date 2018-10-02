@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
 import * as sltStoresApi from '../services/slt-stores';
-import { getClosestStores } from './selectors';
+import { getClosestStores, getClosestCulinaryStores } from './selectors';
 
 const styles = (theme) => {
 	return {
@@ -60,6 +60,10 @@ class StoreList extends React.Component {
 						<Button
 							variant="outlined"
 							className={classes.button}
+							style={{
+								display:
+									this.props.selectedStore == storeData[i].storeId ? 'none' : null
+							}}
 							onClick={() => {
 								if (this.props.selectedStore == storeData[i].storeId) {
 									dispatch(sltStoresApi.actions.nullifySelectedItem());
@@ -73,9 +77,7 @@ class StoreList extends React.Component {
 								}
 							}}
 						>
-							{this.props.selectedStore == storeData[i].storeId
-								? 'Deselect Store'
-								: 'Select Store'}
+							Select Location
 						</Button>
 					</div>
 				</StoreCard>
@@ -94,6 +96,7 @@ class StoreList extends React.Component {
 
 StoreList.propTypes = {
 	sortBy: PropTypes.string,
+	culinary: PropTypes.bool,
 	limit: PropTypes.number,
 	detailed: PropTypes.bool,
 	onItemSelected: PropTypes.func
@@ -101,15 +104,24 @@ StoreList.propTypes = {
 StoreList.defaultProps = {
 	sortBy: 'name',
 	limit: 10,
-	detailed: false
+	detailed: false,
+	culinary: false
 };
 
 const mapStateToProps = (state, props) => {
 	const selectedStore = sltStoresApi.selectors.getSelectedItem(state);
-	const storeData =
-		props.sortBy == 'distance'
-			? getClosestStores(state)
-			: sltStoresApi.selectors.getItemsAlphabetically(state);
+	let storeData;
+	if (props.culinary) {
+		storeData =
+			props.sortBy == 'distance'
+				? getClosestCulinaryStores(state)
+				: sltStoresApi.selectors.getCulinaryItemsAlphabetically(state);
+	} else {
+		storeData =
+			props.sortBy == 'distance'
+				? getClosestStores(state)
+				: sltStoresApi.selectors.getItemsAlphabetically(state);
+	}
 
 	return {
 		...props,

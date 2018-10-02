@@ -20,7 +20,7 @@ function getDemos() {
 
 const config = {
 	title: 'slt-ui docs',
-	assetsDir: path.resolve('./builder/docs/assets'),
+	assetsDir: path.resolve(__dirname, './assets'),
 	defaultExample: path.resolve(__dirname, 'DefaultExample.md'),
 	pagePerSection: true,
 	require: [],

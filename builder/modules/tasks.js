@@ -37,11 +37,9 @@ function _getCallerFile() {
 
 export async function run(taskName, ...args) {
 	if (tasks.hasOwnProperty(taskName)) {
-		return Promise.resolve().then(() => {
-			return tasks[taskName](...args);
-		});
+		return await tasks[taskName](...args);
 	}
-	return Promise.reject(new Error(`Task "${taskName}" does not exist`));
+	throw new Error(`Task "${taskName}" does not exist`);
 }
 
 export function add(task, name, description) {
@@ -50,16 +48,23 @@ export function add(task, name, description) {
 	if (tasks.hasOwnProperty(name)) {
 		throw new Error(`Task "${name}" already exists.`);
 	}
+
+	let definition = path.relative('./', _getCallerFile());
+
 	tasks[name] = (...args) => {
-		log.info(`Running task: ${name}`);
 		if (cliArgs.verbose) {
-			log.general(description);
+			log.info(`Running task: ${name}`, `(${definition})`.grey);
+			if (description) {
+				log.general(description.reset);
+			}
+		} else {
+			log.info(`Running task: ${name}`);
 		}
 		return task(...args);
 	};
 	tasks[name].displayName = name;
 	tasks[name].description = description;
-	tasks[name].definition = path.relative('./', _getCallerFile());
+	tasks[name].definition = definition;
 	tasks[name].hiddenTask = task.hiddenTask;
 
 	if (name.length > longestTaskNameLength) {

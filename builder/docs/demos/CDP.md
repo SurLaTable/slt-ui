@@ -3,19 +3,16 @@ This is a demo as if we were on the product page: [CFA-1865039](https://www.surl
 ```jsx
 <StoreProvider>
 	<div style={{display:"inline-flex"}}>
-			<StoreSelector />
+			<StoreSelector culinary={true}/>
 			<ClassDateTimePicker productId={"CFA-1865039"}/>
 	</div>
-
 </StoreProvider>
 ```
 
 
 ```html
-<div data-component="StoreProvider">
-	<div style="display:inline-flex;">
-			<div data-component="StoreSelector" ></div>
-			<div data-component="ClassDateTimePicker" data-prop-productId="CFA-1865039"></div>
-	</div>
+<div style="display:inline-flex;">
+		<div data-component="StoreSelector" data-prop-culinary="true"></div>
+		<div data-component="ClassDateTimePicker" data-prop-productId="CFA-1865039"></div>
 </div>
 ```

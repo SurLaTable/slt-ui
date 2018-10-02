@@ -9,3 +9,9 @@ export const filterItemsById = (items = []) =>
 		acc[item.storeId] = item;
 		return acc;
 	}, {});
+
+// filterItemsByCulinary.bind(null,true) in a selector to invert
+export const filterItemsByCulinary = (items = []) =>
+	items.filter((v) => {
+		return v.culinary.cookingClasses;
+	});

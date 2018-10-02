@@ -90,7 +90,7 @@ class StoreSelector extends React.Component {
 	}
 	render() {
 		let { open, showMore, scrollTop } = this.state;
-		let { selectedStore, classes, width } = this.props;
+		let { selectedStore, classes, width, culinary, storeListProps } = this.props;
 
 		const dialog = (
 			<Dialog
@@ -114,6 +114,8 @@ class StoreSelector extends React.Component {
 						limit={10 * showMore}
 						detailed={false}
 						onItemSelected={this.toggleOpen}
+						culinary={culinary}
+						{...storeListProps}
 					/>
 					<Button
 						fullWidth
@@ -157,9 +159,7 @@ class StoreSelector extends React.Component {
 					className={classes.display}
 				>
 					<Typography>Class Location:</Typography>
-					<Typography>
-						<strong>Select a location</strong>
-					</Typography>
+					<Typography>&nbsp;</Typography>
 					<Button
 						fullWidth
 						onClick={this.toggleOpen}
@@ -205,9 +205,13 @@ class StoreSelector extends React.Component {
 }
 
 StoreSelector.propTypes = {
-	selectedStore: PropTypes.object
+	selectedStore: PropTypes.object,
+	storeListProps: PropTypes.object,
+	culinary: PropTypes.bool
 };
-StoreSelector.defaultProps = {};
+StoreSelector.defaultProps = {
+	culinary: false
+};
 
 const mapStateToProps = (state, props) => {
 	return {

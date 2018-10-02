@@ -27,15 +27,20 @@ export function warn(...args) {
 }
 
 export function error(...args) {
+	for (let i = 0; i < args.length; i++) {
+		if (args[i] instanceof Error) {
+			args[i] = args[i].stack;
+		}
+	}
 	return console.error([time(), ...args].join(' ').bgRed.white);
 }
 
 export function info(...args) {
-	return console.info([time(), ...args].join(' ').cyan);
+	return console.info([time(), ...args].join(' ').green);
 }
 
 export function general(...args) {
-	return console.log([time(), ...args].join(' ').grey);
+	return console.log([time(), ...args].join(' ').reset);
 }
 
 export function assert(assertion, ...args) {
@@ -93,6 +98,10 @@ export function endLoader() {
 	process.stdout.write(`${loader.message} [${loader.bar.repeat(w)}] ${stat}`);
 	process.stdout.write(`\n`.reset);
 }
+
+process.on('uncaughtException', function(err) {
+	error(err);
+});
 
 export default {
 	date,

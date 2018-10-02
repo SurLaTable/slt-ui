@@ -1,10 +1,8 @@
-import 'colors';
+import log from './print.js';
 import rimraf from 'rimraf';
 import path from 'path';
 import fs from 'fs';
-import log from './print.js';
 import args from './args.js';
-
 import tasks from './tasks.js';
 
 export function remove(filename) {

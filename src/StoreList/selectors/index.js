@@ -1,7 +1,10 @@
 import { createSelector } from 'reselect';
 
 import * as sltStoresApi from '../../services/slt-stores';
-import { filterItemsAlphabetically } from '../../services/slt-stores/filters.js';
+import {
+	filterItemsAlphabetically,
+	filterItemsByCulinary
+} from '../../services/slt-stores/filters.js';
 import * as googleMapsApi from '../../services/google-maps';
 
 function haversineDistance(lat1, lon1, lat2, lon2, unit) {
@@ -48,3 +51,5 @@ export const getClosestStores = createSelector(
 		}
 	}
 );
+
+export const getClosestCulinaryStores = createSelector(getClosestStores, filterItemsByCulinary);

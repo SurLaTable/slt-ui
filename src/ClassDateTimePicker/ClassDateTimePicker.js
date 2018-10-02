@@ -265,11 +265,13 @@ class ClassDateTimePicker extends React.Component {
 				<Typography>Next Available Date:</Typography>
 				<Typography>
 					<strong>
-						{!storeId
-							? 'No store selected'
-							: hasClasses
-								? giveMeTheClassTimeNicelyShort(nextClass)
-								: 'No classes available'}
+						{!storeId ? (
+							<>&nbsp;</>
+						) : hasClasses ? (
+							giveMeTheClassTimeNicelyShort(nextClass)
+						) : (
+							'No classes available'
+						)}
 					</strong>
 				</Typography>
 				<Button

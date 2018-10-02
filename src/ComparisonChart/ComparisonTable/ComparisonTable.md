@@ -2,13 +2,13 @@
 See [ComparisonBar](#comparisonbar) for a working example
 
 ```jsx
-<StoreProvider>
-	<ComparisonTable />
-</StoreProvider>
+<ThemeProvider>
+	<StoreProvider>
+		<ComparisonTable />
+	</StoreProvider>
+</ThemeProvider>
 ```
 
 ```html
-<div data-component="StoreProvider">
-	<div data-component="ComparisonTable"></div>
-</div>
+<div data-component="ComparisonTable"></div>
 ```

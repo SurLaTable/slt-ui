@@ -11,7 +11,6 @@ function generateSLTUIAsync(promises) {
 	return new Promise((resolve, reject) => {
 		glob(path.posix.resolve('../src/[A-Z]*/index.js'), async function(err, files) {
 			if (err) {
-				log.error(err);
 				reject(err);
 			}
 
@@ -30,8 +29,12 @@ function generateSLTUIAsync(promises) {
 			for (let i = 0; i < files.length; i++) {
 				let file = files[i];
 				let folderName = path.posix.basename(path.posix.dirname(file));
-
-				var module = require(path.posix.resolve(file));
+				var module;
+				try {
+					module = require(path.posix.resolve(file));
+				} catch (err) {
+					reject(err);
+				}
 				let indexCode = `
 						import { asyncComponent } from 'react-async-component';
 					`;
@@ -105,8 +108,13 @@ function generateMaterialAsync(promises) {
 			let file = files[i];
 			let folderName = path.posix.basename(path.posix.dirname(file));
 			let fileName = path.posix.basename(file, '.js');
+			var module;
+			try {
+				module = require(path.posix.resolve(file));
+			} catch (err) {
+				reject(err);
+			}
 
-			var module = require(path.posix.resolve(file));
 			let indexCode = `
 						import {asyncComponent} from 'react-async-component';
 					`;
@@ -171,7 +179,6 @@ export async function generateAsync() {
 	let promises = [];
 	await generateMaterialAsync(promises);
 	await generateSLTUIAsync(promises);
-
 	return Promise.all(promises);
 }
 generateAsync.displayName = 'generate-async';

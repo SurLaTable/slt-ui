@@ -21,7 +21,7 @@ const serveConfig = config(
 );
 
 var serverConfig = {
-	content: [path.resolve('./build'), path.resolve('./builder/docs/assets')],
+	content: [path.resolve(__dirname, './assets')],
 	config: [serveConfig],
 	port: 4000,
 	open: true,

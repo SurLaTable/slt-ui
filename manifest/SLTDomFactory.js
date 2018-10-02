@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // import { Provider }		from 'react-redux';
 // import { createStore } from "redux";
 import StoreProvider from '../src/StoreProvider';
+import ThemeProvider from '../src/ThemeProvider';
 /**
  * React DOM Factory
  */
@@ -48,7 +49,14 @@ export default class SLTDomFactory {
 			);
 
 			if (wrapper) {
-				ReactDOM.render(React.createElement(StoreProvider, {}, wrapper), target);
+				ReactDOM.render(
+					React.createElement(
+						ThemeProvider,
+						{},
+						React.createElement(StoreProvider, {}, wrapper)
+					),
+					target
+				);
 			}
 		}
 	}

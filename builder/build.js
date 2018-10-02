@@ -19,7 +19,7 @@ import './docs.js';
 
 function handleError(err) {
 	if (err) {
-		log.error(err.stack);
+		log.error(err);
 	}
 }
 
