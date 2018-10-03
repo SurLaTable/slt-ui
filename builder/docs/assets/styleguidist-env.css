@@ -5,7 +5,7 @@
 	main font, 'MrEavesSans'.
 */
 #rsg-root {
-	font-family: 'Jaldi', Arial, Helvetica, sans-serif !important;
+	font-family: MrEavesSans, 'Jaldi', Verdana, Arial, Helvetica, sans-serif !important;
 }
 [data-preview] {
 	transform: translate3d(0, 0, 0) !important;
