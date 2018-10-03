@@ -33,12 +33,6 @@
 		"tasks": "yarn build --tasks",
 		"test": "yarn jest"
 	},
-	"husky": {
-		"hooks": {
-			"precommit": "yarn test && yarn prettier && yarn docs",
-			"prepush": "yarn test"
-		}
-	},
 	"dependencies": {
 		"@google/maps": "0.x.x",
 		"@material-ui/core": "3.x.x",
@@ -117,7 +111,6 @@
 		"eslint-plugin-react": "7.x.x",
 		"glob": "7.x.x",
 		"html-webpack-plugin": "3.x.x",
-		"husky": "^1.1.0",
 		"jest": "23.x.x",
 		"koa-mount": "3.x.x",
 		"koa-router": "7.x.x",
