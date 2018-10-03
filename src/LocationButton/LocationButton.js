@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as googleMapsApi from '../services/google-maps';
 import { store } from '../StoreProvider';
@@ -7,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = (theme) => {
 	return {
@@ -61,7 +63,7 @@ class LocationButton extends React.Component {
 	}
 	render() {
 		let { locationSupported, error } = this.state;
-		let { children, disabled = locationSupported == false, classes } = this.props;
+		let { children, disabled = locationSupported == false, classes, isFetching } = this.props;
 		let message = '';
 		if (locationSupported == false) {
 			message = 'Geolocation is not available.';
@@ -69,11 +71,19 @@ class LocationButton extends React.Component {
 		return (
 			<Tooltip title={message}>
 				<Button
-					disabled={disabled}
+					disabled={disabled || isFetching}
 					onClick={this.handleClick}
 					className={classes.button}
 				>
-					<MyLocationIcon style={{ marginRight: '4px' }} /> {children}
+					{isFetching ? (
+						<CircularProgress
+							size={24}
+							style={{ marginRight: '4px' }}
+						/>
+					) : (
+						<MyLocationIcon style={{ marginRight: '4px' }} />
+					)}{' '}
+					{children}
 				</Button>
 			</Tooltip>
 		);
@@ -85,7 +95,13 @@ LocationButton.defaultProps = {
 };
 LocationButton.propTypes = {
 	disabled: PropTypes.bool,
-	children: PropTypes.node
+	children: PropTypes.node,
+	isFetching: PropTypes.bool
 };
 
-export default withStyles(styles)(LocationButton);
+export default connect((state, props) => {
+	return {
+		...props,
+		isFetching: googleMapsApi.selectors.getIsFetching(state)
+	};
+})(withStyles(styles)(LocationButton));

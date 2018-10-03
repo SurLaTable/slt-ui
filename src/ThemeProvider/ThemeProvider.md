@@ -1,5 +1,6 @@
-```jsx static
-<ThemeProvider />
+```jsx
+const WithTheme = require('./_WithTheme.js').default;
+<ThemeProvider ><WithTheme/></ThemeProvider>
 ```
 
 ```html

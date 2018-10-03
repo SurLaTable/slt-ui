@@ -16,12 +16,20 @@ import StoreList from '../StoreList';
 import LocationField from '../LocationField';
 import LocationButton from '../LocationButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import CloseIcon from '@material-ui/icons/close';
 import Zoom from '@material-ui/core/Zoom';
 
 import * as sltStoresApi from '../services/slt-stores';
 
 const style = (theme) => {
 	return {
+		flexContainer: {
+			display: 'flex',
+			alignItems: 'center'
+		},
+		flex: {
+			flex: 1
+		},
 		display: {
 			display: 'flex',
 			flexDirection: 'column',
@@ -101,7 +109,19 @@ class StoreSelector extends React.Component {
 				onClose={this.toggleOpen}
 				onScroll={this.handleScroll}
 			>
-				<DialogTitle>Find A Location Near You</DialogTitle>
+				<DialogTitle>
+					<div className={classes.flexContainer}>
+						<div className={classes.flex}>Find A Location Near You</div>
+						<Button
+							variant="flat"
+							size="small"
+							onClick={this.toggleOpen}
+							color="default"
+						>
+							<CloseIcon />
+						</Button>
+					</div>
+				</DialogTitle>
 
 				<DialogContent>
 					<LocationButton>Use My Location</LocationButton>
@@ -126,12 +146,6 @@ class StoreSelector extends React.Component {
 				</DialogContent>
 				<DialogActions>
 					<div style={{ position: 'relative' }}>
-						<Button
-							onClick={this.toggleOpen}
-							color="primary"
-						>
-							Close
-						</Button>
 						<Zoom
 							in={showMore > 1 && scrollTop > 600}
 							unmountOnExit

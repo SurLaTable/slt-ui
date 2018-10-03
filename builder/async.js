@@ -199,10 +199,11 @@ export async function buildManifest() {
 	return new Promise((resolve, reject) => {
 		webpack(finalConfig, (err, stats) => {
 			log.general(
-				stats.toString({
-					// Shows colors in the console:
-					colors: true
-				})
+				stats &&
+					stats.toString({
+						// Shows colors in the console:
+						colors: true
+					})
 			);
 			if (err || stats.hasErrors()) {
 				reject(err);

@@ -45,6 +45,7 @@ function close(why) {
 	} else {
 		log.info(`PRODUCTION ENVIRONMENT exiting [${why}]`);
 	}
+	log.general('');
 	process.exit();
 }
 ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGABRT', 'SIGTERM'].forEach((v) =>

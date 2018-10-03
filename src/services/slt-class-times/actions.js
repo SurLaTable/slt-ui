@@ -4,21 +4,16 @@ import axios from 'axios';
 
 // const apiStorage = store.namespace('classes-service');
 
-const options = {
-	get endpoint() {
-		return (
-			global.CULINARY_CLASS_TIMES_ENDPOINT ||
-			'https://www.surlatable.com/browse/include/culClassJSONData.jsp'
-		);
-	}
-};
-
 const arrayMeIfEmpty = (item) => (Array.isArray(item) ? item : []);
 
 export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 	axios
-		.get(`${options.endpoint}?productId=${product}`)
+		.get(
+			`${global.CULINARY_CLASS_TIMES_ENDPOINT ||
+				'https://www.surlatable.com/browse/include/culClassJSONData.jsp'}?productId=${product}`
+		)
 		.then((http) => {
+			console.log(http.data);
 			const data = http.data
 				.filter((culinaryClass) => culinaryClass.storeId === location)
 				.reduce((newObj, culinaryClass) => {

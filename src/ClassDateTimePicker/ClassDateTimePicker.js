@@ -10,15 +10,14 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/close';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -28,6 +27,13 @@ import { selectors as storeSelectors } from '../services/slt-stores';
 
 const style = (theme) => {
 	return {
+		flexContainer: {
+			display: 'flex',
+			alignItems: 'center'
+		},
+		flex: {
+			flex: 1
+		},
 		display: {
 			display: 'flex',
 			flexDirection: 'column',
@@ -54,24 +60,7 @@ const style = (theme) => {
 	};
 };
 
-const Transition = (props) => <Slide
-	direction="up"
-	{...props}
-/>;
-
-const nowDate = new Date(Date.now());
 const locale = 'en-us';
-
-const getDefaultMonthData = () => {
-	var months = {};
-	const date = new Date(nowDate.getTime());
-	months[date.toLocaleString(locale, { month: 'long', year: 'numeric' })] = false;
-	date.setMonth(nowDate.getMonth() + 1);
-	months[date.toLocaleString(locale, { month: 'long', year: 'numeric' })] = false;
-	date.setMonth(nowDate.getMonth() + 2);
-	months[date.toLocaleString(locale, { month: 'long', year: 'numeric' })] = false;
-	return months;
-};
 
 const giveMeTheClassTimeNicelyShort = (classData) => `
 	${new Date(classData.classStartDate).toLocaleString(locale, {
@@ -165,6 +154,7 @@ class ClassDateTimePicker extends React.Component {
 				'ClassDateTimePicker'
 			);
 		}
+
 		this.setState({
 			open: true,
 			expanded: `panel ${Object.keys(this.props.classTimeData)[0]}`
@@ -234,7 +224,6 @@ class ClassDateTimePicker extends React.Component {
 			})
 			.sort(sortDates);
 		let hasClasses = false;
-		const nextClass = classTimeData[dates[0]][0];
 		for (let i = 0; i < dates.length; i++) {
 			const dateString = dates[i];
 			if (classTimeData[dateString] !== false) {
@@ -248,7 +237,7 @@ class ClassDateTimePicker extends React.Component {
 					onChange={this.handleChange(`panel ${dateString}`)}
 				>
 					<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-						<Typography>{dateString}</Typography>
+						<Typography variant="title">{dateString}</Typography>
 					</ExpansionPanelSummary>
 					<ExpansionPanelDetails>
 						{this.returnMonthData(dateString)}
@@ -268,7 +257,7 @@ class ClassDateTimePicker extends React.Component {
 						{!storeId ? (
 							<>&nbsp;</>
 						) : hasClasses ? (
-							giveMeTheClassTimeNicelyShort(nextClass)
+							giveMeTheClassTimeNicelyShort(classTimeData[dates[0]][0])
 						) : (
 							'No classes available'
 						)}
@@ -291,16 +280,22 @@ class ClassDateTimePicker extends React.Component {
 					onEnter={() => this.onEnter(productId, storeId)}
 					scroll="paper"
 				>
-					<DialogTitle>Available dates for {culinaryClassName}:</DialogTitle>
+					<DialogTitle>
+						<div className={classes.flexContainer}>
+							<div className={classes.flex}>
+								Available dates for {culinaryClassName}:
+							</div>
+							<Button
+								variant="flat"
+								size="small"
+								onClick={this.handleClose.bind(this)}
+								color="default"
+							>
+								<CloseIcon />
+							</Button>
+						</div>
+					</DialogTitle>
 					<DialogContent>{panels}</DialogContent>
-					<DialogActions>
-						<Button
-							onClick={this.handleClose.bind(this)}
-							color="primary"
-						>
-							Close
-						</Button>
-					</DialogActions>
 				</Dialog>
 			</Paper>
 		);
@@ -320,7 +315,6 @@ ClassDateTimePicker.defaultProps = {};
 const mapStateToProps = (state, props) => ({
 	...props,
 	classTimeData: {
-		...getDefaultMonthData(),
 		...selectors.getClassTimeData(state)
 	},
 	storeId: storeSelectors.getSelectedItem(state)

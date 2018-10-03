@@ -3,12 +3,6 @@ import store from 'store2';
 
 const apiStorage = store.namespace('slt-stores-service');
 
-const options = {
-	get endpoint() {
-		return global.SLT_STORE_ENDPOINT || process.env.SLT_STORE_ENDPOINT;
-	}
-};
-
 function removeInactiveStores(storeData) {
 	let items = storeData.filter(function(val) {
 		//remove invalid data
@@ -38,13 +32,15 @@ export const fetchItems = ({ actions }, force = false) => {
 		dispatch(actions.setIsFetching(true));
 		if (apiStorage.session.has('items') == false || force === true) {
 			dispatch(actions.setIsFetching(true));
-			return axios.get(options.endpoint).then((http) => {
-				let data = removeInactiveStores(JSON.parse(http.data.body).Items);
+			return axios
+				.get(global.SLT_STORE_ENDPOINT || process.env.SLT_STORE_ENDPOINT)
+				.then((http) => {
+					let data = removeInactiveStores(JSON.parse(http.data.body).Items);
 
-				apiStorage.session.set('items', data);
-				dispatch(actions.setIsFetching(false));
-				return dispatch(actions.setItems(data));
-			});
+					apiStorage.session.set('items', data);
+					dispatch(actions.setIsFetching(false));
+					return dispatch(actions.setItems(data));
+				});
 		} else {
 			return Promise.resolve(dispatch(actions.setItems(apiStorage.session.get('items'))));
 		}
