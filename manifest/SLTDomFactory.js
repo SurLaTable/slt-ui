@@ -38,22 +38,21 @@ export default class SLTDomFactory {
 				}
 			}
 
-			var wrapper = React.createElement(
-				target.nodeName.toLowerCase(),
-				{
-					'data-component-id':
-						props.proxy.getAttribute('data-component-id') ||
-						props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`
-				},
-				React.createElement(module, props, children)
-			);
+			props = {
+				...props,
+				'data-component-id':
+					props.proxy.getAttribute('data-component-id') ||
+					props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`
+			};
+
+			var reactElement = React.createElement(module, props, children);
 
 			if (wrapper) {
 				ReactDOM.render(
 					React.createElement(
 						ThemeProvider,
 						{},
-						React.createElement(StoreProvider, {}, wrapper)
+						React.createElement(StoreProvider, {}, reactElement)
 					),
 					target
 				);

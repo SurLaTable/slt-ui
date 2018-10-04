@@ -10,6 +10,7 @@ export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 	axios
 		.get(
 			`${global.CULINARY_CLASS_TIMES_ENDPOINT ||
+				process.env.CULINARY_CLASS_TIMES_ENDPOINT ||
 				'https://www.surlatable.com/browse/include/culClassJSONData.jsp'}?productId=${product}`
 		)
 		.then((http) => {

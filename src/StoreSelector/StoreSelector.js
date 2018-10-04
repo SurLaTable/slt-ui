@@ -20,6 +20,25 @@ import CloseIcon from '@material-ui/icons/close';
 import Zoom from '@material-ui/core/Zoom';
 
 import * as sltStoresApi from '../services/slt-stores';
+import { selectors as googleMapsSelectors } from '../services/google-maps';
+
+function throttle(fn, wait) {
+	var time = Date.now();
+	var debounce;
+	return function() {
+		var delta = time + wait - Date.now();
+		debounce = clearTimeout(debounce);
+		if (delta < 0) {
+			fn.apply(this, arguments);
+			time = Date.now();
+		} else {
+			debounce = setTimeout(() => {
+				fn.apply(this, arguments);
+				time = Date.now();
+			}, delta);
+		}
+	};
+}
 
 const style = (theme) => {
 	return {
@@ -57,47 +76,68 @@ const style = (theme) => {
 };
 
 class StoreSelector extends React.Component {
+	static contextTypes = {
+		store: PropTypes.object
+	};
+
 	constructor() {
 		super();
 		this.state = {
 			open: false,
-			showMore: 1,
-			canShowMore: true,
+			showScrollToTop: false,
+			scrollingToTop: false,
 			scrollTop: 0
 		};
 		this.animateScrollRequest = null;
-		this.handleShowMore = this.handleShowMore.bind(this);
+
 		this.handleGoToTop = this.handleGoToTop.bind(this);
 		this.toggleOpen = this.toggleOpen.bind(this);
-		this.handleScroll = this.handleScroll.bind(this);
 		this.currentScrollElement = null;
-	}
-	handleShowMore(e) {
-		this.setState({
-			showMore: this.state.showMore + 1
-		});
-	}
-	toggleOpen() {
-		this.setState({ open: !this.state.open, showMore: 1 });
-	}
-	handleScroll(e) {
-		this.currentScrollElement = e.target;
-		const { scrollTop } = e.target;
-		if (this.animateScrollRequest && scrollTop < 2) {
-			global.cancelAnimationFrame(this.animateScrollRequest);
-			e.target.scrollTop = 0;
-		}
-		this.setState({ scrollTop });
-	}
-	handleGoToTop() {
-		const animate = () => {
-			this.currentScrollElement.scrollTop += (0 - this.currentScrollElement.scrollTop) * 0.3;
-			this.animateScrollRequest = global.requestAnimationFrame(animate);
+
+		let throttledScroll = throttle((e) => {
+			let { scrollTop } = e.target;
+			if (scrollTop != this.state.scrollTop) {
+				this.setState({ scrollTop });
+			}
+		}, 300);
+
+		this.handleScroll = (e) => {
+			this.currentScrollElement = e.target;
+
+			let { scrollTop } = e.target;
+			if (this.animateScrollRequest) {
+				if (scrollTop < 2) {
+					global.cancelAnimationFrame(this.animateScrollRequest);
+					this.animateScrollRequest = null;
+					e.target.scrollTop = 0;
+					this.setState({ scrollTop: 0 });
+				}
+			} else {
+				e.persist();
+				throttledScroll(e);
+			}
 		};
-		animate();
 	}
+
+	componentDidMount() {
+		let data = googleMapsSelectors.getData(this.context.store.getState());
+
+		if (data.length == 0) {
+			this.setState({ open: true });
+		}
+	}
+
+	toggleOpen() {
+		this.setState({ open: !this.state.open });
+	}
+
+	handleGoToTop() {
+		this.currentScrollElement.scrollTop += (0 - this.currentScrollElement.scrollTop) * 0.3;
+		this.animateScrollRequest = global.requestAnimationFrame(this.handleGoToTop);
+	}
+
 	render() {
-		let { open, showMore, scrollTop } = this.state;
+		let { open, scrollTop, showScrollToTop } = this.state;
 		let { selectedStore, classes, width, culinary, storeListProps } = this.props;
 
 		const dialog = (
@@ -131,23 +171,19 @@ class StoreSelector extends React.Component {
 
 					<StoreList
 						sortBy={'distance'}
-						limit={10 * showMore}
 						detailed={false}
 						onItemSelected={this.toggleOpen}
+						onShowMore={(page) => {
+							this.setState({ showScrollToTop: page > 1 });
+						}}
 						culinary={culinary}
 						{...storeListProps}
 					/>
-					<Button
-						fullWidth
-						onClick={this.handleShowMore}
-					>
-						Show More
-					</Button>
 				</DialogContent>
 				<DialogActions>
 					<div style={{ position: 'relative' }}>
 						<Zoom
-							in={showMore > 1 && scrollTop > 600}
+							in={showScrollToTop && scrollTop > 600}
 							unmountOnExit
 						>
 							<Button

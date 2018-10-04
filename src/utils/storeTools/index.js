@@ -4,7 +4,7 @@ import persistState from 'redux-localstorage';
 
 const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const persist = global.localStore ? persistState() : (state) => state;
+const persist = persistState() || ((state) => state);
 
 let middlware = composeEnhancers(
 	applyMiddleware(thunk),
