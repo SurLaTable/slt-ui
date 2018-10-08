@@ -25,7 +25,7 @@ var serverConfig = {
 	config: [serveConfig],
 	port: 4000,
 	open: true,
-	add: (app, middleware, options) => {
+	add: (app, middleware) => {
 		middleware.webpack();
 		middleware.content();
 		/*
@@ -36,12 +36,8 @@ var serverConfig = {
 	}
 };
 
-// This allows async components to be tested in the docs.
-tasks.run('build-manifest').then(() => {
-	// Start the docs server:
-	webpackServe(serverConfig).then((server) => {
-		server.on('build-finished', () => {
-			// Whenever a refresh or rebuild happens you can do something here.
-		});
+webpackServe(serverConfig).then((server) => {
+	server.on('build-finished', () => {
+		// Whenever a refresh or rebuild happens you can do something here.
 	});
 });

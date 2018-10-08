@@ -22,10 +22,12 @@ export const fetchGeocode = ({ actions }, options) => {
 				.asPromise()
 				.then((response) => {
 					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(true));
 					return dispatch(actions.setData(response.json.results));
 				})
 				.catch((err) => {
 					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(false));
 					return dispatch(
 						actions.setData([
 							{ error: err.json ? err.json.error_message : 'Something went wrong' }
@@ -34,6 +36,7 @@ export const fetchGeocode = ({ actions }, options) => {
 				});
 		} catch (err) {
 			dispatch(actions.setIsFetching(false));
+			dispatch(actions.setHasLocations(false));
 			return dispatch(
 				actions.setData([
 					{ error: typeof err == 'string' ? err : err.message || 'Something went wrong' }
@@ -52,10 +55,12 @@ export const fetchReverseGeocode = ({ actions }, options) => {
 				.asPromise()
 				.then((response) => {
 					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(true));
 					return dispatch(actions.setData(response.json.results));
 				})
 				.catch((err) => {
 					dispatch(actions.setIsFetching(false));
+					dispatch(actions.setHasLocations(false));
 					return dispatch(
 						actions.setData([
 							{ error: err.json ? err.json.error_message : 'Something went wrong' }
@@ -64,6 +69,7 @@ export const fetchReverseGeocode = ({ actions }, options) => {
 				});
 		} catch (err) {
 			dispatch(actions.setIsFetching(false));
+			dispatch(actions.setHasLocations(false));
 			return dispatch(
 				actions.setData([
 					{ error: typeof err == 'string' ? err : err.message || 'Something went wrong' }

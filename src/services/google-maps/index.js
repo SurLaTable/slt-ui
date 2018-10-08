@@ -7,6 +7,7 @@ const { reducer, actions, selectors } = reheat({
 	namespace: __dirname,
 	initialState: {
 		data: [],
+		hasLocations: false,
 		isFetching: false
 	},
 	actionCreators

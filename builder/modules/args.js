@@ -14,7 +14,6 @@ export function customArgs(options = {}) {
 			},
 			alias: {
 				v: 'verbose',
-				d: 'dev',
 				r: 'report'
 			}
 		},

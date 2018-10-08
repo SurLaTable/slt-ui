@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
 import * as sltStoresApi from '../services/slt-stores';
+import { selectors as googleMapsSelectors } from '../services/google-maps';
 import { getClosestStores, getClosestCulinaryStores } from './selectors';
 
 import moize from 'moize';
@@ -31,10 +32,10 @@ class StoreList extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			page: 1
+			page: 0
 		};
 		this.handleShowMore = this.handleShowMore.bind(this);
-		this.renderCards = moize.react({ maxSize: 5 })(this.renderCards.bind(this));
+		this.renderCards = moize.reactSimple(this.renderCards.bind(this));
 	}
 	handleShowMore() {
 		this.setState({
@@ -44,7 +45,12 @@ class StoreList extends React.Component {
 			this.props.onShowMore(this.state.page + 1);
 		}
 	}
-	renderCards(limit, storeData, detailed, onItemSelected) {
+	componentDidMount() {
+		if (this.props.hasLocations && this.state.page == 0) {
+			this.setState({ page: 1 });
+		}
+	}
+	renderCards({ limit, storeData, detailed, onItemSelected, selectedStore }) {
 		let { classes, dispatch } = this.props;
 		let cards = [];
 		for (let i = 0; i < limit; i++) {
@@ -67,43 +73,55 @@ class StoreList extends React.Component {
 							height: '100%'
 						}}
 					>
-						<Button
-							variant="outlined"
-							className={classes.button}
-							style={{
-								display:
-									this.props.selectedStore == storeData[i].storeId ? 'none' : null
-							}}
-							onClick={() => {
-								if (this.props.selectedStore == storeData[i].storeId) {
-									dispatch(sltStoresApi.actions.nullifySelectedItem());
-								} else {
-									dispatch(
-										sltStoresApi.actions.setSelectedItem(storeData[i].storeId)
-									);
-									if (onItemSelected) {
-										onItemSelected(storeData[i].storeId);
+						{selectedStore != storeData[i].storeId && (
+							<Button
+								variant="outlined"
+								className={classes.button}
+								onClick={() => {
+									if (selectedStore == storeData[i].storeId) {
+										dispatch(sltStoresApi.actions.nullifySelectedItem());
+									} else {
+										dispatch(
+											sltStoresApi.actions.setSelectedItem(
+												storeData[i].storeId
+											)
+										);
+										if (onItemSelected) {
+											onItemSelected(storeData[i].storeId);
+										}
 									}
-								}
-							}}
-						>
-							Select Location
-						</Button>
+								}}
+							>
+								Select Location
+							</Button>
+						)}
 					</div>
 				</StoreCard>
 			);
 		}
 		return <>{cards}</>;
 	}
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.hasLocations != this.props.hasLocations && prevState.page == 0) {
+			this.setState({ page: 1 });
+		}
+	}
 	render() {
 		//add filters for culinary, and a variable for displaying filters
-		let { pageSize, storeData, classes, detailed, onItemSelected } = this.props;
+		let {
+			pageSize,
+			storeData,
+			classes,
+			detailed,
+			onItemSelected,
+			selectedStore,
+			hasLocations
+		} = this.props;
+
 		let { page } = this.state;
-		if (storeData == null) {
-			return <></>;
-		}
+
 		let limit = Math.min(Number(pageSize) * page, storeData.length);
-		let atMax = limit == storeData.length;
+		let atMax = page > 0 && limit == storeData.length;
 
 		return (
 			<>
@@ -111,14 +129,20 @@ class StoreList extends React.Component {
 					elevation={0}
 					className={classes.StoreList}
 				>
-					{this.renderCards(limit, storeData, detailed, onItemSelected)}
+					{this.renderCards({
+						limit,
+						storeData,
+						detailed,
+						onItemSelected,
+						selectedStore
+					})}
 				</Paper>
 				{atMax === false && (
 					<Button
 						fullWidth
 						onClick={this.handleShowMore}
 					>
-						Show More
+						Show {page > 0 ? 'More' : 'Stores'}
 					</Button>
 				)}
 			</>
@@ -143,7 +167,8 @@ StoreList.defaultProps = {
 
 const mapStateToProps = (state, props) => {
 	const selectedStore = sltStoresApi.selectors.getSelectedItem(state);
-	let storeData;
+	const hasLocations = googleMapsSelectors.getHasLocations(state);
+	let storeData = [];
 	if (props.culinary) {
 		storeData =
 			props.sortBy == 'distance'
@@ -158,6 +183,7 @@ const mapStateToProps = (state, props) => {
 
 	return {
 		...props,
+		hasLocations,
 		selectedStore,
 		storeData
 	};

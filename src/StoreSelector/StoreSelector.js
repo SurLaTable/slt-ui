@@ -120,9 +120,7 @@ class StoreSelector extends React.Component {
 	}
 
 	componentDidMount() {
-		let data = googleMapsSelectors.getData(this.context.store.getState());
-
-		if (data.length == 0) {
+		if (this.props.hasLocations == false) {
 			this.setState({ open: true });
 		}
 	}
@@ -266,6 +264,7 @@ StoreSelector.defaultProps = {
 const mapStateToProps = (state, props) => {
 	return {
 		...props,
+		hasLocations: googleMapsSelectors.getHasLocations(state),
 		selectedStore: sltStoresApi.selectors.getSelectedItemObject(state)
 	};
 };

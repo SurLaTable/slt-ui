@@ -63,7 +63,7 @@ const style = (theme) => {
 const locale = 'en-us';
 
 const giveMeTheClassTimeNicelyShort = (classData) => `
-	${new Date(classData.classStartDate).toLocaleString(locale, {
+	${new Date(classData?.classStartDate).toLocaleString(locale, {
 		month: 'short',
 		day: '2-digit',
 		hour: 'numeric',
@@ -71,14 +71,14 @@ const giveMeTheClassTimeNicelyShort = (classData) => `
 	})}`;
 
 const giveMeTheClassTimeNicely = (classData) => `
-	${new Date(classData.classStartDate).toLocaleString(locale, {
+	${new Date(classData?.classStartDate).toLocaleString(locale, {
 		weekday: 'short',
 		month: 'numeric',
 		day: 'numeric',
 		year: 'numeric',
 		hour: 'numeric',
 		minute: 'numeric'
-	})} - ${new Date(classData.classStopDate).toLocaleString(locale, {
+	})} - ${new Date(classData?.classStopDate).toLocaleString(locale, {
 	hour: 'numeric',
 	minute: 'numeric'
 })}`;
@@ -109,6 +109,7 @@ const sortDates = (a, b) => {
 class ClassDateTimePicker extends React.Component {
 	state = {
 		expanded: null,
+		sku: null,
 		open: false
 	};
 	constructor() {
@@ -117,27 +118,29 @@ class ClassDateTimePicker extends React.Component {
 			// We hydrate with the old state.
 			global.history.replaceState(null, 'ClassDateTimePicker');
 		}
-		this.handleHistoryPopState = this.handleHistoryPopState.bind(this);
+		this.renderPanels = this.renderPanels.bind(this);
+		this.getSelectedClass = this.getSelectedClass.bind(this);
+		//this.handleHistoryPopState = this.handleHistoryPopState.bind(this);
 	}
-	handleHistoryPopState(event) {
-		const state = event.state;
-
-		if (state == null) {
-			// Close dialog:
-			this.setState({ open: false });
-		} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
-			this.setState({ open: true });
-			global.history.replaceState(state, 'ClassDateTimePicker');
-		}
-	}
+	// handleHistoryPopState(event) {
+	// 	const state = event.state;
+	//
+	// 	if (state == null) {
+	// 		// Close dialog:
+	// 		this.setState({ open: false });
+	// 	} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
+	// 		this.setState({ open: true });
+	// 		global.history.replaceState(state, 'ClassDateTimePicker');
+	// 	}
+	// }
 	componentDidMount() {
 		this.setState({
 			culinaryClassName: document.querySelector('h1.name')?.textContent || 'class'
 		});
-		global.addEventListener('popstate', this.handleHistoryPopState);
+		//global.addEventListener('popstate', this.handleHistoryPopState);
 	}
 	componentWillUnMount() {
-		global.removeEventListener('popstate', this.handleHistoryPopState);
+		//global.removeEventListener('popstate', this.handleHistoryPopState);
 	}
 	handleChange = (panel) => (event, expanded) => {
 		this.setState({
@@ -145,15 +148,15 @@ class ClassDateTimePicker extends React.Component {
 		});
 	};
 	handleClickOpen() {
-		if (global?.history) {
-			global.history.pushState(
-				{
-					type: 'OPEN_DATE_TIME_PICKER',
-					selection: this.props.selection
-				},
-				'ClassDateTimePicker'
-			);
-		}
+		// if (global?.history) {
+		// 	global.history.pushState(
+		// 		{
+		// 			type: 'OPEN_DATE_TIME_PICKER',
+		// 			sku: this.state.sku
+		// 		},
+		// 		'ClassDateTimePicker'
+		// 	);
+		// }
 
 		this.setState({
 			open: true,
@@ -170,34 +173,31 @@ class ClassDateTimePicker extends React.Component {
 	onEnter(productId, storeId) {
 		this.props.dispatch(actions.fetchClassTimes(productId, storeId));
 	}
-	returnMonthData(dateString) {
-		return this?.props?.classTimeData?.[dateString] ? (
+	returnMonthData(culinaryClasses) {
+		return (
 			<RadioGroup
 				aria-label="Classes"
 				name="classes"
-				value={this.state.sku}
 			>
-				{this.props.classTimeData[dateString].map((culinaryClass, index) => (
-					<FormControlLabel
-						key={`${index}_${Date.now()}`}
-						value={culinaryClass.sku}
-						control={
-							<Radio
-								style={{
-									color: '#333333'
-								}}
-								onChange={() => {
-									this.setState({ sku: culinaryClass.sku });
-									return document.location.replace(`/sku/${culinaryClass.sku}/`);
-								}}
-							/>
-						}
-						label={giveMeTheClassTimeNicely(culinaryClass)}
-					/>
-				))}
+				{culinaryClasses.map((culinaryClass, index) => {
+					return (
+						<FormControlLabel
+							key={`${index}_${Date.now()}`}
+							value={culinaryClass.sku}
+							control={
+								<Radio
+									checked={this.state.sku == culinaryClass.sku}
+									onChange={() => {
+										this.setState({ sku: culinaryClass.sku });
+										document.location.replace(`/sku/${culinaryClass.sku}/`);
+									}}
+								/>
+							}
+							label={giveMeTheClassTimeNicely(culinaryClass)}
+						/>
+					);
+				})}
 			</RadioGroup>
-		) : (
-			<Typography>No dates available.</Typography>
 		);
 	}
 	componentDidUpdate(prevProps) {
@@ -209,26 +209,19 @@ class ClassDateTimePicker extends React.Component {
 			needToFetch = true;
 		}
 
+		if ((this.state.sku == null && this.props.sku) || this.props.sku != prevProps.sku) {
+			this.setState({ sku: this.props.sku });
+		}
+
 		if (needToFetch) {
 			this.onEnter(this.props.productId, this.props.storeId);
 		}
 	}
-	render() {
-		let { width, productId, storeId, classes, classTimeData } = this.props;
-		const { expanded, culinaryClassName, open } = this.state;
-
+	renderPanels({ classTimeData, dates, expanded }) {
+		//returns if a class is available
 		var panels = [];
-		const dates = Object.keys(classTimeData)
-			.filter((v) => {
-				return Date.parse(v) >= Date.now();
-			})
-			.sort(sortDates);
-		let hasClasses = false;
 		for (let i = 0; i < dates.length; i++) {
 			const dateString = dates[i];
-			if (classTimeData[dateString] !== false) {
-				hasClasses = true;
-			}
 			panels.push(
 				<ExpansionPanel
 					key={dateString}
@@ -240,24 +233,50 @@ class ClassDateTimePicker extends React.Component {
 						<Typography variant="title">{dateString}</Typography>
 					</ExpansionPanelSummary>
 					<ExpansionPanelDetails>
-						{this.returnMonthData(dateString)}
+						{this.returnMonthData(classTimeData[dateString])}
 					</ExpansionPanelDetails>
 				</ExpansionPanel>
 			);
 		}
+		return panels;
+	}
+	getSelectedClass({ classTimeData, sku }) {
+		if (!sku) {
+			return null;
+		}
+		for (var dateString in classTimeData) {
+			for (let i = 0; i < classTimeData[dateString].length; i++) {
+				if (classTimeData[dateString][i].sku === sku) {
+					return classTimeData[dateString][i];
+				}
+			}
+		}
+	}
+	render() {
+		let { width, productId, storeId, classes, classTimeData } = this.props;
+		const { expanded, culinaryClassName, open, sku } = this.state;
+
+		const dates = Object.keys(classTimeData)
+			.filter((v) => {
+				return Date.parse(v) >= Date.now();
+			})
+			.sort(sortDates);
+
+		const selectedClass =
+			this.getSelectedClass({ classTimeData, sku }) || classTimeData?.[dates[0]]?.[0];
 
 		return (
 			<Paper
 				elevation={0}
 				className={classes.display}
 			>
-				<Typography>Next Available Date:</Typography>
+				<Typography>{sku ? 'Class Date:' : 'Next Available Date:'}</Typography>
 				<Typography>
 					<strong>
 						{!storeId ? (
 							<>&nbsp;</>
-						) : hasClasses ? (
-							giveMeTheClassTimeNicelyShort(classTimeData[dates[0]][0])
+						) : dates.length ? (
+							giveMeTheClassTimeNicelyShort(selectedClass)
 						) : (
 							'No classes available'
 						)}
@@ -268,10 +287,11 @@ class ClassDateTimePicker extends React.Component {
 					onClick={this.handleClickOpen.bind(this)}
 					className={classes.button}
 					style={{ flex: 1 }}
-					disabled={!hasClasses}
+					disabled={!dates.length}
 				>
 					Select Date
 				</Button>
+
 				<Dialog
 					fullWidth={true}
 					fullScreen={isWidthDown('sm', width)}
@@ -295,7 +315,9 @@ class ClassDateTimePicker extends React.Component {
 							</Button>
 						</div>
 					</DialogTitle>
-					<DialogContent>{panels}</DialogContent>
+					<DialogContent>
+						{this.renderPanels({ classTimeData, dates, expanded })}
+					</DialogContent>
 				</Dialog>
 			</Paper>
 		);
@@ -305,7 +327,7 @@ class ClassDateTimePicker extends React.Component {
 ClassDateTimePicker.propTypes = {
 	classTimeData: PropTypes.object,
 	dispatch: PropTypes.func,
-	selection: PropTypes.bool,
+	sku: PropTypes.string,
 	storeId: PropTypes.string,
 	productId: PropTypes.string
 };
