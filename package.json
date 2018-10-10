@@ -41,7 +41,7 @@
 		"@types/react-transition-group": "2.x.x",
 		"axios": "0.x.x",
 		"brcast": "3.x.x",
-		"classnames": "2.x.x",
+		"classnames": "^2.2.6",
 		"deepmerge": "2.x.x",
 		"dom-helpers": "3.x.x",
 		"dotenv-webpack": "1.x.x",

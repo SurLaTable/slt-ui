@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { withStyles } from '@material-ui/core/styles';
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+import classNames from 'classnames';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -42,6 +44,9 @@ function throttle(fn, wait) {
 
 const style = (theme) => {
 	return {
+		fullScreen: {
+			padding: '10px'
+		},
 		flexContainer: {
 			display: 'flex',
 			alignItems: 'center'
@@ -71,6 +76,25 @@ const style = (theme) => {
 			position: 'absolute',
 			bottom: `calc(100% + ${theme.spacing.unit * 2}px)`,
 			right: theme.spacing.unit * 2
+		},
+		anchor: {
+			background: 'transparent',
+			display: 'inline',
+			cursor: 'pointer',
+			outline: 'none',
+			border: 0,
+			padding: 0,
+			textAlign: 'left',
+			textDecoration: 'underline',
+			userSelect: 'none',
+			color: theme.palette.text.primary,
+			'&:hover': {
+				color: theme.palette.text.secondary
+			},
+			'&[disabled], &.disabled, &:disabled': {
+				pointerEvents: 'none',
+				color: theme.palette.text.disabled
+			}
 		}
 	};
 };
@@ -141,11 +165,14 @@ class StoreSelector extends React.Component {
 		const dialog = (
 			<Dialog
 				fullWidth
-				fullScreen={isWidthDown('sm', width)}
+				fullScreen={isWidthDown('xs', width)}
 				maxWidth={'sm'}
 				open={open}
 				onClose={this.toggleOpen}
 				onScroll={this.handleScroll}
+				className={classNames({
+					[classes.fullScreen]: isWidthDown('xs', width)
+				})}
 			>
 				<DialogTitle>
 					<div className={classes.flexContainer}>
@@ -233,12 +260,12 @@ class StoreSelector extends React.Component {
 							{location.state}
 						</strong>
 					</Typography>
-					<Button
+					<button
 						onClick={this.toggleOpen}
-						className={classes.button}
+						className={classes.anchor}
 					>
-						Select Location
-					</Button>
+						Change Location
+					</button>
 				</Paper>
 			);
 		}

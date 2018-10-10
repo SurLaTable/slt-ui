@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+import classNames from 'classnames';
 
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -27,6 +28,9 @@ import { selectors as storeSelectors } from '../services/slt-stores';
 
 const style = (theme) => {
 	return {
+		fullScreen: {
+			padding: '10px'
+		},
 		flexContainer: {
 			display: 'flex',
 			alignItems: 'center'
@@ -56,6 +60,25 @@ const style = (theme) => {
 			position: 'absolute',
 			bottom: `calc(100% + ${theme.spacing.unit * 2}px)`,
 			right: theme.spacing.unit * 2
+		},
+		anchor: {
+			background: 'transparent',
+			display: 'inline',
+			cursor: 'pointer',
+			outline: 'none',
+			border: 0,
+			padding: 0,
+			textAlign: 'left',
+			textDecoration: 'underline',
+			userSelect: 'none',
+			color: theme.palette.text.primary,
+			'&:hover': {
+				color: theme.palette.text.secondary
+			},
+			'&[disabled], &.disabled, &:disabled': {
+				pointerEvents: 'none',
+				color: theme.palette.text.disabled
+			}
 		}
 	};
 };
@@ -282,25 +305,27 @@ class ClassDateTimePicker extends React.Component {
 						)}
 					</strong>
 				</Typography>
-				<Button
-					fullWidth
+				<button
 					onClick={this.handleClickOpen.bind(this)}
-					className={classes.button}
+					className={classes.anchor}
 					style={{ flex: 1 }}
 					disabled={!dates.length}
 				>
-					Select Date
-				</Button>
+					Change Date
+				</button>
 
 				<Dialog
 					fullWidth={true}
-					fullScreen={isWidthDown('sm', width)}
+					fullScreen={isWidthDown('xs', width)}
 					open={open}
 					onClose={this.handleClose.bind(this)}
 					onEnter={() => this.onEnter(productId, storeId)}
 					scroll="paper"
+					className={classNames({
+						[classes.fullScreen]: isWidthDown('xs', width)
+					})}
 				>
-					<DialogTitle>
+					<DialogTitle variant="heading">
 						<div className={classes.flexContainer}>
 							<div className={classes.flex}>
 								Available dates for {culinaryClassName}:
@@ -315,7 +340,7 @@ class ClassDateTimePicker extends React.Component {
 							</Button>
 						</div>
 					</DialogTitle>
-					<DialogContent>
+					<DialogContent style={{ padding: 0 }}>
 						{this.renderPanels({ classTimeData, dates, expanded })}
 					</DialogContent>
 				</Dialog>
