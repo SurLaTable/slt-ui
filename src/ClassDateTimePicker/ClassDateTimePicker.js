@@ -137,10 +137,10 @@ class ClassDateTimePicker extends React.Component {
 	};
 	constructor() {
 		super();
-		if (global?.history?.state?.type === 'OPEN_DATE_TIME_PICKER') {
-			// We hydrate with the old state.
-			global.history.replaceState(null, 'ClassDateTimePicker');
-		}
+		// if (global?.history?.state?.type === 'OPEN_DATE_TIME_PICKER') {
+		// 	// We hydrate with the old state.
+		// 	global.history.replaceState(null, 'ClassDateTimePicker');
+		// }
 		this.renderPanels = this.renderPanels.bind(this);
 		this.getSelectedClass = this.getSelectedClass.bind(this);
 		//this.handleHistoryPopState = this.handleHistoryPopState.bind(this);
@@ -160,6 +160,7 @@ class ClassDateTimePicker extends React.Component {
 		this.setState({
 			culinaryClassName: document.querySelector('h1.name')?.textContent || 'class'
 		});
+		this.onEnter(this.props.productId, this.props.storeId);
 		//global.addEventListener('popstate', this.handleHistoryPopState);
 	}
 	componentWillUnMount() {
@@ -212,7 +213,12 @@ class ClassDateTimePicker extends React.Component {
 									checked={this.state.sku == culinaryClass.sku}
 									onChange={() => {
 										this.setState({ sku: culinaryClass.sku });
-										document.location.replace(`/sku/${culinaryClass.sku}/`);
+										if (
+											global.location &&
+											global.location.host.indexOf('.surlatable.com') >= 0
+										) {
+											global.location.replace(`/sku/${culinaryClass.sku}/`);
+										}
 									}}
 								/>
 							}
@@ -236,6 +242,18 @@ class ClassDateTimePicker extends React.Component {
 			this.setState({ sku: this.props.sku });
 		}
 
+		const dates = Object.keys(this.props.classTimeData).sort(sortDates);
+		if (
+			this.state.sku == null &&
+			!this.props.sku &&
+			this.props.classTimeData?.[dates[0]]?.[0]
+		) {
+			this.setState({ sku: this.props.classTimeData?.[dates[0]]?.[0]?.sku });
+			if (global.location && global.location.host.indexOf('.surlatable.com') >= 0) {
+				global.location.replace(`/sku/${this.props.classTimeData[dates[0]][0].sku}/`);
+			}
+		}
+
 		if (needToFetch) {
 			this.onEnter(this.props.productId, this.props.storeId);
 		}
@@ -253,7 +271,7 @@ class ClassDateTimePicker extends React.Component {
 					onChange={this.handleChange(`panel ${dateString}`)}
 				>
 					<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-						<Typography variant="title">{dateString}</Typography>
+						<Typography variant="h6">{dateString}</Typography>
 					</ExpansionPanelSummary>
 					<ExpansionPanelDetails>
 						{this.returnMonthData(classTimeData[dateString])}
@@ -279,12 +297,7 @@ class ClassDateTimePicker extends React.Component {
 		let { width, productId, storeId, classes, classTimeData } = this.props;
 		const { expanded, culinaryClassName, open, sku } = this.state;
 
-		const dates = Object.keys(classTimeData)
-			.filter((v) => {
-				return Date.parse(v) >= Date.now();
-			})
-			.sort(sortDates);
-
+		const dates = Object.keys(classTimeData).sort(sortDates);
 		const selectedClass =
 			this.getSelectedClass({ classTimeData, sku }) || classTimeData?.[dates[0]]?.[0];
 
@@ -359,12 +372,14 @@ ClassDateTimePicker.propTypes = {
 
 ClassDateTimePicker.defaultProps = {};
 
-const mapStateToProps = (state, props) => ({
-	...props,
-	classTimeData: {
-		...selectors.getClassTimeData(state)
-	},
-	storeId: storeSelectors.getSelectedItem(state)
-});
+const mapStateToProps = (state, props) => {
+	return {
+		...props,
+		classTimeData: {
+			...selectors.getClassTimeData(state)
+		},
+		storeId: storeSelectors.getSelectedItem(state)
+	};
+};
 
 export default connect(mapStateToProps)(withWidth()(withStyles(style)(ClassDateTimePicker)));

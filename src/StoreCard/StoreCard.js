@@ -8,7 +8,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => {
-	console.log(theme);
 	return {
 		details: {
 			display: 'flex',

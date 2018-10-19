@@ -225,50 +225,32 @@ class StoreSelector extends React.Component {
 			</Dialog>
 		);
 
-		let display;
-
-		if (selectedStore == null) {
-			display = (
-				<Paper
-					elevation={0}
-					className={classes.display}
-				>
-					<Typography>Class Location:</Typography>
-					<Typography>&nbsp;</Typography>
-					<Button
-						fullWidth
-						onClick={this.toggleOpen}
-						className={classes.button}
-						style={{ flex: 1 }}
-					>
-						Select Location
-					</Button>
-				</Paper>
-			);
-		} else {
-			const location = selectedStore.location;
-			display = (
-				<Paper
-					elevation={0}
-					className={classes.display}
-				>
-					<Typography>Class Location:</Typography>
-					<Typography>
+		const location = selectedStore?.location;
+		let display = (
+			<Paper
+				elevation={0}
+				className={classes.display}
+			>
+				<Typography>Class Location:</Typography>
+				<Typography>
+					{selectedStore ? (
 						<strong>
-							{location.city}
+							{location?.city}
 							{', '}
-							{location.state}
+							{location?.state}
 						</strong>
-					</Typography>
-					<button
-						onClick={this.toggleOpen}
-						className={classes.anchor}
-					>
-						Change Location
-					</button>
-				</Paper>
-			);
-		}
+					) : (
+						<>&nbsp;</>
+					)}
+				</Typography>
+				<button
+					onClick={this.toggleOpen}
+					className={classes.anchor}
+				>
+					{selectedStore ? 'Change Location' : 'Select Location'}
+				</button>
+			</Paper>
+		);
 
 		return (
 			<>

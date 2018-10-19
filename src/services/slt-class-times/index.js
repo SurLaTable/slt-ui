@@ -7,7 +7,8 @@ const { actions, reducer, selectors } = reheat({
 	namespace: __dirname,
 	initialState: {
 		classTimeData: {},
-		selectedClass: null
+		isFetching: false,
+		persist: [false, {}]
 	},
 	actionCreators
 });
