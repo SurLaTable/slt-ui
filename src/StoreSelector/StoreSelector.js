@@ -144,7 +144,11 @@ class StoreSelector extends React.Component {
 	}
 
 	componentDidMount() {
-		if (this.props.hasLocations == false) {
+		if (this.props.storeId) {
+			if (this.props.selectedStore?.storeId != this.props.storeId) {
+				this.props.dispatch(sltStoresApi.actions.setSelectedItem(this.props.storeId));
+			}
+		} else if (this.props.hasLocations == false && this.props.selectedStore == null) {
 			this.setState({ open: true });
 		}
 	}
@@ -178,7 +182,7 @@ class StoreSelector extends React.Component {
 					<div className={classes.flexContainer}>
 						<div className={classes.flex}>Find A Location Near You</div>
 						<Button
-							variant="flat"
+							variant="text"
 							size="small"
 							onClick={this.toggleOpen}
 							color="default"
@@ -264,10 +268,12 @@ class StoreSelector extends React.Component {
 StoreSelector.propTypes = {
 	selectedStore: PropTypes.object,
 	storeListProps: PropTypes.object,
+	storeId: PropTypes.string,
 	culinary: PropTypes.bool
 };
 StoreSelector.defaultProps = {
-	culinary: false
+	culinary: false,
+	storeId: null
 };
 
 const mapStateToProps = (state, props) => {

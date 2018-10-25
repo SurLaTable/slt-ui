@@ -7,15 +7,6 @@ const apiStorage = store.namespace('classes-service');
 const arrayMeIfEmpty = (item) => (Array.isArray(item) ? item : []);
 
 export const fetchClassTimes = ({ actions }, product, location) => (dispatch) => {
-	if (apiStorage.session.has(`classTimeData-${product}-${location}`)) {
-		return Promise.resolve(
-			dispatch(
-				actions.setClassTimeData(
-					apiStorage.session.get(`classTimeData-${product}-${location}`)
-				)
-			)
-		);
-	}
 	actions.setIsFetching(true);
 	return axios
 		.get(
@@ -26,6 +17,9 @@ export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 		.then((http) => {
 			const now = new Date();
 			actions.setIsFetching(false);
+			var nextClassTime = Infinity,
+				nextClass = null;
+
 			const data = http.data
 				.filter((culinaryClass) => culinaryClass.storeId === location)
 				.reduce((newObj, culinaryClass) => {
@@ -37,11 +31,22 @@ export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 						});
 						newObj[prop] = arrayMeIfEmpty(newObj[prop]);
 						newObj[prop].push(culinaryClass);
+						if (startDate <= nextClassTime) {
+							nextClassTime = startDate;
+							nextClass = prop;
+						}
 					}
 					return newObj;
 				}, {});
-			apiStorage.session.set(`classTimeData-${product}-${location}`, data);
+			//apiStorage.session.set(`classTimeData-${product}-${location}`, data);
+
+			for (let month in data) {
+				data[month].sort((a, b) => new Date(a.classStartDate) - new Date(b.classStartDate));
+			}
+
+			dispatch(actions.setNextClass(nextClass));
 			dispatch(actions.setClassTimeData(data));
+			return data && nextClass && data[nextClass][0];
 		})
 		.catch((e) => console.error(e));
 };

@@ -26,19 +26,19 @@ const WithTheme = (props) => (
 
 		<Button
 			color="default"
-			variant="flat"
+			variant="text"
 		>
 			default flat
 		</Button>
 		<Button
 			color="primary"
-			variant="flat"
+			variant="text"
 		>
 			primary flat
 		</Button>
 		<Button
 			color="secondary"
-			variant="flat"
+			variant="text"
 		>
 			secondary flat
 		</Button>

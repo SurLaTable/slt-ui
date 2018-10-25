@@ -24,7 +24,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { actions, selectors } from '../services/slt-class-times';
 
-import { selectors as storeSelectors } from '../services/slt-stores';
+import * as storesApi from '../services/slt-stores';
 
 const style = (theme) => {
 	return {
@@ -121,56 +121,53 @@ const months = [
 	'December'
 ];
 const sortDates = (a, b) => {
-	const adata = a.split(' ');
-	const bdata = b.split(' ');
-	return (
-		(bdata[1] < adata[1] ? 1 : -1) * 2 +
-		(months.indexOf(bdata[0]) < months.indexOf(adata[0]) ? 1 : -1)
-	);
+	return new Date(a) - new Date(b);
 };
 
 class ClassDateTimePicker extends React.Component {
 	state = {
 		expanded: null,
 		sku: null,
+		skuSetFromProps: false,
 		open: false
 	};
 	constructor() {
 		super();
-		// if (global?.history?.state?.type === 'OPEN_DATE_TIME_PICKER') {
-		// 	// We hydrate with the old state.
-		// 	global.history.replaceState(null, 'ClassDateTimePicker');
-		// }
 		this.renderPanels = this.renderPanels.bind(this);
 		this.getSelectedClass = this.getSelectedClass.bind(this);
-		//this.handleHistoryPopState = this.handleHistoryPopState.bind(this);
 	}
-	// handleHistoryPopState(event) {
-	// 	const state = event.state;
-	//
-	// 	if (state == null) {
-	// 		// Close dialog:
-	// 		this.setState({ open: false });
-	// 	} else if (state.type === 'OPEN_DATE_TIME_PICKER' && !this.state.open) {
-	// 		this.setState({ open: true });
-	// 		global.history.replaceState(state, 'ClassDateTimePicker');
-	// 	}
-	// }
+
 	componentDidMount() {
 		this.setState({
 			culinaryClassName: document.querySelector('h1.name')?.textContent || 'class'
 		});
-		this.onEnter(this.props.productId, this.props.storeId);
+
+		this.onEnter(this.props.productId, this.props.selectedStore).then((nextClass) => {
+			if (this.props.sku == null) {
+				this.redirect(nextClass);
+			}
+		});
 		//global.addEventListener('popstate', this.handleHistoryPopState);
+	}
+	redirect(culinaryClass) {
+		if (
+			culinaryClass &&
+			global.location &&
+			global.location.host.indexOf('.surlatable.com') >= 0
+		) {
+			global.location.replace(`/sku/${culinaryClass.sku}/`);
+		}
 	}
 	componentWillUnMount() {
 		//global.removeEventListener('popstate', this.handleHistoryPopState);
 	}
-	handleChange = (panel) => (event, expanded) => {
-		this.setState({
-			expanded: expanded ? panel : false
-		});
-	};
+	handleChange(panel) {
+		return (event, expanded) => {
+			this.setState({
+				expanded: expanded ? panel : false
+			});
+		};
+	}
 	handleClickOpen() {
 		// if (global?.history) {
 		// 	global.history.pushState(
@@ -195,7 +192,7 @@ class ClassDateTimePicker extends React.Component {
 		this.setState({ open: false, expanded: false });
 	}
 	onEnter(productId, storeId) {
-		this.props.dispatch(actions.fetchClassTimes(productId, storeId));
+		return this.props.dispatch(actions.fetchClassTimes(productId, storeId));
 	}
 	returnMonthData(culinaryClasses) {
 		return (
@@ -213,12 +210,7 @@ class ClassDateTimePicker extends React.Component {
 									checked={this.state.sku == culinaryClass.sku}
 									onChange={() => {
 										this.setState({ sku: culinaryClass.sku });
-										if (
-											global.location &&
-											global.location.host.indexOf('.surlatable.com') >= 0
-										) {
-											global.location.replace(`/sku/${culinaryClass.sku}/`);
-										}
+										this.redirect(culinaryClass);
 									}}
 								/>
 							}
@@ -229,33 +221,40 @@ class ClassDateTimePicker extends React.Component {
 			</RadioGroup>
 		);
 	}
-	componentDidUpdate(prevProps) {
-		let needToFetch = false;
-		if (this.props.storeId != prevProps.storeId) {
+	componentDidUpdate(prevProps, prevState) {
+		let needToFetch = false,
+			storeChange = false,
+			productChange = false;
+
+		if (
+			this.props.selectedStore != prevProps.selectedStore &&
+			this.props.selectedStore != this.props.storeId
+		) {
 			needToFetch = true;
+			storeChange = true;
 		}
 		if (this.props.productId != prevProps.productId) {
 			needToFetch = true;
+			productChange = true;
 		}
 
 		if ((this.state.sku == null && this.props.sku) || this.props.sku != prevProps.sku) {
-			this.setState({ sku: this.props.sku });
-		}
-
-		const dates = Object.keys(this.props.classTimeData).sort(sortDates);
-		if (
-			this.state.sku == null &&
-			!this.props.sku &&
-			this.props.classTimeData?.[dates[0]]?.[0]
-		) {
-			this.setState({ sku: this.props.classTimeData?.[dates[0]]?.[0]?.sku });
-			if (global.location && global.location.host.indexOf('.surlatable.com') >= 0) {
-				global.location.replace(`/sku/${this.props.classTimeData[dates[0]][0].sku}/`);
-			}
+			this.setState({ sku: this.props.sku, skuSetFromProps: true });
+			return;
 		}
 
 		if (needToFetch) {
-			this.onEnter(this.props.productId, this.props.storeId);
+			this.onEnter(this.props.productId, this.props.selectedStore).then((nextClass) => {
+				if (nextClass) {
+					if (!this.props.sku || storeChange) {
+						this.redirect(nextClass);
+					}
+				} else if (this.props.productId && this.props.sku) {
+					if (global.location && global.location.host.indexOf('.surlatable.com') >= 0) {
+						global.location.replace(`/product/${this.props.productId}/`);
+					}
+				}
+			});
 		}
 	}
 	renderPanels({ classTimeData, dates, expanded }) {
@@ -294,12 +293,11 @@ class ClassDateTimePicker extends React.Component {
 		}
 	}
 	render() {
-		let { width, productId, storeId, classes, classTimeData } = this.props;
+		let { width, productId, selectedStore, classes, classTimeData, nextClass } = this.props;
 		const { expanded, culinaryClassName, open, sku } = this.state;
 
 		const dates = Object.keys(classTimeData).sort(sortDates);
-		const selectedClass =
-			this.getSelectedClass({ classTimeData, sku }) || classTimeData?.[dates[0]]?.[0];
+		const selectedClass = this.getSelectedClass({ classTimeData, sku }) || nextClass;
 
 		return (
 			<Paper
@@ -309,7 +307,7 @@ class ClassDateTimePicker extends React.Component {
 				<Typography>{sku ? 'Class Date:' : 'Next Available Date:'}</Typography>
 				<Typography>
 					<strong>
-						{!storeId ? (
+						{!selectedStore ? (
 							<>&nbsp;</>
 						) : dates.length ? (
 							giveMeTheClassTimeNicelyShort(selectedClass)
@@ -332,7 +330,7 @@ class ClassDateTimePicker extends React.Component {
 					fullScreen={isWidthDown('xs', width)}
 					open={open}
 					onClose={this.handleClose.bind(this)}
-					onEnter={() => this.onEnter(productId, storeId)}
+					onEnter={() => this.onEnter(productId, selectedStore)}
 					scroll="paper"
 					className={classNames({
 						[classes.fullScreen]: isWidthDown('xs', width)
@@ -344,7 +342,7 @@ class ClassDateTimePicker extends React.Component {
 								Available dates for {culinaryClassName}:
 							</div>
 							<Button
-								variant="flat"
+								variant="text"
 								size="small"
 								onClick={this.handleClose.bind(this)}
 								color="default"
@@ -367,7 +365,9 @@ ClassDateTimePicker.propTypes = {
 	dispatch: PropTypes.func,
 	sku: PropTypes.string,
 	storeId: PropTypes.string,
-	productId: PropTypes.string
+	selectedStore: PropTypes.string,
+	productId: PropTypes.string,
+	nextClass: PropTypes.object
 };
 
 ClassDateTimePicker.defaultProps = {};
@@ -378,7 +378,8 @@ const mapStateToProps = (state, props) => {
 		classTimeData: {
 			...selectors.getClassTimeData(state)
 		},
-		storeId: storeSelectors.getSelectedItem(state)
+		nextClass: selectors.getNextClassObj(state),
+		selectedStore: storesApi.selectors.getSelectedItem(state) || props.storeId
 	};
 };
 
