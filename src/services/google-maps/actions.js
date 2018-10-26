@@ -18,7 +18,13 @@ export const fetchGeocode = ({ actions }, options) => {
 		dispatch(actions.setIsFetching(true));
 		try {
 			return client
-				.geocode(options)
+				.geocode({
+					...options,
+					headers: {
+						...options.headers,
+						'Access-Control-Allow-Credentials': true
+					}
+				})
 				.asPromise()
 				.then((response) => {
 					dispatch(actions.setIsFetching(false));
@@ -51,7 +57,13 @@ export const fetchReverseGeocode = ({ actions }, options) => {
 		dispatch(actions.setIsFetching(true));
 		try {
 			return client
-				.reverseGeocode(options)
+				.reverseGeocode({
+					...options,
+					headers: {
+						...options.headers,
+						'Access-Control-Allow-Credentials': true
+					}
+				})
 				.asPromise()
 				.then((response) => {
 					dispatch(actions.setIsFetching(false));
