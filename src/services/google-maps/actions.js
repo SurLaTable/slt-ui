@@ -10,6 +10,9 @@ const client = googleMaps.createClient({
 	rate: {
 		period: 1000,
 		limit: 5
+	},
+	headers: {
+		'Access-Control-Allow-Credentials': true
 	}
 });
 
@@ -18,13 +21,7 @@ export const fetchGeocode = ({ actions }, options) => {
 		dispatch(actions.setIsFetching(true));
 		try {
 			return client
-				.geocode({
-					...options,
-					headers: {
-						...options.headers,
-						'Access-Control-Allow-Credentials': true
-					}
-				})
+				.geocode(options)
 				.asPromise()
 				.then((response) => {
 					dispatch(actions.setIsFetching(false));
@@ -57,13 +54,7 @@ export const fetchReverseGeocode = ({ actions }, options) => {
 		dispatch(actions.setIsFetching(true));
 		try {
 			return client
-				.reverseGeocode({
-					...options,
-					headers: {
-						...options.headers,
-						'Access-Control-Allow-Credentials': true
-					}
-				})
+				.reverseGeocode(options)
 				.asPromise()
 				.then((response) => {
 					dispatch(actions.setIsFetching(false));
