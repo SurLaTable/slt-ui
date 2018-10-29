@@ -18,7 +18,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/close';
+import CloseIcon from '@material-ui/icons/Close';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 

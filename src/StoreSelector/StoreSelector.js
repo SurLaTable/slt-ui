@@ -18,7 +18,7 @@ import StoreList from '../StoreList';
 import LocationField from '../LocationField';
 import LocationButton from '../LocationButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import CloseIcon from '@material-ui/icons/close';
+import CloseIcon from '@material-ui/icons/Close';
 import Zoom from '@material-ui/core/Zoom';
 
 import * as sltStoresApi from '../services/slt-stores';
