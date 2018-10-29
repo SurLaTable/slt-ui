@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import Habitat from 'react-habitat/lib/Habitat';
+import ReactDOM from 'react-dom';
 // import { Provider }		from 'react-redux';
 // import { createStore } from "redux";
-import StoreProvider from '../src/ComparisonChart/StoreProvider.js';
+import StoreProvider from '../src/StoreProvider';
+import ThemeProvider from '../src/ThemeProvider';
 /**
  * React DOM Factory
  */
@@ -12,7 +14,6 @@ export default class SLTDomFactory {
 		this.componentSelector = componentSelector;
 		this.domToHabitat = domToHabitat;
 		this.componentId = 0;
-		// this.store = createStore(function(){});
 	}
 
 	/**
@@ -37,20 +38,24 @@ export default class SLTDomFactory {
 				}
 			}
 
-			var wrapper = React.createElement(
-				target.nodeName.toLowerCase(),
-				{
-					'data-component-id':
-						props.proxy.getAttribute('data-component-id') ||
-						props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`
-				},
-				React.createElement(module, props, children)
-			);
+			props = {
+				...props,
+				'data-component-id':
+					props.proxy.getAttribute('data-component-id') ||
+					props.proxy.getAttribute(this.componentSelector) + `-${this.componentId++}`
+			};
 
-			// ReactDom.render(wrapper, target);
-			// ReactDom.render(React.createElement(Provider, { store: this.store },wrapper), target);
+			var reactElement = React.createElement(module, props, children);
+
 			if (wrapper) {
-				ReactDom.render(React.createElement(StoreProvider, props, wrapper), target);
+				ReactDOM.render(
+					React.createElement(
+						ThemeProvider,
+						{},
+						React.createElement(StoreProvider, {}, reactElement)
+					),
+					target
+				);
 			}
 		}
 	}
@@ -61,8 +66,7 @@ export default class SLTDomFactory {
 	 */
 	dispose(target) {
 		if (target) {
-			//console.log(target)
-			ReactDom.unmountComponentAtNode(target);
+			ReactDOM.unmountComponentAtNode(target);
 		}
 	}
 }

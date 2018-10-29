@@ -1,48 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-import { actionToggleProductSelection } from '../actions/productComparisonActions';
+import { actionToggleProductSelection } from '../services';
 
-const theme = createMuiTheme({
-	typography: {
-		fontSize: 22,
-		fontFamily: "'MrEavesSans', Verdana, Arial, Helvetica, sans-serif"
-	}
-});
-
-let ComparisonCheckbox = (props) => {
-	return (
-		<MuiThemeProvider theme={theme}>
+class ComparisonCheckbox extends React.Component {
+	render() {
+		let { product, checked, disabled = false, dispatch } = this.props;
+		return (
 			<div className="comparison-checkbox">
 				<FormControlLabel
 					control={
 						<Checkbox
 							onChange={(event, checked) => {
-								props.dispatch(
-									actionToggleProductSelection(props.product, checked)
-								);
+								dispatch(actionToggleProductSelection(product, checked));
 							}}
 							style={{
 								color: '#333333'
 							}}
-							disabled={props.disabled}
-							checked={props.checked}
-							data-product={props.product}
+							disabled={disabled}
+							checked={checked}
+							data-product={product}
 						/>
 					}
-					label={props.checked ? 'Added' : 'Compare'}
+					label={checked ? 'Added' : 'Compare'}
 				/>
 			</div>
-		</MuiThemeProvider>
-	);
+		);
+	}
+}
+
+ComparisonCheckbox.propTypes = {
+	product: PropTypes.string,
+	checked: PropTypes.bool,
+	disabled: PropTypes.bool
 };
 
-ComparisonCheckbox = connect((state, props) => {
+ComparisonCheckbox.defaultProps = {
+	disabled: false,
+	checked: false
+};
+
+export default connect((state, props) => {
 	let selection = state.productComparisonReducer ? state.productComparisonReducer.selection : [];
 	let checked = false;
 
@@ -56,12 +58,10 @@ ComparisonCheckbox = connect((state, props) => {
 		}
 	}
 
-	let disabled = !checked && selection.length > 2;
+	let disabled = props.disabled || (!checked && selection.length > 2);
 	return {
 		...props,
 		checked,
 		disabled
 	};
 })(ComparisonCheckbox);
-
-export default ComparisonCheckbox;

@@ -1,21 +1,43 @@
 # SLT's component library
 
-[![Travis build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui)
+| master                                                                                                                                                                                                                                                             | develop                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Travis 'master' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=master)](https://travis-ci.org/SurLaTable/slt-ui) [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) | [![Travis 'develop' build status](https://travis-ci.org/SurLaTable/slt-ui.svg?branch=develop)](https://travis-ci.org/SurLaTable/slt-ui) [![codecov](https://codecov.io/gh/SurLaTable/slt-ui/branch/develop/graph/badge.svg)](https://codecov.io/gh/SurLaTable/slt-ui) |
 
 # :warning: Our build requires Node 10.x or greater.
 
 ## Getting started:
 
-If you just want to hack on components, you can run:
+If you want to view component documentation and hack on components, you can run:
+
+```
+yarn install
+yarn docs
+```
+
+We use React Styleguidist for documentation, usage details can be found [here](https://react-styleguidist.js.org/docs/getting-started.html).
+
+#### Starting a new component:
+
+If you want to start a brand new component, run the following to create all boilerplate files (including documentation and unit tests):
+
+```
+yarn install
+yarn start-component FooBarScroller
+```
+
+_Psst!_ Replace `FooBarScroller` with your component's name.
+
+---
+
+Our original sandbox is available with the below command, but is deprecated as the documentation engine encourages documenting components while engineering them.
 
 ```
 yarn install
 yarn sandbox
 ```
 
-More details on the sandbox functionality can be found [here](sandbox/README.md).
-
-Conversely, you can also hack on components using CodeSandbox:
+Conversely, you can also use CodeSandbox, although the version there is out-of-date at the moment:
 
 [![Edit @sur-la-table/slt-ui](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/SurLaTable/slt-ui/tree/0b63e06d14b42cc5f91739dff90a09ed747b1e93)
 
@@ -44,7 +66,7 @@ yarn build dynamic-registration ./src/--REPLACE_WITH_COMPONENT_DIRECTORY--/index
 Then in your frontend environment:
 
 ```js
-var slt_dynamic_registration = function(e){var t={};function n(r) ...
+var slt_dynamic_registration=function(e){var t={};function n(r) ...
 $('<div data-component="TestButton">This is a test button</div>').prependTo('body');
 ComponentManifest.register(slt_dynamic_registration);
 ```
@@ -86,7 +108,15 @@ For injecting into a legacy system, use [React Habitat](https://github.com/Deloi
 </div>
 ```
 
-Note that unlike vanilla React Habitat _you can have nested components_.
+To register these components with Habitat, run:
+
+```js
+ComponentManifest.bootstrapper.update();
+```
+
+Note that this differs from React Habitat's method (`window.updateHabitat();`). Both are functionally the same, but we expose the low level `bootstrapper` to have access to more of Habitat's internal methods.
+
+Also, unlike vanilla React Habitat _you can have nested components_.
 
 For more details, head [here](build/README.md).
 
@@ -104,18 +134,42 @@ Without this direct reference to a component, all of Material UI will be include
 
 ## Publishing:
 
-After [building](https://github.com/SurLaTable/slt-ui#building) the repo, do:
+After [building](https://github.com/SurLaTable/slt-ui#building) the repo, set the version number in `(package.json)[package.json]` and `(build/package.json)[build/package.json]`, then:
 
 ```
 cd build
 npm login
-yarn publish
+npm publish
 ```
 
-To publish the `beta` tag to `npm` (for development environments), just add a `--tag beta` argument to `yarn publish`, in other words:
+To publish the `beta` tag to `npm` (for development environments), just add a `--tag beta` argument to `npm publish`, in other words:
 
 ```
 cd build
 npm login
-yarn publish --tag beta
+npm publish --tag beta
+```
+
+The beta tags follow this format:
+
+```
+DATE.INCREMENTED.NUMBER-beta
+```
+
+For instance:
+
+```
+20180822.0.0-beta
+```
+
+If you published another one you would increment the numbers in the MINOR and PATCH spots, like so:
+
+```
+20180822.0.1-beta
+```
+
+So if you published 12 versions in one day, you would be on:
+
+```
+20180822.1.1-beta
 ```

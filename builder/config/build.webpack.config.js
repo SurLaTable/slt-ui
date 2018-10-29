@@ -11,9 +11,16 @@ function title(str) {
 	return str.replace(/(^[a-z]|[\s-][a-z])|/g, ($1) => $1.toUpperCase());
 }
 
-export default (name, config) => {
+export default (name, ...configs) => {
 	let finalConfig = merge(
 		{
+			resolve: {
+				symlinks: false
+			},
+			node: {
+				__dirname: true,
+				__filename: true
+			},
 			mode: process.env.NODE_ENV,
 			stats: 'verbose',
 			devtool: false,
@@ -21,8 +28,7 @@ export default (name, config) => {
 			optimization: {
 				minimize: process.env.NODE_ENV === 'production',
 				namedChunks: true,
-				namedModules: true,
-				splitChunks: {}
+				namedModules: true
 			},
 			resolveLoader: {
 				alias: {
@@ -33,7 +39,7 @@ export default (name, config) => {
 			externals: {
 				jquery: 'jQuery',
 				react: 'React',
-				'react-dom': 'ReactDom',
+				'react-dom': 'ReactDOM',
 				'react-redux': 'ReactRedux',
 				redux: 'Redux'
 			},
@@ -51,7 +57,7 @@ export default (name, config) => {
 							loader: 'babel-loader',
 							options: babelConfig
 						},
-						exclude: /(node_modules)/
+						exclude: /node_modules/
 					}
 				]
 			},
@@ -61,7 +67,7 @@ export default (name, config) => {
 				})
 			]
 		},
-		config
+		...configs
 	);
 
 	if (args.report == true) {

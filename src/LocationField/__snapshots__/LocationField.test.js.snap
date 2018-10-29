@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1`] = `
+<Provider
+  store={
+    Object {
+      "asyncReducers": Object {
+        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\google-maps": [Function],
+      },
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <React.Fragment>
+    <Connect(WithStyles(LocationField)) />
+  </React.Fragment>
+</Provider>
+`;

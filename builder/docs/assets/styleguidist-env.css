@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Jaldi');
+
+/*
+	'Jaldi' is much closer to our site's
+	main font, 'MrEavesSans'.
+*/
+#rsg-root {
+	font-family: MrEavesSans, 'Jaldi', Verdana, Arial, Helvetica, sans-serif !important;
+}
+[data-preview] {
+	transform: translate3d(0, 0, 0) !important;
+	overflow: auto !important;
+}
+pre {
+	overflow: auto !important;
+}

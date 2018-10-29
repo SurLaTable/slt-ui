@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import log from './modules/print.js';
 import tasks from './modules/tasks.js';
 import { customArgs } from './modules/args.js';
@@ -14,10 +15,11 @@ import './modules/setup.js';
 import './async.js';
 import './components.js';
 import './dynamic-registration.js';
+import './docs.js';
 
 function handleError(err) {
 	if (err) {
-		log.error(err.stack);
+		log.error(err);
 	}
 }
 
@@ -25,10 +27,7 @@ let task = args._[0] || 'default';
 
 tasks.add(
 	tasks.timed(() => {
-		return tasks.run('clean').then(() => {
-			//run these in parallel
-			return Promise.all([tasks.run('build-manifest'), tasks.run('build-components')]);
-		});
+		return tasks.run('clean').then(tasks.get('build-manifest'));
 	}),
 	'default',
 	'The default task.'
@@ -36,7 +35,7 @@ tasks.add(
 
 if (require.main === module) {
 	if (args.tasks) {
-		console.log(tasks.list());
+		log.info(tasks.list());
 	} else {
 		tasks
 			.run(task)
