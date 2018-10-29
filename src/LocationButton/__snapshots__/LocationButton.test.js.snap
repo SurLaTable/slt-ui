@@ -5,7 +5,7 @@ exports[`Render 1`] = `
   store={
     Object {
       "asyncReducers": Object {
-        "C:\\\\Users\\\\rmcquen\\\\slt-ui\\\\src\\\\services\\\\google-maps": [Function],
+        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\google-maps": [Function],
       },
       "dispatch": [Function],
       "getState": [Function],
