@@ -5,8 +5,8 @@ exports[`Render 1`] = `
   store={
     Object {
       "asyncReducers": Object {
-        "/mnt/c/Users/rmcquen/slt-ui/src/services/google-maps": [Function],
-        "/mnt/c/Users/rmcquen/slt-ui/src/services/slt-stores": [Function],
+        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\google-maps": [Function],
+        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\slt-stores": [Function],
       },
       "dispatch": [Function],
       "getState": [Function],
@@ -17,7 +17,7 @@ exports[`Render 1`] = `
   }
 >
   <React.Fragment>
-    <Connect(WithStyles(StoreSelector)) />
+    <Connect(WithTheme(WithWidth(WithStyles(StoreSelector)))) />
   </React.Fragment>
 </Provider>
 `;

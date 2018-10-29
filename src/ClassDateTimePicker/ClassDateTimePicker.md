@@ -1,11 +1,11 @@
 ```jsx
-<StoreProvider>
-	<ClassDateTimePicker />
-</StoreProvider>
+<ThemeProvider>
+	<StoreProvider>
+		<ClassDateTimePicker productId={"CFA-4578852"} storeId={"001"}/>
+	</StoreProvider>
+</ThemeProvider>
 ```
 
 ```html
-<div data-component="StoreProvider">
-	<div data-component="ClassDateTimePicker"></div>
-</div>
+<div data-component="ClassDateTimePicker"></div>
 ```

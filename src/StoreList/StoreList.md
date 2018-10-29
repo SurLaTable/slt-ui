@@ -1,11 +1,11 @@
 ```jsx {"props":{"style":{"maxHeight":"500px"}}}
-<StoreProvider>
-	<StoreList sortBy={'alphabetically'} limit={10} detailed={false} />
-</StoreProvider>
+<ThemeProvider>
+	<StoreProvider>
+		<StoreList sortBy={'alphabetically'} limit={10} detailed={false} />
+	</StoreProvider>
+</ThemeProvider>
 ```
 
 ```html
-<div data-component="StoreProvider">
-	<div data-component="StoreList" data-prop-sort-by="distance"></div>
-</div>
+<div data-component="StoreList" data-prop-sort-by="alphabetically" data-prop-limit="10" data-prop-detailed="false"></div>
 ```

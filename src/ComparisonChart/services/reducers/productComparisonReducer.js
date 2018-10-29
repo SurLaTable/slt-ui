@@ -6,7 +6,8 @@ const productComparisonReducer = (state = {}, action) => {
 		case 'REMOVE_ALL':
 			return {
 				...state,
-				selection: []
+				selection: [],
+				persist: true
 			};
 		case 'REMOVE_PRODUCT':
 			for (let i = selection.length - 1; i >= 0; i--) {
@@ -18,7 +19,8 @@ const productComparisonReducer = (state = {}, action) => {
 
 			return {
 				...state,
-				selection
+				selection,
+				persist: true
 			};
 
 		case 'TOGGLE_PRODUCT':
@@ -26,13 +28,15 @@ const productComparisonReducer = (state = {}, action) => {
 				...state,
 				selection: action.checked
 					? [...selection, data[action.id]]
-					: selection.filter((product) => product.id !== action.id)
+					: selection.filter((product) => product.id !== action.id),
+				persist: true
 			};
 
 		case 'SET_PRODUCTS':
 			return {
 				...state,
-				selection: action.selection.slice()
+				selection: action.selection.slice(),
+				persist: true
 			};
 
 		case 'PRODUCT_DATA_SUCCESS':
@@ -41,13 +45,15 @@ const productComparisonReducer = (state = {}, action) => {
 				productData: {
 					...data,
 					...action.data
-				}
+				},
+				persist: true
 			};
 
 		default:
 			return {
 				selection,
-				...state
+				...state,
+				persist: true
 			};
 	}
 };

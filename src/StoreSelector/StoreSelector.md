@@ -1,5 +1,11 @@
 ```jsx
-<StoreProvider>
-	<StoreSelector />
-</StoreProvider>
+<ThemeProvider>
+	<StoreProvider>
+		<StoreSelector />
+	</StoreProvider>
+</ThemeProvider>
+```
+
+```html
+<div data-component="StoreSelector"></div>
 ```

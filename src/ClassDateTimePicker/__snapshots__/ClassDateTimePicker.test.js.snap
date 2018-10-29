@@ -5,7 +5,8 @@ exports[`Render 1`] = `
   store={
     Object {
       "asyncReducers": Object {
-        "slt-class-times": [Function],
+        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\slt-class-times": [Function],
+        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\slt-stores": [Function],
       },
       "dispatch": [Function],
       "getState": [Function],
@@ -16,7 +17,7 @@ exports[`Render 1`] = `
   }
 >
   <React.Fragment>
-    <Connect(ClassDateTimePicker) />
+    <Connect(WithTheme(WithWidth(WithStyles(ClassDateTimePicker)))) />
   </React.Fragment>
 </Provider>
 `;

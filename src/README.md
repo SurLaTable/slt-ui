@@ -28,7 +28,7 @@ Typically this is what a service should look like
 **services/service-name/index.js**
 
 ```js
-import { addAsyncReducers } from '../../utils/storeTools';
+import { addAsyncReducers } from '../../utils/storeTools.js';
 import { store } from '../../StoreProvider';
 import reducers from './reducers';
 
