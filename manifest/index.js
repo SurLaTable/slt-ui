@@ -11,6 +11,21 @@ import DomToHabitatBuilder from './DomToHabitat.js';
 //NOTE: This is a webpack specific loader, used to generate the async wrapper
 import * as sltUi from '../builder/temp/slt';
 
+const matches =
+	global?.Element?.prototype?.matchesSelector ||
+	global?.Element?.prototype?.mozMatchesSelector ||
+	global?.Element?.prototype?.msMatchesSelector ||
+	global?.Element?.prototype?.oMatchesSelector ||
+	global?.Element?.prototype?.webkitMatchesSelector ||
+	function(s) {
+		var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+			i = matches.length - 1;
+		while (--i >= 0 && matches.item(i) !== this) {
+			//loop
+		}
+		return i > -1;
+	};
+
 class Manifest extends ReactHabitat.Bootstrapper {
 	//before react habitat runs it's 'apply' function
 	willUpdate(target, query) {
@@ -18,8 +33,8 @@ class Manifest extends ReactHabitat.Bootstrapper {
 		// This solves an issue where react habitat will remove nested components from their parent components
 
 		//query is a NodeList and can't be changed so we have to add a property to the elements that react-habitat is looking for
-		query.forEach((ele) => {
-			if (ele.matches(`[${this.componentSelector}] [${this.componentSelector}]`)) {
+		Array.prototype.forEach.call(query, (ele) => {
+			if (matches.call(ele, `[${this.componentSelector}] [${this.componentSelector}]`)) {
 				//set it to 'temp' so we know react habitat didn't touch it, react habitat sets it to 'true'
 				ele.setAttribute(ACTIVE_HABITAT_FLAG, 'temp');
 			}

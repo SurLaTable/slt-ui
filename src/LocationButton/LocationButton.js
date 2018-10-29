@@ -25,11 +25,17 @@ const styles = (theme) => {
 };
 
 class LocationButton extends React.Component {
-	locationErrors = ['', 'Permission Denied', 'Internal Error', 'Timeout Exceeded'];
+	locationErrors = [
+		'',
+		'Permission Denied',
+		'Unable to get position from browser.',
+		'Timeout Exceeded'
+	];
 	constructor() {
 		super();
 		this.state = {
-			locationSupported: !!navigator?.geolocation
+			locationSupported: !!navigator?.geolocation,
+			error: ''
 		};
 		this.handleClick = this.handleClick.bind(this);
 		this.handleGeolocationError = this.handleGeolocationError.bind(this);
@@ -38,7 +44,10 @@ class LocationButton extends React.Component {
 	handleGeolocationPosition(position) {
 		store.dispatch(
 			googleMapsApi.actions.fetchReverseGeocode({
-				latlng: [position.coords.latitude, position.coords.longitude]
+				location: {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				}
 			})
 		);
 	}
@@ -49,27 +58,34 @@ class LocationButton extends React.Component {
 		//Ask for location permission
 		//geocode with google api using latlng
 		//store.dispatch(geocode())
-		this.setState({ error: null });
+		this.setState({ error: '' });
 		if (this.state.locationSupported) {
-			navigator.geolocation.getCurrentPosition(
-				this.handleGeolocationPosition,
-				this.handleGeolocationError,
-				{
-					enableHighAccuracy: false,
-					maximumAge: 1000 * 60 * 5 // five minutes
-				}
-			);
+			try {
+				navigator.geolocation.getCurrentPosition(
+					this.handleGeolocationPosition.bind(this),
+					this.handleGeolocationError.bind(this),
+					{
+						enableHighAccuracy: false,
+						maximumAge: 1000 * 60 * 5 // five minutes
+					}
+				);
+			} catch (e) {
+				this.handleGeolocationError(e);
+			}
 		}
 	}
 	render() {
 		let { locationSupported, error } = this.state;
 		let { children, disabled = locationSupported == false, classes, isFetching } = this.props;
-		let message = '';
+		let message = error;
 		if (locationSupported == false) {
 			message = 'Geolocation is not available.';
 		}
 		return (
-			<Tooltip title={message}>
+			<Tooltip
+				title={message}
+				placement="top"
+			>
 				<Button
 					disabled={disabled || isFetching}
 					onClick={this.handleClick}

@@ -26,6 +26,14 @@ import { actions, selectors } from '../services/slt-class-times';
 
 import * as storesApi from '../services/slt-stores';
 
+function parseDate(str) {
+	var best = new Date(str);
+	var okay = new Date(str.replace(' ', 'T'));
+	var oof = str.replace(/-/g, '/');
+	var ie = new Date(oof.slice(0, oof.lastIndexOf('.')));
+	return (best > 0 && best) || (okay > 0 && okay) || (ie > 0 && ie);
+}
+
 const style = (theme) => {
 	return {
 		fullScreen: {
@@ -86,7 +94,7 @@ const style = (theme) => {
 const locale = 'en-us';
 
 const giveMeTheClassTimeNicelyShort = (classData) => `
-	${new Date(classData?.classStartDate).toLocaleString(locale, {
+	${parseDate(classData?.classStartDate).toLocaleString(locale, {
 		month: 'short',
 		day: '2-digit',
 		hour: 'numeric',
@@ -94,14 +102,14 @@ const giveMeTheClassTimeNicelyShort = (classData) => `
 	})}`;
 
 const giveMeTheClassTimeNicely = (classData) => `
-	${new Date(classData?.classStartDate).toLocaleString(locale, {
+	${parseDate(classData?.classStartDate).toLocaleString(locale, {
 		weekday: 'short',
 		month: 'numeric',
 		day: 'numeric',
 		year: 'numeric',
 		hour: 'numeric',
 		minute: 'numeric'
-	})} - ${new Date(classData?.classStopDate).toLocaleString(locale, {
+	})} - ${parseDate(classData?.classStopDate).toLocaleString(locale, {
 	hour: 'numeric',
 	minute: 'numeric'
 })}`;
@@ -121,7 +129,7 @@ const months = [
 	'December'
 ];
 const sortDates = (a, b) => {
-	return new Date(a) - new Date(b);
+	return parseDate(a) - parseDate(b);
 };
 
 class ClassDateTimePicker extends React.Component {

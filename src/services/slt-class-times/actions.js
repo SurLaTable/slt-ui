@@ -2,6 +2,14 @@ import axios from 'axios';
 import store from 'store2';
 //const SLT_APIKEY = process.env.SLT_APIKEY || global.SLT_APIKEY;
 
+function parseDate(str) {
+	var best = new Date(str);
+	var okay = new Date(str.replace(' ', 'T'));
+	var oof = str.replace(/-/g, '/');
+	var ie = new Date(oof.slice(0, oof.lastIndexOf('.')));
+	return (best > 0 && best) || (okay > 0 && okay) || (ie > 0 && ie);
+}
+
 const apiStorage = store.namespace('classes-service');
 
 const arrayMeIfEmpty = (item) => (Array.isArray(item) ? item : []);
@@ -23,7 +31,7 @@ export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 			const data = http.data
 				.filter((culinaryClass) => culinaryClass.storeId === location)
 				.reduce((newObj, culinaryClass) => {
-					var startDate = new Date(culinaryClass.classStartDate);
+					var startDate = parseDate(culinaryClass.classStartDate);
 					if (startDate >= now) {
 						const prop = startDate.toLocaleString('en-us', {
 							month: 'long',

@@ -9,7 +9,7 @@ const { reducer, actions, selectors } = reheat({
 		data: [],
 		hasLocations: false,
 		isFetching: false,
-		persist: true
+		persist: [false, { data: true }]
 	},
 	actionCreators
 });

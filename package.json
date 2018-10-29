@@ -112,6 +112,7 @@
 		"glob": "7.x.x",
 		"html-webpack-plugin": "3.x.x",
 		"jest": "23.x.x",
+		"jquery": "^3.3.1",
 		"koa-mount": "3.x.x",
 		"koa-router": "7.x.x",
 		"koa-static": "5.x.x",
