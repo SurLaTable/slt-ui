@@ -44,7 +44,7 @@ const style = (theme) => {
 			alignItems: 'center'
 		},
 		flex: {
-			flex: 1
+			flex: '1 1 auto'
 		},
 		display: {
 			display: 'flex',
@@ -326,8 +326,7 @@ class ClassDateTimePicker extends React.Component {
 				</Typography>
 				<button
 					onClick={this.handleClickOpen.bind(this)}
-					className={classes.anchor}
-					style={{ flex: 1 }}
+					className={classNames(classes.anchor, classes.flex)}
 					disabled={!dates.length}
 				>
 					Change Date

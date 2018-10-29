@@ -16,7 +16,7 @@ const styles = (theme) => {
 		content: {
 			paddingLeft: 0,
 			paddingRight: 0,
-			flex: 1
+			flex: '1 1 auto'
 		},
 		distance: {
 			fontSize: theme.typography.pxToRem(12),
@@ -109,7 +109,7 @@ class StoreCard extends React.Component {
 							<CardContent
 								className={classes.content}
 								style={{
-									flex: 1
+									flex: '1 1 auto'
 								}}
 							>
 								{children}

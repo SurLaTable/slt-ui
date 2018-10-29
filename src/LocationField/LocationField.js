@@ -31,7 +31,7 @@ const styles = (theme) => {
 			marginBottom: '6px'
 		},
 		input: {
-			flex: '1',
+			flex: '1 1 auto',
 			margin: 0
 		}
 	};
