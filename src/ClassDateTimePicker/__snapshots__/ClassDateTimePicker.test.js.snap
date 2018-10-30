@@ -5,8 +5,8 @@ exports[`Render 1`] = `
   store={
     Object {
       "asyncReducers": Object {
-        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\slt-class-times": [Function],
-        "C:\\\\Users\\\\dmeagher\\\\Desktop\\\\slt-ui\\\\src\\\\services\\\\slt-stores": [Function],
+        "/mnt/c/Users/rmcquen/slt-ui/src/services/slt-class-times": [Function],
+        "/mnt/c/Users/rmcquen/slt-ui/src/services/slt-stores": [Function],
       },
       "dispatch": [Function],
       "getState": [Function],

@@ -121,15 +121,15 @@ class ComparisonTable extends React.Component {
 
 	handleFormat(data, format) {
 		switch (format) {
-			case 'html':
-				// Convert the HTML to text, because we don't
-				// want bullet points.
-				let temp = document.createElement('span');
-				temp.innerHTML = data;
-				let returnText = temp.textContent;
-				return returnText !== 'undefined' ? returnText : null;
-			default:
-				return data;
+		case 'html':
+			// Convert the HTML to text, because we don't
+			// want bullet points.
+			let temp = document.createElement('span');
+			temp.innerHTML = data;
+			let returnText = temp.textContent;
+			return returnText !== 'undefined' ? returnText : null;
+		default:
+			return data;
 		}
 	}
 
