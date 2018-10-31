@@ -2,13 +2,7 @@ import axios from 'axios';
 import store from 'store2';
 //const SLT_APIKEY = process.env.SLT_APIKEY || global.SLT_APIKEY;
 
-function parseDate(str) {
-	var best = new Date(str);
-	var okay = new Date(str.replace(' ', 'T'));
-	var oof = str.replace(/-/g, '/');
-	var ie = new Date(oof.slice(0, oof.lastIndexOf('.')));
-	return (best > 0 && best) || (okay > 0 && okay) || (ie > 0 && ie);
-}
+import { parseDate } from '../../utils/time.js';
 
 const apiStorage = store.namespace('classes-service');
 
