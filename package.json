@@ -17,7 +17,7 @@
 	"license": "GPL-2.0+",
 	"main": "./CodeSandbox/index.js",
 	"name": "@sur-la-table/slt-ui-core",
-	"version": "1.3.1",
+	"version": "1.3.2",
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com:SurLaTable/slt-ui.git"
@@ -27,11 +27,12 @@
 		"docs": "babel-node --config-file ./builder/config/babel.config.js ./builder/docs/serve.config.js --dev",
 		"jest": "jest --coverage --updateSnapshot && codecov",
 		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|coverage|*dist|docs|node_modules|styleguid*)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
-		"prepare-release": "yarn install && yarn test && yarn build && yarn build build-docs && yarn prettier",
+		"prerelease": "yarn install && yarn test && yarn build && yarn build build-docs && yarn prettier",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
 		"start-component": "babel-node --config-file ./builder/config/babel.config.js ./builder/start-component.js",
 		"tasks": "yarn build --tasks",
-		"test": "yarn jest"
+		"test": "yarn jest",
+		"release": "cd build && yarn version && npm login && npm publish && cd .."
 	},
 	"dependencies": {
 		"@google/maps": "0.x.x",

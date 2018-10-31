@@ -52,7 +52,7 @@ const style = (theme) => {
 			alignItems: 'center'
 		},
 		flex: {
-			flex: 1
+			flex: '1 1 auto'
 		},
 		display: {
 			display: 'flex',
@@ -249,7 +249,7 @@ class StoreSelector extends React.Component {
 				</Typography>
 				<button
 					onClick={this.toggleOpen}
-					className={classes.anchor}
+					className={classNames(classes.anchor, classes.flex)}
 				>
 					{selectedStore ? 'Change Location' : 'Select Location'}
 				</button>
