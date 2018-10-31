@@ -25,14 +25,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { actions, selectors } from '../services/slt-class-times';
 
 import * as storesApi from '../services/slt-stores';
-
-function parseDate(str) {
-	var best = new Date(str);
-	var okay = new Date(str.replace(' ', 'T'));
-	var oof = str.replace(/-/g, '/');
-	var ie = new Date(oof.slice(0, oof.lastIndexOf('.')));
-	return (best > 0 && best) || (okay > 0 && okay) || (ie > 0 && ie);
-}
+import { parseDate } from '../utils/time.js';
 
 const style = (theme) => {
 	return {
