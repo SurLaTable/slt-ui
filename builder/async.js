@@ -56,9 +56,9 @@ function generateSLTUIAsync(promises) {
 					indexCode += `
 							export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
-									path.posix.resolve(`./builder/temp/slt/${folderName}`),
-									path.posix.resolve(file)
-								)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
+		path.posix.resolve(`./builder/temp/slt/${folderName}`),
+		path.posix.resolve(file)
+	)}' /*webpackChunkName: '${exportName}'*/).then((module) => module['${component}'])
 							});
 						`;
 
@@ -138,9 +138,9 @@ function generateMaterialAsync(promises) {
 				indexCode += `
 					export const ${exportName} = asyncComponent({
 								resolve: () => import('${path.posix.relative(
-									path.posix.resolve(`./builder/temp/material/${folderName}`),
-									path.posix.resolve(file)
-								)}' /*webpackChunkName: '${exportName}'*/).then(module => module['${component}'])
+		path.posix.resolve(`./builder/temp/material/${folderName}`),
+		path.posix.resolve(file)
+	)}' /*webpackChunkName: '${exportName}'*/).then(module => module['${component}'])
 							});
 				`;
 				if (args.verbose) {
