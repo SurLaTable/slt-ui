@@ -19,6 +19,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -156,7 +157,9 @@ class ClassDateTimePicker extends React.Component {
 			global.location &&
 			global.location.host.indexOf('.surlatable.com') >= 0
 		) {
-			global.location.replace(`/sku/${culinaryClass.sku}/`);
+			global.location.replace(
+				`/sku/${culinaryClass.sku}/${global.location.search}${global.location.hash}`
+			);
 		}
 	}
 	componentWillUnMount() {
@@ -252,7 +255,11 @@ class ClassDateTimePicker extends React.Component {
 					}
 				} else if (this.props.productId && this.props.sku) {
 					if (global.location && global.location.host.indexOf('.surlatable.com') >= 0) {
-						global.location.replace(`/product/${this.props.productId}/`);
+						global.location.replace(
+							`/product/${this.props.productId}/${global.location.search}${
+								global.location.hash
+							}`
+						);
 					}
 				}
 			});
@@ -294,7 +301,15 @@ class ClassDateTimePicker extends React.Component {
 		}
 	}
 	render() {
-		let { width, productId, selectedStore, classes, classTimeData, nextClass } = this.props;
+		let {
+			width,
+			productId,
+			selectedStore,
+			classes,
+			classTimeData,
+			nextClass,
+			isFetching
+		} = this.props;
 		const { expanded, culinaryClassName, open, sku } = this.state;
 
 		const dates = Object.keys(classTimeData).sort(sortDates);
@@ -306,17 +321,16 @@ class ClassDateTimePicker extends React.Component {
 				className={classes.display}
 			>
 				<Typography>{sku ? 'Class Date:' : 'Next Available Date:'}</Typography>
-				<Typography>
-					<strong>
-						{!selectedStore ? (
-							<>&nbsp;</>
-						) : dates.length ? (
-							giveMeTheClassTimeNicelyShort(selectedClass)
-						) : (
-							'No classes available'
-						)}
-					</strong>
-				</Typography>
+				{isFetching ? <CircularProgress size={18} /> : null}
+				{isFetching == false && selectedStore ? (
+					<Typography>
+						<strong>
+							{dates.length
+								? giveMeTheClassTimeNicelyShort(selectedClass)
+								: 'No classes available'}
+						</strong>
+					</Typography>
+				) : null}
 				<button
 					onClick={this.handleClickOpen.bind(this)}
 					className={classNames(classes.anchor, classes.flex)}
@@ -367,7 +381,8 @@ ClassDateTimePicker.propTypes = {
 	storeId: PropTypes.string,
 	selectedStore: PropTypes.string,
 	productId: PropTypes.string,
-	nextClass: PropTypes.object
+	nextClass: PropTypes.object,
+	isFetching: PropTypes.bool
 };
 
 ClassDateTimePicker.defaultProps = {};
@@ -375,6 +390,7 @@ ClassDateTimePicker.defaultProps = {};
 const mapStateToProps = (state, props) => {
 	return {
 		...props,
+		isFetching: selectors.getIsFetching(state),
 		classTimeData: {
 			...selectors.getClassTimeData(state)
 		},

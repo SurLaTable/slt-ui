@@ -20,6 +20,7 @@ import LocationButton from '../LocationButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import CloseIcon from '@material-ui/icons/Close';
 import Zoom from '@material-ui/core/Zoom';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import * as sltStoresApi from '../services/slt-stores';
 import { selectors as googleMapsSelectors } from '../services/google-maps';
@@ -145,9 +146,9 @@ class StoreSelector extends React.Component {
 
 	componentDidMount() {
 		if (this.props.storeId) {
-			if (this.props.selectedStore?.storeId != this.props.storeId) {
-				this.props.dispatch(sltStoresApi.actions.setSelectedItem(this.props.storeId));
-			}
+			// if (this.props.selectedStore?.storeId != this.props.storeId) {
+			// 	this.props.dispatch(sltStoresApi.actions.setSelectedItem(this.props.storeId));
+			// }
 		} else if (this.props.hasLocations == false && this.props.selectedStore == null) {
 			this.setState({ open: true });
 		}
@@ -164,7 +165,7 @@ class StoreSelector extends React.Component {
 
 	render() {
 		let { open, scrollTop, showScrollToTop } = this.state;
-		let { selectedStore, classes, width, culinary, storeListProps } = this.props;
+		let { selectedStore, classes, width, culinary, storeListProps, isFetching } = this.props;
 
 		const dialog = (
 			<Dialog
@@ -228,7 +229,6 @@ class StoreSelector extends React.Component {
 				</DialogActions>
 			</Dialog>
 		);
-
 		const location = selectedStore?.location;
 		let display = (
 			<Paper
@@ -236,16 +236,15 @@ class StoreSelector extends React.Component {
 				className={classes.display}
 			>
 				<Typography>Class Location:</Typography>
+				{isFetching ? <CircularProgress size={18} /> : null}
 				<Typography>
-					{selectedStore ? (
+					{isFetching == false && selectedStore ? (
 						<strong>
 							{location?.city}
 							{', '}
 							{location?.state}
 						</strong>
-					) : (
-						<>&nbsp;</>
-					)}
+					) : null}
 				</Typography>
 				<button
 					onClick={this.toggleOpen}
@@ -279,8 +278,12 @@ StoreSelector.defaultProps = {
 const mapStateToProps = (state, props) => {
 	return {
 		...props,
+		isFetching:
+			sltStoresApi.selectors.getIsFetching(state) || googleMapsSelectors.getIsFetching(state),
 		hasLocations: googleMapsSelectors.getHasLocations(state),
-		selectedStore: sltStoresApi.selectors.getSelectedItemObject(state)
+		selectedStore:
+			sltStoresApi.selectors.getSelectedItemObject(state) ||
+			sltStoresApi.selectors.getItemsWithId(state, props.storeId)[0]
 	};
 };
 

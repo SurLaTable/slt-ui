@@ -29,7 +29,6 @@ function removeInactiveStores(storeData) {
 
 export const fetchItems = ({ actions }, force = false) => {
 	return (dispatch) => {
-		dispatch(actions.setIsFetching(true));
 		if (apiStorage.session.has('items') == false || force === true) {
 			dispatch(actions.setIsFetching(true));
 			return axios
