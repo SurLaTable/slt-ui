@@ -282,8 +282,8 @@ const mapStateToProps = (state, props) => {
 			sltStoresApi.selectors.getIsFetching(state) || googleMapsSelectors.getIsFetching(state),
 		hasLocations: googleMapsSelectors.getHasLocations(state),
 		selectedStore:
-			sltStoresApi.selectors.getSelectedItemObject(state) ||
-			sltStoresApi.selectors.getItemsWithId(state, props.storeId)[0]
+			sltStoresApi.selectors.getItemsWithId(state, props.storeId)[0] ||
+			sltStoresApi.selectors.getSelectedItemObject(state)
 	};
 };
 

@@ -6,7 +6,9 @@ const getStoreCookie = () => global?.document?.cookie?.match(/(^| )kiosk_locatio
 export const getSelectedItem = (selectors) =>
 	createSelector(
 		[getStoreCookie, selectors.getSelectedItem],
-		(kiosk_location_id, selectedItem) => kiosk_location_id || selectedItem
+		(kiosk_location_id, selectedItem) => {
+			return kiosk_location_id || selectedItem;
+		}
 	);
 
 export const getItemsById = (selectors) => createSelector(selectors.getItems, filterItemsById);
@@ -22,7 +24,7 @@ export const getItemsAlphabetically = (selectors) =>
 
 export const getSelectedItemObject = (selectors) =>
 	createSelector(
-		[getItemsById(selectors), selectors.getSelectedItem],
+		[getItemsById(selectors), getSelectedItem(selectors)],
 		(items, selectedItem) => items[selectedItem]
 	);
 
