@@ -17,7 +17,7 @@
 	"license": "GPL-2.0+",
 	"main": "./CodeSandbox/index.js",
 	"name": "@sur-la-table/slt-ui-core",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com:SurLaTable/slt-ui.git"
@@ -28,10 +28,12 @@
 		"jest": "jest --coverage --updateSnapshot && codecov",
 		"prettier": "npx prettier-eslint --list-different --config ./prettier.config.js --eslint-config-path ./.eslintrc.json --write \"{,!(.git|*build|coverage|*dist|docs|node_modules|styleguid*)/**/}*.{css,js,json,jsx,less,md,sass,scss}\"",
 		"prerelease": "yarn install && yarn test && yarn build && yarn build build-docs && yarn prettier",
+		"prerelease:beta": "npm run prerelease",
 		"sandbox": "babel-node --config-file ./builder/config/babel.config.js ./DEPRECATED_sandbox/serve.config.js --dev",
 		"start-component": "babel-node --config-file ./builder/config/babel.config.js ./builder/start-component.js",
 		"tasks": "yarn build --tasks",
 		"test": "yarn jest",
+		"release:beta": "cd build && yarn version && npm login && npm publish --tag beta && cd ..",
 		"release": "cd build && yarn version && npm login && npm publish && cd .."
 	},
 	"dependencies": {
