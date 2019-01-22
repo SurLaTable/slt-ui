@@ -206,7 +206,10 @@ class ClassDateTimePicker extends React.Component {
 	}
 	returnMonthData(culinaryClasses) {
 		return (
-			<RadioGroup aria-label="Classes" name="classes">
+			<RadioGroup
+				aria-label="Classes"
+				name="classes"
+			>
 				{culinaryClasses.map((culinaryClass, index) => {
 					return (
 						<FormControlLabel
@@ -319,7 +322,10 @@ class ClassDateTimePicker extends React.Component {
 		const selectedClass = this.getSelectedClass({ classTimeData, sku }) || nextClass;
 
 		return (
-			<Paper elevation={0} className={classes.display}>
+			<Paper
+				elevation={0}
+				className={classes.display}
+			>
 				<Typography>{sku ? 'Class Date:' : 'Next Available Date:'}</Typography>
 				{isFetching ? <CircularProgress size={18} /> : null}
 				{isFetching == false && selectedStore ? (

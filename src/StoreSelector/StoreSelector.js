@@ -145,7 +145,10 @@ class StoreSelector extends React.Component {
 	}
 
 	componentDidMount() {
-		if ((!this.props.storeId) && (this.props.hasLocations == false || this.props.selectedStore == null)) {
+		if (
+			!this.props.storeId &&
+			(this.props.hasLocations == false || this.props.selectedStore == null)
+		) {
 			this.setState({ open: true });
 		}
 	}
@@ -161,7 +164,15 @@ class StoreSelector extends React.Component {
 
 	render() {
 		let { open, scrollTop, showScrollToTop } = this.state;
-		let { selectedStore, classes, width, culinary, storeListProps, isFetching, storeId } = this.props;
+		let {
+			selectedStore,
+			classes,
+			width,
+			culinary,
+			storeListProps,
+			isFetching,
+			storeId
+		} = this.props;
 
 		const dialog = (
 			<Dialog
@@ -209,7 +220,10 @@ class StoreSelector extends React.Component {
 				</DialogContent>
 				<DialogActions>
 					<div style={{ position: 'relative' }}>
-						<Zoom in={showScrollToTop && scrollTop > 600} unmountOnExit>
+						<Zoom
+							in={showScrollToTop && scrollTop > 600}
+							unmountOnExit
+						>
 							<Button
 								variant="fab"
 								className={classes.fab}
@@ -225,7 +239,10 @@ class StoreSelector extends React.Component {
 		);
 		const location = selectedStore?.location;
 		let display = (
-			<Paper elevation={0} className={classes.display}>
+			<Paper
+				elevation={0}
+				className={classes.display}
+			>
 				<Typography>Class Location:</Typography>
 				{isFetching ? <CircularProgress size={18} /> : null}
 				<Typography>

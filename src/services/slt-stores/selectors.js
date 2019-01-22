@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 import { filterItemsById, filterItemsAlphabetically, filterItemsByCulinary } from './filters.js';
 
-export const getKioskLocationId = () => global?.document?.cookie?.match(/(^| )kiosk_location_id=([^;]+)/)?.[2];
+export const getKioskLocationId = () =>
+	global?.document?.cookie?.match(/(^| )kiosk_location_id=([^;]+)/)?.[2];
 
 export const getSelectedItem = (selectors) =>
 	createSelector(
