@@ -13,7 +13,7 @@ let middlware = composeEnhancers(
 	persistState(null, {
 		merge: merge,
 		slicer: () => (state) => {
-			let subset = {};
+			let subset = {...state};
 			for (let key in state) {
 				if (state?.[key]?.persist) {
 					let maskObj = state[key].persist,
@@ -22,10 +22,9 @@ let middlware = composeEnhancers(
 						filterDefault = maskObj[0];
 						maskObj = maskObj[1];
 					}
-					subset[key] = mask(state[key], { ...maskObj, persist: true }, filterDefault);
+					subset[key] = mask(state[key], { ...maskObj }, filterDefault);
 				}
 			}
-
 			return subset;
 		}
 	})

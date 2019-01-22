@@ -11,7 +11,14 @@ const { reducer, actions, selectors } = reheat({
 		items: [],
 		isFetching: false,
 		selectedItem: null,
-		persist: [false, { items: true, selectedItem: true }]
+		persist: [
+			false,
+			{
+				items: true,
+				// Don't remember the selectedItem if we're at a kiosk
+				selectedItem: !selectorCreators.getKioskLocationId()
+			}
+		]
 	},
 	actionCreators,
 	selectorCreators

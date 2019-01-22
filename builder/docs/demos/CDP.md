@@ -4,8 +4,8 @@ This is a demo as if we were on the product page: [CFA-4913802](https://www.surl
 <ThemeProvider>
 	<StoreProvider>
 		<div style={{display:"inline-flex"}}>
-				<StoreSelector culinary={true} />
-				<ClassDateTimePicker productId={"CFA-4913802"} />
+				<StoreSelector storeId="029" culinary={true} />
+				<ClassDateTimePicker storeId="029" productId={"CFA-4913802"} />
 		</div>
 	</StoreProvider>
 </ThemeProvider>

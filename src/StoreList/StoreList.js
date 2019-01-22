@@ -166,7 +166,7 @@ StoreList.defaultProps = {
 };
 
 const mapStateToProps = (state, props) => {
-	const selectedStore = sltStoresApi.selectors.getSelectedItem(state);
+	const selectedStore = props.storeId || sltStoresApi.selectors.getSelectedItem(state);
 	const hasLocations = googleMapsSelectors.getHasLocations(state);
 	let storeData = [];
 	if (props.culinary) {

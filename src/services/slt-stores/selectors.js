@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 import { filterItemsById, filterItemsAlphabetically, filterItemsByCulinary } from './filters.js';
 
-const getStoreCookie = () => global?.document?.cookie?.match(/(^| )kiosk_location_id=([^;]+)/)?.[2];
+export const getKioskLocationId = () => global?.document?.cookie?.match(/(^| )kiosk_location_id=([^;]+)/)?.[2];
 
 export const getSelectedItem = (selectors) =>
 	createSelector(
-		[getStoreCookie, selectors.getSelectedItem],
+		[getKioskLocationId, selectors.getSelectedItem],
 		(kiosk_location_id, selectedItem) => {
-			return kiosk_location_id || selectedItem;
+			return selectedItem || kiosk_location_id;
 		}
 	);
 
