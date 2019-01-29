@@ -18,6 +18,7 @@ export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 		)
 		.then((http) => {
 			const now = new Date();
+			now.setHours(0, 0, 0, 0);
 			var nextClassTime = Infinity,
 				nextClass = null;
 			if (!http.data) {
