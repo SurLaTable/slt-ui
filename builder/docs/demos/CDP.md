@@ -1,11 +1,13 @@
 
 This is a demo as if we were on the product page: [CFA-2519692](https://www.surlatable.com/product/CFA-3623923/)
 ```jsx
-<ThemeProvider>
+initialState = {value:'CFA-5202742'}
+;<ThemeProvider>
+	<input onChange={e => setState({value:e.target.value})} value={state.value} /><br/>
 	<StoreProvider>
 		<div style={{display:"inline-flex"}}>
 				<StoreSelector culinary={true} storeId="004"/>
-				<ClassDateTimePicker productId={"CFA-3623923"} sku={"3623923"}/>
+				<ClassDateTimePicker productId={state.value}/>
 		</div>
 	</StoreProvider>
 </ThemeProvider>

@@ -11,7 +11,7 @@ const { reducer, actions, selectors } = reheat({
 		items: [],
 		isFetching: false,
 		selectedItem: null,
-		persist: [false, { items: true, selectedItem: true }]
+		persist: [false, { items: false, selectedItem: true }]
 	},
 	actionCreators,
 	selectorCreators

@@ -23,29 +23,35 @@ export const fetchClassTimes = ({ actions }, product, location) => (dispatch) =>
 				nextClass = null;
 
 			const data = http.data
-				.filter((culinaryClass) => culinaryClass.storeId === location)
+				.filter((culinaryClass) => {
+					var sameLocation = culinaryClass.storeId === location;
+					var notCSA = !culinaryClass.sku.includes("CSA-");
+
+					var startDate = parseDate(culinaryClass.classStartDate);
+
+					return sameLocation && notCSA && startDate >= now;
+				})
 				.reduce((newObj, culinaryClass) => {
 					var startDate = parseDate(culinaryClass.classStartDate);
-					if (startDate >= now) {
-						const prop = startDate.toLocaleString('en-us', {
-							month: 'long',
-							year: 'numeric'
-						});
-						newObj[prop] = arrayMeIfEmpty(newObj[prop]);
-						newObj[prop].push(culinaryClass);
-						if (startDate <= nextClassTime) {
-							nextClassTime = startDate;
-							nextClass = prop;
-						}
+					const prop = startDate.toLocaleString('en-us', {
+						month: 'long',
+						year: 'numeric'
+					});
+					newObj[prop] = arrayMeIfEmpty(newObj[prop]);
+					newObj[prop].push(culinaryClass);
+					if (startDate <= nextClassTime) {
+						nextClassTime = startDate;
+						nextClass = prop;
 					}
 					return newObj;
 				}, {});
-			//apiStorage.session.set(`classTimeData-${product}-${location}`, data);
-
+			
 			for (let month in data) {
-				data[month].sort((a, b) => new Date(a.classStartDate) - new Date(b.classStartDate));
+				data[month].sort((a, b) => {
+					return parseDate(a.classStartDate) - parseDate(b.classStartDate)
+				});
 			}
-
+			
 			dispatch(actions.setNextClass(nextClass));
 			dispatch(actions.setClassTimeData(data));
 			return data && nextClass && data[nextClass][0];

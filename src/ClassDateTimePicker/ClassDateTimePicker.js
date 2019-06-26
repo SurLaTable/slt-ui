@@ -122,7 +122,7 @@ const months = [
 	'December'
 ];
 const sortDates = (a, b) => {
-	return parseDate(a) - parseDate(b);
+	return new Date(a) - new Date(b);
 };
 
 class ClassDateTimePicker extends React.Component {
@@ -179,10 +179,10 @@ class ClassDateTimePicker extends React.Component {
 		// 		'ClassDateTimePicker'
 		// 	);
 		// }
-
+		
 		this.setState({
 			open: true,
-			expanded: `panel ${Object.keys(this.props.classTimeData)[0]}`
+			expanded: `panel ${Object.keys(this.props.classTimeData).sort(sortDates)[0]}`
 		});
 	}
 
