@@ -310,7 +310,7 @@ class ClassDateTimePicker extends React.Component {
 					<strong>
 						{!selectedStore ? (
 							<>&nbsp;</>
-						) : dates.length ? (
+						) : selectedClass && dates.length ? (
 							giveMeTheClassTimeNicelyShort(selectedClass)
 						) : (
 							'No classes available'
