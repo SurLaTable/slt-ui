@@ -1,4 +1,4 @@
-```jsx
+```jsx { "props": { "hasLocations": true, "selectedStore": undefined } }
 <ThemeProvider>
 	<StoreProvider>
 		<StoreSelector />
